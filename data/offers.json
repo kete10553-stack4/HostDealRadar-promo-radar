@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-11T11:31:38Z",
+  "generated_at": "2026-09-11T12:07:05Z",
   "offers": [
     {
       "slug": "hostinger-premium-web-hosting",
@@ -8,7 +8,7 @@
       "category": "Web hosting",
       "source_url": "https://www.hostinger.com/pricing",
       "offer_url": "https://www.hostinger.com/pricing",
-      "fetched_at": "2026-09-11T11:31:16Z",
+      "fetched_at": "2026-09-11T12:07:04Z",
       "evidence": "Hostinger pricing card identified by its product-slug data attribute.",
       "currency": "USD",
       "billing_period": "month",
@@ -24,7 +24,7 @@
       "category": "Web hosting",
       "source_url": "https://www.hostinger.com/pricing",
       "offer_url": "https://www.hostinger.com/pricing",
-      "fetched_at": "2026-09-11T11:31:16Z",
+      "fetched_at": "2026-09-11T12:07:04Z",
       "evidence": "Hostinger pricing card identified by its product-slug data attribute.",
       "currency": "USD",
       "billing_period": "month",
@@ -40,7 +40,7 @@
       "category": "Web hosting",
       "source_url": "https://www.siteground.com/web-hosting.htm",
       "offer_url": "https://www.siteground.com/web-hosting.htm",
-      "fetched_at": "2026-09-11T11:30:10Z",
+      "fetched_at": "2026-09-11T12:07:04Z",
       "evidence": "Server-rendered Offer entry in SiteGround's JSON-LD.",
       "currency": "USD",
       "billing_period": "month",
@@ -53,7 +53,7 @@
       "category": "Web hosting",
       "source_url": "https://www.siteground.com/web-hosting.htm",
       "offer_url": "https://www.siteground.com/web-hosting.htm",
-      "fetched_at": "2026-09-11T11:30:10Z",
+      "fetched_at": "2026-09-11T12:07:04Z",
       "evidence": "Server-rendered Offer entry in SiteGround's JSON-LD.",
       "currency": "USD",
       "billing_period": "month",
@@ -66,7 +66,7 @@
       "category": "Web hosting",
       "source_url": "https://www.siteground.com/web-hosting.htm",
       "offer_url": "https://www.siteground.com/web-hosting.htm",
-      "fetched_at": "2026-09-11T11:30:10Z",
+      "fetched_at": "2026-09-11T12:07:04Z",
       "evidence": "Server-rendered Offer entry in SiteGround's JSON-LD.",
       "currency": "USD",
       "billing_period": "month",
@@ -79,7 +79,7 @@
       "category": "Web hosting",
       "source_url": "https://www.dreamhost.com/hosting/",
       "offer_url": "https://www.dreamhost.com/hosting/",
-      "fetched_at": "2026-09-11T11:31:18Z",
+      "fetched_at": "2026-09-11T12:07:04Z",
       "evidence": "Server-rendered DreamHost plan card with data-icu price attributes.",
       "currency": "USD",
       "billing_period": "month",
@@ -95,7 +95,7 @@
       "category": "Managed WordPress hosting",
       "source_url": "https://www.dreamhost.com/hosting/",
       "offer_url": "https://www.dreamhost.com/hosting/",
-      "fetched_at": "2026-09-11T11:31:18Z",
+      "fetched_at": "2026-09-11T12:07:04Z",
       "evidence": "Server-rendered DreamHost plan card with data-icu price attributes.",
       "currency": "USD",
       "billing_period": "month",
@@ -111,7 +111,7 @@
       "category": "VPS hosting",
       "source_url": "https://www.dreamhost.com/hosting/",
       "offer_url": "https://www.dreamhost.com/hosting/",
-      "fetched_at": "2026-09-11T11:31:18Z",
+      "fetched_at": "2026-09-11T12:07:04Z",
       "evidence": "Server-rendered DreamHost plan card with data-icu price attributes.",
       "currency": "USD",
       "billing_period": "month",
@@ -127,7 +127,7 @@
       "category": "Managed WordPress hosting",
       "source_url": "https://kinsta.com/pricing/",
       "offer_url": "https://kinsta.com/pricing/",
-      "fetched_at": "2026-09-11T11:31:19Z",
+      "fetched_at": "2026-09-11T12:07:05Z",
       "evidence": "Official Kinsta pricing-page meta description; no monthly price is inferred.",
       "price_text": "First month free on select plans",
       "condition": "Kinsta describes this as a first-month promotion, not a $0 monthly rate."
@@ -139,7 +139,7 @@
       "category": "Managed cloud hosting",
       "source_url": "https://www.cloudways.com/en/promo-code.php",
       "offer_url": "https://www.cloudways.com/en/promo-code.php",
-      "fetched_at": "2026-09-11T11:31:19Z",
+      "fetched_at": "2026-09-11T12:07:05Z",
       "evidence": "Cloudways' server-rendered promotion page and its claim URL.",
       "currency": "USD",
       "billing_period": "month",
@@ -159,10 +159,12 @@
       "rule_errors": []
     },
     "siteground": {
-      "status": "unavailable",
-      "reason": "Official source was unavailable or presented a challenge.",
+      "status": "checked",
+      "reason": "Official source checked; matched configured extraction rules.",
       "published_count": 3,
-      "retained_count": 3
+      "captured_count": 3,
+      "retained_count": 0,
+      "rule_errors": []
     },
     "dreamhost": {
       "status": "checked",
@@ -171,12 +173,6 @@
       "captured_count": 3,
       "retained_count": 0,
       "rule_errors": []
-    },
-    "namecheap": {
-      "status": "unavailable",
-      "reason": "Official source returned HTTP 403.",
-      "published_count": 0,
-      "retained_count": 0
     },
     "kinsta": {
       "status": "checked",
@@ -193,208 +189,6 @@
       "captured_count": 1,
       "retained_count": 0,
       "rule_errors": []
-    },
-    "hostgator": {
-      "status": "unavailable",
-      "reason": "robots check failed: HTTP Error 403: Forbidden",
-      "published_count": 0,
-      "retained_count": 0
-    },
-    "scalahosting": {
-      "status": "available_no_price_rule",
-      "reason": "Official source and robots.txt were checked successfully; no deterministic price rule is approved, so no offer was published.",
-      "published_count": 0,
-      "captured_count": 0,
-      "retained_count": 0
-    },
-    "greengeeks": {
-      "status": "available_no_price_rule",
-      "reason": "Official source and robots.txt were checked successfully; no deterministic price rule is approved, so no offer was published.",
-      "published_count": 0,
-      "captured_count": 0,
-      "retained_count": 0
-    },
-    "inmotion-hosting": {
-      "status": "available_no_price_rule",
-      "reason": "Official source and robots.txt were checked successfully; no deterministic price rule is approved, so no offer was published.",
-      "published_count": 0,
-      "captured_count": 0,
-      "retained_count": 0
-    },
-    "chemicloud": {
-      "status": "available_no_price_rule",
-      "reason": "Official source and robots.txt were checked successfully; no deterministic price rule is approved, so no offer was published.",
-      "published_count": 0,
-      "captured_count": 0,
-      "retained_count": 0
-    },
-    "verpex": {
-      "status": "available_no_price_rule",
-      "reason": "Official source and robots.txt were checked successfully; no deterministic price rule is approved, so no offer was published.",
-      "published_count": 0,
-      "captured_count": 0,
-      "retained_count": 0
-    },
-    "knownhost": {
-      "status": "available_no_price_rule",
-      "reason": "Official source and robots.txt were checked successfully; no deterministic price rule is approved, so no offer was published.",
-      "published_count": 0,
-      "captured_count": 0,
-      "retained_count": 0
-    },
-    "wp-engine": {
-      "status": "available_no_price_rule",
-      "reason": "Official source and robots.txt were checked successfully; no deterministic price rule is approved, so no offer was published.",
-      "published_count": 0,
-      "captured_count": 0,
-      "retained_count": 0
-    },
-    "ionos": {
-      "status": "available_no_price_rule",
-      "reason": "Official source and robots.txt were checked successfully; no deterministic price rule is approved, so no offer was published.",
-      "published_count": 0,
-      "captured_count": 0,
-      "retained_count": 0
-    },
-    "amazon-lightsail": {
-      "status": "available_no_price_rule",
-      "reason": "Official source and robots.txt were checked successfully; no deterministic price rule is approved, so no offer was published.",
-      "published_count": 0,
-      "captured_count": 0,
-      "retained_count": 0
-    },
-    "ovhcloud": {
-      "status": "available_no_price_rule",
-      "reason": "Official source and robots.txt were checked successfully; no deterministic price rule is approved, so no offer was published.",
-      "published_count": 0,
-      "captured_count": 0,
-      "retained_count": 0
-    },
-    "upcloud": {
-      "status": "available_no_price_rule",
-      "reason": "Official source and robots.txt were checked successfully; no deterministic price rule is approved, so no offer was published.",
-      "published_count": 0,
-      "captured_count": 0,
-      "retained_count": 0
-    },
-    "porkbun": {
-      "status": "available_no_price_rule",
-      "reason": "Official source and robots.txt were checked successfully; no deterministic price rule is approved, so no offer was published.",
-      "published_count": 0,
-      "captured_count": 0,
-      "retained_count": 0
-    },
-    "dynadot": {
-      "status": "available_no_price_rule",
-      "reason": "Official source and robots.txt were checked successfully; no deterministic price rule is approved, so no offer was published.",
-      "published_count": 0,
-      "captured_count": 0,
-      "retained_count": 0
-    },
-    "hover": {
-      "status": "available_no_price_rule",
-      "reason": "Official source and robots.txt were checked successfully; no deterministic price rule is approved, so no offer was published.",
-      "published_count": 0,
-      "captured_count": 0,
-      "retained_count": 0
-    },
-    "squarespace": {
-      "status": "available_no_price_rule",
-      "reason": "Official source and robots.txt were checked successfully; no deterministic price rule is approved, so no offer was published.",
-      "published_count": 0,
-      "captured_count": 0,
-      "retained_count": 0
-    },
-    "webflow": {
-      "status": "available_no_price_rule",
-      "reason": "Official source and robots.txt were checked successfully; no deterministic price rule is approved, so no offer was published.",
-      "published_count": 0,
-      "captured_count": 0,
-      "retained_count": 0
-    },
-    "framer": {
-      "status": "available_no_price_rule",
-      "reason": "Official source and robots.txt were checked successfully; no deterministic price rule is approved, so no offer was published.",
-      "published_count": 0,
-      "captured_count": 0,
-      "retained_count": 0
-    },
-    "carrd": {
-      "status": "available_no_price_rule",
-      "reason": "Official source and robots.txt were checked successfully; no deterministic price rule is approved, so no offer was published.",
-      "published_count": 0,
-      "captured_count": 0,
-      "retained_count": 0
-    },
-    "site123": {
-      "status": "available_no_price_rule",
-      "reason": "Official source and robots.txt were checked successfully; no deterministic price rule is approved, so no offer was published.",
-      "published_count": 0,
-      "captured_count": 0,
-      "retained_count": 0
-    },
-    "duda": {
-      "status": "available_no_price_rule",
-      "reason": "Official source and robots.txt were checked successfully; no deterministic price rule is approved, so no offer was published.",
-      "published_count": 0,
-      "captured_count": 0,
-      "retained_count": 0
-    },
-    "webnode": {
-      "status": "available_no_price_rule",
-      "reason": "Official source and robots.txt were checked successfully; no deterministic price rule is approved, so no offer was published.",
-      "published_count": 0,
-      "captured_count": 0,
-      "retained_count": 0
-    },
-    "jimdo": {
-      "status": "available_no_price_rule",
-      "reason": "Official source and robots.txt were checked successfully; no deterministic price rule is approved, so no offer was published.",
-      "published_count": 0,
-      "captured_count": 0,
-      "retained_count": 0
-    },
-    "ghost": {
-      "status": "available_no_price_rule",
-      "reason": "Official source and robots.txt were checked successfully; no deterministic price rule is approved, so no offer was published.",
-      "published_count": 0,
-      "captured_count": 0,
-      "retained_count": 0
-    },
-    "shopify": {
-      "status": "available_no_price_rule",
-      "reason": "Official source and robots.txt were checked successfully; no deterministic price rule is approved, so no offer was published.",
-      "published_count": 0,
-      "captured_count": 0,
-      "retained_count": 0
-    },
-    "weebly": {
-      "status": "available_no_price_rule",
-      "reason": "Official source and robots.txt were checked successfully; no deterministic price rule is approved, so no offer was published.",
-      "published_count": 0,
-      "captured_count": 0,
-      "retained_count": 0
-    },
-    "tilda": {
-      "status": "available_no_price_rule",
-      "reason": "Official source and robots.txt were checked successfully; no deterministic price rule is approved, so no offer was published.",
-      "published_count": 0,
-      "captured_count": 0,
-      "retained_count": 0
-    },
-    "durable": {
-      "status": "available_no_price_rule",
-      "reason": "Official source and robots.txt were checked successfully; no deterministic price rule is approved, so no offer was published.",
-      "published_count": 0,
-      "captured_count": 0,
-      "retained_count": 0
-    },
-    "10web": {
-      "status": "available_no_price_rule",
-      "reason": "Official source and robots.txt were checked successfully; no deterministic price rule is approved, so no offer was published.",
-      "published_count": 0,
-      "captured_count": 0,
-      "retained_count": 0
     }
   }
 }

@@ -10,38 +10,8 @@
 Hostinger | https://www.hostinger.com/ | https://www.hostinger.com/pricing |
 SiteGround | https://www.siteground.com/ | https://www.siteground.com/web-hosting.htm |
 DreamHost | https://www.dreamhost.com/ | https://www.dreamhost.com/hosting/ |
-Namecheap | https://www.namecheap.com/ | https://www.namecheap.com/promos/ |
 Kinsta | https://kinsta.com/ | https://kinsta.com/pricing/ |
 Cloudways | https://www.cloudways.com/ | https://www.cloudways.com/en/promo-code.php |
-HostGator | https://www.hostgator.com/ | https://www.hostgator.com/coupons |
-ScalaHosting | https://www.scalahosting.com/ | https://www.scalahosting.com/cloud-vps-hosting.html |
-GreenGeeks | https://www.greengeeks.com/ | https://www.greengeeks.com/web-hosting |
-InMotion Hosting | https://www.inmotionhosting.com/ | https://www.inmotionhosting.com/shared-hosting |
-ChemiCloud | https://chemicloud.com/ | https://chemicloud.com/web-hosting |
-Verpex | https://verpex.com/ | https://verpex.com/web-hosting |
-KnownHost | https://www.knownhost.com/ | https://www.knownhost.com/web-hosting |
-WP Engine | https://wpengine.com/ | https://wpengine.com/plans/ |
-IONOS | https://www.ionos.com/ | https://www.ionos.com/hosting/web-hosting |
-Amazon Lightsail | https://aws.amazon.com/lightsail/ | https://aws.amazon.com/lightsail/pricing/ |
-OVHcloud | https://www.ovhcloud.com/ | https://www.ovhcloud.com/en/vps/ |
-UpCloud | https://upcloud.com/ | https://upcloud.com/pricing |
-Porkbun | https://porkbun.com/ | https://porkbun.com/products/domains |
-Dynadot | https://www.dynadot.com/ | https://www.dynadot.com/domain |
-Hover | https://www.hover.com/ | https://www.hover.com/domains |
-Squarespace | https://www.squarespace.com/ | https://www.squarespace.com/pricing |
-Webflow | https://webflow.com/ | https://webflow.com/pricing |
-Framer | https://www.framer.com/ | https://www.framer.com/pricing/ |
-Carrd | https://carrd.co/ | https://carrd.com/pro |
-SITE123 | https://www.site123.com/ | https://www.site123.com/pricing |
-Duda | https://www.duda.co/ | https://www.duda.co/pricing |
-Webnode | https://www.webnode.com/ | https://www.webnode.com/pricing-w2/ |
-Jimdo | https://www.jimdo.com/ | https://www.jimdo.com/pricing/website/ |
-Ghost | https://ghost.org/ | https://ghost.org/pricing/ |
-Shopify | https://www.shopify.com/ | https://www.shopify.com/pricing |
-Weebly | https://www.weebly.com/ | https://www.weebly.com/pricing |
-Tilda | https://tilda.cc/ | https://tilda.cc/pricing/ |
-Durable | https://durable.com/ | https://durable.com/pricing |
-10Web | https://10web.io/ | https://10web.io/pricing-platform/ |
 
 ::MODULE{FIELDS|title:仅提取可验证字段；价格或有效期未知就省略}
 title price currency offer_url valid_from valid_until source_url fetched_at category billing_period commitment_months renewal_price discount_percent coupon_code kind evidence
@@ -57,39 +27,9 @@ title price currency offer_url valid_from valid_until source_url fetched_at cate
 {"provider":"dreamhost","mode":"anchored_html","title":"VPS Business","category":"VPS hosting","anchor":"VPS Business</span>","window_chars":7000,"currency":"USD","billing_period":"month","commitment_months":12,"field_patterns":{"price":"data-icu-price-usd=\"\\$(?P<value>[0-9.]+)\"","discount_percent":"data-icu-percent-usd=\"(?P<value>[0-9]+)%\"","renewal_price":"(?s)Auto-renews at.{0,350}?data-icu-price-usd=\"\\$(?P<value>[0-9.]+)\""},"structure":"Server-rendered DreamHost plan card with data-icu price attributes."}
 {"provider":"kinsta","mode":"presence","title":"First month free on select plans","category":"Managed WordPress hosting","pattern":"first month free on select plans","price_text":"First month free on select plans","condition":"Kinsta describes this as a first-month promotion, not a $0 monthly rate.","structure":"Official Kinsta pricing-page meta description; no monthly price is inferred."}
 {"provider":"cloudways","mode":"presence","slug":"cloudways-summer404","title":"Cloudways hosting promotion","category":"Managed cloud hosting","pattern":"SUMMER404","currency":"USD","billing_period":"month","field_patterns":{"coupon_code":"coupon=(?P<value>[A-Z0-9]+)","discount_percent":"(?i)(?P<value>[0-9]+)% discount on all the web hosting plans for (?P<ignore>[0-9]+) months","valid_until":"(?i)Valid till (?P<value>[0-9]{1,2}(?:st|nd|rd|th)? [A-Za-z]+ [0-9]{4})"},"condition":"Applies under the conditions stated on Cloudways' official promotion page.","structure":"Cloudways' server-rendered promotion page and its claim URL."}
-{"provider":"namecheap","mode":"availability_only","title":"Namecheap promotions source","structure":"The configured public promotions URL is probed only; HTTP 403 means no offer is published."}
-{"provider":"hostgator","mode":"availability_only","title":"HostGator coupons source","structure":"robots.txt is probed before the configured source; an inaccessible robots file means no offer is published."}
-{"provider":"scalahosting","mode":"availability_only","title":"ScalaHosting cloud VPS pricing","structure":"Official server-rendered cloud VPS pricing page was confirmed reachable; no price field is published until a deterministic plan rule is approved."}
-{"provider":"greengeeks","mode":"availability_only","title":"GreenGeeks web hosting pricing","structure":"Official web-hosting page was confirmed reachable; no price field is published until a deterministic plan rule is approved."}
-{"provider":"inmotion-hosting","mode":"availability_only","title":"InMotion Hosting shared pricing","structure":"Official shared-hosting page was confirmed reachable; no price field is published until a deterministic plan rule is approved."}
-{"provider":"chemicloud","mode":"availability_only","title":"ChemiCloud web hosting pricing","structure":"Official web-hosting page was confirmed reachable; no price field is published until a deterministic plan rule is approved."}
-{"provider":"verpex","mode":"availability_only","title":"Verpex web hosting pricing","structure":"Official web-hosting page was confirmed reachable; no price field is published until a deterministic plan rule is approved."}
-{"provider":"knownhost","mode":"availability_only","title":"KnownHost web hosting pricing","structure":"Official web-hosting page was confirmed reachable; no price field is published until a deterministic plan rule is approved."}
-{"provider":"wp-engine","mode":"availability_only","title":"WP Engine plan pricing","structure":"Official plans page was confirmed reachable; no price field is published until a deterministic plan rule is approved."}
-{"provider":"ionos","mode":"availability_only","title":"IONOS web hosting pricing","structure":"Official web-hosting page was confirmed reachable; no price field is published until a deterministic plan rule is approved."}
-{"provider":"amazon-lightsail","mode":"availability_only","title":"Amazon Lightsail pricing","structure":"Official Lightsail pricing page was confirmed reachable; no price field is published until a deterministic plan rule is approved."}
-{"provider":"ovhcloud","mode":"availability_only","title":"OVHcloud VPS pricing","structure":"Official VPS page was confirmed reachable; no price field is published until a deterministic plan rule is approved."}
-{"provider":"upcloud","mode":"availability_only","title":"UpCloud pricing","structure":"Official pricing page was confirmed reachable; no price field is published until a deterministic plan rule is approved."}
-{"provider":"porkbun","mode":"availability_only","title":"Porkbun domain pricing","structure":"Official domain-product page was confirmed reachable; no price field is published until a deterministic plan rule is approved."}
-{"provider":"dynadot","mode":"availability_only","title":"Dynadot domain pricing","structure":"Official domain page was confirmed reachable; no price field is published until a deterministic plan rule is approved."}
-{"provider":"hover","mode":"availability_only","title":"Hover domain pricing","structure":"Official domains page was confirmed reachable; no price field is published until a deterministic plan rule is approved."}
-{"provider":"squarespace","mode":"availability_only","title":"Squarespace pricing","structure":"Official pricing page was confirmed reachable; no price field is published until a deterministic plan rule is approved."}
-{"provider":"webflow","mode":"availability_only","title":"Webflow pricing","structure":"Official pricing page was confirmed reachable; no price field is published until a deterministic plan rule is approved."}
-{"provider":"framer","mode":"availability_only","title":"Framer pricing","structure":"Official pricing page was confirmed reachable; no price field is published until a deterministic plan rule is approved."}
-{"provider":"carrd","mode":"availability_only","title":"Carrd Pro pricing","structure":"Official Pro pricing page was confirmed reachable; no price field is published until a deterministic plan rule is approved."}
-{"provider":"site123","mode":"availability_only","title":"SITE123 pricing","structure":"Official pricing page was confirmed reachable; no price field is published until a deterministic plan rule is approved."}
-{"provider":"duda","mode":"availability_only","title":"Duda pricing","structure":"Official pricing page was confirmed reachable; no price field is published until a deterministic plan rule is approved."}
-{"provider":"webnode","mode":"availability_only","title":"Webnode pricing","structure":"Official pricing page was confirmed reachable; no price field is published until a deterministic plan rule is approved."}
-{"provider":"jimdo","mode":"availability_only","title":"Jimdo website pricing","structure":"Official website-pricing page was confirmed reachable; no price field is published until a deterministic plan rule is approved."}
-{"provider":"ghost","mode":"availability_only","title":"Ghost pricing","structure":"Official pricing page was confirmed reachable; no price field is published until a deterministic plan rule is approved."}
-{"provider":"shopify","mode":"availability_only","title":"Shopify pricing","structure":"Official pricing page was confirmed reachable; no price field is published until a deterministic plan rule is approved."}
-{"provider":"weebly","mode":"availability_only","title":"Weebly pricing","structure":"Official pricing page was confirmed reachable; no price field is published until a deterministic plan rule is approved."}
-{"provider":"tilda","mode":"availability_only","title":"Tilda pricing","structure":"Official pricing page was confirmed reachable; no price field is published until a deterministic plan rule is approved."}
-{"provider":"durable","mode":"availability_only","title":"Durable pricing","structure":"Official pricing page was confirmed reachable; no price field is published until a deterministic plan rule is approved."}
-{"provider":"10web","mode":"availability_only","title":"10Web pricing","structure":"Official pricing-platform page was confirmed reachable; no price field is published until a deterministic plan rule is approved."}
 
 ::MODULE{PROVIDER_NOTES|title:展示说明不作为优惠证据}
-{"hostinger":"VPS and web hosting.","siteground":"Shared and managed WordPress hosting.","dreamhost":"Web and WordPress hosting.","namecheap":"Domains, shared hosting and VPS.","kinsta":"Managed WordPress hosting.","cloudways":"Managed cloud hosting.","hostgator":"Web hosting."}
+{"hostinger":"VPS and web hosting.","siteground":"Shared and managed WordPress hosting.","dreamhost":"Web and WordPress hosting.","kinsta":"Managed WordPress hosting.","cloudways":"Managed cloud hosting."}
 
 ::MODULE{REFERENCE_SOURCES|title:常规定价参考，不算优惠}
 DigitalOcean | https://www.digitalocean.com/ | https://www.digitalocean.com/pricing/droplets |
