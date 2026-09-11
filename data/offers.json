@@ -1,17 +1,206 @@
 {
-  "generated_at": "2026-09-11T01:29:00Z",
+  "generated_at": "2026-09-11T07:34:48Z",
   "offers": [
-    {"slug":"hostinger-premium-web-hosting","provider":"hostinger","title":"Premium Web Hosting","price":2.99,"currency":"USD","billing_period":"month","commitment_months":48,"renewal_price":10.99,"discount_percent":75,"category":"Web hosting","source_url":"https://www.hostinger.com/pricing","offer_url":"https://www.hostinger.com/pricing","fetched_at":"2026-09-11T01:25:00Z","evidence":"Official pricing page displayed $2.99/mo, 75% off, 48-month total $143.52 and renewal $10.99/mo."},
-    {"slug":"hostinger-unlimited-web-hosting","provider":"hostinger","title":"Unlimited Web Hosting","price":3.99,"currency":"USD","billing_period":"month","commitment_months":48,"renewal_price":16.99,"discount_percent":79,"category":"Web hosting","source_url":"https://www.hostinger.com/pricing","offer_url":"https://www.hostinger.com/pricing","fetched_at":"2026-09-11T01:25:00Z","evidence":"Official pricing page displayed $3.99/mo, 79% off, 48-month total $191.52 and renewal $16.99/mo."},
-    {"slug":"siteground-startup-web-hosting","provider":"siteground","title":"StartUp","price":2.99,"currency":"USD","billing_period":"month","commitment_months":12,"renewal_price":17.99,"discount_percent":83,"category":"Web hosting","source_url":"https://www.siteground.com/web-hosting.htm","offer_url":"https://www.siteground.com/web-hosting.htm","fetched_at":"2026-09-11T01:25:00Z","evidence":"Official page displayed $2.99/mo, save 83%, for 12 months; renewal $17.99/mo."},
-    {"slug":"siteground-growbig-web-hosting","provider":"siteground","title":"GrowBig","price":4.99,"currency":"USD","billing_period":"month","commitment_months":12,"renewal_price":29.99,"discount_percent":83,"category":"Web hosting","source_url":"https://www.siteground.com/web-hosting.htm","offer_url":"https://www.siteground.com/web-hosting.htm","fetched_at":"2026-09-11T01:25:00Z","evidence":"Official page displayed $4.99/mo, save 83%, for 12 months; renewal $29.99/mo."},
-    {"slug":"dreamhost-web-hosting-launch","provider":"dreamhost","title":"Web Hosting Launch","price":2.89,"currency":"USD","billing_period":"month","commitment_months":12,"renewal_price":10.99,"discount_percent":75,"category":"Web hosting","source_url":"https://www.dreamhost.com/hosting/","offer_url":"https://www.dreamhost.com/hosting/","fetched_at":"2026-09-11T01:25:00Z","evidence":"Official page displayed $2.89/mo, save 75% for the first year, then $10.99/mo."},
-    {"slug":"dreamhost-dreampress-1","provider":"dreamhost","title":"DreamPress 1","price":14.99,"currency":"USD","billing_period":"month","commitment_months":12,"renewal_price":19.99,"discount_percent":40,"category":"Managed WordPress hosting","source_url":"https://www.dreamhost.com/hosting/","offer_url":"https://www.dreamhost.com/hosting/","fetched_at":"2026-09-11T01:25:00Z","evidence":"Official page displayed $14.99/mo, save 40% for the first year, then $19.99/mo."},
-    {"slug":"kinsta-launch-first-month","provider":"kinsta","title":"Launch","price":0,"currency":"USD","billing_period":"month","renewal_price":35,"category":"Managed WordPress hosting","source_url":"https://kinsta.com/wordpress-hosting/pricing/","offer_url":"https://kinsta.com/wordpress-hosting/pricing/","fetched_at":"2026-09-11T01:25:00Z","evidence":"Official pricing page advertised the first month at $0 and then $35/month; eligibility applies to selected new-customer plans."},
-    {"slug":"cloudways-summer404","provider":"cloudways","title":"Cloudways hosting promotion","price":6.60,"currency":"USD","billing_period":"month","discount_percent":40,"coupon_code":"SUMMER404","valid_until":"2026-09-15","category":"Managed cloud hosting","source_url":"https://www.cloudways.com/en/promo-code.php","offer_url":"https://www.cloudways.com/en/promo-code.php","fetched_at":"2026-09-11T01:29:00Z","evidence":"Official promo page advertised 40% off all hosting plans for 4 months with SUMMER404, valid through September 15, 2026, for new users upgrading from trial."}
+    {
+      "slug": "hostinger-premium-web-hosting",
+      "provider": "hostinger",
+      "title": "Premium Web Hosting",
+      "category": "Web hosting",
+      "source_url": "https://www.hostinger.com/pricing",
+      "offer_url": "https://www.hostinger.com/pricing",
+      "fetched_at": "2026-09-11T07:34:46Z",
+      "evidence": "Hostinger pricing card identified by its product-slug data attribute.",
+      "currency": "USD",
+      "billing_period": "month",
+      "price": 2.99,
+      "discount_percent": 75,
+      "commitment_months": 48,
+      "renewal_price": 10.99
+    },
+    {
+      "slug": "hostinger-unlimited-web-hosting",
+      "provider": "hostinger",
+      "title": "Unlimited Web Hosting",
+      "category": "Web hosting",
+      "source_url": "https://www.hostinger.com/pricing",
+      "offer_url": "https://www.hostinger.com/pricing",
+      "fetched_at": "2026-09-11T07:34:46Z",
+      "evidence": "Hostinger pricing card identified by its product-slug data attribute.",
+      "currency": "USD",
+      "billing_period": "month",
+      "price": 3.99,
+      "discount_percent": 79,
+      "commitment_months": 48,
+      "renewal_price": 16.99
+    },
+    {
+      "slug": "siteground-startup-web-hosting",
+      "provider": "siteground",
+      "title": "StartUp",
+      "category": "Web hosting",
+      "source_url": "https://www.siteground.com/web-hosting.htm",
+      "offer_url": "https://www.siteground.com/web-hosting.htm",
+      "fetched_at": "2026-09-11T07:34:47Z",
+      "evidence": "Server-rendered Offer entry in SiteGround's JSON-LD.",
+      "currency": "USD",
+      "billing_period": "month",
+      "price": 2.99
+    },
+    {
+      "slug": "siteground-growbig-web-hosting",
+      "provider": "siteground",
+      "title": "GrowBig",
+      "category": "Web hosting",
+      "source_url": "https://www.siteground.com/web-hosting.htm",
+      "offer_url": "https://www.siteground.com/web-hosting.htm",
+      "fetched_at": "2026-09-11T07:34:47Z",
+      "evidence": "Server-rendered Offer entry in SiteGround's JSON-LD.",
+      "currency": "USD",
+      "billing_period": "month",
+      "price": 4.99
+    },
+    {
+      "slug": "siteground-gogeek-web-hosting",
+      "provider": "siteground",
+      "title": "GoGeek",
+      "category": "Web hosting",
+      "source_url": "https://www.siteground.com/web-hosting.htm",
+      "offer_url": "https://www.siteground.com/web-hosting.htm",
+      "fetched_at": "2026-09-11T07:34:47Z",
+      "evidence": "Server-rendered Offer entry in SiteGround's JSON-LD.",
+      "currency": "USD",
+      "billing_period": "month",
+      "price": 7.99
+    },
+    {
+      "slug": "dreamhost-web-hosting-launch",
+      "provider": "dreamhost",
+      "title": "Web Hosting Launch",
+      "category": "Web hosting",
+      "source_url": "https://www.dreamhost.com/hosting/",
+      "offer_url": "https://www.dreamhost.com/hosting/",
+      "fetched_at": "2026-09-11T07:34:47Z",
+      "evidence": "Server-rendered DreamHost plan card with data-icu price attributes.",
+      "currency": "USD",
+      "billing_period": "month",
+      "commitment_months": 12,
+      "price": 2.89,
+      "discount_percent": 75,
+      "renewal_price": 10.99
+    },
+    {
+      "slug": "dreamhost-dreampress-1",
+      "provider": "dreamhost",
+      "title": "DreamPress 1",
+      "category": "Managed WordPress hosting",
+      "source_url": "https://www.dreamhost.com/hosting/",
+      "offer_url": "https://www.dreamhost.com/hosting/",
+      "fetched_at": "2026-09-11T07:34:47Z",
+      "evidence": "Server-rendered DreamHost plan card with data-icu price attributes.",
+      "currency": "USD",
+      "billing_period": "month",
+      "commitment_months": 12,
+      "price": 14.99,
+      "discount_percent": 40,
+      "renewal_price": 19.99
+    },
+    {
+      "slug": "dreamhost-vps-business",
+      "provider": "dreamhost",
+      "title": "VPS Business",
+      "category": "VPS hosting",
+      "source_url": "https://www.dreamhost.com/hosting/",
+      "offer_url": "https://www.dreamhost.com/hosting/",
+      "fetched_at": "2026-09-11T07:34:47Z",
+      "evidence": "Server-rendered DreamHost plan card with data-icu price attributes.",
+      "currency": "USD",
+      "billing_period": "month",
+      "commitment_months": 12,
+      "price": 13.75,
+      "discount_percent": 63,
+      "renewal_price": 31.99
+    },
+    {
+      "slug": "kinsta-first-month-free-on-select-plans",
+      "provider": "kinsta",
+      "title": "First month free on select plans",
+      "category": "Managed WordPress hosting",
+      "source_url": "https://kinsta.com/pricing/",
+      "offer_url": "https://kinsta.com/pricing/",
+      "fetched_at": "2026-09-11T07:34:47Z",
+      "evidence": "Official Kinsta pricing-page meta description; no monthly price is inferred.",
+      "price_text": "First month free on select plans",
+      "condition": "Kinsta describes this as a first-month promotion, not a $0 monthly rate."
+    },
+    {
+      "slug": "cloudways-summer404",
+      "provider": "cloudways",
+      "title": "Cloudways hosting promotion",
+      "category": "Managed cloud hosting",
+      "source_url": "https://www.cloudways.com/en/promo-code.php",
+      "offer_url": "https://www.cloudways.com/en/promo-code.php",
+      "fetched_at": "2026-09-11T07:34:48Z",
+      "evidence": "Cloudways' server-rendered promotion page and its claim URL.",
+      "currency": "USD",
+      "billing_period": "month",
+      "condition": "Applies under the conditions stated on Cloudways' official promotion page.",
+      "coupon_code": "SUMMER404",
+      "discount_percent": 40,
+      "valid_until": "2026-09-15"
+    }
   ],
   "source_status": {
-    "namecheap": {"status":"unavailable","reason":"Official source returned HTTP 403 during the recorded check; no offer is shown."},
-    "hostgator": {"status":"unavailable","reason":"Official robots.txt returned HTTP 403 during the recorded check; no offer is shown."}
+    "hostinger": {
+      "status": "checked",
+      "reason": "Official source checked; matched configured extraction rules.",
+      "published_count": 2,
+      "captured_count": 2,
+      "retained_count": 0,
+      "rule_errors": []
+    },
+    "siteground": {
+      "status": "checked",
+      "reason": "Official source checked; matched configured extraction rules.",
+      "published_count": 3,
+      "captured_count": 3,
+      "retained_count": 0,
+      "rule_errors": []
+    },
+    "dreamhost": {
+      "status": "checked",
+      "reason": "Official source checked; matched configured extraction rules.",
+      "published_count": 3,
+      "captured_count": 3,
+      "retained_count": 0,
+      "rule_errors": []
+    },
+    "namecheap": {
+      "status": "unavailable",
+      "reason": "Official source returned HTTP 403.",
+      "published_count": 0,
+      "retained_count": 0
+    },
+    "kinsta": {
+      "status": "checked",
+      "reason": "Official source checked; matched configured extraction rules.",
+      "published_count": 1,
+      "captured_count": 1,
+      "retained_count": 0,
+      "rule_errors": []
+    },
+    "cloudways": {
+      "status": "checked",
+      "reason": "Official source checked; matched configured extraction rules.",
+      "published_count": 1,
+      "captured_count": 1,
+      "retained_count": 0,
+      "rule_errors": []
+    },
+    "hostgator": {
+      "status": "unavailable",
+      "reason": "robots check failed: HTTP Error 403: Forbidden",
+      "published_count": 0,
+      "retained_count": 0
+    }
   }
 }

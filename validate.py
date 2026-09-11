@@ -4,7 +4,11 @@ from config import ROOT, load_config
 import build
 
 def check():
-    cfg=load_config(); build.build()
+    cfg=load_config(); payload=json.loads((ROOT/'data/offers.json').read_text(encoding='utf-8'))
+    assert {p['id'] for p in cfg['providers']} <= {r['provider'] for r in cfg['extractors']}, 'Every configured provider needs an extraction or availability rule'
+    assert {p['id'] for p in cfg['providers']} == set(payload.get('source_status', {})), 'Every configured provider needs a recorded source status'
+    assert all(o.get('price') != 0 for o in payload.get('offers', [])), 'A zero price must be represented as source text, not a monthly price'
+    build.build()
     files=list((ROOT/'site').rglob('*.html'))
     assert files, 'No HTML was built'
     for f in files:
