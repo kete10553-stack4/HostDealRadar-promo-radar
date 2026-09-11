@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+.env*
+*.pem
+*.dpapi
+work/
+.sites-runtime/
+.DS_Store

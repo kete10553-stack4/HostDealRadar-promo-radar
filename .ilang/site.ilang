@@ -1,0 +1,41 @@
+::ILANG
+[TYPE:config][PROJECT:HostDealRadar][LANG:zh]
+
+::STATE{@SITE, brand:HostDealRadar, niche:VPS and hosting deals, domain:https://hostdealradar-promo-radar.pages.dev}
+
+::MODULE{SETTINGS|title:运行与展示规则}
+{"locale":"en-US","currency":"USD","update_cron":"17 */6 * * *","fresh_hours":18,"timeout_seconds":25,"max_response_bytes":6000000,"user_agent":"HostDealRadar/1.0 (+https://github.com/kete10553-stack4/HostDealRadar-promo-radar)","repo_url":"https://github.com/kete10553-stack4/HostDealRadar-promo-radar","tagline":"Hosting offers, with the terms in view."}
+
+::MODULE{PROVIDERS|title:唯一厂商清单；删除或改名后重建即改变网站}
+Hostinger | https://www.hostinger.com/ | https://www.hostinger.com/pricing |
+SiteGround | https://www.siteground.com/ | https://www.siteground.com/web-hosting.htm |
+DreamHost | https://www.dreamhost.com/ | https://www.dreamhost.com/hosting/ |
+Namecheap | https://www.namecheap.com/ | https://www.namecheap.com/promos/ |
+Kinsta | https://kinsta.com/ | https://kinsta.com/wordpress-hosting/pricing/ |
+Cloudways | https://www.cloudways.com/ | https://www.cloudways.com/en/promo-code.php |
+HostGator | https://www.hostgator.com/ | https://www.hostgator.com/coupons |
+
+::MODULE{FIELDS|title:仅提取可验证字段；价格或有效期未知就省略}
+title price currency offer_url valid_from valid_until source_url fetched_at category billing_period commitment_months renewal_price discount_percent coupon_code kind evidence
+
+::MODULE{EXTRACTORS|title:经过人工核对的确定性提取规则；无匹配不生成优惠}
+{"provider":"cloudways","pattern":"(?is)SUMMER404.{0,300}?(?P<discount>40)%.*?(?P<months>4) months","title":"Cloudways hosting promotion","category":"Managed cloud hosting","billing_period":"month","condition":"New users upgrading from trial; cannot be combined with other coupons."}
+
+::MODULE{PROVIDER_NOTES|title:展示说明不作为优惠证据}
+{"hostinger":"VPS and web hosting.","siteground":"Shared and managed WordPress hosting.","dreamhost":"Web and WordPress hosting.","namecheap":"Domains, shared hosting and VPS.","kinsta":"Managed WordPress hosting.","cloudways":"Managed cloud hosting.","hostgator":"Web hosting."}
+
+::MODULE{REFERENCE_SOURCES|title:常规定价参考，不算优惠}
+DigitalOcean | https://www.digitalocean.com/ | https://www.digitalocean.com/pricing/droplets |
+
+::MODULE{EXCLUDED|title:按用户最新指示不进入抓取管线}
+GoDaddy | HTTP 403 reported in the supplied research; excluded from automated collection.
+Bluehost | Prices require JavaScript rendering according to the supplied research; excluded.
+hosting.com (formerly A2 Hosting) | Requires rendering according to the supplied research; excluded.
+Vultr | The supplied research reports /promo/ disallowed by robots.txt; excluded.
+
+::RULE{robots.txt⇒按分组与最长匹配判断；403或不明确⇒停抓；禁止绕过挑战或反爬}
+::RULE{抓不到price⇒省略price与结构化价格；无法绑定套餐、币种与条款⇒不发布}
+::RULE{valid_until已过或来源本轮失败⇒不显示为当前优惠；超过fresh_hours⇒标记需要复核}
+::RULE{affiliate_url为空⇒官方裸链；非空⇒清晰披露并加rel=sponsored；不设cookie不重定向注入}
+::RULE{更新频率由SETTINGS.update_cron提供；workflow校验与配置一致}
+::BOUNDARY{never:编优惠 编价格 编佣金 品牌词竞价 cookie注入 自买自推 买粉 刷量 规避平台条款|scope:permanent}
