@@ -146,8 +146,13 @@ def run(config_path=None):
             output.extend(old)
             statuses[provider['id']] = retained_status('Official source was unavailable or presented a challenge.', old)
             continue
+        rules = [rule for rule in cfg['extractors'] if rule.get('provider') == provider['id']]
+        if rules and all(rule.get('mode') == 'availability_only' for rule in rules):
+            output.extend(old)
+            statuses[provider['id']] = {'status': 'available_no_price_rule', 'reason': 'Official source and robots.txt were checked successfully; no deterministic price rule is approved, so no offer was published.', 'published_count': len(old), 'captured_count': 0, 'retained_count': len(old)}
+            continue
         matched, errors = [], []
-        for rule in (rule for rule in cfg['extractors'] if rule.get('provider') == provider['id']):
+        for rule in rules:
             try:
                 offer = offer_from_rule(provider, rule, raw)
             except (ValueError, IndexError) as exc:
