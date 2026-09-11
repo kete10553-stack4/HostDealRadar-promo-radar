@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-11T07:34:48Z",
+  "generated_at": "2026-09-11T07:36:30Z",
   "offers": [
     {
       "slug": "hostinger-premium-web-hosting",
@@ -8,7 +8,7 @@
       "category": "Web hosting",
       "source_url": "https://www.hostinger.com/pricing",
       "offer_url": "https://www.hostinger.com/pricing",
-      "fetched_at": "2026-09-11T07:34:46Z",
+      "fetched_at": "2026-09-11T07:36:28Z",
       "evidence": "Hostinger pricing card identified by its product-slug data attribute.",
       "currency": "USD",
       "billing_period": "month",
@@ -24,7 +24,7 @@
       "category": "Web hosting",
       "source_url": "https://www.hostinger.com/pricing",
       "offer_url": "https://www.hostinger.com/pricing",
-      "fetched_at": "2026-09-11T07:34:46Z",
+      "fetched_at": "2026-09-11T07:36:28Z",
       "evidence": "Hostinger pricing card identified by its product-slug data attribute.",
       "currency": "USD",
       "billing_period": "month",
@@ -79,7 +79,7 @@
       "category": "Web hosting",
       "source_url": "https://www.dreamhost.com/hosting/",
       "offer_url": "https://www.dreamhost.com/hosting/",
-      "fetched_at": "2026-09-11T07:34:47Z",
+      "fetched_at": "2026-09-11T07:36:29Z",
       "evidence": "Server-rendered DreamHost plan card with data-icu price attributes.",
       "currency": "USD",
       "billing_period": "month",
@@ -95,7 +95,7 @@
       "category": "Managed WordPress hosting",
       "source_url": "https://www.dreamhost.com/hosting/",
       "offer_url": "https://www.dreamhost.com/hosting/",
-      "fetched_at": "2026-09-11T07:34:47Z",
+      "fetched_at": "2026-09-11T07:36:29Z",
       "evidence": "Server-rendered DreamHost plan card with data-icu price attributes.",
       "currency": "USD",
       "billing_period": "month",
@@ -111,7 +111,7 @@
       "category": "VPS hosting",
       "source_url": "https://www.dreamhost.com/hosting/",
       "offer_url": "https://www.dreamhost.com/hosting/",
-      "fetched_at": "2026-09-11T07:34:47Z",
+      "fetched_at": "2026-09-11T07:36:29Z",
       "evidence": "Server-rendered DreamHost plan card with data-icu price attributes.",
       "currency": "USD",
       "billing_period": "month",
@@ -127,7 +127,7 @@
       "category": "Managed WordPress hosting",
       "source_url": "https://kinsta.com/pricing/",
       "offer_url": "https://kinsta.com/pricing/",
-      "fetched_at": "2026-09-11T07:34:47Z",
+      "fetched_at": "2026-09-11T07:36:30Z",
       "evidence": "Official Kinsta pricing-page meta description; no monthly price is inferred.",
       "price_text": "First month free on select plans",
       "condition": "Kinsta describes this as a first-month promotion, not a $0 monthly rate."
@@ -139,7 +139,7 @@
       "category": "Managed cloud hosting",
       "source_url": "https://www.cloudways.com/en/promo-code.php",
       "offer_url": "https://www.cloudways.com/en/promo-code.php",
-      "fetched_at": "2026-09-11T07:34:48Z",
+      "fetched_at": "2026-09-11T07:36:30Z",
       "evidence": "Cloudways' server-rendered promotion page and its claim URL.",
       "currency": "USD",
       "billing_period": "month",
@@ -159,12 +159,10 @@
       "rule_errors": []
     },
     "siteground": {
-      "status": "checked",
-      "reason": "Official source checked; matched configured extraction rules.",
+      "status": "unavailable",
+      "reason": "robots returned HTTP 202",
       "published_count": 3,
-      "captured_count": 3,
-      "retained_count": 0,
-      "rule_errors": []
+      "retained_count": 3
     },
     "dreamhost": {
       "status": "checked",
