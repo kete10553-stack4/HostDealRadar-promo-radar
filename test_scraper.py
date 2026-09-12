@@ -46,4 +46,15 @@ class SourceSafety(unittest.TestCase):
                 self.assertEqual(result['offers'],[old])
                 self.assertEqual(result['source_status']['sample'].get('captured_count',0),0)
 
+    def test_refresh_keeps_build_owned_state_keys(self):
+        cfg={'providers':[self.provider], 'extractors':[self.rule], 'settings':{}}
+        state={'/':{'hash':'abc','lastmod':'2026-01-01T00:00:00Z'}}
+        with tempfile.TemporaryDirectory() as folder:
+            data=Path(folder)/'offers.json'
+            data.write_text(json.dumps({'offers':[],'page_lastmod':state}),encoding='utf-8')
+            with patch.object(scraper,'DATA',data),patch.object(scraper,'load_config',return_value=cfg),patch.object(scraper,'fetch_source',return_value=(200,'Basic plan Contact sales')):
+                result=scraper.run()
+            self.assertEqual(result['page_lastmod'],state)
+            self.assertEqual(json.loads(data.read_text(encoding='utf-8'))['page_lastmod'],state)
+
 if __name__=='__main__': unittest.main()
