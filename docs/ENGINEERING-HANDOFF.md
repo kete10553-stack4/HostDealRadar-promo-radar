@@ -1,6 +1,6 @@
 # HostDealRadar engineering handoff
 
-**Prepared:** 2026-09-11 (America/Chicago)  
+**Prepared:** 2026-09-11 (America/Chicago)
 **Status:** public site is live; the expansion work is researched but is not merged or deployed.
 
 ## Identity and current baseline
@@ -10,7 +10,8 @@
 | Repository | https://github.com/kete10553-stack4/HostDealRadar-promo-radar |
 | Local checkout | `C:\\Users\\Administrator\\Documents\\Codex\\2026-09-10\\agent-powershell-openssh-1-3-powershell\\outputs\\HostDealRadar-promo-radar` |
 | Branch | `main` |
-| Checked baseline commit | `a46f2bb1f1b237c9c01bd3d22c778511c0c8f35b` — `Refresh official source snapshot` |
+| Local-change backup baseline | `a46f2bb1f1b237c9c01bd3d22c778511c0c8f35b` — `Refresh official source snapshot` |
+| Remote baseline when this document was published | `6ec8d39` — `Refresh official source snapshot` |
 | Public site | https://hostdealradar-promo-radar.pages.dev/ |
 | Hosting | Cloudflare Pages, Git integration from `main` |
 | Pages build command / output | `python build.py` / `site` (recorded configuration; recheck in Cloudflare before changing it) |
