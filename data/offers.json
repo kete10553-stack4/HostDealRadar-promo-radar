@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-12T02:05:51Z",
+  "generated_at": "2026-09-12T02:16:26Z",
   "offers": [
     {
       "slug": "hostinger-premium-web-hosting",
@@ -8,7 +8,7 @@
       "category": "Web hosting",
       "source_url": "https://www.hostinger.com/pricing",
       "offer_url": "https://www.hostinger.com/pricing",
-      "fetched_at": "2026-09-12T02:05:48Z",
+      "fetched_at": "2026-09-12T02:16:24Z",
       "evidence": "Hostinger pricing card identified by its product-slug data attribute.",
       "field_evidence": {
         "price": "h-pricing-card__current-price\" style=\"color:var(--h-color-neutral-800);\" dir=\"ltr\" data-v-f0ca7862 data-v-18d752ac> $ 2.99",
@@ -23,7 +23,7 @@
       "commitment_months": 48,
       "renewal_price": 10.99,
       "kind": "promotion",
-      "source_sha256": "2cba063a138316f4d4cbbf49f173065b2ab7389303d7fa6cfb15fc0c6f01fdd1"
+      "source_sha256": "78b41b22d2710876ed0a928d057084278138f97e81ec79b238a140bf1851d124"
     },
     {
       "slug": "hostinger-unlimited-web-hosting",
@@ -32,7 +32,7 @@
       "category": "Web hosting",
       "source_url": "https://www.hostinger.com/pricing",
       "offer_url": "https://www.hostinger.com/pricing",
-      "fetched_at": "2026-09-12T02:05:48Z",
+      "fetched_at": "2026-09-12T02:16:24Z",
       "evidence": "Hostinger pricing card identified by its product-slug data attribute.",
       "field_evidence": {
         "price": "h-pricing-card__current-price\" style=\"color:var(--h-color-neutral-0);\" dir=\"ltr\" data-v-f0ca7862 data-v-18d752ac> $ 3.99",
@@ -47,7 +47,7 @@
       "commitment_months": 48,
       "renewal_price": 16.99,
       "kind": "promotion",
-      "source_sha256": "2cba063a138316f4d4cbbf49f173065b2ab7389303d7fa6cfb15fc0c6f01fdd1"
+      "source_sha256": "78b41b22d2710876ed0a928d057084278138f97e81ec79b238a140bf1851d124"
     },
     {
       "slug": "siteground-startup-web-hosting",
@@ -56,7 +56,7 @@
       "category": "Web hosting",
       "source_url": "https://www.siteground.com/web-hosting.htm",
       "offer_url": "https://www.siteground.com/web-hosting.htm",
-      "fetched_at": "2026-09-12T02:05:50Z",
+      "fetched_at": "2026-09-12T02:16:25Z",
       "evidence": "Server-rendered Offer entry in SiteGround's JSON-LD.",
       "field_evidence": {
         "price": "\"price\": \"2.99"
@@ -74,7 +74,7 @@
       "category": "Web hosting",
       "source_url": "https://www.siteground.com/web-hosting.htm",
       "offer_url": "https://www.siteground.com/web-hosting.htm",
-      "fetched_at": "2026-09-12T02:05:50Z",
+      "fetched_at": "2026-09-12T02:16:25Z",
       "evidence": "Server-rendered Offer entry in SiteGround's JSON-LD.",
       "field_evidence": {
         "price": "\"price\": \"4.99"
@@ -92,7 +92,7 @@
       "category": "Web hosting",
       "source_url": "https://www.siteground.com/web-hosting.htm",
       "offer_url": "https://www.siteground.com/web-hosting.htm",
-      "fetched_at": "2026-09-12T02:05:50Z",
+      "fetched_at": "2026-09-12T02:16:25Z",
       "evidence": "Server-rendered Offer entry in SiteGround's JSON-LD.",
       "field_evidence": {
         "price": "\"price\": \"7.99"
@@ -110,7 +110,7 @@
       "category": "Web hosting",
       "source_url": "https://www.dreamhost.com/hosting/",
       "offer_url": "https://www.dreamhost.com/hosting/",
-      "fetched_at": "2026-09-12T02:05:50Z",
+      "fetched_at": "2026-09-12T02:16:25Z",
       "evidence": "Server-rendered DreamHost plan card with data-icu price attributes.",
       "field_evidence": {
         "price": "data-icu-price-usd=\"$2.89\"",
@@ -133,7 +133,7 @@
       "category": "Managed WordPress hosting",
       "source_url": "https://www.dreamhost.com/hosting/",
       "offer_url": "https://www.dreamhost.com/hosting/",
-      "fetched_at": "2026-09-12T02:05:50Z",
+      "fetched_at": "2026-09-12T02:16:25Z",
       "evidence": "Server-rendered DreamHost plan card with data-icu price attributes.",
       "field_evidence": {
         "price": "data-icu-price-usd=\"$14.99\"",
@@ -156,7 +156,7 @@
       "category": "VPS hosting",
       "source_url": "https://www.dreamhost.com/hosting/",
       "offer_url": "https://www.dreamhost.com/hosting/",
-      "fetched_at": "2026-09-12T02:05:50Z",
+      "fetched_at": "2026-09-12T02:16:25Z",
       "evidence": "Server-rendered DreamHost plan card with data-icu price attributes.",
       "field_evidence": {
         "price": "data-icu-price-usd=\"$13.75\"",
@@ -179,7 +179,7 @@
       "category": "Managed WordPress hosting",
       "source_url": "https://kinsta.com/pricing/",
       "offer_url": "https://kinsta.com/pricing/",
-      "fetched_at": "2026-09-12T02:05:51Z",
+      "fetched_at": "2026-09-12T02:16:25Z",
       "evidence": "Official Kinsta pricing-page meta description; no monthly price is inferred.",
       "field_evidence": {},
       "price_text": "First month free on select plans",
@@ -194,7 +194,7 @@
       "category": "Managed cloud hosting",
       "source_url": "https://www.cloudways.com/en/promo-code.php",
       "offer_url": "https://www.cloudways.com/en/promo-code.php",
-      "fetched_at": "2026-09-12T02:05:51Z",
+      "fetched_at": "2026-09-12T02:16:26Z",
       "evidence": "Cloudways' server-rendered promotion page and its claim URL.",
       "field_evidence": {
         "coupon_code": "coupon=SUMMER404",
@@ -208,7 +208,7 @@
       "discount_percent": 40,
       "valid_until": "2026-09-15",
       "kind": "promotion",
-      "source_sha256": "87be6644752b8df91edbe90539377a3d19d6dd7976b441eacd8e01322fb18188"
+      "source_sha256": "fbb9dff2d93c22e674300fd8e3eed364393f38e93a3da99961a74854ae7e6bc8"
     }
   ],
   "source_status": {
@@ -225,7 +225,7 @@
       "retained_slugs": [],
       "rule_errors": [],
       "unmatched_rules": [],
-      "checked_at": "2026-09-12T02:05:51Z"
+      "checked_at": "2026-09-12T02:16:26Z"
     },
     "siteground": {
       "status": "checked",
@@ -241,7 +241,7 @@
       "retained_slugs": [],
       "rule_errors": [],
       "unmatched_rules": [],
-      "checked_at": "2026-09-12T02:05:51Z"
+      "checked_at": "2026-09-12T02:16:26Z"
     },
     "dreamhost": {
       "status": "checked",
@@ -257,7 +257,7 @@
       "retained_slugs": [],
       "rule_errors": [],
       "unmatched_rules": [],
-      "checked_at": "2026-09-12T02:05:51Z"
+      "checked_at": "2026-09-12T02:16:26Z"
     },
     "kinsta": {
       "status": "checked",
@@ -271,7 +271,7 @@
       "retained_slugs": [],
       "rule_errors": [],
       "unmatched_rules": [],
-      "checked_at": "2026-09-12T02:05:51Z"
+      "checked_at": "2026-09-12T02:16:26Z"
     },
     "cloudways": {
       "status": "checked",
@@ -285,93 +285,93 @@
       "retained_slugs": [],
       "rule_errors": [],
       "unmatched_rules": [],
-      "checked_at": "2026-09-12T02:05:51Z"
+      "checked_at": "2026-09-12T02:16:26Z"
     }
   },
   "page_lastmod": {
     "/": {
       "hash": "14615c9aa9b96029d5f8fb896cf71a58127a5c565cc9d89f4835de7c3954e69b",
-      "lastmod": "2026-09-12T02:06:00Z"
+      "lastmod": "2026-09-12T02:16:26Z"
     },
     "/providers/": {
       "hash": "d584b62240a86047be59a1feddc00160b1b9feae80385ba5129057ebc649046a",
-      "lastmod": "2026-09-12T02:06:00Z"
+      "lastmod": "2026-09-12T02:16:26Z"
     },
     "/compare/": {
       "hash": "303438a3a123b5139ebc37c3bfb63cf22b95b2a4c56d0a349529dfc55afa851a",
-      "lastmod": "2026-09-12T02:06:00Z"
+      "lastmod": "2026-09-12T02:16:26Z"
     },
     "/methodology/": {
       "hash": "f0cb6487d51ee16539c416f49c52171cfb96b08fa215466c7f1777b08c475b50",
-      "lastmod": "2026-09-12T02:06:00Z"
+      "lastmod": "2026-09-12T02:16:26Z"
     },
     "/disclosure/": {
       "hash": "d0539bd941651f21999630ddd55e795ac79c455365404e0432cc69b3c3cafa41",
-      "lastmod": "2026-09-12T02:06:00Z"
+      "lastmod": "2026-09-12T02:16:26Z"
     },
     "/privacy/": {
       "hash": "0a0e9b9dbab8eff0ec27da43fd3662da2af7ceb37d3a205de3ccc8abbe4a13b4",
-      "lastmod": "2026-09-12T02:06:00Z"
+      "lastmod": "2026-09-12T02:16:26Z"
     },
     "/providers/hostinger/": {
       "hash": "91beff40088a775b19a4bd990d542e0c4e50d92fdc643ab8431fbe40b1228cdc",
-      "lastmod": "2026-09-12T02:06:00Z"
+      "lastmod": "2026-09-12T02:16:26Z"
     },
     "/providers/siteground/": {
       "hash": "6be5a63d3a4cf83a8861b614d7f8eb406a6a4b5bab45bf4acb3840748ac2f9df",
-      "lastmod": "2026-09-12T02:06:00Z"
+      "lastmod": "2026-09-12T02:16:26Z"
     },
     "/providers/dreamhost/": {
       "hash": "fc5d4ea2e6c01f7e0db0a13387463ad6e78c16e590a5cfd717cbf83ef49adbcb",
-      "lastmod": "2026-09-12T02:06:00Z"
+      "lastmod": "2026-09-12T02:16:26Z"
     },
     "/providers/kinsta/": {
       "hash": "9bcd8e61e2fda668059549b483542b21851528e84902a5c4dcddde6b9057a9ae",
-      "lastmod": "2026-09-12T02:06:00Z"
+      "lastmod": "2026-09-12T02:16:26Z"
     },
     "/providers/cloudways/": {
       "hash": "0b9edfaed3fa2ab5f57ce4475374f87c72bfe70b13c3f7c0accf42b235a89be8",
-      "lastmod": "2026-09-12T02:06:00Z"
+      "lastmod": "2026-09-12T02:16:26Z"
     },
     "/deals/hostinger-premium-web-hosting/": {
       "hash": "9bec1b2f75868f4e9c0e330779f6d27bee3879c330381f923405f4a99a70144e",
-      "lastmod": "2026-09-12T02:06:00Z"
+      "lastmod": "2026-09-12T02:16:26Z"
     },
     "/deals/hostinger-unlimited-web-hosting/": {
       "hash": "feea4b73af36fb2105d91cd6f003a848c7f8efd2b2a980b861601fcc99a98b29",
-      "lastmod": "2026-09-12T02:06:00Z"
+      "lastmod": "2026-09-12T02:16:26Z"
     },
     "/deals/siteground-startup-web-hosting/": {
       "hash": "a09361b6972aac2429e26f9eda60d0aaae4620278708a42e3452b0c87bcc908e",
-      "lastmod": "2026-09-12T02:06:00Z"
+      "lastmod": "2026-09-12T02:16:26Z"
     },
     "/deals/siteground-growbig-web-hosting/": {
       "hash": "2df1244cc90335c286b899e2bf8593e3d3c756a18250445c7a279ce933fba796",
-      "lastmod": "2026-09-12T02:06:00Z"
+      "lastmod": "2026-09-12T02:16:26Z"
     },
     "/deals/siteground-gogeek-web-hosting/": {
       "hash": "935c611e1635059269595ba311ebcdf5a1b4f402d69b9e876cf7b0a5087e0c8d",
-      "lastmod": "2026-09-12T02:06:00Z"
+      "lastmod": "2026-09-12T02:16:26Z"
     },
     "/deals/dreamhost-web-hosting-launch/": {
       "hash": "1b63671808a5900ecc140e87c30940b9c7931fa6d607340335aefa20c24e0717",
-      "lastmod": "2026-09-12T02:06:00Z"
+      "lastmod": "2026-09-12T02:16:26Z"
     },
     "/deals/dreamhost-dreampress-1/": {
       "hash": "c8131c08169ef656e4d973542f61a029405cd243d09a9430f9729bed41545be3",
-      "lastmod": "2026-09-12T02:06:00Z"
+      "lastmod": "2026-09-12T02:16:26Z"
     },
     "/deals/dreamhost-vps-business/": {
       "hash": "03d2e5307a5d412c346ff48417e4f48afdd9cad2a42e04a07ebc21ee2ffc18fc",
-      "lastmod": "2026-09-12T02:06:00Z"
+      "lastmod": "2026-09-12T02:16:26Z"
     },
     "/deals/kinsta-first-month-free-on-select-plans/": {
       "hash": "c162d9d8c81983d8337ec0dce9a3b553ec17cbec06dfc52316bd006d7099bc96",
-      "lastmod": "2026-09-12T02:06:00Z"
+      "lastmod": "2026-09-12T02:16:26Z"
     },
     "/deals/cloudways-summer404/": {
       "hash": "0c05423ef0162995ad1df5442f576188f42beb97b4372adb89e5a784194db232",
-      "lastmod": "2026-09-12T02:06:00Z"
+      "lastmod": "2026-09-12T02:16:26Z"
     }
   }
 }
