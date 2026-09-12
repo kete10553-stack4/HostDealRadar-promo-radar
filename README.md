@@ -1,5 +1,7 @@
 # HostDealRadar
 
+Site: https://hostdealradar-promo-radar.pages.dev — temporary address; replace this line when the custom domain is registered.
+
 An English-language US hosting, VPS and domain-deal reference built from public official provider pages.
 
 ## Editorial rules
