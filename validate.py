@@ -135,9 +135,14 @@ def check():
         assert 'offers' in product, f'Current record is missing offer data: {o["slug"]}'
     compare=(ROOT/'site/compare/index.html').read_text(encoding='utf-8')
     if history:
+        # Comparison rows are labelled by provider and plan title, not by slug.
+        marker='Earlier records, not current offers'
+        assert marker in compare, 'Comparison page does not separate earlier records'
+        current_table, history_table = compare.split(marker,1)
         for o in history:
-            assert f'/deals/{o["slug"]}/' in compare, f'History record missing from comparison page: {o["slug"]}'
-        assert 'Earlier records, not current offers' in compare, 'Comparison page does not separate earlier records'
+            title=build.e(o['title'])
+            assert title in history_table, f'History record missing from the earlier-records table: {o["slug"]}'
+            assert title not in current_table, f'History record is still listed as a current offer: {o["slug"]}'
     assert (ROOT/'site/robots.txt').exists() and (ROOT/'site/sitemap.xml').exists()
     robots=(ROOT/'site/robots.txt').read_text(encoding='utf-8')
     assert 'Sitemap: '+cfg['site']['domain'].rstrip('/')+'/sitemap.xml' in robots, 'robots.txt must advertise the canonical sitemap'
