@@ -215,7 +215,10 @@ def run(config_path=None):
         rules = [rule for rule in cfg['extractors'] if rule.get('provider') == provider['id']]
         if rules and all(rule.get('mode') == 'availability_only' for rule in rules):
             output.extend(old)
-            statuses[provider['id']] = {'status': 'available_no_price_rule', 'reason': 'Official source and robots.txt were checked successfully; no deterministic price rule is approved, so no offer was published.', 'published_count': len(old), 'captured_count': 0, 'retained_count': len(old), 'captured_slugs': [], 'retained_slugs': [offer['slug'] for offer in old]}
+            blocker = rules[0].get('blocker', 'unspecified')
+            evidence = rules[0].get('blocker_evidence', '')
+            reason = f'Official source and robots.txt were checked successfully. No deterministic price rule can be written ({blocker}), so no offer was published. Evidence: {evidence}'
+            statuses[provider['id']] = {'status': 'available_no_price_rule', 'reason': reason, 'blocker': blocker, 'blocker_evidence': evidence, 'published_count': len(old), 'captured_count': 0, 'retained_count': len(old), 'captured_slugs': [], 'retained_slugs': [offer['slug'] for offer in old]}
             continue
         matched, errors, unmatched_rules = [], [], []
         for rule in rules:
