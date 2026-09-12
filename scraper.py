@@ -244,6 +244,11 @@ def run(config_path=None):
         statuses[provider['id']]['unmatched_rules'] = unmatched_rules
     for status in statuses.values(): status['checked_at'] = now()
     payload = {'generated_at': now(), 'offers': output, 'source_status': statuses}
+    # Carry over any top-level key this checker does not own. build.py persists
+    # the sitemap lastmod state into this same file, so dropping unknown keys
+    # here would reset every lastmod on the next refresh run.
+    for key, value in previous.items():
+        if key not in payload: payload[key] = value
     DATA.write_text(json.dumps(payload, indent=2) + '\n', encoding='utf-8')
     return payload
 
