@@ -64,9 +64,10 @@ def check_earlier_record_path(payload, cfg):
     marker='Earlier records, not current offers'
     assert marker in compare, 'Comparison page does not separate earlier records'
     current_table, history_table = compare.split(marker,1)
-    title=build.e(victim['title'])
-    assert title in history_table, 'The retained record is missing from the earlier-records table'
-    assert title not in current_table, 'The retained record still appears in the current comparison table'
+    names={p['id']:p['name'] for p in cfg['providers']}
+    cell=f'<strong>{build.e(names[victim["provider"]])}</strong><span>{build.e(victim["title"])}</span>'
+    assert cell in history_table, 'The retained record is missing from the earlier-records table'
+    assert cell not in current_table, 'The retained record still appears in the current comparison table'
     assert 'EUR' in history_table and '/year' in history_table, 'Comparison renewal still ignores the record currency and billing period'
     shutil.rmtree(tmp,ignore_errors=True)
 
@@ -159,14 +160,17 @@ def check():
         assert 'offers' in product, f'Current record is missing offer data: {o["slug"]}'
     compare=(ROOT/'site/compare/index.html').read_text(encoding='utf-8')
     if history:
-        # Comparison rows are labelled by provider and plan title, not by slug.
+        # Comparison rows are labelled by provider and plan title, not by slug, and
+        # titles repeat across providers ("Starter" is both an UltaHost plan and a
+        # substring of an IONOS one), so match the whole provider+plan cell.
         marker='Earlier records, not current offers'
         assert marker in compare, 'Comparison page does not separate earlier records'
         current_table, history_table = compare.split(marker,1)
+        names={p['id']:p['name'] for p in cfg['providers']}
         for o in history:
-            title=build.e(o['title'])
-            assert title in history_table, f'History record missing from the earlier-records table: {o["slug"]}'
-            assert title not in current_table, f'History record is still listed as a current offer: {o["slug"]}'
+            cell=f'<strong>{build.e(names[o["provider"]])}</strong><span>{build.e(o["title"])}</span>'
+            assert cell in history_table, f'History record missing from the earlier-records table: {o["slug"]}'
+            assert cell not in current_table, f'History record is still listed as a current offer: {o["slug"]}'
     assert (ROOT/'site/robots.txt').exists() and (ROOT/'site/sitemap.xml').exists()
     robots=(ROOT/'site/robots.txt').read_text(encoding='utf-8')
     assert 'Sitemap: '+cfg['site']['domain'].rstrip('/')+'/sitemap.xml' in robots, 'robots.txt must advertise the canonical sitemap'
