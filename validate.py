@@ -7,6 +7,9 @@ from config import ROOT, load_config
 import build
 
 NS={'sm':'http://www.sitemaps.org/schemas/sitemap/0.9'}
+# The four approved reasons a reachable official page can still yield no
+# deterministic price rule. Anything else must be a specific fetch failure.
+BLOCKERS={'price_rendered_by_js','unstable_field_structure','no_public_price','login_or_region_gated'}
 
 class Links(HTMLParser):
     def __init__(self): super().__init__(); self.urls=[]
@@ -74,8 +77,23 @@ def check():
     assert {p['id'] for p in cfg['providers']} == set(statuses), 'Every configured provider needs a recorded source status'
     assert all(o.get('price') != 0 for o in payload.get('offers', [])), 'A zero price must be represented as source text, not a monthly price'
     ids={p['id'] for p in cfg['providers']}
-    assert ids == {o['provider'] for o in payload['offers']}, 'Every active provider must have published content; no placeholder sources'
-    assert all(r.get('mode') != 'availability_only' for r in cfg['extractors']), 'Availability-only rules cannot publish content'
+    # The invariant is evidence, not output. Every configured provider must have
+    # been opened once and must carry a specific reason. "Reachable official page,
+    # but no deterministic rule can be written" is a legitimate state-only
+    # landing, not a placeholder; a name that never opened a real page is.
+    assert {o['provider'] for o in payload['offers']} <= ids, 'A published record references a provider outside the configured list'
+    for provider_id, status in statuses.items():
+        assert status.get('status'), f'{provider_id} has no recorded status'
+        assert status.get('reason'), f'{provider_id} has no recorded reason'
+    for rule in cfg['extractors']:
+        if rule.get('mode') != 'availability_only':
+            continue
+        assert rule.get('blocker') in BLOCKERS, f'{rule["provider"]} state-only rule needs a blocker from {sorted(BLOCKERS)}'
+        assert rule.get('blocker_evidence'), f'{rule["provider"]} state-only rule needs blocker_evidence (the URL and what was seen)'
+    state_only={rule['provider'] for rule in cfg['extractors'] if rule.get('mode')=='availability_only'}
+    state_only={pid for pid in state_only if not any(r.get('mode')!='availability_only' for r in cfg['extractors'] if r.get('provider')==pid)}
+    for pid in sorted(state_only):
+        assert pid not in {o['provider'] for o in payload['offers']}, f'A state-only provider published an offer: {pid}'
     for offer in payload['offers']:
         assert offer.get('source_url') and offer.get('evidence'), 'Missing source attribution'
         assert any(offer.get(k) for k in ('price','price_text','discount_percent','coupon_code')), 'Empty offer'
@@ -113,7 +131,13 @@ def check():
         expect_history=sum(o['provider']==provider['id'] for o in history)
         assert page.count('<article class="card">') == expect_current, f'Current-offer card count wrong on provider page: {provider["id"]}'
         assert page.count('<article class="card history">') == expect_history, f'Historical card count wrong on provider page: {provider["id"]}'
-        assert expect_current + expect_history > 0, f'Empty provider page: {provider["id"]}'
+        assert expect_current + expect_history > 0 or provider['id'] in state_only, f'Empty provider page: {provider["id"]}'
+    # A state-only page must say why nothing is published and must carry no figure.
+    for pid in sorted(state_only):
+        page=(ROOT/'site/providers'/pid/'index.html').read_text(encoding='utf-8')
+        figures=re.findall(r'\$[0-9]|[0-9](?:\.[0-9]+)?\s?%', page)
+        assert not figures, f'A state-only provider page shows price or discount figures: {pid} -> {figures[:5]}'
+        assert 'No deterministic price rule' in page, f'A state-only provider page does not say why no price is published: {pid}'
     home=(ROOT/'site/index.html').read_text(encoding='utf-8')
     assert f'{len(ids)} providers in our source list' in home, 'Homepage provider count mismatch'
     assert f'{len(current)} listings captured' in home, 'Homepage current-listing count mismatch'

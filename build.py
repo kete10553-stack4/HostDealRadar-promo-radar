@@ -9,6 +9,12 @@ TEMPLATES=ROOT/'templates'; OUT=ROOT/'site'; DATA=ROOT/'data/offers.json'; ASSET
 # commits, so persisting it needs no change to the workflow or extra token scope.
 STATE_KEY='page_lastmod'
 CURRENT='current'; HISTORY=('retained','stale','expired')
+# Why a reachable official page still yields no deterministic price rule.
+BLOCKER_TEXT={'price_rendered_by_js':'The published prices on this page are rendered by JavaScript, so no figure can be read without executing scripts.',
+              'unstable_field_structure':'The page markup changes between loads, so no stable field can be bound to a named plan.',
+              'no_public_price':'This official page does not publish a price publicly.',
+              'login_or_region_gated':'This official page requires a login or is limited to certain regions.'}
+STATE_ONLY_LEAD='Official page checked. No deterministic price rule is available, so no price is published.'
 def e(value): return html.escape(str(value or ''), quote=True)
 def money(value, currency='USD'): return f'${float(value):,.2f}' if currency=='USD' else f'{currency} {float(value):,.2f}'
 def date_text(value):
@@ -68,6 +74,11 @@ def build(config_path=None, output=None):
     OUT=Path(output) if output else ROOT/'site'
     cfg=load_config(config_path); domain=cfg['site']['domain'].rstrip('/'); payload=json.loads(DATA.read_text(encoding='utf-8'))
     byid={p['id']:p for p in cfg['providers']}; statuses=payload.get('source_status',{})
+    # A provider whose official page was opened but yields no deterministic rule
+    # is published as a state-only source: it states the reason and shows no figure.
+    state_only={r['provider'] for r in cfg['extractors'] if r.get('mode')=='availability_only'}
+    state_only={pid for pid in state_only if not any(r.get('mode')!='availability_only' for r in cfg['extractors'] if r.get('provider')==pid)}
+    blockers={r['provider']:r.get('blocker') for r in cfg['extractors'] if r.get('mode')=='availability_only'}
     offers=[o for o in payload.get('offers',[]) if o.get('provider') in byid]
     states={o['slug']:record_state(o,statuses,cfg['settings']) for o in offers}
     current=[o for o in offers if states[o['slug']][0]==CURRENT]
@@ -95,7 +106,8 @@ def build(config_path=None, output=None):
         return f'''<article class="{cls}"><div class="card-top"><span class="provider-name">{e(p['name'])}</span><span class="tag">{label}</span></div><h3><a href="/deals/{e(o['slug'])}/">{e(o['title'])}</a></h3><p class="price">{e(price(o))}{period}</p><p class="summary">{e(o.get('category','Hosting'))}</p><dl>{''.join(f'<div><dt>{e(x.split(" ")[0])}</dt><dd>{e(x)}</dd></div>' for x in terms) or '<div><dt>Terms</dt><dd>See source</dd></div>'}</dl><a class="button" href="/deals/{e(o['slug'])}/">View terms</a><p class="capture">{e(message)}</p></article>'''
     def tile(p):
         count=sum(o['provider']==p['id'] for o in current)
-        return f'<a class="provider-tile" href="/providers/{e(p["id"])}/"><strong>{e(p["name"])}</strong><p>{e(cfg["notes"].get(p["id"],"Official source"))}</p><span>{count} current listings →</span></a>'
+        label='Official page checked · no deterministic price rule' if p['id'] in state_only else f'{count} current listings →'
+        return f'<a class="provider-tile" href="/providers/{e(p["id"])}/"><strong>{e(p["name"])}</strong><p>{e(cfg["notes"].get(p["id"],"Official source"))}</p><span>{e(label)}</span></a>'
     provider_tiles=''.join(tile(p) for p in providers)
     shown=current[:9]
     home=template('index.html',month=datetime.now().strftime('%B %Y'),deal_count=len(current),provider_count=len(providers),updated=e('Last source snapshot: '+date_text(payload.get('generated_at','Unknown'))),offers='<div class="cards">'+''.join(card(o) for o in shown)+'</div>' if shown else '<div class="empty"><h3>No current offers are published</h3><p>We only show terms that were captured from an official source in the latest check. Check back after the next source run.</p></div>',providers=provider_tiles)
@@ -107,8 +119,12 @@ def build(config_path=None, output=None):
         mine=[o for o in offers if o['provider']==p['id']]
         po=[o for o in mine if states[o['slug']][0]==CURRENT]; ph=[o for o in mine if states[o['slug']][0] in HISTORY]
         status=statuses.get(p['id'],{'status':'not checked','reason':'No source check has run yet.'})
-        status_text='Source checked successfully.' if status['status']=='checked' else e(status['reason'])
-        current_html='<div class="cards">'+''.join(card(o) for o in po)+'</div>' if po else '<div class="empty"><h3>No current offer is published for this source</h3><p>'+e(status['reason'])+'</p></div>'
+        if p['id'] in state_only:
+            status_text=STATE_ONLY_LEAD
+            current_html='<div class="empty"><h3>'+e(STATE_ONLY_LEAD)+'</h3><p>'+e(BLOCKER_TEXT.get(blockers.get(p['id']),''))+'</p></div>'
+        else:
+            status_text='Source checked successfully.' if status['status']=='checked' else e(status['reason'])
+            current_html='<div class="cards">'+''.join(card(o) for o in po)+'</div>' if po else '<div class="empty"><h3>No current offer is published for this source</h3><p>'+e(status['reason'])+'</p></div>'
         history_html=''
         if ph:
             history_html='<section class="history-block"><h2>Earlier records kept for reference</h2><p class="muted">These records were captured on the dates shown and were not reconfirmed in the latest source check. They are not current offers and carry no current price data.</p><div class="cards">'+''.join(card(o,historical=True) for o in ph)+'</div></section>'
