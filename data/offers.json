@@ -7167,20 +7167,20 @@
   },
   "page_lastmod": {
     "/": {
-      "hash": "d4ec6b1db6fed483e601901139eae7f528bcc815dcedf0755624872f47b03a7d",
-      "lastmod": "2026-09-13T06:47:03Z"
+      "hash": "71a491668eee66ef12adcead331fffe6a0b447d4153a543c8fd3c96b4684ad9c",
+      "lastmod": "2026-09-13T12:57:40Z"
     },
     "/providers/": {
-      "hash": "493d95b4cfd0afae2a7512d6feb25b2ebec719dbffa0131428d2ff82c1460ab7",
-      "lastmod": "2026-09-13T06:39:21Z"
+      "hash": "2eb3bbc79e9a93168ed0235d81939025e2f58671081dac92bb1764ca5eacb492",
+      "lastmod": "2026-09-13T12:57:40Z"
     },
     "/compare/": {
-      "hash": "c32abd8c928c30f543b1d01519826271180c64bab84556d57f5a0aed7ae6dd56",
-      "lastmod": "2026-09-13T06:47:03Z"
+      "hash": "be9c24163a19068413626c482bee6a73a208868aef284ffdb110418a99713b70",
+      "lastmod": "2026-09-13T12:57:40Z"
     },
     "/methodology/": {
-      "hash": "f0cb6487d51ee16539c416f49c52171cfb96b08fa215466c7f1777b08c475b50",
-      "lastmod": "2026-09-12T02:16:26Z"
+      "hash": "ef837dcbec731fade0eb15eff4cf20d230c145c4b23633611ae6cbca73dd4944",
+      "lastmod": "2026-09-13T12:57:40Z"
     },
     "/disclosure/": {
       "hash": "d0539bd941651f21999630ddd55e795ac79c455365404e0432cc69b3c3cafa41",
@@ -7191,456 +7191,456 @@
       "lastmod": "2026-09-12T02:16:26Z"
     },
     "/providers/raidboxes/": {
-      "hash": "6bb428abe4d2d6c9f91196d45689098d7e6bb3a4e001afeb931bcc79f4ff62b3",
-      "lastmod": "2026-09-13T06:47:03Z"
+      "hash": "bc4ee2001296d67a496e3f7d6e3159bb130955889e175b53cb3791bc67a24d34",
+      "lastmod": "2026-09-13T12:57:40Z"
     },
     "/providers/webdock/": {
-      "hash": "e7b65969ab57f3b36e020809a8fcc542b61b307bc9026180577121a653346e99",
-      "lastmod": "2026-09-13T06:47:03Z"
+      "hash": "b773c0fbcbe494fe3129a84038854aa4ed090d661fb0b12f355e7c2b828f4715",
+      "lastmod": "2026-09-13T12:57:40Z"
     },
     "/providers/hostdime/": {
-      "hash": "48a63b76a124392844bfefc7894762f5f7de5b9f34f600de9138bd826b37b48d",
-      "lastmod": "2026-09-13T06:47:03Z"
+      "hash": "d2ddf10eb3954a5692934eb90ede96e337520aa408fceda309caa648d368884d",
+      "lastmod": "2026-09-13T12:57:40Z"
     },
     "/providers/veerotech/": {
-      "hash": "12cde88a701de3ece9fb7be6eeb1dda21a601739f0f7751db814420aac6b98af",
-      "lastmod": "2026-09-13T06:47:03Z"
+      "hash": "ee042a2cbf55197f97c4ee0bf1fad795f09ed3735fc44e61b15c32ee9f4d21a4",
+      "lastmod": "2026-09-13T12:57:40Z"
     },
     "/providers/whc/": {
-      "hash": "314e5f94714b6d3c7c0620646b1a4c7e474f4a4878a6abbf67b3fba95b59c278",
-      "lastmod": "2026-09-13T06:47:03Z"
+      "hash": "2c0b963115297fb63efa5161e3627043cdf94018dd06a06c6cec49e414383375",
+      "lastmod": "2026-09-13T12:57:40Z"
     },
     "/providers/123-reg/": {
-      "hash": "ae837d4956661e7a68b90671f3201e08e8d49e0908ed9adedc9f0b16bf3a4d18",
-      "lastmod": "2026-09-13T06:47:03Z"
+      "hash": "619735e4f1b697656f3ccaf218697c743dfb60bb4498bd39e6715c85a08d5fed",
+      "lastmod": "2026-09-13T12:57:40Z"
     },
     "/providers/easyspace/": {
-      "hash": "e5cb611e1f6b012f7f3a55c4329bd9690f0574efff155c1709eaf35aa0e6c7f9",
-      "lastmod": "2026-09-13T06:47:03Z"
+      "hash": "14c51294288ae3474bba0144586e2d4da9a4fcb58a11413a5ccbde75dcaec0a3",
+      "lastmod": "2026-09-13T12:57:40Z"
     },
     "/providers/portfoliobox/": {
-      "hash": "16e8d51a0b09287e9d4d5c2d2d8fdfabcbb8a79c8c141ef67d405381976041f4",
-      "lastmod": "2026-09-13T06:47:03Z"
+      "hash": "1e7976ae25850b31bf1842bea6b1eaca50f237bfc48823229f362cb4299252f2",
+      "lastmod": "2026-09-13T12:57:40Z"
     },
     "/providers/ucraft/": {
-      "hash": "f9f7ed581f052703615c70d4f3e62a163b4408f146f859d1ef499f4e1bd38009",
-      "lastmod": "2026-09-13T06:47:03Z"
+      "hash": "77cba299869fbf509a6fd30825cbee8c3831df084215238ee66f18b8b9013eff",
+      "lastmod": "2026-09-13T12:57:40Z"
     },
     "/providers/voog/": {
-      "hash": "d3b5514edde4ba4c0ceb72335b5ba9dbee1d30e4ddeb2af836de4a085be0eb5f",
-      "lastmod": "2026-09-13T06:47:03Z"
+      "hash": "b81b31240d24923a8c5ee48b9565d8ddbbb295a99040f9000baacc2bea11f009",
+      "lastmod": "2026-09-13T12:57:40Z"
     },
     "/providers/beehiiv/": {
-      "hash": "2543d392984eff5aced1b7e6d1a08354e8af897c11c34b70cafd87506bfcc139",
-      "lastmod": "2026-09-13T06:47:03Z"
+      "hash": "9079f8d354a551b4698fc415e245448fa5eae0c8ce9c9c57b080cd9a2c78de12",
+      "lastmod": "2026-09-13T12:57:40Z"
     },
     "/providers/wpmu-dev/": {
-      "hash": "c57195e23c4fef07abb418b18eade87ae2da4a76d69c58aca17a9d6d98c4fd36",
-      "lastmod": "2026-09-13T06:47:03Z"
+      "hash": "f2db84627c610ca05d4903368ce8203b9ce770e6ef1593078d94095c670b96fe",
+      "lastmod": "2026-09-13T12:57:40Z"
     },
     "/providers/appwrite/": {
-      "hash": "50f3c6a3ca118f2bed904eb7f218a6a944e76ed9a6ae8a06dbfc928ca1556f3c",
-      "lastmod": "2026-09-13T06:47:03Z"
+      "hash": "a99c8178ef4fb5d550227e3c3e6f7f5d18c52267eb4609c4382bfd48db925649",
+      "lastmod": "2026-09-13T12:57:40Z"
     },
     "/providers/nhost/": {
-      "hash": "588092afbcf829437dfbfc84c701c41153e891bce8168a124ed90958398cac07",
-      "lastmod": "2026-09-13T06:47:03Z"
+      "hash": "c848d70f83173f9f1604c8f89b006f05a18ee387bd278172610c83d7d0b2e3b1",
+      "lastmod": "2026-09-13T12:57:40Z"
     },
     "/providers/turso/": {
-      "hash": "3e7fea00bf64a7344c92ac98115bc8754a89c9799110a22f3035e390274b5cbd",
-      "lastmod": "2026-09-13T06:47:03Z"
+      "hash": "f1352e09ab004a32e0c53e07de8e2ee5556bf293a842c843d8533ce7bc8523cd",
+      "lastmod": "2026-09-13T12:57:40Z"
     },
     "/providers/eurodns/": {
-      "hash": "132961454d356dcda76300750ea6bc875952640ab8558f11883d01ad29a870d9",
-      "lastmod": "2026-09-13T06:47:03Z"
+      "hash": "bb9dbed552c6bdbec5fa5fe8fd9af61c451e1f2eabb27f746a5b140e7ccde0b3",
+      "lastmod": "2026-09-13T12:57:40Z"
     },
     "/providers/aiven/": {
-      "hash": "60e2a133cb83b293e5f172c21aba74a800eb5ec493239a10e835902b24a57d0d",
-      "lastmod": "2026-09-13T06:47:03Z"
+      "hash": "b2a64d6e16c9751d9a9d2fa4740d33217c0f43eb0b560025398e15b32d8b3cb5",
+      "lastmod": "2026-09-13T12:57:40Z"
     },
     "/providers/timescale/": {
-      "hash": "b05d15049f5fed71e212f36e63d14a497b1272822e5d24b4d77da7cf9cb4e426",
-      "lastmod": "2026-09-13T06:47:03Z"
+      "hash": "2ab5a8a1859a1daf2fb10090274bcd842b9575d9b0d3ba02b0e09e33ad04de80",
+      "lastmod": "2026-09-13T12:57:40Z"
     },
     "/providers/redis/": {
-      "hash": "15e7d979239da8de43eb44b1d0bb7ec3181d4489280e41ed8d2950641c76474a",
-      "lastmod": "2026-09-13T06:47:03Z"
+      "hash": "df61f5c00f514401af27b6d10339e5292472cf19fa5053c4d873bc4a2674d449",
+      "lastmod": "2026-09-13T12:57:40Z"
     },
     "/providers/xata/": {
-      "hash": "e4236d77dd385b5b68fad2f5f6e459ddfdbcb8d6c256cda7a70bf1a4c9d2cad9",
-      "lastmod": "2026-09-13T06:47:03Z"
+      "hash": "13425e398755561ef6dc0698c43daed04fa3df39decf0f909d6ac491f983dd57",
+      "lastmod": "2026-09-13T12:57:40Z"
     },
     "/providers/seravo/": {
-      "hash": "3eda522517fb2d5ea074e2b5ea21968fd88832539e401ddae0c8cfb339165886",
-      "lastmod": "2026-09-12T09:59:17Z"
+      "hash": "afc4e9fdd4dc1376676d10a74b334f84119055651dd616a416f07c0431dbcfd6",
+      "lastmod": "2026-09-13T12:57:40Z"
     },
     "/providers/nixihost/": {
-      "hash": "9f99b2bbbbe585815c56b875c6727c638edac12f625d029e5b88a1587d1ca27f",
-      "lastmod": "2026-09-12T09:59:17Z"
+      "hash": "2afcc6f659c26e958d11f80e1fec6b8a8bdc5caf80ad641dc932a272d6ec07f7",
+      "lastmod": "2026-09-13T12:57:40Z"
     },
     "/providers/ecwid/": {
-      "hash": "be33870c3681a91f40d0b2678f6ba5db2034a0888c4fbf8fd4497e84bffcf1e4",
-      "lastmod": "2026-09-12T09:59:17Z"
+      "hash": "07c235869f8fac6564c9110b0d04a28d92a7253f4184adcd70baed282773f0fd",
+      "lastmod": "2026-09-13T12:57:40Z"
     },
     "/providers/buttondown/": {
-      "hash": "d425b622ae2e7db3fd9b1bfa9f8cd95eee0d202d6218b91767b67a20e6a69695",
-      "lastmod": "2026-09-12T09:59:17Z"
+      "hash": "aad20d52622cfed1140562bd31c6061c15cc2711f2364e0c2b5d4c493d9a2eb0",
+      "lastmod": "2026-09-13T12:57:40Z"
     },
     "/providers/cloudcone/": {
-      "hash": "fc5d5ea042c349a85bde3f75f9a0621591fffe32b82c27307e9aba4d869d0224",
-      "lastmod": "2026-09-13T06:47:03Z"
+      "hash": "61984c0a4e659e28c10fa919e7425079a60a6660073591b3a546761bf11559f6",
+      "lastmod": "2026-09-13T12:57:40Z"
     },
     "/providers/ramnode/": {
-      "hash": "8c485878f7d5d1a8246b150a0ded4dbeab4e8911f790b5cf6cb422d42e0223c1",
-      "lastmod": "2026-09-13T06:47:03Z"
+      "hash": "2d2ef9e116b3f9420ddee05e5e7b8cce01afd66215038238c80b5b76902fe6c5",
+      "lastmod": "2026-09-13T12:57:40Z"
     },
     "/providers/simply-com/": {
-      "hash": "1331eed396e60c8bb5fefc2d5f9601bf97afc2687b9dc082e56b55cd87f976ed",
-      "lastmod": "2026-09-13T06:47:03Z"
+      "hash": "950a74d181eb6509cca4937ad71d63959298de941207d2ace6e1dfdb4e75220d",
+      "lastmod": "2026-09-13T12:57:40Z"
     },
     "/providers/strikingly/": {
-      "hash": "ad5fb14f87272cf3582612a634b4ee801a671b1d5419e9bb56cff3488b90c674",
-      "lastmod": "2026-09-13T06:47:03Z"
+      "hash": "2f143b5473e905ad88933d6bada6a841833f27f4a67e5a563183248c893f58e2",
+      "lastmod": "2026-09-13T12:57:40Z"
     },
     "/providers/zeabur/": {
-      "hash": "92d6aca13f363098fc4ea280cbc45f3b7306d2a9f5671b1ff7deebdbb97b665c",
-      "lastmod": "2026-09-13T06:47:03Z"
+      "hash": "4e7f81a446515d6a525dbf0ec5097c1613b7ea3421a6717f2b5c1e46f427471b",
+      "lastmod": "2026-09-13T12:57:40Z"
     },
     "/providers/replit/": {
-      "hash": "a7ab4780c6cd71614ab694fa922bfe319835d4e74555b88251b068792356bc8b",
-      "lastmod": "2026-09-13T06:47:03Z"
+      "hash": "85d0c26722b5e7fce266d07d1a287f237a9a69c102b3ceccea8a03629c0016e2",
+      "lastmod": "2026-09-13T12:57:40Z"
     },
     "/providers/durable/": {
-      "hash": "f340c9162267f9231cbbaf5063c5fbba0965965ad8d91e49a7a2678d162d8afe",
-      "lastmod": "2026-09-13T06:47:03Z"
+      "hash": "1e6b87633efe3f2224eed247e234357a7521fceee737d6f6e54366784c12857e",
+      "lastmod": "2026-09-13T12:57:40Z"
     },
     "/providers/b12/": {
-      "hash": "b3528d577fc56adf8f3d19d85f64abe37a9c70be5939da8c63861c38e27f33f5",
-      "lastmod": "2026-09-13T06:47:03Z"
+      "hash": "c8f77c2426214c45cb63826ccb085ed03fabca3d7ff9a55faa4c1fa4a95e595d",
+      "lastmod": "2026-09-13T12:57:40Z"
     },
     "/providers/softr/": {
-      "hash": "313061b1aeec50d947a47da26d269c1edb710d8d6f924dc2427caf8a13dba0a6",
-      "lastmod": "2026-09-13T06:47:03Z"
+      "hash": "bb9635c2a8122d1f0435cbd01ce75c24684e9e56f1b86c7cc9c1cd3881f231c9",
+      "lastmod": "2026-09-13T12:57:40Z"
     },
     "/providers/bandzoogle/": {
-      "hash": "550765ff3f64ddaa2e42400bcf7e431f34872567a219cb5cc9ebde0430212380",
-      "lastmod": "2026-09-13T06:47:03Z"
+      "hash": "bf822e42c7505486e4be20804748b110988df0620d747e40640be4cde873c51c",
+      "lastmod": "2026-09-13T12:57:40Z"
     },
     "/providers/netcup/": {
-      "hash": "a1838d99420b0ede16a753ca8eafc1469c1fec22f92c637846a11d7c40bae632",
-      "lastmod": "2026-09-13T06:47:03Z"
+      "hash": "9ad1592199571b628537da0dcd57a7348880eadc0859fbf55ab2878d5f7f8425",
+      "lastmod": "2026-09-13T12:57:40Z"
     },
     "/providers/deno-deploy/": {
-      "hash": "65f22073d4dfc5f7e7acf4db89c905e94273881400e34e752c2aa905e726c89a",
-      "lastmod": "2026-09-13T06:47:03Z"
+      "hash": "216ada3bb64264726961b7deb35a3b7591964137f4351994a6a24513977c872e",
+      "lastmod": "2026-09-13T12:57:40Z"
     },
     "/providers/lightningbase/": {
-      "hash": "ce5ac8820c6a48a8a701e03933de8da06b3b55aa9d37f946b904ce8d6d3a8509",
-      "lastmod": "2026-09-13T06:47:03Z"
+      "hash": "478cb009b6f89a9e6408321a23905905efd77e56c95b3131fd524d9986f77e44",
+      "lastmod": "2026-09-13T12:57:40Z"
     },
     "/providers/tmdhosting/": {
-      "hash": "dfe470eb162737e0be9dd93ebe1f83c88db604bd0a1bc75825e19dc5dc4659fc",
-      "lastmod": "2026-09-13T06:47:03Z"
+      "hash": "247d0704813bebb6b1d5daa132376ab4d4e3d21eed290f0e6823a93cc36a1f51",
+      "lastmod": "2026-09-13T12:57:40Z"
     },
     "/providers/hawkhost/": {
-      "hash": "063527b9ff74169265b48804303a7fbb83137d3b2bb646d853339ada1f03f2fc",
-      "lastmod": "2026-09-13T06:47:03Z"
+      "hash": "34e50b8d24052f652ded70d71760ea3b4c33bc8fc3a300cc965f426221ae0625",
+      "lastmod": "2026-09-13T12:57:40Z"
     },
     "/providers/crocweb/": {
-      "hash": "39ccd5090bda922448d3bee4495a3692f49e530feae28c2c262ed1e815178f4d",
-      "lastmod": "2026-09-13T06:47:03Z"
+      "hash": "0ae553a4ee98600278c7cf6816931139fd2318c4cfe60d44e0f560c0120062a5",
+      "lastmod": "2026-09-13T12:57:40Z"
     },
     "/providers/eukhost/": {
-      "hash": "1e03bf8c7e3c7d6aee6acbd231e9b17e20bcc22f8c1852c6e3bf4964cc157d7f",
-      "lastmod": "2026-09-13T06:47:03Z"
+      "hash": "71d75a5a7b880cabd109bf69d94c373692a74b64f3e99c4e9660b22a721aa32e",
+      "lastmod": "2026-09-13T12:57:40Z"
     },
     "/providers/heart-internet/": {
-      "hash": "6a3ca4d0daf40337724e4632ab3ae70fa6643cd84be633c73e2a6bfdae349d17",
-      "lastmod": "2026-09-13T06:47:03Z"
+      "hash": "fbd0177b4903722d3df77971e3758ce5eac33b3aba608ef3c850c007dfb098b9",
+      "lastmod": "2026-09-13T12:57:40Z"
     },
     "/providers/wpx/": {
-      "hash": "492e3746fb379fe961f4dfc63fe36bd162c4df084df8b0bfbcfcc2124739781f",
-      "lastmod": "2026-09-13T06:47:03Z"
+      "hash": "600e2ebdda95c85e622c618563dea24bbe21ff4e83c1b75c79a94cb57dd2a1f1",
+      "lastmod": "2026-09-13T12:57:40Z"
     },
     "/providers/supabase/": {
-      "hash": "1619b719ca1edb76cd756d67461408c0dd72292429683497cf8bbfbb29fafce9",
-      "lastmod": "2026-09-13T06:47:03Z"
+      "hash": "dfc5733654b53f9cc453f5f680799d5da26db0978ced79dd1109c4338136c73b",
+      "lastmod": "2026-09-13T12:57:40Z"
     },
     "/providers/platform-sh/": {
-      "hash": "851db0092a92af78ec1415cbdb69976045e34f7276245e16766b1181777cd0f8",
-      "lastmod": "2026-09-13T06:47:03Z"
+      "hash": "14b4ac67239085ae866fe0a990e1d3842348ab31de2b07084858720d788f70d7",
+      "lastmod": "2026-09-13T12:57:40Z"
     },
     "/providers/pantheon/": {
-      "hash": "40e8ae91383dbaf5a87aca97065b3f30fb169a0ccd8d6aa98380a401355f39a2",
-      "lastmod": "2026-09-13T06:47:03Z"
+      "hash": "ace7a55975df691d582e9badb4bcb2c8d75313eabf711a830c0a0a6d5a511378",
+      "lastmod": "2026-09-13T12:57:40Z"
     },
     "/providers/northflank/": {
-      "hash": "19f6a48d48bd3d9fcdec2405f0023c4fc4bc5723bf2fbf5634c1341a297e8c60",
-      "lastmod": "2026-09-13T06:47:03Z"
+      "hash": "8cda34d4035dd3ebb2b211706b8f4ada523c4b190c11c0dce29a9fa960fe410b",
+      "lastmod": "2026-09-13T12:57:40Z"
     },
     "/providers/bubble/": {
-      "hash": "059402002eb93705f7d4cfd1b173361c984c292974df2a27e13420b18276cf7f",
-      "lastmod": "2026-09-12T08:04:56Z"
+      "hash": "c87b83e2d66d6a254bf84890b05616e351c4db493128abf9ee434a18a930f333",
+      "lastmod": "2026-09-13T12:57:40Z"
     },
     "/providers/back4app/": {
-      "hash": "9ff94cfe4c217d12f18e14591bf41980b64006db12a4a635768f1f0ca540980f",
-      "lastmod": "2026-09-12T08:04:56Z"
+      "hash": "75d662264574bca05450d64bfdb5bc0b5a598440d491784b4a7fcd3a07f9f721",
+      "lastmod": "2026-09-13T12:57:40Z"
     },
     "/providers/pagely/": {
-      "hash": "459a045733a5ae3b5761577ee3cb64bc6020bfde96d3ffbae666fb9518823091",
-      "lastmod": "2026-09-12T08:04:56Z"
+      "hash": "d9fa269002bb42014c753ea1d1f3a87764d90728636d705f295adf833eb42c66",
+      "lastmod": "2026-09-13T12:57:40Z"
     },
     "/providers/hosthatch/": {
-      "hash": "6fde425f5a2633a422b182c5ff51dbea9caf8037f7ee0ea5984e32d1fd1ffe21",
-      "lastmod": "2026-09-12T08:04:56Z"
+      "hash": "25bc40ef0494b1f853b70eb98150cc4f704f369447e0795a7137aa2ae4dfdff4",
+      "lastmod": "2026-09-13T12:57:40Z"
     },
     "/providers/pixpa/": {
-      "hash": "227e5d5407af08c158d22e8028c307ef23b9faf16e57cb1c786e79f9d296d0d6",
-      "lastmod": "2026-09-12T08:04:56Z"
+      "hash": "ae3dbc7be5706fdc65287536f33f772bf4f4d16385957070eb433a94085c179e",
+      "lastmod": "2026-09-13T12:57:40Z"
     },
     "/providers/infomaniak/": {
-      "hash": "99e0dbeb1d83512baf32fa50132408c882cd61bb411ed400940474d7785dd125",
-      "lastmod": "2026-09-12T08:04:56Z"
+      "hash": "f5d205faebeeaceb51327fab1811c7585b0325159e7690a36b34f18594bd3257",
+      "lastmod": "2026-09-13T12:57:40Z"
     },
     "/providers/one-com/": {
-      "hash": "4ce1f32c58f1a5651187c7a6bdc4a9d9313f813e559fd75874e01ce3e672875d",
-      "lastmod": "2026-09-12T08:04:56Z"
+      "hash": "f47274789e256d5ea8241efdba6619ba95ee75f1de777905beda24a655dbb854",
+      "lastmod": "2026-09-13T12:57:40Z"
     },
     "/providers/shopify/": {
-      "hash": "28cf2592230d338beab2cb7553fbd47debd54e4707a155d235f02cacc3a6513f",
-      "lastmod": "2026-09-13T06:47:03Z"
+      "hash": "0dad3063d1c120021b4161fab851cb0cad2d1a587e6f84acc653b5efdb2cc8c3",
+      "lastmod": "2026-09-13T12:57:40Z"
     },
     "/providers/bigcommerce/": {
-      "hash": "6bd5a64dce6164cea81c2e7a25ee59636cfd181144d9a7130a5418de7fc5de43",
-      "lastmod": "2026-09-13T06:47:03Z"
+      "hash": "e660792761384d3693f552ad3fc16731d5561e8001616c0b9e4c8bf6c0aa88e0",
+      "lastmod": "2026-09-13T12:57:40Z"
     },
     "/providers/duda/": {
-      "hash": "fca92ec0e32d8420cfb751b2370206110708427cadbf6c165457eaf60b5c8606",
-      "lastmod": "2026-09-13T06:47:03Z"
+      "hash": "5168b3c561ff0c5aa4361565f4a7c59787088286db5dbf66a78361a13b664ab2",
+      "lastmod": "2026-09-13T12:57:40Z"
     },
     "/providers/framer/": {
-      "hash": "1dfd4935cbfd9cf5227a395f25f339f7a18c43ebabc5b1a8047a574372eaba63",
-      "lastmod": "2026-09-13T06:47:03Z"
+      "hash": "fb255516b51f50c10d73c9e3a2dab79b3fb1b911a7c859692b93c1eb6b3952b8",
+      "lastmod": "2026-09-13T12:57:40Z"
     },
     "/providers/ghost/": {
-      "hash": "c9c7d9056964f90368c2606460822ad61ed68b7132f7168ccb81f93d38231bb9",
-      "lastmod": "2026-09-13T06:47:03Z"
+      "hash": "a024205bda38f995a968f2b033a408f51c9ec212bac9122d184179e17599d578",
+      "lastmod": "2026-09-13T12:57:40Z"
     },
     "/providers/tilda/": {
-      "hash": "fe8e8775d9170597f681aabb7641018c6ecf1570e84f9fbc50cc9db58b33041b",
-      "lastmod": "2026-09-13T06:47:03Z"
+      "hash": "83da32e60ba6ebf3eb45928e9549fce3a1f8d4834c1787c2470b530c2f814787",
+      "lastmod": "2026-09-13T12:57:40Z"
     },
     "/providers/accuweb-hosting/": {
-      "hash": "8f746313a237688d6b76dedf3f4cec9e3f659989a4ac458bfe79f739ae2ea8e4",
-      "lastmod": "2026-09-13T06:47:03Z"
+      "hash": "d1c1e40ab9cdab806a3381821f99463379a1ed0f3e8cabb53d00e694bbdbffb7",
+      "lastmod": "2026-09-13T12:57:40Z"
     },
     "/providers/kamatera/": {
-      "hash": "e2530849a8e9c168b4dfe401251303656456d39299b902dd9002a1253c1c95ff",
-      "lastmod": "2026-09-13T06:47:03Z"
+      "hash": "be2832251373ad86bba04a422e982836a2a6521c17cf91edf1aca83eb87692c4",
+      "lastmod": "2026-09-13T12:57:40Z"
     },
     "/providers/gridpane/": {
-      "hash": "b1bc309dcab65bf9995351d2a3785df7edc36b444976bf955ba0dbc289e7027a",
-      "lastmod": "2026-09-13T06:47:03Z"
+      "hash": "485d4a3f2cb83a77ba07d195f159411ff8fc0f1b06827f6e30f4b5343c8fe674",
+      "lastmod": "2026-09-13T12:57:40Z"
     },
     "/providers/koyeb/": {
-      "hash": "f5a220a9c16982ecaab6a9d2962992faaf9958fa8acee02b9cc18fa21c5fefc2",
-      "lastmod": "2026-09-13T06:47:03Z"
+      "hash": "3f795741caf77fc4a1970d726f0540565431bf6263b5ba1d4fa973fc5211fe4b",
+      "lastmod": "2026-09-13T12:57:40Z"
     },
     "/providers/flywheel/": {
-      "hash": "02cde3b9a4c8d85d8778fbcd1f379c82e1f51cff18762734b481da7c22d536b5",
-      "lastmod": "2026-09-13T06:47:03Z"
+      "hash": "6f7adc3f717c19f44743baa42b1de55ff06532e7883a547834579a8c75f61dd3",
+      "lastmod": "2026-09-13T12:57:40Z"
     },
     "/providers/10web/": {
-      "hash": "ea13210812c234c51f02845f76575b1dee33eff0a38e4585ecee939fe5b0b01b",
-      "lastmod": "2026-09-13T06:47:03Z"
+      "hash": "99a311c7a0087be1a077077f7ebec628ff6836e215d5239e192a01b9e5de8a44",
+      "lastmod": "2026-09-13T12:57:40Z"
     },
     "/providers/webflow/": {
-      "hash": "448f13bb3dfd7578fc6e45f5265a81371203de2f9c2e7f7936b9b8999ea26e15",
-      "lastmod": "2026-09-13T06:47:03Z"
+      "hash": "044c08482561999ffc42f3224fe4b1655048ea50d21ba6b9cbd5f9907aed255f",
+      "lastmod": "2026-09-13T12:57:40Z"
     },
     "/providers/gandi/": {
-      "hash": "86e70a4aee3de41e93a50f86a0044a71b7840451b0cad659846da4eddea70ece",
-      "lastmod": "2026-09-13T06:47:03Z"
+      "hash": "bf4d141f6002041dbb2ac86bb5302b7aa537e729440bf7b09a3d832d38e0fbe8",
+      "lastmod": "2026-09-13T12:57:40Z"
     },
     "/providers/fasthosts/": {
-      "hash": "9b33a29352ccc550c7918bebf128db90d20d60857aef768b12e234331b474ee4",
-      "lastmod": "2026-09-13T06:47:03Z"
+      "hash": "60ddad12b4f868beff67a475010899085225d597a516a43bc5059f589c61fb74",
+      "lastmod": "2026-09-13T12:57:40Z"
     },
     "/providers/name-com/": {
-      "hash": "5d4e7e283fa64c7bc26d829e914f0303cf625201d305df5b03f88e8ef855e237",
-      "lastmod": "2026-09-13T06:47:03Z"
+      "hash": "a46b397326c9f6aee31dbac6b8a8503121ce1172395d7636813e8fee1d373423",
+      "lastmod": "2026-09-13T12:57:40Z"
     },
     "/providers/pressable/": {
-      "hash": "bca574472e359c11ccbb785e7219fec4842894a6098c4458534fb3a962fa7467",
-      "lastmod": "2026-09-13T06:47:03Z"
+      "hash": "98bede21351bf2da65af3a09a44f08d2834edab09d996b537a23de6a2ef54a61",
+      "lastmod": "2026-09-13T12:57:40Z"
     },
     "/providers/railway/": {
-      "hash": "62c5bb299f10bb9aca53edae7786a6472845257118c83ceabb7dc8070d85cc64",
-      "lastmod": "2026-09-13T06:47:03Z"
+      "hash": "d8fd7b36569a997072290f652a62815bd3f38b1af56ce0cafe4cabadff48757c",
+      "lastmod": "2026-09-13T12:57:40Z"
     },
     "/providers/wordpress-com/": {
-      "hash": "8d19784bc0063bf75f2f75db85cd65d87f5aac8721d50d1839df4e2573b4e5d7",
-      "lastmod": "2026-09-13T06:47:03Z"
+      "hash": "2abb2dd1a03d7b4a4d8829beee6e16f5291f01e6966509a363fa9186999dd324",
+      "lastmod": "2026-09-13T12:57:40Z"
     },
     "/providers/heroku/": {
-      "hash": "40abcb30409193316d12256d7ba16b6409688aad3990cc9376d701d9da16c645",
-      "lastmod": "2026-09-13T06:47:03Z"
+      "hash": "1eaf0d6499f2942debf49e212ba1b5738c6a4db7a110fe0092fb248d72118c64",
+      "lastmod": "2026-09-13T12:57:40Z"
     },
     "/providers/krystal/": {
-      "hash": "a3c9aaabe147707c2990e3bec87dd88d2c30ccfa318c3cfc18dc1cbcefa5cfa4",
-      "lastmod": "2026-09-13T06:47:03Z"
+      "hash": "99086c974c72c4bfc09773f4e3d0639b4a7fac70859dedd464188d4ebc9b815d",
+      "lastmod": "2026-09-13T12:57:40Z"
     },
     "/providers/scaleway/": {
-      "hash": "84e000fe0bd0e0c02173ff9c8d6e9547258036a53106eb92ff15ed2c776be042",
-      "lastmod": "2026-09-13T06:47:03Z"
+      "hash": "35f751cd717eb1337ef77d536e0aeb2f197f6f82260ecba0ca841213a4225386",
+      "lastmod": "2026-09-13T12:57:40Z"
     },
     "/providers/site123/": {
-      "hash": "593550909d15d540c3761b4d4f74946171fc31c69a62a14688c7f5361882c5e4",
-      "lastmod": "2026-09-13T06:47:03Z"
+      "hash": "22f13c175591fe86db6613087ad6c8e89690405089a7504e77053a51778a21db",
+      "lastmod": "2026-09-13T12:57:40Z"
     },
     "/providers/a2-hosting/": {
-      "hash": "2f674cf7ee3ab4e9524c56e5a286989ed735b660cba83a0724bbe432be32d84e",
-      "lastmod": "2026-09-13T06:47:03Z"
+      "hash": "f37405b794caba6a3dd89fe51afcb6553e2ef56d68b96d8ed19d546488fd5f9e",
+      "lastmod": "2026-09-13T12:57:40Z"
     },
     "/providers/hostinger/": {
-      "hash": "fe51647a2554ce0368b68cb4ef2ca440d8c44ccd9b24349a04db27e3d925ed38",
-      "lastmod": "2026-09-13T06:47:03Z"
+      "hash": "158fbc194af6f1b0267beadfcf0fb87353a1c112d55528843c0325e598db3c3d",
+      "lastmod": "2026-09-13T12:57:40Z"
     },
     "/providers/siteground/": {
-      "hash": "1356e05cd275cc9af9a88aaacfa12069b03341decbb733e2926e8c6b4414cd1e",
-      "lastmod": "2026-09-13T12:36:07Z"
+      "hash": "39fb52fd5a289342c1f8f7ef291f4934e6fae59fbe96eb61b74cba8b77b5773e",
+      "lastmod": "2026-09-13T12:57:40Z"
     },
     "/providers/dreamhost/": {
-      "hash": "1fff515e8b0a58b42689766745f9a2f40859ceafeab5f86c39432f5d5c7f194a",
-      "lastmod": "2026-09-13T06:47:03Z"
+      "hash": "f47e4ff648bd29dd6f6af3d3ebf790c926bcaec27ca6cd98c8e240392ca7a93c",
+      "lastmod": "2026-09-13T12:57:40Z"
     },
     "/providers/kinsta/": {
-      "hash": "d6c062f5661af33625b1f93434e1c42458d92272d97a0be5d95eb5baead1e044",
-      "lastmod": "2026-09-13T06:47:03Z"
+      "hash": "45e633d767aa6aac60b0186bc607958da6e762d9c714a8e4d49a19d3e320bb1c",
+      "lastmod": "2026-09-13T12:57:40Z"
     },
     "/providers/cloudways/": {
-      "hash": "7cd0d5e08d6ae6350c2aab242a750755d36e37684dab2b42b546a3ae5cb10b1e",
-      "lastmod": "2026-09-13T06:47:03Z"
+      "hash": "74ec5c7f4046fbae4d6214d0f8e18f395e2cc0691215d388b30401f79fc3b73b",
+      "lastmod": "2026-09-13T12:57:40Z"
     },
     "/providers/scalahosting/": {
-      "hash": "52fa43bc678a6b81804f18e1ac5a1478c3921b716cd12e5ca714e571b23198c9",
-      "lastmod": "2026-09-13T06:47:03Z"
+      "hash": "bc89c177e0793ec9dea42d43bab3faa9327c13c3234bd1c70e9fe04a6adad2fb",
+      "lastmod": "2026-09-13T12:57:40Z"
     },
     "/providers/greengeeks/": {
-      "hash": "258ca0d3bad093864de50e3c3272f4b5a263ef28885860229f02a5c8d359b51c",
-      "lastmod": "2026-09-13T06:47:03Z"
+      "hash": "22562fd1d45ae19b2dc48007e03715d604744b45a480a5846184659ca808535c",
+      "lastmod": "2026-09-13T12:57:40Z"
     },
     "/providers/inmotion-hosting/": {
-      "hash": "6f41ee2b7faae80d64cb84fbf35252c7dbcc85fd9da77f660454d4c1ef128abf",
-      "lastmod": "2026-09-13T06:47:03Z"
+      "hash": "4384476f2f1a46c5a86c4b6675b90c38aa341e4ef919a6ecf1ee809801d91b30",
+      "lastmod": "2026-09-13T12:57:40Z"
     },
     "/providers/chemicloud/": {
-      "hash": "10afb88254e7dd51f90b432ec6450c2c3b1018c69389902ce0a948331e7aba7f",
-      "lastmod": "2026-09-13T06:47:03Z"
+      "hash": "922a7ec9d019f8bf2e5486cc2a2596ca0d6993b485e7783aa2723067063e5888",
+      "lastmod": "2026-09-13T12:57:40Z"
     },
     "/providers/verpex/": {
-      "hash": "aed4cb1cb420c0b83de3a2723d343b50b9e9b2c464448214cc5cf182d015c1a3",
-      "lastmod": "2026-09-13T06:47:03Z"
+      "hash": "25097544d1891300df4d286e4db766eb1f4989d8c660686b27988ecd72e740da",
+      "lastmod": "2026-09-13T12:57:40Z"
     },
     "/providers/knownhost/": {
-      "hash": "3bf35e06f00bac2b256ab6df17e1ec4af53cdab9420788b6de680e7c0e591edc",
-      "lastmod": "2026-09-13T06:47:03Z"
+      "hash": "19f8a99056e4c526ad551fbf9d8aa0df7f2dd2fe9a8c2f4af005ffed08b0c957",
+      "lastmod": "2026-09-13T12:57:40Z"
     },
     "/providers/wp-engine/": {
-      "hash": "f3f005127b8dbb7bc4b5a2cb7c9638199dd48316bb95fce3a70919e6995b53d1",
-      "lastmod": "2026-09-13T06:47:03Z"
+      "hash": "2f034722e7d63ee1fdcdd5bff67a63796056fe766a55fe93f33981df6bf4edd7",
+      "lastmod": "2026-09-13T12:57:40Z"
     },
     "/providers/ionos/": {
-      "hash": "5efeeaced65d53a81f8b020e0f280fd4e04c206f6f0f62c76d4f7a13df71874a",
-      "lastmod": "2026-09-13T06:47:03Z"
+      "hash": "ca7cdd796a62a771a4bb624c6c6119addb63fe1f2ae2b81e9aee6c2eb77d796f",
+      "lastmod": "2026-09-13T12:57:40Z"
     },
     "/providers/namehero/": {
-      "hash": "2263809eb83f75062d2ffb8d72ce12615d534258c2370333a1117baf71da9446",
-      "lastmod": "2026-09-13T06:47:03Z"
+      "hash": "1715c4a5ac9ab2be473430be744084791c414b0ac8cba2a896fc237f5757305c",
+      "lastmod": "2026-09-13T12:57:40Z"
     },
     "/providers/stablehost/": {
-      "hash": "d3a6a98e6640b6f75504f8bbd44e82b6f6eed2a089d966e32fbbc9d0b615f629",
-      "lastmod": "2026-09-13T06:47:03Z"
+      "hash": "4d3af4d876f90d7c704c8d961b389cf800cac1e2a665b1b5713c8d7ab3c44523",
+      "lastmod": "2026-09-13T12:57:40Z"
     },
     "/providers/mddhosting/": {
-      "hash": "a08f2cb6577223a77094a5420e89f5d897d1ca325df576cc4b4acdb8ad3d99bd",
-      "lastmod": "2026-09-13T06:47:03Z"
+      "hash": "458e1148e37a6197a091bcf984a674db44b7991f1eb6627d3b1a21be151c4cc7",
+      "lastmod": "2026-09-13T12:57:40Z"
     },
     "/providers/ultahost/": {
-      "hash": "b6ada679b5a1a83f19abec6c4baf7cb68b6e5d145114686f9c79f2cdf11f84ce",
-      "lastmod": "2026-09-13T06:47:03Z"
+      "hash": "a9040244fa1efe65fffc1f50bb9d7cc8a7eeae6ba2d01d012e5c2b1fb6608956",
+      "lastmod": "2026-09-13T12:57:40Z"
     },
     "/providers/netlify/": {
-      "hash": "73a374458e2fe985b1109f7274fa143aef1afc310930344ddfa9dadad4a669d7",
-      "lastmod": "2026-09-13T06:47:03Z"
+      "hash": "913a7ee716b606be9fcb03c518e83a98fa3e4a063f518b3200f962340e9b6920",
+      "lastmod": "2026-09-13T12:57:40Z"
     },
     "/providers/vercel/": {
-      "hash": "e1e97fa9e2c656c97453b4ac58609b7bc8b12e726a839c4575e8e551c0a8a41f",
-      "lastmod": "2026-09-13T06:47:03Z"
+      "hash": "6f3a5678132bf310fcc5a92e62fece1e231ff571199e64c6c062063deab52e0e",
+      "lastmod": "2026-09-13T12:57:40Z"
     },
     "/providers/ovhcloud/": {
-      "hash": "4de67ec5047a216442f9cdc0f373a5f51e8ecb0c57e406a8c7b8f6c96b707095",
-      "lastmod": "2026-09-13T06:47:03Z"
+      "hash": "310f019e6f09f112fa4ec31cf4ebd8faa57327d845457272c2e6d7afaf0c7e6b",
+      "lastmod": "2026-09-13T12:57:40Z"
     },
     "/providers/hetzner/": {
-      "hash": "5c00a615b0319d12f4dc21b5acb1fd4dc0998ca774bed8a7b929b8a463637105",
-      "lastmod": "2026-09-12T02:51:02Z"
+      "hash": "8c7b4c2ab65cb7661acdfe2d3bfb83079bb6de4aea5f5dc8c8db7e44a9a5627f",
+      "lastmod": "2026-09-13T12:57:40Z"
     },
     "/providers/hostwinds/": {
-      "hash": "8ac1d9f2f40ade4a37f20d2a040b795d753eedd3a8f32f0e486989af3eee542d",
-      "lastmod": "2026-09-12T02:51:02Z"
+      "hash": "122d4e1b6f0e5f597ae457bf70bd08c703c07c735bca7d3ab2291bc11bde2017",
+      "lastmod": "2026-09-13T12:57:40Z"
     },
     "/providers/kualo/": {
-      "hash": "caea7712e676844824937bd3afcc5a3af7969660e260fd920b63095c615f11b7",
-      "lastmod": "2026-09-12T02:51:02Z"
+      "hash": "97407224a3d51b1c53fc7a134821ee5c880ed115fb0bbc479f5184583f79c099",
+      "lastmod": "2026-09-13T12:57:40Z"
     },
     "/providers/squarespace/": {
-      "hash": "33ab836805435cbbf8140cd7527c37790c953fbcaadb66516199b370324d1692",
-      "lastmod": "2026-09-12T02:51:02Z"
+      "hash": "12227da4e300760269ef7b8d2d15d5bc93d771e4541089ca35355516f2b3d4dc",
+      "lastmod": "2026-09-13T12:57:40Z"
     },
     "/providers/webnode/": {
-      "hash": "f27fa7dac9d45bee95f6f9919e09550a07bf6793003f6e7bf1ce2eaba6033f7d",
-      "lastmod": "2026-09-12T02:51:02Z"
+      "hash": "30d424fa165381b0b6a73bd606a984d24a363ddfe07c386ff1e0396ba5c8cf1a",
+      "lastmod": "2026-09-13T12:57:40Z"
     },
     "/providers/jimdo/": {
-      "hash": "08b5768c0f8523c588ae4c9f5cdbb84e98c9c4fe82365ba8d6004cbf79d7cc6a",
-      "lastmod": "2026-09-12T02:51:02Z"
+      "hash": "e491713b0b62c90496bbf5c9b721f3d84471d97603c6ae6167a72fb9adf878d7",
+      "lastmod": "2026-09-13T12:57:40Z"
     },
     "/providers/wix/": {
-      "hash": "7c32210d9f848b740f6a8d6b5e540981ac315180f1b006c0e2faab7f9d250493",
-      "lastmod": "2026-09-13T01:33:48Z"
+      "hash": "d154c1f293f503f61f44305904277a57ee4918f2497b2c574e5e0876f257553e",
+      "lastmod": "2026-09-13T12:57:40Z"
     },
     "/providers/cloudflare-registrar/": {
-      "hash": "b831ab85d5abd03dc061bf53778540e9046ae66a7fedcd8114216322c635a2dc",
-      "lastmod": "2026-09-12T02:51:02Z"
+      "hash": "7aa6a91531f5722958af7ceeb1f0d0bd3515ba72f4c7b9e38e8244eed2b099cd",
+      "lastmod": "2026-09-13T12:57:40Z"
     },
     "/providers/digitalocean/": {
-      "hash": "7237185381c759dd605edce4a73a88a0ed638aec4764569c474ac834ad20bff1",
-      "lastmod": "2026-09-13T06:47:03Z"
+      "hash": "542b7136d8145f0d7a6da34d3e12e8e1c23bed6b3c7962afaf77ecc1cab444eb",
+      "lastmod": "2026-09-13T12:57:40Z"
     },
     "/providers/porkbun/": {
-      "hash": "189aed601e7cd1a03162f57da972b51388e955f83aa5458670639db4714cc44d",
-      "lastmod": "2026-09-13T06:47:03Z"
+      "hash": "ff557db36f4170a4c5d943d48af6c7c3ba9495295f7c5f940f63e554f151d203",
+      "lastmod": "2026-09-13T12:57:40Z"
     },
     "/providers/weebly/": {
-      "hash": "7ecfb5af35f89fb2022ffd4c6f9bd03b12d77f169d2c0657c162b33ca90d916d",
-      "lastmod": "2026-09-13T06:47:03Z"
+      "hash": "8091aaee250c202aa89fb22f86cbe9e061217b9ca7c1b8c8f44aa911b32d8bbe",
+      "lastmod": "2026-09-13T12:57:40Z"
     },
     "/providers/render/": {
-      "hash": "0ea8c1278a0a1939b291ef8ac7cb8b2ca70cd384c21a4f6a782ebf37c009d332",
-      "lastmod": "2026-09-13T06:47:03Z"
+      "hash": "712611ad4ebd25e23c48731bd967e8149b7c5bc9219e13af2e81110aa21a921d",
+      "lastmod": "2026-09-13T12:57:40Z"
     },
     "/providers/fly-io/": {
-      "hash": "43c2b784d6f578638dd9aec6d3156a4bcb3c2d85b76fb863bcb73c7b08e7e3c8",
-      "lastmod": "2026-09-13T06:47:03Z"
+      "hash": "9bfae681f30a37830de6fc8df680afb8978ff6a71f2958a7cec8bb0bb531414e",
+      "lastmod": "2026-09-13T12:57:40Z"
     },
     "/providers/amazon-lightsail/": {
-      "hash": "ea9672465d36b3191d8502f1970ff214bd6ed810169d5907590de7512d8308cb",
-      "lastmod": "2026-09-13T06:47:03Z"
+      "hash": "44dd6f150961d67be82ebf78cd40ac356ecfdca798f55a9dabd42f80a9c9c708",
+      "lastmod": "2026-09-13T12:57:40Z"
     },
     "/providers/20i/": {
-      "hash": "59ac9cd7b23600cc4c6656a3a9a8b456763e5491ed15ec9d521dc4c0dc4f0336",
-      "lastmod": "2026-09-13T06:47:03Z"
+      "hash": "1e0c28b4cbf5f8498cae756cbaef39eeb0fb141f0c5f423fed7e3ba09c0b7d66",
+      "lastmod": "2026-09-13T12:57:40Z"
     },
     "/deals/raidboxes-mini/": {
       "hash": "ce729c979c87a2ce78e0483861bdf457fbf35fe13c368110fd40bee703263693",
