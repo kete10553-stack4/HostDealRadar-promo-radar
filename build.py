@@ -113,15 +113,22 @@ def build(config_path=None, output=None):
     def tile(p):
         count=sum(o['provider']==p['id'] for o in current)
         status = statuses.get(p['id'], {})
-        label=state_only_display(status, blockers.get(p['id']))[2] if p['id'] in state_only else f'{count} current listings →'
+        if p['id'] in state_only:
+            label=state_only_display(status, blockers.get(p['id']))[2]
+        elif status.get('status') == 'checked':
+            label=f'{count} current listings →'
+        elif status.get('status') == 'unmatched':
+            label='Latest source check produced no published record →'
+        else:
+            label='Latest source check did not complete →'
         return f'<a class="provider-tile" href="/providers/{e(p["id"])}/"><strong>{e(p["name"])}</strong><p>{e(cfg["notes"].get(p["id"],"Official source"))}</p><span>{e(label)}</span></a>'
     provider_tiles=''.join(tile(p) for p in providers)
     shown=current[:9]
     home=template('index.html',month=datetime.now().strftime('%B %Y'),deal_count=len(current),provider_count=len(providers),updated=e('Last source snapshot: '+date_text(payload.get('generated_at','Unknown'))),offers='<div class="cards">'+''.join(card(o) for o in shown)+'</div>' if shown else '<div class="empty"><h3>No current offers are published</h3><p>We only show terms that were captured from an official source in the latest check. Check back after the next source run.</p></div>',providers=provider_tiles)
     home_schema={'@context':'https://schema.org','@type':'ItemList','name':'HostDealRadar official hosting offers','itemListElement':[{'@type':'ListItem','position':i+1,'item':schema_offer(o,domain+'/deals/'+o['slug']+'/')} for i,o in enumerate(current)]}
-    write(Path('index.html'),page('HostDealRadar | Official hosting offers', 'Official hosting offers with terms and renewal prices in view.',domain+'/',home,home_schema))
-    provider_listing='<section class="wrap section"><div class="eyebrow">OFFICIAL SOURCES</div><h1>Providers we check</h1><p class="lead">We include only providers whose public pages can be checked without bypassing restrictions.</p><div class="provider-grid">'+provider_tiles+'</div></section>'
-    write(Path('providers/index.html'),page('Providers | HostDealRadar','Official hosting providers checked by HostDealRadar.',domain+'/providers/',provider_listing,{'@context':'https://schema.org','@type':'CollectionPage','name':'Providers'}))
+    write(Path('index.html'),page('HostDealRadar | Official hosting offers', 'Official hosting offers with source-check status and provider links.',domain+'/',home,home_schema))
+    provider_listing='<section class="wrap section"><div class="eyebrow">OFFICIAL SOURCES</div><h1>Providers we check</h1><p class="lead">Providers have public source pages in our list. Each provider page shows whether the latest source check confirmed listings, produced no published record, or did not complete. Earlier records stay clearly marked.</p><div class="provider-grid">'+provider_tiles+'</div></section>'
+    write(Path('providers/index.html'),page('Providers | HostDealRadar','Hosting providers and their latest source-check status.',domain+'/providers/',provider_listing,{'@context':'https://schema.org','@type':'CollectionPage','name':'Providers'}))
     for p in providers:
         mine=[o for o in offers if o['provider']==p['id']]
         po=[o for o in mine if states[o['slug']][0]==CURRENT]; ph=[o for o in mine if states[o['slug']][0] in HISTORY]
@@ -140,7 +147,7 @@ def build(config_path=None, output=None):
     for o in offers:
         state, message=states[o['slug']]
         advertised = price(o) + (' / ' + period_text(o) if o.get('price') is not None else '')
-        p=byid[o['provider']]; terms=[('Listing type','Regular price; no discount claimed' if o.get('kind')=='regular_price' else 'Promotion'),('Advertised price',advertised),('Commitment',str(o['commitment_months'])+' months' if o.get('commitment_months') else 'Not captured'),('Renewal price',money(o['renewal_price'],o.get('currency','USD'))+'/'+period_text(o) if o.get('renewal_price') is not None else 'Not captured'),('Discount shown',str(o['discount_percent'])+'%' if o.get('discount_percent') is not None else 'Not captured'),('Coupon code',o.get('coupon_code','Not captured')),('Valid until',o.get('valid_until','Not captured')),('Captured at',o['fetched_at']),('Record state',state)]
+        p=byid[o['provider']]; terms=[('Listing type','Regular price; no discount claimed' if o.get('kind')=='regular_price' else 'Promotion'),('Advertised price',advertised),('Commitment',str(o['commitment_months'])+' months' if o.get('commitment_months') else 'Unknown'),('Renewal price',money(o['renewal_price'],o.get('currency','USD'))+'/'+period_text(o) if o.get('renewal_price') is not None else 'Unknown'),('Discount shown',str(o['discount_percent'])+'%' if o.get('discount_percent') is not None else 'Unknown'),('Coupon code',o.get('coupon_code','Unknown')),('Valid until',o.get('valid_until','Unknown')),('Captured at',o['fetched_at']),('Record state',state)]
         terms_html=''.join(f'<div><dt>{e(k)}</dt><dd>{e(v)}</dd></div>' for k,v in terms)
         rel='rel="noopener noreferrer"' if not p['affiliate_url'] else 'rel="sponsored noopener noreferrer"'
         disclosure='This is an official link; no affiliate relationship is active.' if not p['affiliate_url'] else 'This may be an affiliate link; we may earn a commission at no extra cost to you.'
