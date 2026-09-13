@@ -138,7 +138,12 @@ def check():
         page=(ROOT/'site/providers'/pid/'index.html').read_text(encoding='utf-8')
         figures=re.findall(r'\$[0-9]|[0-9](?:\.[0-9]+)?\s?%', page)
         assert not figures, f'A state-only provider page shows price or discount figures: {pid} -> {figures[:5]}'
-        assert 'No deterministic price rule' in page, f'A state-only provider page does not say why no price is published: {pid}'
+        status = statuses[pid]
+        if status.get('status') == 'available_no_price_rule':
+            assert 'No deterministic price rule' in page, f'A state-only provider page does not say why no price is published: {pid}'
+        else:
+            assert 'Latest source check did not complete.' in page, f'A failed state-only source claims a completed check: {pid}'
+            assert build.e(status['reason']) in page, f'A failed state-only source omits its recorded reason: {pid}'
     home=(ROOT/'site/index.html').read_text(encoding='utf-8')
     assert f'{len(ids)} providers in our source list' in home, 'Homepage provider count mismatch'
     assert f'{len(current)} listings captured' in home, 'Homepage current-listing count mismatch'

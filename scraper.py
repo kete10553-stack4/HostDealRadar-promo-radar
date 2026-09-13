@@ -120,7 +120,30 @@ def normalize_date(value):
     cleaned = re.sub(r'(st|nd|rd|th)\b', '', value, flags=re.I)
     return datetime.strptime(cleaned, '%d %B %Y').date().isoformat()
 
-def offer_from_rule(provider, rule, raw):
+CURRENCY_CODES = {'USD', 'CAD', 'AUD', 'NZD', 'EUR', 'GBP', 'JPY', 'CHF', 'SEK', 'NOK', 'DKK'}
+PERIOD_PATTERNS = {
+    'month': r'(?:/\s*(?:mo(?:nth)?|month)\b|\bper\s+month\b)',
+    'year': r'(?:/\s*(?:yr|year)\b|\bper\s+year\b)',
+    'site': r'(?:/\s*site\b|\bper\s+site\b)',
+    'server': r'(?:/\s*server\b|\bper\s+server\b)',
+}
+
+def price_has_matching_terms(segment, match, currency, billing_period):
+    """Require the price expression itself to support its displayed terms.
+
+    A configured label is not evidence: the source must show the requested unit,
+    and a nearby ISO currency label must not contradict the displayed currency.
+    Currency symbols without an ISO label remain usable for existing US-source
+    rules, but an explicit CAD/AUD/etc. can never be relabelled as USD.
+    """
+    if billing_period in PERIOD_PATTERNS and not re.search(PERIOD_PATTERNS[billing_period], match.group(0), re.I):
+        return False
+    left = max(0, match.start() - 16)
+    right = min(len(segment), match.end() + 16)
+    nearby_codes = set(re.findall(r'\b[A-Z]{3}\b', segment[left:right])) & CURRENCY_CODES
+    return not nearby_codes or nearby_codes == {currency}
+
+def offer_from_rule(provider, rule, raw, sibling_anchors=()):
     if rule.get('mode') == 'availability_only':
         return None
     if any(not re.search(pattern, raw) for pattern in rule.get('raw_checks', [])):
@@ -139,6 +162,13 @@ def offer_from_rule(provider, rule, raw):
             end = segment.find(rule['end_anchor'], len(rule['anchor']))
             if end < 0: return None
             segment = segment[:end]
+        else:
+            # A price may not cross into another configured plan card.  This is
+            # a safe default for rules that did not supply an explicit end anchor.
+            ends = [segment.find(anchor, len(rule['anchor'])) for anchor in sibling_anchors if anchor]
+            ends = [end for end in ends if end >= 0]
+            if ends:
+                segment = segment[:min(ends)]
     if any(not re.search(pattern, segment) for pattern in rule.get('checks', [])):
         return None
     offer = {
@@ -156,10 +186,13 @@ def offer_from_rule(provider, rule, raw):
         if rule.get(key) is not None:
             offer[key] = rule[key]
     for field, pattern in rule.get('field_patterns', {}).items():
-        value = extract_value(segment, pattern)
-        if value is None:
+        match = re.search(pattern, segment)
+        if not match:
             continue
-        offer['field_evidence'][field] = visible_text(re.search(pattern, segment).group(0))
+        value = match.groupdict().get('value') or match.group(1)
+        if field == 'price' and not price_has_matching_terms(segment, match, offer.get('currency'), offer.get('billing_period')):
+            return None
+        offer['field_evidence'][field] = visible_text(match.group(0))
         if field in NUMERIC_FIELDS:
             offer[field] = float(value.replace(',', ''))
         elif field in INTEGER_FIELDS:
@@ -223,7 +256,8 @@ def run(config_path=None):
         matched, errors, unmatched_rules = [], [], []
         for rule in rules:
             try:
-                offer = offer_from_rule(provider, rule, raw)
+                sibling_anchors = [candidate.get('anchor') for candidate in rules if candidate is not rule and candidate.get('mode') == rule.get('mode')]
+                offer = offer_from_rule(provider, rule, raw, sibling_anchors)
             except (ValueError, IndexError) as exc:
                 errors.append(str(exc))
                 offer = None

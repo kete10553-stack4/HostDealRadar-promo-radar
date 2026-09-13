@@ -817,13 +817,13 @@
       "source_url": "https://wpmudev.com/pricing/",
       "offer_url": "https://wpmudev.com/pricing/",
       "fetched_at": "2026-09-13T00:38:11Z",
-      "evidence": "WPMU DEV hosting block: the plan name is followed by the entry monthly rate per site.",
+      "evidence": "WPMU DEV hosting block: the plan name is followed by the rate per site.",
       "field_evidence": {
         "price": "$4 / site"
       },
       "currency": "USD",
-      "billing_period": "month",
-      "condition": "Entry monthly rate per site as printed on the official pricing page.",
+      "billing_period": "site",
+      "condition": "Rate per site as printed on the official pricing page; no billing interval is claimed.",
       "kind": "regular_price",
       "price": 4.0,
       "source_sha256": "0ea7bc51a9901b7925119347ac58114c2f7e1ee589dcb75dc00c4c987827ec5b"
@@ -836,13 +836,13 @@
       "source_url": "https://wpmudev.com/pricing/",
       "offer_url": "https://wpmudev.com/pricing/",
       "fetched_at": "2026-09-13T00:38:11Z",
-      "evidence": "WPMU DEV hosting block: the plan name is followed by the entry monthly rate per server.",
+      "evidence": "WPMU DEV hosting block: the plan name is followed by the rate per server.",
       "field_evidence": {
         "price": "$15 / server"
       },
       "currency": "USD",
-      "billing_period": "month",
-      "condition": "Entry monthly rate per server as printed on the official pricing page.",
+      "billing_period": "server",
+      "condition": "Rate per server as printed on the official pricing page; no billing interval is claimed.",
       "kind": "regular_price",
       "price": 15.0,
       "source_sha256": "0ea7bc51a9901b7925119347ac58114c2f7e1ee589dcb75dc00c4c987827ec5b"
@@ -7077,16 +7077,16 @@
   },
   "page_lastmod": {
     "/": {
-      "hash": "87095d2f9c41294ac21b894610ed79ea5a3d56b31d1bb47a068b46e59b29941b",
-      "lastmod": "2026-09-13T00:39:24Z"
+      "hash": "3b989a6ae3d1025a2e37f47199421aab35ed1bfed335943b633646db871d1333",
+      "lastmod": "2026-09-13T01:33:48Z"
     },
     "/providers/": {
-      "hash": "29cd4b065457089df39707e43da6f4bd11a43c1da4d4109ae50fe77d8a12f449",
-      "lastmod": "2026-09-13T00:39:24Z"
+      "hash": "aee524e1d9d25b1461eec54c8117b19b0ed47a009fdacbf120986f570a6b44a0",
+      "lastmod": "2026-09-13T01:33:48Z"
     },
     "/compare/": {
-      "hash": "01150d8019232ca3052867278be782e6f27e54dd65a666bc71d12a624190a3d6",
-      "lastmod": "2026-09-13T00:39:24Z"
+      "hash": "e4110f2764e17dd7c7e396928a2e1515cdfb10a51b27ef7961a8f82db4ea5b33",
+      "lastmod": "2026-09-13T01:33:48Z"
     },
     "/methodology/": {
       "hash": "f0cb6487d51ee16539c416f49c52171cfb96b08fa215466c7f1777b08c475b50",
@@ -7145,8 +7145,8 @@
       "lastmod": "2026-09-12T09:59:17Z"
     },
     "/providers/wpmu-dev/": {
-      "hash": "90e4e3783b3b4a07355cb36e0de6e5b26970a19520a5af201ca63da856ac6ee5",
-      "lastmod": "2026-09-12T09:59:17Z"
+      "hash": "0f0a165e0bd07198d35732e79b79a301400d096ee30482f11dc9b36723213f5f",
+      "lastmod": "2026-09-13T01:33:48Z"
     },
     "/providers/appwrite/": {
       "hash": "1be91316c226e0a8f80223b320baca338a9b9d6d5e5fa8fcfc88e4158e0cae7a",
@@ -7517,8 +7517,8 @@
       "lastmod": "2026-09-12T02:51:02Z"
     },
     "/providers/wix/": {
-      "hash": "49667c44ec8b84f94c9866f4073d4f179cbd2d3956f73399a2be7cde3003448b",
-      "lastmod": "2026-09-12T02:51:02Z"
+      "hash": "7c32210d9f848b740f6a8d6b5e540981ac315180f1b006c0e2faab7f9d250493",
+      "lastmod": "2026-09-13T01:33:48Z"
     },
     "/providers/cloudflare-registrar/": {
       "hash": "b831ab85d5abd03dc061bf53778540e9046ae66a7fedcd8114216322c635a2dc",
@@ -7721,12 +7721,12 @@
       "lastmod": "2026-09-12T09:59:17Z"
     },
     "/deals/wpmu-dev-hosting-dedicated/": {
-      "hash": "67e67f9dfbd2e47d70b3f0726d6b13107892cf93605633abd439eae30412e9d7",
-      "lastmod": "2026-09-12T09:59:17Z"
+      "hash": "928f1c79f119531576cb1b9b55944d89e6ab520c53767aac45b57e30ab97b4d0",
+      "lastmod": "2026-09-13T01:33:48Z"
     },
     "/deals/wpmu-dev-hosting-unlimited-per-server/": {
-      "hash": "9420e0558a65a220a953335200dc79c6ae4fa72088cde7581e5a134e9f62d829",
-      "lastmod": "2026-09-12T09:59:17Z"
+      "hash": "2e610fb8996b4e5efd0d4c78e1df29432da9c3c03538480f8eff689d12ebaad7",
+      "lastmod": "2026-09-13T01:33:48Z"
     },
     "/deals/wpmu-dev-pro-basic/": {
       "hash": "ba4c9ec4ba0c9dee2acac063c63b3ef39c01fc9e47c72cca639e922bfd673bfa",

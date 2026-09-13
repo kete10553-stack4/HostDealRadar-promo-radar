@@ -4,6 +4,7 @@ import tempfile
 import unittest
 from pathlib import Path
 from unittest.mock import patch
+import build
 import scraper
 
 class SourceSafety(unittest.TestCase):
@@ -18,11 +19,40 @@ class SourceSafety(unittest.TestCase):
         rule=dict(self.rule, end_anchor='Pro plan')
         self.assertIsNone(scraper.offer_from_rule(self.provider,rule,'Basic plan Contact us Pro plan USD 19 / month'))
 
+    def test_sibling_plan_boundary_does_not_take_next_plan_price(self):
+        text='Basic plan Contact sales Pro plan USD 19 / month'
+        self.assertIsNone(scraper.offer_from_rule(self.provider,self.rule,text,['Pro plan']))
+
+    def test_run_passes_sibling_plan_boundaries(self):
+        pro_rule=dict(self.rule, title='Pro', anchor='Pro plan')
+        cfg={'providers':[self.provider], 'extractors':[self.rule, pro_rule], 'settings':{}}
+        with tempfile.TemporaryDirectory() as folder:
+            data=Path(folder)/'offers.json'
+            data.write_text(json.dumps({'offers':[]}),encoding='utf-8')
+            with patch.object(scraper,'DATA',data),patch.object(scraper,'load_config',return_value=cfg),patch.object(scraper,'fetch_source',return_value=(200,'Basic plan Contact sales Pro plan USD 19 / month')):
+                result=scraper.run()
+        self.assertEqual([offer['slug'] for offer in result['offers']], ['sample-pro'])
+
     def test_currency_guard_and_annual_period(self):
         rule=dict(self.rule,raw_checks=['USD'],billing_period='year',field_patterns={'price':r'USD (?P<value>[0-9.]+) / year'})
         value=scraper.offer_from_rule(self.provider,rule,'Basic plan USD 15 / year')
         self.assertEqual((value['price'],value['billing_period'],value['kind']),(15,'year','regular_price'))
         self.assertIsNone(scraper.offer_from_rule(self.provider,rule,'Basic plan EUR 15 / year'))
+
+    def test_explicit_currency_and_period_cannot_be_relabelled(self):
+        currency_rule=dict(self.rule,field_patterns={'price':r'\$\s?(?P<value>[0-9.]+)\s*/ month'})
+        period_rule=dict(self.rule,field_patterns={'price':r'\$\s?(?P<value>[0-9.]+)\s*/\s*\w+'})
+        self.assertIsNone(scraper.offer_from_rule(self.provider,currency_rule,'Basic plan CAD $4 / month'))
+        self.assertIsNone(scraper.offer_from_rule(self.provider,period_rule,'Basic plan $4 / site'))
+
+    def test_failed_state_only_source_never_claims_checked(self):
+        heading, detail, tile = build.state_only_display({'status':'unavailable','reason':'Official source returned HTTP 429.'}, 'price_rendered_by_js')
+        self.assertEqual(heading, 'Latest source check did not complete.')
+        self.assertIn('HTTP 429', detail)
+        self.assertEqual(tile, 'Source check did not complete')
+        heading, _, tile = build.state_only_display({'status':'available_no_price_rule'}, 'no_public_price')
+        self.assertEqual(heading, build.STATE_ONLY_LEAD)
+        self.assertEqual(tile, 'Official page checked · no deterministic price rule')
 
     def test_blank_lines_and_wildcards_do_not_bypass_robots(self):
         robots='User-agent: *\n\nDisallow: /promo/*\nAllow: /promo/public$\n'
