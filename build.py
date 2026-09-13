@@ -16,6 +16,24 @@ BLOCKER_TEXT={'price_rendered_by_js':'The published prices on this page are rend
               'no_public_price':'This official page does not publish a price publicly.',
               'login_or_region_gated':'This official page requires a login or is limited to certain regions.'}
 STATE_ONLY_LEAD='Official page checked. No deterministic price rule is available, so no price is published.'
+CATEGORY_DEFINITIONS={
+    'Hosting':'General hosting where the current record does not carry a narrower service label.',
+    'Web hosting':'Hosting intended for a website; this is a service label, not a performance tier.',
+    'VPS hosting':'Virtual private server hosting.',
+    'Dedicated hosting':'Dedicated server hosting.',
+    'Reseller hosting':'Hosting sold for resale to clients.',
+    'Managed WordPress hosting':'Hosting whose captured record identifies managed WordPress service.',
+    'WordPress plugins':'A WordPress plugin or plugin membership, rather than a hosting plan.',
+    'Application hosting':'A platform for running or deploying an application.',
+    'Web hosting and deployment':'A record that combines website hosting and deployment.',
+    'Managed cloud hosting':'A managed cloud-hosting service.',
+    'Frontend cloud platform':'A platform focused on hosting or deploying frontend applications.',
+    'Colocation':'Space, power, or related services for customer-owned hardware.',
+    'Email hosting':'A hosted email service.',
+    'Domain registration':'A record that identifies a domain registration service or price.',
+    'Domains':'The generic domains label used by existing capture rules.',
+    'Website builder':'A service for building and publishing a website.'
+}
 def e(value): return html.escape(str(value or ''), quote=True)
 def money(value, currency='USD'): return f'${float(value):,.2f}' if currency=='USD' else f'{currency} {float(value):,.2f}'
 def state_only_display(status, blocker):
@@ -119,6 +137,38 @@ def rate_pair(offer, rule=None):
             f'<h3>{e(initial)}</h3>{rate_source(offer)}</div>'
             f'<div><strong>Renewal rate</strong><br><h3>{e(renewal)}</h3>{rate_source(offer)}</div></div>')
 
+def category_names(records):
+    """Keep the configured record order while exposing its existing labels."""
+    names=[]
+    for record in records:
+        category=record.get('category') or 'Unknown'
+        if category not in names:
+            names.append(category)
+    return names
+
+def provider_summary(records, earlier=None):
+    record=next(iter(records), None)
+    prefix='Captured plan example'
+    if record is None:
+        record=next(iter(earlier or []), None)
+        prefix='Earlier plan example, not current'
+    if record is None:
+        return 'Captured plan details: Unknown.'
+    return (prefix+': '+str(record.get('title') or 'Unknown')+
+            '. Service label: '+str(record.get('category') or 'Unknown')+
+            '. Captured '+str(record.get('fetched_at') or 'Unknown')+'.')
+
+def category_guide(records):
+    items=[]
+    for category in category_names(records):
+        definition=CATEGORY_DEFINITIONS.get(category,
+            'Definition: Unknown.')
+        items.append(f'<li><strong>{e(category)}</strong>: {e(definition)}</li>')
+    return ("<h2 id=\"service-labels\">Current service labels</h2>"
+            "<p>Each captured record keeps one existing HostDealRadar service label. These labels describe the captured service type; they are not provider claims, performance scores, or recommendations.</p>"
+            "<ul>"+''.join(items)+"</ul>"
+            "<p><strong>Limits:</strong> some existing labels overlap, including Hosting and Web hosting and Domains and Domain registration. Labels vary in specificity and do not establish matching resources or performance. They remain unchanged. Homepage examples use a shared label to narrow the selection, which does not make the plans equivalent. Definitions follow the first appearance of each label in the stored records, not a ranking.</p>")
+
 def featured_renewals(current, rules):
     # Compare differences only inside one currency/unit/service group. Prefer
     # explicit first-month offers, whose duration is unambiguous to a visitor.
@@ -199,6 +249,12 @@ def build(config_path=None, output=None):
         if historical: label={'retained':'Earlier record','stale':'Needs recheck','expired':'Expired'}.get(state,state.title())
         cls='card history' if historical else 'card'
         return f'''<article class="{cls}"><div class="card-top"><span class="provider-name">{e(p['name'])}</span><span class="tag">{label}</span></div><h3><a href="/deals/{e(o['slug'])}/">{e(o['title'])}</a></h3>{rate_pair(o, rule)}<p class="summary">{e(o.get('category','Hosting'))}</p><p class="small">{e(public_terms(o.get('condition') or ('Prepaid term: '+str(o['commitment_months'])+' months.' if o.get('commitment_months') else 'Initial term: Unknown.')))}</p><dl>{''.join(f'<div><dt>{e(x.split(" ")[0])}</dt><dd>{e(x)}</dd></div>' for x in terms) or '<div><dt>Commitment</dt><dd>Unknown</dd></div>'}</dl><a class="button" href="/deals/{e(o['slug'])}/">View terms</a><p class="capture">{e(message)}</p></article>'''
+    current_by_provider=defaultdict(list)
+    for offer in current:
+        current_by_provider[offer['provider']].append(offer)
+    history_by_provider=defaultdict(list)
+    for offer in history:
+        history_by_provider[offer['provider']].append(offer)
     def tile(p):
         count=sum(o['provider']==p['id'] for o in current)
         status = statuses.get(p['id'], {})
@@ -210,15 +266,18 @@ def build(config_path=None, output=None):
             label='Latest source check produced no published record →'
         else:
             label='Latest source check did not complete →'
-        return f'<a class="provider-tile" href="/providers/{e(p["id"])}/"><strong>{e(p["name"])}</strong><p>{e(cfg["notes"].get(p["id"],"Official source"))}</p><span>{e(label)}</span></a>'
+        return f'<a class="provider-tile" href="/providers/{e(p["id"])}/"><strong>{e(p["name"])}</strong><p>{e(provider_summary(current_by_provider[p["id"]], history_by_provider[p["id"]]))}</p><span>{e(label)}</span></a>'
     provider_tiles=''.join(tile(p) for p in providers)
     featured=featured_renewals(current, rules)
     featured_slugs={o['slug'] for o in featured}
     shown=(featured+[o for o in current if o['slug'] not in featured_slugs])[:9]
-    home=template('index.html',month=datetime.now().strftime('%B %Y'),deal_count=len(current),provider_count=len(providers),updated=e('Last source snapshot: '+date_text(payload.get('generated_at','Unknown'))),offers='<div class="cards">'+''.join(card(o) for o in shown)+'</div>' if shown else '<div class="empty"><h3>No current offers are published</h3><p>We only show terms that were captured from an official source in the latest check. Check back after the next source run.</p></div>',providers=provider_tiles)
+    selection_note=(f'The first {len(featured)} cards are renewal-change examples selected from one currency, billing unit, and service label, with larger recorded changes first. '
+                    if featured else 'No eligible renewal-change examples are available in this snapshot. ')
+    selection_note+='Other cards follow stored record order. This is not a recommendation or a ranking of price, quality, or value.'
+    home=template('index.html',month=datetime.now().strftime('%B %Y'),deal_count=len(current),provider_count=len(providers),updated=e('Last source snapshot: '+date_text(payload.get('generated_at','Unknown'))),selection_note=e(selection_note),offers='<div class="cards">'+''.join(card(o) for o in shown)+'</div>' if shown else '<div class="empty"><h3>No current offers are published</h3><p>We only show terms that were captured from an official source in the latest check. Check back after the next source run.</p></div>',providers=provider_tiles)
     home_schema={'@context':'https://schema.org','@type':'ItemList','name':'HostDealRadar official hosting offers','itemListElement':[{'@type':'ListItem','position':i+1,'item':schema_offer(o,domain+'/deals/'+o['slug']+'/')} for i,o in enumerate(current)]}
     write(Path('index.html'),page('HostDealRadar | Official hosting offers', 'Official hosting offers with source-check status and provider links.',domain+'/',home,home_schema))
-    provider_listing='<section class="wrap section"><div class="eyebrow">OFFICIAL SOURCES</div><h1>Providers we check</h1><p class="lead">Providers have public source pages in our list. Each provider page shows whether the latest source check confirmed listings, produced no published record, or did not complete. Earlier records stay clearly marked.</p><div class="provider-grid">'+provider_tiles+'</div></section>'
+    provider_listing='<section class="wrap section"><div class="eyebrow">OFFICIAL SOURCES</div><h1>Providers we check</h1><p class="lead">Providers have public source pages in our list. Each provider page shows whether the latest source check confirmed listings, produced no published record, or did not complete. The grid follows the configured source-list order; it is not a recommendation, quality ranking, or price ranking. Each summary names the first current record, or an explicitly marked earlier record when none is current. Open a provider for the matching official source. <a href="/methodology/#service-labels">Read service-label definitions and limits</a>. Earlier records stay clearly marked.</p><div class="provider-grid">'+provider_tiles+'</div></section>'
     write(Path('providers/index.html'),page('Providers | HostDealRadar','Hosting providers and their latest source-check status.',domain+'/providers/',provider_listing,{'@context':'https://schema.org','@type':'CollectionPage','name':'Providers'}))
     for p in providers:
         mine=[o for o in offers if o['provider']==p['id']]
@@ -233,7 +292,8 @@ def build(config_path=None, output=None):
         history_html=''
         if ph:
             history_html='<section class="history-block"><h2>Earlier records kept for reference</h2><p class="muted">These records were captured on the dates shown and were not reconfirmed in the latest source check. They are not current offers and carry no current price data.</p><div class="cards">'+''.join(card(o,historical=True) for o in ph)+'</div></section>'
-        content=template('provider.html',provider=e(p['name']),note=e(cfg['notes'].get(p['id'],'')),source=e(p['source_url']),source_status=e(status_text),offers=current_html+history_html)
+        note=provider_summary(po, ph)+' The summary uses the first current record, or the first earlier record if none is current. Cards in each section follow stored record order; this is not a recommendation or a ranking of price, quality, or value.'
+        content=template('provider.html',provider=e(p['name']),note=e(note),source=e(p['source_url']),source_status=e(status_text),offers=current_html+history_html)
         write(Path('providers')/p['id']/'index.html',page(f'{p["name"]} offers | HostDealRadar',f'Official {p["name"]} hosting terms captured by HostDealRadar.',domain+'/providers/'+p['id']+'/',content,{'@context':'https://schema.org','@type':'CollectionPage','name':p['name']+' offers'}))
     for o in offers:
         state, message=states[o['slug']]
@@ -259,11 +319,11 @@ def build(config_path=None, output=None):
     history_rows=''.join(row(o) for o in history)
     history_html=''
     if history:
-        history_html='<div class="table-wrap history-block"><h2>Earlier records, not current offers</h2><p class="muted">Captured earlier and not reconfirmed in the latest source check. Shown for reference with their own currency, billing period and capture time.</p><table><thead><tr><th>Provider / plan</th><th>Advertised price</th><th>Commitment</th><th>Renewal</th><th>State</th><th>Source</th></tr></thead><tbody>'+history_rows+'</tbody></table></div>'
+        history_html='<div class="table-wrap history-block"><h2>Earlier records, not current offers</h2><p class="muted">Captured earlier and not reconfirmed in the latest source check. Shown in captured record order for reference with their own currency, billing period and capture time. This is not a ranking or recommendation.</p><table><thead><tr><th>Provider / plan</th><th>Advertised price</th><th>Commitment</th><th>Renewal</th><th>State</th><th>Source</th></tr></thead><tbody>'+history_rows+'</tbody></table></div>'
     compare=template('compare.html',rows=rows,history=history_html,empty='' if current else '<div class="empty"><h3>No current offers available</h3><p>The latest source check did not confirm any publishable terms.</p></div>')
     write(Path('compare/index.html'),page('Compare terms | HostDealRadar','Compare hosting terms captured from official sources.',domain+'/compare/',compare,{'@context':'https://schema.org','@type':'WebPage','name':'Compare hosting terms'}))
     prose=lambda heading,body: f'<section class="wrap section prose"><div class="eyebrow">HOSTDEALRADAR</div><h1>{heading}</h1>{body}</section>'
-    methodology='<p class="lead">Every listed term comes from an official public provider page. We do not estimate missing prices or invent promotions.</p><h2>What is included</h2><ul><li>We retrieve public pages only when robots.txt allows it.</li><li>We record the source URL and capture time with every record.</li><li>A term is listed as current only when the latest source check reconfirmed that exact record.</li></ul><h2>What happens when a source cannot be checked</h2><ul><li>If a source is blocked, challenged, or unclear, we publish no new offer for it.</li><li>Records captured earlier are kept as clearly labelled earlier records with their original capture time.</li><li>Earlier records are not shown as current offers and are not published as current price data.</li><li>Expired promotions are labelled expired and are never shown as a current offer.</li></ul><h2>What to verify before purchase</h2><p>Confirm checkout total, tax, eligibility, billing term, and renewal amount with the provider. A captured offer is not a checkout test or a performance review.</p>'
+    methodology='<p class="lead">Every listed term comes from an official public provider page. We do not estimate missing prices or invent promotions.</p><h2>What is included</h2><ul><li>We retrieve public pages only when robots.txt allows it.</li><li>We record the source URL and capture time with every record.</li><li>A term is listed as current only when the latest source check reconfirmed that exact record.</li></ul><h2 id="display-order">How pages are ordered</h2><p>Provider grids follow the configured source-list order. Offer cards and comparison rows follow the captured record order in the latest dataset. Homepage examples require current records with an established renewal rate above the initial rate. We group them by currency, billing unit, and service label. If any explicitly identify a first-month rate, only those records are eligible for the example group; otherwise all eligible records are considered. We choose the group with the most eligible records; ties use alphabetical currency, unit, and label order. Up to three records from that group come first, ordered by the larger numeric change within each record; equal changes use the record identifier. The remaining positions, up to nine cards in total, follow stored record order, excluding those examples. The example count is recalculated for each published snapshot. Initial terms and plan resources can differ, so the examples do not establish equivalent plans or an amount a buyer would save. These display orders are not recommendations, quality rankings, price rankings, or value rankings.</p>'+category_guide(offers)+'<h2>What happens when a source cannot be checked</h2><ul><li>If a source is blocked, challenged, or unclear, we publish no new offer for it.</li><li>Records captured earlier are kept as clearly labelled earlier records with their original capture time.</li><li>Earlier records are not shown as current offers and are not published as current price data.</li><li>Expired promotions are labelled expired and are never shown as a current offer.</li></ul><h2>What to verify before purchase</h2><p>Confirm checkout total, tax, eligibility, billing term, and renewal amount with the provider. A captured offer is not a checkout test or a performance review.</p>'
     write(Path('methodology/index.html'),page('How we check | HostDealRadar','How HostDealRadar checks official source pages.',domain+'/methodology/',prose('How we check offers',methodology),{'@context':'https://schema.org','@type':'WebPage','name':'Methodology'}))
     write(Path('disclosure/index.html'),page('Affiliate disclosure | HostDealRadar','Affiliate disclosure for HostDealRadar.',domain+'/disclosure/',prose('Affiliate disclosure','<p class="lead">HostDealRadar currently links to official provider pages and does not use affiliate links.</p><p>If we later use an approved affiliate link, the link and relevant page will say so clearly. We will not use cookie injection, self-referrals, brand-keyword ads, or links that break an affiliate program’s terms.</p>'),{'@context':'https://schema.org','@type':'WebPage','name':'Affiliate disclosure'}))
     write(Path('privacy/index.html'),page('Privacy | HostDealRadar','Privacy information for HostDealRadar.',domain+'/privacy/',prose('Privacy','<p class="lead">This static site does not require accounts or collect purchase details.</p><p>Provider links open their own sites, where their privacy policies apply. We do not use affiliate-cookie injection or sell visitor information.</p>'),{'@context':'https://schema.org','@type':'WebPage','name':'Privacy'}))
