@@ -1,4 +1,5 @@
-import argparse, hashlib, html, json, re, shutil
+import argparse, hashlib, html, json, re, shutil, math
+from collections import defaultdict
 from datetime import datetime, timezone
 from pathlib import Path
 from string import Template
@@ -40,11 +41,100 @@ def price(offer):
         return money(offer['price'], offer.get('currency','USD'))
     if offer.get('price_text'):
         return offer['price_text']
-    if offer.get('discount_percent') is not None:
-        return f"{offer['discount_percent']}% off"
-    return 'Price not captured'
+    return 'Unknown'
 def period_text(offer):
     return offer.get('billing_period') or 'month'
+
+def renewal_supported(offer, rule=None):
+    """Display an existing renewal value only when its captured context supports it.
+
+    A list/strikethrough price or an alternative billing option is not renewal.
+    This is a presentation gate; it never changes the source record.
+    """
+    rule = rule or {}
+    value = offer.get('renewal_price')
+    if not isinstance(value, (int, float)) or isinstance(value, bool) or not math.isfinite(value):
+        return False
+    if not all(offer.get(k) for k in ('currency', 'billing_period', 'source_url', 'fetched_at')):
+        return False
+    for key, base in (('renewal_currency', 'currency'), ('renewal_billing_period', 'billing_period')):
+        if offer.get(key) and offer[key] != offer[base]:
+            return False
+    evidence = (offer.get('field_evidence') or {}).get('renewal_price', '')
+    if not evidence:
+        return False
+    condition = offer.get('condition') or ''
+    if re.search(r'billed annually or|month.to.month|comparison figure', evidence + ' ' + condition, re.I):
+        return False
+    currencies = set(re.findall(r'\b(?:USD|CAD|AUD|GBP|EUR)\b', evidence))
+    if '£' in evidence: currencies.add('GBP')
+    if '€' in evidence: currencies.add('EUR')
+    if currencies and currencies != {offer['currency']}:
+        return False
+    units = set(re.findall(r'/(month|mo|year|yr)\b', evidence, re.I))
+    units = {'month' if unit.lower() in ('mo', 'month') else 'year' for unit in units}
+    if units and units != {offer['billing_period']}:
+        return False
+    if re.search(r'\brenew|\bthen\b', evidence, re.I):
+        return True
+    if any(re.search(r'\brenew', check, re.I) for check in rule.get('checks', [])):
+        return True
+    return bool(re.search(r'\bregistration\b', condition, re.I)
+                and re.search(r'second amount.+renewal price', condition, re.I))
+
+def initial_label(offer, rule=None):
+    context = (offer.get('condition') or '') + ' ' + (rule or {}).get('anchor', '')
+    if re.search(r'first[ -]month', context, re.I):
+        return 'First month'
+    if re.search(r'first[ -]year', context, re.I):
+        return 'First year rate'
+    if re.search(r'\bregistration\b', context, re.I):
+        return 'Registration rate'
+    return 'Introductory rate' if offer.get('kind') == 'promotion' else 'Advertised rate'
+
+def displayed_rate(offer, field):
+    value = offer.get(field)
+    if value is None:
+        return 'Unknown'
+    currency = offer.get('currency') or 'Unknown currency'
+    period = offer.get('billing_period') or 'Unknown period'
+    return f'{currency} {float(value):,.2f}/{period}'
+
+def public_terms(text):
+    # Source refreshes can restore old promotional prose. Suppress claims in
+    # presentation without rewriting captured data or the extraction rules.
+    text = re.sub(r';[^;]*(?:discount[^;]*%|sav(?:e|ing)|reduce|lower)[^;]*', '', text, flags=re.I)
+    if re.search(r'\bsav(?:e|es|ed|ing|ings)\b', text, re.I):
+        return 'See the linked official page for the plan terms.'
+    return text
+
+def rate_source(offer):
+    return (f'<small class="capture"><a href="{e(offer.get("source_url"))}" rel="noopener noreferrer">Official source</a>'
+            f' · Captured {e(offer.get("fetched_at") or "Unknown")}</small>')
+
+def rate_pair(offer, rule=None):
+    renewal = displayed_rate(offer, 'renewal_price') if renewal_supported(offer, rule) else 'Unknown'
+    initial = displayed_rate(offer, 'price') if offer.get('price') is not None else price(offer)
+    return (f'<div class="source-bar"><div><strong>{e(initial_label(offer, rule))}</strong><br>'
+            f'<h3>{e(initial)}</h3>{rate_source(offer)}</div>'
+            f'<div><strong>Renewal rate</strong><br><h3>{e(renewal)}</h3>{rate_source(offer)}</div></div>')
+
+def featured_renewals(current, rules):
+    # Compare differences only inside one currency/unit/service group. Prefer
+    # explicit first-month offers, whose duration is unambiguous to a visitor.
+    groups = defaultdict(list)
+    for offer in current:
+        rule = rules.get((offer['provider'], offer['title']), {})
+        if (offer.get('price') is not None and renewal_supported(offer, rule)
+                and offer['renewal_price'] > offer['price']):
+            groups[(offer['currency'], offer['billing_period'], offer.get('category', 'Unknown'))].append(offer)
+    first_month = {key: [o for o in group if initial_label(o, rules.get((o['provider'], o['title']))) == 'First month']
+                   for key, group in groups.items()}
+    groups = {key: group for key, group in first_month.items() if group} or groups
+    if not groups:
+        return []
+    key = min(groups, key=lambda key: (-len(groups[key]), key))
+    return sorted(groups[key], key=lambda o: (-(o['renewal_price'] - o['price']), o['slug']))[:3]
 def schema_offer(offer, canonical):
     item={'@type':'Offer','name':offer['title'],'url':canonical}
     if offer.get('price') is not None: item.update({'price':str(offer['price']),'priceCurrency':offer.get('currency','USD')})
@@ -80,6 +170,7 @@ def build(config_path=None, output=None):
     OUT=Path(output) if output else ROOT/'site'
     cfg=load_config(config_path); domain=cfg['site']['domain'].rstrip('/'); payload=json.loads(DATA.read_text(encoding='utf-8'))
     byid={p['id']:p for p in cfg['providers']}; statuses=payload.get('source_status',{})
+    rules={(r['provider'], r.get('title')): r for r in cfg['extractors']}
     # A provider whose official page was opened but yields no deterministic rule
     # is published as a state-only source: it states the reason and shows no figure.
     state_only={r['provider'] for r in cfg['extractors'] if r.get('mode')=='availability_only'}
@@ -102,14 +193,12 @@ def build(config_path=None, output=None):
         return template('base.html',title=e(title),description=e(description),canonical=e(canonical),brand=e(cfg['site']['brand']),tagline=e(cfg['settings']['tagline']),repo=e(cfg['settings']['repo_url']),social_image='',footer_status=e('Data source checks are automated.'),content=content,schema=json.dumps(schema,separators=(',',':')))
     def card(o, historical=False):
         p=byid[o['provider']]; state, message=states[o['slug']]; terms=[]
+        rule=rules.get((o['provider'], o['title']), {})
         if o.get('commitment_months'): terms.append(f"{o['commitment_months']}-month term")
-        if o.get('renewal_price') is not None: terms.append(f"Renews at {money(o['renewal_price'],o.get('currency','USD'))}/{period_text(o)}")
-        if o.get('discount_percent') is not None: terms.append(f"{o['discount_percent']}% off shown")
-        period = f' <span class="period">/ {e(period_text(o))}</span>' if o.get('price') is not None else ''
         label='Official price' if o.get('kind')=='regular_price' else 'Promotion'
         if historical: label={'retained':'Earlier record','stale':'Needs recheck','expired':'Expired'}.get(state,state.title())
         cls='card history' if historical else 'card'
-        return f'''<article class="{cls}"><div class="card-top"><span class="provider-name">{e(p['name'])}</span><span class="tag">{label}</span></div><h3><a href="/deals/{e(o['slug'])}/">{e(o['title'])}</a></h3><p class="price">{e(price(o))}{period}</p><p class="summary">{e(o.get('category','Hosting'))}</p><dl>{''.join(f'<div><dt>{e(x.split(" ")[0])}</dt><dd>{e(x)}</dd></div>' for x in terms) or '<div><dt>Terms</dt><dd>See source</dd></div>'}</dl><a class="button" href="/deals/{e(o['slug'])}/">View terms</a><p class="capture">{e(message)}</p></article>'''
+        return f'''<article class="{cls}"><div class="card-top"><span class="provider-name">{e(p['name'])}</span><span class="tag">{label}</span></div><h3><a href="/deals/{e(o['slug'])}/">{e(o['title'])}</a></h3>{rate_pair(o, rule)}<p class="summary">{e(o.get('category','Hosting'))}</p><p class="small">{e(public_terms(o.get('condition') or ('Prepaid term: '+str(o['commitment_months'])+' months.' if o.get('commitment_months') else 'Initial term: Unknown.')))}</p><dl>{''.join(f'<div><dt>{e(x.split(" ")[0])}</dt><dd>{e(x)}</dd></div>' for x in terms) or '<div><dt>Commitment</dt><dd>Unknown</dd></div>'}</dl><a class="button" href="/deals/{e(o['slug'])}/">View terms</a><p class="capture">{e(message)}</p></article>'''
     def tile(p):
         count=sum(o['provider']==p['id'] for o in current)
         status = statuses.get(p['id'], {})
@@ -123,7 +212,9 @@ def build(config_path=None, output=None):
             label='Latest source check did not complete →'
         return f'<a class="provider-tile" href="/providers/{e(p["id"])}/"><strong>{e(p["name"])}</strong><p>{e(cfg["notes"].get(p["id"],"Official source"))}</p><span>{e(label)}</span></a>'
     provider_tiles=''.join(tile(p) for p in providers)
-    shown=current[:9]
+    featured=featured_renewals(current, rules)
+    featured_slugs={o['slug'] for o in featured}
+    shown=(featured+[o for o in current if o['slug'] not in featured_slugs])[:9]
     home=template('index.html',month=datetime.now().strftime('%B %Y'),deal_count=len(current),provider_count=len(providers),updated=e('Last source snapshot: '+date_text(payload.get('generated_at','Unknown'))),offers='<div class="cards">'+''.join(card(o) for o in shown)+'</div>' if shown else '<div class="empty"><h3>No current offers are published</h3><p>We only show terms that were captured from an official source in the latest check. Check back after the next source run.</p></div>',providers=provider_tiles)
     home_schema={'@context':'https://schema.org','@type':'ItemList','name':'HostDealRadar official hosting offers','itemListElement':[{'@type':'ListItem','position':i+1,'item':schema_offer(o,domain+'/deals/'+o['slug']+'/')} for i,o in enumerate(current)]}
     write(Path('index.html'),page('HostDealRadar | Official hosting offers', 'Official hosting offers with source-check status and provider links.',domain+'/',home,home_schema))
@@ -146,13 +237,14 @@ def build(config_path=None, output=None):
         write(Path('providers')/p['id']/'index.html',page(f'{p["name"]} offers | HostDealRadar',f'Official {p["name"]} hosting terms captured by HostDealRadar.',domain+'/providers/'+p['id']+'/',content,{'@context':'https://schema.org','@type':'CollectionPage','name':p['name']+' offers'}))
     for o in offers:
         state, message=states[o['slug']]
+        rule=rules.get((o['provider'], o['title']), {})
         advertised = price(o) + (' / ' + period_text(o) if o.get('price') is not None else '')
-        p=byid[o['provider']]; terms=[('Listing type','Regular price; no discount claimed' if o.get('kind')=='regular_price' else 'Promotion'),('Advertised price',advertised),('Commitment',str(o['commitment_months'])+' months' if o.get('commitment_months') else 'Unknown'),('Renewal price',money(o['renewal_price'],o.get('currency','USD'))+'/'+period_text(o) if o.get('renewal_price') is not None else 'Unknown'),('Discount shown',str(o['discount_percent'])+'%' if o.get('discount_percent') is not None else 'Unknown'),('Coupon code',o.get('coupon_code','Unknown')),('Valid until',o.get('valid_until','Unknown')),('Captured at',o['fetched_at']),('Record state',state)]
+        p=byid[o['provider']]; terms=[('Listing type','Regular price; no discount claimed' if o.get('kind')=='regular_price' else 'Promotion'),('Advertised price',advertised),('Commitment',str(o['commitment_months'])+' months' if o.get('commitment_months') else 'Unknown'),('Renewal price',displayed_rate(o,'renewal_price') if renewal_supported(o,rule) else 'Unknown'),('Coupon code',o.get('coupon_code') or 'Unknown'),('Valid until',o.get('valid_until') or 'Unknown'),('Captured at',o['fetched_at']),('Record state',state)]
         terms_html=''.join(f'<div><dt>{e(k)}</dt><dd>{e(v)}</dd></div>' for k,v in terms)
         rel='rel="noopener noreferrer"' if not p['affiliate_url'] else 'rel="sponsored noopener noreferrer"'
         disclosure='This is an official link; no affiliate relationship is active.' if not p['affiliate_url'] else 'This may be an affiliate link; we may earn a commission at no extra cost to you.'
         status_html=f'<p class="record-state state-{e(state)}"><strong>{e(state.title())}</strong> {e(message)}</p>'
-        content=template('deal.html',provider=e(p['name']),provider_id=e(p['id']),category=e(o.get('category','Hosting')),offer_title=e(o['title']),summary=e(o.get('condition') or 'Terms captured from the official provider page.'),terms=terms_html,source_note=e(o['evidence']),source_url=e(o['source_url']),price=e(price(o)),billing=e('Billed under the provider terms.'),status=status_html,outbound=e(o['offer_url']),rel=rel,disclosure=e(disclosure))
+        content=template('deal.html',provider=e(p['name']),provider_id=e(p['id']),category=e(o.get('category','Hosting')),offer_title=e(o['title']),summary=e(public_terms(o.get('condition') or 'Terms captured from the official provider page.')),rate_pair=rate_pair(o,rule),terms=terms_html,source_note=e(public_terms(o['evidence'])),source_url=e(o['source_url']),price=e(price(o)),billing=e('Billed under the provider terms.'),status=status_html,outbound=e(o['offer_url']),rel=rel,disclosure=e(disclosure))
         canonical=domain+'/deals/'+o['slug']+'/'
         # Only a current record may publish current-price structured data.
         schema={'@context':'https://schema.org','@type':'Product','name':o['title']}
@@ -160,7 +252,9 @@ def build(config_path=None, output=None):
         write(Path('deals')/o['slug']/'index.html',page(f'{o["title"]} | HostDealRadar',f'Official terms for {o["title"]}.',canonical,content,schema))
     def row(o):
         state,message=states[o['slug']]
-        return f'<tr><td><strong>{e(byid[o["provider"]]["name"])}</strong><span>{e(o["title"])}</span></td><td>{e(price(o))}<span>{e("Regular price" if o.get("kind")=="regular_price" else "Promotion")}</span>{("<span>per "+e(period_text(o))+"</span>") if o.get("price") is not None else ""}</td><td>{e(str(o.get("commitment_months","Unknown")))}</td><td>{e(money(o["renewal_price"],o.get("currency","USD"))+"/"+period_text(o) if o.get("renewal_price") is not None else "Unknown")}</td><td>{e(state.title())}<span>{e(o["fetched_at"])}</span></td><td><a href="{e(o["source_url"])}" rel="noopener noreferrer">Official page ↗</a></td></tr>'
+        rule=rules.get((o['provider'], o['title']), {})
+        renewal=displayed_rate(o,'renewal_price') if renewal_supported(o,rule) else 'Unknown'
+        return f'<tr><td><strong>{e(byid[o["provider"]]["name"])}</strong><span>{e(o["title"])}</span></td><td>{e(displayed_rate(o,"price") if o.get("price") is not None else price(o))}<span>{e(initial_label(o,rule))}</span>{rate_source(o)}</td><td>{e(str(o.get("commitment_months") or "Unknown"))}</td><td>{e(renewal)}<br>{rate_source(o)}</td><td>{e(state.title())}<span>{e(o["fetched_at"])}</span></td><td><a href="{e(o["source_url"])}" rel="noopener noreferrer">Official page ↗</a></td></tr>'
     rows=''.join(row(o) for o in current)
     history_rows=''.join(row(o) for o in history)
     history_html=''
