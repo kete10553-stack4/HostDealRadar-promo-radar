@@ -17,6 +17,12 @@ BLOCKER_TEXT={'price_rendered_by_js':'The published prices on this page are rend
 STATE_ONLY_LEAD='Official page checked. No deterministic price rule is available, so no price is published.'
 def e(value): return html.escape(str(value or ''), quote=True)
 def money(value, currency='USD'): return f'${float(value):,.2f}' if currency=='USD' else f'{currency} {float(value):,.2f}'
+def state_only_display(status, blocker):
+    """Return truthful copy for a source with no published price record."""
+    if status.get('status') == 'available_no_price_rule':
+        return STATE_ONLY_LEAD, BLOCKER_TEXT.get(blocker, ''), 'Official page checked · no deterministic price rule'
+    reason = status.get('reason') or 'No source check has run yet.'
+    return 'Latest source check did not complete.', reason, 'Source check did not complete'
 def date_text(value):
     try:
         dt = datetime.fromisoformat(value.replace('Z','+00:00'))
@@ -106,7 +112,8 @@ def build(config_path=None, output=None):
         return f'''<article class="{cls}"><div class="card-top"><span class="provider-name">{e(p['name'])}</span><span class="tag">{label}</span></div><h3><a href="/deals/{e(o['slug'])}/">{e(o['title'])}</a></h3><p class="price">{e(price(o))}{period}</p><p class="summary">{e(o.get('category','Hosting'))}</p><dl>{''.join(f'<div><dt>{e(x.split(" ")[0])}</dt><dd>{e(x)}</dd></div>' for x in terms) or '<div><dt>Terms</dt><dd>See source</dd></div>'}</dl><a class="button" href="/deals/{e(o['slug'])}/">View terms</a><p class="capture">{e(message)}</p></article>'''
     def tile(p):
         count=sum(o['provider']==p['id'] for o in current)
-        label='Official page checked · no deterministic price rule' if p['id'] in state_only else f'{count} current listings →'
+        status = statuses.get(p['id'], {})
+        label=state_only_display(status, blockers.get(p['id']))[2] if p['id'] in state_only else f'{count} current listings →'
         return f'<a class="provider-tile" href="/providers/{e(p["id"])}/"><strong>{e(p["name"])}</strong><p>{e(cfg["notes"].get(p["id"],"Official source"))}</p><span>{e(label)}</span></a>'
     provider_tiles=''.join(tile(p) for p in providers)
     shown=current[:9]
@@ -120,8 +127,8 @@ def build(config_path=None, output=None):
         po=[o for o in mine if states[o['slug']][0]==CURRENT]; ph=[o for o in mine if states[o['slug']][0] in HISTORY]
         status=statuses.get(p['id'],{'status':'not checked','reason':'No source check has run yet.'})
         if p['id'] in state_only:
-            status_text=STATE_ONLY_LEAD
-            current_html='<div class="empty"><h3>'+e(STATE_ONLY_LEAD)+'</h3><p>'+e(BLOCKER_TEXT.get(blockers.get(p['id']),''))+'</p></div>'
+            status_text, detail, _ = state_only_display(status, blockers.get(p['id']))
+            current_html='<div class="empty"><h3>'+e(status_text)+'</h3><p>'+e(detail)+'</p></div>'
         else:
             status_text='Source checked successfully.' if status['status']=='checked' else e(status['reason'])
             current_html='<div class="cards">'+''.join(card(o) for o in po)+'</div>' if po else '<div class="empty"><h3>No current offer is published for this source</h3><p>'+e(status['reason'])+'</p></div>'
