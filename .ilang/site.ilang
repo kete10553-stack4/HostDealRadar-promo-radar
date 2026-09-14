@@ -1,7 +1,7 @@
 ::ILANG
 [TYPE:config][PROJECT:HostDealRadar][LANG:zh]
 
-::STATE{@SITE, brand:HostDealRadar, niche:VPS and hosting deals, domain:https://hostdealradar-promo-radar.pages.dev}
+::STATE{@SITE, brand:HostDealRadar, niche:VPS and hosting deals, domain:https://hostdealradar.com}
 
 ::MODULE{SETTINGS|title:运行与展示规则}
 {"locale":"en-US","currency":"USD","update_cron":"17 */6 * * *","fresh_hours":18,"timeout_seconds":25,"max_response_bytes":6000000,"user_agent":"HostDealRadar/1.0 (+https://github.com/kete10553-stack4/HostDealRadar-promo-radar)","repo_url":"https://github.com/kete10553-stack4/HostDealRadar-promo-radar","tagline":"Hosting offers, with the terms in view."}
