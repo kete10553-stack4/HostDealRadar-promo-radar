@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-14T06:41:10Z",
+  "generated_at": "2026-09-14T12:40:24Z",
   "offers": [
     {
       "slug": "raidboxes-mini",
@@ -8,7 +8,7 @@
       "category": "Web hosting",
       "source_url": "https://raidboxes.io/en/pricing/",
       "offer_url": "https://raidboxes.io/en/pricing/",
-      "fetched_at": "2026-09-14T06:39:13Z",
+      "fetched_at": "2026-09-14T12:38:06Z",
       "evidence": "Raidboxes plan card: the plan name is followed by the standard monthly rate, the discount, and then the discounted monthly rate.",
       "field_evidence": {
         "price": "instead of \u20ac 18.00 20 % discount \u20ac 14.40 per month"
@@ -18,7 +18,7 @@
       "condition": "Discounted monthly rate shown on the official pricing card; the card prints the standard monthly rate of 18.00 next to it and states the discount is 20%.",
       "kind": "promotion",
       "price": 14.4,
-      "source_sha256": "2e8723d282b1d896e06027633b294004d8f37ab9a94c5419f46b4d4cee6ecca3"
+      "source_sha256": "7378da24a1b65045cf0606335eaeddf719cfd422a0365f73f14e2ed143efbd24"
     },
     {
       "slug": "raidboxes-starter",
@@ -27,7 +27,7 @@
       "category": "Web hosting",
       "source_url": "https://raidboxes.io/en/pricing/",
       "offer_url": "https://raidboxes.io/en/pricing/",
-      "fetched_at": "2026-09-14T06:39:13Z",
+      "fetched_at": "2026-09-14T12:38:06Z",
       "evidence": "Raidboxes plan card, read the same way as Mini.",
       "field_evidence": {
         "price": "instead of \u20ac 24.00 20 % discount \u20ac 19.20 per month"
@@ -37,7 +37,7 @@
       "condition": "Discounted monthly rate shown on the official pricing card; the card prints the standard monthly rate of 24.00 next to it and states the discount is 20%.",
       "kind": "promotion",
       "price": 19.2,
-      "source_sha256": "2e8723d282b1d896e06027633b294004d8f37ab9a94c5419f46b4d4cee6ecca3"
+      "source_sha256": "7378da24a1b65045cf0606335eaeddf719cfd422a0365f73f14e2ed143efbd24"
     },
     {
       "slug": "raidboxes-fully-managed",
@@ -46,7 +46,7 @@
       "category": "Web hosting",
       "source_url": "https://raidboxes.io/en/pricing/",
       "offer_url": "https://raidboxes.io/en/pricing/",
-      "fetched_at": "2026-09-14T06:39:13Z",
+      "fetched_at": "2026-09-14T12:38:06Z",
       "evidence": "Raidboxes plan card, read the same way as Mini.",
       "field_evidence": {
         "price": "instead of \u20ac 35.00 20 % discount \u20ac 28.00 per month"
@@ -56,7 +56,7 @@
       "condition": "Discounted monthly rate shown on the official pricing card; the card prints the standard monthly rate of 35.00 next to it and states the discount is 20%.",
       "kind": "promotion",
       "price": 28.0,
-      "source_sha256": "2e8723d282b1d896e06027633b294004d8f37ab9a94c5419f46b4d4cee6ecca3"
+      "source_sha256": "7378da24a1b65045cf0606335eaeddf719cfd422a0365f73f14e2ed143efbd24"
     },
     {
       "slug": "raidboxes-pro",
@@ -65,7 +65,7 @@
       "category": "Web hosting",
       "source_url": "https://raidboxes.io/en/pricing/",
       "offer_url": "https://raidboxes.io/en/pricing/",
-      "fetched_at": "2026-09-14T06:39:13Z",
+      "fetched_at": "2026-09-14T12:38:06Z",
       "evidence": "Raidboxes plan card, read the same way as Mini.",
       "field_evidence": {
         "price": "instead of \u20ac 65.00 20 % discount \u20ac 52.00 per month"
@@ -75,7 +75,7 @@
       "condition": "Discounted monthly rate shown on the official pricing card; the card prints the standard monthly rate of 65.00 next to it and states the discount is 20%.",
       "kind": "promotion",
       "price": 52.0,
-      "source_sha256": "2e8723d282b1d896e06027633b294004d8f37ab9a94c5419f46b4d4cee6ecca3"
+      "source_sha256": "7378da24a1b65045cf0606335eaeddf719cfd422a0365f73f14e2ed143efbd24"
     },
     {
       "slug": "raidboxes-pro-xl",
@@ -84,7 +84,7 @@
       "category": "Web hosting",
       "source_url": "https://raidboxes.io/en/pricing/",
       "offer_url": "https://raidboxes.io/en/pricing/",
-      "fetched_at": "2026-09-14T06:39:13Z",
+      "fetched_at": "2026-09-14T12:38:06Z",
       "evidence": "Raidboxes plan card, read the same way as Mini.",
       "field_evidence": {
         "price": "instead of \u20ac 130.00 20 % discount \u20ac 104.00 per month"
@@ -94,7 +94,7 @@
       "condition": "Discounted monthly rate shown on the official pricing card; the card prints the standard monthly rate of 130.00 next to it and states the discount is 20%.",
       "kind": "promotion",
       "price": 104.0,
-      "source_sha256": "2e8723d282b1d896e06027633b294004d8f37ab9a94c5419f46b4d4cee6ecca3"
+      "source_sha256": "7378da24a1b65045cf0606335eaeddf719cfd422a0365f73f14e2ed143efbd24"
     },
     {
       "slug": "raidboxes-business",
@@ -103,7 +103,7 @@
       "category": "Web hosting",
       "source_url": "https://raidboxes.io/en/pricing/",
       "offer_url": "https://raidboxes.io/en/pricing/",
-      "fetched_at": "2026-09-14T06:39:13Z",
+      "fetched_at": "2026-09-14T12:38:06Z",
       "evidence": "Raidboxes plan card, read the same way as Mini.",
       "field_evidence": {
         "price": "instead of \u20ac 190.00 20 % discount \u20ac 152.00 per month"
@@ -113,7 +113,7 @@
       "condition": "Discounted monthly rate shown on the official pricing card; the card prints the standard monthly rate of 190.00 next to it and states the discount is 20%.",
       "kind": "promotion",
       "price": 152.0,
-      "source_sha256": "2e8723d282b1d896e06027633b294004d8f37ab9a94c5419f46b4d4cee6ecca3"
+      "source_sha256": "7378da24a1b65045cf0606335eaeddf719cfd422a0365f73f14e2ed143efbd24"
     },
     {
       "slug": "webdock-vps-essential",
@@ -122,7 +122,7 @@
       "category": "VPS hosting",
       "source_url": "https://webdock.io/en/pricing",
       "offer_url": "https://webdock.io/en/pricing",
-      "fetched_at": "2026-09-14T06:39:15Z",
+      "fetched_at": "2026-09-14T12:38:09Z",
       "evidence": "Webdock VPS card: the plan name is followed by the monthly rate.",
       "field_evidence": {
         "price": "\u20ac2.15 /mo"
@@ -132,7 +132,7 @@
       "condition": "Monthly rate shown with the euro currency selected, as printed on the official pricing page.",
       "kind": "regular_price",
       "price": 2.15,
-      "source_sha256": "641d58010c287e4b79daf94513fa60f3f24ffa8f5af4ee5542db4c382b43e786"
+      "source_sha256": "5548c413d410c79be444b3e91377a53c780de2662ea3190b267fb8dfffce9fbe"
     },
     {
       "slug": "webdock-vps-advanced",
@@ -141,7 +141,7 @@
       "category": "VPS hosting",
       "source_url": "https://webdock.io/en/pricing",
       "offer_url": "https://webdock.io/en/pricing",
-      "fetched_at": "2026-09-14T06:39:15Z",
+      "fetched_at": "2026-09-14T12:38:09Z",
       "evidence": "Webdock VPS card, read the same way as VPS Essential.",
       "field_evidence": {
         "price": "\u20ac4.3 /mo"
@@ -151,7 +151,7 @@
       "condition": "Monthly rate shown with the euro currency selected, as printed on the official pricing page.",
       "kind": "regular_price",
       "price": 4.3,
-      "source_sha256": "641d58010c287e4b79daf94513fa60f3f24ffa8f5af4ee5542db4c382b43e786"
+      "source_sha256": "5548c413d410c79be444b3e91377a53c780de2662ea3190b267fb8dfffce9fbe"
     },
     {
       "slug": "webdock-vps-pro",
@@ -160,7 +160,7 @@
       "category": "VPS hosting",
       "source_url": "https://webdock.io/en/pricing",
       "offer_url": "https://webdock.io/en/pricing",
-      "fetched_at": "2026-09-14T06:39:15Z",
+      "fetched_at": "2026-09-14T12:38:09Z",
       "evidence": "Webdock VPS card, read the same way as VPS Essential.",
       "field_evidence": {
         "price": "\u20ac19.6 /mo"
@@ -170,7 +170,7 @@
       "condition": "Monthly rate shown with the euro currency selected, as printed on the official pricing page.",
       "kind": "regular_price",
       "price": 19.6,
-      "source_sha256": "641d58010c287e4b79daf94513fa60f3f24ffa8f5af4ee5542db4c382b43e786"
+      "source_sha256": "5548c413d410c79be444b3e91377a53c780de2662ea3190b267fb8dfffce9fbe"
     },
     {
       "slug": "hostdime-colocation",
@@ -179,7 +179,7 @@
       "category": "Colocation",
       "source_url": "https://www.hostdime.com/",
       "offer_url": "https://www.hostdime.com/",
-      "fetched_at": "2026-09-14T06:39:16Z",
+      "fetched_at": "2026-09-14T12:38:09Z",
       "evidence": "HostDime service block: the service name is followed by the entry monthly rate.",
       "field_evidence": {
         "price": "$100 /mo"
@@ -198,7 +198,7 @@
       "category": "Dedicated hosting",
       "source_url": "https://www.hostdime.com/",
       "offer_url": "https://www.hostdime.com/",
-      "fetched_at": "2026-09-14T06:39:16Z",
+      "fetched_at": "2026-09-14T12:38:09Z",
       "evidence": "HostDime service block, read the same way as Colocation.",
       "field_evidence": {
         "price": "$129 /mo"
@@ -217,7 +217,7 @@
       "category": "VPS hosting",
       "source_url": "https://www.hostdime.com/",
       "offer_url": "https://www.hostdime.com/",
-      "fetched_at": "2026-09-14T06:39:16Z",
+      "fetched_at": "2026-09-14T12:38:09Z",
       "evidence": "HostDime service block, read the same way as Colocation.",
       "field_evidence": {
         "price": "$35.51 /mo"
@@ -236,7 +236,7 @@
       "category": "Web hosting",
       "source_url": "https://www.veerotech.net/",
       "offer_url": "https://www.veerotech.net/",
-      "fetched_at": "2026-09-14T06:39:16Z",
+      "fetched_at": "2026-09-14T12:38:10Z",
       "evidence": "VeeroTech plan card: the plan name is followed by the standard monthly rate, the discounted monthly rate, and the renewal rate.",
       "field_evidence": {
         "price": "$3.95 $2.77/mo",
@@ -248,7 +248,7 @@
       "kind": "promotion",
       "price": 2.77,
       "renewal_price": 2.77,
-      "source_sha256": "1ffe1c36ba7f51665da2c7547ffce533fab39ca403b59fb17fb360fe6c13e6df"
+      "source_sha256": "d5de3896cc60f1c9351cb7479a6b6f0242293faf63ac8464dd8d5b6332f63ca7"
     },
     {
       "slug": "veerotech-one",
@@ -257,7 +257,7 @@
       "category": "Web hosting",
       "source_url": "https://www.veerotech.net/",
       "offer_url": "https://www.veerotech.net/",
-      "fetched_at": "2026-09-14T06:39:16Z",
+      "fetched_at": "2026-09-14T12:38:10Z",
       "evidence": "VeeroTech plan card, read the same way as Core.",
       "field_evidence": {
         "price": "$9.95/mo $6.95/mo",
@@ -269,7 +269,7 @@
       "kind": "promotion",
       "price": 6.95,
       "renewal_price": 6.95,
-      "source_sha256": "1ffe1c36ba7f51665da2c7547ffce533fab39ca403b59fb17fb360fe6c13e6df"
+      "source_sha256": "d5de3896cc60f1c9351cb7479a6b6f0242293faf63ac8464dd8d5b6332f63ca7"
     },
     {
       "slug": "veerotech-startup",
@@ -278,7 +278,7 @@
       "category": "Web hosting",
       "source_url": "https://www.veerotech.net/",
       "offer_url": "https://www.veerotech.net/",
-      "fetched_at": "2026-09-14T06:39:16Z",
+      "fetched_at": "2026-09-14T12:38:10Z",
       "evidence": "VeeroTech plan card, read the same way as Core.",
       "field_evidence": {
         "price": "$14.95/mo $10.46/mo",
@@ -290,7 +290,7 @@
       "kind": "promotion",
       "price": 10.46,
       "renewal_price": 10.46,
-      "source_sha256": "1ffe1c36ba7f51665da2c7547ffce533fab39ca403b59fb17fb360fe6c13e6df"
+      "source_sha256": "d5de3896cc60f1c9351cb7479a6b6f0242293faf63ac8464dd8d5b6332f63ca7"
     },
     {
       "slug": "veerotech-grow",
@@ -299,7 +299,7 @@
       "category": "Web hosting",
       "source_url": "https://www.veerotech.net/",
       "offer_url": "https://www.veerotech.net/",
-      "fetched_at": "2026-09-14T06:39:16Z",
+      "fetched_at": "2026-09-14T12:38:10Z",
       "evidence": "VeeroTech plan card, read the same way as Core.",
       "field_evidence": {
         "price": "$18.95/mo $13.26/mo",
@@ -311,7 +311,7 @@
       "kind": "promotion",
       "price": 13.26,
       "renewal_price": 13.26,
-      "source_sha256": "1ffe1c36ba7f51665da2c7547ffce533fab39ca403b59fb17fb360fe6c13e6df"
+      "source_sha256": "d5de3896cc60f1c9351cb7479a6b6f0242293faf63ac8464dd8d5b6332f63ca7"
     },
     {
       "slug": "veerotech-excel",
@@ -320,7 +320,7 @@
       "category": "Web hosting",
       "source_url": "https://www.veerotech.net/",
       "offer_url": "https://www.veerotech.net/",
-      "fetched_at": "2026-09-14T06:39:16Z",
+      "fetched_at": "2026-09-14T12:38:10Z",
       "evidence": "VeeroTech plan card, read the same way as Core.",
       "field_evidence": {
         "price": "$24.95/mo $17.46/mo",
@@ -332,7 +332,7 @@
       "kind": "promotion",
       "price": 17.46,
       "renewal_price": 17.46,
-      "source_sha256": "1ffe1c36ba7f51665da2c7547ffce533fab39ca403b59fb17fb360fe6c13e6df"
+      "source_sha256": "d5de3896cc60f1c9351cb7479a6b6f0242293faf63ac8464dd8d5b6332f63ca7"
     },
     {
       "slug": "whc-canadian-web-hosting",
@@ -341,7 +341,7 @@
       "category": "Web hosting",
       "source_url": "https://whc.ca/pricing",
       "offer_url": "https://whc.ca/pricing",
-      "fetched_at": "2026-09-14T06:39:18Z",
+      "fetched_at": "2026-09-14T12:38:11Z",
       "evidence": "WHC service block: the service name is followed by the entry monthly rate and the discount.",
       "field_evidence": {
         "price": "C$3.89 /mo"
@@ -351,7 +351,7 @@
       "condition": "Entry monthly rate in Canadian dollars; the page states the discount percentage next to it.",
       "kind": "promotion",
       "price": 3.89,
-      "source_sha256": "b3e6ce7e96bdde58d7375fa4f75a0959a2badd51d2ab8d99f30605ed44c924d6"
+      "source_sha256": "dcbed527cfb5e4e78aa9382a71f6ac045bf2f253451f27ce76bd3b0e545dc158"
     },
     {
       "slug": "whc-reseller-web-hosting",
@@ -360,7 +360,7 @@
       "category": "Reseller hosting",
       "source_url": "https://whc.ca/pricing",
       "offer_url": "https://whc.ca/pricing",
-      "fetched_at": "2026-09-14T06:39:18Z",
+      "fetched_at": "2026-09-14T12:38:11Z",
       "evidence": "WHC service block, read the same way as Canadian Web Hosting.",
       "field_evidence": {
         "price": "C$23.78 /mo"
@@ -370,7 +370,7 @@
       "condition": "Entry monthly rate in Canadian dollars; the page states the discount percentage next to it.",
       "kind": "promotion",
       "price": 23.78,
-      "source_sha256": "b3e6ce7e96bdde58d7375fa4f75a0959a2badd51d2ab8d99f30605ed44c924d6"
+      "source_sha256": "dcbed527cfb5e4e78aa9382a71f6ac045bf2f253451f27ce76bd3b0e545dc158"
     },
     {
       "slug": "whc-canadian-vps",
@@ -379,7 +379,7 @@
       "category": "VPS hosting",
       "source_url": "https://whc.ca/pricing",
       "offer_url": "https://whc.ca/pricing",
-      "fetched_at": "2026-09-14T06:39:18Z",
+      "fetched_at": "2026-09-14T12:38:11Z",
       "evidence": "WHC service block, read the same way as Canadian Web Hosting.",
       "field_evidence": {
         "price": "C$18.50 /mo"
@@ -389,7 +389,7 @@
       "condition": "Entry monthly rate in Canadian dollars; the page states the discount percentage next to it.",
       "kind": "promotion",
       "price": 18.5,
-      "source_sha256": "b3e6ce7e96bdde58d7375fa4f75a0959a2badd51d2ab8d99f30605ed44c924d6"
+      "source_sha256": "dcbed527cfb5e4e78aa9382a71f6ac045bf2f253451f27ce76bd3b0e545dc158"
     },
     {
       "slug": "whc-canadian-dedicated-servers",
@@ -398,7 +398,7 @@
       "category": "Dedicated hosting",
       "source_url": "https://whc.ca/pricing",
       "offer_url": "https://whc.ca/pricing",
-      "fetched_at": "2026-09-14T06:39:18Z",
+      "fetched_at": "2026-09-14T12:38:11Z",
       "evidence": "WHC service block, read the same way as Canadian Web Hosting.",
       "field_evidence": {
         "price": "C$149.99 /mo"
@@ -408,7 +408,7 @@
       "condition": "Entry monthly rate in Canadian dollars; the page states the discount percentage next to it.",
       "kind": "promotion",
       "price": 149.99,
-      "source_sha256": "b3e6ce7e96bdde58d7375fa4f75a0959a2badd51d2ab8d99f30605ed44c924d6"
+      "source_sha256": "dcbed527cfb5e4e78aa9382a71f6ac045bf2f253451f27ce76bd3b0e545dc158"
     },
     {
       "slug": "whc-managed-wordpress",
@@ -436,7 +436,7 @@
       "category": "Web hosting",
       "source_url": "https://www.123-reg.co.uk/web-hosting/",
       "offer_url": "https://www.123-reg.co.uk/web-hosting/",
-      "fetched_at": "2026-09-14T06:39:19Z",
+      "fetched_at": "2026-09-14T12:38:13Z",
       "evidence": "123 Reg plan card: the plan name is followed by the standard monthly rate, the discounted monthly rate, and the term.",
       "field_evidence": {
         "price": "\u00a36.99 \u00a31.99 /mo"
@@ -446,7 +446,7 @@
       "condition": "Discounted monthly rate on a 3-year term; the card prints the standard monthly rate next to it and states the saving.",
       "kind": "promotion",
       "price": 1.99,
-      "source_sha256": "e79a1082f72a6cc57e7a754c7670b5459544d2fba275038bd730e02f859dc600"
+      "source_sha256": "bd0bdae5ff6ea378d7ac30896682664cd7fd228f0af17daa1a930f37435a5a34"
     },
     {
       "slug": "123-reg-deluxe",
@@ -455,7 +455,7 @@
       "category": "Web hosting",
       "source_url": "https://www.123-reg.co.uk/web-hosting/",
       "offer_url": "https://www.123-reg.co.uk/web-hosting/",
-      "fetched_at": "2026-09-14T06:39:19Z",
+      "fetched_at": "2026-09-14T12:38:13Z",
       "evidence": "123 Reg plan card, read the same way as Economy.",
       "field_evidence": {
         "price": "\u00a38.99 \u00a32.99 /mo"
@@ -465,7 +465,7 @@
       "condition": "Discounted monthly rate on a 3-year term; the card prints the standard monthly rate next to it and states the saving.",
       "kind": "promotion",
       "price": 2.99,
-      "source_sha256": "e79a1082f72a6cc57e7a754c7670b5459544d2fba275038bd730e02f859dc600"
+      "source_sha256": "bd0bdae5ff6ea378d7ac30896682664cd7fd228f0af17daa1a930f37435a5a34"
     },
     {
       "slug": "123-reg-ultimate",
@@ -474,7 +474,7 @@
       "category": "Web hosting",
       "source_url": "https://www.123-reg.co.uk/web-hosting/",
       "offer_url": "https://www.123-reg.co.uk/web-hosting/",
-      "fetched_at": "2026-09-14T06:39:19Z",
+      "fetched_at": "2026-09-14T12:38:13Z",
       "evidence": "123 Reg plan card, read the same way as Economy.",
       "field_evidence": {
         "price": "\u00a311.99 \u00a34.99 /mo"
@@ -484,7 +484,7 @@
       "condition": "Discounted monthly rate on a 3-year term; the card prints the standard monthly rate next to it and states the saving.",
       "kind": "promotion",
       "price": 4.99,
-      "source_sha256": "e79a1082f72a6cc57e7a754c7670b5459544d2fba275038bd730e02f859dc600"
+      "source_sha256": "bd0bdae5ff6ea378d7ac30896682664cd7fd228f0af17daa1a930f37435a5a34"
     },
     {
       "slug": "123-reg-maximum",
@@ -493,7 +493,7 @@
       "category": "Web hosting",
       "source_url": "https://www.123-reg.co.uk/web-hosting/",
       "offer_url": "https://www.123-reg.co.uk/web-hosting/",
-      "fetched_at": "2026-09-14T06:39:19Z",
+      "fetched_at": "2026-09-14T12:38:13Z",
       "evidence": "123 Reg plan card, read the same way as Economy.",
       "field_evidence": {
         "price": "\u00a315.99 \u00a35.99 /mo"
@@ -503,7 +503,7 @@
       "condition": "Discounted monthly rate on a 3-year term; the card prints the standard monthly rate next to it and states the saving.",
       "kind": "promotion",
       "price": 5.99,
-      "source_sha256": "e79a1082f72a6cc57e7a754c7670b5459544d2fba275038bd730e02f859dc600"
+      "source_sha256": "bd0bdae5ff6ea378d7ac30896682664cd7fd228f0af17daa1a930f37435a5a34"
     },
     {
       "slug": "easyspace-dedicated-servers",
@@ -512,7 +512,7 @@
       "category": "Dedicated hosting",
       "source_url": "https://www.easyspace.com/",
       "offer_url": "https://www.easyspace.com/",
-      "fetched_at": "2026-09-14T06:39:21Z",
+      "fetched_at": "2026-09-14T12:38:15Z",
       "evidence": "Easyspace service block, read the same way as Secure Web Hosting.",
       "field_evidence": {
         "price": "\u00a369 per month"
@@ -522,7 +522,7 @@
       "condition": "Entry monthly rate as printed on the official page; the page states the amount excludes VAT.",
       "kind": "regular_price",
       "price": 69.0,
-      "source_sha256": "ac86c5bc46d6907176c56a6d202cadd1863d672b98e2ab71a2d8def84a0eec16"
+      "source_sha256": "a3801a2b2b5ce73c3b0fbd1fa1e7496bcd35d92864db4423a4772f2d287b7404"
     },
     {
       "slug": "easyspace-secure-web-hosting",
@@ -569,17 +569,17 @@
       "category": "Web hosting",
       "source_url": "https://www.portfoliobox.net/pricing",
       "offer_url": "https://www.portfoliobox.net/pricing",
-      "fetched_at": "2026-09-14T06:39:23Z",
+      "fetched_at": "2026-09-14T12:38:17Z",
       "evidence": "Portfoliobox plan card: the plan name is followed by the monthly rate.",
       "field_evidence": {
-        "price": "15.9 /month"
+        "price": "275 /month"
       },
       "currency": "USD",
       "billing_period": "month",
       "condition": "Monthly rate for the plan as printed on the official pricing page.",
       "kind": "regular_price",
-      "price": 15.9,
-      "source_sha256": "fa0d591efcbe9d8bda4bfd664e97d1f918ff17a098fda937b43b406f176958dd"
+      "price": 275.0,
+      "source_sha256": "3d5f188101da2f5fa6f995415a654a2c6a2cebd5ff542b9849323e70b6a64d68"
     },
     {
       "slug": "portfoliobox-personal",
@@ -588,17 +588,17 @@
       "category": "Web hosting",
       "source_url": "https://www.portfoliobox.net/pricing",
       "offer_url": "https://www.portfoliobox.net/pricing",
-      "fetched_at": "2026-09-14T06:39:23Z",
+      "fetched_at": "2026-09-14T12:38:17Z",
       "evidence": "Portfoliobox plan card, read the same way as Professional.",
       "field_evidence": {
-        "price": "8.9 /month"
+        "price": "156 /month"
       },
       "currency": "USD",
       "billing_period": "month",
       "condition": "Monthly rate for the plan as printed on the official pricing page.",
       "kind": "regular_price",
-      "price": 8.9,
-      "source_sha256": "fa0d591efcbe9d8bda4bfd664e97d1f918ff17a098fda937b43b406f176958dd"
+      "price": 156.0,
+      "source_sha256": "3d5f188101da2f5fa6f995415a654a2c6a2cebd5ff542b9849323e70b6a64d68"
     },
     {
       "slug": "ucraft-website",
@@ -683,7 +683,7 @@
       "category": "Web hosting",
       "source_url": "https://www.voog.com/pricing",
       "offer_url": "https://www.voog.com/pricing",
-      "fetched_at": "2026-09-14T06:39:27Z",
+      "fetched_at": "2026-09-14T12:38:21Z",
       "evidence": "Voog plan card: the plan name is followed by the monthly rate and the annual saving.",
       "field_evidence": {
         "price": "1.25/mo"
@@ -702,7 +702,7 @@
       "category": "Web hosting",
       "source_url": "https://www.voog.com/pricing",
       "offer_url": "https://www.voog.com/pricing",
-      "fetched_at": "2026-09-14T06:39:27Z",
+      "fetched_at": "2026-09-14T12:38:21Z",
       "evidence": "Voog plan card, read the same way as Starter.",
       "field_evidence": {
         "price": "11/mo"
@@ -721,7 +721,7 @@
       "category": "Web hosting",
       "source_url": "https://www.voog.com/pricing",
       "offer_url": "https://www.voog.com/pricing",
-      "fetched_at": "2026-09-14T06:39:27Z",
+      "fetched_at": "2026-09-14T12:38:22Z",
       "evidence": "Voog plan card, read the same way as Starter.",
       "field_evidence": {
         "price": "17/mo"
@@ -740,7 +740,7 @@
       "category": "Web hosting",
       "source_url": "https://www.voog.com/pricing",
       "offer_url": "https://www.voog.com/pricing",
-      "fetched_at": "2026-09-14T06:39:27Z",
+      "fetched_at": "2026-09-14T12:38:22Z",
       "evidence": "Voog plan card, read the same way as Starter.",
       "field_evidence": {
         "price": "39/mo"
@@ -759,7 +759,7 @@
       "category": "Web hosting",
       "source_url": "https://www.beehiiv.com/pricing",
       "offer_url": "https://www.beehiiv.com/pricing",
-      "fetched_at": "2026-09-14T06:39:28Z",
+      "fetched_at": "2026-09-14T12:38:23Z",
       "evidence": "beehiiv plan card: the plan name is followed by the yearly saving, the monthly rate and the annual total.",
       "field_evidence": {
         "price": "$43 per month"
@@ -769,7 +769,7 @@
       "condition": "Monthly rate when the plan is billed annually; the card prints the annual total and the yearly saving next to it.",
       "kind": "regular_price",
       "price": 43.0,
-      "source_sha256": "40247f7b15907afea8da8e099a7b9c0adc60d800bc4f42edb8fcd1172d83c37a"
+      "source_sha256": "06f217bd14f724736fe8efee16f06da0095f09c0d92ed7e1d63ac650ac826031"
     },
     {
       "slug": "beehiiv-max",
@@ -778,7 +778,7 @@
       "category": "Web hosting",
       "source_url": "https://www.beehiiv.com/pricing",
       "offer_url": "https://www.beehiiv.com/pricing",
-      "fetched_at": "2026-09-14T06:39:28Z",
+      "fetched_at": "2026-09-14T12:38:23Z",
       "evidence": "beehiiv plan card, read the same way as Scale.",
       "field_evidence": {
         "price": "$96 per month"
@@ -788,7 +788,7 @@
       "condition": "Monthly rate when the plan is billed annually; the card prints the annual total and the yearly saving next to it.",
       "kind": "regular_price",
       "price": 96.0,
-      "source_sha256": "40247f7b15907afea8da8e099a7b9c0adc60d800bc4f42edb8fcd1172d83c37a"
+      "source_sha256": "06f217bd14f724736fe8efee16f06da0095f09c0d92ed7e1d63ac650ac826031"
     },
     {
       "slug": "wpmu-dev-hosting-unlimited",
@@ -797,7 +797,7 @@
       "category": "Web hosting",
       "source_url": "https://wpmudev.com/pricing/",
       "offer_url": "https://wpmudev.com/pricing/",
-      "fetched_at": "2026-09-14T06:39:29Z",
+      "fetched_at": "2026-09-14T12:38:23Z",
       "evidence": "WPMU DEV hosting block: the plan name is followed by the entry monthly rate.",
       "field_evidence": {
         "price": "$15/month"
@@ -816,7 +816,7 @@
       "category": "Dedicated hosting",
       "source_url": "https://wpmudev.com/pricing/",
       "offer_url": "https://wpmudev.com/pricing/",
-      "fetched_at": "2026-09-14T06:39:29Z",
+      "fetched_at": "2026-09-14T12:38:23Z",
       "evidence": "WPMU DEV hosting block: the plan name is followed by the rate per site.",
       "field_evidence": {
         "price": "$4 / site"
@@ -835,7 +835,7 @@
       "category": "Web hosting",
       "source_url": "https://wpmudev.com/pricing/",
       "offer_url": "https://wpmudev.com/pricing/",
-      "fetched_at": "2026-09-14T06:39:29Z",
+      "fetched_at": "2026-09-14T12:38:23Z",
       "evidence": "WPMU DEV hosting block: the plan name is followed by the rate per server.",
       "field_evidence": {
         "price": "$15 / server"
@@ -854,7 +854,7 @@
       "category": "WordPress plugins",
       "source_url": "https://wpmudev.com/pricing/",
       "offer_url": "https://wpmudev.com/pricing/",
-      "fetched_at": "2026-09-14T06:39:29Z",
+      "fetched_at": "2026-09-14T12:38:23Z",
       "evidence": "WPMU DEV plugin plan: the plan name is followed by the yearly rate.",
       "field_evidence": {
         "price": "50/year"
@@ -873,7 +873,7 @@
       "category": "WordPress plugins",
       "source_url": "https://wpmudev.com/pricing/",
       "offer_url": "https://wpmudev.com/pricing/",
-      "fetched_at": "2026-09-14T06:39:29Z",
+      "fetched_at": "2026-09-14T12:38:23Z",
       "evidence": "WPMU DEV plugin plan, read the same way as Pro Basic.",
       "field_evidence": {
         "price": "75/year"
@@ -892,7 +892,7 @@
       "category": "WordPress plugins",
       "source_url": "https://wpmudev.com/pricing/",
       "offer_url": "https://wpmudev.com/pricing/",
-      "fetched_at": "2026-09-14T06:39:29Z",
+      "fetched_at": "2026-09-14T12:38:23Z",
       "evidence": "WPMU DEV plugin plan, read the same way as Pro Basic.",
       "field_evidence": {
         "price": "100/year"
@@ -911,7 +911,7 @@
       "category": "Application hosting",
       "source_url": "https://appwrite.io/pricing",
       "offer_url": "https://appwrite.io/pricing",
-      "fetched_at": "2026-09-14T06:39:30Z",
+      "fetched_at": "2026-09-14T12:38:25Z",
       "evidence": "Appwrite plan card: the plan name is followed by the entry monthly rate.",
       "field_evidence": {
         "price": "$25 /month"
@@ -921,7 +921,7 @@
       "condition": "Monthly subscription rate for the plan; compute usage beyond the included credits is billed separately.",
       "kind": "regular_price",
       "price": 25.0,
-      "source_sha256": "70c382fd05f165f28f2351b1dc07a822a061aab5836b9f66dcc7b5e961a3429d"
+      "source_sha256": "f2d9e83b3dd002fa2137d354964f386ae2639e08db4a77310f3bb14f801f2a48"
     },
     {
       "slug": "nhost-pro",
@@ -930,7 +930,7 @@
       "category": "Application hosting",
       "source_url": "https://nhost.io/pricing",
       "offer_url": "https://nhost.io/pricing",
-      "fetched_at": "2026-09-14T06:39:30Z",
+      "fetched_at": "2026-09-14T12:38:25Z",
       "evidence": "Nhost plan card: the plan name is followed by the entry monthly rate.",
       "field_evidence": {
         "price": "$25 / month"
@@ -940,7 +940,7 @@
       "condition": "Monthly subscription rate for the plan; compute usage beyond the included credits is billed separately.",
       "kind": "regular_price",
       "price": 25.0,
-      "source_sha256": "07a58f2f04acd65b859592520c1aaad0df3e3c032d412448a74963ed51dd7299"
+      "source_sha256": "a2fe20b78c91008a51622d6be184e664c363ebfb24fd871459a10f25928d4bd3"
     },
     {
       "slug": "nhost-team",
@@ -949,7 +949,7 @@
       "category": "Application hosting",
       "source_url": "https://nhost.io/pricing",
       "offer_url": "https://nhost.io/pricing",
-      "fetched_at": "2026-09-14T06:39:30Z",
+      "fetched_at": "2026-09-14T12:38:25Z",
       "evidence": "Nhost plan card, read the same way as Pro.",
       "field_evidence": {
         "price": "$599 / month"
@@ -959,7 +959,7 @@
       "condition": "Monthly subscription rate for the plan; compute usage beyond the included credits is billed separately.",
       "kind": "regular_price",
       "price": 599.0,
-      "source_sha256": "07a58f2f04acd65b859592520c1aaad0df3e3c032d412448a74963ed51dd7299"
+      "source_sha256": "a2fe20b78c91008a51622d6be184e664c363ebfb24fd871459a10f25928d4bd3"
     },
     {
       "slug": "turso-developer",
@@ -968,7 +968,7 @@
       "category": "Application hosting",
       "source_url": "https://turso.tech/pricing",
       "offer_url": "https://turso.tech/pricing",
-      "fetched_at": "2026-09-14T06:39:31Z",
+      "fetched_at": "2026-09-14T12:38:26Z",
       "evidence": "Turso plan card: the plan name is followed by the monthly rate and the annual-billing saving.",
       "field_evidence": {
         "price": "4.99/month"
@@ -987,7 +987,7 @@
       "category": "Application hosting",
       "source_url": "https://turso.tech/pricing",
       "offer_url": "https://turso.tech/pricing",
-      "fetched_at": "2026-09-14T06:39:31Z",
+      "fetched_at": "2026-09-14T12:38:26Z",
       "evidence": "Turso plan card, read the same way as Developer.",
       "field_evidence": {
         "price": "24.92/month"
@@ -1006,7 +1006,7 @@
       "category": "Application hosting",
       "source_url": "https://turso.tech/pricing",
       "offer_url": "https://turso.tech/pricing",
-      "fetched_at": "2026-09-14T06:39:31Z",
+      "fetched_at": "2026-09-14T12:38:26Z",
       "evidence": "Turso plan card, read the same way as Developer.",
       "field_evidence": {
         "price": "416.58/month"
@@ -1025,7 +1025,7 @@
       "category": "Web hosting",
       "source_url": "https://www.eurodns.com/",
       "offer_url": "https://www.eurodns.com/",
-      "fetched_at": "2026-09-14T06:39:32Z",
+      "fetched_at": "2026-09-14T12:38:28Z",
       "evidence": "EuroDNS service block: the service name is followed by the entry monthly rate.",
       "field_evidence": {
         "price": "\u20ac5.99 / month"
@@ -1044,7 +1044,7 @@
       "category": "Web hosting",
       "source_url": "https://www.eurodns.com/",
       "offer_url": "https://www.eurodns.com/",
-      "fetched_at": "2026-09-14T06:39:32Z",
+      "fetched_at": "2026-09-14T12:38:28Z",
       "evidence": "EuroDNS service block, read the same way as WordPress hosting.",
       "field_evidence": {
         "price": "\u20ac2.39 / month"
@@ -1063,7 +1063,7 @@
       "category": "Email hosting",
       "source_url": "https://www.eurodns.com/",
       "offer_url": "https://www.eurodns.com/",
-      "fetched_at": "2026-09-14T06:39:32Z",
+      "fetched_at": "2026-09-14T12:38:28Z",
       "evidence": "EuroDNS service block, read the same way as WordPress hosting.",
       "field_evidence": {
         "price": "\u20ac1.36 / month"
@@ -1082,7 +1082,7 @@
       "category": "Domains",
       "source_url": "https://www.eurodns.com/",
       "offer_url": "https://www.eurodns.com/",
-      "fetched_at": "2026-09-14T06:39:32Z",
+      "fetched_at": "2026-09-14T12:38:28Z",
       "evidence": "EuroDNS domain list: the TLD is followed by the yearly rate and the standard rate.",
       "field_evidence": {
         "price": "\u20ac10.99 /yr"
@@ -1101,7 +1101,7 @@
       "category": "Application hosting",
       "source_url": "https://aiven.io/pricing",
       "offer_url": "https://aiven.io/pricing",
-      "fetched_at": "2026-09-14T06:39:34Z",
+      "fetched_at": "2026-09-14T12:38:30Z",
       "evidence": "Aiven plan card: the plan name is followed by the entry monthly rate and the hourly rate.",
       "field_evidence": {
         "price": "$5 / month"
@@ -1111,7 +1111,7 @@
       "condition": "Entry monthly rate for the plan; the page also prints an hourly rate and the plan scales with the resources used.",
       "kind": "regular_price",
       "price": 5.0,
-      "source_sha256": "9563eb04255bdfac8c78cf8c87c827dff2020bc5bcba05ec355d7ec8b5bcdfcd"
+      "source_sha256": "f29d7ee57c65165dbda526e73061b87ae73c69df3bb90dc4a38b4843ece71d7e"
     },
     {
       "slug": "aiven-hobbyist",
@@ -1120,7 +1120,7 @@
       "category": "Application hosting",
       "source_url": "https://aiven.io/pricing",
       "offer_url": "https://aiven.io/pricing",
-      "fetched_at": "2026-09-14T06:39:34Z",
+      "fetched_at": "2026-09-14T12:38:30Z",
       "evidence": "Aiven plan card, read the same way as Developer.",
       "field_evidence": {
         "price": "$12 / month"
@@ -1130,7 +1130,7 @@
       "condition": "Entry monthly rate for the plan; the page also prints an hourly rate and the plan scales with the resources used.",
       "kind": "regular_price",
       "price": 12.0,
-      "source_sha256": "9563eb04255bdfac8c78cf8c87c827dff2020bc5bcba05ec355d7ec8b5bcdfcd"
+      "source_sha256": "f29d7ee57c65165dbda526e73061b87ae73c69df3bb90dc4a38b4843ece71d7e"
     },
     {
       "slug": "aiven-startup",
@@ -1139,7 +1139,7 @@
       "category": "Application hosting",
       "source_url": "https://aiven.io/pricing",
       "offer_url": "https://aiven.io/pricing",
-      "fetched_at": "2026-09-14T06:39:35Z",
+      "fetched_at": "2026-09-14T12:38:30Z",
       "evidence": "Aiven plan card, read the same way as Developer.",
       "field_evidence": {
         "price": "$75 / month"
@@ -1149,7 +1149,7 @@
       "condition": "Entry monthly rate for the plan; the page also prints an hourly rate and the plan scales with the resources used.",
       "kind": "regular_price",
       "price": 75.0,
-      "source_sha256": "9563eb04255bdfac8c78cf8c87c827dff2020bc5bcba05ec355d7ec8b5bcdfcd"
+      "source_sha256": "f29d7ee57c65165dbda526e73061b87ae73c69df3bb90dc4a38b4843ece71d7e"
     },
     {
       "slug": "aiven-business",
@@ -1158,7 +1158,7 @@
       "category": "Application hosting",
       "source_url": "https://aiven.io/pricing",
       "offer_url": "https://aiven.io/pricing",
-      "fetched_at": "2026-09-14T06:39:35Z",
+      "fetched_at": "2026-09-14T12:38:30Z",
       "evidence": "Aiven plan card, read the same way as Developer.",
       "field_evidence": {
         "price": "$180 / month"
@@ -1168,7 +1168,7 @@
       "condition": "Entry monthly rate for the plan; the page also prints an hourly rate and the plan scales with the resources used.",
       "kind": "regular_price",
       "price": 180.0,
-      "source_sha256": "9563eb04255bdfac8c78cf8c87c827dff2020bc5bcba05ec355d7ec8b5bcdfcd"
+      "source_sha256": "f29d7ee57c65165dbda526e73061b87ae73c69df3bb90dc4a38b4843ece71d7e"
     },
     {
       "slug": "aiven-premium",
@@ -1177,7 +1177,7 @@
       "category": "Application hosting",
       "source_url": "https://aiven.io/pricing",
       "offer_url": "https://aiven.io/pricing",
-      "fetched_at": "2026-09-14T06:39:35Z",
+      "fetched_at": "2026-09-14T12:38:30Z",
       "evidence": "Aiven plan card, read the same way as Developer.",
       "field_evidence": {
         "price": "$270 / month"
@@ -1187,7 +1187,7 @@
       "condition": "Entry monthly rate for the plan; the page also prints an hourly rate and the plan scales with the resources used.",
       "kind": "regular_price",
       "price": 270.0,
-      "source_sha256": "9563eb04255bdfac8c78cf8c87c827dff2020bc5bcba05ec355d7ec8b5bcdfcd"
+      "source_sha256": "f29d7ee57c65165dbda526e73061b87ae73c69df3bb90dc4a38b4843ece71d7e"
     },
     {
       "slug": "timescale-performance",
@@ -1196,7 +1196,7 @@
       "category": "Application hosting",
       "source_url": "https://www.timescale.com/pricing",
       "offer_url": "https://www.timescale.com/pricing",
-      "fetched_at": "2026-09-14T06:39:35Z",
+      "fetched_at": "2026-09-14T12:38:31Z",
       "evidence": "Timescale plan card: the plan name is followed by the entry compute rate.",
       "field_evidence": {
         "price": "$ 30 / month"
@@ -1215,7 +1215,7 @@
       "category": "Application hosting",
       "source_url": "https://www.timescale.com/pricing",
       "offer_url": "https://www.timescale.com/pricing",
-      "fetched_at": "2026-09-14T06:39:35Z",
+      "fetched_at": "2026-09-14T12:38:31Z",
       "evidence": "Timescale plan card, read the same way as Performance.",
       "field_evidence": {
         "price": "$ 36 / month"
@@ -1234,7 +1234,7 @@
       "category": "Application hosting",
       "source_url": "https://redis.io/pricing/",
       "offer_url": "https://redis.io/pricing/",
-      "fetched_at": "2026-09-14T06:39:36Z",
+      "fetched_at": "2026-09-14T12:38:33Z",
       "evidence": "Redis Cloud plan card: the plan name is followed by the hourly rate and the monthly total.",
       "field_evidence": {
         "price": "$5/month"
@@ -1244,7 +1244,7 @@
       "condition": "Monthly total for the plan; the page also prints an hourly rate.",
       "kind": "regular_price",
       "price": 5.0,
-      "source_sha256": "d8ac62e360a6529fef4ab4f5bd3134841dda0b899d3fac67ea5c9861a70cf94b"
+      "source_sha256": "2f98ae5d3c71652ddd7fb897a6a7a04274a3ff49c7498caa694314000faaeeb8"
     },
     {
       "slug": "redis-pro",
@@ -1253,7 +1253,7 @@
       "category": "Application hosting",
       "source_url": "https://redis.io/pricing/",
       "offer_url": "https://redis.io/pricing/",
-      "fetched_at": "2026-09-14T06:39:36Z",
+      "fetched_at": "2026-09-14T12:38:33Z",
       "evidence": "Redis Cloud plan card, read the same way as Essentials.",
       "field_evidence": {
         "price": "$200 /month"
@@ -1263,7 +1263,7 @@
       "condition": "Monthly minimum for the plan; the page also prints an hourly rate and states the first amount is free.",
       "kind": "regular_price",
       "price": 200.0,
-      "source_sha256": "d8ac62e360a6529fef4ab4f5bd3134841dda0b899d3fac67ea5c9861a70cf94b"
+      "source_sha256": "2f98ae5d3c71652ddd7fb897a6a7a04274a3ff49c7498caa694314000faaeeb8"
     },
     {
       "slug": "xata-micro",
@@ -1272,7 +1272,7 @@
       "category": "Application hosting",
       "source_url": "https://xata.io/pricing",
       "offer_url": "https://xata.io/pricing",
-      "fetched_at": "2026-09-14T06:39:36Z",
+      "fetched_at": "2026-09-14T12:38:33Z",
       "evidence": "Xata instance table row: the instance name and specification are followed by the hourly rate and the monthly cost.",
       "field_evidence": {
         "price": "$ 9 /month"
@@ -1282,7 +1282,7 @@
       "condition": "Monthly cost for the instance size; the page also prints an hourly rate and bills storage separately per GB-month.",
       "kind": "regular_price",
       "price": 9.0,
-      "source_sha256": "be47081e8b149a6754df3d23bca075b3086d382db95e124fcfd062e2cb962b18"
+      "source_sha256": "fc1e15413139f0b4c1a453fa0832dffaa68a87eb1b57e62c1915241d443138cc"
     },
     {
       "slug": "xata-small",
@@ -1291,7 +1291,7 @@
       "category": "Application hosting",
       "source_url": "https://xata.io/pricing",
       "offer_url": "https://xata.io/pricing",
-      "fetched_at": "2026-09-14T06:39:36Z",
+      "fetched_at": "2026-09-14T12:38:33Z",
       "evidence": "Xata instance table row, read the same way as micro.",
       "field_evidence": {
         "price": "$ 18 /month"
@@ -1301,7 +1301,7 @@
       "condition": "Monthly cost for the instance size; the page also prints an hourly rate and bills storage separately per GB-month.",
       "kind": "regular_price",
       "price": 18.0,
-      "source_sha256": "be47081e8b149a6754df3d23bca075b3086d382db95e124fcfd062e2cb962b18"
+      "source_sha256": "fc1e15413139f0b4c1a453fa0832dffaa68a87eb1b57e62c1915241d443138cc"
     },
     {
       "slug": "xata-medium",
@@ -1310,7 +1310,7 @@
       "category": "Application hosting",
       "source_url": "https://xata.io/pricing",
       "offer_url": "https://xata.io/pricing",
-      "fetched_at": "2026-09-14T06:39:36Z",
+      "fetched_at": "2026-09-14T12:38:33Z",
       "evidence": "Xata instance table row, read the same way as micro.",
       "field_evidence": {
         "price": "$ 35 /month"
@@ -1320,7 +1320,7 @@
       "condition": "Monthly cost for the instance size; the page also prints an hourly rate and bills storage separately per GB-month.",
       "kind": "regular_price",
       "price": 35.0,
-      "source_sha256": "be47081e8b149a6754df3d23bca075b3086d382db95e124fcfd062e2cb962b18"
+      "source_sha256": "fc1e15413139f0b4c1a453fa0832dffaa68a87eb1b57e62c1915241d443138cc"
     },
     {
       "slug": "xata-large",
@@ -1329,7 +1329,7 @@
       "category": "Application hosting",
       "source_url": "https://xata.io/pricing",
       "offer_url": "https://xata.io/pricing",
-      "fetched_at": "2026-09-14T06:39:36Z",
+      "fetched_at": "2026-09-14T12:38:33Z",
       "evidence": "Xata instance table row, read the same way as micro.",
       "field_evidence": {
         "price": "$ 70 /month"
@@ -1339,7 +1339,7 @@
       "condition": "Monthly cost for the instance size; the page also prints an hourly rate and bills storage separately per GB-month.",
       "kind": "regular_price",
       "price": 70.0,
-      "source_sha256": "be47081e8b149a6754df3d23bca075b3086d382db95e124fcfd062e2cb962b18"
+      "source_sha256": "fc1e15413139f0b4c1a453fa0832dffaa68a87eb1b57e62c1915241d443138cc"
     },
     {
       "slug": "cloudcone-sc2-starter",
@@ -1348,7 +1348,7 @@
       "category": "VPS hosting",
       "source_url": "https://cloudcone.com/",
       "offer_url": "https://cloudcone.com/",
-      "fetched_at": "2026-09-14T06:39:43Z",
+      "fetched_at": "2026-09-14T12:38:41Z",
       "evidence": "CloudCone pricing card: the plan name is followed by the monthly rate and then the hourly rate.",
       "field_evidence": {
         "price": "$ 5.20 Per Month"
@@ -1358,7 +1358,7 @@
       "condition": "Monthly rate for the plan; the card also prints the hourly rate for the same plan.",
       "kind": "regular_price",
       "price": 5.2,
-      "source_sha256": "b560b9f9b66efc55a170bb3a60fe37055bc7938216b8169e2e510e5b83974394"
+      "source_sha256": "83880c15cb866448db6cb3cfc37c50e77ce5f8c5168ac2fa91bfbf51381a4c95"
     },
     {
       "slug": "cloudcone-sc2-basic",
@@ -1367,7 +1367,7 @@
       "category": "VPS hosting",
       "source_url": "https://cloudcone.com/",
       "offer_url": "https://cloudcone.com/",
-      "fetched_at": "2026-09-14T06:39:43Z",
+      "fetched_at": "2026-09-14T12:38:41Z",
       "evidence": "CloudCone pricing card, read the same way as SC2 Starter.",
       "field_evidence": {
         "price": "$ 10.34 Per Month"
@@ -1377,7 +1377,7 @@
       "condition": "Monthly rate for the plan; the card also prints the hourly rate for the same plan.",
       "kind": "regular_price",
       "price": 10.34,
-      "source_sha256": "b560b9f9b66efc55a170bb3a60fe37055bc7938216b8169e2e510e5b83974394"
+      "source_sha256": "83880c15cb866448db6cb3cfc37c50e77ce5f8c5168ac2fa91bfbf51381a4c95"
     },
     {
       "slug": "cloudcone-sc2-standard",
@@ -1386,7 +1386,7 @@
       "category": "VPS hosting",
       "source_url": "https://cloudcone.com/",
       "offer_url": "https://cloudcone.com/",
-      "fetched_at": "2026-09-14T06:39:43Z",
+      "fetched_at": "2026-09-14T12:38:41Z",
       "evidence": "CloudCone pricing card, read the same way as SC2 Starter.",
       "field_evidence": {
         "price": "$ 14.51 Per Month"
@@ -1396,7 +1396,7 @@
       "condition": "Monthly rate for the plan; the card also prints the hourly rate for the same plan.",
       "kind": "regular_price",
       "price": 14.51,
-      "source_sha256": "b560b9f9b66efc55a170bb3a60fe37055bc7938216b8169e2e510e5b83974394"
+      "source_sha256": "83880c15cb866448db6cb3cfc37c50e77ce5f8c5168ac2fa91bfbf51381a4c95"
     },
     {
       "slug": "cloudcone-sc2-business",
@@ -1405,7 +1405,7 @@
       "category": "VPS hosting",
       "source_url": "https://cloudcone.com/",
       "offer_url": "https://cloudcone.com/",
-      "fetched_at": "2026-09-14T06:39:43Z",
+      "fetched_at": "2026-09-14T12:38:41Z",
       "evidence": "CloudCone pricing card, read the same way as SC2 Starter.",
       "field_evidence": {
         "price": "$ 17.56 Per Month"
@@ -1415,7 +1415,7 @@
       "condition": "Monthly rate for the plan; the card also prints the hourly rate for the same plan.",
       "kind": "regular_price",
       "price": 17.56,
-      "source_sha256": "b560b9f9b66efc55a170bb3a60fe37055bc7938216b8169e2e510e5b83974394"
+      "source_sha256": "83880c15cb866448db6cb3cfc37c50e77ce5f8c5168ac2fa91bfbf51381a4c95"
     },
     {
       "slug": "cloudcone-sc2-professional",
@@ -1424,7 +1424,7 @@
       "category": "VPS hosting",
       "source_url": "https://cloudcone.com/",
       "offer_url": "https://cloudcone.com/",
-      "fetched_at": "2026-09-14T06:39:43Z",
+      "fetched_at": "2026-09-14T12:38:41Z",
       "evidence": "CloudCone pricing card, read the same way as SC2 Starter.",
       "field_evidence": {
         "price": "$ 31.99 Per Month"
@@ -1434,7 +1434,7 @@
       "condition": "Monthly rate for the plan; the card also prints the hourly rate for the same plan.",
       "kind": "regular_price",
       "price": 31.99,
-      "source_sha256": "b560b9f9b66efc55a170bb3a60fe37055bc7938216b8169e2e510e5b83974394"
+      "source_sha256": "83880c15cb866448db6cb3cfc37c50e77ce5f8c5168ac2fa91bfbf51381a4c95"
     },
     {
       "slug": "cloudcone-sc2-premium",
@@ -1443,7 +1443,7 @@
       "category": "VPS hosting",
       "source_url": "https://cloudcone.com/",
       "offer_url": "https://cloudcone.com/",
-      "fetched_at": "2026-09-14T06:39:43Z",
+      "fetched_at": "2026-09-14T12:38:41Z",
       "evidence": "CloudCone pricing card, read the same way as SC2 Starter.",
       "field_evidence": {
         "price": "$ 63.09 Per Month"
@@ -1453,7 +1453,7 @@
       "condition": "Monthly rate for the plan; the card also prints the hourly rate for the same plan.",
       "kind": "regular_price",
       "price": 63.09,
-      "source_sha256": "b560b9f9b66efc55a170bb3a60fe37055bc7938216b8169e2e510e5b83974394"
+      "source_sha256": "83880c15cb866448db6cb3cfc37c50e77ce5f8c5168ac2fa91bfbf51381a4c95"
     },
     {
       "slug": "ramnode-standard-vps",
@@ -1462,7 +1462,7 @@
       "category": "VPS hosting",
       "source_url": "https://www.ramnode.com/",
       "offer_url": "https://www.ramnode.com/",
-      "fetched_at": "2026-09-14T06:39:45Z",
+      "fetched_at": "2026-09-14T12:38:42Z",
       "evidence": "RamNode tier block: the tier name is followed by the entry monthly rate.",
       "field_evidence": {
         "price": "$4/mo"
@@ -1472,7 +1472,7 @@
       "condition": "Entry monthly rate for this tier; the tier is resizable and larger sizes cost more.",
       "kind": "regular_price",
       "price": 4.0,
-      "source_sha256": "5b9e6b8c05c26d041b68a3ff89f5fcf0a3cb95d175ba692fe06a2a3e5cf4042f"
+      "source_sha256": "6653ae2a1facc33ede9d541088282b538502b2d55209273da00bc16bc6cdec01"
     },
     {
       "slug": "ramnode-premium-nvme-vps",
@@ -1481,7 +1481,7 @@
       "category": "VPS hosting",
       "source_url": "https://www.ramnode.com/",
       "offer_url": "https://www.ramnode.com/",
-      "fetched_at": "2026-09-14T06:39:45Z",
+      "fetched_at": "2026-09-14T12:38:42Z",
       "evidence": "RamNode tier block, read the same way as Standard VPS.",
       "field_evidence": {
         "price": "$14/mo"
@@ -1491,7 +1491,7 @@
       "condition": "Entry monthly rate for this tier; the tier is resizable and larger sizes cost more.",
       "kind": "regular_price",
       "price": 14.0,
-      "source_sha256": "5b9e6b8c05c26d041b68a3ff89f5fcf0a3cb95d175ba692fe06a2a3e5cf4042f"
+      "source_sha256": "6653ae2a1facc33ede9d541088282b538502b2d55209273da00bc16bc6cdec01"
     },
     {
       "slug": "ramnode-storage-vps",
@@ -1500,7 +1500,7 @@
       "category": "VPS hosting",
       "source_url": "https://www.ramnode.com/",
       "offer_url": "https://www.ramnode.com/",
-      "fetched_at": "2026-09-14T06:39:45Z",
+      "fetched_at": "2026-09-14T12:38:42Z",
       "evidence": "RamNode tier block, read the same way as Standard VPS.",
       "field_evidence": {
         "price": "$4/mo"
@@ -1510,7 +1510,7 @@
       "condition": "Entry monthly rate for this tier; the tier is resizable and larger sizes cost more.",
       "kind": "regular_price",
       "price": 4.0,
-      "source_sha256": "5b9e6b8c05c26d041b68a3ff89f5fcf0a3cb95d175ba692fe06a2a3e5cf4042f"
+      "source_sha256": "6653ae2a1facc33ede9d541088282b538502b2d55209273da00bc16bc6cdec01"
     },
     {
       "slug": "simply-com-basic-suite",
@@ -1519,7 +1519,7 @@
       "category": "Web hosting",
       "source_url": "https://www.simply.com/en/",
       "offer_url": "https://www.simply.com/en/",
-      "fetched_at": "2026-09-14T06:39:47Z",
+      "fetched_at": "2026-09-14T12:38:44Z",
       "evidence": "Simply.com plan card: the plan name is followed by the first-year monthly rate and then the renewal monthly rate.",
       "field_evidence": {
         "price": "US$0.59/mo first year",
@@ -1531,7 +1531,7 @@
       "kind": "promotion",
       "price": 0.59,
       "renewal_price": 8.94,
-      "source_sha256": "15db11c401e7c7a208307b80b9a5b4580cdaf36a1a5ae60c261bb45155fa0da2"
+      "source_sha256": "929967a3d4a38c3388fa211dac216b2a72e2388eab6b38d9b61c07256a21c6f5"
     },
     {
       "slug": "simply-com-standard-suite",
@@ -1540,7 +1540,7 @@
       "category": "Web hosting",
       "source_url": "https://www.simply.com/en/",
       "offer_url": "https://www.simply.com/en/",
-      "fetched_at": "2026-09-14T06:39:47Z",
+      "fetched_at": "2026-09-14T12:38:44Z",
       "evidence": "Simply.com plan card, read the same way as Basic Suite.",
       "field_evidence": {
         "price": "US$0.64/mo first year",
@@ -1552,7 +1552,7 @@
       "kind": "promotion",
       "price": 0.64,
       "renewal_price": 16.74,
-      "source_sha256": "15db11c401e7c7a208307b80b9a5b4580cdaf36a1a5ae60c261bb45155fa0da2"
+      "source_sha256": "929967a3d4a38c3388fa211dac216b2a72e2388eab6b38d9b61c07256a21c6f5"
     },
     {
       "slug": "simply-com-pro-suite",
@@ -1561,7 +1561,7 @@
       "category": "Web hosting",
       "source_url": "https://www.simply.com/en/",
       "offer_url": "https://www.simply.com/en/",
-      "fetched_at": "2026-09-14T06:39:47Z",
+      "fetched_at": "2026-09-14T12:38:44Z",
       "evidence": "Simply.com plan card, read the same way as Basic Suite.",
       "field_evidence": {
         "price": "US$3.60/mo first year",
@@ -1573,7 +1573,7 @@
       "kind": "promotion",
       "price": 3.6,
       "renewal_price": 25.2,
-      "source_sha256": "15db11c401e7c7a208307b80b9a5b4580cdaf36a1a5ae60c261bb45155fa0da2"
+      "source_sha256": "929967a3d4a38c3388fa211dac216b2a72e2388eab6b38d9b61c07256a21c6f5"
     },
     {
       "slug": "strikingly-limited",
@@ -1582,7 +1582,7 @@
       "category": "Web hosting",
       "source_url": "https://www.strikingly.com/pricing",
       "offer_url": "https://www.strikingly.com/pricing",
-      "fetched_at": "2026-09-14T06:39:50Z",
+      "fetched_at": "2026-09-14T12:38:48Z",
       "evidence": "Strikingly pricing card: the plan name is followed by the monthly rate and the billing note.",
       "field_evidence": {
         "price": "8 /mo USD, Billed yearly"
@@ -1592,7 +1592,7 @@
       "condition": "Monthly rate when the plan is billed yearly, as printed on the official pricing card.",
       "kind": "regular_price",
       "price": 8.0,
-      "source_sha256": "2e8170d4a27c643c6275daaa4478aacf29e4961d975711c3a3270f06142ff778"
+      "source_sha256": "8b05283ef922a48cce757e1b94412fb4b0d790d40c8c94eed28209cd45ffd398"
     },
     {
       "slug": "strikingly-pro",
@@ -1601,7 +1601,7 @@
       "category": "Web hosting",
       "source_url": "https://www.strikingly.com/pricing",
       "offer_url": "https://www.strikingly.com/pricing",
-      "fetched_at": "2026-09-14T06:39:50Z",
+      "fetched_at": "2026-09-14T12:38:48Z",
       "evidence": "Strikingly pricing card, read the same way as Limited.",
       "field_evidence": {
         "price": "16 /mo USD, Billed yearly"
@@ -1611,7 +1611,7 @@
       "condition": "Monthly rate when the plan is billed yearly, as printed on the official pricing card.",
       "kind": "regular_price",
       "price": 16.0,
-      "source_sha256": "2e8170d4a27c643c6275daaa4478aacf29e4961d975711c3a3270f06142ff778"
+      "source_sha256": "8b05283ef922a48cce757e1b94412fb4b0d790d40c8c94eed28209cd45ffd398"
     },
     {
       "slug": "strikingly-vip",
@@ -1620,7 +1620,7 @@
       "category": "Web hosting",
       "source_url": "https://www.strikingly.com/pricing",
       "offer_url": "https://www.strikingly.com/pricing",
-      "fetched_at": "2026-09-14T06:39:50Z",
+      "fetched_at": "2026-09-14T12:38:48Z",
       "evidence": "Strikingly pricing card, read the same way as Limited.",
       "field_evidence": {
         "price": "49 /mo USD, Billed yearly"
@@ -1630,7 +1630,7 @@
       "condition": "Monthly rate when the plan is billed yearly, as printed on the official pricing card.",
       "kind": "regular_price",
       "price": 49.0,
-      "source_sha256": "2e8170d4a27c643c6275daaa4478aacf29e4961d975711c3a3270f06142ff778"
+      "source_sha256": "8b05283ef922a48cce757e1b94412fb4b0d790d40c8c94eed28209cd45ffd398"
     },
     {
       "slug": "zeabur-dev",
@@ -1639,7 +1639,7 @@
       "category": "Application hosting",
       "source_url": "https://zeabur.com/pricing",
       "offer_url": "https://zeabur.com/pricing",
-      "fetched_at": "2026-09-14T06:39:50Z",
+      "fetched_at": "2026-09-14T12:38:49Z",
       "evidence": "Zeabur pricing card: the plan name is followed by the trial note and then the monthly rate.",
       "field_evidence": {
         "price": "$ 5 /mo"
@@ -1658,7 +1658,7 @@
       "category": "Application hosting",
       "source_url": "https://zeabur.com/pricing",
       "offer_url": "https://zeabur.com/pricing",
-      "fetched_at": "2026-09-14T06:39:50Z",
+      "fetched_at": "2026-09-14T12:38:49Z",
       "evidence": "Zeabur pricing card, read the same way as Dev.",
       "field_evidence": {
         "price": "$ 19 /mo"
@@ -1696,7 +1696,7 @@
       "category": "Application hosting",
       "source_url": "https://replit.com/pricing",
       "offer_url": "https://replit.com/pricing",
-      "fetched_at": "2026-09-14T06:39:52Z",
+      "fetched_at": "2026-09-14T12:38:49Z",
       "evidence": "Replit pricing card: the plan name is followed by the monthly rate and then the annual-billing rate.",
       "field_evidence": {
         "price": "20 $18 / month, billed annually"
@@ -1706,7 +1706,7 @@
       "condition": "Monthly rate without an annual commitment; the card prints the lower annual-billing rate immediately after it.",
       "kind": "regular_price",
       "price": 20.0,
-      "source_sha256": "5a2b95e05153880f6769dd5e69081d20591bff1ceea50fee895ddc7da71e04a4"
+      "source_sha256": "6a22ec1d4205a58558fc7c01847b0e08263ef554bfe03163b76b72ec6493795d"
     },
     {
       "slug": "replit-pro",
@@ -1715,7 +1715,7 @@
       "category": "Application hosting",
       "source_url": "https://replit.com/pricing",
       "offer_url": "https://replit.com/pricing",
-      "fetched_at": "2026-09-14T06:39:52Z",
+      "fetched_at": "2026-09-14T12:38:49Z",
       "evidence": "Replit pricing card, read the same way as Core.",
       "field_evidence": {
         "price": "100 $90 / month, billed annually"
@@ -1725,7 +1725,7 @@
       "condition": "Monthly rate without an annual commitment; the card prints the lower annual-billing rate immediately after it.",
       "kind": "regular_price",
       "price": 100.0,
-      "source_sha256": "5a2b95e05153880f6769dd5e69081d20591bff1ceea50fee895ddc7da71e04a4"
+      "source_sha256": "6a22ec1d4205a58558fc7c01847b0e08263ef554bfe03163b76b72ec6493795d"
     },
     {
       "slug": "durable-launch",
@@ -1734,7 +1734,7 @@
       "category": "Web hosting",
       "source_url": "https://durable.co/",
       "offer_url": "https://durable.co/",
-      "fetched_at": "2026-09-14T06:39:54Z",
+      "fetched_at": "2026-09-14T12:38:51Z",
       "evidence": "Durable pricing page: the plan name is followed by the monthly rate.",
       "field_evidence": {
         "price": "$25/mo"
@@ -1744,7 +1744,7 @@
       "condition": "Monthly rate for the Launch plan as printed on the official pricing page.",
       "kind": "regular_price",
       "price": 25.0,
-      "source_sha256": "b9fc14d6a66904e67a217df681fe6fd1eb26487be197894196a9070271aee4bd"
+      "source_sha256": "006e3ad0881c74ae81f6c12517f489bd4bde169382b01e80aa1296d20210ef83"
     },
     {
       "slug": "b12-website",
@@ -1753,7 +1753,7 @@
       "category": "Web hosting",
       "source_url": "https://www.b12.io/pricing",
       "offer_url": "https://www.b12.io/pricing",
-      "fetched_at": "2026-09-14T06:39:54Z",
+      "fetched_at": "2026-09-14T12:38:52Z",
       "evidence": "B12 pricing card: the plan name is followed by the promotional amount and then the monthly rate.",
       "field_evidence": {
         "price": "$ 24 / month"
@@ -1772,7 +1772,7 @@
       "category": "Web hosting",
       "source_url": "https://www.b12.io/pricing",
       "offer_url": "https://www.b12.io/pricing",
-      "fetched_at": "2026-09-14T06:39:54Z",
+      "fetched_at": "2026-09-14T12:38:52Z",
       "evidence": "B12 pricing card, read the same way as Website.",
       "field_evidence": {
         "price": "$ 78 / month"
@@ -1791,7 +1791,7 @@
       "category": "Application hosting",
       "source_url": "https://www.softr.io/pricing",
       "offer_url": "https://www.softr.io/pricing",
-      "fetched_at": "2026-09-14T06:39:56Z",
+      "fetched_at": "2026-09-14T12:38:54Z",
       "evidence": "Softr pricing card: the plan name is followed by the monthly rate.",
       "field_evidence": {
         "price": "19 /month"
@@ -1810,7 +1810,7 @@
       "category": "Application hosting",
       "source_url": "https://www.softr.io/pricing",
       "offer_url": "https://www.softr.io/pricing",
-      "fetched_at": "2026-09-14T06:39:56Z",
+      "fetched_at": "2026-09-14T12:38:54Z",
       "evidence": "Softr pricing card, read the same way as Basic.",
       "field_evidence": {
         "price": "99 /month"
@@ -1829,7 +1829,7 @@
       "category": "Application hosting",
       "source_url": "https://www.softr.io/pricing",
       "offer_url": "https://www.softr.io/pricing",
-      "fetched_at": "2026-09-14T06:39:56Z",
+      "fetched_at": "2026-09-14T12:38:54Z",
       "evidence": "Softr pricing card, read the same way as Basic.",
       "field_evidence": {
         "price": "329 /month"
@@ -1848,7 +1848,7 @@
       "category": "Web hosting",
       "source_url": "https://bandzoogle.com/pricing",
       "offer_url": "https://bandzoogle.com/pricing",
-      "fetched_at": "2026-09-14T06:39:57Z",
+      "fetched_at": "2026-09-14T12:38:55Z",
       "evidence": "Bandzoogle plan card: the plan name is followed by the annual-billing monthly rate and then the month-to-month rate.",
       "field_evidence": {
         "price": "$9.16 /mo billed annually"
@@ -1858,7 +1858,7 @@
       "condition": "Monthly rate when the plan is billed annually; the page prints the month-to-month rate next to it.",
       "kind": "regular_price",
       "price": 9.16,
-      "source_sha256": "fefe95d33c3f049d7c20f9038d355dfcbff25e5212bdc7fe63727823874f6520"
+      "source_sha256": "866b2f24b5b36ecd654501e45afe932837ccd679c9c28e4ff1a59655178d4c12"
     },
     {
       "slug": "bandzoogle-standard-website-plan",
@@ -1867,7 +1867,7 @@
       "category": "Web hosting",
       "source_url": "https://bandzoogle.com/pricing",
       "offer_url": "https://bandzoogle.com/pricing",
-      "fetched_at": "2026-09-14T06:39:57Z",
+      "fetched_at": "2026-09-14T12:38:55Z",
       "evidence": "Bandzoogle plan card, read the same way as Lite Website plan.",
       "field_evidence": {
         "price": "$14.16 /mo billed annually"
@@ -1877,7 +1877,7 @@
       "condition": "Monthly rate when the plan is billed annually; the page prints the month-to-month rate next to it.",
       "kind": "regular_price",
       "price": 14.16,
-      "source_sha256": "fefe95d33c3f049d7c20f9038d355dfcbff25e5212bdc7fe63727823874f6520"
+      "source_sha256": "866b2f24b5b36ecd654501e45afe932837ccd679c9c28e4ff1a59655178d4c12"
     },
     {
       "slug": "bandzoogle-pro-website-plan",
@@ -1886,7 +1886,7 @@
       "category": "Web hosting",
       "source_url": "https://bandzoogle.com/pricing",
       "offer_url": "https://bandzoogle.com/pricing",
-      "fetched_at": "2026-09-14T06:39:57Z",
+      "fetched_at": "2026-09-14T12:38:55Z",
       "evidence": "Bandzoogle plan card, read the same way as Lite Website plan.",
       "field_evidence": {
         "price": "$18.33 /mo billed annually"
@@ -1896,7 +1896,7 @@
       "condition": "Monthly rate when the plan is billed annually; the page prints the month-to-month rate next to it.",
       "kind": "regular_price",
       "price": 18.33,
-      "source_sha256": "fefe95d33c3f049d7c20f9038d355dfcbff25e5212bdc7fe63727823874f6520"
+      "source_sha256": "866b2f24b5b36ecd654501e45afe932837ccd679c9c28e4ff1a59655178d4c12"
     },
     {
       "slug": "netcup-vps-500-g12",
@@ -1981,7 +1981,7 @@
       "category": "Application hosting",
       "source_url": "https://deno.com/deploy/pricing",
       "offer_url": "https://deno.com/deploy/pricing",
-      "fetched_at": "2026-09-14T06:40:00Z",
+      "fetched_at": "2026-09-14T12:39:03Z",
       "evidence": "Deno Deploy pricing card: the plan name is followed by the monthly rate.",
       "field_evidence": {
         "price": "20 /month"
@@ -1991,7 +1991,7 @@
       "condition": "Monthly subscription rate for the plan; usage above the included allowance is billed separately.",
       "kind": "regular_price",
       "price": 20.0,
-      "source_sha256": "d16ece0b3ac0887bd03de2f94e08e9ead43c70f66e95ad6965c06971399b3404"
+      "source_sha256": "c631b1127cba21557081a12d9bf22768b5f7e4188d906d889e800bb87d7abb73"
     },
     {
       "slug": "deno-deploy-builder",
@@ -2000,7 +2000,7 @@
       "category": "Application hosting",
       "source_url": "https://deno.com/deploy/pricing",
       "offer_url": "https://deno.com/deploy/pricing",
-      "fetched_at": "2026-09-14T06:40:00Z",
+      "fetched_at": "2026-09-14T12:39:03Z",
       "evidence": "Deno Deploy pricing card, read the same way as Pro.",
       "field_evidence": {
         "price": "200 /month"
@@ -2010,7 +2010,7 @@
       "condition": "Monthly subscription rate for the plan; usage above the included allowance is billed separately.",
       "kind": "regular_price",
       "price": 200.0,
-      "source_sha256": "d16ece0b3ac0887bd03de2f94e08e9ead43c70f66e95ad6965c06971399b3404"
+      "source_sha256": "c631b1127cba21557081a12d9bf22768b5f7e4188d906d889e800bb87d7abb73"
     },
     {
       "slug": "lightningbase-personal",
@@ -2019,7 +2019,7 @@
       "category": "Web hosting",
       "source_url": "https://lightningbase.com/pricing",
       "offer_url": "https://lightningbase.com/pricing",
-      "fetched_at": "2026-09-14T06:40:00Z",
+      "fetched_at": "2026-09-14T12:39:03Z",
       "evidence": "LightningBase pricing card: the plan name is followed by the monthly rate.",
       "field_evidence": {
         "price": "9.95/mo"
@@ -2029,7 +2029,7 @@
       "condition": "Monthly rate for the plan as printed on the official pricing page.",
       "kind": "regular_price",
       "price": 9.95,
-      "source_sha256": "1c75011ddb5c2d6545d5304c834113579c16606d67e06d167e197175cef500d9"
+      "source_sha256": "21542def7f1463ef421fcfde7f19c707205fab73e9c09142e1fc9929daec7c23"
     },
     {
       "slug": "lightningbase-small",
@@ -2038,7 +2038,7 @@
       "category": "Web hosting",
       "source_url": "https://lightningbase.com/pricing",
       "offer_url": "https://lightningbase.com/pricing",
-      "fetched_at": "2026-09-14T06:40:00Z",
+      "fetched_at": "2026-09-14T12:39:03Z",
       "evidence": "LightningBase pricing card, read the same way as Personal.",
       "field_evidence": {
         "price": "19.95/mo"
@@ -2048,7 +2048,7 @@
       "condition": "Monthly rate for the plan as printed on the official pricing page.",
       "kind": "regular_price",
       "price": 19.95,
-      "source_sha256": "1c75011ddb5c2d6545d5304c834113579c16606d67e06d167e197175cef500d9"
+      "source_sha256": "21542def7f1463ef421fcfde7f19c707205fab73e9c09142e1fc9929daec7c23"
     },
     {
       "slug": "lightningbase-medium",
@@ -2057,7 +2057,7 @@
       "category": "Web hosting",
       "source_url": "https://lightningbase.com/pricing",
       "offer_url": "https://lightningbase.com/pricing",
-      "fetched_at": "2026-09-14T06:40:00Z",
+      "fetched_at": "2026-09-14T12:39:03Z",
       "evidence": "LightningBase pricing card, read the same way as Personal.",
       "field_evidence": {
         "price": "49.95/mo"
@@ -2067,7 +2067,7 @@
       "condition": "Monthly rate for the plan as printed on the official pricing page.",
       "kind": "regular_price",
       "price": 49.95,
-      "source_sha256": "1c75011ddb5c2d6545d5304c834113579c16606d67e06d167e197175cef500d9"
+      "source_sha256": "21542def7f1463ef421fcfde7f19c707205fab73e9c09142e1fc9929daec7c23"
     },
     {
       "slug": "lightningbase-large",
@@ -2076,7 +2076,7 @@
       "category": "Web hosting",
       "source_url": "https://lightningbase.com/pricing",
       "offer_url": "https://lightningbase.com/pricing",
-      "fetched_at": "2026-09-14T06:40:00Z",
+      "fetched_at": "2026-09-14T12:39:03Z",
       "evidence": "LightningBase pricing card, read the same way as Personal.",
       "field_evidence": {
         "price": "99.95/mo"
@@ -2086,7 +2086,7 @@
       "condition": "Monthly rate for the plan as printed on the official pricing page.",
       "kind": "regular_price",
       "price": 99.95,
-      "source_sha256": "1c75011ddb5c2d6545d5304c834113579c16606d67e06d167e197175cef500d9"
+      "source_sha256": "21542def7f1463ef421fcfde7f19c707205fab73e9c09142e1fc9929daec7c23"
     },
     {
       "slug": "tmdhosting-linux-shared-hosting",
@@ -2095,7 +2095,7 @@
       "category": "Web hosting",
       "source_url": "https://www.tmdhosting.com/",
       "offer_url": "https://www.tmdhosting.com/",
-      "fetched_at": "2026-09-14T06:40:01Z",
+      "fetched_at": "2026-09-14T12:39:04Z",
       "evidence": "TMDHosting plan card: the plan name is followed by the standard monthly rate and then the discounted monthly rate.",
       "field_evidence": {
         "price": "from $11.90/mo $9.52/mo"
@@ -2105,7 +2105,7 @@
       "condition": "Discounted monthly rate; the page prints the standard monthly rate immediately before it and states the discount is 20%.",
       "kind": "promotion",
       "price": 9.52,
-      "source_sha256": "d79f7cd82e5ff18f05d24c7da92524870b78b49cd7662889a6e99550fa9e803d"
+      "source_sha256": "d3c6aaf68d9b37ae36ea140c61ec119a05443f8dbe41f13c834f3cb5dfaebc09"
     },
     {
       "slug": "tmdhosting-managed-wordpress-hosting",
@@ -2114,7 +2114,7 @@
       "category": "Web hosting",
       "source_url": "https://www.tmdhosting.com/",
       "offer_url": "https://www.tmdhosting.com/",
-      "fetched_at": "2026-09-14T06:40:01Z",
+      "fetched_at": "2026-09-14T12:39:04Z",
       "evidence": "TMDHosting plan card, read the same way as Linux Shared Hosting.",
       "field_evidence": {
         "price": "from $12.49/mo $9.99/mo"
@@ -2124,7 +2124,7 @@
       "condition": "Discounted monthly rate; the page prints the undiscounted monthly rate immediately before it.",
       "kind": "promotion",
       "price": 9.99,
-      "source_sha256": "d79f7cd82e5ff18f05d24c7da92524870b78b49cd7662889a6e99550fa9e803d"
+      "source_sha256": "d3c6aaf68d9b37ae36ea140c61ec119a05443f8dbe41f13c834f3cb5dfaebc09"
     },
     {
       "slug": "tmdhosting-managed-linux-vps-hosting",
@@ -2133,7 +2133,7 @@
       "category": "VPS hosting",
       "source_url": "https://www.tmdhosting.com/",
       "offer_url": "https://www.tmdhosting.com/",
-      "fetched_at": "2026-09-14T06:40:01Z",
+      "fetched_at": "2026-09-14T12:39:04Z",
       "evidence": "TMDHosting plan card, read the same way as Linux Shared Hosting.",
       "field_evidence": {
         "price": "from $62.49/mo $49.99/mo"
@@ -2143,7 +2143,7 @@
       "condition": "Discounted monthly rate; the page prints the undiscounted monthly rate immediately before it.",
       "kind": "promotion",
       "price": 49.99,
-      "source_sha256": "d79f7cd82e5ff18f05d24c7da92524870b78b49cd7662889a6e99550fa9e803d"
+      "source_sha256": "d3c6aaf68d9b37ae36ea140c61ec119a05443f8dbe41f13c834f3cb5dfaebc09"
     },
     {
       "slug": "tmdhosting-managed-dedicated-servers",
@@ -2152,7 +2152,7 @@
       "category": "Dedicated hosting",
       "source_url": "https://www.tmdhosting.com/",
       "offer_url": "https://www.tmdhosting.com/",
-      "fetched_at": "2026-09-14T06:40:01Z",
+      "fetched_at": "2026-09-14T12:39:04Z",
       "evidence": "TMDHosting plan card, read the same way as Linux Shared Hosting.",
       "field_evidence": {
         "price": "from $199.99/mo $159.99/mo"
@@ -2162,7 +2162,7 @@
       "condition": "Discounted monthly rate; the page prints the undiscounted monthly rate immediately before it.",
       "kind": "promotion",
       "price": 159.99,
-      "source_sha256": "d79f7cd82e5ff18f05d24c7da92524870b78b49cd7662889a6e99550fa9e803d"
+      "source_sha256": "d3c6aaf68d9b37ae36ea140c61ec119a05443f8dbe41f13c834f3cb5dfaebc09"
     },
     {
       "slug": "hawkhost-shared-hosting",
@@ -2171,7 +2171,7 @@
       "category": "Web hosting",
       "source_url": "https://www.hawkhost.com/",
       "offer_url": "https://www.hawkhost.com/",
-      "fetched_at": "2026-09-14T06:40:01Z",
+      "fetched_at": "2026-09-14T12:39:04Z",
       "evidence": "HawkHost service card: the service name is followed by the entry monthly rate and the previous rate.",
       "field_evidence": {
         "price": "Starting from $ 1.99 /mo"
@@ -2190,7 +2190,7 @@
       "category": "Reseller hosting",
       "source_url": "https://www.hawkhost.com/",
       "offer_url": "https://www.hawkhost.com/",
-      "fetched_at": "2026-09-14T06:40:01Z",
+      "fetched_at": "2026-09-14T12:39:04Z",
       "evidence": "HawkHost service card, read the same way as Shared Hosting.",
       "field_evidence": {
         "price": "Starting from $ 16.05 /mo"
@@ -2209,7 +2209,7 @@
       "category": "VPS hosting",
       "source_url": "https://www.hawkhost.com/",
       "offer_url": "https://www.hawkhost.com/",
-      "fetched_at": "2026-09-14T06:40:01Z",
+      "fetched_at": "2026-09-14T12:39:04Z",
       "evidence": "HawkHost service card, read the same way as Shared Hosting.",
       "field_evidence": {
         "price": "Starting from $ 5.00 /mo"
@@ -2228,7 +2228,7 @@
       "category": "Web hosting",
       "source_url": "https://www.crocweb.com/",
       "offer_url": "https://www.crocweb.com/",
-      "fetched_at": "2026-09-14T06:40:02Z",
+      "fetched_at": "2026-09-14T12:39:05Z",
       "evidence": "CrocWeb service card: the service name is followed by the entry monthly rate.",
       "field_evidence": {
         "price": "starting at $1.02/mo"
@@ -2247,7 +2247,7 @@
       "category": "Web hosting",
       "source_url": "https://www.crocweb.com/",
       "offer_url": "https://www.crocweb.com/",
-      "fetched_at": "2026-09-14T06:40:02Z",
+      "fetched_at": "2026-09-14T12:39:05Z",
       "evidence": "CrocWeb service card, read the same way as Cloud Web Hosting.",
       "field_evidence": {
         "price": "starting at $1.02/mo"
@@ -2266,7 +2266,7 @@
       "category": "Reseller hosting",
       "source_url": "https://www.crocweb.com/",
       "offer_url": "https://www.crocweb.com/",
-      "fetched_at": "2026-09-14T06:40:02Z",
+      "fetched_at": "2026-09-14T12:39:05Z",
       "evidence": "CrocWeb service card, read the same way as Cloud Web Hosting.",
       "field_evidence": {
         "price": "starting at $2.04/mo"
@@ -2285,7 +2285,7 @@
       "category": "VPS hosting",
       "source_url": "https://www.crocweb.com/",
       "offer_url": "https://www.crocweb.com/",
-      "fetched_at": "2026-09-14T06:40:02Z",
+      "fetched_at": "2026-09-14T12:39:05Z",
       "evidence": "CrocWeb service card, read the same way as Cloud Web Hosting.",
       "field_evidence": {
         "price": "starting at $19.95/mo"
@@ -2304,7 +2304,7 @@
       "category": "Web hosting",
       "source_url": "https://www.eukhost.com/",
       "offer_url": "https://www.eukhost.com/",
-      "fetched_at": "2026-09-14T06:40:02Z",
+      "fetched_at": "2026-09-14T12:39:06Z",
       "evidence": "eUKhost service block: the service name is followed by the entry monthly rate and the VAT note.",
       "field_evidence": {
         "price": "\u00a3 4.07 /mo"
@@ -2314,7 +2314,7 @@
       "condition": "Monthly rate excluding VAT, as printed on the official pricing page.",
       "kind": "regular_price",
       "price": 4.07,
-      "source_sha256": "66ad36d595b31efa4606c1e3a0de157a6057edcafe9bb669798569bc8ab4b2fc"
+      "source_sha256": "318cf16a485629e846c88d7f09b2dbad073e3942f1a0a009eb5b5ed6dad1ec49"
     },
     {
       "slug": "eukhost-hyperwp-wordpress-hosting",
@@ -2323,7 +2323,7 @@
       "category": "Web hosting",
       "source_url": "https://www.eukhost.com/",
       "offer_url": "https://www.eukhost.com/",
-      "fetched_at": "2026-09-14T06:40:02Z",
+      "fetched_at": "2026-09-14T12:39:06Z",
       "evidence": "eUKhost service block, read the same way as Premium Web Hosting.",
       "field_evidence": {
         "price": "\u00a3 4.79 /mo"
@@ -2333,7 +2333,7 @@
       "condition": "Monthly rate excluding VAT, as printed on the official pricing page.",
       "kind": "regular_price",
       "price": 4.79,
-      "source_sha256": "66ad36d595b31efa4606c1e3a0de157a6057edcafe9bb669798569bc8ab4b2fc"
+      "source_sha256": "318cf16a485629e846c88d7f09b2dbad073e3942f1a0a009eb5b5ed6dad1ec49"
     },
     {
       "slug": "eukhost-vps-servers",
@@ -2342,7 +2342,7 @@
       "category": "VPS hosting",
       "source_url": "https://www.eukhost.com/",
       "offer_url": "https://www.eukhost.com/",
-      "fetched_at": "2026-09-14T06:40:02Z",
+      "fetched_at": "2026-09-14T12:39:06Z",
       "evidence": "eUKhost service block, read the same way as Premium Web Hosting.",
       "field_evidence": {
         "price": "\u00a3 19.14 /mo"
@@ -2352,7 +2352,7 @@
       "condition": "Monthly rate excluding VAT, as printed on the official pricing page.",
       "kind": "regular_price",
       "price": 19.14,
-      "source_sha256": "66ad36d595b31efa4606c1e3a0de157a6057edcafe9bb669798569bc8ab4b2fc"
+      "source_sha256": "318cf16a485629e846c88d7f09b2dbad073e3942f1a0a009eb5b5ed6dad1ec49"
     },
     {
       "slug": "eukhost-com-registration",
@@ -2361,7 +2361,7 @@
       "category": "Domains",
       "source_url": "https://www.eukhost.com/",
       "offer_url": "https://www.eukhost.com/",
-      "fetched_at": "2026-09-14T06:40:02Z",
+      "fetched_at": "2026-09-14T12:39:06Z",
       "evidence": "eUKhost domain list: the TLD is followed by the yearly registration rate.",
       "field_evidence": {
         "price": "com \u00a3 12.99 /yr"
@@ -2371,7 +2371,7 @@
       "condition": "Yearly registration rate for a .com domain as printed on the official page; the amount excludes VAT.",
       "kind": "regular_price",
       "price": 12.99,
-      "source_sha256": "66ad36d595b31efa4606c1e3a0de157a6057edcafe9bb669798569bc8ab4b2fc"
+      "source_sha256": "318cf16a485629e846c88d7f09b2dbad073e3942f1a0a009eb5b5ed6dad1ec49"
     },
     {
       "slug": "heart-internet-web-hosting",
@@ -2494,7 +2494,7 @@
       "category": "Application hosting",
       "source_url": "https://supabase.com/pricing",
       "offer_url": "https://supabase.com/pricing",
-      "fetched_at": "2026-09-14T06:40:06Z",
+      "fetched_at": "2026-09-14T12:39:09Z",
       "evidence": "Supabase plan card: the plan name is followed by the entry monthly rate.",
       "field_evidence": {
         "price": "$ 25 / month"
@@ -2504,7 +2504,7 @@
       "condition": "Monthly subscription rate for the plan; compute usage beyond the included credits is billed separately.",
       "kind": "regular_price",
       "price": 25.0,
-      "source_sha256": "ae1d69ff649510553beb4f445732845128ca72b2c142f03574877c69071ba4f5"
+      "source_sha256": "a9f88f6ed968ca6ac184d7cafe485042b0888bde1201fbd4f98d8408b49f61dc"
     },
     {
       "slug": "supabase-team",
@@ -2513,7 +2513,7 @@
       "category": "Application hosting",
       "source_url": "https://supabase.com/pricing",
       "offer_url": "https://supabase.com/pricing",
-      "fetched_at": "2026-09-14T06:40:06Z",
+      "fetched_at": "2026-09-14T12:39:09Z",
       "evidence": "Supabase plan card, read the same way as Pro.",
       "field_evidence": {
         "price": "$ 599 / month"
@@ -2523,7 +2523,7 @@
       "condition": "Monthly subscription rate for the plan; compute usage beyond the included credits is billed separately.",
       "kind": "regular_price",
       "price": 599.0,
-      "source_sha256": "ae1d69ff649510553beb4f445732845128ca72b2c142f03574877c69071ba4f5"
+      "source_sha256": "a9f88f6ed968ca6ac184d7cafe485042b0888bde1201fbd4f98d8408b49f61dc"
     },
     {
       "slug": "platform-sh-project-fee",
@@ -2532,7 +2532,7 @@
       "category": "Application hosting",
       "source_url": "https://platform.sh/pricing",
       "offer_url": "https://platform.sh/pricing",
-      "fetched_at": "2026-09-14T06:40:08Z",
+      "fetched_at": "2026-09-14T12:39:11Z",
       "evidence": "Platform.sh pricing list: the fee name is followed by the amount and its unit.",
       "field_evidence": {
         "price": "\u20ac9.00 /project/month"
@@ -2542,7 +2542,7 @@
       "condition": "Per-project monthly fee; the resources the project consumes are billed separately.",
       "kind": "regular_price",
       "price": 9.0,
-      "source_sha256": "1b76d734da2bcfb59cfd92cc813df66b92ce212aa5e1257f4cd8c3f9fe97a955"
+      "source_sha256": "83ad4c7d2e80b835bdf2e4de1466b3651e1be3e28b95f51522174b4eeb3c7ffb"
     },
     {
       "slug": "platform-sh-user-license",
@@ -2551,7 +2551,7 @@
       "category": "Application hosting",
       "source_url": "https://platform.sh/pricing",
       "offer_url": "https://platform.sh/pricing",
-      "fetched_at": "2026-09-14T06:40:08Z",
+      "fetched_at": "2026-09-14T12:39:11Z",
       "evidence": "Platform.sh pricing list, read the same way as Project fee.",
       "field_evidence": {
         "price": "\u20ac10.00 /user/month"
@@ -2561,7 +2561,7 @@
       "condition": "Per-user monthly fee; the first user license is credited back through the first-project incentive.",
       "kind": "regular_price",
       "price": 10.0,
-      "source_sha256": "1b76d734da2bcfb59cfd92cc813df66b92ce212aa5e1257f4cd8c3f9fe97a955"
+      "source_sha256": "83ad4c7d2e80b835bdf2e4de1466b3651e1be3e28b95f51522174b4eeb3c7ffb"
     },
     {
       "slug": "pantheon-gold",
@@ -2570,7 +2570,7 @@
       "category": "Web hosting",
       "source_url": "https://pantheon.io/plans/pricing",
       "offer_url": "https://pantheon.io/plans/pricing",
-      "fetched_at": "2026-09-14T06:40:08Z",
+      "fetched_at": "2026-09-14T12:39:11Z",
       "evidence": "Pantheon plan card: the plan name is followed by the monthly rate.",
       "field_evidence": {
         "price": "$ 500 per month"
@@ -2589,7 +2589,7 @@
       "category": "Application hosting",
       "source_url": "https://northflank.com/pricing",
       "offer_url": "https://northflank.com/pricing",
-      "fetched_at": "2026-09-14T06:40:10Z",
+      "fetched_at": "2026-09-14T12:39:12Z",
       "evidence": "Northflank container table row: the plan name is followed by its specification and then the monthly price.",
       "field_evidence": {
         "price": "Price $ 2.70 /month"
@@ -2599,7 +2599,7 @@
       "condition": "Monthly price for the container plan; the page also prints an hourly price for the same plan.",
       "kind": "regular_price",
       "price": 2.7,
-      "source_sha256": "d52a788547f08d7f4de3daeea6593d78a6c78334145ef9b4cbe808a1fa963e25"
+      "source_sha256": "d3afd694fcc443b39c0f6aea648a931c3bf7ad975098ed2f0404ac560be3e1dc"
     },
     {
       "slug": "northflank-nf-compute-50",
@@ -2608,7 +2608,7 @@
       "category": "Application hosting",
       "source_url": "https://northflank.com/pricing",
       "offer_url": "https://northflank.com/pricing",
-      "fetched_at": "2026-09-14T06:40:10Z",
+      "fetched_at": "2026-09-14T12:39:12Z",
       "evidence": "Northflank container table row, read the same way as nf-compute-10.",
       "field_evidence": {
         "price": "Price $ 12.00 /month"
@@ -2618,7 +2618,7 @@
       "condition": "Monthly price for the container plan; the page also prints an hourly price for the same plan.",
       "kind": "regular_price",
       "price": 12.0,
-      "source_sha256": "d52a788547f08d7f4de3daeea6593d78a6c78334145ef9b4cbe808a1fa963e25"
+      "source_sha256": "d3afd694fcc443b39c0f6aea648a931c3bf7ad975098ed2f0404ac560be3e1dc"
     },
     {
       "slug": "northflank-nf-compute-100-2",
@@ -2627,7 +2627,7 @@
       "category": "Application hosting",
       "source_url": "https://northflank.com/pricing",
       "offer_url": "https://northflank.com/pricing",
-      "fetched_at": "2026-09-14T06:40:10Z",
+      "fetched_at": "2026-09-14T12:39:12Z",
       "evidence": "Northflank container table row, read the same way as nf-compute-10.",
       "field_evidence": {
         "price": "Price $ 24.00 /month"
@@ -2637,7 +2637,7 @@
       "condition": "Monthly price for the container plan; the page also prints an hourly price for the same plan.",
       "kind": "regular_price",
       "price": 24.0,
-      "source_sha256": "d52a788547f08d7f4de3daeea6593d78a6c78334145ef9b4cbe808a1fa963e25"
+      "source_sha256": "d3afd694fcc443b39c0f6aea648a931c3bf7ad975098ed2f0404ac560be3e1dc"
     },
     {
       "slug": "northflank-nf-compute-400",
@@ -2646,7 +2646,7 @@
       "category": "Application hosting",
       "source_url": "https://northflank.com/pricing",
       "offer_url": "https://northflank.com/pricing",
-      "fetched_at": "2026-09-14T06:40:10Z",
+      "fetched_at": "2026-09-14T12:39:12Z",
       "evidence": "Northflank container table row, read the same way as nf-compute-10.",
       "field_evidence": {
         "price": "Price $ 96.00 /month"
@@ -2656,7 +2656,7 @@
       "condition": "Monthly price for the container plan; the page also prints an hourly price for the same plan.",
       "kind": "regular_price",
       "price": 96.0,
-      "source_sha256": "d52a788547f08d7f4de3daeea6593d78a6c78334145ef9b4cbe808a1fa963e25"
+      "source_sha256": "d3afd694fcc443b39c0f6aea648a931c3bf7ad975098ed2f0404ac560be3e1dc"
     },
     {
       "slug": "shopify-basic",
@@ -2665,17 +2665,17 @@
       "category": "Hosting",
       "source_url": "https://www.shopify.com/pricing",
       "offer_url": "https://www.shopify.com/pricing",
-      "fetched_at": "2026-09-14T06:40:19Z",
+      "fetched_at": "2026-09-14T12:39:23Z",
       "evidence": "Shopify pricing card: the plan name is followed by the monthly amount.",
       "field_evidence": {
-        "price": "$29 /mo"
+        "price": "$14 /mo"
       },
       "currency": "USD",
       "billing_period": "month",
       "condition": "Monthly billing rate; the page states the annual-billing rate next to it.",
       "kind": "regular_price",
-      "price": 29.0,
-      "source_sha256": "e2754dc08ffb6ff986a2abc5f037d7d2c71e0de081d901ebe0364417d54e7178"
+      "price": 14.0,
+      "source_sha256": "e9f0a31ede3a2851da79976bb935c8345b7bd36c79615b3e54c4bd70602bdcbb"
     },
     {
       "slug": "shopify-grow",
@@ -2684,17 +2684,17 @@
       "category": "Hosting",
       "source_url": "https://www.shopify.com/pricing",
       "offer_url": "https://www.shopify.com/pricing",
-      "fetched_at": "2026-09-14T06:40:19Z",
+      "fetched_at": "2026-09-14T12:39:23Z",
       "evidence": "Shopify pricing card, read the same way as Basic.",
       "field_evidence": {
-        "price": "Grow $79 /mo"
+        "price": "Grow $39 /mo"
       },
       "currency": "USD",
       "billing_period": "month",
       "condition": "Monthly billing rate; the page states the annual-billing rate next to it.",
       "kind": "regular_price",
-      "price": 79.0,
-      "source_sha256": "e2754dc08ffb6ff986a2abc5f037d7d2c71e0de081d901ebe0364417d54e7178"
+      "price": 39.0,
+      "source_sha256": "e9f0a31ede3a2851da79976bb935c8345b7bd36c79615b3e54c4bd70602bdcbb"
     },
     {
       "slug": "shopify-advanced",
@@ -2703,7 +2703,7 @@
       "category": "Hosting",
       "source_url": "https://www.shopify.com/pricing",
       "offer_url": "https://www.shopify.com/pricing",
-      "fetched_at": "2026-09-14T06:40:19Z",
+      "fetched_at": "2026-09-14T12:39:23Z",
       "evidence": "Shopify pricing card, read the same way as Basic.",
       "field_evidence": {
         "price": "Advanced $299 /mo"
@@ -2713,7 +2713,7 @@
       "condition": "Monthly billing rate; the page states the annual-billing rate next to it.",
       "kind": "regular_price",
       "price": 299.0,
-      "source_sha256": "e2754dc08ffb6ff986a2abc5f037d7d2c71e0de081d901ebe0364417d54e7178"
+      "source_sha256": "e9f0a31ede3a2851da79976bb935c8345b7bd36c79615b3e54c4bd70602bdcbb"
     },
     {
       "slug": "bigcommerce-core",
@@ -2722,7 +2722,7 @@
       "category": "Hosting",
       "source_url": "https://www.bigcommerce.com/pricing/",
       "offer_url": "https://www.bigcommerce.com/pricing/",
-      "fetched_at": "2026-09-14T06:40:19Z",
+      "fetched_at": "2026-09-14T12:39:24Z",
       "evidence": "BigCommerce plan table row: the plan name is followed by the monthly rate and then the annual rate in brackets.",
       "field_evidence": {
         "price": "Core $39/mo"
@@ -2732,7 +2732,7 @@
       "condition": "Monthly billing rate; the page prints the annual-billing rate in brackets next to it.",
       "kind": "regular_price",
       "price": 39.0,
-      "source_sha256": "0597017da8b4e77ffce2435ee7b660ebf3463639d749017ea325332bfa486aaf"
+      "source_sha256": "0c5d3c6d386cb742479c0835a5bc4e9136fe283a4e5fd7181196508bb4578c2f"
     },
     {
       "slug": "bigcommerce-growth",
@@ -2741,7 +2741,7 @@
       "category": "Hosting",
       "source_url": "https://www.bigcommerce.com/pricing/",
       "offer_url": "https://www.bigcommerce.com/pricing/",
-      "fetched_at": "2026-09-14T06:40:19Z",
+      "fetched_at": "2026-09-14T12:39:24Z",
       "evidence": "BigCommerce plan table row, read the same way as Core.",
       "field_evidence": {
         "price": "Growth $105/mo"
@@ -2751,7 +2751,7 @@
       "condition": "Monthly billing rate; the page prints the annual-billing rate in brackets next to it.",
       "kind": "regular_price",
       "price": 105.0,
-      "source_sha256": "0597017da8b4e77ffce2435ee7b660ebf3463639d749017ea325332bfa486aaf"
+      "source_sha256": "0c5d3c6d386cb742479c0835a5bc4e9136fe283a4e5fd7181196508bb4578c2f"
     },
     {
       "slug": "bigcommerce-scale",
@@ -2760,7 +2760,7 @@
       "category": "Hosting",
       "source_url": "https://www.bigcommerce.com/pricing/",
       "offer_url": "https://www.bigcommerce.com/pricing/",
-      "fetched_at": "2026-09-14T06:40:20Z",
+      "fetched_at": "2026-09-14T12:39:24Z",
       "evidence": "BigCommerce plan table row, read the same way as Core.",
       "field_evidence": {
         "price": "Scale $399/mo"
@@ -2770,7 +2770,7 @@
       "condition": "Monthly billing rate; the page prints the annual-billing rate in brackets next to it.",
       "kind": "regular_price",
       "price": 399.0,
-      "source_sha256": "0597017da8b4e77ffce2435ee7b660ebf3463639d749017ea325332bfa486aaf"
+      "source_sha256": "0c5d3c6d386cb742479c0835a5bc4e9136fe283a4e5fd7181196508bb4578c2f"
     },
     {
       "slug": "duda-basic",
@@ -2779,7 +2779,7 @@
       "category": "Hosting",
       "source_url": "https://www.duda.co/pricing",
       "offer_url": "https://www.duda.co/pricing",
-      "fetched_at": "2026-09-14T06:40:20Z",
+      "fetched_at": "2026-09-14T12:39:25Z",
       "evidence": "Duda pricing card: the plan name is followed by the monthly rate and then the annual rate.",
       "field_evidence": {
         "price": "Basic $25 /mo"
@@ -2789,7 +2789,7 @@
       "condition": "Monthly-billing rate; the page prints the annual-billing rate immediately after it.",
       "kind": "regular_price",
       "price": 25.0,
-      "source_sha256": "57ac1bdf590843d9e9cfff2c61a4648aff757ebcb3f015df2631b9b64fe6d42f"
+      "source_sha256": "7c42f4229593359eefd48598d2d54586c4a4890e2fd33f6370e1b2505b35bdf9"
     },
     {
       "slug": "duda-team",
@@ -2798,7 +2798,7 @@
       "category": "Hosting",
       "source_url": "https://www.duda.co/pricing",
       "offer_url": "https://www.duda.co/pricing",
-      "fetched_at": "2026-09-14T06:40:20Z",
+      "fetched_at": "2026-09-14T12:39:25Z",
       "evidence": "Duda pricing card, read the same way as Basic.",
       "field_evidence": {
         "price": "Team $39 /mo"
@@ -2808,7 +2808,7 @@
       "condition": "Monthly-billing rate; the page prints the annual-billing rate immediately after it.",
       "kind": "regular_price",
       "price": 39.0,
-      "source_sha256": "57ac1bdf590843d9e9cfff2c61a4648aff757ebcb3f015df2631b9b64fe6d42f"
+      "source_sha256": "7c42f4229593359eefd48598d2d54586c4a4890e2fd33f6370e1b2505b35bdf9"
     },
     {
       "slug": "duda-agency",
@@ -2817,7 +2817,7 @@
       "category": "Hosting",
       "source_url": "https://www.duda.co/pricing",
       "offer_url": "https://www.duda.co/pricing",
-      "fetched_at": "2026-09-14T06:40:20Z",
+      "fetched_at": "2026-09-14T12:39:25Z",
       "evidence": "Duda pricing card, read the same way as Basic.",
       "field_evidence": {
         "price": "Agency $69 /mo"
@@ -2827,7 +2827,7 @@
       "condition": "Monthly-billing rate; the page prints the annual-billing rate immediately after it.",
       "kind": "regular_price",
       "price": 69.0,
-      "source_sha256": "57ac1bdf590843d9e9cfff2c61a4648aff757ebcb3f015df2631b9b64fe6d42f"
+      "source_sha256": "7c42f4229593359eefd48598d2d54586c4a4890e2fd33f6370e1b2505b35bdf9"
     },
     {
       "slug": "duda-white-label",
@@ -2836,7 +2836,7 @@
       "category": "Hosting",
       "source_url": "https://www.duda.co/pricing",
       "offer_url": "https://www.duda.co/pricing",
-      "fetched_at": "2026-09-14T06:40:20Z",
+      "fetched_at": "2026-09-14T12:39:25Z",
       "evidence": "Duda pricing card, read the same way as Basic.",
       "field_evidence": {
         "price": "White Label $199 /mo"
@@ -2846,7 +2846,7 @@
       "condition": "Monthly-billing rate; the page prints the annual-billing rate immediately after it.",
       "kind": "regular_price",
       "price": 199.0,
-      "source_sha256": "57ac1bdf590843d9e9cfff2c61a4648aff757ebcb3f015df2631b9b64fe6d42f"
+      "source_sha256": "7c42f4229593359eefd48598d2d54586c4a4890e2fd33f6370e1b2505b35bdf9"
     },
     {
       "slug": "framer-basic",
@@ -2855,7 +2855,7 @@
       "category": "Hosting",
       "source_url": "https://www.framer.com/pricing/",
       "offer_url": "https://www.framer.com/pricing/",
-      "fetched_at": "2026-09-14T06:40:21Z",
+      "fetched_at": "2026-09-14T12:39:26Z",
       "evidence": "Framer pricing card: the plan name and its one-line description are followed by the amount and \"per month\".",
       "field_evidence": {
         "price": "$10 per month"
@@ -2874,7 +2874,7 @@
       "category": "Hosting",
       "source_url": "https://www.framer.com/pricing/",
       "offer_url": "https://www.framer.com/pricing/",
-      "fetched_at": "2026-09-14T06:40:21Z",
+      "fetched_at": "2026-09-14T12:39:26Z",
       "evidence": "Framer pricing card, read the same way as Basic.",
       "field_evidence": {
         "price": "$30 per month"
@@ -2893,7 +2893,7 @@
       "category": "Hosting",
       "source_url": "https://ghost.org/pricing/",
       "offer_url": "https://ghost.org/pricing/",
-      "fetched_at": "2026-09-14T06:40:22Z",
+      "fetched_at": "2026-09-14T12:39:27Z",
       "evidence": "Ghost pricing card: the plan name and description are followed by the amount, the currency code and \"/ mo\".",
       "field_evidence": {
         "price": "$ 18 USD / mo"
@@ -2912,7 +2912,7 @@
       "category": "Hosting",
       "source_url": "https://ghost.org/pricing/",
       "offer_url": "https://ghost.org/pricing/",
-      "fetched_at": "2026-09-14T06:40:22Z",
+      "fetched_at": "2026-09-14T12:39:27Z",
       "evidence": "Ghost pricing card, read the same way as Starter.",
       "field_evidence": {
         "price": "$ 29 USD / mo"
@@ -2931,7 +2931,7 @@
       "category": "Hosting",
       "source_url": "https://ghost.org/pricing/",
       "offer_url": "https://ghost.org/pricing/",
-      "fetched_at": "2026-09-14T06:40:22Z",
+      "fetched_at": "2026-09-14T12:39:27Z",
       "evidence": "Ghost pricing card, read the same way as Starter.",
       "field_evidence": {
         "price": "$ 199 USD / mo"
@@ -2950,7 +2950,7 @@
       "category": "Hosting",
       "source_url": "https://tilda.cc/pricing/",
       "offer_url": "https://tilda.cc/pricing/",
-      "fetched_at": "2026-09-14T06:40:24Z",
+      "fetched_at": "2026-09-14T12:39:28Z",
       "evidence": "Tilda pricing card: the plan name and description are followed by the amount and \"with annual payment\".",
       "field_evidence": {
         "price": "$10 /month with annual payment"
@@ -2969,7 +2969,7 @@
       "category": "Hosting",
       "source_url": "https://tilda.cc/pricing/",
       "offer_url": "https://tilda.cc/pricing/",
-      "fetched_at": "2026-09-14T06:40:24Z",
+      "fetched_at": "2026-09-14T12:39:28Z",
       "evidence": "Tilda pricing card, read the same way as Personal.",
       "field_evidence": {
         "price": "$20 /month with annual payment"
@@ -2988,7 +2988,7 @@
       "category": "Hosting",
       "source_url": "https://www.accuwebhosting.com/pricing",
       "offer_url": "https://www.accuwebhosting.com/pricing",
-      "fetched_at": "2026-09-14T06:40:25Z",
+      "fetched_at": "2026-09-14T12:39:29Z",
       "evidence": "AccuWeb pricing card: the plan name is followed by the monthly amount and the term it requires.",
       "field_evidence": {
         "price": "Budget $ 1.99 /mo"
@@ -3045,7 +3045,7 @@
       "category": "Hosting",
       "source_url": "https://www.kamatera.com/pricing/",
       "offer_url": "https://www.kamatera.com/pricing/",
-      "fetched_at": "2026-09-14T06:40:25Z",
+      "fetched_at": "2026-09-14T12:39:30Z",
       "evidence": "Kamatera server card: the plan name is followed by the monthly amount and the server specification.",
       "field_evidence": {
         "price": "Basic $4 /mo"
@@ -3064,7 +3064,7 @@
       "category": "Hosting",
       "source_url": "https://www.kamatera.com/pricing/",
       "offer_url": "https://www.kamatera.com/pricing/",
-      "fetched_at": "2026-09-14T06:40:25Z",
+      "fetched_at": "2026-09-14T12:39:30Z",
       "evidence": "Kamatera server card, read the same way as Basic.",
       "field_evidence": {
         "price": "Standard $25 /mo"
@@ -3083,7 +3083,7 @@
       "category": "Hosting",
       "source_url": "https://www.kamatera.com/pricing/",
       "offer_url": "https://www.kamatera.com/pricing/",
-      "fetched_at": "2026-09-14T06:40:25Z",
+      "fetched_at": "2026-09-14T12:39:30Z",
       "evidence": "Kamatera server card, read the same way as Basic.",
       "field_evidence": {
         "price": "Pro $39 /mo"
@@ -3102,7 +3102,7 @@
       "category": "Hosting",
       "source_url": "https://gridpane.com/pricing/",
       "offer_url": "https://gridpane.com/pricing/",
-      "fetched_at": "2026-09-14T06:40:27Z",
+      "fetched_at": "2026-09-14T12:39:31Z",
       "evidence": "GridPane pricing card: the tier name is followed by \"From as low as:\" and the monthly amount.",
       "field_evidence": {
         "price": "$ 19 /month"
@@ -3112,7 +3112,7 @@
       "condition": "Starting price the page prints for this tier.",
       "kind": "regular_price",
       "price": 19.0,
-      "source_sha256": "e83638789d65276b55c057fc7d819585528473a65eb04109fdf85e56ed0057d1"
+      "source_sha256": "9e7aa9df524d49bfed09d6901816d509a217f2a8b57535c4035bb4f3401ca5f5"
     },
     {
       "slug": "gridpane-bespoke-hosting",
@@ -3121,7 +3121,7 @@
       "category": "Hosting",
       "source_url": "https://gridpane.com/pricing/",
       "offer_url": "https://gridpane.com/pricing/",
-      "fetched_at": "2026-09-14T06:40:27Z",
+      "fetched_at": "2026-09-14T12:39:31Z",
       "evidence": "GridPane pricing card, read the same way as PeakFreq.",
       "field_evidence": {
         "price": "$ 2000 /year"
@@ -3131,7 +3131,7 @@
       "condition": "Starting price the page prints for this tier.",
       "kind": "regular_price",
       "price": 2000.0,
-      "source_sha256": "e83638789d65276b55c057fc7d819585528473a65eb04109fdf85e56ed0057d1"
+      "source_sha256": "9e7aa9df524d49bfed09d6901816d509a217f2a8b57535c4035bb4f3401ca5f5"
     },
     {
       "slug": "koyeb-pro",
@@ -3140,7 +3140,7 @@
       "category": "Hosting",
       "source_url": "https://www.koyeb.com/pricing",
       "offer_url": "https://www.koyeb.com/pricing",
-      "fetched_at": "2026-09-14T06:40:28Z",
+      "fetched_at": "2026-09-14T12:39:32Z",
       "evidence": "Koyeb pricing card: the plan name is followed by the monthly platform fee and the \"+compute\" qualifier.",
       "field_evidence": {
         "price": "$ 29 /mo"
@@ -3150,7 +3150,7 @@
       "condition": "Platform fee per month; compute is charged on top, as the page states with \"+compute\".",
       "kind": "regular_price",
       "price": 29.0,
-      "source_sha256": "c01373e1c9685011c8441d8d6305d0fd5bf57f23612653ae0050b25ea13c13af"
+      "source_sha256": "5c992c1396aa3f409ab48f0136d5060ad90966eab9ec6f09fdef1b17c9c73d69"
     },
     {
       "slug": "koyeb-scale",
@@ -3159,7 +3159,7 @@
       "category": "Hosting",
       "source_url": "https://www.koyeb.com/pricing",
       "offer_url": "https://www.koyeb.com/pricing",
-      "fetched_at": "2026-09-14T06:40:28Z",
+      "fetched_at": "2026-09-14T12:39:32Z",
       "evidence": "Koyeb pricing card, read the same way as Pro.",
       "field_evidence": {
         "price": "$ 299 /mo"
@@ -3169,7 +3169,7 @@
       "condition": "Platform fee per month; compute is charged on top, as the page states with \"+compute\".",
       "kind": "regular_price",
       "price": 299.0,
-      "source_sha256": "c01373e1c9685011c8441d8d6305d0fd5bf57f23612653ae0050b25ea13c13af"
+      "source_sha256": "5c992c1396aa3f409ab48f0136d5060ad90966eab9ec6f09fdef1b17c9c73d69"
     },
     {
       "slug": "flywheel-starter",
@@ -3178,7 +3178,7 @@
       "category": "Hosting",
       "source_url": "https://getflywheel.com/pricing/",
       "offer_url": "https://getflywheel.com/pricing/",
-      "fetched_at": "2026-09-14T06:40:29Z",
+      "fetched_at": "2026-09-14T12:39:32Z",
       "evidence": "Flywheel pricing card: the plan name is followed by the monthly amount; the yearly total is printed separately.",
       "field_evidence": {
         "price": "Starter $ 25 /mo"
@@ -3188,7 +3188,7 @@
       "condition": "Monthly rate the page prints for the plan.",
       "kind": "regular_price",
       "price": 25.0,
-      "source_sha256": "2354daf633016ce15873e2076cb28c756cd6274205fc5f8398bd79e1e4211e0d"
+      "source_sha256": "190b65d632ca77d439855d117363a67a3c4933611039a82e7580f239ae6db55c"
     },
     {
       "slug": "flywheel-freelance",
@@ -3197,7 +3197,7 @@
       "category": "Hosting",
       "source_url": "https://getflywheel.com/pricing/",
       "offer_url": "https://getflywheel.com/pricing/",
-      "fetched_at": "2026-09-14T06:40:29Z",
+      "fetched_at": "2026-09-14T12:39:33Z",
       "evidence": "Flywheel pricing card, read the same way as Starter.",
       "field_evidence": {
         "price": "Freelance $ 96 /mo"
@@ -3207,7 +3207,7 @@
       "condition": "Monthly rate the page prints for the plan.",
       "kind": "regular_price",
       "price": 96.0,
-      "source_sha256": "2354daf633016ce15873e2076cb28c756cd6274205fc5f8398bd79e1e4211e0d"
+      "source_sha256": "190b65d632ca77d439855d117363a67a3c4933611039a82e7580f239ae6db55c"
     },
     {
       "slug": "flywheel-agency",
@@ -3216,7 +3216,7 @@
       "category": "Hosting",
       "source_url": "https://getflywheel.com/pricing/",
       "offer_url": "https://getflywheel.com/pricing/",
-      "fetched_at": "2026-09-14T06:40:29Z",
+      "fetched_at": "2026-09-14T12:39:33Z",
       "evidence": "Flywheel pricing card, read the same way as Starter.",
       "field_evidence": {
         "price": "Agency $ 242 /mo"
@@ -3226,7 +3226,7 @@
       "condition": "Monthly rate the page prints for the plan.",
       "kind": "regular_price",
       "price": 242.0,
-      "source_sha256": "2354daf633016ce15873e2076cb28c756cd6274205fc5f8398bd79e1e4211e0d"
+      "source_sha256": "190b65d632ca77d439855d117363a67a3c4933611039a82e7580f239ae6db55c"
     },
     {
       "slug": "10web-ai-starter",
@@ -3235,7 +3235,7 @@
       "category": "Hosting",
       "source_url": "https://10web.io/pricing/",
       "offer_url": "https://10web.io/pricing/",
-      "fetched_at": "2026-09-14T06:40:30Z",
+      "fetched_at": "2026-09-14T12:39:33Z",
       "evidence": "10Web pricing card: the plan name is followed by the monthly amount.",
       "field_evidence": {
         "price": "AI Starter $10 /mo"
@@ -3254,7 +3254,7 @@
       "category": "Hosting",
       "source_url": "https://10web.io/pricing/",
       "offer_url": "https://10web.io/pricing/",
-      "fetched_at": "2026-09-14T06:40:30Z",
+      "fetched_at": "2026-09-14T12:39:33Z",
       "evidence": "10Web pricing card, read the same way as AI Starter.",
       "field_evidence": {
         "price": "AI Premium $15 /mo"
@@ -3273,7 +3273,7 @@
       "category": "Hosting",
       "source_url": "https://10web.io/pricing/",
       "offer_url": "https://10web.io/pricing/",
-      "fetched_at": "2026-09-14T06:40:30Z",
+      "fetched_at": "2026-09-14T12:39:33Z",
       "evidence": "10Web pricing card, read the same way as AI Starter.",
       "field_evidence": {
         "price": "AI Ultimate $22.5 /mo"
@@ -3292,7 +3292,7 @@
       "category": "Hosting",
       "source_url": "https://10web.io/pricing/",
       "offer_url": "https://10web.io/pricing/",
-      "fetched_at": "2026-09-14T06:40:30Z",
+      "fetched_at": "2026-09-14T12:39:33Z",
       "evidence": "10Web pricing card, read the same way as AI Starter.",
       "field_evidence": {
         "price": "Agency starter $42.5 /mo"
@@ -3311,7 +3311,7 @@
       "category": "Hosting",
       "source_url": "https://10web.io/pricing/",
       "offer_url": "https://10web.io/pricing/",
-      "fetched_at": "2026-09-14T06:40:30Z",
+      "fetched_at": "2026-09-14T12:39:33Z",
       "evidence": "10Web pricing card, read the same way as AI Starter.",
       "field_evidence": {
         "price": "Agency core $80 /mo"
@@ -3330,7 +3330,7 @@
       "category": "Hosting",
       "source_url": "https://webflow.com/pricing",
       "offer_url": "https://webflow.com/pricing",
-      "fetched_at": "2026-09-14T06:40:31Z",
+      "fetched_at": "2026-09-14T12:39:35Z",
       "evidence": "Webflow platform plan card: the plan name and description are followed by the amount and \"/mo billed yearly\".",
       "field_evidence": {
         "price": "$ 19 /mo"
@@ -3340,7 +3340,7 @@
       "condition": "Yearly-billing rate per month, as printed next to \"billed yearly\".",
       "kind": "regular_price",
       "price": 19.0,
-      "source_sha256": "64b2d61b407a54687eee6d373862f81b45309c454e78570332be6fc37e35ec1d"
+      "source_sha256": "7e37b43d90d46a22f30f2958975f0844e6b1a0262f763e65b500c1b19d09dce5"
     },
     {
       "slug": "webflow-plus",
@@ -3349,7 +3349,7 @@
       "category": "Hosting",
       "source_url": "https://webflow.com/pricing",
       "offer_url": "https://webflow.com/pricing",
-      "fetched_at": "2026-09-14T06:40:31Z",
+      "fetched_at": "2026-09-14T12:39:35Z",
       "evidence": "Webflow platform plan card, read the same way as Core.",
       "field_evidence": {
         "price": "$ 74 /mo"
@@ -3359,7 +3359,7 @@
       "condition": "Yearly-billing rate per month, as printed next to \"billed yearly\".",
       "kind": "regular_price",
       "price": 74.0,
-      "source_sha256": "64b2d61b407a54687eee6d373862f81b45309c454e78570332be6fc37e35ec1d"
+      "source_sha256": "7e37b43d90d46a22f30f2958975f0844e6b1a0262f763e65b500c1b19d09dce5"
     },
     {
       "slug": "webflow-optimize",
@@ -3368,7 +3368,7 @@
       "category": "Hosting",
       "source_url": "https://webflow.com/pricing",
       "offer_url": "https://webflow.com/pricing",
-      "fetched_at": "2026-09-14T06:40:31Z",
+      "fetched_at": "2026-09-14T12:39:35Z",
       "evidence": "Webflow platform plan card, read the same way as Core.",
       "field_evidence": {
         "price": "$ 299 /mo"
@@ -3378,7 +3378,7 @@
       "condition": "Starting rate per month, as printed before the usage note.",
       "kind": "regular_price",
       "price": 299.0,
-      "source_sha256": "64b2d61b407a54687eee6d373862f81b45309c454e78570332be6fc37e35ec1d"
+      "source_sha256": "7e37b43d90d46a22f30f2958975f0844e6b1a0262f763e65b500c1b19d09dce5"
     },
     {
       "slug": "gandi-com-registration",
@@ -3555,7 +3555,7 @@
       "category": "Hosting",
       "source_url": "https://pressable.com/pricing/",
       "offer_url": "https://pressable.com/pricing/",
-      "fetched_at": "2026-09-14T06:40:36Z",
+      "fetched_at": "2026-09-14T12:39:40Z",
       "evidence": "Pressable pricing card: the plan name is followed by the monthly rate and then the yearly total billed.",
       "field_evidence": {
         "price": "Billed $250 USD per year"
@@ -3565,7 +3565,7 @@
       "condition": "Yearly total the page prints; the monthly equivalent is shown separately.",
       "kind": "regular_price",
       "price": 250.0,
-      "source_sha256": "2f3cef3b1d7d5479b503ff18e0ef6a925cd85b37299413e2bfb92d9b89162d7e"
+      "source_sha256": "04e4a256c3cbf551c33533041cb8c6c826e5f7c08f5abbdc614825ee2991a00a"
     },
     {
       "slug": "pressable-signature-3",
@@ -3574,7 +3574,7 @@
       "category": "Hosting",
       "source_url": "https://pressable.com/pricing/",
       "offer_url": "https://pressable.com/pricing/",
-      "fetched_at": "2026-09-14T06:40:36Z",
+      "fetched_at": "2026-09-14T12:39:40Z",
       "evidence": "Pressable pricing card, read the same way as Signature 1.",
       "field_evidence": {
         "price": "Billed $600 USD per year"
@@ -3584,7 +3584,7 @@
       "condition": "Yearly total the page prints; the monthly equivalent is shown separately.",
       "kind": "regular_price",
       "price": 600.0,
-      "source_sha256": "2f3cef3b1d7d5479b503ff18e0ef6a925cd85b37299413e2bfb92d9b89162d7e"
+      "source_sha256": "04e4a256c3cbf551c33533041cb8c6c826e5f7c08f5abbdc614825ee2991a00a"
     },
     {
       "slug": "pressable-signature-5",
@@ -3593,7 +3593,7 @@
       "category": "Hosting",
       "source_url": "https://pressable.com/pricing/",
       "offer_url": "https://pressable.com/pricing/",
-      "fetched_at": "2026-09-14T06:40:36Z",
+      "fetched_at": "2026-09-14T12:39:40Z",
       "evidence": "Pressable pricing card, read the same way as Signature 1.",
       "field_evidence": {
         "price": "Billed $1,550 USD per year"
@@ -3603,7 +3603,7 @@
       "condition": "Yearly total the page prints; the monthly equivalent is shown separately.",
       "kind": "regular_price",
       "price": 1550.0,
-      "source_sha256": "2f3cef3b1d7d5479b503ff18e0ef6a925cd85b37299413e2bfb92d9b89162d7e"
+      "source_sha256": "04e4a256c3cbf551c33533041cb8c6c826e5f7c08f5abbdc614825ee2991a00a"
     },
     {
       "slug": "pressable-signature-8",
@@ -3612,7 +3612,7 @@
       "category": "Hosting",
       "source_url": "https://pressable.com/pricing/",
       "offer_url": "https://pressable.com/pricing/",
-      "fetched_at": "2026-09-14T06:40:36Z",
+      "fetched_at": "2026-09-14T12:39:40Z",
       "evidence": "Pressable pricing card, read the same way as Signature 1.",
       "field_evidence": {
         "price": "Billed $6,750 USD per year"
@@ -3622,7 +3622,7 @@
       "condition": "Yearly total the page prints; the monthly equivalent is shown separately.",
       "kind": "regular_price",
       "price": 6750.0,
-      "source_sha256": "2f3cef3b1d7d5479b503ff18e0ef6a925cd85b37299413e2bfb92d9b89162d7e"
+      "source_sha256": "04e4a256c3cbf551c33533041cb8c6c826e5f7c08f5abbdc614825ee2991a00a"
     },
     {
       "slug": "railway-hobby",
@@ -3802,7 +3802,7 @@
       "category": "Hosting",
       "source_url": "https://krystal.uk/web-hosting",
       "offer_url": "https://krystal.uk/web-hosting",
-      "fetched_at": "2026-09-14T06:40:41Z",
+      "fetched_at": "2026-09-14T12:39:49Z",
       "evidence": "Krystal pricing card: the plan name is followed by the monthly amount and \"/ month\".",
       "field_evidence": {
         "price": "Amethyst \u00a37 / month"
@@ -3821,7 +3821,7 @@
       "category": "Hosting",
       "source_url": "https://krystal.uk/web-hosting",
       "offer_url": "https://krystal.uk/web-hosting",
-      "fetched_at": "2026-09-14T06:40:41Z",
+      "fetched_at": "2026-09-14T12:39:49Z",
       "evidence": "Krystal pricing card, read the same way as Amethyst.",
       "field_evidence": {
         "price": "Ruby \u00a311 / month"
@@ -3840,7 +3840,7 @@
       "category": "Hosting",
       "source_url": "https://krystal.uk/web-hosting",
       "offer_url": "https://krystal.uk/web-hosting",
-      "fetched_at": "2026-09-14T06:40:41Z",
+      "fetched_at": "2026-09-14T12:39:49Z",
       "evidence": "Krystal pricing card, read the same way as Amethyst.",
       "field_evidence": {
         "price": "Emerald \u00a319 / month"
@@ -3859,7 +3859,7 @@
       "category": "Hosting",
       "source_url": "https://krystal.uk/web-hosting",
       "offer_url": "https://krystal.uk/web-hosting",
-      "fetched_at": "2026-09-14T06:40:41Z",
+      "fetched_at": "2026-09-14T12:39:49Z",
       "evidence": "Krystal pricing card, read the same way as Amethyst.",
       "field_evidence": {
         "price": "Sapphire \u00a337 / month"
@@ -3878,7 +3878,7 @@
       "category": "Hosting",
       "source_url": "https://krystal.uk/web-hosting",
       "offer_url": "https://krystal.uk/web-hosting",
-      "fetched_at": "2026-09-14T06:40:41Z",
+      "fetched_at": "2026-09-14T12:39:49Z",
       "evidence": "Krystal pricing card, read the same way as Amethyst.",
       "field_evidence": {
         "price": "Diamond \u00a367 / month"
@@ -3897,7 +3897,7 @@
       "category": "Hosting",
       "source_url": "https://krystal.uk/web-hosting",
       "offer_url": "https://krystal.uk/web-hosting",
-      "fetched_at": "2026-09-14T06:40:41Z",
+      "fetched_at": "2026-09-14T12:39:49Z",
       "evidence": "Krystal pricing card, read the same way as Amethyst.",
       "field_evidence": {
         "price": "Tanzanite \u00a397 / month"
@@ -3916,7 +3916,7 @@
       "category": "Hosting",
       "source_url": "https://www.scaleway.com/en/pricing/",
       "offer_url": "https://www.scaleway.com/en/pricing/",
-      "fetched_at": "2026-09-14T06:40:43Z",
+      "fetched_at": "2026-09-14T12:39:49Z",
       "evidence": "Scaleway product card: the family name and its one-line description are followed by the starting monthly price.",
       "field_evidence": {
         "price": "\u20ac4.99/month"
@@ -3926,7 +3926,7 @@
       "condition": "Starting price the page prints for this server family.",
       "kind": "regular_price",
       "price": 4.99,
-      "source_sha256": "3c8098b898b5b4b0b384a9bfad57626eb5d5e2740a95650733c3910c8cb144c7"
+      "source_sha256": "b9b907b3091fa3de52e04fdf66fbe7550ae63561dad2c85641e1d6730008a8a9"
     },
     {
       "slug": "site123-custom-domain-plan",
@@ -3935,7 +3935,7 @@
       "category": "Hosting",
       "source_url": "https://www.site123.com/pricing",
       "offer_url": "https://www.site123.com/pricing",
-      "fetched_at": "2026-09-14T06:40:43Z",
+      "fetched_at": "2026-09-14T12:39:50Z",
       "evidence": "SITE123 pricing note: the amount is printed in the sentence about the annual plan.",
       "field_evidence": {
         "price": "$10.8 per month"
@@ -4182,7 +4182,7 @@
       "category": "Managed WordPress hosting",
       "source_url": "https://kinsta.com/pricing/",
       "offer_url": "https://kinsta.com/pricing/",
-      "fetched_at": "2026-09-14T06:40:45Z",
+      "fetched_at": "2026-09-14T12:39:53Z",
       "evidence": "Official Kinsta pricing-page meta description; no monthly price is inferred.",
       "field_evidence": {},
       "price_text": "First month free on select plans",
@@ -4197,7 +4197,7 @@
       "category": "Managed cloud hosting",
       "source_url": "https://www.cloudways.com/en/promo-code.php",
       "offer_url": "https://www.cloudways.com/en/promo-code.php",
-      "fetched_at": "2026-09-14T06:40:46Z",
+      "fetched_at": "2026-09-14T12:39:54Z",
       "evidence": "Cloudways' server-rendered promotion page and its claim URL.",
       "field_evidence": {
         "coupon_code": "coupon=SUMMER404",
@@ -4211,7 +4211,7 @@
       "discount_percent": 40,
       "valid_until": "2026-09-15",
       "kind": "promotion",
-      "source_sha256": "61c4f2b179ff6ff3c991dd024266b82866a320b60d9942459a746611d8f56624"
+      "source_sha256": "62483f85b54300eba9a95a3d4be0aa6a722e4e4281bd687a8d21e46b8646ee35"
     },
     {
       "slug": "scalahosting-config-1-unmanaged-cloud-vps-introductory-offer",
@@ -4220,7 +4220,7 @@
       "category": "VPS hosting",
       "source_url": "https://www.scalahosting.com/cloud-vps-hosting.html",
       "offer_url": "https://www.scalahosting.com/cloud-vps-hosting.html",
-      "fetched_at": "2026-09-14T06:40:46Z",
+      "fetched_at": "2026-09-14T12:39:54Z",
       "evidence": "The official page's embedded Config #1 plan object explicitly contains selected billingCycle, billingCycleName, planIndex and percentage; stop before Config #2. Price is omitted because the dollar currency is not qualified.",
       "field_evidence": {
         "discount_percent": "\"percentage\":20",
@@ -4239,7 +4239,7 @@
       "category": "Web hosting",
       "source_url": "https://www.greengeeks.com/shared-hosting/",
       "offer_url": "https://www.greengeeks.com/shared-hosting/",
-      "fetched_at": "2026-09-14T06:40:47Z",
+      "fetched_at": "2026-09-14T12:39:55Z",
       "evidence": "Server-rendered Lite card on the shared-hosting source; all fields from this card. USD is explicitly established by the official Terms of Service currency clause.",
       "field_evidence": {
         "price": "Original price: $13.95 $2.95 /month",
@@ -4254,7 +4254,7 @@
       "renewal_price": 13.95,
       "commitment_months": 12,
       "discount_percent": 79,
-      "source_sha256": "06229d1f0e7016840a88b010d294f4a048851e47e8527cfb678cbef1186dab4a"
+      "source_sha256": "e75f1090e90733ba2d53f781d7d7ad80a4171d00216efa15026c0b82e2d56693"
     },
     {
       "slug": "greengeeks-pro-shared-hosting",
@@ -4263,7 +4263,7 @@
       "category": "Web hosting",
       "source_url": "https://www.greengeeks.com/shared-hosting/",
       "offer_url": "https://www.greengeeks.com/shared-hosting/",
-      "fetched_at": "2026-09-14T06:40:47Z",
+      "fetched_at": "2026-09-14T12:39:55Z",
       "evidence": "Server-rendered Pro shared-hosting card; no prices from the unrelated WordPress structured data. USD is established by the official Terms of Service.",
       "field_evidence": {
         "price": "Original price: $18.95 $4.95 /month",
@@ -4278,7 +4278,7 @@
       "renewal_price": 18.95,
       "commitment_months": 12,
       "discount_percent": 74,
-      "source_sha256": "06229d1f0e7016840a88b010d294f4a048851e47e8527cfb678cbef1186dab4a"
+      "source_sha256": "e75f1090e90733ba2d53f781d7d7ad80a4171d00216efa15026c0b82e2d56693"
     },
     {
       "slug": "greengeeks-premium-shared-hosting",
@@ -4287,7 +4287,7 @@
       "category": "Web hosting",
       "source_url": "https://www.greengeeks.com/shared-hosting/",
       "offer_url": "https://www.greengeeks.com/shared-hosting/",
-      "fetched_at": "2026-09-14T06:40:47Z",
+      "fetched_at": "2026-09-14T12:39:55Z",
       "evidence": "Server-rendered Premium shared-hosting card, bounded before the following section. USD is established by the official Terms of Service.",
       "field_evidence": {
         "price": "Original price: $30.95 $8.95 /month",
@@ -4302,7 +4302,7 @@
       "renewal_price": 30.95,
       "commitment_months": 12,
       "discount_percent": 71,
-      "source_sha256": "06229d1f0e7016840a88b010d294f4a048851e47e8527cfb678cbef1186dab4a"
+      "source_sha256": "e75f1090e90733ba2d53f781d7d7ad80a4171d00216efa15026c0b82e2d56693"
     },
     {
       "slug": "inmotion-hosting-launch-shared-hosting-36-month-term",
@@ -4421,7 +4421,7 @@
       "category": "Web hosting",
       "source_url": "https://www.ionos.com/hosting/web-hosting",
       "offer_url": "https://www.ionos.com/hosting/web-hosting",
-      "fetched_at": "2026-09-14T06:40:52Z",
+      "fetched_at": "2026-09-14T12:39:59Z",
       "evidence": "Named Essential comparison card; monthly quote, one-year term and subsequent rate are contiguous. Same official product page explicitly marks its pricing currency USD.",
       "field_evidence": {
         "price": "$10 $ 4 /month",
@@ -4436,7 +4436,7 @@
       "price": 4.0,
       "renewal_price": 8.0,
       "discount_percent": 60,
-      "source_sha256": "9735c2822a79a7cf0c798daf96378e59760bac66c50e36ce1014022885bb83a8"
+      "source_sha256": "647fcb8335327c707f0a1e5f8f0b0ee803ecb5b4c23c469df927c8fe23e48a26"
     },
     {
       "slug": "ionos-starter-web-hosting",
@@ -4445,7 +4445,7 @@
       "category": "Web hosting",
       "source_url": "https://www.ionos.com/hosting/web-hosting",
       "offer_url": "https://www.ionos.com/hosting/web-hosting",
-      "fetched_at": "2026-09-14T06:40:52Z",
+      "fetched_at": "2026-09-14T12:39:59Z",
       "evidence": "Named Starter comparison card bounded before Plus; monthly quote, one-year term and subsequent rate are contiguous. Product page explicitly marks USD.",
       "field_evidence": {
         "price": "$12 $ 6 /month",
@@ -4460,7 +4460,7 @@
       "price": 6.0,
       "renewal_price": 10.0,
       "discount_percent": 50,
-      "source_sha256": "9735c2822a79a7cf0c798daf96378e59760bac66c50e36ce1014022885bb83a8"
+      "source_sha256": "647fcb8335327c707f0a1e5f8f0b0ee803ecb5b4c23c469df927c8fe23e48a26"
     },
     {
       "slug": "ionos-plus-web-hosting",
@@ -4469,7 +4469,7 @@
       "category": "Web hosting",
       "source_url": "https://www.ionos.com/hosting/web-hosting",
       "offer_url": "https://www.ionos.com/hosting/web-hosting",
-      "fetched_at": "2026-09-14T06:40:52Z",
+      "fetched_at": "2026-09-14T12:39:59Z",
       "evidence": "Named Plus comparison card bounded before Ultimate; monthly quote, one-year term and subsequent rate are contiguous. Product page explicitly marks USD.",
       "field_evidence": {
         "price": "$16 $ 1 /month",
@@ -4484,7 +4484,7 @@
       "price": 1.0,
       "renewal_price": 14.0,
       "discount_percent": 94,
-      "source_sha256": "9735c2822a79a7cf0c798daf96378e59760bac66c50e36ce1014022885bb83a8"
+      "source_sha256": "647fcb8335327c707f0a1e5f8f0b0ee803ecb5b4c23c469df927c8fe23e48a26"
     },
     {
       "slug": "ionos-ultimate-web-hosting",
@@ -4493,7 +4493,7 @@
       "category": "Web hosting",
       "source_url": "https://www.ionos.com/hosting/web-hosting",
       "offer_url": "https://www.ionos.com/hosting/web-hosting",
-      "fetched_at": "2026-09-14T06:40:52Z",
+      "fetched_at": "2026-09-14T12:40:00Z",
       "evidence": "Named Ultimate comparison card bounded before General Features; monthly quote, one-year term and subsequent rate are contiguous. Product page explicitly marks USD.",
       "field_evidence": {
         "price": "$20 $ 10 /month",
@@ -4508,7 +4508,7 @@
       "price": 10.0,
       "renewal_price": 18.0,
       "discount_percent": 50,
-      "source_sha256": "9735c2822a79a7cf0c798daf96378e59760bac66c50e36ce1014022885bb83a8"
+      "source_sha256": "647fcb8335327c707f0a1e5f8f0b0ee803ecb5b4c23c469df927c8fe23e48a26"
     },
     {
       "slug": "namehero-starter-cloud",
@@ -4517,7 +4517,7 @@
       "category": "Web hosting",
       "source_url": "https://www.namehero.com/",
       "offer_url": "https://www.namehero.com/",
-      "fetched_at": "2026-09-14T06:40:54Z",
+      "fetched_at": "2026-09-14T12:40:01Z",
       "evidence": "NameHero plan card: the regular amount is printed before the saving badge and the payable monthly amount after it. The page prints the regular amount first and the discounted monthly amount after the saving badge; both are read from the same plan card.",
       "field_evidence": {
         "renewal_price": "$11.64 Save",
@@ -4531,7 +4531,7 @@
       "renewal_price": 11.64,
       "discount_percent": 75,
       "price": 2.91,
-      "source_sha256": "cf023a6052bc962ec1230748154ff14ad49461b4a8413651754673f95ff48e8a"
+      "source_sha256": "6a4c1fde7f41eb31c189266fd704f92505f060c8e9aab37d0ca71b83f84c07d8"
     },
     {
       "slug": "namehero-plus-cloud",
@@ -4540,7 +4540,7 @@
       "category": "Web hosting",
       "source_url": "https://www.namehero.com/",
       "offer_url": "https://www.namehero.com/",
-      "fetched_at": "2026-09-14T06:40:54Z",
+      "fetched_at": "2026-09-14T12:40:01Z",
       "evidence": "NameHero plan card, read the same way as Starter Cloud.",
       "field_evidence": {
         "renewal_price": "$16.84 Save",
@@ -4554,7 +4554,7 @@
       "renewal_price": 16.84,
       "discount_percent": 70,
       "price": 5.05,
-      "source_sha256": "cf023a6052bc962ec1230748154ff14ad49461b4a8413651754673f95ff48e8a"
+      "source_sha256": "6a4c1fde7f41eb31c189266fd704f92505f060c8e9aab37d0ca71b83f84c07d8"
     },
     {
       "slug": "namehero-turbo-cloud",
@@ -4563,7 +4563,7 @@
       "category": "Web hosting",
       "source_url": "https://www.namehero.com/",
       "offer_url": "https://www.namehero.com/",
-      "fetched_at": "2026-09-14T06:40:54Z",
+      "fetched_at": "2026-09-14T12:40:01Z",
       "evidence": "NameHero plan card, read the same way as Starter Cloud.",
       "field_evidence": {
         "renewal_price": "$25.94 Save",
@@ -4577,7 +4577,7 @@
       "renewal_price": 25.94,
       "discount_percent": 70,
       "price": 7.78,
-      "source_sha256": "cf023a6052bc962ec1230748154ff14ad49461b4a8413651754673f95ff48e8a"
+      "source_sha256": "6a4c1fde7f41eb31c189266fd704f92505f060c8e9aab37d0ca71b83f84c07d8"
     },
     {
       "slug": "namehero-business-cloud",
@@ -4586,7 +4586,7 @@
       "category": "Web hosting",
       "source_url": "https://www.namehero.com/",
       "offer_url": "https://www.namehero.com/",
-      "fetched_at": "2026-09-14T06:40:54Z",
+      "fetched_at": "2026-09-14T12:40:01Z",
       "evidence": "NameHero plan card, read the same way as Starter Cloud.",
       "field_evidence": {
         "renewal_price": "$38.94 Save",
@@ -4600,7 +4600,7 @@
       "renewal_price": 38.94,
       "discount_percent": 70,
       "price": 11.68,
-      "source_sha256": "cf023a6052bc962ec1230748154ff14ad49461b4a8413651754673f95ff48e8a"
+      "source_sha256": "6a4c1fde7f41eb31c189266fd704f92505f060c8e9aab37d0ca71b83f84c07d8"
     },
     {
       "slug": "stablehost-web-hosting-starter",
@@ -4609,7 +4609,7 @@
       "category": "Web hosting",
       "source_url": "https://www.stablehost.com/shared-hosting.php",
       "offer_url": "https://www.stablehost.com/shared-hosting.php",
-      "fetched_at": "2026-09-14T06:40:55Z",
+      "fetched_at": "2026-09-14T12:40:02Z",
       "evidence": "StableHost plan card: the undiscounted amount is printed after \"only\" and the payable monthly amount after it.",
       "field_evidence": {
         "renewal_price": "only 12.71",
@@ -4621,7 +4621,7 @@
       "kind": "promotion",
       "renewal_price": 12.71,
       "price": 6.36,
-      "source_sha256": "2dbb1be6a204bb8611dc3c4470d12a204060862625ab6ac5b1823330cabd54a8"
+      "source_sha256": "de0cea61229a097c0ea229c49892d0b6760212a8cdb609cc13bb69ebeabfdfb3"
     },
     {
       "slug": "stablehost-web-hosting-pro",
@@ -4630,7 +4630,7 @@
       "category": "Web hosting",
       "source_url": "https://www.stablehost.com/shared-hosting.php",
       "offer_url": "https://www.stablehost.com/shared-hosting.php",
-      "fetched_at": "2026-09-14T06:40:55Z",
+      "fetched_at": "2026-09-14T12:40:02Z",
       "evidence": "StableHost plan card, read the same way as Web Hosting Starter.",
       "field_evidence": {
         "renewal_price": "only 20.13",
@@ -4642,7 +4642,7 @@
       "kind": "promotion",
       "renewal_price": 20.13,
       "price": 10.07,
-      "source_sha256": "2dbb1be6a204bb8611dc3c4470d12a204060862625ab6ac5b1823330cabd54a8"
+      "source_sha256": "de0cea61229a097c0ea229c49892d0b6760212a8cdb609cc13bb69ebeabfdfb3"
     },
     {
       "slug": "mddhosting-basic",
@@ -4651,7 +4651,7 @@
       "category": "Web hosting",
       "source_url": "https://mddhosting.com/",
       "offer_url": "https://mddhosting.com/",
-      "fetched_at": "2026-09-14T06:40:55Z",
+      "fetched_at": "2026-09-14T12:40:03Z",
       "evidence": "MDDHosting plan card: payable monthly amount first, undiscounted amount second, saving badge last.",
       "field_evidence": {
         "price": "$1.99 /mo",
@@ -4665,7 +4665,7 @@
       "price": 1.99,
       "renewal_price": 3.32,
       "discount_percent": 60,
-      "source_sha256": "13716e59cefc150e7e6d8dff9c6826d94b5a77e605188fbf33b5c21d4ad28632"
+      "source_sha256": "46702adee4d111b81428631825c65b13f1f4b3c9dad70e3324c171af6560bb50"
     },
     {
       "slug": "mddhosting-turbo",
@@ -4674,7 +4674,7 @@
       "category": "Web hosting",
       "source_url": "https://mddhosting.com/",
       "offer_url": "https://mddhosting.com/",
-      "fetched_at": "2026-09-14T06:40:55Z",
+      "fetched_at": "2026-09-14T12:40:03Z",
       "evidence": "MDDHosting plan card, read the same way as Basic.",
       "field_evidence": {
         "price": "$8.99 /mo",
@@ -4688,7 +4688,7 @@
       "price": 8.99,
       "renewal_price": 14.99,
       "discount_percent": 40,
-      "source_sha256": "13716e59cefc150e7e6d8dff9c6826d94b5a77e605188fbf33b5c21d4ad28632"
+      "source_sha256": "46702adee4d111b81428631825c65b13f1f4b3c9dad70e3324c171af6560bb50"
     },
     {
       "slug": "mddhosting-plaid",
@@ -4697,7 +4697,7 @@
       "category": "Web hosting",
       "source_url": "https://mddhosting.com/",
       "offer_url": "https://mddhosting.com/",
-      "fetched_at": "2026-09-14T06:40:55Z",
+      "fetched_at": "2026-09-14T12:40:03Z",
       "evidence": "MDDHosting plan card, read the same way as Basic.",
       "field_evidence": {
         "price": "$17.99 /mo",
@@ -4711,7 +4711,7 @@
       "price": 17.99,
       "renewal_price": 29.99,
       "discount_percent": 40,
-      "source_sha256": "13716e59cefc150e7e6d8dff9c6826d94b5a77e605188fbf33b5c21d4ad28632"
+      "source_sha256": "46702adee4d111b81428631825c65b13f1f4b3c9dad70e3324c171af6560bb50"
     },
     {
       "slug": "ultahost-starter",
@@ -4766,7 +4766,7 @@
       "category": "Web hosting and deployment",
       "source_url": "https://www.netlify.com/pricing/",
       "offer_url": "https://www.netlify.com/pricing/",
-      "fetched_at": "2026-09-14T06:40:56Z",
+      "fetched_at": "2026-09-14T12:40:04Z",
       "evidence": "Netlify pricing card: the plan name is followed by its monthly amount.",
       "field_evidence": {
         "price": "$9 /month"
@@ -4785,7 +4785,7 @@
       "category": "Web hosting and deployment",
       "source_url": "https://www.netlify.com/pricing/",
       "offer_url": "https://www.netlify.com/pricing/",
-      "fetched_at": "2026-09-14T06:40:56Z",
+      "fetched_at": "2026-09-14T12:40:04Z",
       "evidence": "Netlify pricing card: the plan name is followed by its monthly amount.",
       "field_evidence": {
         "price": "$20 /month"
@@ -4804,7 +4804,7 @@
       "category": "Frontend cloud platform",
       "source_url": "https://vercel.com/pricing",
       "offer_url": "https://vercel.com/pricing",
-      "fetched_at": "2026-09-14T06:40:56Z",
+      "fetched_at": "2026-09-14T12:40:05Z",
       "evidence": "Vercel pricing card: the plan name is followed by its monthly amount.",
       "field_evidence": {
         "price": "$20 /mo"
@@ -4814,7 +4814,7 @@
       "condition": "Monthly list price per seat as printed on the official pricing page.",
       "kind": "regular_price",
       "price": 20.0,
-      "source_sha256": "cbc63e96437542aeba6070d096dc2a9bb7bd7b6bd0dd6c4db9cb336d1822922f"
+      "source_sha256": "9d978499e13b8439924c73294be1ae23887d96ca5c9aa95017d4c0941d8fa2ca"
     },
     {
       "slug": "ovhcloud-vps-1",
@@ -4823,7 +4823,7 @@
       "category": "VPS hosting",
       "source_url": "https://www.ovhcloud.com/en/vps/",
       "offer_url": "https://www.ovhcloud.com/en/vps/",
-      "fetched_at": "2026-09-14T06:40:57Z",
+      "fetched_at": "2026-09-14T12:40:06Z",
       "evidence": "OVHcloud VPS comparison row: the row label is followed by the starting monthly amount.",
       "field_evidence": {
         "price": "From $4.54 /month"
@@ -4833,7 +4833,7 @@
       "condition": "Starting monthly price before tax, as printed on the official VPS page.",
       "kind": "regular_price",
       "price": 4.54,
-      "source_sha256": "a2d82d09e5ba856f51c5505a8862ce9828b71be1aa1480640cbd1757a7ce54ce"
+      "source_sha256": "dadd2c0c094190b582fa7445355ec7e37ccc2ef2df2c2a36c30aa5309fb49825"
     },
     {
       "slug": "ovhcloud-vps-2",
@@ -4842,7 +4842,7 @@
       "category": "VPS hosting",
       "source_url": "https://www.ovhcloud.com/en/vps/",
       "offer_url": "https://www.ovhcloud.com/en/vps/",
-      "fetched_at": "2026-09-14T06:40:57Z",
+      "fetched_at": "2026-09-14T12:40:06Z",
       "evidence": "OVHcloud VPS comparison row, read the same way as VPS-1.",
       "field_evidence": {
         "price": "From $8.50 /month"
@@ -4852,7 +4852,7 @@
       "condition": "Starting monthly price before tax, as printed on the official VPS page.",
       "kind": "regular_price",
       "price": 8.5,
-      "source_sha256": "a2d82d09e5ba856f51c5505a8862ce9828b71be1aa1480640cbd1757a7ce54ce"
+      "source_sha256": "dadd2c0c094190b582fa7445355ec7e37ccc2ef2df2c2a36c30aa5309fb49825"
     },
     {
       "slug": "ovhcloud-vps-3",
@@ -4861,7 +4861,7 @@
       "category": "VPS hosting",
       "source_url": "https://www.ovhcloud.com/en/vps/",
       "offer_url": "https://www.ovhcloud.com/en/vps/",
-      "fetched_at": "2026-09-14T06:40:57Z",
+      "fetched_at": "2026-09-14T12:40:06Z",
       "evidence": "OVHcloud VPS comparison row, read the same way as VPS-1.",
       "field_evidence": {
         "price": "From $12.32 /month"
@@ -4871,7 +4871,7 @@
       "condition": "Starting monthly price before tax, as printed on the official VPS page.",
       "kind": "regular_price",
       "price": 12.32,
-      "source_sha256": "a2d82d09e5ba856f51c5505a8862ce9828b71be1aa1480640cbd1757a7ce54ce"
+      "source_sha256": "dadd2c0c094190b582fa7445355ec7e37ccc2ef2df2c2a36c30aa5309fb49825"
     },
     {
       "slug": "ovhcloud-vps-4",
@@ -4880,7 +4880,7 @@
       "category": "VPS hosting",
       "source_url": "https://www.ovhcloud.com/en/vps/",
       "offer_url": "https://www.ovhcloud.com/en/vps/",
-      "fetched_at": "2026-09-14T06:40:57Z",
+      "fetched_at": "2026-09-14T12:40:06Z",
       "evidence": "OVHcloud VPS comparison row, read the same way as VPS-1.",
       "field_evidence": {
         "price": "From $23.37 /month"
@@ -4890,7 +4890,7 @@
       "condition": "Starting monthly price before tax, as printed on the official VPS page.",
       "kind": "regular_price",
       "price": 23.37,
-      "source_sha256": "a2d82d09e5ba856f51c5505a8862ce9828b71be1aa1480640cbd1757a7ce54ce"
+      "source_sha256": "dadd2c0c094190b582fa7445355ec7e37ccc2ef2df2c2a36c30aa5309fb49825"
     },
     {
       "slug": "digitalocean-droplet-512-mib-1-vcpu-10-gib-ssd",
@@ -5013,19 +5013,17 @@
       "category": "Website builder",
       "source_url": "https://www.weebly.com/pricing",
       "offer_url": "https://www.weebly.com/pricing",
-      "fetched_at": "2026-09-14T06:41:07Z",
+      "fetched_at": "2026-09-14T12:40:19Z",
       "evidence": "Weebly pricing card: the plan name is followed by the annual-billing monthly amount and then the month-to-month amount.",
       "field_evidence": {
-        "price": "$13 /mo billed annually",
-        "renewal_price": "billed annually or $16"
+        "price": "$120 /mo billed annually"
       },
       "currency": "USD",
       "billing_period": "month",
       "condition": "Annual-billing monthly rate; the month-to-month rate is recorded as the comparison figure.",
       "kind": "regular_price",
-      "price": 13.0,
-      "renewal_price": 16.0,
-      "source_sha256": "72a5ca731a69ee8235b1c9281e0a7be009238f18b2cd33ffa5d0b42b166c1e72"
+      "price": 120.0,
+      "source_sha256": "103898d6af52a31f89b3ec7d9e7adaec34bfb6796bcfe026430ea85443d7e03f"
     },
     {
       "slug": "weebly-professional",
@@ -5034,19 +5032,17 @@
       "category": "Website builder",
       "source_url": "https://www.weebly.com/pricing",
       "offer_url": "https://www.weebly.com/pricing",
-      "fetched_at": "2026-09-14T06:41:07Z",
+      "fetched_at": "2026-09-14T12:40:19Z",
       "evidence": "Weebly pricing card, read the same way as Personal.",
       "field_evidence": {
-        "price": "$15 /mo billed annually",
-        "renewal_price": "billed annually or $20"
+        "price": "$200 /mo billed annually"
       },
       "currency": "USD",
       "billing_period": "month",
       "condition": "Annual-billing monthly rate; the month-to-month rate is recorded as the comparison figure.",
       "kind": "regular_price",
-      "price": 15.0,
-      "renewal_price": 20.0,
-      "source_sha256": "72a5ca731a69ee8235b1c9281e0a7be009238f18b2cd33ffa5d0b42b166c1e72"
+      "price": 200.0,
+      "source_sha256": "103898d6af52a31f89b3ec7d9e7adaec34bfb6796bcfe026430ea85443d7e03f"
     },
     {
       "slug": "weebly-performance",
@@ -5055,19 +5051,17 @@
       "category": "Website builder",
       "source_url": "https://www.weebly.com/pricing",
       "offer_url": "https://www.weebly.com/pricing",
-      "fetched_at": "2026-09-14T06:41:07Z",
+      "fetched_at": "2026-09-14T12:40:19Z",
       "evidence": "Weebly pricing card, read the same way as Personal.",
       "field_evidence": {
-        "price": "$32 /mo billed annually",
-        "renewal_price": "billed annually or $36"
+        "price": "$400 /mo billed annually"
       },
       "currency": "USD",
       "billing_period": "month",
       "condition": "Annual-billing monthly rate; the month-to-month rate is recorded as the comparison figure.",
       "kind": "regular_price",
-      "price": 32.0,
-      "renewal_price": 36.0,
-      "source_sha256": "72a5ca731a69ee8235b1c9281e0a7be009238f18b2cd33ffa5d0b42b166c1e72"
+      "price": 400.0,
+      "source_sha256": "103898d6af52a31f89b3ec7d9e7adaec34bfb6796bcfe026430ea85443d7e03f"
     },
     {
       "slug": "render-pro",
@@ -5076,7 +5070,7 @@
       "category": "Application hosting",
       "source_url": "https://render.com/pricing",
       "offer_url": "https://render.com/pricing",
-      "fetched_at": "2026-09-14T06:41:07Z",
+      "fetched_at": "2026-09-14T12:40:20Z",
       "evidence": "Render pricing card: the plan name and description are followed by the platform fee and the \"+ compute\" qualifier.",
       "field_evidence": {
         "price": "$ 25 /mo + compute"
@@ -5086,7 +5080,7 @@
       "condition": "Platform fee per month; compute usage is charged separately, as the page states.",
       "kind": "regular_price",
       "price": 25.0,
-      "source_sha256": "57f4d8430846d48dbb06a7c94f48916ebded1ea9f579227bd23f2414203843aa"
+      "source_sha256": "8b9f3030634a77a03c63a73f5ea46923376e7f1f527b12a7ba8a38431b3672c1"
     },
     {
       "slug": "render-scale",
@@ -5095,7 +5089,7 @@
       "category": "Application hosting",
       "source_url": "https://render.com/pricing",
       "offer_url": "https://render.com/pricing",
-      "fetched_at": "2026-09-14T06:41:07Z",
+      "fetched_at": "2026-09-14T12:40:20Z",
       "evidence": "Render pricing card, read the same way as Pro.",
       "field_evidence": {
         "price": "$ 499 /mo + compute"
@@ -5105,7 +5099,7 @@
       "condition": "Platform fee per month; compute usage is charged separately, as the page states.",
       "kind": "regular_price",
       "price": 499.0,
-      "source_sha256": "57f4d8430846d48dbb06a7c94f48916ebded1ea9f579227bd23f2414203843aa"
+      "source_sha256": "8b9f3030634a77a03c63a73f5ea46923376e7f1f527b12a7ba8a38431b3672c1"
     },
     {
       "slug": "fly-io-machine-shared-cpu-1x-256-mb",
@@ -5171,7 +5165,7 @@
       "category": "VPS hosting",
       "source_url": "https://aws.amazon.com/lightsail/pricing/",
       "offer_url": "https://aws.amazon.com/lightsail/pricing/",
-      "fetched_at": "2026-09-14T06:41:08Z",
+      "fetched_at": "2026-09-14T12:40:22Z",
       "evidence": "Amazon Lightsail pricing row: the plan family is followed by the monthly amount in USD.",
       "field_evidence": {
         "price": "$5 USD/mo"
@@ -5181,7 +5175,7 @@
       "condition": "On-demand monthly price for the instance plan as printed on the official pricing page.",
       "kind": "regular_price",
       "price": 5.0,
-      "source_sha256": "38c6bf03a5cac8f84ef1aa6a1b3beb8adb66c7bda49596c14793aacbfcd9390d"
+      "source_sha256": "903271c9b0948527c616c63049613747a30173967a7a67c030f316c2a3a7874f"
     },
     {
       "slug": "amazon-lightsail-lightsail-1-gb-2-vcpu-40-gb-ssd",
@@ -5190,7 +5184,7 @@
       "category": "VPS hosting",
       "source_url": "https://aws.amazon.com/lightsail/pricing/",
       "offer_url": "https://aws.amazon.com/lightsail/pricing/",
-      "fetched_at": "2026-09-14T06:41:08Z",
+      "fetched_at": "2026-09-14T12:40:22Z",
       "evidence": "Amazon Lightsail pricing row, read the same way as the 512 MB plan.",
       "field_evidence": {
         "price": "$7 USD/mo"
@@ -5200,7 +5194,7 @@
       "condition": "On-demand monthly price for the instance plan as printed on the official pricing page.",
       "kind": "regular_price",
       "price": 7.0,
-      "source_sha256": "38c6bf03a5cac8f84ef1aa6a1b3beb8adb66c7bda49596c14793aacbfcd9390d"
+      "source_sha256": "903271c9b0948527c616c63049613747a30173967a7a67c030f316c2a3a7874f"
     },
     {
       "slug": "amazon-lightsail-lightsail-2-gb-2-vcpu-60-gb-ssd",
@@ -5209,7 +5203,7 @@
       "category": "VPS hosting",
       "source_url": "https://aws.amazon.com/lightsail/pricing/",
       "offer_url": "https://aws.amazon.com/lightsail/pricing/",
-      "fetched_at": "2026-09-14T06:41:08Z",
+      "fetched_at": "2026-09-14T12:40:22Z",
       "evidence": "Amazon Lightsail pricing row, read the same way as the 512 MB plan.",
       "field_evidence": {
         "price": "$12 USD/mo"
@@ -5219,7 +5213,7 @@
       "condition": "On-demand monthly price for the instance plan as printed on the official pricing page.",
       "kind": "regular_price",
       "price": 12.0,
-      "source_sha256": "38c6bf03a5cac8f84ef1aa6a1b3beb8adb66c7bda49596c14793aacbfcd9390d"
+      "source_sha256": "903271c9b0948527c616c63049613747a30173967a7a67c030f316c2a3a7874f"
     },
     {
       "slug": "20i-startup",
@@ -5366,7 +5360,7 @@
       "retained_slugs": [],
       "rule_errors": [],
       "unmatched_rules": [],
-      "checked_at": "2026-09-14T06:41:10Z"
+      "checked_at": "2026-09-14T12:40:24Z"
     },
     "webdock": {
       "status": "checked",
@@ -5382,7 +5376,7 @@
       "retained_slugs": [],
       "rule_errors": [],
       "unmatched_rules": [],
-      "checked_at": "2026-09-14T06:41:10Z"
+      "checked_at": "2026-09-14T12:40:24Z"
     },
     "hostdime": {
       "status": "checked",
@@ -5398,7 +5392,7 @@
       "retained_slugs": [],
       "rule_errors": [],
       "unmatched_rules": [],
-      "checked_at": "2026-09-14T06:41:10Z"
+      "checked_at": "2026-09-14T12:40:24Z"
     },
     "veerotech": {
       "status": "checked",
@@ -5416,7 +5410,7 @@
       "retained_slugs": [],
       "rule_errors": [],
       "unmatched_rules": [],
-      "checked_at": "2026-09-14T06:41:10Z"
+      "checked_at": "2026-09-14T12:40:24Z"
     },
     "whc": {
       "status": "checked",
@@ -5437,7 +5431,7 @@
       "unmatched_rules": [
         "Managed WordPress"
       ],
-      "checked_at": "2026-09-14T06:41:10Z"
+      "checked_at": "2026-09-14T12:40:24Z"
     },
     "123-reg": {
       "status": "checked",
@@ -5454,7 +5448,7 @@
       "retained_slugs": [],
       "rule_errors": [],
       "unmatched_rules": [],
-      "checked_at": "2026-09-14T06:41:10Z"
+      "checked_at": "2026-09-14T12:40:24Z"
     },
     "easyspace": {
       "status": "checked",
@@ -5474,7 +5468,7 @@
         "Secure Web Hosting",
         "Cloud Servers"
       ],
-      "checked_at": "2026-09-14T06:41:10Z"
+      "checked_at": "2026-09-14T12:40:24Z"
     },
     "portfoliobox": {
       "status": "checked",
@@ -5489,7 +5483,7 @@
       "retained_slugs": [],
       "rule_errors": [],
       "unmatched_rules": [],
-      "checked_at": "2026-09-14T06:41:10Z"
+      "checked_at": "2026-09-14T12:40:24Z"
     },
     "ucraft": {
       "status": "unmatched",
@@ -5511,7 +5505,7 @@
         "Pro Shop",
         "Unlimited"
       ],
-      "checked_at": "2026-09-14T06:41:10Z"
+      "checked_at": "2026-09-14T12:40:24Z"
     },
     "voog": {
       "status": "checked",
@@ -5528,7 +5522,7 @@
       "retained_slugs": [],
       "rule_errors": [],
       "unmatched_rules": [],
-      "checked_at": "2026-09-14T06:41:10Z"
+      "checked_at": "2026-09-14T12:40:24Z"
     },
     "beehiiv": {
       "status": "checked",
@@ -5543,7 +5537,7 @@
       "retained_slugs": [],
       "rule_errors": [],
       "unmatched_rules": [],
-      "checked_at": "2026-09-14T06:41:10Z"
+      "checked_at": "2026-09-14T12:40:24Z"
     },
     "wpmu-dev": {
       "status": "checked",
@@ -5562,7 +5556,7 @@
       "retained_slugs": [],
       "rule_errors": [],
       "unmatched_rules": [],
-      "checked_at": "2026-09-14T06:41:10Z"
+      "checked_at": "2026-09-14T12:40:24Z"
     },
     "appwrite": {
       "status": "checked",
@@ -5576,7 +5570,7 @@
       "retained_slugs": [],
       "rule_errors": [],
       "unmatched_rules": [],
-      "checked_at": "2026-09-14T06:41:10Z"
+      "checked_at": "2026-09-14T12:40:24Z"
     },
     "nhost": {
       "status": "checked",
@@ -5591,7 +5585,7 @@
       "retained_slugs": [],
       "rule_errors": [],
       "unmatched_rules": [],
-      "checked_at": "2026-09-14T06:41:10Z"
+      "checked_at": "2026-09-14T12:40:24Z"
     },
     "turso": {
       "status": "checked",
@@ -5607,7 +5601,7 @@
       "retained_slugs": [],
       "rule_errors": [],
       "unmatched_rules": [],
-      "checked_at": "2026-09-14T06:41:10Z"
+      "checked_at": "2026-09-14T12:40:24Z"
     },
     "eurodns": {
       "status": "checked",
@@ -5624,7 +5618,7 @@
       "retained_slugs": [],
       "rule_errors": [],
       "unmatched_rules": [],
-      "checked_at": "2026-09-14T06:41:10Z"
+      "checked_at": "2026-09-14T12:40:24Z"
     },
     "aiven": {
       "status": "checked",
@@ -5642,7 +5636,7 @@
       "retained_slugs": [],
       "rule_errors": [],
       "unmatched_rules": [],
-      "checked_at": "2026-09-14T06:41:10Z"
+      "checked_at": "2026-09-14T12:40:24Z"
     },
     "timescale": {
       "status": "checked",
@@ -5657,7 +5651,7 @@
       "retained_slugs": [],
       "rule_errors": [],
       "unmatched_rules": [],
-      "checked_at": "2026-09-14T06:41:10Z"
+      "checked_at": "2026-09-14T12:40:24Z"
     },
     "redis": {
       "status": "checked",
@@ -5672,7 +5666,7 @@
       "retained_slugs": [],
       "rule_errors": [],
       "unmatched_rules": [],
-      "checked_at": "2026-09-14T06:41:10Z"
+      "checked_at": "2026-09-14T12:40:24Z"
     },
     "xata": {
       "status": "checked",
@@ -5689,7 +5683,7 @@
       "retained_slugs": [],
       "rule_errors": [],
       "unmatched_rules": [],
-      "checked_at": "2026-09-14T06:41:10Z"
+      "checked_at": "2026-09-14T12:40:24Z"
     },
     "seravo": {
       "status": "available_no_price_rule",
@@ -5701,7 +5695,7 @@
       "retained_count": 0,
       "captured_slugs": [],
       "retained_slugs": [],
-      "checked_at": "2026-09-14T06:41:10Z"
+      "checked_at": "2026-09-14T12:40:24Z"
     },
     "nixihost": {
       "status": "available_no_price_rule",
@@ -5713,7 +5707,7 @@
       "retained_count": 0,
       "captured_slugs": [],
       "retained_slugs": [],
-      "checked_at": "2026-09-14T06:41:10Z"
+      "checked_at": "2026-09-14T12:40:24Z"
     },
     "ecwid": {
       "status": "available_no_price_rule",
@@ -5725,7 +5719,7 @@
       "retained_count": 0,
       "captured_slugs": [],
       "retained_slugs": [],
-      "checked_at": "2026-09-14T06:41:10Z"
+      "checked_at": "2026-09-14T12:40:24Z"
     },
     "buttondown": {
       "status": "available_no_price_rule",
@@ -5737,7 +5731,7 @@
       "retained_count": 0,
       "captured_slugs": [],
       "retained_slugs": [],
-      "checked_at": "2026-09-14T06:41:10Z"
+      "checked_at": "2026-09-14T12:40:24Z"
     },
     "cloudcone": {
       "status": "checked",
@@ -5756,7 +5750,7 @@
       "retained_slugs": [],
       "rule_errors": [],
       "unmatched_rules": [],
-      "checked_at": "2026-09-14T06:41:10Z"
+      "checked_at": "2026-09-14T12:40:24Z"
     },
     "ramnode": {
       "status": "checked",
@@ -5772,7 +5766,7 @@
       "retained_slugs": [],
       "rule_errors": [],
       "unmatched_rules": [],
-      "checked_at": "2026-09-14T06:41:10Z"
+      "checked_at": "2026-09-14T12:40:24Z"
     },
     "simply-com": {
       "status": "checked",
@@ -5788,7 +5782,7 @@
       "retained_slugs": [],
       "rule_errors": [],
       "unmatched_rules": [],
-      "checked_at": "2026-09-14T06:41:10Z"
+      "checked_at": "2026-09-14T12:40:24Z"
     },
     "strikingly": {
       "status": "checked",
@@ -5804,7 +5798,7 @@
       "retained_slugs": [],
       "rule_errors": [],
       "unmatched_rules": [],
-      "checked_at": "2026-09-14T06:41:10Z"
+      "checked_at": "2026-09-14T12:40:24Z"
     },
     "zeabur": {
       "status": "checked",
@@ -5823,7 +5817,7 @@
       "unmatched_rules": [
         "Team"
       ],
-      "checked_at": "2026-09-14T06:41:10Z"
+      "checked_at": "2026-09-14T12:40:24Z"
     },
     "replit": {
       "status": "checked",
@@ -5838,7 +5832,7 @@
       "retained_slugs": [],
       "rule_errors": [],
       "unmatched_rules": [],
-      "checked_at": "2026-09-14T06:41:10Z"
+      "checked_at": "2026-09-14T12:40:24Z"
     },
     "durable": {
       "status": "checked",
@@ -5852,7 +5846,7 @@
       "retained_slugs": [],
       "rule_errors": [],
       "unmatched_rules": [],
-      "checked_at": "2026-09-14T06:41:10Z"
+      "checked_at": "2026-09-14T12:40:24Z"
     },
     "b12": {
       "status": "checked",
@@ -5867,7 +5861,7 @@
       "retained_slugs": [],
       "rule_errors": [],
       "unmatched_rules": [],
-      "checked_at": "2026-09-14T06:41:10Z"
+      "checked_at": "2026-09-14T12:40:24Z"
     },
     "softr": {
       "status": "checked",
@@ -5883,7 +5877,7 @@
       "retained_slugs": [],
       "rule_errors": [],
       "unmatched_rules": [],
-      "checked_at": "2026-09-14T06:41:10Z"
+      "checked_at": "2026-09-14T12:40:24Z"
     },
     "bandzoogle": {
       "status": "checked",
@@ -5899,7 +5893,7 @@
       "retained_slugs": [],
       "rule_errors": [],
       "unmatched_rules": [],
-      "checked_at": "2026-09-14T06:41:10Z"
+      "checked_at": "2026-09-14T12:40:24Z"
     },
     "netcup": {
       "status": "unmatched",
@@ -5921,7 +5915,7 @@
         "VPS 2000 G12",
         "VPS 4000 G12"
       ],
-      "checked_at": "2026-09-14T06:41:10Z"
+      "checked_at": "2026-09-14T12:40:24Z"
     },
     "deno-deploy": {
       "status": "checked",
@@ -5936,7 +5930,7 @@
       "retained_slugs": [],
       "rule_errors": [],
       "unmatched_rules": [],
-      "checked_at": "2026-09-14T06:41:10Z"
+      "checked_at": "2026-09-14T12:40:24Z"
     },
     "lightningbase": {
       "status": "checked",
@@ -5953,7 +5947,7 @@
       "retained_slugs": [],
       "rule_errors": [],
       "unmatched_rules": [],
-      "checked_at": "2026-09-14T06:41:10Z"
+      "checked_at": "2026-09-14T12:40:24Z"
     },
     "tmdhosting": {
       "status": "checked",
@@ -5970,7 +5964,7 @@
       "retained_slugs": [],
       "rule_errors": [],
       "unmatched_rules": [],
-      "checked_at": "2026-09-14T06:41:10Z"
+      "checked_at": "2026-09-14T12:40:24Z"
     },
     "hawkhost": {
       "status": "checked",
@@ -5986,7 +5980,7 @@
       "retained_slugs": [],
       "rule_errors": [],
       "unmatched_rules": [],
-      "checked_at": "2026-09-14T06:41:10Z"
+      "checked_at": "2026-09-14T12:40:24Z"
     },
     "crocweb": {
       "status": "checked",
@@ -6003,7 +5997,7 @@
       "retained_slugs": [],
       "rule_errors": [],
       "unmatched_rules": [],
-      "checked_at": "2026-09-14T06:41:10Z"
+      "checked_at": "2026-09-14T12:40:24Z"
     },
     "eukhost": {
       "status": "checked",
@@ -6020,7 +6014,7 @@
       "retained_slugs": [],
       "rule_errors": [],
       "unmatched_rules": [],
-      "checked_at": "2026-09-14T06:41:10Z"
+      "checked_at": "2026-09-14T12:40:24Z"
     },
     "heart-internet": {
       "status": "unmatched",
@@ -6040,7 +6034,7 @@
         "Managed WordPress",
         "Virtual Private Servers"
       ],
-      "checked_at": "2026-09-14T06:41:10Z"
+      "checked_at": "2026-09-14T12:40:24Z"
     },
     "wpx": {
       "status": "unmatched",
@@ -6060,7 +6054,7 @@
         "Business",
         "Professional"
       ],
-      "checked_at": "2026-09-14T06:41:10Z"
+      "checked_at": "2026-09-14T12:40:24Z"
     },
     "supabase": {
       "status": "checked",
@@ -6075,7 +6069,7 @@
       "retained_slugs": [],
       "rule_errors": [],
       "unmatched_rules": [],
-      "checked_at": "2026-09-14T06:41:10Z"
+      "checked_at": "2026-09-14T12:40:24Z"
     },
     "platform-sh": {
       "status": "checked",
@@ -6090,7 +6084,7 @@
       "retained_slugs": [],
       "rule_errors": [],
       "unmatched_rules": [],
-      "checked_at": "2026-09-14T06:41:10Z"
+      "checked_at": "2026-09-14T12:40:24Z"
     },
     "pantheon": {
       "status": "checked",
@@ -6104,7 +6098,7 @@
       "retained_slugs": [],
       "rule_errors": [],
       "unmatched_rules": [],
-      "checked_at": "2026-09-14T06:41:10Z"
+      "checked_at": "2026-09-14T12:40:24Z"
     },
     "northflank": {
       "status": "checked",
@@ -6121,7 +6115,7 @@
       "retained_slugs": [],
       "rule_errors": [],
       "unmatched_rules": [],
-      "checked_at": "2026-09-14T06:41:10Z"
+      "checked_at": "2026-09-14T12:40:24Z"
     },
     "bubble": {
       "status": "available_no_price_rule",
@@ -6133,7 +6127,7 @@
       "retained_count": 0,
       "captured_slugs": [],
       "retained_slugs": [],
-      "checked_at": "2026-09-14T06:41:10Z"
+      "checked_at": "2026-09-14T12:40:24Z"
     },
     "back4app": {
       "status": "available_no_price_rule",
@@ -6145,7 +6139,7 @@
       "retained_count": 0,
       "captured_slugs": [],
       "retained_slugs": [],
-      "checked_at": "2026-09-14T06:41:10Z"
+      "checked_at": "2026-09-14T12:40:24Z"
     },
     "pagely": {
       "status": "available_no_price_rule",
@@ -6157,7 +6151,7 @@
       "retained_count": 0,
       "captured_slugs": [],
       "retained_slugs": [],
-      "checked_at": "2026-09-14T06:41:10Z"
+      "checked_at": "2026-09-14T12:40:24Z"
     },
     "hosthatch": {
       "status": "available_no_price_rule",
@@ -6169,7 +6163,7 @@
       "retained_count": 0,
       "captured_slugs": [],
       "retained_slugs": [],
-      "checked_at": "2026-09-14T06:41:10Z"
+      "checked_at": "2026-09-14T12:40:24Z"
     },
     "pixpa": {
       "status": "available_no_price_rule",
@@ -6181,7 +6175,7 @@
       "retained_count": 0,
       "captured_slugs": [],
       "retained_slugs": [],
-      "checked_at": "2026-09-14T06:41:10Z"
+      "checked_at": "2026-09-14T12:40:24Z"
     },
     "infomaniak": {
       "status": "available_no_price_rule",
@@ -6193,7 +6187,7 @@
       "retained_count": 0,
       "captured_slugs": [],
       "retained_slugs": [],
-      "checked_at": "2026-09-14T06:41:10Z"
+      "checked_at": "2026-09-14T12:40:24Z"
     },
     "one-com": {
       "status": "available_no_price_rule",
@@ -6205,7 +6199,7 @@
       "retained_count": 0,
       "captured_slugs": [],
       "retained_slugs": [],
-      "checked_at": "2026-09-14T06:41:10Z"
+      "checked_at": "2026-09-14T12:40:24Z"
     },
     "shopify": {
       "status": "checked",
@@ -6221,7 +6215,7 @@
       "retained_slugs": [],
       "rule_errors": [],
       "unmatched_rules": [],
-      "checked_at": "2026-09-14T06:41:10Z"
+      "checked_at": "2026-09-14T12:40:24Z"
     },
     "bigcommerce": {
       "status": "checked",
@@ -6237,7 +6231,7 @@
       "retained_slugs": [],
       "rule_errors": [],
       "unmatched_rules": [],
-      "checked_at": "2026-09-14T06:41:10Z"
+      "checked_at": "2026-09-14T12:40:24Z"
     },
     "duda": {
       "status": "checked",
@@ -6254,7 +6248,7 @@
       "retained_slugs": [],
       "rule_errors": [],
       "unmatched_rules": [],
-      "checked_at": "2026-09-14T06:41:10Z"
+      "checked_at": "2026-09-14T12:40:24Z"
     },
     "framer": {
       "status": "checked",
@@ -6269,7 +6263,7 @@
       "retained_slugs": [],
       "rule_errors": [],
       "unmatched_rules": [],
-      "checked_at": "2026-09-14T06:41:10Z"
+      "checked_at": "2026-09-14T12:40:24Z"
     },
     "ghost": {
       "status": "checked",
@@ -6285,7 +6279,7 @@
       "retained_slugs": [],
       "rule_errors": [],
       "unmatched_rules": [],
-      "checked_at": "2026-09-14T06:41:10Z"
+      "checked_at": "2026-09-14T12:40:24Z"
     },
     "tilda": {
       "status": "checked",
@@ -6300,7 +6294,7 @@
       "retained_slugs": [],
       "rule_errors": [],
       "unmatched_rules": [],
-      "checked_at": "2026-09-14T06:41:10Z"
+      "checked_at": "2026-09-14T12:40:24Z"
     },
     "accuweb-hosting": {
       "status": "checked",
@@ -6320,7 +6314,7 @@
         "Bootstrap ++",
         "Premium ++"
       ],
-      "checked_at": "2026-09-14T06:41:10Z"
+      "checked_at": "2026-09-14T12:40:24Z"
     },
     "kamatera": {
       "status": "checked",
@@ -6336,7 +6330,7 @@
       "retained_slugs": [],
       "rule_errors": [],
       "unmatched_rules": [],
-      "checked_at": "2026-09-14T06:41:10Z"
+      "checked_at": "2026-09-14T12:40:24Z"
     },
     "gridpane": {
       "status": "checked",
@@ -6351,7 +6345,7 @@
       "retained_slugs": [],
       "rule_errors": [],
       "unmatched_rules": [],
-      "checked_at": "2026-09-14T06:41:10Z"
+      "checked_at": "2026-09-14T12:40:24Z"
     },
     "koyeb": {
       "status": "checked",
@@ -6366,7 +6360,7 @@
       "retained_slugs": [],
       "rule_errors": [],
       "unmatched_rules": [],
-      "checked_at": "2026-09-14T06:41:10Z"
+      "checked_at": "2026-09-14T12:40:24Z"
     },
     "flywheel": {
       "status": "checked",
@@ -6382,7 +6376,7 @@
       "retained_slugs": [],
       "rule_errors": [],
       "unmatched_rules": [],
-      "checked_at": "2026-09-14T06:41:10Z"
+      "checked_at": "2026-09-14T12:40:24Z"
     },
     "10web": {
       "status": "checked",
@@ -6400,7 +6394,7 @@
       "retained_slugs": [],
       "rule_errors": [],
       "unmatched_rules": [],
-      "checked_at": "2026-09-14T06:41:10Z"
+      "checked_at": "2026-09-14T12:40:24Z"
     },
     "webflow": {
       "status": "checked",
@@ -6416,7 +6410,7 @@
       "retained_slugs": [],
       "rule_errors": [],
       "unmatched_rules": [],
-      "checked_at": "2026-09-14T06:41:10Z"
+      "checked_at": "2026-09-14T12:40:24Z"
     },
     "gandi": {
       "status": "unmatched",
@@ -6434,7 +6428,7 @@
         ".com registration",
         ".fr registration"
       ],
-      "checked_at": "2026-09-14T06:41:10Z"
+      "checked_at": "2026-09-14T12:40:24Z"
     },
     "fasthosts": {
       "status": "unmatched",
@@ -6454,7 +6448,7 @@
         "Scale",
         "Pro"
       ],
-      "checked_at": "2026-09-14T06:41:10Z"
+      "checked_at": "2026-09-14T12:40:24Z"
     },
     "name-com": {
       "status": "unmatched",
@@ -6474,7 +6468,7 @@
         ".net registration",
         ".org registration"
       ],
-      "checked_at": "2026-09-14T06:41:10Z"
+      "checked_at": "2026-09-14T12:40:24Z"
     },
     "pressable": {
       "status": "checked",
@@ -6491,7 +6485,7 @@
       "retained_slugs": [],
       "rule_errors": [],
       "unmatched_rules": [],
-      "checked_at": "2026-09-14T06:41:10Z"
+      "checked_at": "2026-09-14T12:40:24Z"
     },
     "railway": {
       "status": "unmatched",
@@ -6509,7 +6503,7 @@
         "Hobby",
         "Pro"
       ],
-      "checked_at": "2026-09-14T06:41:10Z"
+      "checked_at": "2026-09-14T12:40:24Z"
     },
     "wordpress-com": {
       "status": "unmatched",
@@ -6529,7 +6523,7 @@
         "Premium",
         "Business"
       ],
-      "checked_at": "2026-09-14T06:41:10Z"
+      "checked_at": "2026-09-14T12:40:24Z"
     },
     "heroku": {
       "status": "unmatched",
@@ -6551,7 +6545,7 @@
         "Standard-1X",
         "Standard-2X"
       ],
-      "checked_at": "2026-09-14T06:41:10Z"
+      "checked_at": "2026-09-14T12:40:24Z"
     },
     "krystal": {
       "status": "checked",
@@ -6570,7 +6564,7 @@
       "retained_slugs": [],
       "rule_errors": [],
       "unmatched_rules": [],
-      "checked_at": "2026-09-14T06:41:10Z"
+      "checked_at": "2026-09-14T12:40:24Z"
     },
     "scaleway": {
       "status": "checked",
@@ -6584,7 +6578,7 @@
       "retained_slugs": [],
       "rule_errors": [],
       "unmatched_rules": [],
-      "checked_at": "2026-09-14T06:41:10Z"
+      "checked_at": "2026-09-14T12:40:24Z"
     },
     "site123": {
       "status": "checked",
@@ -6598,7 +6592,7 @@
       "retained_slugs": [],
       "rule_errors": [],
       "unmatched_rules": [],
-      "checked_at": "2026-09-14T06:41:10Z"
+      "checked_at": "2026-09-14T12:40:24Z"
     },
     "a2-hosting": {
       "status": "unmatched",
@@ -6618,7 +6612,7 @@
         ".org registration",
         ".online registration"
       ],
-      "checked_at": "2026-09-14T06:41:10Z"
+      "checked_at": "2026-09-14T12:40:24Z"
     },
     "hostinger": {
       "status": "unmatched",
@@ -6636,7 +6630,7 @@
         "Premium Web Hosting",
         "Unlimited Web Hosting"
       ],
-      "checked_at": "2026-09-14T06:41:10Z"
+      "checked_at": "2026-09-14T12:40:24Z"
     },
     "siteground": {
       "status": "unavailable",
@@ -6650,7 +6644,7 @@
         "siteground-growbig-web-hosting",
         "siteground-gogeek-web-hosting"
       ],
-      "checked_at": "2026-09-14T06:41:10Z"
+      "checked_at": "2026-09-14T12:40:24Z"
     },
     "dreamhost": {
       "status": "unmatched",
@@ -6670,7 +6664,7 @@
         "DreamPress 1",
         "VPS Business"
       ],
-      "checked_at": "2026-09-14T06:41:10Z"
+      "checked_at": "2026-09-14T12:40:24Z"
     },
     "kinsta": {
       "status": "checked",
@@ -6684,7 +6678,7 @@
       "retained_slugs": [],
       "rule_errors": [],
       "unmatched_rules": [],
-      "checked_at": "2026-09-14T06:41:10Z"
+      "checked_at": "2026-09-14T12:40:24Z"
     },
     "cloudways": {
       "status": "checked",
@@ -6698,7 +6692,7 @@
       "retained_slugs": [],
       "rule_errors": [],
       "unmatched_rules": [],
-      "checked_at": "2026-09-14T06:41:10Z"
+      "checked_at": "2026-09-14T12:40:24Z"
     },
     "scalahosting": {
       "status": "checked",
@@ -6712,7 +6706,7 @@
       "retained_slugs": [],
       "rule_errors": [],
       "unmatched_rules": [],
-      "checked_at": "2026-09-14T06:41:10Z"
+      "checked_at": "2026-09-14T12:40:24Z"
     },
     "greengeeks": {
       "status": "checked",
@@ -6728,7 +6722,7 @@
       "retained_slugs": [],
       "rule_errors": [],
       "unmatched_rules": [],
-      "checked_at": "2026-09-14T06:41:10Z"
+      "checked_at": "2026-09-14T12:40:24Z"
     },
     "inmotion-hosting": {
       "status": "unmatched",
@@ -6744,7 +6738,7 @@
       "unmatched_rules": [
         "Launch shared hosting (36-month term)"
       ],
-      "checked_at": "2026-09-14T06:41:10Z"
+      "checked_at": "2026-09-14T12:40:24Z"
     },
     "chemicloud": {
       "status": "unmatched",
@@ -6760,7 +6754,7 @@
       "unmatched_rules": [
         "Starter shared hosting (three-year term)"
       ],
-      "checked_at": "2026-09-14T06:41:10Z"
+      "checked_at": "2026-09-14T12:40:24Z"
     },
     "verpex": {
       "status": "unmatched",
@@ -6778,7 +6772,7 @@
         "Silver web hosting",
         "Gold web hosting"
       ],
-      "checked_at": "2026-09-14T06:41:10Z"
+      "checked_at": "2026-09-14T12:40:24Z"
     },
     "knownhost": {
       "status": "unmatched",
@@ -6794,7 +6788,7 @@
       "unmatched_rules": [
         "Basic web hosting (three-year term)"
       ],
-      "checked_at": "2026-09-14T06:41:10Z"
+      "checked_at": "2026-09-14T12:40:24Z"
     },
     "wp-engine": {
       "status": "unmatched",
@@ -6811,7 +6805,7 @@
         "Essential managed hosting (annual billing)",
         "Managed Hosting Platform (1 site, annual billing)"
       ],
-      "checked_at": "2026-09-14T06:41:10Z"
+      "checked_at": "2026-09-14T12:40:24Z"
     },
     "ionos": {
       "status": "checked",
@@ -6828,7 +6822,7 @@
       "retained_slugs": [],
       "rule_errors": [],
       "unmatched_rules": [],
-      "checked_at": "2026-09-14T06:41:10Z"
+      "checked_at": "2026-09-14T12:40:24Z"
     },
     "namehero": {
       "status": "checked",
@@ -6845,7 +6839,7 @@
       "retained_slugs": [],
       "rule_errors": [],
       "unmatched_rules": [],
-      "checked_at": "2026-09-14T06:41:10Z"
+      "checked_at": "2026-09-14T12:40:24Z"
     },
     "stablehost": {
       "status": "checked",
@@ -6860,7 +6854,7 @@
       "retained_slugs": [],
       "rule_errors": [],
       "unmatched_rules": [],
-      "checked_at": "2026-09-14T06:41:10Z"
+      "checked_at": "2026-09-14T12:40:24Z"
     },
     "mddhosting": {
       "status": "checked",
@@ -6876,7 +6870,7 @@
       "retained_slugs": [],
       "rule_errors": [],
       "unmatched_rules": [],
-      "checked_at": "2026-09-14T06:41:10Z"
+      "checked_at": "2026-09-14T12:40:24Z"
     },
     "ultahost": {
       "status": "unavailable",
@@ -6889,7 +6883,7 @@
         "ultahost-starter",
         "ultahost-vps-basic"
       ],
-      "checked_at": "2026-09-14T06:41:10Z"
+      "checked_at": "2026-09-14T12:40:24Z"
     },
     "netlify": {
       "status": "checked",
@@ -6904,7 +6898,7 @@
       "retained_slugs": [],
       "rule_errors": [],
       "unmatched_rules": [],
-      "checked_at": "2026-09-14T06:41:10Z"
+      "checked_at": "2026-09-14T12:40:24Z"
     },
     "vercel": {
       "status": "checked",
@@ -6918,7 +6912,7 @@
       "retained_slugs": [],
       "rule_errors": [],
       "unmatched_rules": [],
-      "checked_at": "2026-09-14T06:41:10Z"
+      "checked_at": "2026-09-14T12:40:24Z"
     },
     "ovhcloud": {
       "status": "checked",
@@ -6935,7 +6929,7 @@
       "retained_slugs": [],
       "rule_errors": [],
       "unmatched_rules": [],
-      "checked_at": "2026-09-14T06:41:10Z"
+      "checked_at": "2026-09-14T12:40:24Z"
     },
     "hetzner": {
       "status": "available_no_price_rule",
@@ -6947,7 +6941,7 @@
       "retained_count": 0,
       "captured_slugs": [],
       "retained_slugs": [],
-      "checked_at": "2026-09-14T06:41:10Z"
+      "checked_at": "2026-09-14T12:40:24Z"
     },
     "hostwinds": {
       "status": "available_no_price_rule",
@@ -6959,7 +6953,7 @@
       "retained_count": 0,
       "captured_slugs": [],
       "retained_slugs": [],
-      "checked_at": "2026-09-14T06:41:10Z"
+      "checked_at": "2026-09-14T12:40:24Z"
     },
     "kualo": {
       "status": "available_no_price_rule",
@@ -6971,7 +6965,7 @@
       "retained_count": 0,
       "captured_slugs": [],
       "retained_slugs": [],
-      "checked_at": "2026-09-14T06:41:10Z"
+      "checked_at": "2026-09-14T12:40:24Z"
     },
     "squarespace": {
       "status": "available_no_price_rule",
@@ -6983,7 +6977,7 @@
       "retained_count": 0,
       "captured_slugs": [],
       "retained_slugs": [],
-      "checked_at": "2026-09-14T06:41:10Z"
+      "checked_at": "2026-09-14T12:40:24Z"
     },
     "webnode": {
       "status": "available_no_price_rule",
@@ -6995,7 +6989,7 @@
       "retained_count": 0,
       "captured_slugs": [],
       "retained_slugs": [],
-      "checked_at": "2026-09-14T06:41:10Z"
+      "checked_at": "2026-09-14T12:40:24Z"
     },
     "jimdo": {
       "status": "available_no_price_rule",
@@ -7007,7 +7001,7 @@
       "retained_count": 0,
       "captured_slugs": [],
       "retained_slugs": [],
-      "checked_at": "2026-09-14T06:41:10Z"
+      "checked_at": "2026-09-14T12:40:24Z"
     },
     "wix": {
       "status": "unavailable",
@@ -7017,7 +7011,7 @@
       "retained_count": 0,
       "captured_slugs": [],
       "retained_slugs": [],
-      "checked_at": "2026-09-14T06:41:10Z"
+      "checked_at": "2026-09-14T12:40:24Z"
     },
     "cloudflare-registrar": {
       "status": "available_no_price_rule",
@@ -7029,7 +7023,7 @@
       "retained_count": 0,
       "captured_slugs": [],
       "retained_slugs": [],
-      "checked_at": "2026-09-14T06:41:10Z"
+      "checked_at": "2026-09-14T12:40:24Z"
     },
     "digitalocean": {
       "status": "unmatched",
@@ -7049,7 +7043,7 @@
         "Droplet 1 GiB / 1 vCPU / 25 GiB SSD",
         "Droplet 2 GiB / 1 vCPU / 50 GiB SSD"
       ],
-      "checked_at": "2026-09-14T06:41:10Z"
+      "checked_at": "2026-09-14T12:40:24Z"
     },
     "porkbun": {
       "status": "unmatched",
@@ -7069,7 +7063,7 @@
         ".NET registration",
         ".ORG registration"
       ],
-      "checked_at": "2026-09-14T06:41:10Z"
+      "checked_at": "2026-09-14T12:40:24Z"
     },
     "weebly": {
       "status": "checked",
@@ -7085,7 +7079,7 @@
       "retained_slugs": [],
       "rule_errors": [],
       "unmatched_rules": [],
-      "checked_at": "2026-09-14T06:41:10Z"
+      "checked_at": "2026-09-14T12:40:24Z"
     },
     "render": {
       "status": "checked",
@@ -7100,7 +7094,7 @@
       "retained_slugs": [],
       "rule_errors": [],
       "unmatched_rules": [],
-      "checked_at": "2026-09-14T06:41:10Z"
+      "checked_at": "2026-09-14T12:40:24Z"
     },
     "fly-io": {
       "status": "unmatched",
@@ -7120,7 +7114,7 @@
         "Machine shared-cpu-2x 512 MB",
         "Machine shared-cpu-4x 1 GB"
       ],
-      "checked_at": "2026-09-14T06:41:10Z"
+      "checked_at": "2026-09-14T12:40:24Z"
     },
     "amazon-lightsail": {
       "status": "checked",
@@ -7136,7 +7130,7 @@
       "retained_slugs": [],
       "rule_errors": [],
       "unmatched_rules": [],
-      "checked_at": "2026-09-14T06:41:10Z"
+      "checked_at": "2026-09-14T12:40:24Z"
     },
     "20i": {
       "status": "unmatched",
@@ -7162,21 +7156,21 @@
         "Plan 4",
         "Plan 5"
       ],
-      "checked_at": "2026-09-14T06:41:10Z"
+      "checked_at": "2026-09-14T12:40:24Z"
     }
   },
   "page_lastmod": {
     "/": {
-      "hash": "4a223d52128f841c0812b7e2966d9f3153280459810beef4c79559d0b2ce020d",
-      "lastmod": "2026-09-14T06:41:10Z"
+      "hash": "49484e080cb6c4d24e5078fc420f54ad0b4530b25129aec95f49952816f7238e",
+      "lastmod": "2026-09-14T12:40:24Z"
     },
     "/providers/": {
       "hash": "18875adfed8976955861b98f2d4cd3e2c8b8aa2c31963d86932feb0021dcd286",
       "lastmod": "2026-09-14T06:41:10Z"
     },
     "/compare/": {
-      "hash": "daa1a46feca7392a92334cf1062e08c02dcefebe94205f5ea51bbb014584d26e",
-      "lastmod": "2026-09-14T06:41:10Z"
+      "hash": "64414dd2c92d08a0d781f530c4afeee325a054020546ab8ac200bfc177266235",
+      "lastmod": "2026-09-14T12:40:24Z"
     },
     "/methodology/": {
       "hash": "b5a02eac37a348a58967651778141fe72bb7243ff0f9332906a9251d3fc808ac",
@@ -7219,8 +7213,8 @@
       "lastmod": "2026-09-14T05:14:23Z"
     },
     "/providers/portfoliobox/": {
-      "hash": "f32d048c4b98d9a1a0d69b31a454defcdfa48f5c07871a5214a8f7e4c5aadaa0",
-      "lastmod": "2026-09-14T06:41:10Z"
+      "hash": "19411e3115b9d49236a82d09626e4aa914f38c36e4716d2b2600520d3276267b",
+      "lastmod": "2026-09-14T12:40:24Z"
     },
     "/providers/ucraft/": {
       "hash": "b070bf8d3c2c50b1ef79bb87993c9c0588e61ec61b1297780a70e00a73893cac",
@@ -7407,8 +7401,8 @@
       "lastmod": "2026-09-14T05:14:23Z"
     },
     "/providers/shopify/": {
-      "hash": "f7ee1a9bf5f00a7bd502695434af17582144f574b176c13f97a2c8cc336631c9",
-      "lastmod": "2026-09-14T05:14:23Z"
+      "hash": "e399c78880918f9cb7413c0078f2d60394064df55e72a79564bc25972a6c5be8",
+      "lastmod": "2026-09-14T12:40:24Z"
     },
     "/providers/bigcommerce/": {
       "hash": "6de45b0d617f886521aaa1e91252f69dace7eae268ed7d841776a61a33ffb31a",
@@ -7623,8 +7617,8 @@
       "lastmod": "2026-09-14T05:14:23Z"
     },
     "/providers/weebly/": {
-      "hash": "84dc980dabf059eff07edac96f5a9c4150730b8c2b73f1110821f5e4d3adb221",
-      "lastmod": "2026-09-14T05:14:23Z"
+      "hash": "efd4dda7d637ed07b179966caedae9a0c2ed1525cca3ac6d6e3a3beef68d0e59",
+      "lastmod": "2026-09-14T12:40:24Z"
     },
     "/providers/render/": {
       "hash": "022e03410563c908c56716b9aad2e1c4125df13a48fd3e215446eda0a9027596",
@@ -7759,12 +7753,12 @@
       "lastmod": "2026-09-14T05:14:23Z"
     },
     "/deals/portfoliobox-professional/": {
-      "hash": "d268a641d8d4cccf425845c15ad74a8629035ab7c829544172716f5a1ba21754",
-      "lastmod": "2026-09-14T06:41:10Z"
+      "hash": "e88eacc0c69a10d1251c0adfae38c4d21e1f776f53d1e8210cf0b65d6f6ceeb5",
+      "lastmod": "2026-09-14T12:40:24Z"
     },
     "/deals/portfoliobox-personal/": {
-      "hash": "89a0ca0733552bcf17c61e89aaf02f8cb5101a6ec748e4fc24031a97f007e827",
-      "lastmod": "2026-09-14T06:41:10Z"
+      "hash": "258f29ddd742e570f589a162051e8f67b719a3a279fb64c94224ca5275d87556",
+      "lastmod": "2026-09-14T12:40:24Z"
     },
     "/deals/ucraft-website/": {
       "hash": "9e2ed0f304904bf9084bedb3fa2959cc1a04c0d499f404ffd557f323bc828f1e",
@@ -8199,12 +8193,12 @@
       "lastmod": "2026-09-14T05:14:23Z"
     },
     "/deals/shopify-basic/": {
-      "hash": "cb955b96f4c160aa1c98359c44c8cde9b1a1e64ef94a28a95bd3f75d0ac3599e",
-      "lastmod": "2026-09-14T05:14:23Z"
+      "hash": "28b912a499c8e28894199e2e8ecc6782fb10f44e4d054790c53d8ce8b3e25841",
+      "lastmod": "2026-09-14T12:40:24Z"
     },
     "/deals/shopify-grow/": {
-      "hash": "290bdaafbad250b1b32d6943b6017104ae3a948bffb6853371c85c4d1b23caad",
-      "lastmod": "2026-09-14T05:14:23Z"
+      "hash": "19bb89f2e3c4b718640bfb2575fd08eb4ed4a154375af4c2e9b25c331cfd1f10",
+      "lastmod": "2026-09-14T12:40:24Z"
     },
     "/deals/shopify-advanced/": {
       "hash": "759d828a3d66b0e97be263a9ee776596937f165c726cb9bbb6d7a8f2aa9752bd",
@@ -8667,16 +8661,16 @@
       "lastmod": "2026-09-14T05:14:23Z"
     },
     "/deals/weebly-personal/": {
-      "hash": "c6a946f7bfe9a83ce2e1b249146e712d577b1ad7ba1b4a9a20f293c611933078",
-      "lastmod": "2026-09-14T05:14:23Z"
+      "hash": "a883dfdfa374488b9ce640ea8b173e868aebd089bf3aac6331a2d9d71aafa951",
+      "lastmod": "2026-09-14T12:40:24Z"
     },
     "/deals/weebly-professional/": {
-      "hash": "9c2fefde117689df8a84989fb639bab6775d04646e88a3ba757f8d714b2cc33a",
-      "lastmod": "2026-09-14T05:14:23Z"
+      "hash": "3b1c939ec899b335cfb4a3405cedc65b6a234bca54057ebce4b40d099ed89528",
+      "lastmod": "2026-09-14T12:40:24Z"
     },
     "/deals/weebly-performance/": {
-      "hash": "69d6d94249b9c5551d520e6f7ed843cc54d0f84a102249fe7b930887e84c9ff0",
-      "lastmod": "2026-09-14T05:14:23Z"
+      "hash": "657d3f60d436283616577c8a9485a24f375b133b5bdf80dee4724598656ad683",
+      "lastmod": "2026-09-14T12:40:24Z"
     },
     "/deals/render-pro/": {
       "hash": "0199a4ae3688a73065fe5807ae78a7566dc719a617928e0b2793f08f79063e72",
