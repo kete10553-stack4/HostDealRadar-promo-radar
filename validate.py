@@ -7,9 +7,9 @@ from config import ROOT, load_config
 import build
 
 NS={'sm':'http://www.sitemaps.org/schemas/sitemap/0.9'}
-# The four approved reasons a reachable official page can still yield no
-# deterministic price rule. Anything else must be a specific fetch failure.
-BLOCKERS={'price_rendered_by_js','unstable_field_structure','no_public_price','login_or_region_gated'}
+# Approved reasons a configured source can carry no deterministic price rule.
+# A robots failure is kept separate from failures after a page was fetched.
+BLOCKERS={'price_rendered_by_js','unstable_field_structure','no_public_price','login_or_region_gated','robots_check_failed'}
 
 class Links(HTMLParser):
     def __init__(self): super().__init__(); self.urls=[]
@@ -147,6 +147,11 @@ def check():
     home=(ROOT/'site/index.html').read_text(encoding='utf-8')
     assert f'{len(ids)} providers in our source list' in home, 'Homepage provider count mismatch'
     assert f'{len(current)} listings captured' in home, 'Homepage current-listing count mismatch'
+    guide=(ROOT/'site/guides/godaddy-renewal-coupon/index.html').read_text(encoding='utf-8')
+    assert 'The official answer' in guide and guide.count('class="card community-report"') == 3, 'GoDaddy guide is missing its official answer or three linked user reports'
+    assert '/guides/godaddy-renewal-coupon/' in home, 'Homepage does not link the GoDaddy renewal guide'
+    godaddy=(ROOT/'site/providers/godaddy/index.html').read_text(encoding='utf-8')
+    assert '/guides/godaddy-renewal-coupon/' in godaddy, 'GoDaddy provider page does not link its renewal guide'
     # No earlier record may be presented as a current offer or publish current price data.
     home_schema=[s for s in schemas(home) if s.get('@type')=='ItemList'][0]
     listed={item['item']['url'] for item in home_schema['itemListElement']}
