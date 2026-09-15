@@ -7071,6 +7071,16 @@
       ],
       "checked_at": "2026-09-15T06:39:49Z"
     },
+    "godaddy": {
+      "status": "unavailable",
+      "reason": "Automated source check could not proceed because https://www.godaddy.com/robots.txt returned HTTP 403 on 2026-09-15.",
+      "published_count": 0,
+      "captured_count": 0,
+      "retained_count": 0,
+      "captured_slugs": [],
+      "retained_slugs": [],
+      "checked_at": "2026-09-15T08:25:27Z"
+    },
     "weebly": {
       "status": "checked",
       "reason": "Official source checked; matched configured extraction rules.",
@@ -7167,12 +7177,12 @@
   },
   "page_lastmod": {
     "/": {
-      "hash": "e302dfac5d4abd08fb1edb3a5b07f50d3727c62658fd9f737f3a51658f4a0859",
-      "lastmod": "2026-09-15T06:39:49Z"
+      "hash": "12323e202502c6bec8e583cc5b5255f36a055a8e1dbfb0a6b202af571db40ed3",
+      "lastmod": "2026-09-15T08:25:50Z"
     },
     "/providers/": {
-      "hash": "56c3deebc085e92ff4e0fbac72be45374a4846fa939b5eb773b8bb6692e43e1e",
-      "lastmod": "2026-09-15T06:39:49Z"
+      "hash": "82e17466491d9611ac04a9c7543242df70b60507c43d3eb90b834a75e5e5059f",
+      "lastmod": "2026-09-15T08:25:50Z"
     },
     "/compare/": {
       "hash": "5089cc738fba40b59b118ed86d9bce703b92921faf33f85d096a1f9a50a73b72",
@@ -7197,6 +7207,10 @@
     "/privacy/": {
       "hash": "be41494d392301717265cd19a0fcf3ab02d7cb322b1b606eb512225aae642531",
       "lastmod": "2026-09-14T13:37:13Z"
+    },
+    "/guides/godaddy-renewal-coupon/": {
+      "hash": "2d554285753cd9e9d8dbcfc5fb4613d7c8b84e0a3fa6f80be34799a21f83a06f",
+      "lastmod": "2026-09-15T08:30:17Z"
     },
     "/providers/raidboxes/": {
       "hash": "cbe15a08c4c6d2bad5b6685f2cf5498644707b4b36ea58a051c852d265baa571",
@@ -7629,6 +7643,10 @@
     "/providers/porkbun/": {
       "hash": "c0d51defab7271e8d17b4e0c75bafbad53ea6dd12369a57036f928ccefcb065e",
       "lastmod": "2026-09-14T13:23:48Z"
+    },
+    "/providers/godaddy/": {
+      "hash": "57da4fd35e545c75e81be560fa31a543d469c88f7e78e143503f876be8078bc2",
+      "lastmod": "2026-09-15T08:25:50Z"
     },
     "/providers/weebly/": {
       "hash": "db810d27b8991ebbd0c2e424c030dbe2c25b23403dbb8d90aecedaabb669a874",

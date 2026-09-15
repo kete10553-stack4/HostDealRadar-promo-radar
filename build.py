@@ -14,7 +14,8 @@ CURRENT='current'; HISTORY=('retained','stale','expired')
 BLOCKER_TEXT={'price_rendered_by_js':'The published prices on this page are rendered by JavaScript, so no figure can be read without executing scripts.',
               'unstable_field_structure':'The page markup changes between loads, so no stable field can be bound to a named plan.',
               'no_public_price':'This official page does not publish a price publicly.',
-              'login_or_region_gated':'This official page requires a login or is limited to certain regions.'}
+              'login_or_region_gated':'This official page requires a login or is limited to certain regions.',
+              'robots_check_failed':'The automated source check could not proceed because the provider’s robots.txt could not be read successfully.'}
 STATE_ONLY_LEAD='Official page checked. No deterministic price rule is available, so no price is published.'
 CATEGORY_DEFINITIONS={
     'Hosting':'General hosting where the current record does not carry a narrower service label.',
@@ -293,8 +294,13 @@ def build(config_path=None, output=None):
         if ph:
             history_html='<section class="history-block"><h2>Earlier records kept for reference</h2><p class="muted">These records were captured on the dates shown and were not reconfirmed in the latest source check. They are not current offers and carry no current price data.</p><div class="cards">'+''.join(card(o,historical=True) for o in ph)+'</div></section>'
         note=provider_summary(po, ph)+' The summary uses the first current record, or the first earlier record if none is current. Cards in each section follow stored record order; this is not a recommendation or a ranking of price, quality, or value.'
-        content=template('provider.html',provider=e(p['name']),note=e(note),source=e(p['source_url']),source_status=e(status_text),offers=current_html+history_html)
+        related_guide=(template('provider-guide.html') if p['id']=='godaddy' else '')
+        content=template('provider.html',provider=e(p['name']),note=e(note),source=e(p['source_url']),source_status=e(status_text),related_guide=related_guide,offers=current_html+history_html)
         write(Path('providers')/p['id']/'index.html',page(f'{p["name"]} offers | HostDealRadar',f'Official {p["name"]} hosting terms captured by HostDealRadar.',domain+'/providers/'+p['id']+'/',content,{'@context':'https://schema.org','@type':'CollectionPage','name':p['name']+' offers'}))
+    guide_route='/guides/godaddy-renewal-coupon/'
+    guide=template('godaddy-renewal-coupon.html')
+    guide_schema={'@context':'https://schema.org','@type':'Article','headline':'GoDaddy renewal coupon: do renewal promo codes work?','datePublished':'2026-09-15','dateModified':'2026-09-15','author':{'@type':'Organization','name':'HostDealRadar'},'publisher':{'@type':'Organization','name':'HostDealRadar'},'mainEntityOfPage':domain+guide_route}
+    write(Path('guides/godaddy-renewal-coupon/index.html'),page('GoDaddy renewal coupon: do renewal promo codes work? | HostDealRadar','GoDaddy renewal coupons, customer-specific renewal codes, current .com renewal terms, and three linked user reports.',domain+guide_route,guide,guide_schema))
     for o in offers:
         state, message=states[o['slug']]
         rule=rules.get((o['provider'], o['title']), {})
@@ -333,7 +339,7 @@ def build(config_path=None, output=None):
     write(Path('privacy/index.html'),page('Privacy | HostDealRadar','Privacy information for HostDealRadar.',domain+'/privacy/',prose('Privacy','<p class="lead">This static site does not require accounts or collect purchase details.</p><p>Provider links open their own sites, where their privacy policies apply. We do not use affiliate-cookie injection or sell visitor information.</p><p>HostDealRadar currently does not display third-party advertising or use affiliate links. If either is introduced, we will disclose it here and update this page.</p>'),{'@context':'https://schema.org','@type':'WebPage','name':'Privacy'}))
     write(Path('robots.txt'),'User-agent: *\nAllow: /\nSitemap: '+domain+'/sitemap.xml\n')
     write(Path('404.html'),page('Page not found | HostDealRadar','This page does not exist.',domain+'/404.html',prose('Page not found','<p><a href="/">Return to current offers</a></p>'),{'@context':'https://schema.org','@type':'WebPage','name':'Page not found'}))
-    routes=['/','/providers/','/compare/','/methodology/','/about/','/contact/','/disclosure/','/privacy/']
+    routes=['/','/providers/','/compare/','/methodology/','/about/','/contact/','/disclosure/','/privacy/',guide_route]
     routes+=[f'/providers/{p["id"]}/' for p in providers]
     routes+=[f'/deals/{o["slug"]}/' for o in offers]
     # lastmod tracks the rendered page itself: it only moves when the page's
