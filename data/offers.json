@@ -7090,6 +7090,16 @@
       "retained_slugs": [],
       "checked_at": "2026-09-15T12:37:54Z"
     },
+    "namecheap": {
+      "status": "unavailable",
+      "reason": "Automated source check read robots.txt successfully, but https://www.namecheap.com/domains/registration/gtld/com/ returned HTTP 403 on 2026-09-15.",
+      "published_count": 0,
+      "captured_count": 0,
+      "retained_count": 0,
+      "captured_slugs": [],
+      "retained_slugs": [],
+      "checked_at": "2026-09-15T12:37:56Z"
+    },
     "weebly": {
       "status": "checked",
       "reason": "Official source checked; matched configured extraction rules.",
@@ -7186,12 +7196,12 @@
   },
   "page_lastmod": {
     "/": {
-      "hash": "76db03d0764ae5aab5bcb8df40cc3b2b6f39bd20a0dcdfbb002fb5b8fad0c8a0",
-      "lastmod": "2026-09-15T12:37:54Z"
+      "hash": "00e55a3b6271efb7ad8bc9c709d9497f2ae5b13972417d5f9380197b50184ab5",
+      "lastmod": "2026-09-15T12:44:21Z"
     },
     "/providers/": {
-      "hash": "48a52db9e035b8062469d3addeeb3fff2997dbae30152cedaa21bc3c73a8f844",
-      "lastmod": "2026-09-15T12:37:54Z"
+      "hash": "63a3bf2ab383d90654fdb06033d1fae8e9dc2a9cacfe43e8a3d29640b05107d3",
+      "lastmod": "2026-09-15T12:44:21Z"
     },
     "/compare/": {
       "hash": "583d49bcc73a1d89c2c1322e605065e720a83a40718dab22a5283d72973ed37c",
@@ -7218,8 +7228,12 @@
       "lastmod": "2026-09-14T13:37:13Z"
     },
     "/guides/godaddy-renewal-coupon/": {
-      "hash": "2d554285753cd9e9d8dbcfc5fb4613d7c8b84e0a3fa6f80be34799a21f83a06f",
-      "lastmod": "2026-09-15T08:30:17Z"
+      "hash": "a455517e54f2e8651dd29c1deae028f23ac1cbc7cd5006f45ef838fc7a6228e5",
+      "lastmod": "2026-09-15T12:44:21Z"
+    },
+    "/guides/namecheap-domain-renewal-coupon/": {
+      "hash": "d568a13f664f98c58c07005bd3ebb23e9e528d2f940d7d3e616faad1f3141f6f",
+      "lastmod": "2026-09-15T12:46:14Z"
     },
     "/providers/raidboxes/": {
       "hash": "cbe15a08c4c6d2bad5b6685f2cf5498644707b4b36ea58a051c852d265baa571",
@@ -7656,6 +7670,10 @@
     "/providers/godaddy/": {
       "hash": "28362b3a373ac88dae29aeda888cf5fed0b67dbef40d2a60aabb32b04628b8b1",
       "lastmod": "2026-09-15T12:37:54Z"
+    },
+    "/providers/namecheap/": {
+      "hash": "7cef2968b9f17db6096c18c0bd8071bc630cacdfa157bb8d06ebeaad792450ed",
+      "lastmod": "2026-09-15T12:44:21Z"
     },
     "/providers/weebly/": {
       "hash": "db810d27b8991ebbd0c2e424c030dbe2c25b23403dbb8d90aecedaabb669a874",

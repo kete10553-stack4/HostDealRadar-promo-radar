@@ -21,6 +21,8 @@ These figures are used to choose the first guide and to keep the GoDaddy variant
 
 The public pages above were opened and read on 2026-09-15. The automated HostDealRadar checker could not proceed because `https://www.godaddy.com/robots.txt` returned HTTP 403. Manual editorial review is therefore kept separate from automated offer status.
 
+The DDC page displayed the same amount for each membership’s charge today and its next automatic annual renewal: Basic USD 119.88, Premium USD 239.88, and Domain Pro USD 359.88. Each card also said the membership could be cancelled in Account Settings, and the FAQ stated that the memberships automatically renew annually. Those membership charges remain separate from the per-domain renewal prices. The displayed equality is not recorded as a permanent price lock because GoDaddy says prices can change.
+
 ## Public user reports
 
 - Daniel_Dylan904, Reddit, 2026-01-05: https://www.reddit.com/r/Hosting/comments/1q4ihq9/godaddy_promo_code_domain_2026_am_i_missing/

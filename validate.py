@@ -9,7 +9,7 @@ import build
 NS={'sm':'http://www.sitemaps.org/schemas/sitemap/0.9'}
 # Approved reasons a configured source can carry no deterministic price rule.
 # A robots failure is kept separate from failures after a page was fetched.
-BLOCKERS={'price_rendered_by_js','unstable_field_structure','no_public_price','login_or_region_gated','robots_check_failed'}
+BLOCKERS={'price_rendered_by_js','unstable_field_structure','no_public_price','login_or_region_gated','source_page_forbidden','robots_check_failed'}
 
 class Links(HTMLParser):
     def __init__(self): super().__init__(); self.urls=[]
@@ -149,9 +149,18 @@ def check():
     assert f'{len(current)} listings captured' in home, 'Homepage current-listing count mismatch'
     guide=(ROOT/'site/guides/godaddy-renewal-coupon/index.html').read_text(encoding='utf-8')
     assert 'The official answer' in guide and guide.count('class="card community-report"') == 3, 'GoDaddy guide is missing its official answer or three linked user reports'
+    assert guide.count('Auto-renews Jul. 2027 at $') == 3 and 'automatically renews annually' in guide, 'GoDaddy guide omits the three displayed membership renewals or their annual recurrence'
     assert '/guides/godaddy-renewal-coupon/' in home, 'Homepage does not link the GoDaddy renewal guide'
     godaddy=(ROOT/'site/providers/godaddy/index.html').read_text(encoding='utf-8')
     assert '/guides/godaddy-renewal-coupon/' in godaddy, 'GoDaddy provider page does not link its renewal guide'
+    namecheap_guide=(ROOT/'site/guides/namecheap-domain-renewal-coupon/index.html').read_text(encoding='utf-8')
+    assert 'The official answer' in namecheap_guide and namecheap_guide.count('class="card community-report"') == 3, 'Namecheap guide is missing its official answer or three linked user reports'
+    assert 'USD 18.48/year' in namecheap_guide and namecheap_guide.count('https://www.reddit.com/') == 3, 'Namecheap guide omits the official .com renewal figure or a linked user report'
+    assert '/guides/namecheap-domain-renewal-coupon/' in home, 'Homepage does not link the Namecheap renewal guide'
+    namecheap=(ROOT/'site/providers/namecheap/index.html').read_text(encoding='utf-8')
+    assert '/guides/namecheap-domain-renewal-coupon/' in namecheap, 'Namecheap provider page does not link its renewal guide'
+    sitemap=(ROOT/'site/sitemap.xml').read_text(encoding='utf-8')
+    assert 'https://hostdealradar.com/guides/namecheap-domain-renewal-coupon/' in sitemap, 'Sitemap omits the Namecheap renewal guide'
     # No earlier record may be presented as a current offer or publish current price data.
     home_schema=[s for s in schemas(home) if s.get('@type')=='ItemList'][0]
     listed={item['item']['url'] for item in home_schema['itemListElement']}
