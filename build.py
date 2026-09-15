@@ -277,7 +277,9 @@ def build(config_path=None, output=None):
                     if featured else 'No eligible renewal-change examples are available in this snapshot. ')
     selection_note+='Other cards follow stored record order. This is not a recommendation or a ranking of price, quality, or value.'
     home=template('index.html',month=datetime.now().strftime('%B %Y'),deal_count=len(current),provider_count=len(providers),updated=e('Last source snapshot: '+date_text(payload.get('generated_at','Unknown'))),selection_note=e(selection_note),offers='<div class="cards">'+''.join(card(o) for o in shown)+'</div>' if shown else '<div class="empty"><h3>No current offers are published</h3><p>We only show terms that were captured from an official source in the latest check. Check back after the next source run.</p></div>',providers=provider_tiles)
-    home_schema={'@context':'https://schema.org','@type':'ItemList','name':'HostDealRadar official hosting offers','itemListElement':[{'@type':'ListItem','position':i+1,'item':schema_offer(o,domain+'/deals/'+o['slug']+'/')} for i,o in enumerate(current)]}
+    # The homepage lists different services; its entries are navigation targets,
+    # not merchant Offers for products that HostDealRadar sells.
+    home_schema={'@context':'https://schema.org','@type':'ItemList','name':'HostDealRadar official hosting offers','itemListElement':[{'@type':'ListItem','position':i+1,'item':{'@type':'WebPage','name':o['title'],'url':domain+'/deals/'+o['slug']+'/'}} for i,o in enumerate(current)]}
     write(Path('index.html'),page('HostDealRadar | Official hosting offers', 'Official hosting offers with source-check status and provider links.',domain+'/',home,home_schema))
     provider_listing='<section class="wrap section"><div class="eyebrow">OFFICIAL SOURCES</div><h1>Providers we check</h1><p class="lead">Providers have public source pages in our list. Each provider page shows whether the latest source check confirmed listings, produced no published record, or did not complete. The grid follows the configured source-list order; it is not a recommendation, quality ranking, or price ranking. Each summary names the first current record, or an explicitly marked earlier record when none is current. Open a provider for the matching official source. <a href="/methodology/#service-labels">Read service-label definitions and limits</a>. Earlier records stay clearly marked.</p><div class="provider-grid">'+provider_tiles+'</div></section>'
     write(Path('providers/index.html'),page('Providers | HostDealRadar','Hosting providers and their latest source-check status.',domain+'/providers/',provider_listing,{'@context':'https://schema.org','@type':'CollectionPage','name':'Providers'}))
@@ -311,16 +313,21 @@ def build(config_path=None, output=None):
         state, message=states[o['slug']]
         rule=rules.get((o['provider'], o['title']), {})
         advertised = price(o) + (' / ' + period_text(o) if o.get('price') is not None else '')
+        summary_text=public_terms(o.get('condition') or 'Terms captured from the official provider page.')
         p=byid[o['provider']]; terms=[('Listing type','Regular price; no discount claimed' if o.get('kind')=='regular_price' else 'Promotion'),('Advertised price',advertised),('Commitment',str(o['commitment_months'])+' months' if o.get('commitment_months') else 'Unknown'),('Renewal price',displayed_rate(o,'renewal_price') if renewal_supported(o,rule) else 'Unknown'),('Coupon code',o.get('coupon_code') or 'Unknown'),('Valid until',o.get('valid_until') or 'Unknown'),('Captured at',o['fetched_at']),('Record state',state)]
         terms_html=''.join(f'<div><dt>{e(k)}</dt><dd>{e(v)}</dd></div>' for k,v in terms)
         rel='rel="noopener noreferrer"' if not p['affiliate_url'] else 'rel="sponsored noopener noreferrer"'
         disclosure='This is an official link; no affiliate relationship is active.' if not p['affiliate_url'] else 'This may be an affiliate link; we may earn a commission at no extra cost to you.'
         status_html=f'<p class="record-state state-{e(state)}"><strong>{e(state.title())}</strong> {e(message)}</p>'
-        content=template('deal.html',provider=e(p['name']),provider_id=e(p['id']),category=e(o.get('category','Hosting')),offer_title=e(o['title']),summary=e(public_terms(o.get('condition') or 'Terms captured from the official provider page.')),rate_pair=rate_pair(o,rule),terms=terms_html,source_note=e(public_terms(o['evidence'])),source_url=e(o['source_url']),price=e(price(o)),billing=e('Billed under the provider terms.'),status=status_html,outbound=e(o['offer_url']),rel=rel,disclosure=e(disclosure))
+        content=template('deal.html',provider=e(p['name']),provider_id=e(p['id']),category=e(o.get('category','Hosting')),offer_title=e(o['title']),summary=e(summary_text),rate_pair=rate_pair(o,rule),terms=terms_html,source_note=e(public_terms(o['evidence'])),source_url=e(o['source_url']),price=e(price(o)),billing=e('Billed under the provider terms.'),status=status_html,outbound=e(o['offer_url']),rel=rel,disclosure=e(disclosure))
         canonical=domain+'/deals/'+o['slug']+'/'
-        # Only a current record may publish current-price structured data.
-        schema={'@context':'https://schema.org','@type':'Product','name':o['title']}
-        if state==CURRENT: schema['offers']=schema_offer(o,canonical)
+        # Product snippets require an active price. Earlier records and current
+        # records without a numeric price remain useful pages, but they must not
+        # claim Product/Offer eligibility by publishing incomplete price data.
+        if state==CURRENT and o.get('price') is not None:
+            schema={'@context':'https://schema.org','@type':'Product','name':o['title'],'description':summary_text,'offers':schema_offer(o,canonical)}
+        else:
+            schema={'@context':'https://schema.org','@type':'WebPage','name':o['title'],'description':summary_text}
         write(Path('deals')/o['slug']/'index.html',page(f'{o["title"]} | HostDealRadar',f'Official terms for {o["title"]}.',canonical,content,schema))
     def row(o):
         state,message=states[o['slug']]
