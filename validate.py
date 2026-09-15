@@ -54,8 +54,8 @@ def check_earlier_record_path(payload, cfg):
     item_list=[s for s in schemas(home) if s.get('@type')=='ItemList'][0]
     assert victim['slug'] not in json.dumps(item_list), 'A retained record still appears in homepage price data'
     deal=(out/'deals'/victim['slug']/'index.html').read_text(encoding='utf-8')
-    product=[s for s in schemas(deal) if s.get('@type')=='Product'][0]
-    assert 'offers' not in product, 'A retained record still publishes current price structured data'
+    assert not [s for s in schemas(deal) if s.get('@type')=='Product'], 'A retained record still publishes Product structured data'
+    assert [s for s in schemas(deal) if s.get('@type')=='WebPage'], 'A retained record has no WebPage structured data'
     assert 'Not reconfirmed' in deal, 'A retained record is not labelled with its actual capture state'
     provider_page=(out/'providers'/victim['provider']/'index.html').read_text(encoding='utf-8')
     history_block=provider_page.split('<article class="card history">')[-1]
@@ -126,6 +126,21 @@ def check():
         for link in links.urls:
             target=ROOT/'site'/unquote(urlsplit(link).path).lstrip('/')
             assert target.is_file() or (target/'index.html').is_file(), f'Broken internal link in {f}: {link}'
+    for offer in payload['offers']:
+        deal=(ROOT/'site/deals'/offer['slug']/'index.html').read_text(encoding='utf-8')
+        schema=schemas(deal)[0]
+        if states[offer['slug']]==build.CURRENT and offer.get('price') is not None:
+            assert schema.get('@type')=='Product', f'Priced current record lacks Product markup: {offer["slug"]}'
+            assert schema.get('description') and build.e(schema['description']) in deal, f'Product description is not visible page text: {offer["slug"]}'
+            structured_offer=schema.get('offers') or {}
+            assert structured_offer.get('@type')=='Offer', f'Priced current Product lacks Offer: {offer["slug"]}'
+            assert structured_offer.get('price') not in (None,''), f'Product Offer lacks price: {offer["slug"]}'
+            assert structured_offer.get('priceCurrency')==offer.get('currency'), f'Product Offer currency mismatch: {offer["slug"]}'
+            forbidden={'availability','shippingDetails','hasMerchantReturnPolicy','gtin','gtin8','gtin12','gtin13','gtin14','mpn','brand','aggregateRating','review'}
+            assert not (forbidden & set(schema)), f'Unsupported Product fields published: {offer["slug"]}'
+            assert not ({'availability','shippingDetails','hasMerchantReturnPolicy'} & set(structured_offer)), f'Unsupported Offer fields published: {offer["slug"]}'
+        else:
+            assert schema.get('@type')=='WebPage', f'Unpriced or earlier record still publishes Product markup: {offer["slug"]}'
     for provider in cfg['providers']:
         page=(ROOT/'site/providers'/provider['id']/'index.html').read_text(encoding='utf-8')
         expect_current=sum(o['provider']==provider['id'] for o in current)
@@ -163,20 +178,24 @@ def check():
     assert 'https://hostdealradar.com/guides/namecheap-domain-renewal-coupon/' in sitemap, 'Sitemap omits the Namecheap renewal guide'
     # No earlier record may be presented as a current offer or publish current price data.
     home_schema=[s for s in schemas(home) if s.get('@type')=='ItemList'][0]
+    home_schema_json=json.dumps(home_schema,separators=(',',':'))
+    assert '"@type":"Product"' not in home_schema_json and '"@type":"Offer"' not in home_schema_json, 'Homepage list publishes Product or Offer markup'
     listed={item['item']['url'] for item in home_schema['itemListElement']}
     allowed={cfg['site']['domain'].rstrip('/')+f'/deals/{o["slug"]}/' for o in current}
     assert listed <= allowed, 'Homepage structured data includes a record that is not current'
     for o in history:
         text=(ROOT/'site/deals'/o['slug']/'index.html').read_text(encoding='utf-8')
-        for schema in schemas(text):
-            if schema.get('@type')=='Product':
-                assert 'offers' not in schema, f'History record published current price data: {o["slug"]}'
-                assert 'price' not in json.dumps(schema), f'History record published a price: {o["slug"]}'
+        assert not [s for s in schemas(text) if s.get('@type')=='Product'], f'History record published Product markup: {o["slug"]}'
+        assert [s for s in schemas(text) if s.get('@type')=='WebPage'], f'History record lacks WebPage markup: {o["slug"]}'
         assert 'Not reconfirmed' in text or 'Needs recheck' in text or 'Expired on' in text, f'History record is not labelled: {o["slug"]}'
     for o in current:
         text=(ROOT/'site/deals'/o['slug']/'index.html').read_text(encoding='utf-8')
-        product=[s for s in schemas(text) if s.get('@type')=='Product'][0]
-        assert 'offers' in product, f'Current record is missing offer data: {o["slug"]}'
+        products=[s for s in schemas(text) if s.get('@type')=='Product']
+        if o.get('price') is not None:
+            assert products and 'offers' in products[0], f'Priced current record is missing Product Offer data: {o["slug"]}'
+        else:
+            assert not products, f'Unpriced current record published Product markup: {o["slug"]}'
+            assert [s for s in schemas(text) if s.get('@type')=='WebPage'], f'Unpriced current record lacks WebPage markup: {o["slug"]}'
     compare=(ROOT/'site/compare/index.html').read_text(encoding='utf-8')
     if history:
         # Comparison rows are labelled by provider and plan title, not by slug, and
