@@ -182,6 +182,12 @@ def check():
     assert '/guides/namecheap-domain-renewal-coupon/' in namecheap, 'Namecheap provider page does not link its renewal guide'
     sitemap=(ROOT/'site/sitemap.xml').read_text(encoding='utf-8')
     assert 'https://hostdealradar.com/guides/namecheap-domain-renewal-coupon/' in sitemap, 'Sitemap omits the Namecheap renewal guide'
+    cloudways_guide=(ROOT/'site/guides/cloudways-coupon-code/index.html').read_text(encoding='utf-8')
+    assert 'SUMMER404' in cloudways_guide and 'Sep. 19, 2026' in cloudways_guide, 'Cloudways guide omits the official code or its actual check date'
+    cloudways_schema=schemas(cloudways_guide)[0]
+    assert cloudways_schema.get('@type')=='FAQPage' and len(cloudways_schema.get('mainEntity',[]))==3, 'Cloudways guide must publish its visible FAQPage schema'
+    assert '/guides/cloudways-coupon-code/' in (ROOT/'site/providers/cloudways/index.html').read_text(encoding='utf-8'), 'Cloudways provider page does not link the official promo guide'
+    assert 'https://hostdealradar.com/guides/cloudways-coupon-code/' in sitemap, 'Sitemap omits the Cloudways promo guide'
     # No earlier record may be presented as a current offer or publish current price data.
     home_schema=[s for s in schemas(home) if s.get('@type')=='ItemList'][0]
     home_schema_json=json.dumps(home_schema,separators=(',',':'))
