@@ -128,7 +128,12 @@ def check():
             assert target.is_file() or (target/'index.html').is_file(), f'Broken internal link in {f}: {link}'
     for offer in payload['offers']:
         deal=(ROOT/'site/deals'/offer['slug']/'index.html').read_text(encoding='utf-8')
+        provider_name=next(p['name'] for p in cfg['providers'] if p['id']==offer['provider'])
+        display_name=build.offer_name(provider_name, offer['title'])
+        assert f'<title>{build.e(display_name)}: official terms | HostDealRadar</title>' in deal, f'Deal title lacks provider-specific identity: {offer["slug"]}'
+        assert f'<h1>{build.e(display_name)}</h1>' in deal, f'Deal heading lacks provider-specific identity: {offer["slug"]}'
         schema=schemas(deal)[0]
+        assert schema.get('name') == display_name, f'Structured-data name lacks provider-specific identity: {offer["slug"]}'
         if states[offer['slug']]==build.CURRENT and offer.get('price') is not None:
             assert schema.get('@type')=='Product', f'Priced current record lacks Product markup: {offer["slug"]}'
             assert schema.get('description') and build.e(schema['description']) in deal, f'Product description is not visible page text: {offer["slug"]}'
@@ -148,6 +153,7 @@ def check():
         assert page.count('<article class="card">') == expect_current, f'Current-offer card count wrong on provider page: {provider["id"]}'
         assert page.count('<article class="card history">') == expect_history, f'Historical card count wrong on provider page: {provider["id"]}'
         assert expect_current + expect_history > 0 or provider['id'] in state_only, f'Empty provider page: {provider["id"]}'
+        assert f'<title>{build.e(provider["name"])} source-check status and terms | HostDealRadar</title>' in page, f'Provider page title lacks its source-check scope: {provider["id"]}'
     # A state-only page must say why nothing is published and must carry no figure.
     for pid in sorted(state_only):
         page=(ROOT/'site/providers'/pid/'index.html').read_text(encoding='utf-8')

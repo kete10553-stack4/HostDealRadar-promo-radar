@@ -160,6 +160,37 @@ def provider_summary(records, earlier=None):
             '. Service label: '+str(record.get('category') or 'Unknown')+
             '. Captured '+str(record.get('fetched_at') or 'Unknown')+'.')
 
+def offer_name(provider_name, title):
+    """Give each record page a visitor-readable, provider-specific identity.
+
+    Plan names such as "Basic" and "Pro" are common across providers.  The
+    provider is already a captured field, so including it does not add an
+    editorial claim or alter the underlying record.
+    """
+    if str(title).lower().startswith(str(provider_name).lower()):
+        return str(title)
+    return f'{provider_name} {title}'
+
+def deal_description(provider_name, offer):
+    """Describe only terms that this record can actually show."""
+    plan=offer_name(provider_name, offer['title'])
+    if offer.get('price') is not None:
+        return (f'Official {plan} terms: captured price, billing period, '
+                'renewal rate when stated, source link, and source-check status.')
+    return (f'Official {plan} terms: source link, captured billing details when '
+            'available, and source-check status. No price is published here.')
+
+def provider_description(provider_name, current_records, earlier_records):
+    """Keep provider-page metadata specific to its published record state."""
+    if current_records:
+        return (f'Official {provider_name} terms checked by HostDealRadar. '
+                f'{len(current_records)} current record(s) list source, price fields, and status.')
+    if earlier_records:
+        return (f'Earlier {provider_name} terms retained with their original source and '
+                'capture time. They are not presented as current offers.')
+    return (f'Latest official source-check status for {provider_name}. '
+            'No price record is published when the source cannot support one.')
+
 def category_guide(records):
     items=[]
     for category in category_names(records):
@@ -187,8 +218,8 @@ def featured_renewals(current, rules):
         return []
     key = min(groups, key=lambda key: (-len(groups[key]), key))
     return sorted(groups[key], key=lambda o: (-(o['renewal_price'] - o['price']), o['slug']))[:3]
-def schema_offer(offer, canonical):
-    item={'@type':'Offer','name':offer['title'],'url':canonical}
+def schema_offer(offer, canonical, name=None):
+    item={'@type':'Offer','name':name or offer['title'],'url':canonical}
     if offer.get('price') is not None: item.update({'price':str(offer['price']),'priceCurrency':offer.get('currency','USD')})
     if offer.get('valid_until'): item['priceValidUntil']=offer['valid_until']
     return item
@@ -300,7 +331,11 @@ def build(config_path=None, output=None):
         guide_templates={'godaddy':'provider-guide.html','namecheap':'namecheap-provider-guide.html'}
         related_guide=template(guide_templates[p['id']]) if p['id'] in guide_templates else ''
         content=template('provider.html',provider=e(p['name']),note=e(note),source=e(p['source_url']),source_status=e(status_text),related_guide=related_guide,offers=current_html+history_html)
-        write(Path('providers')/p['id']/'index.html',page(f'{p["name"]} offers | HostDealRadar',f'Official {p["name"]} hosting terms captured by HostDealRadar.',domain+'/providers/'+p['id']+'/',content,{'@context':'https://schema.org','@type':'CollectionPage','name':p['name']+' offers'}))
+        write(Path('providers')/p['id']/'index.html',page(
+            f'{p["name"]} source-check status and terms | HostDealRadar',
+            provider_description(p['name'], po, ph),
+            domain+'/providers/'+p['id']+'/', content,
+            {'@context':'https://schema.org','@type':'CollectionPage','name':p['name']+' terms and source-check status'}))
     guide_route='/guides/godaddy-renewal-coupon/'
     guide=template('godaddy-renewal-coupon.html')
     guide_schema={'@context':'https://schema.org','@type':'Article','headline':'GoDaddy renewal coupon: do renewal promo codes work?','datePublished':'2026-09-15','dateModified':'2026-09-15','author':{'@type':'Organization','name':'HostDealRadar'},'publisher':{'@type':'Organization','name':'HostDealRadar'},'mainEntityOfPage':domain+guide_route}
@@ -319,16 +354,19 @@ def build(config_path=None, output=None):
         rel='rel="noopener noreferrer"' if not p['affiliate_url'] else 'rel="sponsored noopener noreferrer"'
         disclosure='This is an official link; no affiliate relationship is active.' if not p['affiliate_url'] else 'This may be an affiliate link; we may earn a commission at no extra cost to you.'
         status_html=f'<p class="record-state state-{e(state)}"><strong>{e(state.title())}</strong> {e(message)}</p>'
-        content=template('deal.html',provider=e(p['name']),provider_id=e(p['id']),category=e(o.get('category','Hosting')),offer_title=e(o['title']),summary=e(summary_text),rate_pair=rate_pair(o,rule),terms=terms_html,source_note=e(public_terms(o['evidence'])),source_url=e(o['source_url']),price=e(price(o)),billing=e('Billed under the provider terms.'),status=status_html,outbound=e(o['offer_url']),rel=rel,disclosure=e(disclosure))
+        display_name=offer_name(p['name'], o['title'])
+        content=template('deal.html',provider=e(p['name']),provider_id=e(p['id']),category=e(o.get('category','Hosting')),offer_title=e(display_name),summary=e(summary_text),rate_pair=rate_pair(o,rule),terms=terms_html,source_note=e(public_terms(o['evidence'])),source_url=e(o['source_url']),price=e(price(o)),billing=e('Billed under the provider terms.'),status=status_html,outbound=e(o['offer_url']),rel=rel,disclosure=e(disclosure))
         canonical=domain+'/deals/'+o['slug']+'/'
         # Product snippets require an active price. Earlier records and current
         # records without a numeric price remain useful pages, but they must not
         # claim Product/Offer eligibility by publishing incomplete price data.
         if state==CURRENT and o.get('price') is not None:
-            schema={'@context':'https://schema.org','@type':'Product','name':o['title'],'description':summary_text,'offers':schema_offer(o,canonical)}
+            schema={'@context':'https://schema.org','@type':'Product','name':display_name,'description':summary_text,'offers':schema_offer(o,canonical,display_name)}
         else:
-            schema={'@context':'https://schema.org','@type':'WebPage','name':o['title'],'description':summary_text}
-        write(Path('deals')/o['slug']/'index.html',page(f'{o["title"]} | HostDealRadar',f'Official terms for {o["title"]}.',canonical,content,schema))
+            schema={'@context':'https://schema.org','@type':'WebPage','name':display_name,'description':summary_text}
+        write(Path('deals')/o['slug']/'index.html',page(
+            f'{display_name}: official terms | HostDealRadar',
+            deal_description(p['name'], o), canonical, content, schema))
     def row(o):
         state,message=states[o['slug']]
         rule=rules.get((o['provider'], o['title']), {})
