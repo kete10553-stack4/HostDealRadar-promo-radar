@@ -347,11 +347,11 @@ def build(config_path=None, output=None):
     cloudways_guide_route='/guides/cloudways-coupon-code/'
     cloudways_guide=template('cloudways-coupon-code.html')
     cloudways_guide_schema={'@context':'https://schema.org','@type':'FAQPage','mainEntity':[
-        {'@type':'Question','name':'Does Cloudways have an official coupon code?','acceptedAnswer':{'@type':'Answer','text':'Cloudways’ official promo page displayed SUMMER404 when HostDealRadar checked it on September 19, 2026. The page says the code is applied automatically at checkout and gives 40% off all hosting plans for four months.'}},
-        {'@type':'Question','name':'Who can use the Cloudways Summer offer?','acceptedAnswer':{'@type':'Answer','text':'Cloudways says the offer is for new users who sign up and upgrade from the free trial to a paid plan.'}},
-        {'@type':'Question','name':'Does the Cloudways promo apply to renewals?','acceptedAnswer':{'@type':'Answer','text':'Cloudways says its discounts typically apply to the initial promotional period of a first-time purchase. After that period, standard pricing applies; a separate renewal promotion may occasionally be offered.'}}
+        {'@type':'Question','name':'Is SUMMER404 still a current Cloudways hosting coupon code?','acceptedAnswer':{'@type':'Answer','text':'No verified current use. Cloudways’ official Summer offer ended September 15, 2026. We rechecked the official promo and pricing pages on September 19, 2026; the old promotional text remained visible, but its stated deadline had passed.'}},
+        {'@type':'Question','name':'Did unlimited free migrations belong to that promotion?','acceptedAnswer':{'@type':'Answer','text':'Yes. Cloudways listed unlimited free migrations with the Summer offer that ended September 15, 2026. This does not describe its separate standard migration terms.'}},
+        {'@type':'Question','name':'Did this check find another current general hosting coupon code?','acceptedAnswer':{'@type':'Answer','text':'No. On September 19, 2026, we could not verify another currently valid general hosting coupon code on the official promo and pricing pages reviewed. We did not test checkout or every Cloudways product.'}}
     ]}
-    write(Path('guides/cloudways-coupon-code/index.html'),page('Cloudways coupon code: official SUMMER404 terms | HostDealRadar','Cloudways’ current official promo code, stated eligibility, introductory period, and source links.',domain+cloudways_guide_route,cloudways_guide,cloudways_guide_schema))
+    write(Path('guides/cloudways-coupon-code/index.html'),page('Cloudways coupon code: SUMMER404 expired | HostDealRadar','Cloudways’ Summer code SUMMER404 ended September 15, 2026. See the official sources and the September 19 recheck.',domain+cloudways_guide_route,cloudways_guide,cloudways_guide_schema))
     for o in offers:
         state, message=states[o['slug']]
         rule=rules.get((o['provider'], o['title']), {})
