@@ -61,7 +61,7 @@ def check_earlier_record_path(payload, cfg):
     history_block=provider_page.split('<article class="card history">')[-1]
     assert f'/deals/{victim["slug"]}/' in history_block, 'A retained record is missing from the earlier-records block on its provider page'
     compare=(out/'compare/index.html').read_text(encoding='utf-8')
-    marker='Earlier records, not current offers'
+    marker='Unverified or earlier records, not current offers'
     assert marker in compare, 'Comparison page does not separate earlier records'
     current_table, history_table = compare.split(marker,1)
     names={p['id']:p['name'] for p in cfg['providers']}
@@ -112,6 +112,13 @@ def check():
     for provider_id, status in statuses.items():
         assert set(status['captured_slugs']) | set(status['retained_slugs']) <= known, f'{provider_id} references an unknown slug'
     states={o['slug']: build.record_state(o,statuses,settings)[0] for o in payload['offers']}
+    undated_promotions=[o for o in payload['offers'] if o.get('kind')=='promotion' and not o.get('valid_until')]
+    assert all(states[o['slug']]=='unverified' for o in undated_promotions), 'An undated promotion is current or lacks its unverified state'
+    if undated_promotions:
+        sample=undated_promotions[0].copy()
+        sample['fetched_at']=datetime.now(timezone.utc).isoformat()
+        fresh_status={sample['provider']:{'status':'checked','captured_slugs':[sample['slug']]}}
+        assert build.record_state(sample,fresh_status,settings)[0]=='unverified', 'A fresh successful fetch makes an undated promotion current'
     current=[o for o in payload['offers'] if states[o['slug']]==build.CURRENT]
     history=[o for o in payload['offers'] if states[o['slug']]!=build.CURRENT]
     build.build()
@@ -154,6 +161,10 @@ def check():
         assert page.count('<article class="card history">') == expect_history, f'Historical card count wrong on provider page: {provider["id"]}'
         assert expect_current + expect_history > 0 or provider['id'] in state_only, f'Empty provider page: {provider["id"]}'
         assert f'<title>{build.e(provider["name"])} source-check status and terms | HostDealRadar</title>' in page, f'Provider page title lacks its source-check scope: {provider["id"]}'
+    cloudways=(ROOT/'site/providers/cloudways/index.html').read_text(encoding='utf-8')
+    current_section, reference_section=cloudways.split('<section class="history-block">',1)
+    assert '/deals/cloudways-summer404/' not in current_section, 'Undated Cloudways promotion remains a current card'
+    assert '/deals/cloudways-summer404/' in reference_section and 'Promotional end date not verified' in reference_section, 'Undated Cloudways promotion is not labelled in the reference section'
     # A state-only page must say why nothing is published and must carry no figure.
     for pid in sorted(state_only):
         page=(ROOT/'site/providers'/pid/'index.html').read_text(encoding='utf-8')
@@ -188,7 +199,7 @@ def check():
     assert cloudways_schema.get('@type')=='FAQPage' and len(cloudways_schema.get('mainEntity',[]))==3, 'Cloudways guide must publish its visible FAQPage schema'
     assert '/guides/cloudways-coupon-code/' in (ROOT/'site/providers/cloudways/index.html').read_text(encoding='utf-8'), 'Cloudways provider page does not link the official promo guide'
     assert 'https://hostdealradar.com/guides/cloudways-coupon-code/' in sitemap, 'Sitemap omits the Cloudways promo guide'
-    # No earlier record may be presented as a current offer or publish current price data.
+    # No unverified or earlier record may be presented as current or publish current price data.
     home_schema=[s for s in schemas(home) if s.get('@type')=='ItemList'][0]
     home_schema_json=json.dumps(home_schema,separators=(',',':'))
     assert '"@type":"Product"' not in home_schema_json and '"@type":"Offer"' not in home_schema_json, 'Homepage list publishes Product or Offer markup'
@@ -199,7 +210,7 @@ def check():
         text=(ROOT/'site/deals'/o['slug']/'index.html').read_text(encoding='utf-8')
         assert not [s for s in schemas(text) if s.get('@type')=='Product'], f'History record published Product markup: {o["slug"]}'
         assert [s for s in schemas(text) if s.get('@type')=='WebPage'], f'History record lacks WebPage markup: {o["slug"]}'
-        assert 'Not reconfirmed' in text or 'Needs recheck' in text or 'Expired on' in text, f'History record is not labelled: {o["slug"]}'
+        assert any(label in text for label in ('Not reconfirmed','Needs recheck','Expired on','Promotional end date not verified')), f'History record is not labelled: {o["slug"]}'
     for o in current:
         text=(ROOT/'site/deals'/o['slug']/'index.html').read_text(encoding='utf-8')
         products=[s for s in schemas(text) if s.get('@type')=='Product']
@@ -213,7 +224,7 @@ def check():
         # Comparison rows are labelled by provider and plan title, not by slug, and
         # titles repeat across providers ("Starter" is both an UltaHost plan and a
         # substring of an IONOS one), so match the whole provider+plan cell.
-        marker='Earlier records, not current offers'
+        marker='Unverified or earlier records, not current offers'
         assert marker in compare, 'Comparison page does not separate earlier records'
         current_table, history_table = compare.split(marker,1)
         names={p['id']:p['name'] for p in cfg['providers']}
