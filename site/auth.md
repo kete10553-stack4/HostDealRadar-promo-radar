@@ -14,4 +14,4 @@ Planned endpoints return HTTP 503 with `temporarily_unavailable` until authentic
 
 ## Agent registration (planned)
 
-`agent_auth` metadata is published only to describe the future contract. The planned registration endpoint is `/agent-auth/register`, but agent registration is unavailable: it creates no account, issues no credential, and accepts no identity data. The sole planned registration method is `planned_contract_only`; it is not an available enrollment method. Until a real implementation exists, agents use the public read-only lookup without credentials.
+`agent_auth` metadata is published only to describe the future contract. The planned registration endpoint is `/agent-auth/register`, but agent registration is unavailable: it creates no account, issues no credential, and accepts no identity data. The sole planned identity type is `anonymous`, with the planned credential type `planned_contract_only`; neither is an available enrollment method. The planned claim and revocation endpoints also return HTTP 503. Until a real implementation exists, agents use the public read-only lookup without credentials.
