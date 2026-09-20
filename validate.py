@@ -11,6 +11,9 @@ NS={'sm':'http://www.sitemaps.org/schemas/sitemap/0.9'}
 # A robots failure is kept separate from failures after a page was fetched.
 BLOCKERS={'price_rendered_by_js','unstable_field_structure','no_public_price','login_or_region_gated','source_page_forbidden','robots_check_failed'}
 
+def compact(value):
+    return re.sub(r'\s+', ' ', value or '').strip()
+
 class Links(HTMLParser):
     def __init__(self): super().__init__(); self.urls=[]
     def handle_starttag(self,tag,attrs):
@@ -108,6 +111,16 @@ def check():
         if offer.get('price') is not None:
             assert offer['price'] > 0 and offer.get('currency') and offer.get('billing_period'), 'Incomplete price terms'
         assert datetime.fromisoformat(offer['fetched_at'].replace('Z','+00:00')) <= datetime.now(timezone.utc), 'Capture time is in the future'
+        status=statuses.get(offer['provider'], {})
+        # A provider-level HTTP response is insufficient for a captured offer:
+        # each field that cites source text must keep a source fragment that
+        # contains its own quote.
+        if status.get('status')=='evidenced' and offer['slug'] in status.get('captured_slugs',[]):
+            claims=offer.get('claim_evidence', {})
+            for field, quote in (offer.get('field_evidence') or {}).items():
+                claim=claims.get(field, {})
+                assert compact(quote) and compact(quote) in compact(claim.get('excerpt')), f'{offer["slug"]}:{field} lacks a claim-covering excerpt'
+                assert claim.get('location') and claim.get('surface'), f'{offer["slug"]}:{field} lacks evidence location or surface'
     # Per-record state must be recorded for every slug, not only per provider.
     for provider_id, status in statuses.items():
         for key in ('captured_slugs','retained_slugs'):
@@ -201,7 +214,10 @@ def check():
     sitemap=(ROOT/'site/sitemap.xml').read_text(encoding='utf-8')
     assert 'https://hostdealradar.com/guides/namecheap-domain-renewal-coupon/' in sitemap, 'Sitemap omits the Namecheap renewal guide'
     cloudways_guide=(ROOT/'site/guides/cloudways-coupon-code/index.html').read_text(encoding='utf-8')
-    assert 'SUMMER404' in cloudways_guide and 'Expired' in cloudways_guide and 'Ended September 15, 2026' in cloudways_guide and 'Sep. 19, 2026' in cloudways_guide, 'Cloudways guide omits the expired code, official deadline, or check date'
+    countdown=((statuses['cloudways'].get('source_claim_evidence') or {}).get('countdown') or {})
+    countdown_visible=countdown.get('visible_excerpt') or countdown.get('quote')
+    assert statuses['cloudways'].get('http_status')==200 and countdown_visible and compact(countdown_visible) in cloudways_guide, 'Cloudways guide omits the stored countdown evidence'
+    assert 'September 15, 2026' in cloudways_guide and 'not supported by a retained source excerpt' in cloudways_guide and 'time zone is not stated' in cloudways_guide, 'Cloudways guide hides the unsupported-date correction or date ambiguity'
     cloudways_schema=schemas(cloudways_guide)[0]
     assert cloudways_schema.get('@type')=='FAQPage' and len(cloudways_schema.get('mainEntity',[]))==3, 'Cloudways guide must publish its visible FAQPage schema'
     assert '/guides/cloudways-coupon-code/' in (ROOT/'site/providers/cloudways/index.html').read_text(encoding='utf-8'), 'Cloudways provider page does not link the official promo guide'

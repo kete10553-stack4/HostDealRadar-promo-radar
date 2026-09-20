@@ -45,6 +45,32 @@ class SourceSafety(unittest.TestCase):
         self.assertEqual((value['price'],value['billing_period'],value['kind']),(15,'year','regular_price'))
         self.assertIsNone(scraper.offer_from_rule(self.provider,rule,'Basic plan EUR 15 / year'))
 
+    def test_claim_excerpt_covers_each_extracted_field(self):
+        rule=dict(self.rule,field_patterns={
+            'price':r'USD (?P<value>[0-9.]+) / month',
+            'renewal_price':r'Renews USD (?P<value>[0-9.]+) / month',
+        })
+        offer=scraper.offer_from_rule(self.provider,rule,
+            'Basic plan. Intro USD 9 / month. Extra terms. Renews USD 19 / month.')
+        for field, quote in offer['field_evidence'].items():
+            self.assertIn(quote, offer['claim_evidence'][field]['excerpt'])
+            self.assertTrue(offer['claim_evidence'][field]['location'])
+
+    def test_configured_source_evidence_keeps_counter_statement(self):
+        raw=('prefix <div id="counter">Sept 16, 2026 14:00:00 '
+             '<strong>0 Days 0 Hours 0 Mins 0 Sec</strong></div> suffix')
+        rule={'source_evidence_patterns':{'countdown':r'(?s)Sept 16, 2026 14:00:00.*?0 Sec'}}
+        evidence=scraper.configured_source_evidence([rule],raw)['countdown']
+        self.assertIn('Sept 16, 2026 14:00:00', evidence['quote'])
+        self.assertIn('0 Days 0 Hours 0 Mins 0 Sec', evidence['excerpt'])
+
+    def test_raw_field_match_is_not_relabelled_as_visible_copy(self):
+        rule=dict(self.rule,mode='presence',pattern='coupon=ABC',
+                  field_patterns={'coupon_code':r'coupon=(?P<value>[A-Z]+)'})
+        offer=scraper.offer_from_rule(self.provider,rule,
+            '<a href="https://example.com/signup?coupon=ABC">Claim offer</a>')
+        self.assertEqual(offer['claim_evidence']['coupon_code']['surface'], 'source response markup')
+
     def test_explicit_currency_and_period_cannot_be_relabelled(self):
         currency_rule=dict(self.rule,field_patterns={'price':r'\$\s?(?P<value>[0-9.]+)\s*/ month'})
         period_rule=dict(self.rule,field_patterns={'price':r'\$\s?(?P<value>[0-9.]+)\s*/\s*\w+'})
