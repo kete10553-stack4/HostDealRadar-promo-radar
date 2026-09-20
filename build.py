@@ -40,7 +40,7 @@ def e(value): return html.escape(str(value or ''), quote=True)
 def money(value, currency='USD'): return f'${float(value):,.2f}' if currency=='USD' else f'{currency} {float(value):,.2f}'
 def state_only_display(status, blocker):
     """Return truthful copy for a source with no published price record."""
-    if status.get('status') == 'available_no_price_rule':
+    if status.get('status') == 'evidenced' and status.get('capture_status') == 'no_price_rule' and status.get('http_status') == 200 and status.get('visible_excerpt'):
         return STATE_ONLY_LEAD, BLOCKER_TEXT.get(blocker, ''), 'Official page checked · no deterministic price rule'
     reason = status.get('reason') or 'No source check has run yet.'
     return 'Latest source check did not complete.', reason, 'Source check did not complete'
@@ -240,7 +240,8 @@ def record_state(offer, statuses, settings):
     captured_slugs = status.get('captured_slugs')
     if captured_slugs is not None and offer['slug'] not in captured_slugs:
         return 'retained', 'Not reconfirmed in the latest source check. Last captured ' + offer['fetched_at'] + '.'
-    if status.get('status') != 'checked':
+    if (status.get('status') != 'evidenced' or status.get('capture_status') != 'matched'
+            or status.get('http_status') != 200 or not status.get('visible_excerpt')):
         return 'stale', 'Latest source check did not complete. Last captured ' + offer['fetched_at'] + '.'
     try:
         captured = datetime.fromisoformat(offer['fetched_at'].replace('Z', '+00:00'))
@@ -295,9 +296,9 @@ def build(config_path=None, output=None):
         status = statuses.get(p['id'], {})
         if p['id'] in state_only:
             label=state_only_display(status, blockers.get(p['id']))[2]
-        elif status.get('status') == 'checked':
+        elif status.get('status') == 'evidenced' and status.get('capture_status') == 'matched' and status.get('http_status') == 200 and status.get('visible_excerpt'):
             label=f'{count} current listings →'
-        elif status.get('status') == 'unmatched':
+        elif status.get('status') == 'evidenced' and status.get('capture_status') == 'unmatched':
             label='Latest source check produced no published record →'
         else:
             label='Latest source check did not complete →'
@@ -324,7 +325,7 @@ def build(config_path=None, output=None):
             status_text, detail, _ = state_only_display(status, blockers.get(p['id']))
             current_html='<div class="empty"><h3>'+e(status_text)+'</h3><p>'+e(detail)+'</p></div>'
         else:
-            status_text='Source checked successfully.' if status['status']=='checked' else e(status['reason'])
+            status_text='Official page read; capture rules matched.' if status['status']=='evidenced' and status.get('capture_status')=='matched' and status.get('http_status')==200 and status.get('visible_excerpt') else e(status['reason'])
             current_html='<div class="cards">'+''.join(card(o) for o in po)+'</div>' if po else '<div class="empty"><h3>No current offer is published for this source</h3><p>'+e('Promotional end date not verified.' if any(states[o['slug']][0]=='unverified' for o in ph) else status['reason'])+'</p></div>'
         history_html=''
         if ph:

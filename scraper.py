@@ -71,6 +71,30 @@ def robots_decision(text, source_url, product='hostdealradar'):
 def now():
     return datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace('+00:00', 'Z')
 
+CHALLENGE = re.compile(r'(?i)(<title>\s*Just a moment|challenge-running|cf-error-details|access denied|verify you are human)')
+
+def excerpt(raw, limit=280):
+    """Store a bounded piece of visible response text, never script or markup."""
+    return visible_text(raw)[:limit] or None
+
+class SourceProbeError(Exception):
+    def __init__(self, state, reason, request_url, http_status=None, visible_excerpt=None):
+        super().__init__(reason)
+        self.state = state
+        self.reason = reason
+        self.request_url = request_url
+        self.http_status = http_status
+        self.visible_excerpt = visible_excerpt
+
+def error_body(exc, cfg):
+    raw = exc.read(cfg['settings']['max_response_bytes'] + 1)[:cfg['settings']['max_response_bytes']]
+    charset = exc.headers.get_content_charset() if hasattr(exc.headers, 'get_content_charset') else None
+    return raw.decode(charset or 'utf-8', 'replace')
+
+def probe_fields(state, request_url, http_status=None, visible_excerpt=None):
+    return {'status': state, 'request_url': request_url, 'http_status': http_status,
+            'visible_excerpt': visible_excerpt, 'checked_at': now()}
+
 class NoRedirect(HTTPRedirectHandler):
     def redirect_request(self, *args, **kwargs): return None
 
@@ -85,30 +109,45 @@ def fetch(url, cfg, follow_redirects=True):
 
 def fetch_source(url, cfg):
     for _ in range(6):
-        allowed, reason = permitted(url, cfg)
-        if not allowed: raise ValueError(reason + ' at ' + url)
+        permitted(url, cfg)
         try:
             status, raw = fetch(url, cfg, follow_redirects=False)
-            return status, raw
         except HTTPError as exc:
-            if exc.code not in (301, 302, 303, 307, 308): raise
+            if exc.code not in (301, 302, 303, 307, 308):
+                text = error_body(exc, cfg)
+                state = 'challenge' if CHALLENGE.search(text) else 'unreadable'
+                raise SourceProbeError(state, f'Official source returned HTTP {exc.code}.', url, exc.code, excerpt(text)) from exc
             target = urljoin(url, exc.headers.get('Location', ''))
             if not target.startswith('https://') or target == url: raise ValueError('Unsupported source redirect')
             url = target
-    raise ValueError('Too many source redirects')
+            continue
+        if status != 200 or CHALLENGE.search(raw):
+            state = 'challenge' if CHALLENGE.search(raw) else 'unreadable'
+            raise SourceProbeError(state, f'Official source returned HTTP {status} or a challenge page.', url, status, excerpt(raw))
+        if not excerpt(raw):
+            raise SourceProbeError('unreadable', 'Official source returned no visible text.', url, status)
+        return status, raw, url
+    raise SourceProbeError('unreadable', 'Too many source redirects.', url)
 
 def permitted(source_url, cfg):
     parts = urlsplit(source_url)
     robots = f'{parts.scheme}://{parts.netloc}/robots.txt'
     try:
         status, text = fetch(robots, cfg)
-    except (HTTPError, URLError, ValueError, TimeoutError, OSError) as exc:
-        return False, f'robots check failed: {exc}'
+    except HTTPError as exc:
+        raw = error_body(exc, cfg)
+        state = 'challenge' if CHALLENGE.search(raw) else 'unreadable'
+        raise SourceProbeError(state, f'robots.txt returned HTTP {exc.code}; source page was not requested.', robots, exc.code, excerpt(raw)) from exc
+    except (URLError, ValueError, TimeoutError, OSError) as exc:
+        raise SourceProbeError('unreadable', f'robots check failed: {exc}; source page was not requested.', robots) from exc
     if status != 200:
-        return False, f'robots returned HTTP {status}'
+        raise SourceProbeError('unreadable', f'robots.txt returned HTTP {status}; source page was not requested.', robots, status, excerpt(text))
     if re.search(r'(?i)<(?:html|title|body)\b', text):
-        return False, 'robots.txt returned HTML instead of crawl directives'
-    return robots_decision(text, source_url)
+        state = 'challenge' if CHALLENGE.search(text) else 'unreadable'
+        raise SourceProbeError(state, 'robots.txt returned HTML instead of crawl directives; source page was not requested.', robots, status, excerpt(text))
+    allowed, reason = robots_decision(text, source_url)
+    if not allowed:
+        raise SourceProbeError('unreadable', reason + '; source page was not requested.', robots, status, reason)
 
 def extract_value(segment, pattern):
     match = re.search(pattern, segment)
@@ -210,14 +249,14 @@ def offer_from_rule(provider, rule, raw, sibling_anchors=()):
     offer['source_sha256'] = hashlib.sha256(raw.encode('utf-8')).hexdigest()
     return offer
 
-def retained_status(reason, records):
+def retained_status(reason, records, probe):
     """Provider-level status for a run that produced no fresh capture.
 
     Every existing record is retained, so the retained slug list is explicit:
     the renderer must not infer per-record state from a provider-level flag.
     """
     slugs = [offer['slug'] for offer in records]
-    return {'status': 'unavailable', 'reason': reason, 'published_count': len(records),
+    return {**probe, 'capture_status': 'not_attempted', 'reason': reason, 'published_count': len(records),
             'captured_count': 0, 'retained_count': len(records),
             'captured_slugs': [], 'retained_slugs': slugs}
 
@@ -232,26 +271,25 @@ def run(config_path=None):
     for provider in cfg['providers']:
         old = prior_by_provider[provider['id']]
         try:
-            status, raw = fetch_source(provider['source_url'], cfg)
-        except HTTPError as exc:
+            status, raw, request_url = fetch_source(provider['source_url'], cfg)
+        except SourceProbeError as exc:
             output.extend(old)
-            statuses[provider['id']] = retained_status(f'Official source returned HTTP {exc.code}.', old)
+            statuses[provider['id']] = retained_status(exc.reason, old,
+                probe_fields(exc.state, exc.request_url, exc.http_status, exc.visible_excerpt))
             continue
         except (URLError, ValueError, TimeoutError, OSError) as exc:
             output.extend(old)
-            statuses[provider['id']] = retained_status(f'Official source could not be checked: {exc}.', old)
+            statuses[provider['id']] = retained_status(f'Official source could not be checked: {exc}.', old,
+                probe_fields('unreadable', provider['source_url']))
             continue
-        if status != 200 or re.search(r'(?i)(<title>\s*Just a moment|challenge-running|cf-error-details|access denied|verify you are human)', raw):
-            output.extend(old)
-            statuses[provider['id']] = retained_status('Official source was unavailable or presented a challenge.', old)
-            continue
+        source_probe = probe_fields('evidenced', request_url, status, excerpt(raw))
         rules = [rule for rule in cfg['extractors'] if rule.get('provider') == provider['id']]
         if rules and all(rule.get('mode') == 'availability_only' for rule in rules):
             output.extend(old)
             blocker = rules[0].get('blocker', 'unspecified')
-            evidence = rules[0].get('blocker_evidence', '')
-            reason = f'Official source and robots.txt were checked successfully. No deterministic price rule can be written ({blocker}), so no offer was published. Evidence: {evidence}'
-            statuses[provider['id']] = {'status': 'available_no_price_rule', 'reason': reason, 'blocker': blocker, 'blocker_evidence': evidence, 'published_count': len(old), 'captured_count': 0, 'retained_count': len(old), 'captured_slugs': [], 'retained_slugs': [offer['slug'] for offer in old]}
+            blocker_evidence = rules[0].get('blocker_evidence', '')
+            reason = f'Official source and robots.txt were checked successfully. No deterministic price rule can be written ({blocker}), so no offer was published. Evidence: {blocker_evidence}'
+            statuses[provider['id']] = {**source_probe, 'capture_status': 'no_price_rule', 'reason': reason, 'blocker': blocker, 'blocker_evidence': blocker_evidence, 'published_count': len(old), 'captured_count': 0, 'retained_count': len(old), 'captured_slugs': [], 'retained_slugs': [offer['slug'] for offer in old]}
             continue
         matched, errors, unmatched_rules = [], [], []
         for rule in rules:
@@ -275,11 +313,10 @@ def run(config_path=None):
                 reason += ' Some earlier records remain because their configured rule did not match this run.'
             if errors:
                 reason += ' Some rules errored and their existing records were retained.'
-            statuses[provider['id']] = {'status': 'checked', 'reason': reason, 'published_count': len(matched) + len(retained), 'captured_count': len(matched), 'retained_count': len(retained), 'captured_slugs': sorted(matched_slugs), 'retained_slugs': [offer['slug'] for offer in retained], 'rule_errors': errors}
+            statuses[provider['id']] = {**source_probe, 'capture_status': 'matched', 'reason': reason, 'published_count': len(matched) + len(retained), 'captured_count': len(matched), 'retained_count': len(retained), 'captured_slugs': sorted(matched_slugs), 'retained_slugs': [offer['slug'] for offer in retained], 'rule_errors': errors}
         else:
-            statuses[provider['id']] = {'status': 'unmatched', 'reason': 'Official source responded, but no configured extraction rule matched; existing records were retained.', 'published_count': len(retained), 'captured_count': 0, 'retained_count': len(retained), 'captured_slugs': [], 'retained_slugs': [offer['slug'] for offer in retained], 'rule_errors': errors}
+            statuses[provider['id']] = {**source_probe, 'capture_status': 'unmatched', 'reason': 'Official source responded, but no configured extraction rule matched; existing records were retained.', 'published_count': len(retained), 'captured_count': 0, 'retained_count': len(retained), 'captured_slugs': [], 'retained_slugs': [offer['slug'] for offer in retained], 'rule_errors': errors}
         statuses[provider['id']]['unmatched_rules'] = unmatched_rules
-    for status in statuses.values(): status['checked_at'] = now()
     payload = {'generated_at': now(), 'offers': output, 'source_status': statuses}
     # Carry over any top-level key this checker does not own. build.py persists
     # the sitemap lastmod state into this same file, so dropping unknown keys

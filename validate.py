@@ -84,8 +84,15 @@ def check():
     # landing, not a placeholder; a name that never opened a real page is.
     assert {o['provider'] for o in payload['offers']} <= ids, 'A published record references a provider outside the configured list'
     for provider_id, status in statuses.items():
-        assert status.get('status'), f'{provider_id} has no recorded status'
+        assert status.get('status') in ('evidenced','unreadable','challenge'), f'{provider_id} has no evidence-based source status'
         assert status.get('reason'), f'{provider_id} has no recorded reason'
+        assert status.get('request_url') and status.get('checked_at'), f'{provider_id} lacks probe URL or time'
+        assert 'http_status' in status and 'visible_excerpt' in status, f'{provider_id} lacks response evidence fields'
+        if status['status']=='evidenced':
+            assert status['http_status']==200 and status['visible_excerpt'], f'{provider_id} claims evidence without HTTP 200 and visible response text'
+            assert status.get('capture_status') in ('matched','unmatched','no_price_rule'), f'{provider_id} has no extraction result'
+        else:
+            assert status.get('capture_status')=='not_attempted' and not status.get('captured_slugs'), f'{provider_id} published a new capture from an unreadable source'
     for rule in cfg['extractors']:
         if rule.get('mode') != 'availability_only':
             continue
@@ -171,7 +178,7 @@ def check():
         figures=re.findall(r'\$[0-9]|[0-9](?:\.[0-9]+)?\s?%', page)
         assert not figures, f'A state-only provider page shows price or discount figures: {pid} -> {figures[:5]}'
         status = statuses[pid]
-        if status.get('status') == 'available_no_price_rule':
+        if status.get('status') == 'evidenced' and status.get('capture_status') == 'no_price_rule':
             assert 'No deterministic price rule' in page, f'A state-only provider page does not say why no price is published: {pid}'
         else:
             assert 'Latest source check did not complete.' in page, f'A failed state-only source claims a completed check: {pid}'
