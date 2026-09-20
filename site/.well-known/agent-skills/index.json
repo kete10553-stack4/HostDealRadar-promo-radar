@@ -1,0 +1,1 @@
+{"$schema":"https://schemas.agentskills.io/discovery/0.2.0/schema.json","skills":[{"name":"site-lookup","type":"skill-md","description":"Retrieve actual public HostDealRadar records by exact provider identifier or record slug.","url":"https://hostdealradar.com/ai/skills/site-lookup/SKILL.md","digest":"sha256:7dcaf5d8a4b4a9fdeb88b053961870e4f97cf689936255082f8486029faa70b6"}]}

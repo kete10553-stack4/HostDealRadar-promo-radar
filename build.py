@@ -3,6 +3,7 @@ from collections import defaultdict
 from datetime import datetime, timezone
 from pathlib import Path
 from string import Template
+from urllib.parse import urlsplit
 from config import ROOT, load_config
 
 TEMPLATES=ROOT/'templates'; OUT=ROOT/'site'; DATA=ROOT/'data/offers.json'; ASSETS=ROOT/'assets'
@@ -251,6 +252,68 @@ def record_state(offer, statuses, settings):
         return 'stale', 'Needs recheck. Last captured ' + offer['fetched_at'] + '.'
     return 'current', 'Captured ' + offer['fetched_at'] + '. Confirm current terms with the provider.'
 
+def agent_record(offer, provider, state):
+    """Return the bounded, public representation behind the read-only API."""
+    return {
+        'id': offer['slug'], 'provider': {'id': provider['id'], 'name': provider['name']},
+        'title': offer['title'], 'category': offer.get('category', 'Unknown'),
+        'record_state': state, 'listing_type': offer.get('kind', 'regular_price'),
+        'price': offer.get('price'), 'currency': offer.get('currency'),
+        'billing_period': offer.get('billing_period'), 'commitment_months': offer.get('commitment_months'),
+        'renewal_price': offer.get('renewal_price'), 'coupon_code': offer.get('coupon_code'),
+        'valid_until': offer.get('valid_until'), 'source_url': offer['source_url'],
+        'captured_at': offer['fetched_at'], 'record_url': '/deals/' + offer['slug'] + '/',
+        'limitations': 'Prices, eligibility, checkout totals, and renewal terms must be confirmed with the provider.'
+    }
+
+def agent_worker():
+    """Return the Pages Worker for public agent discovery and read-only lookup."""
+    return r'''const LINK_HEADER = [
+  '</.well-known/api-catalog>; rel="api-catalog"',
+  '</openapi.json>; rel="service-desc"',
+  '</ai/>; rel="service-doc"',
+  '</.well-known/ai-catalog.json>; rel="describedby"'
+].join(', ');
+function mergedResponse(response, additions = {}) {
+  const headers = new Headers(response.headers);
+  for (const [name, value] of Object.entries(additions)) headers.set(name, value);
+  return new Response(response.body, { status: response.status, statusText: response.statusText, headers });
+}
+function json(body, status = 200, additions = {}) {
+  return new Response(JSON.stringify(body), { status, headers: { 'content-type': 'application/json; charset=utf-8', 'cache-control': 'no-store', 'access-control-allow-origin': '*', ...additions } });
+}
+async function asset(env, request, pathname) {
+  const url = new URL(request.url); url.pathname = pathname; url.search = '';
+  return env.ASSETS.fetch(new Request(url.toString(), { method: 'GET', headers: request.headers }));
+}
+function wantsMarkdown(request) { return (request.headers.get('accept') || '').toLowerCase().includes('text/markdown'); }
+function unavailable() {
+  return json({ error: 'temporarily_unavailable', status: 'under_construction', available: false, capabilities_status: 'planned_contract_only', message: 'Coming soon; authentication is not available.', launch_date: null }, 503, { 'www-authenticate': 'Bearer error="temporarily_unavailable"' });
+}
+export default {
+  async fetch(request, env) {
+    const url = new URL(request.url); const path = url.pathname;
+    if (path === '/api/agent/lookup') {
+      if (request.method !== 'GET') return json({ error: 'method_not_allowed', message: 'Use GET for this read-only endpoint.' }, 405, { allow: 'GET' });
+      const provider = (url.searchParams.get('provider') || '').trim().toLowerCase(); const slug = (url.searchParams.get('slug') || '').trim();
+      if ((!provider && !slug) || (provider && slug)) return json({ error: 'invalid_query', message: 'Supply exactly one of provider or slug.' }, 400);
+      const records = await (await asset(env, request, '/agent-data.json')).json();
+      const matches = slug ? records.filter((record) => record.id === slug) : records.filter((record) => record.provider.id === provider || record.provider.name.toLowerCase() === provider);
+      if (!matches.length) return json({ status: 'not_found', query: slug ? { slug } : { provider }, records: [], message: 'No public HostDealRadar record matched this exact identifier.' }, 404);
+      return json({ status: 'ok', query: slug ? { slug } : { provider }, record_count: Math.min(matches.length, 25), records: matches.slice(0, 25), limitations: 'This read-only API reports published source records. It does not test checkout, availability, eligibility, or provider performance.' });
+    }
+    if (['/agent-auth/authorize', '/agent-auth/token', '/agent-auth/register', '/agent-auth/claim'].includes(path)) return unavailable();
+    const specialAssets = { '/ai/': ['/ai/index.md', 'text/markdown; charset=utf-8'], '/.well-known/api-catalog': ['/.well-known/api-catalog.json', 'application/linkset+json; charset=utf-8'] };
+    if (specialAssets[path]) { const [assetPath, contentType] = specialAssets[path]; return mergedResponse(await asset(env, request, assetPath), { 'content-type': contentType, 'access-control-allow-origin': '*' }); }
+    if (path === '/' && wantsMarkdown(request)) return mergedResponse(await asset(env, request, '/ai/index.md'), { 'content-type': 'text/markdown; charset=utf-8', 'vary': 'Accept', 'link': LINK_HEADER });
+    const response = await env.ASSETS.fetch(request);
+    if (path === '/') return mergedResponse(response, { 'vary': 'Accept', 'link': LINK_HEADER });
+    if (path === '/.well-known/ai-catalog.json') return mergedResponse(response, { 'content-type': 'application/json; charset=utf-8', 'access-control-allow-origin': '*' });
+    return response;
+  },
+};
+'''
+
 def build(config_path=None, output=None):
     global OUT
     OUT=Path(output) if output else ROOT/'site'
@@ -275,6 +338,8 @@ def build(config_path=None, output=None):
         posix=path.as_posix()
         if posix.endswith('index.html'): rendered['/'+posix[:-len('index.html')]]=text
         elif posix.endswith('.html'): rendered['/'+posix]=text
+    def write_bytes(path, data):
+        path=Path(path); target=OUT/path; target.parent.mkdir(parents=True,exist_ok=True); target.write_bytes(data)
     def page(title, description, canonical, content, schema):
         return template('base.html',title=e(title),description=e(description),canonical=e(canonical),brand=e(cfg['site']['brand']),tagline=e(cfg['settings']['tagline']),repo=e(cfg['settings']['repo_url']),social_image='',footer_status=e('Data source checks are automated.'),content=content,schema=json.dumps(schema,separators=(',',':')))
     def card(o, historical=False):
@@ -313,7 +378,11 @@ def build(config_path=None, output=None):
     home=template('index.html',month=datetime.now().strftime('%B %Y'),deal_count=len(current),provider_count=len(providers),updated=e('Last source snapshot: '+date_text(payload.get('generated_at','Unknown'))),selection_note=e(selection_note),offers='<div class="cards">'+''.join(card(o) for o in shown)+'</div>' if shown else '<div class="empty"><h3>No current offers are published</h3><p>We only show terms that were captured from an official source in the latest check. Check back after the next source run.</p></div>',providers=provider_tiles)
     # The homepage lists different services; its entries are navigation targets,
     # not merchant Offers for products that HostDealRadar sells.
-    home_schema={'@context':'https://schema.org','@type':'ItemList','name':'HostDealRadar official hosting offers','itemListElement':[{'@type':'ListItem','position':i+1,'item':{'@type':'WebPage','name':o['title'],'url':domain+'/deals/'+o['slug']+'/'}} for i,o in enumerate(current)]}
+    home_schema={'@context':'https://schema.org','@graph':[
+        {'@type':'WebSite','@id':domain+'/#website','name':cfg['site']['brand'],'url':domain+'/','inLanguage':'en-US','publisher':{'@id':domain+'/#organization'}},
+        {'@type':'Organization','@id':domain+'/#organization','name':cfg['site']['brand'],'url':domain+'/','sameAs':[cfg['settings']['repo_url']]},
+        {'@type':'ItemList','name':'HostDealRadar official hosting offers','itemListElement':[{'@type':'ListItem','position':i+1,'item':{'@type':'WebPage','name':o['title'],'url':domain+'/deals/'+o['slug']+'/'}} for i,o in enumerate(current)]}
+    ]}
     write(Path('index.html'),page('HostDealRadar | Official hosting offers', 'Official hosting offers with source-check status and provider links.',domain+'/',home,home_schema))
     provider_listing='<section class="wrap section"><div class="eyebrow">OFFICIAL SOURCES</div><h1>Providers we check</h1><p class="lead">Providers have public source pages in our list. Each provider page shows whether the latest source check confirmed listings, produced no published record, or did not complete. The grid follows the configured source-list order; it is not a recommendation, quality ranking, or price ranking. Each summary names the first current record, or an explicitly marked earlier record when none is current. Open a provider for the matching official source. <a href="/methodology/#service-labels">Read service-label definitions and limits</a>. Earlier records stay clearly marked.</p><div class="provider-grid">'+provider_tiles+'</div></section>'
     write(Path('providers/index.html'),page('Providers | HostDealRadar','Hosting providers and their latest source-check status.',domain+'/providers/',provider_listing,{'@context':'https://schema.org','@type':'CollectionPage','name':'Providers'}))
@@ -407,7 +476,91 @@ def build(config_path=None, output=None):
     write(Path('contact/index.html'),page('Contact | HostDealRadar','Contact HostDealRadar about source records and corrections.',domain+'/contact/',prose('Contact',contact),{'@context':'https://schema.org','@type':'ContactPage','name':'Contact HostDealRadar'}))
     write(Path('disclosure/index.html'),page('Affiliate disclosure | HostDealRadar','Affiliate disclosure for HostDealRadar.',domain+'/disclosure/',prose('Affiliate disclosure','<p class="lead">HostDealRadar currently links to official provider pages and does not use affiliate links.</p><p>If we later use an approved affiliate link, the link and relevant page will say so clearly. We will not use cookie injection, self-referrals, brand-keyword ads, or links that break an affiliate program’s terms.</p>'),{'@context':'https://schema.org','@type':'WebPage','name':'Affiliate disclosure'}))
     write(Path('privacy/index.html'),page('Privacy | HostDealRadar','Privacy information for HostDealRadar.',domain+'/privacy/',prose('Privacy','<p class="lead">This static site does not require accounts or collect purchase details.</p><p>Provider links open their own sites, where their privacy policies apply. We do not use affiliate-cookie injection or sell visitor information.</p><p>HostDealRadar currently does not display third-party advertising or use affiliate links. If either is introduced, we will disclose it here and update this page.</p>'),{'@context':'https://schema.org','@type':'WebPage','name':'Privacy'}))
-    write(Path('robots.txt'),'User-agent: *\nAllow: /\nSitemap: '+domain+'/sitemap.xml\n')
+    agent_markdown='''# HostDealRadar agent guide
+
+HostDealRadar is a public English-language reference for hosting, VPS, website-builder, and domain-price terms recorded from official provider pages. It is not a hosting provider, checkout service, performance review, or purchasing agent.
+
+## Public read-only record lookup
+
+Use `GET /api/agent/lookup` with exactly one parameter:
+
+- `provider`: an exact provider identifier, such as `namecheap`.
+- `slug`: an exact record identifier, such as `raidboxes-mini`.
+
+The response contains only public record fields, the official source URL, the capture time, and the record state. A `404` response means no public record matched the exact identifier. A `400` response means the request was missing an identifier or supplied both identifiers.
+
+## Evidence boundaries
+
+Every record links to the official provider page and keeps its own capture time. `current` means the latest source check reconfirmed that exact record; promotions also require a verified end date. `unverified`, `expired`, `retained`, and `stale` records are reference material, not current offers. Confirm the final checkout total, tax, eligibility, billing term, and renewal total with the provider.
+
+## Useful public pages
+
+- [How HostDealRadar checks sources](/methodology/)
+- [Provider records](/providers/)
+- [Comparison table](/compare/)
+- [API description](/openapi.json)
+- [Agent skill](/ai/skills/site-lookup/SKILL.md)
+- [Authentication status](/auth.md)
+'''
+    skill_markdown='''---
+name: site-lookup
+description: Retrieve public HostDealRadar records by exact provider identifier or record slug.
+---
+
+# HostDealRadar public record lookup
+
+Use this skill to retrieve published hosting, VPS, website-builder, or domain-price records from HostDealRadar. This service is read-only and does not fetch third-party URLs, test checkout, or make purchases.
+
+## Endpoint
+
+`GET https://hostdealradar.com/api/agent/lookup`
+
+Supply exactly one query parameter:
+
+- `provider`: exact provider identifier, for example `namecheap`.
+- `slug`: exact published record ID, for example `raidboxes-mini`.
+
+## Output and limits
+
+The response includes public prices when published, currency, billing period, renewal price when supported, official source URL, capture time, and record state. A record state other than `current` must not be presented as a current offer. Confirm checkout total, tax, eligibility, billing term, and renewal total with the provider. Do not infer a price, discount, availability, coupon, or expiry date that the response does not carry.
+
+## Errors
+
+- `400 invalid_query`: supply exactly one supported parameter.
+- `404 not_found`: no public record matched the supplied exact identifier.
+- `405 method_not_allowed`: use `GET` only.
+'''
+    auth_markdown='''# auth.md — HostDealRadar authentication status
+
+Status: under construction
+
+Authentication is not available. HostDealRadar's public record lookup is available without an account and is read-only. Planned authentication metadata is a contract placeholder only: it does not register users, issue credentials, send email, store identity data, or redirect to an authorization screen.
+
+- status: `under_construction`
+- available: `false`
+- capabilities_status: `planned_contract_only`
+- message: `Coming soon; authentication is not available.`
+- launch_date: `null`
+
+Planned endpoints return HTTP 503 with `temporarily_unavailable` until authentication is actually implemented.
+'''
+    agent_records=[agent_record(o, byid[o['provider']], states[o['slug']][0]) for o in offers]
+    write(Path('agent-data.json'),json.dumps(agent_records,separators=(',',':')))
+    write(Path('ai/index.md'),agent_markdown)
+    # The discovery digest must describe the exact bytes a client receives;
+    # write this generated Markdown without platform newline conversion.
+    write_bytes(Path('ai/skills/site-lookup/SKILL.md'),skill_markdown.encode('utf-8'))
+    write(Path('auth.md'),auth_markdown)
+    write(Path('openapi.json'),json.dumps({'openapi':'3.1.0','info':{'title':'HostDealRadar public record lookup','version':'1.0.0','description':'Read-only lookup of public source records. It does not fetch third-party URLs, test checkout, or perform write operations.'},'servers':[{'url':domain}],'paths':{'/api/agent/lookup':{'get':{'summary':'Look up public records by exact provider ID or record slug','parameters':[{'name':'provider','in':'query','required':False,'schema':{'type':'string'},'description':'Exact provider ID or name; cannot be combined with slug.'},{'name':'slug','in':'query','required':False,'schema':{'type':'string'},'description':'Exact public record ID; cannot be combined with provider.'}],'responses':{'200':{'description':'One or more bounded public records.'},'400':{'description':'Missing or ambiguous query.'},'404':{'description':'No exact public record found.'},'405':{'description':'GET only.'}}}}}},separators=(',',':')))
+    write(Path('.well-known/api-catalog.json'),json.dumps({'linkset':[{'anchor':domain+'/api/agent/lookup','service-desc':[{'href':domain+'/openapi.json','type':'application/json'}],'service-doc':[{'href':domain+'/ai/','type':'text/markdown'}]}]},separators=(',',':')))
+    write(Path('.well-known/agent-skills/index.json'),json.dumps({'$schema':'https://schemas.agentskills.io/discovery/0.2.0/schema.json','skills':[{'name':'site-lookup','type':'skill-md','description':'Retrieve actual public HostDealRadar records by exact provider identifier or record slug.','url':domain+'/ai/skills/site-lookup/SKILL.md','digest':'sha256:'+hashlib.sha256(skill_markdown.encode('utf-8')).hexdigest()}]},separators=(',',':')))
+    write(Path('.well-known/ai-catalog.json'),json.dumps({'specVersion':'1.0','host':{'displayName':cfg['site']['brand'],'identifier':'did:web:'+urlsplit(domain).hostname},'entries':[{'identifier':'urn:air:'+urlsplit(domain).hostname+':api:public-record-lookup','displayName':'HostDealRadar public record lookup','type':'application/vnd.oai.openapi+json','url':domain+'/openapi.json','representativeQueries':['look up a published HostDealRadar provider record','find the official source URL for a HostDealRadar record','retrieve a hosting price record by slug']},{'identifier':'urn:air:'+urlsplit(domain).hostname+':skill:site-lookup','displayName':'HostDealRadar site lookup skill','type':'text/markdown','url':domain+'/ai/skills/site-lookup/SKILL.md','representativeQueries':['how to query HostDealRadar public records','find records by exact hosting provider ID','understand HostDealRadar source-record limits']}]},separators=(',',':')))
+    construction={'status':'under_construction','available':False,'capabilities_status':'planned_contract_only','message':'Coming soon; authentication is not available.','launch_date':None}
+    write(Path('.well-known/oauth-authorization-server'),json.dumps({'issuer':domain,'authorization_endpoint':domain+'/agent-auth/authorize','token_endpoint':domain+'/agent-auth/token','jwks_uri':domain+'/.well-known/jwks.json','response_types_supported':['code'],'grant_types_supported':['authorization_code'],'agent_auth':{'skill':domain+'/auth.md','register_uri':domain+'/agent-auth/register','methods':[{'type':'planned_contract_only','available':False,'description':'Registration is not available.'}]},**construction},separators=(',',':')))
+    write(Path('.well-known/oauth-protected-resource'),json.dumps({'resource':domain,'authorization_servers':[domain],'scopes_supported':['public:records:read'],'bearer_methods_supported':['header'],'planned_resource_endpoint':domain+'/api/agent/lookup',**construction},separators=(',',':')))
+    write(Path('.well-known/jwks.json'),json.dumps({'keys':[],'status':'under_construction','message':'No token validation keys are active.'},separators=(',',':')))
+    write(Path('_worker.js'),agent_worker())
+    write(Path('robots.txt'),'User-agent: *\nAllow: /\nContent-Signal: ai-train=no, search=yes, ai-input=no\nAgentmap: '+domain+'/.well-known/ai-catalog.json\nSitemap: '+domain+'/sitemap.xml\n')
     write(Path('404.html'),page('Page not found | HostDealRadar','This page does not exist.',domain+'/404.html',prose('Page not found','<p><a href="/">Return to current offers</a></p>'),{'@context':'https://schema.org','@type':'WebPage','name':'Page not found'}))
     routes=['/','/providers/','/compare/','/methodology/','/about/','/contact/','/disclosure/','/privacy/',guide_route,namecheap_guide_route,cloudways_guide_route]
     routes+=[f'/providers/{p["id"]}/' for p in providers]
