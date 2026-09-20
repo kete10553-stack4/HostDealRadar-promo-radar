@@ -54,7 +54,7 @@ def check_earlier_record_path(payload, cfg):
         build.DATA,build.OUT=saved
     home=(out/'index.html').read_text(encoding='utf-8')
     assert f'/deals/{victim["slug"]}/' not in home, 'A retained record still appears in the current offers list'
-    item_list=[s for s in schemas(home) if s.get('@type')=='ItemList'][0]
+    item_list=next(entry for schema in schemas(home) for entry in schema.get('@graph',[schema]) if entry.get('@type')=='ItemList')
     assert victim['slug'] not in json.dumps(item_list), 'A retained record still appears in homepage price data'
     deal=(out/'deals'/victim['slug']/'index.html').read_text(encoding='utf-8')
     assert not [s for s in schemas(deal) if s.get('@type')=='Product'], 'A retained record still publishes Product structured data'
@@ -223,7 +223,7 @@ def check():
     assert '/guides/cloudways-coupon-code/' in (ROOT/'site/providers/cloudways/index.html').read_text(encoding='utf-8'), 'Cloudways provider page does not link the official promo guide'
     assert 'https://hostdealradar.com/guides/cloudways-coupon-code/' in sitemap, 'Sitemap omits the Cloudways promo guide'
     # No unverified or earlier record may be presented as current or publish current price data.
-    home_schema=[s for s in schemas(home) if s.get('@type')=='ItemList'][0]
+    home_schema=next(entry for schema in schemas(home) for entry in schema.get('@graph',[schema]) if entry.get('@type')=='ItemList')
     home_schema_json=json.dumps(home_schema,separators=(',',':'))
     assert '"@type":"Product"' not in home_schema_json and '"@type":"Offer"' not in home_schema_json, 'Homepage list publishes Product or Offer markup'
     listed={item['item']['url'] for item in home_schema['itemListElement']}
@@ -258,6 +258,26 @@ def check():
     assert (ROOT/'site/robots.txt').exists() and (ROOT/'site/sitemap.xml').exists()
     robots=(ROOT/'site/robots.txt').read_text(encoding='utf-8')
     assert 'Sitemap: '+cfg['site']['domain'].rstrip('/')+'/sitemap.xml' in robots, 'robots.txt must advertise the canonical sitemap'
+    assert 'Content-Signal: ai-train=no, search=yes, ai-input=no' in robots, 'robots.txt is missing the configured Content-Signal'
+    assert 'Agentmap: '+cfg['site']['domain'].rstrip('/')+'/.well-known/ai-catalog.json' in robots, 'robots.txt is missing the Agentmap manifest pointer'
+    assert '<link rel="ai-catalog" href="/.well-known/ai-catalog.json">' in home, 'Homepage is missing the ARD link relation'
+    home_schemas=schemas(home)
+    graph=next((schema for schema in home_schemas if '@graph' in schema), None)
+    assert graph and {entry.get('@type') for entry in graph['@graph']} >= {'WebSite','Organization','ItemList'}, 'Homepage lacks WebSite, Organization, or ItemList identity markup'
+    static_paths=['agent-data.json','ai/index.md','ai/skills/site-lookup/SKILL.md','auth.md','openapi.json','.well-known/api-catalog.json','.well-known/agent-skills/index.json','.well-known/ai-catalog.json','.well-known/oauth-authorization-server','.well-known/oauth-protected-resource','.well-known/jwks.json','_worker.js']
+    for path in static_paths:
+        assert (ROOT/'site'/path).is_file(), f'Agent-ready build output missing {path}'
+    skill=(ROOT/'site/ai/skills/site-lookup/SKILL.md').read_bytes()
+    skill_index=json.loads((ROOT/'site/.well-known/agent-skills/index.json').read_text(encoding='utf-8'))
+    assert skill_index['skills'][0]['digest']=='sha256:'+__import__('hashlib').sha256(skill).hexdigest(), 'Agent skill digest does not match served bytes'
+    catalog=json.loads((ROOT/'site/.well-known/api-catalog.json').read_text(encoding='utf-8'))
+    assert catalog['linkset'][0]['anchor']==cfg['site']['domain'].rstrip('/')+'/api/agent/lookup', 'API catalog points to the wrong resource'
+    assert catalog['linkset'][0]['service-doc'][0]['href']==cfg['site']['domain'].rstrip('/')+'/ai/', 'API catalog lacks the Markdown service documentation'
+    records=json.loads((ROOT/'site/agent-data.json').read_text(encoding='utf-8'))
+    assert len(records)==len(payload['offers']) and all({'id','provider','record_state','source_url','captured_at','record_url'} <= set(record) for record in records), 'Read-only API projection is incomplete'
+    protected=json.loads((ROOT/'site/.well-known/oauth-protected-resource').read_text(encoding='utf-8'))
+    assert protected['resource']==cfg['site']['domain'].rstrip('/'), 'OAuth protected resource must use the canonical origin, not an endpoint path'
+    assert protected['available'] is False and protected['status']=='under_construction', 'OAuth placeholder must be explicitly unavailable'
     entries=ET.parse(ROOT/'site/sitemap.xml').getroot().findall('sm:url',NS)
     assert entries, 'Sitemap has no URLs'
     for entry in entries:
