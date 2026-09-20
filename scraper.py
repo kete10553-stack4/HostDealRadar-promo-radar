@@ -77,6 +77,58 @@ def excerpt(raw, limit=280):
     """Store a bounded piece of visible response text, never script or markup."""
     return visible_text(raw)[:limit] or None
 
+def compact(value):
+    return re.sub(r'\s+', ' ', value).strip()
+
+def anchored_excerpt(text, match, before=96, after=192):
+    """Keep the matched source statement plus a small amount of context.
+
+    A page-level opening excerpt only proves that a response arrived.  Field
+    evidence must instead carry the exact source fragment from which the field
+    was extracted.  ``text`` is either the configured raw segment or its
+    visible-text equivalent, so the stored quote is never reconstructed.
+    """
+    start = max(0, match.start() - before)
+    end = min(len(text), match.end() + after)
+    return compact(text[start:end])
+
+def claim_evidence(text, match, location, surface_hint=None):
+    quote = compact(visible_text(match.group(0)))
+    context = anchored_excerpt(text, match)
+    visible_context = compact(visible_text(text[max(0, match.start() - 96):min(len(text), match.end() + 192)]))
+    # Attribute and metadata matches can contain markup that has no visible
+    # text node.  Retain the exact response fragment in that case and say so
+    # in the location; do not relabel it as visitor-visible page copy.
+    surface = surface_hint or 'visible source text'
+    if not quote:
+        quote = compact(match.group(0))
+        surface = 'source response markup'
+    elif surface_hint is None and quote not in visible_context:
+        # The raw response still contains the exact match, but the source's
+        # HTML does not expose it as reader-visible text (for example an href
+        # query parameter).  Preserve that distinction instead of calling it
+        # visible copy.
+        surface = 'source response markup'
+    return {'quote': quote, 'excerpt': context, 'visible_excerpt': visible_context,
+            'location': location, 'surface': surface}
+
+def configured_source_evidence(rules, raw):
+    """Collect non-offer source statements configured in site.ilang.
+
+    This is intentionally configuration-driven: provider-specific evidence
+    patterns never live in Python.
+    """
+    output = {}
+    for rule in rules:
+        for label, pattern in rule.get('source_evidence_patterns', {}).items():
+            if label in output:
+                continue
+            match = re.search(pattern, raw)
+            if match:
+                output[label] = claim_evidence(raw, match,
+                    'configured source-evidence pattern: ' + label)
+    return output
+
 class SourceProbeError(Exception):
     def __init__(self, state, reason, request_url, http_status=None, visible_excerpt=None):
         super().__init__(reason)
@@ -220,6 +272,7 @@ def offer_from_rule(provider, rule, raw, sibling_anchors=()):
         'fetched_at': now(),
         'evidence': rule['structure'],
         'field_evidence': {},
+        'claim_evidence': {},
     }
     for key in ('currency', 'billing_period', 'commitment_months', 'price_text', 'condition', 'kind'):
         if rule.get(key) is not None:
@@ -231,7 +284,11 @@ def offer_from_rule(provider, rule, raw, sibling_anchors=()):
         value = match.groupdict().get('value') or match.group(1)
         if field == 'price' and not price_has_matching_terms(segment, match, offer.get('currency'), offer.get('billing_period')):
             return None
-        offer['field_evidence'][field] = visible_text(match.group(0))
+        source_claim = claim_evidence(segment, match,
+            'configured field pattern: ' + field,
+            'visible source text' if rule.get('mode') == 'anchored_text' else 'source response markup')
+        offer['field_evidence'][field] = source_claim['quote']
+        offer['claim_evidence'][field] = source_claim
         if field in NUMERIC_FIELDS:
             offer[field] = float(value.replace(',', ''))
         elif field in INTEGER_FIELDS:
@@ -282,8 +339,11 @@ def run(config_path=None):
             statuses[provider['id']] = retained_status(f'Official source could not be checked: {exc}.', old,
                 probe_fields('unreadable', provider['source_url']))
             continue
-        source_probe = probe_fields('evidenced', request_url, status, excerpt(raw))
         rules = [rule for rule in cfg['extractors'] if rule.get('provider') == provider['id']]
+        source_probe = probe_fields('evidenced', request_url, status, excerpt(raw))
+        auxiliary = configured_source_evidence(rules, raw)
+        if auxiliary:
+            source_probe['source_claim_evidence'] = auxiliary
         if rules and all(rule.get('mode') == 'availability_only' for rule in rules):
             output.extend(old)
             blocker = rules[0].get('blocker', 'unspecified')

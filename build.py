@@ -349,12 +349,20 @@ def build(config_path=None, output=None):
     write(Path('guides/namecheap-domain-renewal-coupon/index.html'),page('Namecheap domain renewal coupon: what works at renewal? | HostDealRadar','Namecheap renewal coupons, current .com renewal pricing, official terms, and three linked user reports.',domain+namecheap_guide_route,namecheap_guide,namecheap_guide_schema))
     cloudways_guide_route='/guides/cloudways-coupon-code/'
     cloudways_guide=template('cloudways-coupon-code.html')
+    cloudways_status=statuses.get('cloudways', {})
+    countdown=(cloudways_status.get('source_claim_evidence') or {}).get('countdown', {})
+    countdown_quote=countdown.get('visible_excerpt') or countdown.get('quote') or 'No countdown statement was captured in this release.'
+    checked_at=cloudways_status.get('checked_at', '')
+    checked_date=checked_at[:10] if checked_at else 'the recorded source-check time'
+    cloudways_guide=(cloudways_guide
+        .replace('{{CLOUDWAYS_CHECKED_DATE}}', e(checked_date))
+        .replace('{{CLOUDWAYS_COUNTDOWN_QUOTE}}', e(countdown_quote)))
     cloudways_guide_schema={'@context':'https://schema.org','@type':'FAQPage','mainEntity':[
-        {'@type':'Question','name':'Is SUMMER404 still a current Cloudways hosting coupon code?','acceptedAnswer':{'@type':'Answer','text':'No verified current use. Cloudways’ official Summer offer ended September 15, 2026. We rechecked the official promo and pricing pages on September 19, 2026; the old promotional text remained visible, but its stated deadline had passed.'}},
-        {'@type':'Question','name':'Did unlimited free migrations belong to that promotion?','acceptedAnswer':{'@type':'Answer','text':'Yes. Cloudways listed unlimited free migrations with the Summer offer that ended September 15, 2026. This does not describe its separate standard migration terms.'}},
-        {'@type':'Question','name':'Did this check find another current general hosting coupon code?','acceptedAnswer':{'@type':'Answer','text':'No. On September 19, 2026, we could not verify another currently valid general hosting coupon code on the official promo and pricing pages reviewed. We did not test checkout or every Cloudways product.'}}
+        {'@type':'Question','name':'Is SUMMER404 a verified current Cloudways hosting coupon code?','acceptedAnswer':{'@type':'Answer','text':'No. The source check found historical page material and a zeroed countdown, but it did not verify current checkout redemption.'}},
+        {'@type':'Question','name':'What date does the official promo page show?','acceptedAnswer':{'@type':'Answer','text':'The stored source evidence says: '+countdown_quote+'. The response does not state a time zone, so the guide does not convert it to another date.'}},
+        {'@type':'Question','name':'Did this check verify another current general hosting coupon code?','acceptedAnswer':{'@type':'Answer','text':'No current general code was verified by this page check. It did not test checkout or every Cloudways product.'}}
     ]}
-    write(Path('guides/cloudways-coupon-code/index.html'),page('Cloudways coupon code: SUMMER404 expired | HostDealRadar','Cloudways’ Summer code SUMMER404 ended September 15, 2026. See the official sources and the September 19 recheck.',domain+cloudways_guide_route,cloudways_guide,cloudways_guide_schema))
+    write(Path('guides/cloudways-coupon-code/index.html'),page('Cloudways coupon code: source status for SUMMER404 | HostDealRadar','Cloudways source evidence for SUMMER404, including the recorded countdown statement and its limits.',domain+cloudways_guide_route,cloudways_guide,cloudways_guide_schema))
     for o in offers:
         state, message=states[o['slug']]
         rule=rules.get((o['provider'], o['title']), {})
