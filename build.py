@@ -303,7 +303,7 @@ export default {
       return json({ status: 'ok', query: slug ? { slug } : { provider }, record_count: Math.min(matches.length, 25), records: matches.slice(0, 25), limitations: 'This read-only API reports published source records. It does not test checkout, availability, eligibility, or provider performance.' });
     }
     if (['/agent-auth/authorize', '/agent-auth/token', '/agent-auth/register', '/agent-auth/claim'].includes(path)) return unavailable();
-    const specialAssets = { '/ai/': ['/ai/index.md', 'text/markdown; charset=utf-8'], '/.well-known/api-catalog': ['/.well-known/api-catalog.json', 'application/linkset+json; charset=utf-8'] };
+    const specialAssets = { '/ai/': ['/ai/index.md', 'text/markdown; charset=utf-8'], '/.well-known/api-catalog': ['/.well-known/api-catalog.json', 'application/linkset+json; charset=utf-8'], '/.well-known/oauth-authorization-server': ['/.well-known/oauth-authorization-server', 'application/json; charset=utf-8'], '/.well-known/oauth-protected-resource': ['/.well-known/oauth-protected-resource', 'application/json; charset=utf-8'], '/.well-known/jwks.json': ['/.well-known/jwks.json', 'application/json; charset=utf-8'] };
     if (specialAssets[path]) { const [assetPath, contentType] = specialAssets[path]; return mergedResponse(await asset(env, request, assetPath), { 'content-type': contentType, 'access-control-allow-origin': '*' }); }
     if (path === '/' && wantsMarkdown(request)) return mergedResponse(await asset(env, request, '/ai/index.md'), { 'content-type': 'text/markdown; charset=utf-8', 'vary': 'Accept', 'link': LINK_HEADER });
     const response = await env.ASSETS.fetch(request);
@@ -543,6 +543,10 @@ Authentication is not available. HostDealRadar's public record lookup is availab
 - launch_date: `null`
 
 Planned endpoints return HTTP 503 with `temporarily_unavailable` until authentication is actually implemented.
+
+## Agent registration (planned)
+
+`agent_auth` metadata is published only to describe the future contract. The planned registration endpoint is `/agent-auth/register`, but agent registration is unavailable: it creates no account, issues no credential, and accepts no identity data. The sole planned registration method is `planned_contract_only`; it is not an available enrollment method. Until a real implementation exists, agents use the public read-only lookup without credentials.
 '''
     agent_records=[agent_record(o, byid[o['provider']], states[o['slug']][0]) for o in offers]
     write(Path('agent-data.json'),json.dumps(agent_records,separators=(',',':')))
