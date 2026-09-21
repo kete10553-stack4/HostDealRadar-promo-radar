@@ -290,20 +290,39 @@ function wantsMarkdown(request) { return (request.headers.get('accept') || '').t
 function unavailable() {
   return json({ error: 'temporarily_unavailable', status: 'under_construction', available: false, capabilities_status: 'planned_contract_only', message: 'Coming soon; authentication is not available.', launch_date: null }, 503, { 'www-authenticate': 'Bearer error="temporarily_unavailable"' });
 }
+async function publicLookup(env, provider, slug) {
+  if ((!provider && !slug) || (provider && slug)) return { status: 400, body: { error: 'invalid_query', message: 'Supply exactly one of provider or slug.' } };
+  const records = await (await asset(env, new Request('https://hostdealradar.com/agent-data.json'), '/agent-data.json')).json();
+  const matches = slug ? records.filter((record) => record.id === slug) : records.filter((record) => record.provider.id === provider || record.provider.name.toLowerCase() === provider);
+  if (!matches.length) return { status: 404, body: { status: 'not_found', query: slug ? { slug } : { provider }, records: [], message: 'No public HostDealRadar record matched this exact identifier.' } };
+  return { status: 200, body: { status: 'ok', query: slug ? { slug } : { provider }, record_count: Math.min(matches.length, 25), records: matches.slice(0, 25), limitations: 'This read-only API reports published source records. It does not test checkout, availability, eligibility, or provider performance.' } };
+}
+function mcpReply(id, result) { return json({ jsonrpc: '2.0', id: id === undefined ? null : id, result }); }
+function mcpError(id, code, message) { return json({ jsonrpc: '2.0', id: id === undefined ? null : id, error: { code, message } }); }
+async function mcp(request, env) {
+  if (request.method !== 'POST') return json({ error: 'method_not_allowed', message: 'Use POST for this Streamable HTTP MCP endpoint.' }, 405, { allow: 'POST' });
+  let message; try { message = await request.json(); } catch { return mcpError(null, -32700, 'Parse error'); }
+  if (!message || message.jsonrpc !== '2.0' || typeof message.method !== 'string') return mcpError(message && message.id, -32600, 'Invalid Request');
+  if (message.method === 'initialize') return mcpReply(message.id, { protocolVersion: '2025-03-26', capabilities: { tools: {} }, serverInfo: { name: 'hostdealradar-public-lookup', version: '1.0.0' } });
+  if (message.method === 'tools/list') return mcpReply(message.id, { tools: [{ name: 'hostdealradar_lookup', description: 'Read bounded public HostDealRadar records by an exact provider ID or record slug.', inputSchema: { type: 'object', additionalProperties: false, oneOf: [{ required: ['provider'], properties: { provider: { type: 'string', description: 'Exact provider ID or name.' } } }, { required: ['slug'], properties: { slug: { type: 'string', description: 'Exact public record ID.' } } }] } }] });
+  if (message.method === 'tools/call') {
+    const params = message.params || {}; if (params.name !== 'hostdealradar_lookup') return mcpError(message.id, -32602, 'Unknown tool');
+    const args = params.arguments || {}; const result = await publicLookup(env, typeof args.provider === 'string' ? args.provider.trim().toLowerCase() : '', typeof args.slug === 'string' ? args.slug.trim() : '');
+    return mcpReply(message.id, { content: [{ type: 'text', text: JSON.stringify(result.body) }], structuredContent: result.body, isError: result.status !== 200 });
+  }
+  return mcpError(message.id, -32601, 'Method not found');
+}
 export default {
   async fetch(request, env) {
     const url = new URL(request.url); const path = url.pathname;
     if (path === '/api/agent/lookup') {
       if (request.method !== 'GET') return json({ error: 'method_not_allowed', message: 'Use GET for this read-only endpoint.' }, 405, { allow: 'GET' });
       const provider = (url.searchParams.get('provider') || '').trim().toLowerCase(); const slug = (url.searchParams.get('slug') || '').trim();
-      if ((!provider && !slug) || (provider && slug)) return json({ error: 'invalid_query', message: 'Supply exactly one of provider or slug.' }, 400);
-      const records = await (await asset(env, request, '/agent-data.json')).json();
-      const matches = slug ? records.filter((record) => record.id === slug) : records.filter((record) => record.provider.id === provider || record.provider.name.toLowerCase() === provider);
-      if (!matches.length) return json({ status: 'not_found', query: slug ? { slug } : { provider }, records: [], message: 'No public HostDealRadar record matched this exact identifier.' }, 404);
-      return json({ status: 'ok', query: slug ? { slug } : { provider }, record_count: Math.min(matches.length, 25), records: matches.slice(0, 25), limitations: 'This read-only API reports published source records. It does not test checkout, availability, eligibility, or provider performance.' });
+      const result = await publicLookup(env, provider, slug); return json(result.body, result.status);
     }
+    if (path === '/mcp') return mcp(request, env);
     if (['/agent-auth/authorize', '/agent-auth/token', '/agent-auth/register', '/agent-auth/claim', '/agent-auth/revoke'].includes(path)) return unavailable();
-    const specialAssets = { '/ai/': ['/ai/index.md', 'text/markdown; charset=utf-8'], '/.well-known/api-catalog': ['/.well-known/api-catalog.json', 'application/linkset+json; charset=utf-8'], '/.well-known/oauth-authorization-server': ['/.well-known/oauth-authorization-server', 'application/json; charset=utf-8'], '/.well-known/oauth-protected-resource': ['/.well-known/oauth-protected-resource', 'application/json; charset=utf-8'], '/.well-known/jwks.json': ['/.well-known/jwks.json', 'application/json; charset=utf-8'] };
+    const specialAssets = { '/ai/': ['/ai/index.md', 'text/markdown; charset=utf-8'], '/ai/index.ilang': ['/ai/index.ilang', 'text/plain; charset=utf-8'], '/.well-known/api-catalog': ['/.well-known/api-catalog.json', 'application/linkset+json; charset=utf-8'], '/.well-known/oauth-authorization-server': ['/.well-known/oauth-authorization-server', 'application/json; charset=utf-8'], '/.well-known/oauth-protected-resource': ['/.well-known/oauth-protected-resource', 'application/json; charset=utf-8'], '/.well-known/jwks.json': ['/.well-known/jwks.json', 'application/json; charset=utf-8'], '/.well-known/mcp/server-card.json': ['/.well-known/mcp/server-card.json', 'application/json; charset=utf-8'] };
     if (specialAssets[path]) { const [assetPath, contentType] = specialAssets[path]; return mergedResponse(await asset(env, request, assetPath), { 'content-type': contentType, 'access-control-allow-origin': '*' }); }
     if (path === '/' && wantsMarkdown(request)) return mergedResponse(await asset(env, request, '/ai/index.md'), { 'content-type': 'text/markdown; charset=utf-8', 'vary': 'Accept', 'link': LINK_HEADER });
     const response = await env.ASSETS.fetch(request);
@@ -551,6 +570,22 @@ Planned endpoints return HTTP 503 with `temporarily_unavailable` until authentic
     agent_records=[agent_record(o, byid[o['provider']], states[o['slug']][0]) for o in offers]
     write(Path('agent-data.json'),json.dumps(agent_records,separators=(',',':')))
     write(Path('ai/index.md'),agent_markdown)
+    write(Path('ai/index.ilang'),'''::ILANG
+[TYPE:site-guide][LANG:en]
+
+::STATE{@SITE, name:HostDealRadar, access:public, scope:published hosting and domain source records}
+::OBJECTIVE{lookup_public_records}
+  target: Read a bounded published record by exact provider ID or record slug.
+  endpoint: https://hostdealradar.com/api/agent/lookup
+  method: GET
+  input: provider=<exact provider ID or name> OR slug=<exact record ID>
+  output: source URL, capture time, listed terms, and record state.
+::RULE{read_only}
+  No checkout, availability, eligibility, or provider-performance claim is verified here.
+::RULE{one_query}
+  Supply exactly one of provider or slug.
+::FACT{key:limits|value:Results are public and bounded to 25 records.}
+''')
     # The discovery digest must describe the exact bytes a client receives;
     # write this generated Markdown without platform newline conversion.
     write_bytes(Path('ai/skills/site-lookup/SKILL.md'),skill_markdown.encode('utf-8'))
@@ -563,6 +598,23 @@ Planned endpoints return HTTP 503 with `temporarily_unavailable` until authentic
     write(Path('.well-known/oauth-authorization-server'),json.dumps({'issuer':domain,'authorization_endpoint':domain+'/agent-auth/authorize','token_endpoint':domain+'/agent-auth/token','jwks_uri':domain+'/.well-known/jwks.json','response_types_supported':['code'],'grant_types_supported':['authorization_code'],'agent_auth':{'skill':domain+'/auth.md','register_uri':domain+'/agent-auth/register','claim_uri':domain+'/agent-auth/claim','identity_types_supported':['anonymous'],'anonymous':{'credential_types_supported':['planned_contract_only']},'revocation_uri':domain+'/agent-auth/revoke','methods':[{'type':'anonymous','credential_type':'planned_contract_only','available':False,'description':'Construction placeholder: registration is not available.'}]},**construction},separators=(',',':')))
     write(Path('.well-known/oauth-protected-resource'),json.dumps({'resource':domain,'authorization_servers':[domain],'scopes_supported':['public:records:read'],'bearer_methods_supported':['header'],'planned_resource_endpoint':domain+'/api/agent/lookup',**construction},separators=(',',':')))
     write(Path('.well-known/jwks.json'),json.dumps({'keys':[],'status':'under_construction','message':'No token validation keys are active.'},separators=(',',':')))
+    write(Path('.well-known/mcp/server-card.json'),json.dumps({'serverInfo':{'name':'hostdealradar-public-lookup','version':'1.0.0'},'description':'Read bounded public HostDealRadar records by provider ID or record slug.','transport':{'type':'streamable-http','endpoint':domain+'/mcp'},'transports':[{'type':'streamable-http','endpoint':domain+'/mcp'}],'capabilities':{'tools':{}},'tools':[{'name':'hostdealradar_lookup','description':'Read published public records by exact provider ID or record slug.'}]},separators=(',',':')))
+    write(Path('assets/agent-tools.js'),'''(() => {
+  const api = navigator.modelContext;
+  if (!api || typeof api.registerTool !== 'function') return;
+  const controller = new AbortController();
+  api.registerTool({
+    name: 'hostdealradar_lookup',
+    description: 'Read bounded public HostDealRadar records by exact provider ID or record slug.',
+    inputSchema: { type: 'object', additionalProperties: false, oneOf: [{ required: ['provider'], properties: { provider: { type: 'string' } } }, { required: ['slug'], properties: { slug: { type: 'string' } } }] },
+    execute: async (input) => {
+      const params = new URLSearchParams(); if (typeof input.provider === 'string') params.set('provider', input.provider); if (typeof input.slug === 'string') params.set('slug', input.slug);
+      const response = await fetch('/api/agent/lookup?' + params.toString(), { headers: { accept: 'application/json' } });
+      return await response.json();
+    }
+  }, { signal: controller.signal });
+})();
+''')
     write(Path('_worker.js'),agent_worker())
     write(Path('robots.txt'),'User-agent: *\nAllow: /\nContent-Signal: ai-train=no, search=yes, ai-input=no\nAgentmap: '+domain+'/.well-known/ai-catalog.json\nSitemap: '+domain+'/sitemap.xml\n')
     write(Path('404.html'),page('Page not found | HostDealRadar','This page does not exist.',domain+'/404.html',prose('Page not found','<p><a href="/">Return to current offers</a></p>'),{'@context':'https://schema.org','@type':'WebPage','name':'Page not found'}))
