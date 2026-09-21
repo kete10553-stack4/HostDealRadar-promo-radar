@@ -359,8 +359,8 @@ def build(config_path=None, output=None):
         elif posix.endswith('.html'): rendered['/'+posix]=text
     def write_bytes(path, data):
         path=Path(path); target=OUT/path; target.parent.mkdir(parents=True,exist_ok=True); target.write_bytes(data)
-    def page(title, description, canonical, content, schema):
-        return template('base.html',title=e(title),description=e(description),canonical=e(canonical),brand=e(cfg['site']['brand']),tagline=e(cfg['settings']['tagline']),repo=e(cfg['settings']['repo_url']),social_image='',footer_status=e('Data source checks are automated.'),content=content,schema=json.dumps(schema,separators=(',',':')))
+    def page(title, description, canonical, content, schema, head_extra=''):
+        return template('base.html',title=e(title),description=e(description),canonical=e(canonical),brand=e(cfg['site']['brand']),tagline=e(cfg['settings']['tagline']),repo=e(cfg['settings']['repo_url']),social_image='',head_extra=head_extra,footer_status=e('Data source checks are automated.'),content=content,schema=json.dumps(schema,separators=(',',':')))
     def card(o, historical=False):
         p=byid[o['provider']]; state, message=states[o['slug']]; terms=[]
         rule=rules.get((o['provider'], o['title']), {})
@@ -402,7 +402,7 @@ def build(config_path=None, output=None):
         {'@type':'Organization','@id':domain+'/#organization','name':cfg['site']['brand'],'url':domain+'/','sameAs':[cfg['settings']['repo_url']]},
         {'@type':'ItemList','name':'HostDealRadar official hosting offers','itemListElement':[{'@type':'ListItem','position':i+1,'item':{'@type':'WebPage','name':o['title'],'url':domain+'/deals/'+o['slug']+'/'}} for i,o in enumerate(current)]}
     ]}
-    write(Path('index.html'),page('HostDealRadar | Official hosting offers', 'Official hosting offers with source-check status and provider links.',domain+'/',home,home_schema))
+    write(Path('index.html'),page('HostDealRadar | Official hosting offers', 'Official hosting offers with source-check status and provider links.',domain+'/',home,home_schema,head_extra="<meta name='impact-site-verification' value='9f3ff63a-c432-478f-8859-af77a6120cbb'>"))
     provider_listing='<section class="wrap section"><div class="eyebrow">OFFICIAL SOURCES</div><h1>Providers we check</h1><p class="lead">Providers have public source pages in our list. Each provider page shows whether the latest source check confirmed listings, produced no published record, or did not complete. The grid follows the configured source-list order; it is not a recommendation, quality ranking, or price ranking. Each summary names the first current record, or an explicitly marked earlier record when none is current. Open a provider for the matching official source. <a href="/methodology/#service-labels">Read service-label definitions and limits</a>. Earlier records stay clearly marked.</p><div class="provider-grid">'+provider_tiles+'</div></section>'
     write(Path('providers/index.html'),page('Providers | HostDealRadar','Hosting providers and their latest source-check status.',domain+'/providers/',provider_listing,{'@context':'https://schema.org','@type':'CollectionPage','name':'Providers'}))
     for p in providers:
