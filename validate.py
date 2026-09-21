@@ -264,7 +264,7 @@ def check():
     home_schemas=schemas(home)
     graph=next((schema for schema in home_schemas if '@graph' in schema), None)
     assert graph and {entry.get('@type') for entry in graph['@graph']} >= {'WebSite','Organization','ItemList'}, 'Homepage lacks WebSite, Organization, or ItemList identity markup'
-    static_paths=['agent-data.json','ai/index.md','ai/skills/site-lookup/SKILL.md','auth.md','openapi.json','.well-known/api-catalog.json','.well-known/agent-skills/index.json','.well-known/ai-catalog.json','.well-known/oauth-authorization-server','.well-known/oauth-protected-resource','.well-known/jwks.json','_worker.js']
+    static_paths=['agent-data.json','ai/index.md','ai/index.ilang','ai/skills/site-lookup/SKILL.md','auth.md','openapi.json','.well-known/api-catalog.json','.well-known/agent-skills/index.json','.well-known/ai-catalog.json','.well-known/oauth-authorization-server','.well-known/oauth-protected-resource','.well-known/jwks.json','.well-known/mcp/server-card.json','assets/agent-tools.js','_worker.js']
     for path in static_paths:
         assert (ROOT/'site'/path).is_file(), f'Agent-ready build output missing {path}'
     skill=(ROOT/'site/ai/skills/site-lookup/SKILL.md').read_bytes()
@@ -277,6 +277,8 @@ def check():
     assert len(records)==len(payload['offers']) and all({'id','provider','record_state','source_url','captured_at','record_url'} <= set(record) for record in records), 'Read-only API projection is incomplete'
     protected=json.loads((ROOT/'site/.well-known/oauth-protected-resource').read_text(encoding='utf-8'))
     assert protected['resource']==cfg['site']['domain'].rstrip('/'), 'OAuth protected resource must use the canonical origin, not an endpoint path'
+    mcp_card=json.loads((ROOT/'site/.well-known/mcp/server-card.json').read_text(encoding='utf-8'))
+    assert mcp_card['serverInfo']['name']=='hostdealradar-public-lookup' and mcp_card['transport']['endpoint']==cfg['site']['domain'].rstrip('/')+'/mcp', 'MCP server card must advertise the live lookup endpoint'
     assert protected['available'] is False and protected['status']=='under_construction', 'OAuth placeholder must be explicitly unavailable'
     entries=ET.parse(ROOT/'site/sitemap.xml').getroot().findall('sm:url',NS)
     assert entries, 'Sitemap has no URLs'

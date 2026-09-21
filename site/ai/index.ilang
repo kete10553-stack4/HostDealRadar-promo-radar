@@ -1,0 +1,15 @@
+::ILANG
+[TYPE:site-guide][LANG:en]
+
+::STATE{@SITE, name:HostDealRadar, access:public, scope:published hosting and domain source records}
+::OBJECTIVE{lookup_public_records}
+  target: Read a bounded published record by exact provider ID or record slug.
+  endpoint: https://hostdealradar.com/api/agent/lookup
+  method: GET
+  input: provider=<exact provider ID or name> OR slug=<exact record ID>
+  output: source URL, capture time, listed terms, and record state.
+::RULE{read_only}
+  No checkout, availability, eligibility, or provider-performance claim is verified here.
+::RULE{one_query}
+  Supply exactly one of provider or slug.
+::FACT{key:limits|value:Results are public and bounded to 25 records.}
