@@ -53,16 +53,14 @@ def check_earlier_record_path(payload, cfg):
     finally:
         build.DATA,build.OUT=saved
     home=(out/'index.html').read_text(encoding='utf-8')
-    assert f'/deals/{victim["slug"]}/' not in home, 'A retained record still appears in the current offers list'
+    assert f'href="/providers/{victim["provider"]}/#record-{victim["slug"]}"' not in home, 'A retained record still appears in the current offers list'
     item_list=next(entry for schema in schemas(home) for entry in schema.get('@graph',[schema]) if entry.get('@type')=='ItemList')
     assert victim['slug'] not in json.dumps(item_list), 'A retained record still appears in homepage price data'
-    deal=(out/'deals'/victim['slug']/'index.html').read_text(encoding='utf-8')
-    assert not [s for s in schemas(deal) if s.get('@type')=='Product'], 'A retained record still publishes Product structured data'
-    assert [s for s in schemas(deal) if s.get('@type')=='WebPage'], 'A retained record has no WebPage structured data'
-    assert 'Not reconfirmed' in deal, 'A retained record is not labelled with its actual capture state'
+    assert not (out/'deals'/victim['slug']/'index.html').exists(), 'A retained record still receives a deal page'
     provider_page=(out/'providers'/victim['provider']/'index.html').read_text(encoding='utf-8')
     history_block=provider_page.split('<article class="card history">')[-1]
-    assert f'/deals/{victim["slug"]}/' in history_block, 'A retained record is missing from the earlier-records block on its provider page'
+    assert f'#record-{victim["slug"]}' in history_block, 'A retained record is missing from the earlier-records block on its provider page'
+    assert f'id="record-{victim["slug"]}"' in provider_page and 'Not reconfirmed' in provider_page, 'A retained record lacks a labelled provider detail'
     compare=(out/'compare/index.html').read_text(encoding='utf-8')
     marker='Unverified or earlier records, not current offers'
     assert marker in compare, 'Comparison page does not separate earlier records'
@@ -153,26 +151,16 @@ def check():
         for link in links.urls:
             target=ROOT/'site'/unquote(urlsplit(link).path).lstrip('/')
             assert target.is_file() or (target/'index.html').is_file(), f'Broken internal link in {f}: {link}'
+    assert not (ROOT/'site/deals').exists(), 'Per-record deal pages were generated'
     for offer in payload['offers']:
-        deal=(ROOT/'site/deals'/offer['slug']/'index.html').read_text(encoding='utf-8')
-        provider_name=next(p['name'] for p in cfg['providers'] if p['id']==offer['provider'])
-        display_name=build.offer_name(provider_name, offer['title'])
-        assert f'<title>{build.e(display_name)}: official terms | HostDealRadar</title>' in deal, f'Deal title lacks provider-specific identity: {offer["slug"]}'
-        assert f'<h1>{build.e(display_name)}</h1>' in deal, f'Deal heading lacks provider-specific identity: {offer["slug"]}'
-        schema=schemas(deal)[0]
-        assert schema.get('name') == display_name, f'Structured-data name lacks provider-specific identity: {offer["slug"]}'
-        if states[offer['slug']]==build.CURRENT and offer.get('price') is not None:
-            assert schema.get('@type')=='Product', f'Priced current record lacks Product markup: {offer["slug"]}'
-            assert schema.get('description') and build.e(schema['description']) in deal, f'Product description is not visible page text: {offer["slug"]}'
-            structured_offer=schema.get('offers') or {}
-            assert structured_offer.get('@type')=='Offer', f'Priced current Product lacks Offer: {offer["slug"]}'
-            assert structured_offer.get('price') not in (None,''), f'Product Offer lacks price: {offer["slug"]}'
-            assert structured_offer.get('priceCurrency')==offer.get('currency'), f'Product Offer currency mismatch: {offer["slug"]}'
-            forbidden={'availability','shippingDetails','hasMerchantReturnPolicy','gtin','gtin8','gtin12','gtin13','gtin14','mpn','brand','aggregateRating','review'}
-            assert not (forbidden & set(schema)), f'Unsupported Product fields published: {offer["slug"]}'
-            assert not ({'availability','shippingDetails','hasMerchantReturnPolicy'} & set(structured_offer)), f'Unsupported Offer fields published: {offer["slug"]}'
-        else:
-            assert schema.get('@type')=='WebPage', f'Unpriced or earlier record still publishes Product markup: {offer["slug"]}'
+        page=(ROOT/'site/providers'/offer['provider']/'index.html').read_text(encoding='utf-8')
+        detail=f'id="record-{offer["slug"]}"'
+        assert page.count(detail)==1, f'Record does not have exactly one provider detail: {offer["slug"]}'
+        block=page.split(detail,1)[1].split('</section>',1)[0]
+        assert build.e(offer['source_url']) in block and build.e(offer['fetched_at']) in block, f'Record detail lacks its own source or capture time: {offer["slug"]}'
+        assert states[offer['slug']] in block, f'Record detail omits its verification state: {offer["slug"]}'
+        if offer.get('offer_url'):
+            assert build.e(offer['offer_url']) in block, f'Record detail omits its own official offer link: {offer["slug"]}'
     for provider in cfg['providers']:
         page=(ROOT/'site/providers'/provider['id']/'index.html').read_text(encoding='utf-8')
         expect_current=sum(o['provider']==provider['id'] for o in current)
@@ -183,12 +171,13 @@ def check():
         assert f'<title>{build.e(provider["name"])} source-check status and terms | HostDealRadar</title>' in page, f'Provider page title lacks its source-check scope: {provider["id"]}'
     cloudways=(ROOT/'site/providers/cloudways/index.html').read_text(encoding='utf-8')
     current_section, reference_section=cloudways.split('<section class="history-block">',1)
-    assert '/deals/cloudways-summer404/' not in current_section, 'Undated Cloudways promotion remains a current card'
-    assert '/deals/cloudways-summer404/' in reference_section and 'Promotional end date not verified' in reference_section, 'Undated Cloudways promotion is not labelled in the reference section'
+    assert '#record-cloudways-summer404' not in current_section, 'Undated Cloudways promotion remains a current card'
+    assert '#record-cloudways-summer404' in reference_section and 'Promotional end date not verified' in reference_section, 'Undated Cloudways promotion is not labelled in the reference section'
     # A state-only page must say why nothing is published and must carry no figure.
     for pid in sorted(state_only):
         page=(ROOT/'site/providers'/pid/'index.html').read_text(encoding='utf-8')
-        figures=re.findall(r'\$[0-9]|[0-9](?:\.[0-9]+)?\s?%', page)
+        automated_section=page.split('<aside class="source-note">',1)[0]
+        figures=re.findall(r'\$[0-9]|[0-9](?:\.[0-9]+)?\s?%', automated_section)
         assert not figures, f'A state-only provider page shows price or discount figures: {pid} -> {figures[:5]}'
         status = statuses[pid]
         if status.get('status') == 'evidenced' and status.get('capture_status') == 'no_price_rule':
@@ -196,6 +185,10 @@ def check():
         else:
             assert 'Latest source check did not complete.' in page, f'A failed state-only source claims a completed check: {pid}'
             assert build.e(status['reason']) in page, f'A failed state-only source omits its recorded reason: {pid}'
+        observation=cfg['browser_observations'].get(pid)
+        if observation:
+            assert build.e(observation['quote']) in page and build.e(observation['url']) in page and observation['observed_at'] in page, f'Manual browser observation missing its quote, date, or source: {pid}'
+            assert 'does not change the automated source-check status' in page, f'Manual observation is confused with an automated source check: {pid}'
     home=(ROOT/'site/index.html').read_text(encoding='utf-8')
     assert f'{len(ids)} providers in our source list' in home, 'Homepage provider count mismatch'
     assert f'{len(current)} listings captured' in home, 'Homepage current-listing count mismatch'
@@ -227,21 +220,8 @@ def check():
     home_schema_json=json.dumps(home_schema,separators=(',',':'))
     assert '"@type":"Product"' not in home_schema_json and '"@type":"Offer"' not in home_schema_json, 'Homepage list publishes Product or Offer markup'
     listed={item['item']['url'] for item in home_schema['itemListElement']}
-    allowed={cfg['site']['domain'].rstrip('/')+f'/deals/{o["slug"]}/' for o in current}
+    allowed={cfg['site']['domain'].rstrip('/')+f'/providers/{o["provider"]}/' for o in current}
     assert listed <= allowed, 'Homepage structured data includes a record that is not current'
-    for o in history:
-        text=(ROOT/'site/deals'/o['slug']/'index.html').read_text(encoding='utf-8')
-        assert not [s for s in schemas(text) if s.get('@type')=='Product'], f'History record published Product markup: {o["slug"]}'
-        assert [s for s in schemas(text) if s.get('@type')=='WebPage'], f'History record lacks WebPage markup: {o["slug"]}'
-        assert any(label in text for label in ('Not reconfirmed','Needs recheck','Expired on','Promotional end date not verified')), f'History record is not labelled: {o["slug"]}'
-    for o in current:
-        text=(ROOT/'site/deals'/o['slug']/'index.html').read_text(encoding='utf-8')
-        products=[s for s in schemas(text) if s.get('@type')=='Product']
-        if o.get('price') is not None:
-            assert products and 'offers' in products[0], f'Priced current record is missing Product Offer data: {o["slug"]}'
-        else:
-            assert not products, f'Unpriced current record published Product markup: {o["slug"]}'
-            assert [s for s in schemas(text) if s.get('@type')=='WebPage'], f'Unpriced current record lacks WebPage markup: {o["slug"]}'
     compare=(ROOT/'site/compare/index.html').read_text(encoding='utf-8')
     if history:
         # Comparison rows are labelled by provider and plan title, not by slug, and
