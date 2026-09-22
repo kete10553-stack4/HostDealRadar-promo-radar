@@ -262,7 +262,7 @@ def agent_record(offer, provider, state):
         'billing_period': offer.get('billing_period'), 'commitment_months': offer.get('commitment_months'),
         'renewal_price': offer.get('renewal_price'), 'coupon_code': offer.get('coupon_code'),
         'valid_until': offer.get('valid_until'), 'source_url': offer['source_url'],
-        'captured_at': offer['fetched_at'], 'record_url': '/deals/' + offer['slug'] + '/',
+        'captured_at': offer['fetched_at'], 'record_url': '/providers/' + provider['id'] + '/#record-' + offer['slug'],
         'limitations': 'Prices, eligibility, checkout totals, and renewal terms must be confirmed with the provider.'
     }
 
@@ -315,6 +315,11 @@ async function mcp(request, env) {
 export default {
   async fetch(request, env) {
     const url = new URL(request.url); const path = url.pathname;
+    const oldRecord = path.match(/^\/deals\/([a-z0-9-]+)\/?$/);
+    if (oldRecord) {
+      const result = await publicLookup(env, '', oldRecord[1]);
+      if (result.status === 200) return Response.redirect(new URL(result.body.records[0].record_url, url.origin), 301);
+    }
     if (path === '/api/agent/lookup') {
       if (request.method !== 'GET') return json({ error: 'method_not_allowed', message: 'Use GET for this read-only endpoint.' }, 405, { allow: 'GET' });
       const provider = (url.searchParams.get('provider') || '').trim().toLowerCase(); const slug = (url.searchParams.get('slug') || '').trim();
@@ -368,7 +373,29 @@ def build(config_path=None, output=None):
         label='Official price' if o.get('kind')=='regular_price' else 'Promotion'
         if historical: label={'retained':'Earlier record','stale':'Needs recheck','expired':'Expired','unverified':'Unverified'}.get(state,state.title())
         cls='card history' if historical else 'card'
-        return f'''<article class="{cls}"><div class="card-top"><span class="provider-name">{e(p['name'])}</span><span class="tag">{label}</span></div><h3><a href="/deals/{e(o['slug'])}/">{e(o['title'])}</a></h3>{rate_pair(o, rule)}<p class="summary">{e(o.get('category','Hosting'))}</p><p class="small">{e(public_terms(o.get('condition') or ('Prepaid term: '+str(o['commitment_months'])+' months.' if o.get('commitment_months') else 'Initial term: Unknown.')))}</p><dl>{''.join(f'<div><dt>{e(x.split(" ")[0])}</dt><dd>{e(x)}</dd></div>' for x in terms) or '<div><dt>Commitment</dt><dd>Unknown</dd></div>'}</dl><a class="button" href="/deals/{e(o['slug'])}/">View terms</a><p class="capture">{e(message)}</p></article>'''
+        detail=f'/providers/{e(p["id"])}/#record-{e(o["slug"])}'
+        return f'''<article class="{cls}"><div class="card-top"><span class="provider-name">{e(p['name'])}</span><span class="tag">{label}</span></div><h3><a href="{detail}">{e(o['title'])}</a></h3>{rate_pair(o, rule)}<p class="summary">{e(o.get('category','Hosting'))}</p><p class="small">{e(public_terms(o.get('condition') or ('Prepaid term: '+str(o['commitment_months'])+' months.' if o.get('commitment_months') else 'Initial term: Unknown.')))}</p><dl>{''.join(f'<div><dt>{e(x.split(" ")[0])}</dt><dd>{e(x)}</dd></div>' for x in terms) or '<div><dt>Commitment</dt><dd>Unknown</dd></div>'}</dl><a class="button" href="{detail}">View terms</a><p class="capture">{e(message)}</p></article>'''
+    def record_detail(o):
+        p=byid[o['provider']]; state, message=states[o['slug']]
+        rule=rules.get((o['provider'], o['title']), {})
+        advertised=price(o) + (' / ' + period_text(o) if o.get('price') is not None else '')
+        terms=[('Listing type','Regular price; no discount claimed' if o.get('kind')=='regular_price' else 'Promotion'),
+               ('Advertised price',advertised),('Commitment',str(o['commitment_months'])+' months' if o.get('commitment_months') else 'Unknown'),
+               ('Renewal price',displayed_rate(o,'renewal_price') if renewal_supported(o,rule) else 'Unknown'),
+               ('Coupon code',o.get('coupon_code') or 'Unknown'),('Valid until',o.get('valid_until') or 'Unknown'),
+               ('Captured at',o['fetched_at']),('Record state',state)]
+        terms_html=''.join(f'<div><dt>{e(key)}</dt><dd>{e(value)}</dd></div>' for key,value in terms)
+        rel='sponsored noopener noreferrer' if p['affiliate_url'] else 'noopener noreferrer'
+        disclosure='This may be an affiliate link; we may earn a commission at no extra cost to you.' if p['affiliate_url'] else 'This is an official link; no affiliate relationship is active.'
+        outbound=(f'<a class="button" href="{e(o["offer_url"])}" rel="{rel}">View offer at {e(p["name"])} ↗</a>'
+                  if o.get('offer_url') else '<p>Official offer link not captured.</p>')
+        return (f'<section class="record-detail" id="record-{e(o["slug"])}"><h3>{e(offer_name(p["name"],o["title"]))}</h3>'
+                f'<p class="record-state state-{e(state)}"><strong>{e(state.title())}</strong> {e(message)}</p>'
+                f'<p>{e(o.get("category","Hosting"))}: {e(public_terms(o.get("condition") or "Terms captured from the official provider page."))}</p>'
+                f'{rate_pair(o,rule)}<dl class="terms">{terms_html}</dl>'
+                f'<div class="source-note"><strong>Where this comes from</strong><p>{e(public_terms(o["evidence"]))}</p>'
+                f'<a href="{e(o["source_url"])}" rel="noopener noreferrer">View the official page ↗</a></div>'
+                f'{outbound}<p class="small">{e(disclosure)} Confirm availability, tax, billing term and renewal in the provider’s checkout.</p></section>')
     current_by_provider=defaultdict(list)
     for offer in current:
         current_by_provider[offer['provider']].append(offer)
@@ -397,10 +424,11 @@ def build(config_path=None, output=None):
     home=template('index.html',month=datetime.now().strftime('%B %Y'),deal_count=len(current),provider_count=len(providers),updated=e('Last source snapshot: '+date_text(payload.get('generated_at','Unknown'))),selection_note=e(selection_note),offers='<div class="cards">'+''.join(card(o) for o in shown)+'</div>' if shown else '<div class="empty"><h3>No current offers are published</h3><p>We only show terms that were captured from an official source in the latest check. Check back after the next source run.</p></div>',providers=provider_tiles)
     # The homepage lists different services; its entries are navigation targets,
     # not merchant Offers for products that HostDealRadar sells.
+    current_provider_ids={o['provider'] for o in current}
     home_schema={'@context':'https://schema.org','@graph':[
         {'@type':'WebSite','@id':domain+'/#website','name':cfg['site']['brand'],'url':domain+'/','inLanguage':'en-US','publisher':{'@id':domain+'/#organization'}},
         {'@type':'Organization','@id':domain+'/#organization','name':cfg['site']['brand'],'url':domain+'/','sameAs':[cfg['settings']['repo_url']]},
-        {'@type':'ItemList','name':'HostDealRadar official hosting offers','itemListElement':[{'@type':'ListItem','position':i+1,'item':{'@type':'WebPage','name':o['title'],'url':domain+'/deals/'+o['slug']+'/'}} for i,o in enumerate(current)]}
+        {'@type':'ItemList','name':'HostDealRadar providers with current records','itemListElement':[{'@type':'ListItem','position':i+1,'item':{'@type':'WebPage','name':p['name'],'url':domain+'/providers/'+p['id']+'/'}} for i,p in enumerate(p for p in providers if p['id'] in current_provider_ids)]}
     ]}
     write(Path('index.html'),page('HostDealRadar | Official hosting offers', 'Official hosting offers with source-check status and provider links.',domain+'/',home,home_schema,head_extra="<meta name='impact-site-verification' value='9f3ff63a-c432-478f-8859-af77a6120cbb'>"))
     provider_listing='<section class="wrap section"><div class="eyebrow">OFFICIAL SOURCES</div><h1>Providers we check</h1><p class="lead">Providers have public source pages in our list. Each provider page shows whether the latest source check confirmed listings, produced no published record, or did not complete. The grid follows the configured source-list order; it is not a recommendation, quality ranking, or price ranking. Each summary names the first current record, or an explicitly marked earlier record when none is current. Open a provider for the matching official source. <a href="/methodology/#service-labels">Read service-label definitions and limits</a>. Earlier records stay clearly marked.</p><div class="provider-grid">'+provider_tiles+'</div></section>'
@@ -412,6 +440,13 @@ def build(config_path=None, output=None):
         if p['id'] in state_only:
             status_text, detail, _ = state_only_display(status, blockers.get(p['id']))
             current_html='<div class="empty"><h3>'+e(status_text)+'</h3><p>'+e(detail)+'</p></div>'
+            observation=cfg['browser_observations'].get(p['id'])
+            if observation:
+                current_html+=(f'<aside class="source-note"><strong>Manual browser observation, not a current offer</strong>'
+                              f'<p>Official page text: “{e(observation["quote"])}”</p>'
+                              f'<p>{e(observation["context"])} Observed {e(observation["observed_at"])} at '
+                              f'<a href="{e(observation["url"])}" rel="noopener noreferrer">the official page</a>. '
+                              'This snapshot does not change the automated source-check status or establish a current price.</p></aside>')
         else:
             status_text='Official page read; capture rules matched.' if status['status']=='evidenced' and status.get('capture_status')=='matched' and status.get('http_status')==200 and status.get('visible_excerpt') else e(status['reason'])
             current_html='<div class="cards">'+''.join(card(o) for o in po)+'</div>' if po else '<div class="empty"><h3>No current offer is published for this source</h3><p>'+e('Promotional end date not verified.' if any(states[o['slug']][0]=='unverified' for o in ph) else status['reason'])+'</p></div>'
@@ -421,7 +456,9 @@ def build(config_path=None, output=None):
         note=provider_summary(po, ph)+' The summary uses the first current record, or the first reference record if none is current. Cards in each section follow stored record order; this is not a recommendation or a ranking of price, quality, or value.'
         guide_templates={'godaddy':'provider-guide.html','namecheap':'namecheap-provider-guide.html','cloudways':'cloudways-provider-guide.html'}
         related_guide=template(guide_templates[p['id']]) if p['id'] in guide_templates else ''
-        content=template('provider.html',provider=e(p['name']),note=e(note),source=e(p['source_url']),source_status=e(status_text),related_guide=related_guide,offers=current_html+history_html)
+        details=('<section class="record-details"><h2>Source record details</h2><p>Each record below keeps its own official source, capture time and verification state.</p>'
+                 +''.join(record_detail(o) for o in mine)+'</section>') if mine else ''
+        content=template('provider.html',provider=e(p['name']),note=e(note),source=e(p['source_url']),source_status=e(status_text),related_guide=related_guide,offers=current_html+history_html+details)
         write(Path('providers')/p['id']/'index.html',page(
             f'{p["name"]} source-check status and terms | HostDealRadar',
             provider_description(p['name'], po, ph),
@@ -451,29 +488,6 @@ def build(config_path=None, output=None):
         {'@type':'Question','name':'Did this check verify another current general hosting coupon code?','acceptedAnswer':{'@type':'Answer','text':'No current general code was verified by this page check. It did not test checkout or every Cloudways product.'}}
     ]}
     write(Path('guides/cloudways-coupon-code/index.html'),page('Cloudways coupon code: source status for SUMMER404 | HostDealRadar','Cloudways source evidence for SUMMER404, including the recorded countdown statement and its limits.',domain+cloudways_guide_route,cloudways_guide,cloudways_guide_schema))
-    for o in offers:
-        state, message=states[o['slug']]
-        rule=rules.get((o['provider'], o['title']), {})
-        advertised = price(o) + (' / ' + period_text(o) if o.get('price') is not None else '')
-        summary_text=public_terms(o.get('condition') or 'Terms captured from the official provider page.')
-        p=byid[o['provider']]; terms=[('Listing type','Regular price; no discount claimed' if o.get('kind')=='regular_price' else 'Promotion'),('Advertised price',advertised),('Commitment',str(o['commitment_months'])+' months' if o.get('commitment_months') else 'Unknown'),('Renewal price',displayed_rate(o,'renewal_price') if renewal_supported(o,rule) else 'Unknown'),('Coupon code',o.get('coupon_code') or 'Unknown'),('Valid until',o.get('valid_until') or 'Unknown'),('Captured at',o['fetched_at']),('Record state',state)]
-        terms_html=''.join(f'<div><dt>{e(k)}</dt><dd>{e(v)}</dd></div>' for k,v in terms)
-        rel='rel="noopener noreferrer"' if not p['affiliate_url'] else 'rel="sponsored noopener noreferrer"'
-        disclosure='This is an official link; no affiliate relationship is active.' if not p['affiliate_url'] else 'This may be an affiliate link; we may earn a commission at no extra cost to you.'
-        status_html=f'<p class="record-state state-{e(state)}"><strong>{e(state.title())}</strong> {e(message)}</p>'
-        display_name=offer_name(p['name'], o['title'])
-        content=template('deal.html',provider=e(p['name']),provider_id=e(p['id']),category=e(o.get('category','Hosting')),offer_title=e(display_name),summary=e(summary_text),rate_pair=rate_pair(o,rule),terms=terms_html,source_note=e(public_terms(o['evidence'])),source_url=e(o['source_url']),price=e(price(o)),billing=e('Billed under the provider terms.'),status=status_html,outbound=e(o['offer_url']),rel=rel,disclosure=e(disclosure))
-        canonical=domain+'/deals/'+o['slug']+'/'
-        # Product snippets require an active price. Earlier records and current
-        # records without a numeric price remain useful pages, but they must not
-        # claim Product/Offer eligibility by publishing incomplete price data.
-        if state==CURRENT and o.get('price') is not None:
-            schema={'@context':'https://schema.org','@type':'Product','name':display_name,'description':summary_text,'offers':schema_offer(o,canonical,display_name)}
-        else:
-            schema={'@context':'https://schema.org','@type':'WebPage','name':display_name,'description':summary_text}
-        write(Path('deals')/o['slug']/'index.html',page(
-            f'{display_name}: official terms | HostDealRadar',
-            deal_description(p['name'], o), canonical, content, schema))
     def row(o):
         state,message=states[o['slug']]
         rule=rules.get((o['provider'], o['title']), {})
@@ -620,7 +634,6 @@ Planned endpoints return HTTP 503 with `temporarily_unavailable` until authentic
     write(Path('404.html'),page('Page not found | HostDealRadar','This page does not exist.',domain+'/404.html',prose('Page not found','<p><a href="/">Return to current offers</a></p>'),{'@context':'https://schema.org','@type':'WebPage','name':'Page not found'}))
     routes=['/','/providers/','/compare/','/methodology/','/about/','/contact/','/disclosure/','/privacy/',guide_route,namecheap_guide_route,cloudways_guide_route]
     routes+=[f'/providers/{p["id"]}/' for p in providers]
-    routes+=[f'/deals/{o["slug"]}/' for o in offers]
     # lastmod tracks the rendered page itself: it only moves when the page's
     # material content changes, not when a capture timestamp is refreshed.
     previous=payload.get(STATE_KEY)
