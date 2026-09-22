@@ -9900,8 +9900,8 @@
       "lastmod": "2026-09-22T11:40:10Z"
     },
     "/providers/ucraft/": {
-      "hash": "fd767319da982d021a135c8d6c91f55eb0cb3bb27cadeb1d1983317fcc11869e",
-      "lastmod": "2026-09-22T11:40:10Z"
+      "hash": "0cc1df44d20db8c25b7c506d27ce5521e6260b52eca462e7f6340bbf6fff6d13",
+      "lastmod": "2026-09-22T12:14:31Z"
     },
     "/providers/voog/": {
       "hash": "4a9d2e6fd6c803092e481de6e46dce93d8083802d0d66a3f5df8f85b279e6724",
@@ -10040,8 +10040,8 @@
       "lastmod": "2026-09-22T11:40:10Z"
     },
     "/providers/supabase/": {
-      "hash": "9143bd28193394c4a91fb66e9f45ca578cfcd005bb5c438f4a498bbca6c20b8c",
-      "lastmod": "2026-09-22T11:40:10Z"
+      "hash": "365136b4a7c83e8f84302f933240e0c3aa509b3003a4c1be396c0de442250c8c",
+      "lastmod": "2026-09-22T12:14:31Z"
     },
     "/providers/platform-sh/": {
       "hash": "c9578bef320af3cfcb851719c6857efe81911e955d51471498b6435a6461bdcb",
@@ -10080,24 +10080,24 @@
       "lastmod": "2026-09-22T11:40:10Z"
     },
     "/providers/shopify/": {
-      "hash": "79b6b145cd77f6e868bf783fdbefb91aa3c11e0c44d49401b10396d40e723256",
-      "lastmod": "2026-09-22T11:40:10Z"
+      "hash": "ea33eed89f4dffb05c610b0f18c65c40208107509bac844d1c77c56d15043a3a",
+      "lastmod": "2026-09-22T12:14:31Z"
     },
     "/providers/bigcommerce/": {
       "hash": "66f20ad5d28f5ab431ffad6af2a1a9e73cb3b4b9b1e100db6b846e74d0e9bd15",
       "lastmod": "2026-09-22T11:40:10Z"
     },
     "/providers/duda/": {
-      "hash": "8d32025ef54b0905e958f1d3eef7f646a1a26aca96daff0e1a463aadd789cd2a",
-      "lastmod": "2026-09-22T11:40:10Z"
+      "hash": "1ff7248fec1cdfe758cfb6b6aab387294d7c41cb74451603351877fb79667bff",
+      "lastmod": "2026-09-22T12:14:31Z"
     },
     "/providers/framer/": {
-      "hash": "11d8581d15ec5c3673b2f28782d0fbd91632d04c7e3769fe1a6e44d668234244",
-      "lastmod": "2026-09-22T11:40:10Z"
+      "hash": "a437274578f148db9d6f0a9df5633459714d5a2023838c3886b9007001194a02",
+      "lastmod": "2026-09-22T12:14:31Z"
     },
     "/providers/ghost/": {
-      "hash": "3dde6011e1afa6d116f74ab0aa8250d042d063fb08df8595855120fbdc925069",
-      "lastmod": "2026-09-22T11:40:10Z"
+      "hash": "ecd729791dd30e07b0074a8bc3911a4d4fb20fe03deb6c8d1198023ba0ca02d4",
+      "lastmod": "2026-09-22T12:14:31Z"
     },
     "/providers/tilda/": {
       "hash": "81a48fe8b89a96fb80782ecfbf9a294227f21ed8ee366679a041886858f06b60",
@@ -10120,16 +10120,16 @@
       "lastmod": "2026-09-22T11:40:10Z"
     },
     "/providers/flywheel/": {
-      "hash": "fd8acf82d06755f62854833220b0c20f4103550a19fbd80cf6a44f4925f75803",
-      "lastmod": "2026-09-22T11:40:10Z"
+      "hash": "24c1fdf0c827990b3114e10a05d93c029d642635fb5b4940e982bc6d84df8780",
+      "lastmod": "2026-09-22T12:14:31Z"
     },
     "/providers/10web/": {
       "hash": "e5689929aac82a516a253bad547cd36025772c6e6a23ebe7f8621628bd1774c3",
       "lastmod": "2026-09-22T11:40:10Z"
     },
     "/providers/webflow/": {
-      "hash": "a28258ecf3007033a889ed1e194fb6620bc83c665c12079497a41118d757e24c",
-      "lastmod": "2026-09-22T11:40:10Z"
+      "hash": "4f18416cbe9c9a7a53d96959bed37a35e5366f29623ea0f6545d2bf74d138fa7",
+      "lastmod": "2026-09-22T12:14:31Z"
     },
     "/providers/gandi/": {
       "hash": "ab424e1b5fafdbfc3d7ed000eeebc87d774ff9f5e09c2916ba3ef041d7faf009",
@@ -10148,8 +10148,8 @@
       "lastmod": "2026-09-22T11:40:10Z"
     },
     "/providers/railway/": {
-      "hash": "2cda87bf191b275cb170a42107ace0b66d6d46fc1aed30ad804f9bd815bc919c",
-      "lastmod": "2026-09-22T11:40:10Z"
+      "hash": "d37e45b1bae11889bedc7c095023803617fad975ff4f6d633091c167a3b14850",
+      "lastmod": "2026-09-22T12:14:31Z"
     },
     "/providers/wordpress-com/": {
       "hash": "18a5498b7eb332a28fd31782b20e6298ef7f6045340201cfd71ff23d83d78881",
@@ -10160,8 +10160,8 @@
       "lastmod": "2026-09-22T11:40:10Z"
     },
     "/providers/krystal/": {
-      "hash": "984a46f6e7afd6b19d3c1023d643a0b42d1dbb0bc81e52608ea29a136d225fb4",
-      "lastmod": "2026-09-22T11:40:10Z"
+      "hash": "ce64a37b277050bc7be5a5c97d837b6db24e6d8c3d45e6cc7abb33ba63b491e5",
+      "lastmod": "2026-09-22T12:14:31Z"
     },
     "/providers/scaleway/": {
       "hash": "611637b370aab377375eec2991da010bdbf67ffc108186cdf079d9b12a56f721",
@@ -10176,12 +10176,12 @@
       "lastmod": "2026-09-22T11:40:10Z"
     },
     "/providers/hostinger/": {
-      "hash": "f21d7b8b7be7de41df8f13e3ac47edf4e5d783c529997eaa1c05c3a5835b4210",
-      "lastmod": "2026-09-22T11:40:10Z"
+      "hash": "533b81b1607a4b529005df452e6dea4eada3b3a642524953c53a91951baed252",
+      "lastmod": "2026-09-22T12:14:31Z"
     },
     "/providers/siteground/": {
-      "hash": "48e0ad6e93126bbbdc2127e5e85c92e8b2fffc487f4d26626bf0860e10d1fc83",
-      "lastmod": "2026-09-22T11:40:10Z"
+      "hash": "d0969309c856ec58b76cec9466a9ba169a54ef5bafd34419602b43f77cfe1816",
+      "lastmod": "2026-09-22T12:14:31Z"
     },
     "/providers/dreamhost/": {
       "hash": "dc33addbb4592f7386344abf4250805a105e4a6056c095f285406b231fec055c",
@@ -10244,12 +10244,12 @@
       "lastmod": "2026-09-22T11:40:10Z"
     },
     "/providers/netlify/": {
-      "hash": "acf334fd2f84d98f64cc21307f82ad22227794e680681f447b5d546ef811bbca",
-      "lastmod": "2026-09-22T11:40:10Z"
+      "hash": "8892024258a24c4a6610258a1609f6b3fc2bcb0ab59f96ac71403eb8c8efd83d",
+      "lastmod": "2026-09-22T12:14:31Z"
     },
     "/providers/vercel/": {
-      "hash": "27fbab36a7b5e11e4e0064b1b6d96195f3a0a410b4f4d59b8a7ac6642b963f71",
-      "lastmod": "2026-09-22T11:40:10Z"
+      "hash": "2860ef36c36e0808185977c8463434a4df5882e8b7345bd8a00b26328c5708a1",
+      "lastmod": "2026-09-22T12:14:31Z"
     },
     "/providers/ovhcloud/": {
       "hash": "2802e6c4a59326f038a0d78da2e1848dee10026277ff9cc38bf584cd67ce1d0c",
@@ -10304,8 +10304,8 @@
       "lastmod": "2026-09-22T11:40:10Z"
     },
     "/providers/render/": {
-      "hash": "e05a86f1d87ff71b18a754195718639b05cfc0611566b848f9256435546d15d4",
-      "lastmod": "2026-09-22T11:40:10Z"
+      "hash": "d87d81fce0b2b53df68161835526a3ecafed46200d0132aabbc718fe06a2d7af",
+      "lastmod": "2026-09-22T12:14:31Z"
     },
     "/providers/fly-io/": {
       "hash": "fecbbb7f25b42f119bb7cb645b1402166b004b646a3218947831dd1e8c4719a4",

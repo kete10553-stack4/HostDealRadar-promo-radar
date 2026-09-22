@@ -79,6 +79,7 @@ def check():
     assert {p['id'] for p in cfg['providers']} == set(statuses), 'Every configured provider needs a recorded source status'
     assert all(o.get('price') != 0 for o in payload.get('offers', [])), 'A zero price must be represented as source text, not a monthly price'
     ids={p['id'] for p in cfg['providers']}
+    assert set(cfg['page_focus']) <= ids, 'A page-focus entry names a provider outside the configured source list'
     # The invariant is evidence, not output. Every configured provider must have
     # been opened once and must carry a specific reason. "Reachable official page,
     # but no deterministic rule can be written" is a legitimate state-only
@@ -174,7 +175,13 @@ def check():
         assert page.count('<article class="card">') == expect_current, f'Current-offer card count wrong on provider page: {provider["id"]}'
         assert page.count('<article class="card history">') == expect_history, f'Historical card count wrong on provider page: {provider["id"]}'
         assert expect_current + expect_history > 0 or provider['id'] in state_only, f'Empty provider page: {provider["id"]}'
-        assert f'<title>{build.e(provider["name"])} source-check status and terms | HostDealRadar</title>' in page, f'Provider page title lacks its source-check scope: {provider["id"]}'
+        focus=cfg['page_focus'].get(provider['id'])
+        if focus:
+            assert f'<title>{build.e(focus)}: official price and terms | HostDealRadar</title>' in page, f'Focused provider title is not query-aligned: {provider["id"]}'
+            assert f'<h1>{build.e(focus)}</h1>' in page, f'Focused provider heading is not query-aligned: {provider["id"]}'
+            assert f'{build.e(focus)}: official price, billing, and renewal terms appear below only when captured' in page, f'Focused provider first-screen answer is missing: {provider["id"]}'
+        else:
+            assert f'<title>{build.e(provider["name"])} source-check status and terms | HostDealRadar</title>' in page, f'Provider page title lacks its source-check scope: {provider["id"]}'
     cloudways=(ROOT/'site/providers/cloudways/index.html').read_text(encoding='utf-8')
     current_section, reference_section=cloudways.split('<section class="history-block">',1)
     assert '#record-cloudways-summer404' not in current_section, 'Undated Cloudways promotion remains a current card'

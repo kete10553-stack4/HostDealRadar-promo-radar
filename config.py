@@ -50,6 +50,7 @@ def load_config(path=None):
     rules = [json.loads(line) for line in sections.get('EXTRACTORS', [])]
     notes = json.loads('\n'.join(sections.get('PROVIDER_NOTES', ['{}'])))
     browser_observations = json.loads('\n'.join(sections.get('BROWSER_OBSERVATIONS', ['{}'])))
+    page_focus = json.loads('\n'.join(sections.get('PAGE_FOCUS', ['{}'])))
     return dict(site=site, settings=settings, providers=providers, extractors=rules,
-                fields=sections['FIELDS'][0].split(), notes=notes, browser_observations=browser_observations,
+                fields=sections['FIELDS'][0].split(), notes=notes, browser_observations=browser_observations, page_focus=page_focus,
                 excluded=sections.get('EXCLUDED', []), references=sections.get('REFERENCE_SOURCES', []), raw=raw)
