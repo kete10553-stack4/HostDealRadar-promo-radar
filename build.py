@@ -474,14 +474,20 @@ def build(config_path=None, output=None):
         history_html=''
         if ph:
             history_html='<section class="history-block"><h2>Unverified or earlier records kept for reference</h2><p class="muted">These records may be expired, stale, not reconfirmed, or missing a verified promotional end date. Each keeps its actual capture time and is not a current offer.</p><div class="cards">'+''.join(card(o,historical=True) for o in ph)+'</div></section>'
+        focus=cfg['page_focus'].get(p['id'])
         note=provider_summary(po, ph)+' The summary uses the first current record, or the first reference record if none is current. Cards in each section follow stored record order; this is not a recommendation or a ranking of price, quality, or value.'
+        if focus:
+            note=(f'{focus}: official price, billing, and renewal terms appear below only when captured from the provider’s public page. '
+                  f'This page keeps related {p["name"]} plan records together. '+note)
         related_guide=template(guide_templates[p['id']]) if p['id'] in guide_templates else ''
         details=('<section class="record-details"><h2>Source record details</h2><p>Each record below keeps its own official source, capture time and verification state.</p>'
                  +''.join(record_detail(o) for o in mine)+'</section>') if mine else ''
-        content=template('provider.html',provider=e(p['name']),note=e(note),source=e(p['source_url']),source_status=e(status_text),related_guide=related_guide,offers=current_html+history_html+details)
+        heading=focus or p['name']
+        content=template('provider.html',provider=e(heading),note=e(note),source=e(p['source_url']),source_status=e(status_text),related_guide=related_guide,offers=current_html+history_html+details)
         write(Path('providers')/p['id']/'index.html',page(
-            f'{p["name"]} source-check status and terms | HostDealRadar',
-            provider_description(p['name'], po, ph),
+            f'{heading}: official price and terms | HostDealRadar' if focus else f'{p["name"]} source-check status and terms | HostDealRadar',
+            (f'Official {heading} terms and related {p["name"]} plan records, with price, billing, and renewal details shown only when captured from the provider page.'
+             if focus else provider_description(p['name'], po, ph)),
             domain+'/providers/'+p['id']+'/', content,
             {'@context':'https://schema.org','@type':'CollectionPage','name':p['name']+' terms and source-check status'}))
     guide_route='/guides/godaddy-renewal-coupon/'
