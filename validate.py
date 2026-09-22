@@ -101,6 +101,8 @@ def check():
         assert rule.get('blocker_evidence'), f'{rule["provider"]} state-only rule needs blocker_evidence (the URL and what was seen)'
     state_only={rule['provider'] for rule in cfg['extractors'] if rule.get('mode')=='availability_only'}
     state_only={pid for pid in state_only if not any(r.get('mode')!='availability_only' for r in cfg['extractors'] if r.get('provider')==pid)}
+    guide_provider_ids={'godaddy','namecheap','cloudways'}
+    unpublished_source_only={pid for pid in state_only if pid not in cfg['browser_observations'] and pid not in guide_provider_ids}
     for pid in sorted(state_only):
         assert pid not in {o['provider'] for o in payload['offers']}, f'A state-only provider published an offer: {pid}'
     for offer in payload['offers']:
@@ -162,7 +164,11 @@ def check():
         if offer.get('offer_url'):
             assert build.e(offer['offer_url']) in block, f'Record detail omits its own official offer link: {offer["slug"]}'
     for provider in cfg['providers']:
-        page=(ROOT/'site/providers'/provider['id']/'index.html').read_text(encoding='utf-8')
+        page_path=ROOT/'site/providers'/provider['id']/'index.html'
+        if provider['id'] in unpublished_source_only:
+            assert not page_path.exists(), f'Unverified source-only provider page is still public: {provider["id"]}'
+            continue
+        page=page_path.read_text(encoding='utf-8')
         expect_current=sum(o['provider']==provider['id'] for o in current)
         expect_history=sum(o['provider']==provider['id'] for o in history)
         assert page.count('<article class="card">') == expect_current, f'Current-offer card count wrong on provider page: {provider["id"]}'
@@ -175,8 +181,10 @@ def check():
     assert '#record-cloudways-summer404' in reference_section and 'Promotional end date not verified' in reference_section, 'Undated Cloudways promotion is not labelled in the reference section'
     # A state-only page must say why nothing is published and must carry no figure.
     for pid in sorted(state_only):
+        if pid in unpublished_source_only:
+            continue
         page=(ROOT/'site/providers'/pid/'index.html').read_text(encoding='utf-8')
-        automated_section=page.split('<aside class="source-note">',1)[0]
+        automated_section=page.split('<section class="record-detail source-observation"',1)[0]
         figures=re.findall(r'\$[0-9]|[0-9](?:\.[0-9]+)?\s?%', automated_section)
         assert not figures, f'A state-only provider page shows price or discount figures: {pid} -> {figures[:5]}'
         status = statuses[pid]
@@ -188,6 +196,8 @@ def check():
         observation=cfg['browser_observations'].get(pid)
         if observation:
             assert build.e(observation['quote']) in page and build.e(observation['url']) in page and observation['observed_at'] in page, f'Manual browser observation missing its quote, date, or source: {pid}'
+            assert 'Official source record' in page and 'Not publicly disclosed on the observed page' in page, f'Observation is not rendered as a source record: {pid}'
+            assert 'does not mean that no promotion exists' in page, f'Observation lacks the public-price limitation: {pid}'
             assert 'does not change the automated source-check status' in page, f'Manual observation is confused with an automated source check: {pid}'
     home=(ROOT/'site/index.html').read_text(encoding='utf-8')
     assert f'{len(ids)} providers in our source list' in home, 'Homepage provider count mismatch'
@@ -270,6 +280,9 @@ def check():
         route=loc.removeprefix(cfg['site']['domain'].rstrip('/')).strip('/')
         output=ROOT/'site'/route/'index.html' if route else ROOT/'site/index.html'
         assert output.exists(), f'Sitemap URL has no generated page: {loc}'
+    sitemap_urls={entry.findtext('sm:loc',default='',namespaces=NS) for entry in entries}
+    for pid in unpublished_source_only:
+        assert cfg['site']['domain'].rstrip('/')+f'/providers/{pid}/' not in sitemap_urls, f'Unverified source-only provider is still in sitemap: {pid}'
     # lastmod must track material page changes only: rebuilding identical inputs
     # must not move it, which is what a capture-timestamp-driven lastmod would do.
     before=sitemap_lastmods()

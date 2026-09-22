@@ -354,6 +354,11 @@ def build(config_path=None, output=None):
     current=[o for o in offers if states[o['slug']][0]==CURRENT]
     history=[o for o in offers if states[o['slug']][0] in HISTORY]
     providers=cfg['providers']
+    guide_templates={'godaddy':'provider-guide.html','namecheap':'namecheap-provider-guide.html','cloudways':'cloudways-provider-guide.html'}
+    # A source-only provider needs either a concrete official-page observation or
+    # an existing editorial guide. Otherwise it has no public page to publish.
+    unpublished_source_only={pid for pid in state_only if pid not in cfg['browser_observations'] and pid not in guide_templates}
+    public_providers=[p for p in providers if p['id'] not in unpublished_source_only]
     rendered={}
     if OUT.exists(): shutil.rmtree(OUT)
     shutil.copytree(ASSETS, OUT/'assets')
@@ -396,6 +401,19 @@ def build(config_path=None, output=None):
                 f'<div class="source-note"><strong>Where this comes from</strong><p>{e(public_terms(o["evidence"]))}</p>'
                 f'<a href="{e(o["source_url"])}" rel="noopener noreferrer">View the official page ↗</a></div>'
                 f'{outbound}<p class="small">{e(disclosure)} Confirm availability, tax, billing term and renewal in the provider’s checkout.</p></section>')
+    def source_observation_record(p, observation, status):
+        terms=[('Record type','Official source observation; not a current offer'),
+               ('Official price','Not publicly disclosed on the observed page'),
+               ('Promotion status','Not checked by this observation'),
+               ('Observed at',observation['observed_at']),
+               ('Automated source status',state_only_display(status, blockers.get(p['id']))[0])]
+        terms_html=''.join(f'<div><dt>{e(key)}</dt><dd>{e(value)}</dd></div>' for key,value in terms)
+        return (f'<section class="record-detail source-observation" id="source-observation"><h2>Official source record</h2>'
+                f'<p>Official page text: “{e(observation["quote"])}”</p><dl class="terms">{terms_html}</dl>'
+                f'<div class="source-note"><strong>Where this comes from</strong><p>{e(observation["context"])}</p>'
+                f'<a href="{e(observation["url"])}" rel="noopener noreferrer">View the official page ↗</a></div>'
+                '<p class="small">A public price not shown on this page does not mean that no promotion exists. '
+                'This record does not change the automated source-check status or establish a current price.</p></section>')
     current_by_provider=defaultdict(list)
     for offer in current:
         current_by_provider[offer['provider']].append(offer)
@@ -414,7 +432,7 @@ def build(config_path=None, output=None):
         else:
             label='Latest source check did not complete →'
         return f'<a class="provider-tile" href="/providers/{e(p["id"])}/"><strong>{e(p["name"])}</strong><p>{e(provider_summary(current_by_provider[p["id"]], history_by_provider[p["id"]]))}</p><span>{e(label)}</span></a>'
-    provider_tiles=''.join(tile(p) for p in providers)
+    provider_tiles=''.join(tile(p) for p in public_providers)
     featured=featured_renewals(current, rules)
     featured_slugs={o['slug'] for o in featured}
     shown=(featured+[o for o in current if o['slug'] not in featured_slugs])[:9]
@@ -428,12 +446,12 @@ def build(config_path=None, output=None):
     home_schema={'@context':'https://schema.org','@graph':[
         {'@type':'WebSite','@id':domain+'/#website','name':cfg['site']['brand'],'url':domain+'/','inLanguage':'en-US','publisher':{'@id':domain+'/#organization'}},
         {'@type':'Organization','@id':domain+'/#organization','name':cfg['site']['brand'],'url':domain+'/','sameAs':[cfg['settings']['repo_url']]},
-        {'@type':'ItemList','name':'HostDealRadar providers with current records','itemListElement':[{'@type':'ListItem','position':i+1,'item':{'@type':'WebPage','name':p['name'],'url':domain+'/providers/'+p['id']+'/'}} for i,p in enumerate(p for p in providers if p['id'] in current_provider_ids)]}
+        {'@type':'ItemList','name':'HostDealRadar providers with current records','itemListElement':[{'@type':'ListItem','position':i+1,'item':{'@type':'WebPage','name':p['name'],'url':domain+'/providers/'+p['id']+'/'}} for i,p in enumerate(p for p in public_providers if p['id'] in current_provider_ids)]}
     ]}
     write(Path('index.html'),page('HostDealRadar | Official hosting offers', 'Official hosting offers with source-check status and provider links.',domain+'/',home,home_schema,head_extra="<meta name='impact-site-verification' value='9f3ff63a-c432-478f-8859-af77a6120cbb'>"))
     provider_listing='<section class="wrap section"><div class="eyebrow">OFFICIAL SOURCES</div><h1>Providers we check</h1><p class="lead">Providers have public source pages in our list. Each provider page shows whether the latest source check confirmed listings, produced no published record, or did not complete. The grid follows the configured source-list order; it is not a recommendation, quality ranking, or price ranking. Each summary names the first current record, or an explicitly marked earlier record when none is current. Open a provider for the matching official source. <a href="/methodology/#service-labels">Read service-label definitions and limits</a>. Earlier records stay clearly marked.</p><div class="provider-grid">'+provider_tiles+'</div></section>'
     write(Path('providers/index.html'),page('Providers | HostDealRadar','Hosting providers and their latest source-check status.',domain+'/providers/',provider_listing,{'@context':'https://schema.org','@type':'CollectionPage','name':'Providers'}))
-    for p in providers:
+    for p in public_providers:
         mine=[o for o in offers if o['provider']==p['id']]
         po=[o for o in mine if states[o['slug']][0]==CURRENT]; ph=[o for o in mine if states[o['slug']][0] in HISTORY]
         status=statuses.get(p['id'],{'status':'not checked','reason':'No source check has run yet.'})
@@ -442,11 +460,7 @@ def build(config_path=None, output=None):
             current_html='<div class="empty"><h3>'+e(status_text)+'</h3><p>'+e(detail)+'</p></div>'
             observation=cfg['browser_observations'].get(p['id'])
             if observation:
-                current_html+=(f'<aside class="source-note"><strong>Manual browser observation, not a current offer</strong>'
-                              f'<p>Official page text: “{e(observation["quote"])}”</p>'
-                              f'<p>{e(observation["context"])} Observed {e(observation["observed_at"])} at '
-                              f'<a href="{e(observation["url"])}" rel="noopener noreferrer">the official page</a>. '
-                              'This snapshot does not change the automated source-check status or establish a current price.</p></aside>')
+                current_html+=source_observation_record(p, observation, status)
         else:
             status_text='Official page read; capture rules matched.' if status['status']=='evidenced' and status.get('capture_status')=='matched' and status.get('http_status')==200 and status.get('visible_excerpt') else e(status['reason'])
             current_html='<div class="cards">'+''.join(card(o) for o in po)+'</div>' if po else '<div class="empty"><h3>No current offer is published for this source</h3><p>'+e('Promotional end date not verified.' if any(states[o['slug']][0]=='unverified' for o in ph) else status['reason'])+'</p></div>'
@@ -454,7 +468,6 @@ def build(config_path=None, output=None):
         if ph:
             history_html='<section class="history-block"><h2>Unverified or earlier records kept for reference</h2><p class="muted">These records may be expired, stale, not reconfirmed, or missing a verified promotional end date. Each keeps its actual capture time and is not a current offer.</p><div class="cards">'+''.join(card(o,historical=True) for o in ph)+'</div></section>'
         note=provider_summary(po, ph)+' The summary uses the first current record, or the first reference record if none is current. Cards in each section follow stored record order; this is not a recommendation or a ranking of price, quality, or value.'
-        guide_templates={'godaddy':'provider-guide.html','namecheap':'namecheap-provider-guide.html','cloudways':'cloudways-provider-guide.html'}
         related_guide=template(guide_templates[p['id']]) if p['id'] in guide_templates else ''
         details=('<section class="record-details"><h2>Source record details</h2><p>Each record below keeps its own official source, capture time and verification state.</p>'
                  +''.join(record_detail(o) for o in mine)+'</section>') if mine else ''
@@ -633,7 +646,7 @@ Planned endpoints return HTTP 503 with `temporarily_unavailable` until authentic
     write(Path('robots.txt'),'User-agent: *\nAllow: /\nContent-Signal: ai-train=no, search=yes, ai-input=no\nAgentmap: '+domain+'/.well-known/ai-catalog.json\nSitemap: '+domain+'/sitemap.xml\n')
     write(Path('404.html'),page('Page not found | HostDealRadar','This page does not exist.',domain+'/404.html',prose('Page not found','<p><a href="/">Return to current offers</a></p>'),{'@context':'https://schema.org','@type':'WebPage','name':'Page not found'}))
     routes=['/','/providers/','/compare/','/methodology/','/about/','/contact/','/disclosure/','/privacy/',guide_route,namecheap_guide_route,cloudways_guide_route]
-    routes+=[f'/providers/{p["id"]}/' for p in providers]
+    routes+=[f'/providers/{p["id"]}/' for p in public_providers]
     # lastmod tracks the rendered page itself: it only moves when the page's
     # material content changes, not when a capture timestamp is refreshed.
     previous=payload.get(STATE_KEY)

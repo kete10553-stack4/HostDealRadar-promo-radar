@@ -45,6 +45,11 @@ async function mcp(request, env) {
 export default {
   async fetch(request, env) {
     const url = new URL(request.url); const path = url.pathname;
+    const oldRecord = path.match(/^\/deals\/([a-z0-9-]+)\/?$/);
+    if (oldRecord) {
+      const result = await publicLookup(env, '', oldRecord[1]);
+      if (result.status === 200) return Response.redirect(new URL(result.body.records[0].record_url, url.origin), 301);
+    }
     if (path === '/api/agent/lookup') {
       if (request.method !== 'GET') return json({ error: 'method_not_allowed', message: 'Use GET for this read-only endpoint.' }, 405, { allow: 'GET' });
       const provider = (url.searchParams.get('provider') || '').trim().toLowerCase(); const slug = (url.searchParams.get('slug') || '').trim();
