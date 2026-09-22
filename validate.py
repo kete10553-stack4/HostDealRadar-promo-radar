@@ -283,6 +283,9 @@ def check():
     sitemap_urls={entry.findtext('sm:loc',default='',namespaces=NS) for entry in entries}
     for pid in unpublished_source_only:
         assert cfg['site']['domain'].rstrip('/')+f'/providers/{pid}/' not in sitemap_urls, f'Unverified source-only provider is still in sitemap: {pid}'
+    worker=(ROOT/'site/_worker.js').read_text(encoding='utf-8')
+    for pid in unpublished_source_only:
+        assert f'/providers/{pid}/' in worker and 'status: 410' in worker, f'Withdrawn provider path lacks an explicit 410 response: {pid}'
     # lastmod must track material page changes only: rebuilding identical inputs
     # must not move it, which is what a capture-timestamp-driven lastmod would do.
     before=sitemap_lastmods()

@@ -266,14 +266,15 @@ def agent_record(offer, provider, state):
         'limitations': 'Prices, eligibility, checkout totals, and renewal terms must be confirmed with the provider.'
     }
 
-def agent_worker():
+def agent_worker(withdrawn_provider_ids=()):
     """Return the Pages Worker for public agent discovery and read-only lookup."""
-    return r'''const LINK_HEADER = [
+    worker = r'''const LINK_HEADER = [
   '</.well-known/api-catalog>; rel="api-catalog"',
   '</openapi.json>; rel="service-desc"',
   '</ai/>; rel="service-doc"',
   '</.well-known/ai-catalog.json>; rel="describedby"'
 ].join(', ');
+const WITHDRAWN_PROVIDER_PATHS = new Set(/*WITHDRAWN_PROVIDER_PATHS*/);
 function mergedResponse(response, additions = {}) {
   const headers = new Headers(response.headers);
   for (const [name, value] of Object.entries(additions)) headers.set(name, value);
@@ -315,6 +316,10 @@ async function mcp(request, env) {
 export default {
   async fetch(request, env) {
     const url = new URL(request.url); const path = url.pathname;
+    const normalizedPath = path.endsWith('/') ? path : path + '/';
+    if (WITHDRAWN_PROVIDER_PATHS.has(normalizedPath)) {
+      return new Response('This provider page is not published because no verifiable official source record is available.', { status: 410, headers: { 'content-type': 'text/plain; charset=utf-8', 'cache-control': 'no-store' } });
+    }
     const oldRecord = path.match(/^\/deals\/([a-z0-9-]+)\/?$/);
     if (oldRecord) {
       const result = await publicLookup(env, '', oldRecord[1]);
@@ -337,6 +342,8 @@ export default {
   },
 };
 '''
+    paths=sorted('/providers/'+provider_id+'/' for provider_id in withdrawn_provider_ids)
+    return worker.replace('/*WITHDRAWN_PROVIDER_PATHS*/', json.dumps(paths))
 
 def build(config_path=None, output=None):
     global OUT
@@ -642,7 +649,7 @@ Planned endpoints return HTTP 503 with `temporarily_unavailable` until authentic
   }, { signal: controller.signal });
 })();
 ''')
-    write(Path('_worker.js'),agent_worker())
+    write(Path('_worker.js'),agent_worker(unpublished_source_only))
     write(Path('robots.txt'),'User-agent: *\nAllow: /\nContent-Signal: ai-train=no, search=yes, ai-input=no\nAgentmap: '+domain+'/.well-known/ai-catalog.json\nSitemap: '+domain+'/sitemap.xml\n')
     write(Path('404.html'),page('Page not found | HostDealRadar','This page does not exist.',domain+'/404.html',prose('Page not found','<p><a href="/">Return to current offers</a></p>'),{'@context':'https://schema.org','@type':'WebPage','name':'Page not found'}))
     routes=['/','/providers/','/compare/','/methodology/','/about/','/contact/','/disclosure/','/privacy/',guide_route,namecheap_guide_route,cloudways_guide_route]

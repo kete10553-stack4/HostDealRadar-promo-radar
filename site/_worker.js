@@ -4,6 +4,7 @@ const LINK_HEADER = [
   '</ai/>; rel="service-doc"',
   '</.well-known/ai-catalog.json>; rel="describedby"'
 ].join(', ');
+const WITHDRAWN_PROVIDER_PATHS = new Set(["/providers/infomaniak/", "/providers/wix/"]);
 function mergedResponse(response, additions = {}) {
   const headers = new Headers(response.headers);
   for (const [name, value] of Object.entries(additions)) headers.set(name, value);
@@ -45,6 +46,10 @@ async function mcp(request, env) {
 export default {
   async fetch(request, env) {
     const url = new URL(request.url); const path = url.pathname;
+    const normalizedPath = path.endsWith('/') ? path : path + '/';
+    if (WITHDRAWN_PROVIDER_PATHS.has(normalizedPath)) {
+      return new Response('This provider page is not published because no verifiable official source record is available.', { status: 410, headers: { 'content-type': 'text/plain; charset=utf-8', 'cache-control': 'no-store' } });
+    }
     const oldRecord = path.match(/^\/deals\/([a-z0-9-]+)\/?$/);
     if (oldRecord) {
       const result = await publicLookup(env, '', oldRecord[1]);
