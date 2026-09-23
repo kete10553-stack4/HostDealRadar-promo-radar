@@ -182,7 +182,10 @@ def check():
         if focus:
             assert f'<title>{build.e(focus)}: official price and terms | HostDealRadar</title>' in page, f'Focused provider title is not query-aligned: {provider["id"]}'
             assert f'<h1>{build.e(focus)}</h1>' in page, f'Focused provider heading is not query-aligned: {provider["id"]}'
-            assert f'{build.e(focus)}: official price, billing, and renewal terms appear below only when captured' in page, f'Focused provider first-screen answer is missing: {provider["id"]}'
+            if expect_current:
+                assert f'{build.e(focus)}: official price, billing, and renewal terms appear below only when captured' in page, f'Focused provider first-screen answer is missing: {provider["id"]}'
+            else:
+                assert f'{build.e(focus)}: no current source record is published' in page, f'Zero-current focused provider page overstates its contents: {provider["id"]}'
         else:
             assert f'<title>{build.e(provider["name"])} source-check status and terms | HostDealRadar</title>' in page, f'Provider page title lacks its source-check scope: {provider["id"]}'
     cloudways=(ROOT/'site/providers/cloudways/index.html').read_text(encoding='utf-8')
