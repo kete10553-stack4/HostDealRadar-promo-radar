@@ -58,9 +58,7 @@ def check_earlier_record_path(payload, cfg):
     assert victim['slug'] not in json.dumps(item_list), 'A retained record still appears in homepage price data'
     assert not (out/'deals'/victim['slug']/'index.html').exists(), 'A retained record still receives a deal page'
     provider_page=(out/'providers'/victim['provider']/'index.html').read_text(encoding='utf-8')
-    history_block=provider_page.split('<article class="card history">')[-1]
-    assert f'#record-{victim["slug"]}' in history_block, 'A retained record is missing from the earlier-records block on its provider page'
-    assert f'id="record-{victim["slug"]}"' in provider_page and 'Not reconfirmed' in provider_page, 'A retained record lacks a labelled provider detail'
+    assert f'#record-{victim["slug"]}' not in provider_page and f'id="record-{victim["slug"]}"' not in provider_page, 'A retained record is still repeated on its provider page'
     compare=(out/'compare/index.html').read_text(encoding='utf-8')
     marker='Unverified or earlier records, not current offers'
     assert marker in compare, 'Comparison page does not separate earlier records'
@@ -147,7 +145,7 @@ def check():
     assert files, 'No HTML was built'
     for f in files:
         text=f.read_text(encoding='utf-8')
-        assert '$' not in re.sub(r'\$[0-9.,]+','',text), f'Unfilled template in {f}'
+        assert not re.search(r'\$[A-Za-z_][A-Za-z0-9_]*',text), f'Unfilled template in {f}'
         assert '<script type="application/ld+json">' in text, f'Missing JSON-LD in {f}'
         schemas(text)
         links=Links(); links.feed(text)
@@ -158,10 +156,16 @@ def check():
     for offer in payload['offers']:
         page=(ROOT/'site/providers'/offer['provider']/'index.html').read_text(encoding='utf-8')
         detail=f'id="record-{offer["slug"]}"'
-        assert page.count(detail)==1, f'Record does not have exactly one provider detail: {offer["slug"]}'
+        if states[offer['slug']] != build.CURRENT:
+            assert page.count(detail)==0, f'Non-current record remains on its provider page: {offer["slug"]}'
+            continue
+        assert page.count(detail)==1, f'Current record does not have exactly one provider detail: {offer["slug"]}'
         block=page.split(detail,1)[1].split('</section>',1)[0]
         assert build.e(offer['source_url']) in block and build.e(offer['fetched_at']) in block, f'Record detail lacks its own source or capture time: {offer["slug"]}'
         assert states[offer['slug']] in block, f'Record detail omits its verification state: {offer["slug"]}'
+        assert 'Unknown' not in block, f'Provider record still publishes an Unknown field: {offer["slug"]}'
+        assert build.OFFICIAL_FIELD_MISSING in block, f'Provider record does not label unavailable official fields: {offer["slug"]}'
+        assert build.e((offer.get('field_evidence') or {}).get('price')) in block, f'Provider record omits the official price wording: {offer["slug"]}'
         if offer.get('offer_url'):
             assert build.e(offer['offer_url']) in block, f'Record detail omits its own official offer link: {offer["slug"]}'
     for provider in cfg['providers']:
@@ -171,10 +175,9 @@ def check():
             continue
         page=page_path.read_text(encoding='utf-8')
         expect_current=sum(o['provider']==provider['id'] for o in current)
-        expect_history=sum(o['provider']==provider['id'] for o in history)
-        assert page.count('<article class="card">') == expect_current, f'Current-offer card count wrong on provider page: {provider["id"]}'
-        assert page.count('<article class="card history">') == expect_history, f'Historical card count wrong on provider page: {provider["id"]}'
-        assert expect_current + expect_history > 0 or provider['id'] in state_only, f'Empty provider page: {provider["id"]}'
+        assert page.count('<article class="card">') == 0, f'Duplicate summary cards remain on provider page: {provider["id"]}'
+        assert page.count('<article class="card history">') == 0, f'Historical summary cards remain on provider page: {provider["id"]}'
+        assert page.count('<section class="record-detail"') == expect_current, f'Current provider detail count wrong: {provider["id"]}'
         focus=cfg['page_focus'].get(provider['id'])
         if focus:
             assert f'<title>{build.e(focus)}: official price and terms | HostDealRadar</title>' in page, f'Focused provider title is not query-aligned: {provider["id"]}'
@@ -183,9 +186,8 @@ def check():
         else:
             assert f'<title>{build.e(provider["name"])} source-check status and terms | HostDealRadar</title>' in page, f'Provider page title lacks its source-check scope: {provider["id"]}'
     cloudways=(ROOT/'site/providers/cloudways/index.html').read_text(encoding='utf-8')
-    current_section, reference_section=cloudways.split('<section class="history-block">',1)
-    assert '#record-cloudways-summer404' not in current_section, 'Undated Cloudways promotion remains a current card'
-    assert '#record-cloudways-summer404' in reference_section and 'Promotional end date not verified' in reference_section, 'Undated Cloudways promotion is not labelled in the reference section'
+    assert '#record-cloudways-summer404' not in cloudways and 'id="record-cloudways-summer404"' not in cloudways, 'Undated Cloudways promotion remains on the provider page'
+    assert 'No current offer is published for this source' in cloudways, 'Cloudways page does not disclose that it has no current source record'
     # A state-only page must say why nothing is published and must carry no figure.
     for pid in sorted(state_only):
         if pid in unpublished_source_only:
@@ -308,6 +310,11 @@ def check():
     sitemap_urls={entry.findtext('sm:loc',default='',namespaces=NS) for entry in entries}
     for pid in unpublished_source_only:
         assert cfg['site']['domain'].rstrip('/')+f'/providers/{pid}/' not in sitemap_urls, f'Unverified source-only provider is still in sitemap: {pid}'
+    current_provider_ids={o['provider'] for o in current}
+    public_provider_ids={p['id'] for p in cfg['providers']} - unpublished_source_only
+    for pid in public_provider_ids:
+        url=cfg['site']['domain'].rstrip('/')+f'/providers/{pid}/'
+        assert (url in sitemap_urls) == (pid in current_provider_ids), f'Provider sitemap eligibility disagrees with current records: {pid}'
     worker=(ROOT/'site/_worker.js').read_text(encoding='utf-8')
     for pid in unpublished_source_only:
         assert f'/providers/{pid}/' in worker and 'status: 410' in worker, f'Withdrawn provider path lacks an explicit 410 response: {pid}'
