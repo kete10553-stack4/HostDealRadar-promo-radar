@@ -273,8 +273,7 @@ def featured_renewals(current, rules):
 def schema_offer(offer, canonical, name=None):
     item={'@type':'Offer','name':name or offer['title'],'url':canonical}
     # A schema currency claim follows the same evidence rule as visible text.
-    if (offer.get('price') is not None and
-            re.fullmatch(r'[A-Za-z]{3}', currency_wording(offer, 'price') or '')):
+    if offer.get('price') is not None and currency_wording(offer, 'price'):
         item.update({'price':str(offer['price']),'priceCurrency':offer['currency']})
     if offer.get('valid_until'): item['priceValidUntil']=offer['valid_until']
     return item
@@ -313,9 +312,9 @@ def agent_record(offer, provider, state):
         'title': offer['title'], 'category': offer.get('category', 'Unknown'),
         'record_state': state, 'listing_type': offer.get('kind', 'regular_price'),
         'price': offer.get('price'), 'price_wording': captured_field_evidence(offer, 'price') or None,
-        'currency': (offer.get('currency') if currency_wording(offer, 'price') == offer.get('currency') else None),
+        'currency': (offer.get('currency') if currency_wording(offer, 'price') else None),
         'currency_wording': currency_wording(offer, 'price') or None,
-        'billing_period': (offer.get('billing_period') if billing_wording(offer, 'price').lower().strip('/') == offer.get('billing_period') else None),
+        'billing_period': (offer.get('billing_period') if billing_wording(offer, 'price') else None),
         'billing_wording': billing_wording(offer, 'price') or None,
         'commitment_months': offer.get('commitment_months'),
         'renewal_price': offer.get('renewal_price'), 'coupon_code': offer.get('coupon_code'),
