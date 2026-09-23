@@ -11,6 +11,7 @@ TEMPLATES=ROOT/'templates'; OUT=ROOT/'site'; DATA=ROOT/'data/offers.json'; ASSET
 # commits, so persisting it needs no change to the workflow or extra token scope.
 STATE_KEY='page_lastmod'
 CURRENT='current'; HISTORY=('retained','stale','expired','unverified')
+OFFICIAL_FIELD_MISSING='Not published in the official wording captured for this record.'
 # Why a reachable official page still yields no deterministic price rule.
 BLOCKER_TEXT={'price_rendered_by_js':'The published prices on this page are rendered by JavaScript, so no figure can be read without executing scripts.',
               'unstable_field_structure':'The page markup changes between loads, so no stable field can be bound to a named plan.',
@@ -121,6 +122,21 @@ def displayed_rate(offer, field):
     period = offer.get('billing_period') or 'Unknown period'
     return f'{currency} {float(value):,.2f}/{period}'
 
+def captured_field_evidence(offer, field):
+    """Return the exact stored source fragment for one published field."""
+    return str((offer.get('field_evidence') or {}).get(field) or '').strip()
+
+def sourced_term(label, value, evidence):
+    """Render a provider-page field only with the official fragment behind it.
+
+    A missing fragment is a missing public field, not an invitation to infer a
+    value from another plan, billing period, or page.
+    """
+    if not evidence:
+        return (f'<div><dt>{e(label)}</dt><dd>{e(OFFICIAL_FIELD_MISSING)}</dd></div>')
+    return (f'<div><dt>{e(label)}</dt><dd>{e(value)}'
+            f'<small class="capture">Official page wording: “{e(evidence)}”</small></dd></div>')
+
 def public_terms(text):
     # Source refreshes can restore old promotional prose. Suppress claims in
     # presentation without rewriting captured data or the extraction rules.
@@ -153,10 +169,7 @@ def provider_summary(records, earlier=None):
     record=next(iter(records), None)
     prefix='Captured plan example'
     if record is None:
-        record=next(iter(earlier or []), None)
-        prefix='Earlier plan example, not current'
-    if record is None:
-        return 'Captured plan details: Unknown.'
+        return 'No current source record is published.'
     return (prefix+': '+str(record.get('title') or 'Unknown')+
             '. Service label: '+str(record.get('category') or 'Unknown')+
             '. Captured '+str(record.get('fetched_at') or 'Unknown')+'.')
@@ -186,11 +199,8 @@ def provider_description(provider_name, current_records, earlier_records):
     if current_records:
         return (f'Official {provider_name} terms checked by HostDealRadar. '
                 f'{len(current_records)} current record(s) list source, price fields, and status.')
-    if earlier_records:
-        return (f'Earlier {provider_name} terms retained with their original source and '
-                'capture time. They are not presented as current offers.')
     return (f'Latest official source-check status for {provider_name}. '
-            'No price record is published when the source cannot support one.')
+            'No current source record is published when the checked source cannot support one.')
 
 def category_guide(records):
     items=[]
@@ -391,21 +401,32 @@ def build(config_path=None, output=None):
         p=byid[o['provider']]; state, message=states[o['slug']]
         rule=rules.get((o['provider'], o['title']), {})
         advertised=price(o) + (' / ' + period_text(o) if o.get('price') is not None else '')
-        terms=[('Listing type','Regular price; no discount claimed' if o.get('kind')=='regular_price' else 'Promotion'),
-               ('Advertised price',advertised),('Commitment',str(o['commitment_months'])+' months' if o.get('commitment_months') else 'Unknown'),
-               ('Renewal price',displayed_rate(o,'renewal_price') if renewal_supported(o,rule) else 'Unknown'),
-               ('Coupon code',o.get('coupon_code') or 'Unknown'),('Valid until',o.get('valid_until') or 'Unknown'),
-               ('Captured at',o['fetched_at']),('Record state',state)]
-        terms_html=''.join(f'<div><dt>{e(key)}</dt><dd>{e(value)}</dd></div>' for key,value in terms)
+        renewal_evidence=captured_field_evidence(o,'renewal_price') if renewal_supported(o,rule) else ''
+        source_terms=[
+            sourced_term('Advertised price',advertised,captured_field_evidence(o,'price')),
+            sourced_term('Commitment',str(o['commitment_months'])+' months' if o.get('commitment_months') else '',captured_field_evidence(o,'commitment_months')),
+            sourced_term('Renewal price',displayed_rate(o,'renewal_price') if renewal_evidence else '',renewal_evidence),
+            sourced_term('Coupon code',o.get('coupon_code') or '',captured_field_evidence(o,'coupon_code')),
+            sourced_term('Valid until',o.get('valid_until') or '',captured_field_evidence(o,'valid_until')),
+        ]
+        metadata=[('Listing type','Regular price; no discount claimed' if o.get('kind')=='regular_price' else 'Promotion'),
+                  ('Captured at',o['fetched_at']),('Record state',state)]
+        terms_html=''.join(source_terms)+''.join(f'<div><dt>{e(key)}</dt><dd>{e(value)}</dd></div>' for key,value in metadata)
+        quotes=[]
+        for quote in (o.get('field_evidence') or {}).values():
+            quote=str(quote or '').strip()
+            if quote and quote not in quotes:
+                quotes.append(quote)
+        source_excerpt=' · '.join('“'+quote+'”' for quote in quotes) or OFFICIAL_FIELD_MISSING
         rel='sponsored noopener noreferrer' if p['affiliate_url'] else 'noopener noreferrer'
         disclosure='This may be an affiliate link; we may earn a commission at no extra cost to you.' if p['affiliate_url'] else 'This is an official link; no affiliate relationship is active.'
         outbound=(f'<a class="button" href="{e(o["offer_url"])}" rel="{rel}">View offer at {e(p["name"])} ↗</a>'
                   if o.get('offer_url') else '<p>Official offer link not captured.</p>')
         return (f'<section class="record-detail" id="record-{e(o["slug"])}"><h3>{e(offer_name(p["name"],o["title"]))}</h3>'
                 f'<p class="record-state state-{e(state)}"><strong>{e(state.title())}</strong> {e(message)}</p>'
-                f'<p>{e(o.get("category","Hosting"))}: {e(public_terms(o.get("condition") or "Terms captured from the official provider page."))}</p>'
-                f'{rate_pair(o,rule)}<dl class="terms">{terms_html}</dl>'
-                f'<div class="source-note"><strong>Where this comes from</strong><p>{e(public_terms(o["evidence"]))}</p>'
+                f'<p><strong>HostDealRadar service label:</strong> {e(o.get("category","Hosting"))}. This label describes the captured service type; it is not a provider claim.</p>'
+                f'<dl class="terms">{terms_html}</dl>'
+                f'<div class="source-note"><strong>Official wording captured for this record</strong><p>{e(source_excerpt)}</p>'
                 f'<a href="{e(o["source_url"])}" rel="noopener noreferrer">View the official page ↗</a></div>'
                 f'{outbound}<p class="small">{e(disclosure)} Confirm availability, tax, billing term and renewal in the provider’s checkout.</p></section>')
     def source_observation_record(p, observation, status):
@@ -456,7 +477,7 @@ def build(config_path=None, output=None):
         {'@type':'ItemList','name':'HostDealRadar providers with current records','itemListElement':[{'@type':'ListItem','position':i+1,'item':{'@type':'WebPage','name':p['name'],'url':domain+'/providers/'+p['id']+'/'}} for i,p in enumerate(p for p in public_providers if p['id'] in current_provider_ids)]}
     ]}
     write(Path('index.html'),page('HostDealRadar | Official hosting offers', 'Official hosting offers with source-check status and provider links.',domain+'/',home,home_schema,head_extra="<meta name='impact-site-verification' value='9f3ff63a-c432-478f-8859-af77a6120cbb'>"))
-    provider_listing='<section class="wrap section"><div class="eyebrow">OFFICIAL SOURCES</div><h1>Providers we check</h1><p class="lead">Providers have public source pages in our list. Each provider page shows whether the latest source check confirmed listings, produced no published record, or did not complete. The grid follows the configured source-list order; it is not a recommendation, quality ranking, or price ranking. Each summary names the first current record, or an explicitly marked earlier record when none is current. Open a provider for the matching official source. <a href="/methodology/#service-labels">Read service-label definitions and limits</a>. Earlier records stay clearly marked.</p><div class="provider-grid">'+provider_tiles+'</div></section>'
+    provider_listing='<section class="wrap section"><div class="eyebrow">OFFICIAL SOURCES</div><h1>Providers we check</h1><p class="lead">Providers have public source pages in our list. Each provider page shows whether the latest source check confirmed a current record, produced no published record, or did not complete. The grid follows the configured source-list order; it is not a recommendation, quality ranking, or price ranking. Each summary names the first current record; when none is current it says so directly. Open a provider for the matching official source. <a href="/methodology/#service-labels">Read service-label definitions and limits</a>. Unverified and earlier records are not repeated on provider pages.</p><div class="provider-grid">'+provider_tiles+'</div></section>'
     write(Path('providers/index.html'),page('Providers | HostDealRadar','Hosting providers and their latest source-check status.',domain+'/providers/',provider_listing,{'@context':'https://schema.org','@type':'CollectionPage','name':'Providers'}))
     for p in public_providers:
         mine=[o for o in offers if o['provider']==p['id']]
@@ -470,20 +491,17 @@ def build(config_path=None, output=None):
                 current_html+=source_observation_record(p, observation, status)
         else:
             status_text='Official page read; capture rules matched.' if status['status']=='evidenced' and status.get('capture_status')=='matched' and status.get('http_status')==200 and status.get('visible_excerpt') else e(status['reason'])
-            current_html='<div class="cards">'+''.join(card(o) for o in po)+'</div>' if po else '<div class="empty"><h3>No current offer is published for this source</h3><p>'+e('Promotional end date not verified.' if any(states[o['slug']][0]=='unverified' for o in ph) else status['reason'])+'</p></div>'
-        history_html=''
-        if ph:
-            history_html='<section class="history-block"><h2>Unverified or earlier records kept for reference</h2><p class="muted">These records may be expired, stale, not reconfirmed, or missing a verified promotional end date. Each keeps its actual capture time and is not a current offer.</p><div class="cards">'+''.join(card(o,historical=True) for o in ph)+'</div></section>'
+            current_html='' if po else '<div class="empty"><h3>No current offer is published for this source</h3><p>'+e('Promotional end date not verified.' if any(states[o['slug']][0]=='unverified' for o in ph) else status['reason'])+'</p></div>'
         focus=cfg['page_focus'].get(p['id'])
-        note=provider_summary(po, ph)+' The summary uses the first current record, or the first reference record if none is current. Cards in each section follow stored record order; this is not a recommendation or a ranking of price, quality, or value.'
+        note=provider_summary(po)+' Current source records follow stored record order; this is not a recommendation or a ranking of price, quality, or value.'
         if focus:
             note=(f'{focus}: official price, billing, and renewal terms appear below only when captured from the provider’s public page. '
                   f'This page keeps related {p["name"]} plan records together. '+note)
         related_guide=template(guide_templates[p['id']]) if p['id'] in guide_templates else ''
-        details=('<section class="record-details"><h2>Source record details</h2><p>Each record below keeps its own official source, capture time and verification state.</p>'
-                 +''.join(record_detail(o) for o in mine)+'</section>') if mine else ''
+        details=('<section class="record-details"><h2>Current source records</h2><p>Each current record appears once and keeps its own official wording, source, capture time and verification state. A field not published on the checked official source is labelled as such instead of being inferred.</p>'
+                 +''.join(record_detail(o) for o in po)+'</section>') if po else ''
         heading=focus or p['name']
-        content=template('provider.html',provider=e(heading),note=e(note),source=e(p['source_url']),source_status=e(status_text),related_guide=related_guide,offers=current_html+history_html+details)
+        content=template('provider.html',provider=e(heading),note=e(note),source=e(p['source_url']),source_status=e(status_text),related_guide=related_guide,offers=current_html+details)
         write(Path('providers')/p['id']/'index.html',page(
             f'{heading}: official price and terms | HostDealRadar' if focus else f'{p["name"]} source-check status and terms | HostDealRadar',
             (f'Official {heading} terms and related {p["name"]} plan records, with price, billing, and renewal details shown only when captured from the provider page.'
@@ -661,7 +679,9 @@ Planned endpoints return HTTP 503 with `temporarily_unavailable` until authentic
     write(Path('robots.txt'),'User-agent: *\nAllow: /\nContent-Signal: ai-train=no, search=yes, ai-input=no\nAgentmap: '+domain+'/.well-known/ai-catalog.json\nSitemap: '+domain+'/sitemap.xml\n')
     write(Path('404.html'),page('Page not found | HostDealRadar','This page does not exist.',domain+'/404.html',prose('Page not found','<p><a href="/">Return to current offers</a></p>'),{'@context':'https://schema.org','@type':'WebPage','name':'Page not found'}))
     routes=['/','/providers/','/compare/','/methodology/','/about/','/contact/','/disclosure/','/privacy/',guide_route,namecheap_guide_route,cloudways_guide_route]
-    routes+=[f'/providers/{p["id"]}/' for p in public_providers]
+    # Keep zero-current provider pages accessible for truthful status reporting,
+    # but do not submit them as index targets until a current source record exists.
+    routes+=[f'/providers/{p["id"]}/' for p in public_providers if p['id'] in current_provider_ids]
     # lastmod tracks the rendered page itself: it only moves when the page's
     # material content changes, not when a capture timestamp is refreshed.
     previous=payload.get(STATE_KEY)
