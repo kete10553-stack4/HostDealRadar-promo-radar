@@ -493,10 +493,16 @@ def build(config_path=None, output=None):
             status_text='Official page read; capture rules matched.' if status['status']=='evidenced' and status.get('capture_status')=='matched' and status.get('http_status')==200 and status.get('visible_excerpt') else e(status['reason'])
             current_html='' if po else '<div class="empty"><h3>No current offer is published for this source</h3><p>'+e('Promotional end date not verified.' if any(states[o['slug']][0]=='unverified' for o in ph) else status['reason'])+'</p></div>'
         focus=cfg['page_focus'].get(p['id'])
-        note=provider_summary(po)+' Current source records follow stored record order; this is not a recommendation or a ranking of price, quality, or value.'
-        if focus:
+        if po:
+            note=provider_summary(po)+' Current source records follow stored record order; this is not a recommendation or a ranking of price, quality, or value.'
+        else:
+            note='No current source record is published. This page remains available to report the latest source-check status; it is not included in the sitemap.'
+        if focus and po:
             note=(f'{focus}: official price, billing, and renewal terms appear below only when captured from the provider’s public page. '
                   f'This page keeps related {p["name"]} plan records together. '+note)
+        elif focus:
+            note=(f'{focus}: no current source record is published. This page keeps the latest {p["name"]} source-check status only; '
+                  'it is not included in the sitemap.')
         related_guide=template(guide_templates[p['id']]) if p['id'] in guide_templates else ''
         details=('<section class="record-details"><h2>Current source records</h2><p>Each current record appears once and keeps its own official wording, source, capture time and verification state. A field not published on the checked official source is labelled as such instead of being inferred.</p>'
                  +''.join(record_detail(o) for o in po)+'</section>') if po else ''
