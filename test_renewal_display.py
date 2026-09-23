@@ -10,7 +10,7 @@ class RenewalDisplay(unittest.TestCase):
                       kind='promotion', price=1, renewal_price=10, currency='GBP',
                       billing_period='month', source_url='https://example.com/pricing',
                       fetched_at='2026-09-13T00:00:00Z', condition='First month at the advertised amount.',
-                      field_evidence={'price': '£1', 'renewal_price': 'Then only £10/mo'})
+                      field_evidence={'price': '£1/mo', 'renewal_price': 'Then only £10/mo'})
         record.update(changes)
         return record
 
@@ -18,8 +18,8 @@ class RenewalDisplay(unittest.TestCase):
         record = self.record()
         before = copy.deepcopy(record)
         text = build.rate_pair(record)
-        self.assertIn('GBP 1.00/month', text)
-        self.assertIn('GBP 10.00/month', text)
+        self.assertIn('£1', text)
+        self.assertIn('Then only £10/mo', text)
         self.assertEqual(text.count(record['source_url']), 2)
         self.assertEqual(text.count(record['fetched_at']), 2)
         self.assertNotIn('%', text)
@@ -28,17 +28,17 @@ class RenewalDisplay(unittest.TestCase):
     def test_missing_initial_price_and_missing_renewal_are_not_filled(self):
         only_renewal = build.rate_pair(self.record(price=None))
         self.assertIn('Unknown', only_renewal)
-        self.assertIn('GBP 10.00/month', only_renewal)
+        self.assertIn('Then only £10/mo', only_renewal)
         no_renewal = build.rate_pair(self.record(renewal_price=None))
         self.assertIn('Unknown', no_renewal)
-        self.assertNotIn('GBP 10.00', no_renewal)
+        self.assertNotIn('Then only £10/mo', no_renewal)
 
     def test_alternative_billing_and_strikethrough_are_not_renewal(self):
         for evidence in ('billed annually or $16', 'only 12.71', '$11.64 Save', '8.95'):
             with self.subTest(evidence=evidence):
                 record = self.record(field_evidence={'renewal_price': evidence})
                 self.assertFalse(build.renewal_supported(record))
-                self.assertNotIn('GBP 10.00', build.rate_pair(record))
+                self.assertNotIn('Then only £10/mo', build.rate_pair(record))
 
     def test_conflicting_currency_or_period_is_not_paired(self):
         for changes in ({'renewal_currency': 'USD'}, {'renewal_billing_period': 'year'},

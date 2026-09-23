@@ -126,6 +126,45 @@ def captured_field_evidence(offer, field):
     """Return the exact stored source fragment for one published field."""
     return str((offer.get('field_evidence') or {}).get(field) or '').strip()
 
+def currency_wording(offer, field='price'):
+    """Return only the currency marker present in this field's quote.
+
+    The normalized currency in the record is extraction output. It is not
+    public evidence by itself, so a page must not print it unless the stored
+    official wording contains the code or a matching currency marker.
+    """
+    evidence=captured_field_evidence(offer, field)
+    currency=offer.get('currency')
+    markers={
+        'USD': ('USD', 'US$'),
+        'CAD': ('CAD', 'C$'),
+        'AUD': ('AUD', 'A$'),
+        'GBP': ('GBP', '£'),
+        'EUR': ('EUR', '€'),
+    }.get(currency, (currency,) if currency else ())
+    for marker in markers:
+        if marker and (marker in evidence if not marker.isalpha()
+                       else re.search(r'(?<![A-Za-z])'+re.escape(marker)+r'(?![A-Za-z])', evidence, re.I)):
+            return marker
+    return ''
+
+def billing_wording(offer, field='price'):
+    """Return the exact billing marker present in this field's quote."""
+    evidence=captured_field_evidence(offer, field)
+    patterns={
+        'month': r'/(?:mo|month)\b|\bper\s+month\b|\bmonthly\b',
+        'year': r'/(?:yr|year)\b|\bper\s+year\b|\bannually\b|\byearly\b',
+        'hour': r'/(?:hr|hour)\b|\bper\s+hour\b|\bhourly\b',
+        'site': r'/(?:site)\b|\bper\s+site\b',
+        'server': r'/(?:server)\b|\bper\s+server\b',
+    }
+    match=re.search(patterns.get(offer.get('billing_period'), r'(?!x)x'), evidence, re.I)
+    return match.group(0) if match else ''
+
+def official_rate_wording(offer, field):
+    """Publish the exact official price phrase instead of reconstructed terms."""
+    return captured_field_evidence(offer, field) or OFFICIAL_FIELD_MISSING
+
 def sourced_term(label, value, evidence):
     """Render a provider-page field only with the official fragment behind it.
 
@@ -150,8 +189,8 @@ def rate_source(offer):
             f' · Captured {e(offer.get("fetched_at") or "Unknown")}</small>')
 
 def rate_pair(offer, rule=None):
-    renewal = displayed_rate(offer, 'renewal_price') if renewal_supported(offer, rule) else 'Unknown'
-    initial = displayed_rate(offer, 'price') if offer.get('price') is not None else price(offer)
+    renewal = official_rate_wording(offer, 'renewal_price') if renewal_supported(offer, rule) else 'Unknown'
+    initial = official_rate_wording(offer, 'price') if offer.get('price') is not None else 'Unknown'
     return (f'<div class="source-bar"><div><strong>{e(initial_label(offer, rule))}</strong><br>'
             f'<h3>{e(initial)}</h3>{rate_source(offer)}</div>'
             f'<div><strong>Renewal rate</strong><br><h3>{e(renewal)}</h3>{rate_source(offer)}</div></div>')
@@ -220,6 +259,8 @@ def featured_renewals(current, rules):
     for offer in current:
         rule = rules.get((offer['provider'], offer['title']), {})
         if (offer.get('price') is not None and renewal_supported(offer, rule)
+                and currency_wording(offer, 'price') and billing_wording(offer, 'price')
+                and currency_wording(offer, 'renewal_price') and billing_wording(offer, 'renewal_price')
                 and offer['renewal_price'] > offer['price']):
             groups[(offer['currency'], offer['billing_period'], offer.get('category', 'Unknown'))].append(offer)
     first_month = {key: [o for o in group if initial_label(o, rules.get((o['provider'], o['title']))) == 'First month']
@@ -231,7 +272,10 @@ def featured_renewals(current, rules):
     return sorted(groups[key], key=lambda o: (-(o['renewal_price'] - o['price']), o['slug']))[:3]
 def schema_offer(offer, canonical, name=None):
     item={'@type':'Offer','name':name or offer['title'],'url':canonical}
-    if offer.get('price') is not None: item.update({'price':str(offer['price']),'priceCurrency':offer.get('currency','USD')})
+    # A schema currency claim follows the same evidence rule as visible text.
+    if (offer.get('price') is not None and
+            re.fullmatch(r'[A-Za-z]{3}', currency_wording(offer, 'price') or '')):
+        item.update({'price':str(offer['price']),'priceCurrency':offer['currency']})
     if offer.get('valid_until'): item['priceValidUntil']=offer['valid_until']
     return item
 def record_state(offer, statuses, settings):
@@ -268,8 +312,12 @@ def agent_record(offer, provider, state):
         'id': offer['slug'], 'provider': {'id': provider['id'], 'name': provider['name']},
         'title': offer['title'], 'category': offer.get('category', 'Unknown'),
         'record_state': state, 'listing_type': offer.get('kind', 'regular_price'),
-        'price': offer.get('price'), 'currency': offer.get('currency'),
-        'billing_period': offer.get('billing_period'), 'commitment_months': offer.get('commitment_months'),
+        'price': offer.get('price'), 'price_wording': captured_field_evidence(offer, 'price') or None,
+        'currency': (offer.get('currency') if currency_wording(offer, 'price') == offer.get('currency') else None),
+        'currency_wording': currency_wording(offer, 'price') or None,
+        'billing_period': (offer.get('billing_period') if billing_wording(offer, 'price').lower().strip('/') == offer.get('billing_period') else None),
+        'billing_wording': billing_wording(offer, 'price') or None,
+        'commitment_months': offer.get('commitment_months'),
         'renewal_price': offer.get('renewal_price'), 'coupon_code': offer.get('coupon_code'),
         'valid_until': offer.get('valid_until'), 'source_url': offer['source_url'],
         'captured_at': offer['fetched_at'], 'record_url': '/providers/' + provider['id'] + '/#record-' + offer['slug'],
@@ -400,12 +448,16 @@ def build(config_path=None, output=None):
     def record_detail(o):
         p=byid[o['provider']]; state, message=states[o['slug']]
         rule=rules.get((o['provider'], o['title']), {})
-        advertised=price(o) + (' / ' + period_text(o) if o.get('price') is not None else '')
+        advertised=official_rate_wording(o,'price')
         renewal_evidence=captured_field_evidence(o,'renewal_price') if renewal_supported(o,rule) else ''
+        currency_marker=currency_wording(o,'price')
+        billing_marker=billing_wording(o,'price')
         source_terms=[
             sourced_term('Advertised price',advertised,captured_field_evidence(o,'price')),
+            sourced_term('Currency wording',currency_marker,captured_field_evidence(o,'price') if currency_marker else ''),
+            sourced_term('Billing wording',billing_marker,captured_field_evidence(o,'price') if billing_marker else ''),
             sourced_term('Commitment',str(o['commitment_months'])+' months' if o.get('commitment_months') else '',captured_field_evidence(o,'commitment_months')),
-            sourced_term('Renewal price',displayed_rate(o,'renewal_price') if renewal_evidence else '',renewal_evidence),
+            sourced_term('Renewal price',official_rate_wording(o,'renewal_price') if renewal_evidence else '',renewal_evidence),
             sourced_term('Coupon code',o.get('coupon_code') or '',captured_field_evidence(o,'coupon_code')),
             sourced_term('Valid until',o.get('valid_until') or '',captured_field_evidence(o,'valid_until')),
         ]
@@ -543,8 +595,9 @@ def build(config_path=None, output=None):
     def row(o):
         state,message=states[o['slug']]
         rule=rules.get((o['provider'], o['title']), {})
-        renewal=displayed_rate(o,'renewal_price') if renewal_supported(o,rule) else 'Unknown'
-        return f'<tr><td><strong>{e(byid[o["provider"]]["name"])}</strong><span>{e(o["title"])}</span></td><td>{e(displayed_rate(o,"price") if o.get("price") is not None else price(o))}<span>{e(initial_label(o,rule))}</span>{rate_source(o)}</td><td>{e(str(o.get("commitment_months") or "Unknown"))}</td><td>{e(renewal)}<br>{rate_source(o)}</td><td>{e(state.title())}<span>{e(o["fetched_at"])}</span></td><td><a href="{e(o["source_url"])}" rel="noopener noreferrer">Official page ↗</a></td></tr>'
+        renewal=official_rate_wording(o,'renewal_price') if renewal_supported(o,rule) else 'Unknown'
+        initial=official_rate_wording(o,'price') if o.get('price') is not None else 'Unknown'
+        return f'<tr><td><strong>{e(byid[o["provider"]]["name"])}</strong><span>{e(o["title"])}</span></td><td>{e(initial)}<span>{e(initial_label(o,rule))}</span>{rate_source(o)}</td><td>{e(str(o.get("commitment_months") or "Unknown"))}</td><td>{e(renewal)}<br>{rate_source(o)}</td><td>{e(state.title())}<span>{e(o["fetched_at"])}</span></td><td><a href="{e(o["source_url"])}" rel="noopener noreferrer">Official page ↗</a></td></tr>'
     rows=''.join(row(o) for o in current)
     history_rows=''.join(row(o) for o in history)
     history_html=''
