@@ -67,7 +67,9 @@ def check_earlier_record_path(payload, cfg):
     cell=f'<strong>{build.e(names[victim["provider"]])}</strong><span>{build.e(victim["title"])}</span>'
     assert cell in history_table, 'The retained record is missing from the earlier-records table'
     assert cell not in current_table, 'The retained record still appears in the current comparison table'
-    assert 'EUR' in history_table and '/year' in history_table, 'Comparison renewal still ignores the record currency and billing period'
+    victim_row=history_table.split(cell,1)[1].split('</tr>',1)[0]
+    assert 'EUR' not in victim_row and '/year' not in victim_row, 'Comparison leaked unsupported normalized currency or billing period'
+    assert build.e(build.captured_field_evidence(victim,'price')) in victim_row, 'Comparison did not preserve exact official price wording'
     shutil.rmtree(tmp,ignore_errors=True)
 
 def check():
@@ -166,6 +168,10 @@ def check():
         assert 'Unknown' not in block, f'Provider record still publishes an Unknown field: {offer["slug"]}'
         assert build.OFFICIAL_FIELD_MISSING in block, f'Provider record does not label unavailable official fields: {offer["slug"]}'
         assert build.e((offer.get('field_evidence') or {}).get('price')) in block, f'Provider record omits the official price wording: {offer["slug"]}'
+        if not build.currency_wording(offer,'price'):
+            assert '<dt>Currency wording</dt><dd>'+build.e(build.OFFICIAL_FIELD_MISSING) in block, f'Provider record leaks unsupported currency: {offer["slug"]}'
+        if not build.billing_wording(offer,'price'):
+            assert '<dt>Billing wording</dt><dd>'+build.e(build.OFFICIAL_FIELD_MISSING) in block, f'Provider record leaks unsupported billing unit: {offer["slug"]}'
         if offer.get('offer_url'):
             assert build.e(offer['offer_url']) in block, f'Record detail omits its own official offer link: {offer["slug"]}'
     for provider in cfg['providers']:
