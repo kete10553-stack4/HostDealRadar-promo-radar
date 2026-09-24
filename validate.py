@@ -253,10 +253,12 @@ def check():
                   'does not tell us how JavaScript behaved',
                   'do not establish how many coupons remained redeemable'):
         assert token in archive, f'Cloudways archive section dropped its evidence: {token}'
-    assert archive.count('<tr>')==7, 'Cloudways archive table lost a year row'
+    assert archive.count('<tr id="archive-')==6, 'Cloudways archive table lost a year row'
     assert 'one Reddit result' in archive and 'not used as evidence of absence' in archive, 'Cloudways archive hides the one result it could not open'
     assert 'limited, dated comparison' in archive and 'unique across the web' in archive, 'Cloudways archive overstates its comparison scope'
-    assert 'new customers' in archive, 'Cloudways archive drops the recorded eligibility limit'
+    assert 'only valid for new customers' in archive and 'applies to users who sign up' in archive, 'Cloudways archive drops the source conflict about eligibility'
+    assert 'one coupon per claimant' in archive and 'one use per order' in archive, 'Cloudways archive drops the recorded coupon-use limits'
+    assert all(f'id="archive-{suffix}"' in archive for suffix in ('2018','2019','2020','2021','2022-08','2022-12')), 'Cloudways archive rows lost their evidence anchors'
     assert '/guides/cloudways-coupon-code/' in (ROOT/'site/providers/cloudways/index.html').read_text(encoding='utf-8'), 'Cloudways provider page does not link the official promo guide'
     assert 'https://hostdealradar.com/guides/cloudways-coupon-code/' in sitemap, 'Sitemap omits the Cloudways promo guide'
     # No unverified or earlier record may be presented as current or publish current price data.
