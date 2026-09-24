@@ -259,6 +259,8 @@ def check():
     assert 'only valid for new customers' in archive and 'applies to users who sign up' in archive, 'Cloudways archive drops the source conflict about eligibility'
     assert 'one coupon per claimant' in archive and 'one use per order' in archive, 'Cloudways archive drops the recorded coupon-use limits'
     assert all(f'id="archive-{suffix}"' in archive for suffix in ('2018','2019','2020','2021','2022-08','2022-12')), 'Cloudways archive rows lost their evidence anchors'
+    for action in ('1. Check the current official pages.','2. Check eligibility.','3. Check the whole bill.','4. Keep historical evidence in the past.'):
+        assert action in cloudways_guide, f'Cloudways guide drops a pre-purchase action: {action}'
     assert '/guides/cloudways-coupon-code/' in (ROOT/'site/providers/cloudways/index.html').read_text(encoding='utf-8'), 'Cloudways provider page does not link the official promo guide'
     assert 'https://hostdealradar.com/guides/cloudways-coupon-code/' in sitemap, 'Sitemap omits the Cloudways promo guide'
     # No unverified or earlier record may be presented as current or publish current price data.
