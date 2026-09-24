@@ -241,24 +241,22 @@ def check():
     assert 'September 15, 2026' in cloudways_guide and 'not supported by a retained source excerpt' in cloudways_guide and 'time zone is not stated' in cloudways_guide, 'Cloudways guide hides the unsupported-date correction or date ambiguity'
     cloudways_schema=schemas(cloudways_guide)[0]
     assert cloudways_schema.get('@type')=='FAQPage' and len(cloudways_schema.get('mainEntity',[]))==5, 'Cloudways guide must publish its visible FAQPage schema'
-    # The archived BFCM record is the part of this question no page in the top ten
-    # carries, so its integrity is asserted directly: every year code, the 2020
-    # gap, the stated limits, and the source-level findings that only exist in
-    # page markup. A future edit may not quietly drop one of them.
+    # Preserve every cited archive row and the limits that keep historical
+    # evidence from being presented as a current offer or a live-browser test.
     archive=cloudways_guide[cloudways_guide.index('id="archive"'):cloudways_guide.index('<h2>Before you start a paid plan</h2>')]
     for token in ('BFCM18','BFCM40','BFCM2021','BFCM4030','CC-MAIN-2018-51','CC-MAIN-2019-51',
                   'CC-MAIN-2020-50','CC-MAIN-2021-49','CC-MAIN-2022-33','CC-MAIN-2022-49',
-                  'Not recorded','Promo Code 0000','300 Total Coupons','Oct 27, 2021 00:00:01',
-                  'Nov 29, 2021 18:59:59','all users who sign up','only valid for new customers',
-                  'MST2653','CloudWaysFriday','CLOUDWAYS-20','4th December'):
+                  '2018-12-13T05:43:57Z','2019-12-09T06:58:23Z','2020-11-25T11:26:42Z',
+                  '2021-11-29T03:08:26Z','2022-08-10T05:22:59Z','2022-12-03T06:04:16Z',
+                  'December 4, 2019','1st of December','Inspectlet','NotificationX','cloudways-BFCM',
+                  'does not show that Cloudways had no offer that year',
+                  'does not tell us how JavaScript behaved',
+                  'do not establish how many coupons remained redeemable'):
         assert token in archive, f'Cloudways archive section dropped its evidence: {token}'
     assert archive.count('<tr>')==7, 'Cloudways archive table lost a year row'
-    # The two overlap strings must stay disclosed, not quietly claimed as unique.
-    assert 'not claiming' in archive, 'Cloudways archive hides the third-party overlap'
-    assert 'a Reddit thread' in archive and 'not counting it as a miss' in archive, 'Cloudways archive hides the one result it could not open'
-    assert 'only one of the two says the code was for a <em>new</em> account' in archive, 'Cloudways archive hides that one 2018 limit has a single source'
-    # The live countdown statement and the archived countdown must not be conflated.
-    assert 'not a live clock' in archive and 'is the subject of' in archive, 'Cloudways archive conflates the archived countdown with the current one'
+    assert 'one Reddit result' in archive and 'not used as evidence of absence' in archive, 'Cloudways archive hides the one result it could not open'
+    assert 'limited, dated comparison' in archive and 'unique across the web' in archive, 'Cloudways archive overstates its comparison scope'
+    assert 'new customers' in archive, 'Cloudways archive drops the recorded eligibility limit'
     assert '/guides/cloudways-coupon-code/' in (ROOT/'site/providers/cloudways/index.html').read_text(encoding='utf-8'), 'Cloudways provider page does not link the official promo guide'
     assert 'https://hostdealradar.com/guides/cloudways-coupon-code/' in sitemap, 'Sitemap omits the Cloudways promo guide'
     # No unverified or earlier record may be presented as current or publish current price data.
