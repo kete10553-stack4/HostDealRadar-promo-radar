@@ -231,6 +231,16 @@ def check():
     home=(ROOT/'site/index.html').read_text(encoding='utf-8')
     assert f'{len(ids)} providers in our source list' in home, 'Homepage provider count mismatch'
     assert f'{len(current)} listings captured' in home, 'Homepage current-listing count mismatch'
+    directory=(ROOT/'site/providers/index.html').read_text(encoding='utf-8')
+    groups=[re.search(r'<h2 id="'+group+r'">.*?<div class="provider-grid">(.*?)</div></section>',directory,re.S)
+            for group in ('current-records','without-current-records')]
+    assert all(groups), 'Provider directory does not show both record-status groups'
+    grouped_ids=[re.findall(r'href="/providers/([^/]+)/"',group.group(1)) for group in groups]
+    visible=[p['id'] for p in cfg['providers'] if p['id'] not in unpublished_source_only]
+    current_ids={o['provider'] for o in current}
+    assert grouped_ids==[[pid for pid in visible if pid in current_ids],
+                         [pid for pid in visible if pid not in current_ids]], 'Provider directory groups or order disagree with the published snapshot'
+    assert 'no configured extraction rule matched' not in directory.lower(), 'Provider directory exposes pipeline jargon'
     guide=(ROOT/'site/guides/godaddy-renewal-coupon/index.html').read_text(encoding='utf-8')
     assert 'The official answer' in guide and guide.count('class="card community-report"') == 3, 'GoDaddy guide is missing its official answer or three linked user reports'
     assert guide.count('Auto-renews Jul. 2027 at $') == 3 and 'automatically renews annually' in guide, 'GoDaddy guide omits the three displayed membership renewals or their annual recurrence'
@@ -304,6 +314,11 @@ def check():
     assert 'https://docs.digitalocean.com/platform/billing/signup-credit/' in digitalocean_guide and 'https://www.digitalocean.com/legal/promotional-credit-discount-terms' in digitalocean_guide, 'DigitalOcean guide omits an official source'
     assert '/guides/digitalocean-promo-code/' in home and '/guides/digitalocean-promo-code/' in (ROOT/'site/providers/digitalocean/index.html').read_text(encoding='utf-8'), 'DigitalOcean guide lacks a home or provider link'
     assert 'https://hostdealradar.com/guides/digitalocean-promo-code/' in sitemap, 'Sitemap omits the DigitalOcean guide'
+    hostinger_guide=(ROOT/'site/guides/hostinger-coupon-code/index.html').read_text(encoding='utf-8')
+    assert '<h1>Hostinger coupon code:' in hostinger_guide and 'COUPONSPAGE' in hostinger_guide, 'Hostinger guide lacks its official coupon answer'
+    assert hostinger_guide.index('<div class="table-wrap">') < hostinger_guide.index('<h2>Coupon card: code, deadline, and limits</h2>'), 'Hostinger comparison table is not first'
+    assert '/providers/hostinger/' in hostinger_guide and '/guides/hostinger-coupon-code/' in (ROOT/'site/providers/hostinger/index.html').read_text(encoding='utf-8'), 'Hostinger guide and provider page do not link both ways'
+    assert 'https://hostdealradar.com/guides/hostinger-coupon-code/' in sitemap, 'Hostinger coupon guide is absent from sitemap'
     hosting_coupons=(ROOT/'site/guides/hosting-coupons/index.html').read_text(encoding='utf-8')
     assert all(source in hosting_coupons for source in ('https://www.hostinger.com/coupons','https://www.namecheap.com/hosting/19th-birthday/','https://docs.digitalocean.com/platform/billing/signup-credit/')), 'Hosting coupon guide omits an official source'
     assert 'September 25' in hosting_coupons and 'not checkout tests or a price ranking' in hosting_coupons, 'Hosting coupon guide loses its time or evidence boundary'
