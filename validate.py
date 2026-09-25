@@ -278,6 +278,10 @@ def check():
     assert 'https://docs.digitalocean.com/platform/billing/signup-credit/' in digitalocean_guide and 'https://www.digitalocean.com/legal/promotional-credit-discount-terms' in digitalocean_guide, 'DigitalOcean guide omits an official source'
     assert '/guides/digitalocean-promo-code/' in home and '/guides/digitalocean-promo-code/' in (ROOT/'site/providers/digitalocean/index.html').read_text(encoding='utf-8'), 'DigitalOcean guide lacks a home or provider link'
     assert 'https://hostdealradar.com/guides/digitalocean-promo-code/' in sitemap, 'Sitemap omits the DigitalOcean guide'
+    hosting_coupons=(ROOT/'site/guides/hosting-coupons/index.html').read_text(encoding='utf-8')
+    assert all(source in hosting_coupons for source in ('https://www.hostinger.com/coupons','https://www.namecheap.com/hosting/19th-birthday/','https://docs.digitalocean.com/platform/billing/signup-credit/')), 'Hosting coupon guide omits an official source'
+    assert 'September 25' in hosting_coupons and 'not checkout tests or a price ranking' in hosting_coupons, 'Hosting coupon guide loses its time or evidence boundary'
+    assert '/guides/hosting-coupons/' in home and 'https://hostdealradar.com/guides/hosting-coupons/' in sitemap, 'Hosting coupon guide lacks a home link or sitemap entry'
     # No unverified or earlier record may be presented as current or publish current price data.
     home_schema=next(entry for schema in schemas(home) for entry in schema.get('@graph',[schema]) if entry.get('@type')=='ItemList')
     home_schema_json=json.dumps(home_schema,separators=(',',':'))
