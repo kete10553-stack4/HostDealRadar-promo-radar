@@ -531,7 +531,7 @@ def build(config_path=None, output=None):
     write(Path('providers/index.html'),page('Providers | HostDealRadar','Hosting providers and their latest source-check status.',domain+'/providers/',provider_listing,{'@context':'https://schema.org','@type':'CollectionPage','name':'Providers'}))
     for p in public_providers:
         mine=[o for o in offers if o['provider']==p['id']]
-        po=[o for o in mine if states[o['slug']][0]==CURRENT]; ph=[o for o in mine if states[o['slug']][0] in HISTORY]
+        po=[o for o in mine if states[o['slug']][0]==CURRENT]
         status=statuses.get(p['id'],{'status':'not checked','reason':'No source check has run yet.'})
         if p['id'] in state_only:
             status_text, detail, _ = state_only_display(status, blockers.get(p['id']))
@@ -540,8 +540,15 @@ def build(config_path=None, output=None):
             if observation:
                 current_html+=source_observation_record(p, observation, status)
         else:
-            status_text='Official page read; capture rules matched.' if status['status']=='evidenced' and status.get('capture_status')=='matched' and status.get('http_status')==200 and status.get('visible_excerpt') else e(status['reason'])
-            current_html='' if po else '<div class="empty"><h3>No current offer is published for this source</h3><p>'+e('Promotional end date not verified.' if any(states[o['slug']][0]=='unverified' for o in ph) else status['reason'])+'</p></div>'
+            source_matched=(status['status']=='evidenced' and status.get('capture_status')=='matched'
+                            and status.get('http_status')==200 and status.get('visible_excerpt'))
+            status_text='Official page read; capture rules matched.' if source_matched else e(status['reason'])
+            if po:
+                current_html=''
+            else:
+                detail=('Official page read, but no captured record qualifies as a current offer.'
+                        if source_matched else status['reason'])
+                current_html='<div class="empty"><h3>No current offer is published for this source</h3><p>'+e(detail)+'</p></div>'
         focus=cfg['page_focus'].get(p['id'])
         if po:
             note=provider_summary(po)+' Current source records follow stored record order; this is not a recommendation or a ranking of price, quality, or value.'
