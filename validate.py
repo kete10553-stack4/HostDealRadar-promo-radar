@@ -261,22 +261,11 @@ def check():
     assert statuses['cloudways'].get('http_status')==200 and countdown_visible and compact(countdown_visible) in cloudways_guide, 'Cloudways guide omits the stored countdown evidence'
     assert 'September 15, 2026' in cloudways_guide and 'not supported by a retained source excerpt' in cloudways_guide and 'time zone is not stated' in cloudways_guide, 'Cloudways guide hides the unsupported-date correction or date ambiguity'
     cloudways_schema=schemas(cloudways_guide)[0]
-    assert cloudways_schema.get('@type')=='FAQPage' and len(cloudways_schema.get('mainEntity',[]))==5, 'Cloudways guide must publish its visible FAQPage schema'
-    # The coupon-code head query stays with this guide. The cited table moved to
-    # its own archive page, so this page must keep the short answers, link out
-    # once, and no longer carry the rows themselves.
-    short_answers=cloudways_guide[cloudways_guide.index('id="archive"'):cloudways_guide.index('<h2>Before you start a paid plan</h2>')]
+    assert cloudways_schema.get('@type')=='FAQPage' and len(cloudways_schema.get('mainEntity',[]))==3, 'Cloudways guide schema includes questions no longer answered on this page'
+    # The current-code guide links to, but does not repeat, the historical archive.
+    archive_pointer=cloudways_guide[cloudways_guide.index('id="archive"'):cloudways_guide.index('<h2>Before you start a paid plan</h2>')]
     assert '<tr id="archive-' not in cloudways_guide, 'Cloudways guide still carries the archived table that moved to the archive page'
-    assert '/guides/cloudways-coupon-archive/' in cloudways_guide, 'Cloudways guide does not link the archive page'
-    for token in ('Inspectlet','NotificationX','cloudways-BFCM',
-                  'does not tell us how JavaScript behaved',
-                  'do not establish how many coupons remained redeemable'):
-        assert token in short_answers, f'Cloudways guide dropped a short answer: {token}'
-    assert 'December 4, 2019' in cloudways_guide, 'Cloudways guide drops the archived 2019 deadline it still cites'
-    assert 'one Reddit result' in short_answers and 'not used as evidence of absence' in short_answers, 'Cloudways guide hides the one result it could not open'
-    assert 'limited, dated comparison' in short_answers and 'unique across the web' in short_answers, 'Cloudways guide overstates its comparison scope'
-    assert 'only valid for new customers' in short_answers and 'applies to users who sign up' in short_answers, 'Cloudways guide drops the source conflict about eligibility'
-    assert 'one coupon per claimant' in short_answers and 'one use per order' in short_answers, 'Cloudways guide drops the recorded coupon-use limits'
+    assert archive_pointer.count('<p>')==1 and archive_pointer.count('/guides/cloudways-coupon-archive/')==1, 'Cloudways guide should have one historical introduction and one archive link'
     # The archive page must preserve every cited row and the limits that keep
     # historical evidence from being presented as a current offer or live test.
     cloudways_archive=(ROOT/'site/guides/cloudways-coupon-archive/index.html').read_text(encoding='utf-8')
@@ -286,7 +275,7 @@ def check():
                   '2021-11-29T03:08:26Z','2022-08-10T05:22:59Z','2022-12-03T06:04:16Z',
                   'December 4, 2019','1st of December','Inspectlet','NotificationX','cloudways-BFCM',
                   'does not show that Cloudways had no offer that year',
-                  'does not tell us how JavaScript behaved',
+                  'not how JavaScript behaved',
                   'do not establish how many coupons remained redeemable',
                   '300 Total Coupons','30 Days 18 Hours 54 Mins 09 Secs',
                   'Oct 27, 2021 00:00:01','Nov 29, 2021 18:59:59',
@@ -298,6 +287,8 @@ def check():
     assert 'one Reddit result' in cloudways_archive and 'not used as evidence of absence' in cloudways_archive, 'Cloudways archive hides the one result it could not open'
     assert 'limited, dated comparison' in cloudways_archive and 'unique across the web' in cloudways_archive, 'Cloudways archive overstates its comparison scope'
     assert 'only valid for new customers' in cloudways_archive and 'applies to users who sign up' in cloudways_archive, 'Cloudways archive drops the source conflict about eligibility'
+    assert 'one coupon per claimant' in cloudways_archive and 'one use per order' in cloudways_archive, 'Cloudways archive drops the saved coupon-use limits'
+    assert 'unfilled placeholder' not in cloudways_archive and 'No page in the current results' not in cloudways_archive, 'Cloudways archive turns limited source observations into unsupported claims'
     # The archive page carries the archive wording only; the head query stays on
     # the coupon guide, so neither its title nor its H1 may take that phrase.
     archive_title=re.search(r'<title>(.*?)</title>',cloudways_archive,re.S).group(1)
@@ -308,6 +299,7 @@ def check():
     for action in ('1. Check the current official pages.','2. Check eligibility.','3. Check the whole bill.','4. Keep historical evidence in the past.'):
         assert action in cloudways_guide, f'Cloudways guide drops a pre-purchase action: {action}'
     assert '/guides/cloudways-coupon-code/' in (ROOT/'site/providers/cloudways/index.html').read_text(encoding='utf-8'), 'Cloudways provider page does not link the official promo guide'
+    assert '/guides/cloudways-coupon-archive/' in (ROOT/'site/providers/cloudways/index.html').read_text(encoding='utf-8'), 'Cloudways provider page points its historical claims at the current-code guide'
     assert 'https://hostdealradar.com/guides/cloudways-coupon-code/' in sitemap, 'Sitemap omits the Cloudways promo guide'
     digitalocean_guide=(ROOT/'site/guides/digitalocean-promo-code/index.html').read_text(encoding='utf-8')
     assert 'No. DigitalOcean says' in digitalocean_guide and 'We did not create an account' in digitalocean_guide, 'DigitalOcean guide omits its answer or evidence limit'
