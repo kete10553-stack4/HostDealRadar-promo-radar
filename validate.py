@@ -74,6 +74,7 @@ def check_earlier_record_path(payload, cfg):
 
 def check():
     cfg=load_config(); settings=cfg['settings']; payload=json.loads((ROOT/'data/offers.json').read_text(encoding='utf-8'))
+    rules={(rule['provider'],rule.get('title')):rule for rule in cfg['extractors'] if rule.get('title')}
     statuses=payload.get('source_status',{})
     assert {p['id'] for p in cfg['providers']} <= {r['provider'] for r in cfg['extractors']}, 'Every configured provider needs an extraction or availability rule'
     assert {p['id'] for p in cfg['providers']} == set(statuses), 'Every configured provider needs a recorded source status'
@@ -163,17 +164,22 @@ def check():
             continue
         assert page.count(detail)==1, f'Current record does not have exactly one provider detail: {offer["slug"]}'
         block=page.split(detail,1)[1].split('</section>',1)[0]
-        assert build.e(offer['source_url']) in block and build.e(offer['fetched_at']) in block, f'Record detail lacks its own source or capture time: {offer["slug"]}'
+        assert build.e(offer['source_url']) in block and build.e(build.date_text(offer['fetched_at'])) in block, f'Record detail lacks its own source or check date: {offer["slug"]}'
         assert states[offer['slug']] in block, f'Record detail omits its verification state: {offer["slug"]}'
         assert 'Unknown' not in block, f'Provider record still publishes an Unknown field: {offer["slug"]}'
-        assert build.OFFICIAL_FIELD_MISSING in block, f'Provider record does not label unavailable official fields: {offer["slug"]}'
-        assert build.e((offer.get('field_evidence') or {}).get('price')) in block, f'Provider record omits the official price wording: {offer["slug"]}'
-        if not build.currency_wording(offer,'price'):
-            assert '<dt>Currency wording</dt><dd>'+build.e(build.OFFICIAL_FIELD_MISSING) in block, f'Provider record leaks unsupported currency: {offer["slug"]}'
-        if not build.billing_wording(offer,'price'):
-            assert '<dt>Billing wording</dt><dd>'+build.e(build.OFFICIAL_FIELD_MISSING) in block, f'Provider record leaks unsupported billing unit: {offer["slug"]}'
-        if offer.get('offer_url'):
-            assert build.e(offer['offer_url']) in block, f'Record detail omits its own official offer link: {offer["slug"]}'
+        price_quote=build.e((offer.get('field_evidence') or {}).get('price'))
+        assert price_quote and block.count(price_quote)==1, f'Provider record does not show its official price wording exactly once: {offer["slug"]}'
+        assert 'Currency wording' not in block and 'Billing wording' not in block, f'Provider record repeats normalized price wording: {offer["slug"]}'
+        rule=rules.get((offer['provider'], offer['title']), {})
+        optional_evidence=[
+            build.captured_field_evidence(offer,'commitment_months') if offer.get('commitment_months') else '',
+            build.captured_field_evidence(offer,'renewal_price') if build.renewal_supported(offer,rule) else '',
+            build.captured_field_evidence(offer,'coupon_code') if offer.get('coupon_code') else '',
+            build.captured_field_evidence(offer,'valid_until') if offer.get('valid_until') else '',
+        ]
+        missing=sum(not value for value in optional_evidence)
+        assert block.count('<dt>Not stated by the source</dt>') == (1 if missing else 0), f'Unavailable official fields are not collapsed to one row: {offer["slug"]}'
+        assert 'no affiliate relationship is active' not in block.lower(), f'Per-record system disclosure remains: {offer["slug"]}'
     for provider in cfg['providers']:
         page_path=ROOT/'site/providers'/provider['id']/'index.html'
         if provider['id'] in unpublished_source_only:
@@ -185,15 +191,19 @@ def check():
         assert page.count('<article class="card history">') == 0, f'Historical summary cards remain on provider page: {provider["id"]}'
         assert page.count('<section class="record-detail"') == expect_current, f'Current provider detail count wrong: {provider["id"]}'
         focus=cfg['page_focus'].get(provider['id'])
-        if focus:
-            assert f'<title>{build.e(focus)}: official price and terms | HostDealRadar</title>' in page, f'Focused provider title is not query-aligned: {provider["id"]}'
-            assert f'<h1>{build.e(focus)}</h1>' in page, f'Focused provider heading is not query-aligned: {provider["id"]}'
-            if expect_current:
-                assert f'{build.e(focus)}: official price, billing, and renewal terms appear below only when captured' in page, f'Focused provider first-screen answer is missing: {provider["id"]}'
-            else:
-                assert f'{build.e(focus)}: no current source record is published' in page, f'Zero-current focused provider page overstates its contents: {provider["id"]}'
+        provider_records=[o for o in current if o['provider']==provider['id']]
+        has_coupon=any(o.get('coupon_code') and build.captured_field_evidence(o,'coupon_code') for o in provider_records)
+        if expect_current:
+            base=focus or provider['name']
+            heading=base if re.search(r'\b(?:pricing|prices?|coupon)\b',base,re.I) else base+(' coupon code and pricing' if has_coupon else ' pricing')
+            first_record=page.index('<section class="record-detail"')
+            assert first_record < page.index('<h2>About this source check</h2>'), f'Provider process copy appears before the answer: {provider["id"]}'
         else:
-            assert f'<title>{build.e(provider["name"])} source-check status and terms | HostDealRadar</title>' in page, f'Provider page title lacks its source-check scope: {provider["id"]}'
+            heading=provider['name']+' pricing availability'
+        assert f'<title>{build.e(heading)} | HostDealRadar</title>' in page, f'Provider page title is not reader-facing: {provider["id"]}'
+        assert f'<h1>{build.e(heading)}</h1>' in page, f'Provider page heading does not match its visible record state: {provider["id"]}'
+        assert 'source-check status and terms | HostDealRadar' not in page, f'Internal terminology remains in the provider title: {provider["id"]}'
+        assert page.lower().count('no active affiliate relationship') == 1, f'Provider page does not carry exactly one page-level relationship disclosure: {provider["id"]}'
     cloudways=(ROOT/'site/providers/cloudways/index.html').read_text(encoding='utf-8')
     assert '#record-cloudways-summer404' not in cloudways and 'id="record-cloudways-summer404"' not in cloudways, 'Undated Cloudways promotion remains on the provider page'
     assert 'No current offer is published for this source' in cloudways, 'Cloudways page does not disclose that it has no current source record'
