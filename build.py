@@ -418,7 +418,7 @@ def build(config_path=None, output=None):
     current=[o for o in offers if states[o['slug']][0]==CURRENT]
     history=[o for o in offers if states[o['slug']][0] in HISTORY]
     providers=cfg['providers']
-    guide_templates={'godaddy':'provider-guide.html','namecheap':'namecheap-provider-guide.html','cloudways':'cloudways-provider-guide.html','digitalocean':'digitalocean-provider-guide.html'}
+    guide_templates={'godaddy':'provider-guide.html','namecheap':'namecheap-provider-guide.html','cloudways':'cloudways-provider-guide.html','digitalocean':'digitalocean-provider-guide.html','hostinger':'hostinger-provider-guide.html'}
     # A source-only provider needs either a concrete official-page observation or
     # an existing editorial guide. Otherwise it has no public page to publish.
     unpublished_source_only={pid for pid in state_only if pid not in cfg['browser_observations'] and pid not in guide_templates}
@@ -510,6 +510,27 @@ def build(config_path=None, output=None):
         else:
             label='Latest source check did not complete →'
         return f'<a class="provider-tile" href="/providers/{e(p["id"])}/"><strong>{e(p["name"])}</strong><p>{e(provider_summary(current_by_provider[p["id"]], history_by_provider[p["id"]]))}</p><span>{e(label)}</span></a>'
+    def directory_tile(p):
+        pid=p['id']
+        records=current_by_provider[pid]
+        status=statuses.get(pid, {})
+        if records:
+            summary=provider_summary(records)
+            label=f'{len(records)} current record(s) →'
+        elif pid in state_only:
+            heading, summary, _=state_only_display(status, blockers.get(pid))
+            label=heading+' →'
+        elif status.get('capture_status')=='unmatched':
+            summary='The official page was read, but this check did not capture a verifiable current price.'
+            label='No current record →'
+        elif status.get('status')=='evidenced' and status.get('capture_status')=='matched':
+            summary='The official page was read, but no captured record qualifies as a current offer.'
+            label='No current record →'
+        else:
+            summary=status.get('reason') or 'No source check has run yet.'
+            label='Latest source check did not complete →'
+        return (f'<a class="provider-tile" href="/providers/{e(pid)}/"><strong>{e(p["name"])}</strong>'
+                f'<p>{e(summary)}</p><span>{e(label)}</span></a>')
     provider_tiles=''.join(tile(p) for p in public_providers)
     featured=featured_renewals(current, rules)
     featured_slugs={o['slug'] for o in featured}
@@ -527,7 +548,17 @@ def build(config_path=None, output=None):
         {'@type':'ItemList','name':'HostDealRadar providers with current records','itemListElement':[{'@type':'ListItem','position':i+1,'item':{'@type':'WebPage','name':p['name'],'url':domain+'/providers/'+p['id']+'/'}} for i,p in enumerate(p for p in public_providers if p['id'] in current_provider_ids)]}
     ]}
     write(Path('index.html'),page('HostDealRadar | Official hosting offers', 'Official hosting offers with source-check status and provider links.',domain+'/',home,home_schema,head_extra="<meta name='impact-site-verification' value='9f3ff63a-c432-478f-8859-af77a6120cbb'>"))
-    provider_listing='<section class="wrap section"><div class="eyebrow">OFFICIAL SOURCES</div><h1>Providers we check</h1><p class="lead">Providers have public source pages in our list. Each provider page shows whether the latest source check confirmed a current record, produced no published record, or did not complete. The grid follows the configured source-list order; it is not a recommendation, quality ranking, or price ranking. Each summary names the first current record; when none is current it says so directly. Open a provider for the matching official source. <a href="/methodology/#service-labels">Read service-label definitions and limits</a>. Unverified and earlier records are not repeated on provider pages.</p><div class="provider-grid">'+provider_tiles+'</div></section>'
+    with_current=[p for p in public_providers if current_by_provider[p['id']]]
+    without_current=[p for p in public_providers if not current_by_provider[p['id']]]
+    provider_listing=(
+        '<section class="wrap section"><div class="eyebrow">OFFICIAL SOURCES</div><h1>Providers we check</h1>'
+        '<p class="lead">Browse providers with current source records first. Other checked sources remain below with the result of their latest check. Within each group, providers follow the configured source-list order, not a recommendation or a ranking of price, quality, or value. <a href="/methodology/#service-labels">Read service-label definitions and limits</a>.</p>'
+        f'<h2 id="current-records">Providers with current records ({len(with_current)})</h2>'
+        '<div class="provider-grid">'+''.join(directory_tile(p) for p in with_current)+'</div></section>'
+        '<section class="wrap section"><h2 id="without-current-records">Sources without current records '
+        f'({len(without_current)})</h2><p>These provider pages remain available for source-check details, '
+        'but any earlier records are kept as history, not displayed as current offers. These pages are not listed in the sitemap.</p>'
+        '<div class="provider-grid">'+''.join(directory_tile(p) for p in without_current)+'</div></section>')
     write(Path('providers/index.html'),page('Providers | HostDealRadar','Hosting providers and their latest source-check status.',domain+'/providers/',provider_listing,{'@context':'https://schema.org','@type':'CollectionPage','name':'Providers'}))
     for p in public_providers:
         mine=[o for o in offers if o['provider']==p['id']]
@@ -546,10 +577,10 @@ def build(config_path=None, output=None):
             retained_without_capture=(not po and status.get('capture_status')=='unmatched'
                                       and status.get('retained_count',0))
             if retained_without_capture:
-                display_reason=('Official source responded, but no configured extraction rule matched. '
-                                'Earlier records were retained as history and are not displayed as current offers.')
+                display_reason=('The official page was read, but this check did not capture a verifiable current price. '
+                                'Earlier records are kept as history and are not shown as current offers.')
             status_text=('Official page read; capture rules matched.' if source_matched else
-                         'Official source responded; no extraction rule matched.' if retained_without_capture else
+                         'Official page read; no verifiable current price captured in this check.' if retained_without_capture else
                          e(display_reason))
             if po:
                 current_html=''
