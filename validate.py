@@ -263,6 +263,11 @@ def check():
         assert action in cloudways_guide, f'Cloudways guide drops a pre-purchase action: {action}'
     assert '/guides/cloudways-coupon-code/' in (ROOT/'site/providers/cloudways/index.html').read_text(encoding='utf-8'), 'Cloudways provider page does not link the official promo guide'
     assert 'https://hostdealradar.com/guides/cloudways-coupon-code/' in sitemap, 'Sitemap omits the Cloudways promo guide'
+    digitalocean_guide=(ROOT/'site/guides/digitalocean-promo-code/index.html').read_text(encoding='utf-8')
+    assert 'No. DigitalOcean says' in digitalocean_guide and 'We did not create an account' in digitalocean_guide, 'DigitalOcean guide omits its answer or evidence limit'
+    assert 'https://docs.digitalocean.com/platform/billing/signup-credit/' in digitalocean_guide and 'https://www.digitalocean.com/legal/promotional-credit-discount-terms' in digitalocean_guide, 'DigitalOcean guide omits an official source'
+    assert '/guides/digitalocean-promo-code/' in home and '/guides/digitalocean-promo-code/' in (ROOT/'site/providers/digitalocean/index.html').read_text(encoding='utf-8'), 'DigitalOcean guide lacks a home or provider link'
+    assert 'https://hostdealradar.com/guides/digitalocean-promo-code/' in sitemap, 'Sitemap omits the DigitalOcean guide'
     # No unverified or earlier record may be presented as current or publish current price data.
     home_schema=next(entry for schema in schemas(home) for entry in schema.get('@graph',[schema]) if entry.get('@type')=='ItemList')
     home_schema_json=json.dumps(home_schema,separators=(',',':'))
