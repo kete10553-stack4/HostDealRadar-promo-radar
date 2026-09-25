@@ -200,6 +200,7 @@ def check():
             assert first_record < page.index('<h2>About this source check</h2>'), f'Provider process copy appears before the answer: {provider["id"]}'
         else:
             heading=provider['name']+' pricing availability'
+            assert 'Promotional end date not verified.' not in page, f'No-current provider page implies a current promotion: {provider["id"]}'
         assert f'<title>{build.e(heading)} | HostDealRadar</title>' in page, f'Provider page title is not reader-facing: {provider["id"]}'
         assert f'<h1>{build.e(heading)}</h1>' in page, f'Provider page heading does not match its visible record state: {provider["id"]}'
         assert 'source-check status and terms | HostDealRadar' not in page, f'Internal terminology remains in the provider title: {provider["id"]}'
