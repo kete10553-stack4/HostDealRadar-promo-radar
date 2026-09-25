@@ -449,37 +449,36 @@ def build(config_path=None, output=None):
         rule=rules.get((o['provider'], o['title']), {})
         advertised=official_rate_wording(o,'price')
         renewal_evidence=captured_field_evidence(o,'renewal_price') if renewal_supported(o,rule) else ''
-        currency_marker=currency_wording(o,'price')
-        billing_marker=billing_wording(o,'price')
-        source_terms=[
-            sourced_term('Advertised price',advertised,captured_field_evidence(o,'price')),
-            sourced_term('Currency wording',currency_marker,captured_field_evidence(o,'price') if currency_marker else ''),
-            sourced_term('Billing wording',billing_marker,captured_field_evidence(o,'price') if billing_marker else ''),
-            sourced_term('Commitment',str(o['commitment_months'])+' months' if o.get('commitment_months') else '',captured_field_evidence(o,'commitment_months')),
-            sourced_term('Renewal price',official_rate_wording(o,'renewal_price') if renewal_evidence else '',renewal_evidence),
-            sourced_term('Coupon code',o.get('coupon_code') or '',captured_field_evidence(o,'coupon_code')),
-            sourced_term('Valid until',o.get('valid_until') or '',captured_field_evidence(o,'valid_until')),
+        price_evidence=captured_field_evidence(o,'price')
+        evidence_fields=[
+            ('Commitment',captured_field_evidence(o,'commitment_months') if o.get('commitment_months') else ''),
+            ('Renewal price',renewal_evidence),
+            ('Coupon code',captured_field_evidence(o,'coupon_code') if o.get('coupon_code') else ''),
+            ('Valid until',captured_field_evidence(o,'valid_until') if o.get('valid_until') else ''),
         ]
-        metadata=[('Listing type','Regular price; no discount claimed' if o.get('kind')=='regular_price' else 'Promotion'),
-                  ('Captured at',o['fetched_at']),('Record state',state)]
+        grouped=defaultdict(list)
+        missing=[]
+        for label, quote in evidence_fields:
+            if quote:
+                grouped[quote].append(label)
+            else:
+                missing.append(label.lower())
+        # The price evidence is the first-screen answer. If the same exact
+        # quote also supports another field, do not print it again below.
+        grouped.pop(price_evidence, None)
+        source_terms=[]
+        for quote, labels in grouped.items():
+            source_terms.append(f'<div><dt>{e(" / ".join(labels))}</dt><dd>“{e(quote)}”</dd></div>')
+        if missing:
+            source_terms.append(f'<div><dt>Not stated by the source</dt><dd>{e(", ".join(missing).capitalize())}.</dd></div>')
+        metadata=[('Service label',o.get('category','Hosting')),
+                  ('Listing type','Regular price; no discount claimed' if o.get('kind')=='regular_price' else 'Promotion')]
         terms_html=''.join(source_terms)+''.join(f'<div><dt>{e(key)}</dt><dd>{e(value)}</dd></div>' for key,value in metadata)
-        quotes=[]
-        for quote in (o.get('field_evidence') or {}).values():
-            quote=str(quote or '').strip()
-            if quote and quote not in quotes:
-                quotes.append(quote)
-        source_excerpt=' · '.join('“'+quote+'”' for quote in quotes) or OFFICIAL_FIELD_MISSING
-        rel='sponsored noopener noreferrer' if p['affiliate_url'] else 'noopener noreferrer'
-        disclosure='This may be an affiliate link; we may earn a commission at no extra cost to you.' if p['affiliate_url'] else 'This is an official link; no affiliate relationship is active.'
-        outbound=(f'<a class="button" href="{e(o["offer_url"])}" rel="{rel}">View offer at {e(p["name"])} ↗</a>'
-                  if o.get('offer_url') else '<p>Official offer link not captured.</p>')
-        return (f'<section class="record-detail" id="record-{e(o["slug"])}"><h3>{e(offer_name(p["name"],o["title"]))}</h3>'
-                f'<p class="record-state state-{e(state)}"><strong>{e(state.title())}</strong> {e(message)}</p>'
-                f'<p><strong>HostDealRadar service label:</strong> {e(o.get("category","Hosting"))}. This label describes the captured service type; it is not a provider claim.</p>'
-                f'<dl class="terms">{terms_html}</dl>'
-                f'<div class="source-note"><strong>Official wording captured for this record</strong><p>{e(source_excerpt)}</p>'
-                f'<a href="{e(o["source_url"])}" rel="noopener noreferrer">View the official page ↗</a></div>'
-                f'{outbound}<p class="small">{e(disclosure)} Confirm availability, tax, billing term and renewal in the provider’s checkout.</p></section>')
+        return (f'<section class="record-detail" id="record-{e(o["slug"])}"><h2>{e(offer_name(p["name"],o["title"]))}</h2>'
+                f'<p class="lead"><strong>Official price wording:</strong> “{e(advertised)}”</p>'
+                f'<p class="record-state state-{e(state)}"><strong>{e(state.title())} record.</strong> Checked {e(date_text(o["fetched_at"]))}. '
+                f'<a href="{e(o["source_url"])}" rel="noopener noreferrer">Open official source ↗</a></p>'
+                f'<dl class="terms">{terms_html}</dl></section>')
     def source_observation_record(p, observation, status):
         terms=[('Record type','Official source observation; not a current offer'),
                ('Official price','Not publicly disclosed on the observed page'),
@@ -555,16 +554,29 @@ def build(config_path=None, output=None):
             note=(f'{focus}: no current source record is published. This page keeps the latest {p["name"]} source-check status only; '
                   'it is not included in the sitemap.')
         related_guide=template(guide_templates[p['id']]) if p['id'] in guide_templates else ''
-        details=('<section class="record-details"><h2>Current source records</h2><p>Each current record appears once and keeps its own official wording, source, capture time and verification state. A field not published on the checked official source is labelled as such instead of being inferred.</p>'
-                 +''.join(record_detail(o) for o in po)+'</section>') if po else ''
-        heading=focus or p['name']
-        content=template('provider.html',provider=e(heading),note=e(note),source=e(p['source_url']),source_status=e(status_text),related_guide=related_guide,offers=current_html+details)
+        details=('<div class="record-details">'+''.join(record_detail(o) for o in po)+'</div>') if po else ''
+        has_coupon=any(o.get('coupon_code') and captured_field_evidence(o,'coupon_code') for o in po)
+        if po:
+            base_heading=focus or p['name']
+            heading=(base_heading if re.search(r'\b(?:pricing|prices?|coupon)\b',base_heading,re.I)
+                     else base_heading+(' coupon code and pricing' if has_coupon else ' pricing'))
+            first=po[0]
+            description=(f'Official {p["name"]} pricing checked {date_text(first["fetched_at"])}. '
+                         f'{offer_name(p["name"],first["title"])} is shown with the exact price wording from the provider page.')
+        else:
+            heading=f'{p["name"]} pricing availability'
+            description=(f'No current {p["name"]} pricing record is published. '
+                         'See the latest official source status and source link.')
+        page_disclosure=(f'Links on this page may be affiliate links; HostDealRadar may earn a commission at no extra cost to you.'
+                         if p['affiliate_url'] else
+                         f'Links on this page go to official {p["name"]} pages. HostDealRadar has no active affiliate relationship with {p["name"]}.')
+        page_disclosure+=' Confirm availability, tax, billing terms, and renewal terms with the provider. Service labels are HostDealRadar classifications, not provider claims.'
+        content=template('provider.html',provider=e(heading),note=e(note),source=e(p['source_url']),source_status=e(status_text),related_guide=related_guide,offers=current_html+details,page_disclosure=e(page_disclosure))
         write(Path('providers')/p['id']/'index.html',page(
-            f'{heading}: official price and terms | HostDealRadar' if focus else f'{p["name"]} source-check status and terms | HostDealRadar',
-            (f'Official {heading} terms and related {p["name"]} plan records, with price, billing, and renewal details shown only when captured from the provider page.'
-             if focus else provider_description(p['name'], po, ph)),
+            f'{heading} | HostDealRadar',
+            description,
             domain+'/providers/'+p['id']+'/', content,
-            {'@context':'https://schema.org','@type':'CollectionPage','name':p['name']+' terms and source-check status'}))
+            {'@context':'https://schema.org','@type':'CollectionPage','name':heading}))
     guide_route='/guides/godaddy-renewal-coupon/'
     guide=template('godaddy-renewal-coupon.html')
     guide_schema={'@context':'https://schema.org','@type':'Article','headline':'GoDaddy renewal coupon: do renewal promo codes work?','datePublished':'2026-09-15','dateModified':'2026-09-15','author':{'@type':'Organization','name':'HostDealRadar'},'publisher':{'@type':'Organization','name':'HostDealRadar'},'mainEntityOfPage':domain+guide_route}
