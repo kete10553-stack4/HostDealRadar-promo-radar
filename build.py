@@ -542,12 +542,20 @@ def build(config_path=None, output=None):
         else:
             source_matched=(status['status']=='evidenced' and status.get('capture_status')=='matched'
                             and status.get('http_status')==200 and status.get('visible_excerpt'))
-            status_text='Official page read; capture rules matched.' if source_matched else e(status['reason'])
+            display_reason=status['reason']
+            retained_without_capture=(not po and status.get('capture_status')=='unmatched'
+                                      and status.get('retained_count',0))
+            if retained_without_capture:
+                display_reason=('Official source responded, but no configured extraction rule matched. '
+                                'Earlier records were retained as history and are not displayed as current offers.')
+            status_text=('Official page read; capture rules matched.' if source_matched else
+                         'Official source responded; no extraction rule matched.' if retained_without_capture else
+                         e(display_reason))
             if po:
                 current_html=''
             else:
                 detail=('Official page read, but no captured record qualifies as a current offer.'
-                        if source_matched else status['reason'])
+                        if source_matched else display_reason)
                 current_html='<div class="empty"><h3>No current offer is published for this source</h3><p>'+e(detail)+'</p></div>'
         focus=cfg['page_focus'].get(p['id'])
         if po:
