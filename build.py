@@ -618,6 +618,12 @@ def build(config_path=None, output=None):
         {'@type':'Question','name':'Are the Cloudways codes on coupon sites Cloudways codes?','acceptedAnswer':{'@type':'Answer','text':"Not necessarily. Cloudways' own roundups also listed partner offers: Inspectlet used BFCM18 in the 2018 roundup, while NotificationX used BFCM40 and MexBS used cloudways-BFCM in the 2019 roundup. Those were offers for the named partners' products, not additional Cloudways hosting discounts."}}
     ]}
     write(Path('guides/cloudways-coupon-code/index.html'),page('Cloudways coupon code: current status, plus the archived BFCM record | HostDealRadar','Cloudways source evidence for SUMMER404 and its limits, plus the BFCM18, BFCM40, BFCM2021 and BFCM4030 codes Cloudways itself published from 2018 to 2022.',domain+cloudways_guide_route,cloudways_guide,cloudways_guide_schema))
+    # The archived table moved here from the coupon guide so the head query stays
+    # with the current-status guide; this page carries the archive wording only.
+    cloudways_archive_route='/guides/cloudways-coupon-archive/'
+    cloudways_archive=template('cloudways-coupon-archive.html')
+    cloudways_archive_schema={'@context':'https://schema.org','@type':'Article','headline':'Cloudways coupon archive: what Cloudways’ own pages printed, 2018 to 2022','datePublished':'2026-09-25','dateModified':'2026-09-25','author':{'@type':'Organization','name':'HostDealRadar'},'publisher':{'@type':'Organization','name':'HostDealRadar'},'mainEntityOfPage':domain+cloudways_archive_route}
+    write(Path('guides/cloudways-coupon-archive/index.html'),page('Cloudways coupon archive: 2018–2022 codes Cloudways itself printed | HostDealRadar','Archived Cloudways records: BFCM18, BFCM40, BFCM2021 and BFCM4030 as printed on Cloudways’ own pages, each with its Common Crawl snapshot, plus the source details that only the saved HTML shows.',domain+cloudways_archive_route,cloudways_archive,cloudways_archive_schema))
     digitalocean_guide_route='/guides/digitalocean-promo-code/'
     digitalocean_guide=template('digitalocean-promo-code.html')
     digitalocean_guide_schema={'@context':'https://schema.org','@type':'Article','headline':'DigitalOcean promo code: the signup credit needs no code','datePublished':'2026-09-24','dateModified':'2026-09-24','author':{'@type':'Organization','name':'HostDealRadar'},'publisher':{'@type':'Organization','name':'HostDealRadar'},'mainEntityOfPage':domain+digitalocean_guide_route}
@@ -775,7 +781,7 @@ Planned endpoints return HTTP 503 with `temporarily_unavailable` until authentic
     write(Path('_worker.js'),agent_worker(unpublished_source_only))
     write(Path('robots.txt'),'User-agent: *\nAllow: /\nContent-Signal: ai-train=no, search=yes, ai-input=no\nAgentmap: '+domain+'/.well-known/ai-catalog.json\nSitemap: '+domain+'/sitemap.xml\n')
     write(Path('404.html'),page('Page not found | HostDealRadar','This page does not exist.',domain+'/404.html',prose('Page not found','<p><a href="/">Return to current offers</a></p>'),{'@context':'https://schema.org','@type':'WebPage','name':'Page not found'}))
-    routes=['/','/providers/','/compare/','/methodology/','/about/','/contact/','/disclosure/','/privacy/',guide_route,namecheap_guide_route,cloudways_guide_route,digitalocean_guide_route,hosting_coupons_route,hostinger_guide_route]
+    routes=['/','/providers/','/compare/','/methodology/','/about/','/contact/','/disclosure/','/privacy/',guide_route,namecheap_guide_route,cloudways_guide_route,cloudways_archive_route,digitalocean_guide_route,hosting_coupons_route,hostinger_guide_route]
     # Keep zero-current provider pages accessible for truthful status reporting,
     # but do not submit them as index targets until a current source record exists.
     routes+=[f'/providers/{p["id"]}/' for p in public_providers if p['id'] in current_provider_ids]
