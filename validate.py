@@ -258,7 +258,7 @@ def check():
     # The current-code guide links to, but does not repeat, the historical archive.
     archive_pointer=cloudways_guide[cloudways_guide.index('id="archive"'):cloudways_guide.index('<h2>Before you start a paid plan</h2>')]
     assert '<tr id="archive-' not in cloudways_guide, 'Cloudways guide still carries the archived table that moved to the archive page'
-    assert archive_pointer.count('/guides/cloudways-coupon-archive/')==3, 'Cloudways guide must preserve the archive pointer and two cited historical answers'
+    assert archive_pointer.count('<p>')==1 and archive_pointer.count('/guides/cloudways-coupon-archive/')==1, 'Cloudways archive section must stay one introduction and one link'
     assert cloudways_guide.count('/guides/cloudways-coupon-archive/')==5, 'Cloudways guide must preserve its five contextual archive links'
     # The archive page must preserve every cited row and the limits that keep
     # historical evidence from being presented as a current offer or live test.
