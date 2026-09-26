@@ -378,6 +378,10 @@ def check():
     for pid in public_provider_ids:
         url=cfg['site']['domain'].rstrip('/')+f'/providers/{pid}/'
         assert (url in sitemap_urls) == (pid in current_provider_ids), f'Provider sitemap eligibility disagrees with current records: {pid}'
+        provider_html=(ROOT/'site/providers'/pid/'index.html').read_text(encoding='utf-8')
+        head=provider_html.split('</head>',1)[0]
+        noindex='<meta name="robots" content="noindex,follow">' in head
+        assert noindex == (url not in sitemap_urls), f'Provider robots meta disagrees with sitemap eligibility: {pid}'
     worker=(ROOT/'site/_worker.js').read_text(encoding='utf-8')
     for pid in unpublished_source_only:
         assert f'/providers/{pid}/' in worker and 'status: 410' in worker, f'Withdrawn provider path lacks an explicit 410 response: {pid}'

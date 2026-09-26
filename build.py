@@ -622,7 +622,8 @@ def build(config_path=None, output=None):
             f'{heading} | HostDealRadar',
             description,
             domain+'/providers/'+p['id']+'/', content,
-            {'@context':'https://schema.org','@type':'CollectionPage','name':heading}))
+            {'@context':'https://schema.org','@type':'CollectionPage','name':heading},
+            head_extra='<meta name="robots" content="noindex,follow">' if not po else ''))
     guide_route='/guides/godaddy-renewal-coupon/'
     guide=template('godaddy-renewal-coupon.html')
     guide_schema={'@context':'https://schema.org','@type':'Article','headline':'GoDaddy renewal coupon: do renewal promo codes work?','datePublished':'2026-09-15','dateModified':'2026-09-15','author':{'@type':'Organization','name':'HostDealRadar'},'publisher':{'@type':'Organization','name':'HostDealRadar'},'mainEntityOfPage':domain+guide_route}
