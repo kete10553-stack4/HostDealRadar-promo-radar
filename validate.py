@@ -60,16 +60,9 @@ def check_earlier_record_path(payload, cfg):
     provider_page=(out/'providers'/victim['provider']/'index.html').read_text(encoding='utf-8')
     assert f'#record-{victim["slug"]}' not in provider_page and f'id="record-{victim["slug"]}"' not in provider_page, 'A retained record is still repeated on its provider page'
     compare=(out/'compare/index.html').read_text(encoding='utf-8')
-    marker='Unverified or earlier records, not current offers'
-    assert marker in compare, 'Comparison page does not separate earlier records'
-    current_table, history_table = compare.split(marker,1)
     names={p['id']:p['name'] for p in cfg['providers']}
     cell=f'<strong>{build.e(names[victim["provider"]])}</strong><span>{build.e(victim["title"])}</span>'
-    assert cell in history_table, 'The retained record is missing from the earlier-records table'
-    assert cell not in current_table, 'The retained record still appears in the current comparison table'
-    victim_row=history_table.split(cell,1)[1].split('</tr>',1)[0]
-    assert 'EUR' not in victim_row and '/year' not in victim_row, 'Comparison leaked unsupported normalized currency or billing period'
-    assert build.e(build.captured_field_evidence(victim,'price')) in victim_row, 'Comparison did not preserve exact official price wording'
+    assert cell not in compare, 'A retained record appears in the three-term current comparison'
     shutil.rmtree(tmp,ignore_errors=True)
 
 def check():
@@ -177,8 +170,7 @@ def check():
             build.captured_field_evidence(offer,'coupon_code') if offer.get('coupon_code') else '',
             build.captured_field_evidence(offer,'valid_until') if offer.get('valid_until') else '',
         ]
-        missing=sum(not value for value in optional_evidence)
-        assert block.count('<dt>Not stated by the source</dt>') == (1 if missing else 0), f'Unavailable official fields are not collapsed to one row: {offer["slug"]}'
+        assert '<dt>Not stated by the source</dt>' not in block, f'Missing fields still render a provider row: {offer["slug"]}'
         assert 'no affiliate relationship is active' not in block.lower(), f'Per-record system disclosure remains: {offer["slug"]}'
     for provider in cfg['providers']:
         page_path=ROOT/'site/providers'/provider['id']/'index.html'
@@ -230,7 +222,8 @@ def check():
             assert 'does not change the automated source-check status' in page, f'Manual observation is confused with an automated source check: {pid}'
     home=(ROOT/'site/index.html').read_text(encoding='utf-8')
     assert f'{len(ids)} providers in our source list' in home, 'Homepage provider count mismatch'
-    assert f'{len(current)} listings captured' in home, 'Homepage current-listing count mismatch'
+    complete=[o for o in current if build.complete_three_terms(o,rules.get((o['provider'],o['title']),{}))]
+    assert f'{len(complete)} complete three-term records' in home, 'Homepage qualification count mismatch'
     directory=(ROOT/'site/providers/index.html').read_text(encoding='utf-8')
     groups=[re.search(r'<h2 id="'+group+r'">.*?<div class="provider-grid">(.*?)</div></section>',directory,re.S)
             for group in ('current-records','without-current-records')]
@@ -261,11 +254,12 @@ def check():
     assert statuses['cloudways'].get('http_status')==200 and countdown_visible and compact(countdown_visible) in cloudways_guide, 'Cloudways guide omits the stored countdown evidence'
     assert 'September 15, 2026' in cloudways_guide and 'not supported by a retained source excerpt' in cloudways_guide and 'time zone is not stated' in cloudways_guide, 'Cloudways guide hides the unsupported-date correction or date ambiguity'
     cloudways_schema=schemas(cloudways_guide)[0]
-    assert cloudways_schema.get('@type')=='FAQPage' and len(cloudways_schema.get('mainEntity',[]))==3, 'Cloudways guide schema includes questions no longer answered on this page'
+    assert cloudways_schema.get('@type')=='FAQPage' and len(cloudways_schema.get('mainEntity',[]))==5, 'Cloudways guide must publish its five visible FAQ answers'
     # The current-code guide links to, but does not repeat, the historical archive.
     archive_pointer=cloudways_guide[cloudways_guide.index('id="archive"'):cloudways_guide.index('<h2>Before you start a paid plan</h2>')]
     assert '<tr id="archive-' not in cloudways_guide, 'Cloudways guide still carries the archived table that moved to the archive page'
-    assert archive_pointer.count('<p>')==1 and archive_pointer.count('/guides/cloudways-coupon-archive/')==1, 'Cloudways guide should have one historical introduction and one archive link'
+    assert archive_pointer.count('/guides/cloudways-coupon-archive/')==3, 'Cloudways guide must preserve the archive pointer and two cited historical answers'
+    assert cloudways_guide.count('/guides/cloudways-coupon-archive/')==5, 'Cloudways guide must preserve its five contextual archive links'
     # The archive page must preserve every cited row and the limits that keep
     # historical evidence from being presented as a current offer or live test.
     cloudways_archive=(ROOT/'site/guides/cloudways-coupon-archive/index.html').read_text(encoding='utf-8')
@@ -323,18 +317,9 @@ def check():
     allowed={cfg['site']['domain'].rstrip('/')+f'/providers/{o["provider"]}/' for o in current}
     assert listed <= allowed, 'Homepage structured data includes a record that is not current'
     compare=(ROOT/'site/compare/index.html').read_text(encoding='utf-8')
-    if history:
-        # Comparison rows are labelled by provider and plan title, not by slug, and
-        # titles repeat across providers ("Starter" is both an UltaHost plan and a
-        # substring of an IONOS one), so match the whole provider+plan cell.
-        marker='Unverified or earlier records, not current offers'
-        assert marker in compare, 'Comparison page does not separate earlier records'
-        current_table, history_table = compare.split(marker,1)
-        names={p['id']:p['name'] for p in cfg['providers']}
-        for o in history:
-            cell=f'<strong>{build.e(names[o["provider"]])}</strong><span>{build.e(o["title"])}</span>'
-            assert cell in history_table, f'History record missing from the earlier-records table: {o["slug"]}'
-            assert cell not in current_table, f'History record is still listed as a current offer: {o["slug"]}'
+    assert 'Unknown' not in home and 'Unknown' not in compare, 'Comparison pages still publish an unverified field'
+    assert '<tr>' not in compare.split('<tbody>',1)[1].split('</tbody>',1)[0] if not complete else True, 'Incomplete rows appear in comparison'
+    assert 'id="three-term-standard"' in (ROOT/'site/methodology/index.html').read_text(encoding='utf-8'), 'Methodology omits the three-term inclusion standard'
     assert (ROOT/'site/robots.txt').exists() and (ROOT/'site/sitemap.xml').exists()
     robots=(ROOT/'site/robots.txt').read_text(encoding='utf-8')
     assert 'Sitemap: '+cfg['site']['domain'].rstrip('/')+'/sitemap.xml' in robots, 'robots.txt must advertise the canonical sitemap'
