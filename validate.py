@@ -222,8 +222,8 @@ def check():
             assert 'does not change the automated source-check status' in page, f'Manual observation is confused with an automated source check: {pid}'
     home=(ROOT/'site/index.html').read_text(encoding='utf-8')
     assert f'{len(ids)} providers in our source list' in home, 'Homepage provider count mismatch'
-    complete=[o for o in current if build.complete_three_terms(o,rules.get((o['provider'],o['title']),{}))]
-    assert f'{len(complete)} complete three-term records' in home, 'Homepage qualification count mismatch'
+    reviewed=[record for record in build.documented_plan_rows(payload) if record['provider'] in ids]
+    assert f'{len(reviewed)} complete plan examples' in home, 'Homepage qualification count mismatch'
     directory=(ROOT/'site/providers/index.html').read_text(encoding='utf-8')
     groups=[re.search(r'<h2 id="'+group+r'">.*?<div class="provider-grid">(.*?)</div></section>',directory,re.S)
             for group in ('current-records','without-current-records')]
@@ -314,11 +314,17 @@ def check():
     home_schema_json=json.dumps(home_schema,separators=(',',':'))
     assert '"@type":"Product"' not in home_schema_json and '"@type":"Offer"' not in home_schema_json, 'Homepage list publishes Product or Offer markup'
     listed={item['item']['url'] for item in home_schema['itemListElement']}
-    allowed={cfg['site']['domain'].rstrip('/')+f'/providers/{o["provider"]}/' for o in current}
-    assert listed <= allowed, 'Homepage structured data includes a record that is not current'
+    allowed={cfg['site']['domain'].rstrip('/')+f'/compare/#plan-{record["provider"]}' for record in reviewed}
+    assert listed == allowed, 'Homepage structured data differs from the documented plan rows'
     compare=(ROOT/'site/compare/index.html').read_text(encoding='utf-8')
     assert 'Unknown' not in home and 'Unknown' not in compare, 'Comparison pages still publish an unverified field'
-    assert '<tr>' not in compare.split('<tbody>',1)[1].split('</tbody>',1)[0] if not complete else True, 'Incomplete rows appear in comparison'
+    assert compare.count('<tbody>') == 1 and compare.count('</tr>') == len(reviewed)+1, 'Comparison row count differs from documented complete plans'
+    assert home.count('class="card"><div class="card-top"') == len(reviewed), 'Homepage card count differs from documented complete plans'
+    for record in reviewed:
+        assert f'id="plan-{record["provider"]}"' in compare, f'{record["provider"]} is absent from comparison'
+        for field in ('first_term_total','commitment_months','renewal_monthly_rate'):
+            source=record['field_evidence'][field]['url']
+            assert build.e(source) in compare and build.e(source) in home, f'{record["provider"]} {field} lacks its official link'
     assert 'id="three-term-standard"' in (ROOT/'site/methodology/index.html').read_text(encoding='utf-8'), 'Methodology omits the three-term inclusion standard'
     assert (ROOT/'site/robots.txt').exists() and (ROOT/'site/sitemap.xml').exists()
     robots=(ROOT/'site/robots.txt').read_text(encoding='utf-8')

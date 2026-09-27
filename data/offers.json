@@ -9831,20 +9831,20 @@
   },
   "page_lastmod": {
     "/": {
-      "hash": "0e652e5c53eb46d85c152846469fd2f67467f61ef95ef6f9688bf44cfb7e21da",
-      "lastmod": "2026-09-27T00:35:46Z"
+      "hash": "92aa38ea880da3806fba8cb45cf20b5e7b60a3c76a44b36348019935bc28bd00",
+      "lastmod": "2026-09-27T01:24:52Z"
     },
     "/providers/": {
       "hash": "4a0acfd6186a7e27da736dbf55882d26deb557df9d7824e29c092735ae848892",
       "lastmod": "2026-09-27T00:35:46Z"
     },
     "/compare/": {
-      "hash": "a5d7db18a221da3b36e28b38d69bda6632065de863f8bd9c3cbd3377267b0f39",
-      "lastmod": "2026-09-27T00:35:46Z"
+      "hash": "bc5779579a394ec9acb2916b5d027c62b7adddbbcfb9ad56fa09d3013b9478b5",
+      "lastmod": "2026-09-27T01:24:52Z"
     },
     "/methodology/": {
-      "hash": "81e66ba0498d65cbc8ca27596f93e55c22400a376b2daf3502321c21ee43de74",
-      "lastmod": "2026-09-26T02:44:24Z"
+      "hash": "3d25bed8a9a1395a1cb38ec882b70c8a037e2441f9631b5fbba428a4d27f070c",
+      "lastmod": "2026-09-27T01:22:55Z"
     },
     "/about/": {
       "hash": "f94ee8b394e21e322c0116f339565d66b969717d807eeb7f1a65d32bfb48133f",
@@ -10106,5 +10106,218 @@
       "hash": "36acb6504708753865aa00e10d1b115cd1460ab66e0abf0817bd240aeecf1798",
       "lastmod": "2026-09-26T02:46:11Z"
     }
+  },
+  "browser_term_observations": {
+    "schema_version": 1,
+    "purpose": "Dated manual plan comparisons; not automated current-offer records.",
+    "method": "Official pages rendered in the user's Chrome browser; visible page text read after navigation.",
+    "checked_on": "2026-09-25",
+    "checked_timezone": "America/Los_Angeles",
+    "checked_between_utc": [
+      "2026-09-26T02:45:00Z",
+      "2026-09-26T03:00:58Z"
+    ],
+    "fields": [
+      "first_term_total",
+      "commitment_months",
+      "monthly_equivalent",
+      "renewal_monthly_rate"
+    ],
+    "records": [
+      {
+        "provider": "hostinger",
+        "plan": "Premium web hosting, 48-month card",
+        "currency": "USD",
+        "first_term_total": 143.52,
+        "commitment_months": 48,
+        "monthly_equivalent": 2.99,
+        "renewal_monthly_rate": 10.99,
+        "calculation": "143.52 / 48 = 2.99 USD/month",
+        "advertised_price_quote": "$2.99 /mo",
+        "field_evidence": {
+          "first_term_total": {
+            "quote": "Get 48 months for $143.52",
+            "url": "https://www.hostinger.com/web-hosting"
+          },
+          "commitment_months": {
+            "quote": "Get 48 months for $143.52",
+            "url": "https://www.hostinger.com/web-hosting"
+          },
+          "renewal_monthly_rate": {
+            "quote": "Renews at $10.99/mo.",
+            "url": "https://www.hostinger.com/web-hosting"
+          }
+        },
+        "missing_reasons": {}
+      },
+      {
+        "provider": "godaddy",
+        "plan": "Discount Domain Club Basic Membership",
+        "currency": "USD",
+        "first_term_total": 119.88,
+        "commitment_months": 12,
+        "monthly_equivalent": 9.99,
+        "renewal_monthly_rate": null,
+        "calculation": "119.88 / 12 = 9.99 USD/month; 12 months normalizes the FAQ's annual renewal term.",
+        "advertised_price_quote": "$9.99 /mo",
+        "field_evidence": {
+          "first_term_total": {
+            "quote": "You pay $119.88 today.",
+            "url": "https://www.godaddy.com/domains/discount-domain-club"
+          },
+          "commitment_months": {
+            "quote": "the membership renews annually as long as auto-renewal is enabled.",
+            "url": "https://www.godaddy.com/domains/discount-domain-club"
+          }
+        },
+        "other_official_quote": "Auto-renews Sep. 2027 at $119.88.",
+        "missing_reasons": {
+          "renewal_monthly_rate": "The card states an annual renewal amount, not an explicit renewal amount per month."
+        }
+      },
+      {
+        "provider": "namecheap",
+        "plan": "Stellar shared hosting, yearly US data-center selection",
+        "currency": "USD",
+        "first_term_total": 21.96,
+        "commitment_months": 12,
+        "monthly_equivalent": 1.83,
+        "renewal_monthly_rate": null,
+        "calculation": "21.96 / 12 = 1.83 USD/month; 12 months normalizes the page's one-year term.",
+        "advertised_price_quote": "$1.83 /mo",
+        "field_evidence": {
+          "first_term_total": {
+            "quote": "Total $21.96",
+            "url": "https://www.namecheap.com/hosting/purchase/domain-connection/?product=stellar&addons=server-location%3Bserver-location-us&duration=1&durationtype=year"
+          },
+          "commitment_months": {
+            "quote": "Billed yearly",
+            "url": "https://www.namecheap.com/hosting/shared/"
+          }
+        },
+        "missing_reasons": {
+          "renewal_monthly_rate": "The shared-hosting card says 'Was $5.88/mo', but does not identify that comparison number as the renewal rate; the order step displayed no renewal rate."
+        }
+      },
+      {
+        "provider": "cloudways",
+        "plan": "Flexible Micro, standard pricing",
+        "currency": "USD",
+        "first_term_total": null,
+        "commitment_months": null,
+        "monthly_equivalent": null,
+        "renewal_monthly_rate": null,
+        "calculation": null,
+        "advertised_price_quote": "$14",
+        "advertised_unit_quote": "USD per month",
+        "field_evidence": {},
+        "other_official_quote": "We use post-billing method and charge in arrears.",
+        "source_urls": [
+          "https://www.cloudways.com/en/pricing.php",
+          "https://www.cloudways.com/en/promo-code.php"
+        ],
+        "missing_reasons": {
+          "first_term_total": "The pricing FAQ says invoices are for the previous month's usage, not a prepaid first-term total.",
+          "commitment_months": "No fixed prepaid term was shown for the selected Flexible Micro plan.",
+          "monthly_equivalent": "No first-term total or term month count to divide.",
+          "renewal_monthly_rate": "The promotional FAQ says standard pricing applies after the promotion; it does not state a plan-specific renewal monthly rate for the selected Micro plan."
+        }
+      },
+      {
+        "provider": "digitalocean",
+        "plan": "Basic Droplet, 512 MiB / 1 vCPU",
+        "currency": "USD",
+        "first_term_total": null,
+        "commitment_months": null,
+        "monthly_equivalent": null,
+        "renewal_monthly_rate": null,
+        "calculation": null,
+        "advertised_price_quote": "$4.00",
+        "advertised_unit_quote": "$/mo",
+        "field_evidence": {},
+        "other_official_quote": "monthly caps or usage-based pricing options",
+        "source_urls": [
+          "https://www.digitalocean.com/pricing/droplets"
+        ],
+        "missing_reasons": {
+          "first_term_total": "The page prices usage by time with a monthly cap; no fixed prepaid first term is shown.",
+          "commitment_months": "No fixed prepaid term is shown for the selected Droplet.",
+          "monthly_equivalent": "No first-term total or term month count to divide.",
+          "renewal_monthly_rate": "No renewal event or renewal monthly rate is stated for this usage-priced Droplet."
+        }
+      },
+      {
+        "provider": "siteground",
+        "plan": "StartUp web hosting",
+        "currency": "USD",
+        "first_term_total": null,
+        "commitment_months": 12,
+        "monthly_equivalent": null,
+        "renewal_monthly_rate": 17.99,
+        "calculation": null,
+        "advertised_price_quote": "$2.99 /mo.",
+        "field_evidence": {
+          "commitment_months": {
+            "quote": "Prepaid for 12 months.",
+            "url": "https://www.siteground.com/web-hosting.htm"
+          },
+          "renewal_monthly_rate": {
+            "quote": "Renews at $17.99 /mo.",
+            "url": "https://www.siteground.com/web-hosting.htm"
+          }
+        },
+        "source_urls": [
+          "https://www.siteground.com/web-hosting.htm",
+          "https://www.siteground.com/shared/step2.htm?p=1"
+        ],
+        "missing_reasons": {
+          "first_term_total": "The pricing card does not print a first-term total; the order page asks for a domain before its review step.",
+          "monthly_equivalent": "A monthly advertising rate is visible, but without an official first-term total the required derived field is empty."
+        }
+      },
+      {
+        "provider": "bluehost",
+        "plan": null,
+        "currency": null,
+        "first_term_total": null,
+        "commitment_months": null,
+        "monthly_equivalent": null,
+        "renewal_monthly_rate": null,
+        "calculation": null,
+        "advertised_price_quote": null,
+        "field_evidence": {},
+        "missing_reasons": {
+          "all": "Chrome refused the official robots.txt URL with net::ERR_BLOCKED_BY_CLIENT. The prior checker recorded HTTP 403 for robots.txt; no pricing page was opened in this run."
+        }
+      },
+      {
+        "provider": "dreamhost",
+        "plan": "Web Hosting Launch, yearly plan",
+        "currency": "USD",
+        "first_term_total": 34.68,
+        "commitment_months": 12,
+        "monthly_equivalent": 2.89,
+        "renewal_monthly_rate": 10.99,
+        "calculation": "34.68 / 12 = 2.89 USD/month; 12 months normalizes the page's one-year term.",
+        "advertised_price_quote": "First year at $2.89 /mo",
+        "field_evidence": {
+          "first_term_total": {
+            "quote": "First year $34.68 /1yr.",
+            "url": "https://www.dreamhost.com/cart/"
+          },
+          "commitment_months": {
+            "quote": "Yearly Plan",
+            "url": "https://www.dreamhost.com/cart/"
+          },
+          "renewal_monthly_rate": {
+            "quote": "Auto-renews at $10.99 /mo after 1 year.",
+            "url": "https://www.dreamhost.com/hosting-3/"
+          }
+        },
+        "other_official_quote": "then $131.88 /1yr.",
+        "entry_url": "https://www.dreamhost.com/hosting-3/",
+        "missing_reasons": {}
+      }
+    ]
   }
 }

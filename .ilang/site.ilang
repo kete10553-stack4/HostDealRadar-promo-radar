@@ -124,7 +124,7 @@ Amazon Lightsail | https://aws.amazon.com/lightsail/ | https://aws.amazon.com/li
 20i | https://www.20i.com/ | https://www.20i.com/web-hosting |
 
 ::MODULE{FIELDS|title:仅提取可验证字段；价格或有效期未知就省略}
-title price currency offer_url valid_from valid_until source_url fetched_at category billing_period commitment_months renewal_price discount_percent coupon_code kind evidence
+title price currency offer_url valid_from valid_until source_url fetched_at category billing_period first_term_total commitment_months monthly_equivalent renewal_monthly_rate renewal_price discount_percent coupon_code kind evidence
 
 ::MODULE{EXTRACTORS|title:经过人工核对的确定性提取规则；无匹配不生成优惠}
 {"provider":"raidboxes","mode":"anchored_text","title":"Mini","category":"Web hosting","kind":"promotion","anchor":"Mini Suitable for small static WordPress websites or simple blogs.","window_chars":6000,"currency":"EUR","billing_period":"month","required_fields":["price"],"field_patterns":{"price":"instead of\\s*\\u20ac\\s?[0-9.]+\\s*20\\s*%\\s*discount\\s*\\u20ac\\s?(?P<value>[0-9.]+)\\s*per month"},"condition":"Discounted monthly rate shown on the official pricing card; the card prints the standard monthly rate of 18.00 next to it and states the discount is 20%.","structure":"Raidboxes plan card: the plan name is followed by the standard monthly rate, the discount, and then the discounted monthly rate.","checks":["20 % discount"]}

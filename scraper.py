@@ -18,7 +18,7 @@ from urllib.request import Request, urlopen, build_opener, HTTPRedirectHandler
 from config import ROOT, load_config, slug
 
 DATA = ROOT / 'data/offers.json'
-NUMERIC_FIELDS = {'price', 'renewal_price'}
+NUMERIC_FIELDS = {'price', 'renewal_price', 'first_term_total', 'renewal_monthly_rate'}
 INTEGER_FIELDS = {'discount_percent', 'commitment_months'}
 
 class VisibleText(HTMLParser):
