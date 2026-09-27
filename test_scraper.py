@@ -9,6 +9,7 @@ from unittest.mock import patch
 from urllib.error import HTTPError
 import build
 import scraper
+from config import load_config
 
 class SourceSafety(unittest.TestCase):
     def setUp(self):
@@ -17,6 +18,25 @@ class SourceSafety(unittest.TestCase):
 
     def test_no_record_when_price_is_missing(self):
         self.assertIsNone(scraper.offer_from_rule(self.provider,self.rule,'<p>Basic plan: Contact sales</p>'))
+
+    def test_voog_and_portfoliobox_price_quotes_include_official_currency(self):
+        cfg = load_config()
+        examples = {
+            ('voog', 'Starter'): ('Starter €1.25/mo For one-pager websites.', '€1.25/mo'),
+            ('voog', 'Standard'): ('Standard €11/mo Good for simple websites.', '€11/mo'),
+            ('voog', 'Plus'): ('Plus €17/mo Save €60 annually.', '€17/mo'),
+            ('voog', 'Premium'): ('Premium €39/mo Save €132 annually.', '€39/mo'),
+            ('portfoliobox', 'Professional'): ('Professional $15.9 /month Everything you need for your portfolio.', '$15.9 /month'),
+            ('portfoliobox', 'Personal'): ('Personal $8.9 /month A great personal portfolio.', '$8.9 /month'),
+        }
+        providers = {provider['id']: provider for provider in cfg['providers']}
+        for (provider_id, title), (source_text, quote) in examples.items():
+            with self.subTest(provider=provider_id, title=title):
+                rule = next(rule for rule in cfg['extractors'] if rule['provider'] == provider_id and rule['title'] == title)
+                offer = scraper.offer_from_rule(providers[provider_id], rule, source_text)
+                self.assertIsNotNone(offer)
+                self.assertEqual(offer['field_evidence']['price'], quote)
+                self.assertIn(quote, offer['claim_evidence']['price']['visible_excerpt'])
 
     def test_end_boundary_does_not_take_next_plan_price(self):
         rule=dict(self.rule, end_anchor='Pro plan')
