@@ -601,11 +601,38 @@ def build(config_path=None, output=None):
                 f'<p class="capture">Official pages checked {e(review_date)} PT. Confirm the latest price and tax at checkout.'
                 + (' The upfront total was seen in an official cart after plan selection; cart contents may vary by session.' if record.get('entry_url') else '')
                 + '</p></article>')
+    # A dated observation may support only one or two terms. Keep those
+    # source-linked fields visible without putting the row in a comparison.
+    partial=[record for record in (payload.get('browser_term_observations') or {}).get('records', [])
+             if record.get('provider') in byid and record.get('plan')
+             and record not in reviewed and record.get('field_evidence')]
+    def partial_card(record):
+        fields=[]
+        for field, label in (('first_term_total','First-term total'),
+                             ('commitment_months','Billing or renewal term'),
+                             ('renewal_monthly_rate','Renewal rate')):
+            evidence=(record.get('field_evidence') or {}).get(field) or {}
+            value=record.get(field)
+            if value is None or not evidence.get('quote') or not str(evidence.get('url','')).startswith('https://'):
+                continue
+            fields.append(f'<div><dt>{e(label)}</dt><dd><a href="{e(evidence["url"])}" rel="noopener noreferrer">'
+                          f'“{e(evidence["quote"])}”</a></dd></div>')
+        if not fields:
+            return ''
+        return (f'<article class="card"><div class="card-top"><span class="provider-name">{e(byid[record["provider"]]["name"])}</span>'
+                '<span class="tag reference">Dated source note</span></div>'
+                f'<h3>{e(record["plan"])}</h3><dl>{"".join(fields)}</dl>'
+                f'<p class="capture">Official pages checked {e(review_date)} PT. This is not a complete plan comparison or checkout test.</p></article>')
+    partial_cards=''.join(partial_card(record) for record in partial)
     review_intro=(f'{len(reviewed)} plan examples have an official upfront total, commitment term, and renewal monthly rate. '
                   f'The monthly equivalent is calculated from the first two figures. Official pages checked {review_date} PT; '
                   'these dated examples are not a live checkout test, savings claim, or price ranking. '
                   'A linked cart may need the same plan selected before its total appears.')
-    home=template('index.html',month=datetime.now().strftime('%B %Y'),complete_count=len(reviewed),provider_count=len(providers),review_intro=e(review_intro),offers='<div class="cards">'+''.join(reviewed_card(record) for record in reviewed)+'</div>' if reviewed else '<div class="empty"><h3>No complete plan comparison is documented yet</h3><p>Only plans with an official upfront total, term, and renewal monthly rate appear here.</p></div>',providers=provider_tiles)
+    home_reviewed=('<section class="wrap section"><div class="section-head"><div><div class="eyebrow">DOCUMENTED PLAN TERMS</div>'
+                   '<h2>Upfront total and renewal rate</h2></div><a class="text-link" href="/compare/">Compare the terms →</a></div>'
+                   f'<p class="muted">{e(review_intro)} Each source value links to its official page.</p><div class="cards">'
+                   +''.join(reviewed_card(record) for record in reviewed)+'</div></section>') if reviewed else ''
+    home=template('index.html',month=datetime.now().strftime('%B %Y'),provider_count=len(providers),reviewed_section=home_reviewed,partial_cards=partial_cards,providers=provider_tiles)
     # The homepage lists different services; its entries are navigation targets,
     # not merchant Offers for products that HostDealRadar sells.
     current_provider_ids={o['provider'] for o in current}
@@ -704,6 +731,10 @@ def build(config_path=None, output=None):
     namecheap_guide=template('namecheap-domain-renewal-coupon.html')
     namecheap_guide_schema={'@context':'https://schema.org','@type':'Article','headline':'Namecheap domain renewal coupon: what works at renewal?','datePublished':'2026-09-15','dateModified':'2026-09-15','author':{'@type':'Organization','name':'HostDealRadar'},'publisher':{'@type':'Organization','name':'HostDealRadar'},'mainEntityOfPage':domain+namecheap_guide_route}
     write(Path('guides/namecheap-domain-renewal-coupon/index.html'),page('Namecheap domain renewal coupon: what works at renewal? | HostDealRadar','Namecheap renewal coupons, current .com renewal pricing, official terms, and three linked user reports.',domain+namecheap_guide_route,namecheap_guide,namecheap_guide_schema))
+    namecheap_promo_route='/guides/namecheap-promo-code/'
+    namecheap_promo=template('namecheap-promo-code.html')
+    namecheap_promo_schema={'@context':'https://schema.org','@type':'Article','headline':'Namecheap promo code: which September codes does Namecheap publish?','datePublished':'2026-09-26','dateModified':'2026-09-26','author':{'@type':'Organization','name':'HostDealRadar'},'publisher':{'@type':'Organization','name':'HostDealRadar'},'mainEntityOfPage':domain+namecheap_promo_route}
+    write(Path('guides/namecheap-promo-code/index.html'),page('Namecheap promo code: official September 2026 cards | HostDealRadar','Namecheap official September promo codes by product, with the published window, renewal limit, source links, and a dated checkout boundary.',domain+namecheap_promo_route,namecheap_promo,namecheap_promo_schema))
     cloudways_guide_route='/guides/cloudways-coupon-code/'
     cloudways_guide=template('cloudways-coupon-code.html')
     cloudways_status=statuses.get('cloudways', {})
@@ -752,14 +783,19 @@ def build(config_path=None, output=None):
                 f'<td>{monthly}<span>Calculated: {total} ÷ {months}</span></td>'
                 f'<td>{reviewed_link(record,"renewal_monthly_rate",renewal+"/mo")}</td>'
                 f'<td>{e(review_date)} PT<span>Manual official-page review</span></td></tr>')
-    compare=template('compare.html',review_intro=e(review_intro),rows=''.join(reviewed_row(record) for record in reviewed),empty='' if reviewed else '<div class="empty"><h3>No complete plan comparison is documented yet</h3><p>Plans appear after their official upfront total, term, and renewal monthly rate are all checked.</p></div>')
+    compare_reviewed=('<h2>Complete plan examples</h2><p>'+e(review_intro)+'</p><div class="table-wrap"><table>'
+                      '<caption>Complete plan examples from a dated manual review, in review order</caption>'
+                      '<thead><tr><th>Provider / plan</th><th>First-term total</th><th>Commitment</th>'
+                      '<th>Monthly equivalent</th><th>Renewal monthly rate</th><th>Checked</th></tr></thead><tbody>'
+                      +''.join(reviewed_row(record) for record in reviewed)+'</tbody></table></div>') if reviewed else ''
+    compare=template('compare.html',reviewed_section=compare_reviewed,partial_cards=partial_cards)
     write(Path('compare/index.html'),page('Compare plan terms | HostDealRadar','Compare documented upfront totals, terms, and renewal monthly rates from official hosting pages.',domain+'/compare/',compare,{'@context':'https://schema.org','@type':'WebPage','name':'Compare documented hosting plan terms'}))
     prose=lambda heading,body: f'<section class="wrap section prose"><div class="eyebrow">HOSTDEALRADAR</div><h1>{heading}</h1>{body}</section>'
     methodology='<p class="lead">Every listed term comes from an official public provider page. We do not estimate missing prices or invent promotions.</p><h2>What is included</h2><ul><li>We retrieve public pages only when robots.txt allows it.</li><li>We record the source URL and capture time with every record.</li><li>A term is listed as current only when the latest source check reconfirmed that exact record. A promotion also needs a verified end date; a successful fetch alone does not establish that it is still valid.</li></ul><h2 id="display-order">How pages are ordered</h2><p>Provider grids follow the configured source-list order. Offer cards and comparison rows follow the captured record order in the latest dataset. Homepage examples require current records with an established renewal rate above the initial rate. We group them by currency, billing unit, and service label. If any explicitly identify a first-month rate, only those records are eligible for the example group; otherwise all eligible records are considered. We choose the group with the most eligible records; ties use alphabetical currency, unit, and label order. Up to three records from that group come first, ordered by the larger numeric change within each record; equal changes use the record identifier. The remaining positions, up to nine cards in total, follow stored record order, excluding those examples. The example count is recalculated for each published snapshot. Initial terms and plan resources can differ, so the examples do not establish equivalent plans or an amount a buyer would save. These display orders are not recommendations, quality rankings, price rankings, or value rankings.</p>'+category_guide(offers)+'<h2>What happens when a source cannot be checked</h2><ul><li>If a source is blocked, challenged, or unclear, we publish no new offer for it.</li><li>Unverified or earlier records retain their actual capture time and are not shown as current offers.</li><li>Expired promotions are labelled expired and are never shown as a current offer.</li></ul><h2>What to verify before purchase</h2><p>Confirm checkout total, tax, eligibility, billing term, and renewal amount with the provider. A captured offer is not a checkout test or a performance review.</p>'
     old_order=('Offer cards and comparison rows follow the captured record order in the latest dataset. Homepage examples require current records with an established renewal rate above the initial rate. We group them by currency, billing unit, and service label. If any explicitly identify a first-month rate, only those records are eligible for the example group; otherwise all eligible records are considered. We choose the group with the most eligible records; ties use alphabetical currency, unit, and label order. Up to three records from that group come first, ordered by the larger numeric change within each record; equal changes use the record identifier. The remaining positions, up to nine cards in total, follow stored record order, excluding those examples. The example count is recalculated for each published snapshot.')
-    methodology=methodology.replace(old_order, 'Homepage comparison cards and comparison rows show only complete, dated manual plan reviews, in review order. Provider grids follow the configured source-list order. Neither display is a recommendation or a price ranking.')
+    methodology=methodology.replace(old_order, 'Complete-plan comparison cards and rows show dated manual reviews in review order. Other dated source notes show only their separately supported fields. Provider grids follow the configured source-list order. None of these displays is a recommendation or a price ranking.')
     methodology += ('<h2 id="three-term-standard">Three-term comparison standard</h2>'
-                    '<p>A plan enters the homepage and comparison table only after a dated manual review documents its first-term total, commitment in months, and renewal monthly rate from official pages for that same plan. The monthly equivalent is labelled as our calculation: first-term total divided by commitment months. Each source value links to its own official page. We do not calculate a total from an advertised monthly rate, infer a renewal invoice, or combine different plans, terms, or currencies. Missing values keep a plan off these two displays. The manual examples are separate from the automated source-record statuses on provider pages and are not a live checkout test or a price ranking.</p>')
+                    '<p>A plan enters the complete-plan comparison only after a dated manual review documents its first-term total, commitment in months, and renewal monthly rate from official pages for that same plan. If there are no qualifying plans, that comparison block is omitted. Separately, a dated source note may show an individual term only when its official wording and source URL were recorded; missing fields are omitted. The monthly equivalent in a complete row is labelled as our calculation: first-term total divided by commitment months. We do not calculate a total from an advertised monthly rate, infer a renewal invoice, or combine different plans, terms, or currencies. The manual examples are separate from automated source-record statuses on provider pages and are not a live checkout test or a price ranking.</p>')
     write(Path('methodology/index.html'),page('How we check | HostDealRadar','How HostDealRadar checks official source pages.',domain+'/methodology/',prose('How we check offers',methodology),{'@context':'https://schema.org','@type':'WebPage','name':'Methodology'}))
     about='<p class="lead">HostDealRadar publishes source-checked records of publicly available hosting terms.</p><p>Every listing links to the provider page it came from and carries its own capture time. We show a price, currency, billing unit, and renewal term only when the official page supports that field.</p><p>Source checks run every six hours. When a source cannot be checked, we do not publish a new price for it; earlier records stay labelled as earlier records instead of being presented as current.</p><p>HostDealRadar is maintained under the HostDealRadar name. It is not a hosting provider and does not sell hosting plans.</p><p>Read <a href="/methodology/">how we check sources</a> for the rules behind the records.</p>'
     write(Path('about/index.html'),page('About | HostDealRadar','What HostDealRadar records and how the site is maintained.',domain+'/about/',prose('About HostDealRadar',about),{'@context':'https://schema.org','@type':'AboutPage','name':'About HostDealRadar'}))
@@ -890,7 +926,7 @@ Planned endpoints return HTTP 503 with `temporarily_unavailable` until authentic
     write(Path('_worker.js'),agent_worker(unpublished_source_only))
     write(Path('robots.txt'),'User-agent: *\nAllow: /\nContent-Signal: ai-train=no, search=yes, ai-input=no\nAgentmap: '+domain+'/.well-known/ai-catalog.json\nSitemap: '+domain+'/sitemap.xml\n')
     write(Path('404.html'),page('Page not found | HostDealRadar','This page does not exist.',domain+'/404.html',prose('Page not found','<p><a href="/">Return to current offers</a></p>'),{'@context':'https://schema.org','@type':'WebPage','name':'Page not found'}))
-    routes=['/','/providers/','/compare/','/methodology/','/about/','/contact/','/disclosure/','/privacy/',guide_route,namecheap_guide_route,cloudways_guide_route,cloudways_archive_route,digitalocean_guide_route,hosting_coupons_route,hostinger_guide_route]
+    routes=['/','/providers/','/compare/','/methodology/','/about/','/contact/','/disclosure/','/privacy/',guide_route,namecheap_guide_route,namecheap_promo_route,cloudways_guide_route,cloudways_archive_route,digitalocean_guide_route,hosting_coupons_route,hostinger_guide_route]
     # Keep zero-current provider pages accessible for truthful status reporting,
     # but do not submit them as index targets until a current source record exists.
     routes+=[f'/providers/{p["id"]}/' for p in public_providers if p['id'] in current_provider_ids]
