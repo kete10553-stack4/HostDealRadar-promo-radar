@@ -220,13 +220,23 @@ def rate_source(offer):
             f' · Captured {e(offer.get("fetched_at") or "Unknown")}</small>')
 
 def rate_pair(offer, rule=None):
-    parts=[]
+    source_ready=bool(offer.get('source_url') and offer.get('fetched_at'))
     initial=captured_field_evidence(offer, 'price')
-    if initial:
-        parts.append(f'<div><strong>{e(initial_label(offer, rule))}</strong><br><h3>{e(initial)}</h3>{rate_source(offer)}</div>')
+    if offer.get('price') is None or not initial or not source_ready:
+        initial='Unknown'
+        initial_source=''
+    else:
+        initial_source=rate_source(offer)
     if renewal_supported(offer, rule):
-        parts.append(f'<div><strong>Renewal rate</strong><br><h3>{e(captured_field_evidence(offer, "renewal_price"))}</h3>{rate_source(offer)}</div>')
-    return '<div class="source-bar">'+''.join(parts)+'</div>' if parts else ''
+        renewal=captured_field_evidence(offer, 'renewal_price')
+        renewal_source=rate_source(offer)
+    else:
+        renewal='Unknown'
+        renewal_source=''
+    return ('<div class="source-bar">'
+            f'<div><strong>{e(initial_label(offer, rule))}</strong><br><h3>{e(initial)}</h3>{initial_source}</div>'
+            f'<div><strong>Renewal rate</strong><br><h3>{e(renewal)}</h3>{renewal_source}</div>'
+            '</div>')
 
 def complete_three_terms(offer, rule=None):
     """Only exact official wording for one plan and initial term qualifies.

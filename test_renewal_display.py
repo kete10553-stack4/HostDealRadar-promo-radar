@@ -28,9 +28,11 @@ class RenewalDisplay(unittest.TestCase):
     def test_missing_initial_price_and_missing_renewal_are_not_filled(self):
         only_renewal = build.rate_pair(self.record(price=None))
         self.assertIn('Unknown', only_renewal)
+        self.assertNotIn('£1/mo', only_renewal)
         self.assertIn('Then only £10/mo', only_renewal)
         no_renewal = build.rate_pair(self.record(renewal_price=None))
         self.assertIn('Unknown', no_renewal)
+        self.assertIn('£1/mo', no_renewal)
         self.assertNotIn('Then only £10/mo', no_renewal)
 
     def test_alternative_billing_and_strikethrough_are_not_renewal(self):
