@@ -1,6 +1,7 @@
 import argparse, hashlib, html, json, re, shutil, math
 from collections import defaultdict
 from datetime import datetime, timezone
+from decimal import Decimal, InvalidOperation
 from pathlib import Path
 from string import Template
 from urllib.parse import urlsplit
@@ -51,6 +52,36 @@ def date_text(value):
         dt = datetime.fromisoformat(value.replace('Z','+00:00'))
         return dt.strftime('%b ') + str(dt.day) + dt.strftime(', %Y')
     except (ValueError, AttributeError): return str(value)
+def documented_plan_rows(payload):
+    """Dated browser-reviewed examples, never automated current-offer records."""
+    review=payload.get('browser_term_observations') or {}
+    try:
+        datetime.fromisoformat(review['checked_on'])
+    except (KeyError, TypeError, ValueError):
+        return []
+    rows=[]
+    for record in review.get('records', []):
+        try:
+            months=record['commitment_months']
+            if isinstance(months, bool) or not isinstance(months, int) or months <= 0:
+                continue
+            total=Decimal(str(record['first_term_total']))
+            monthly=Decimal(str(record['monthly_equivalent']))
+            renewal=Decimal(str(record['renewal_monthly_rate']))
+            if not all(value.is_finite() and value > 0 for value in (total, monthly, renewal)):
+                continue
+            if (total / months).quantize(Decimal('0.01')) != monthly:
+                continue
+            evidence=record['field_evidence']
+            if any(not evidence[field]['quote'] or not evidence[field]['url'].startswith('https://')
+                   for field in ('first_term_total', 'commitment_months', 'renewal_monthly_rate')):
+                continue
+            if record['currency'] != 'USD' or not record['provider'] or not record['plan']:
+                continue
+        except (KeyError, TypeError, ValueError, InvalidOperation):
+            continue
+        rows.append(record)
+    return rows
 def stamp(): return datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace('+00:00','Z')
 # Volatile text that must not by itself count as a material page change: capture
 # timestamps and the "last snapshot" date move on every run even when the terms
@@ -269,7 +300,7 @@ def category_guide(records):
     return ("<h2 id=\"service-labels\">Current service labels</h2>"
             "<p>Each captured record keeps one existing HostDealRadar service label. These labels describe the captured service type; they are not provider claims, performance scores, or recommendations.</p>"
             "<ul>"+''.join(items)+"</ul>"
-            "<p><strong>Limits:</strong> some existing labels overlap, including Hosting and Web hosting and Domains and Domain registration. Labels vary in specificity and do not establish matching resources or performance. They remain unchanged. Homepage examples use a shared label to narrow the selection, which does not make the plans equivalent. Definitions follow the first appearance of each label in the stored records, not a ranking.</p>")
+            "<p><strong>Limits:</strong> some existing labels overlap, including Hosting and Web hosting and Domains and Domain registration. Labels vary in specificity and do not establish matching resources or performance. They remain unchanged. Definitions follow the first appearance of each label in the stored records, not a ranking.</p>")
 
 def featured_renewals(current, rules):
     # Compare differences only inside one currency/unit/service group. Prefer
@@ -549,18 +580,39 @@ def build(config_path=None, output=None):
                 f'<p>{e(summary)}</p><span>{e(label)}</span></a>')
     provider_tiles=''.join(tile(p) for p in public_providers)
     complete=[o for o in current if complete_three_terms(o, rules.get((o['provider'],o['title']), {}))]
-    shown=complete[:9]
-    selection_note=(f'{len(complete)} of {len(current)} current source records meet the published three-term standard. '
-                    'The first qualifying records follow stored record order. This is not a recommendation or a price ranking.')
-    home=template('index.html',month=datetime.now().strftime('%B %Y'),complete_count=len(complete),provider_count=len(providers),updated=e('Last source snapshot: '+date_text(payload.get('generated_at','Unknown'))),selection_note=e(selection_note),offers='<div class="cards">'+''.join(card(o) for o in shown)+'</div>' if shown else '<div class="empty"><h3>No complete three-term record in this snapshot</h3><p>The current records do not jointly document the initial total, published monthly equivalent, and monthly renewal rate for one plan. We cannot recommend a plan from this table. Read each provider page for the individual terms its official source does support.</p></div>',providers=provider_tiles)
+    reviewed=[record for record in documented_plan_rows(payload) if record['provider'] in byid]
+    review_date=date_text((payload.get('browser_term_observations') or {}).get('checked_on'))
+    def reviewed_link(record, field, label):
+        source=record['field_evidence'][field]['url']
+        return f'<a href="{e(source)}" rel="noopener noreferrer">{e(label)}</a>'
+    def reviewed_card(record):
+        name=byid[record['provider']]['name']
+        total=money(record['first_term_total'])
+        monthly=money(record['monthly_equivalent'])
+        renewal=money(record['renewal_monthly_rate'])
+        months=record['commitment_months']
+        return (f'<article class="card"><div class="card-top"><span class="provider-name">{e(name)}</span>'
+                '<span class="tag reference">Manual review</span></div>'
+                f'<h3>{e(record["plan"])}</h3><p class="price">{reviewed_link(record,"first_term_total",total)}'
+                f'<span class="period"> upfront for {months} months</span></p>'
+                f'<dl><div><dt>Commitment</dt><dd>{reviewed_link(record,"commitment_months",str(months)+" months")}</dd></div>'
+                f'<div><dt>Monthly equivalent</dt><dd>{monthly} (calculated: {total} ÷ {months})</dd></div>'
+                f'<div><dt>Renewal monthly rate</dt><dd>{reviewed_link(record,"renewal_monthly_rate",renewal+"/mo")}</dd></div></dl>'
+                f'<p class="capture">Official pages checked {e(review_date)} PT. Confirm the latest price and tax at checkout.'
+                + (' The upfront total was seen in an official cart after plan selection; cart contents may vary by session.' if record.get('entry_url') else '')
+                + '</p></article>')
+    review_intro=(f'{len(reviewed)} plan examples have an official upfront total, commitment term, and renewal monthly rate. '
+                  f'The monthly equivalent is calculated from the first two figures. Official pages checked {review_date} PT; '
+                  'these dated examples are not a live checkout test, savings claim, or price ranking. '
+                  'A linked cart may need the same plan selected before its total appears.')
+    home=template('index.html',month=datetime.now().strftime('%B %Y'),complete_count=len(reviewed),provider_count=len(providers),review_intro=e(review_intro),offers='<div class="cards">'+''.join(reviewed_card(record) for record in reviewed)+'</div>' if reviewed else '<div class="empty"><h3>No complete plan comparison is documented yet</h3><p>Only plans with an official upfront total, term, and renewal monthly rate appear here.</p></div>',providers=provider_tiles)
     # The homepage lists different services; its entries are navigation targets,
     # not merchant Offers for products that HostDealRadar sells.
-    complete_provider_ids={o['provider'] for o in complete}
     current_provider_ids={o['provider'] for o in current}
     home_schema={'@context':'https://schema.org','@graph':[
         {'@type':'WebSite','@id':domain+'/#website','name':cfg['site']['brand'],'url':domain+'/','inLanguage':'en-US','publisher':{'@id':domain+'/#organization'}},
         {'@type':'Organization','@id':domain+'/#organization','name':cfg['site']['brand'],'url':domain+'/','sameAs':[cfg['settings']['repo_url']]},
-        {'@type':'ItemList','name':'HostDealRadar providers with complete three-term records','itemListElement':[{'@type':'ListItem','position':i+1,'item':{'@type':'WebPage','name':p['name'],'url':domain+'/providers/'+p['id']+'/'}} for i,p in enumerate(p for p in public_providers if p['id'] in complete_provider_ids)]}
+        {'@type':'ItemList','name':'Documented hosting plan comparisons','itemListElement':[{'@type':'ListItem','position':i+1,'item':{'@type':'WebPage','name':byid[record['provider']]['name']+' '+record['plan'],'url':domain+'/compare/#plan-'+record['provider']}} for i,record in enumerate(reviewed)]}
     ]}
     write(Path('index.html'),page('HostDealRadar | Official hosting offers', 'Official hosting offers with source-check status and provider links.',domain+'/',home,home_schema,head_extra="<meta name='impact-site-verification' value='9f3ff63a-c432-478f-8859-af77a6120cbb'>"))
     with_current=[p for p in public_providers if current_by_provider[p['id']]]
@@ -688,22 +740,26 @@ def build(config_path=None, output=None):
     hostinger_guide=template('hostinger-coupon-code.html')
     hostinger_guide_schema={'@context':'https://schema.org','@type':'Article','headline':'Hostinger coupon code: what you pay upfront and what renews','datePublished':'2026-09-25','dateModified':'2026-09-25','author':{'@type':'Organization','name':'HostDealRadar'},'publisher':{'@type':'Organization','name':'HostDealRadar'},'mainEntityOfPage':domain+hostinger_guide_route}
     write(Path('guides/hostinger-coupon-code/index.html'),page('Hostinger coupon code: 48-month upfront totals and renewal rates | HostDealRadar','Official Hostinger coupon cards show each 48-month upfront total beside a published renewal rate. The next renewal invoice total depends on a future selected term.',domain+hostinger_guide_route,hostinger_guide,hostinger_guide_schema))
-    def row(o):
-        return (f'<tr><td><strong>{e(byid[o["provider"]]["name"])}</strong><span>{e(o["title"])}</span></td>'
-                f'<td>{e(captured_field_evidence(o,"upfront_total"))}</td>'
-                f'<td>{e(captured_field_evidence(o,"price"))}</td>'
-                f'<td>{e(captured_field_evidence(o,"renewal_price"))}</td>'
-                f'<td><a href="{e(o["source_url"])}" rel="noopener noreferrer">Official page ↗</a><br>{e(o["fetched_at"])}</td></tr>')
-    rows=''.join(row(o) for o in complete)
-    compare=template('compare.html',rows=rows,empty=(f'<p><strong>{len(complete)} of {len(current)} current source records meet all three requirements.</strong></p>'
-        + ('<div class="empty"><h2>No complete row to compare</h2><p>The official evidence in this snapshot does not give all three terms for any one current plan. Provider pages retain individual verified fields, but those partial records are not ranked here.</p></div>' if not complete else '')))
-    write(Path('compare/index.html'),page('Compare terms | HostDealRadar','Compare hosting terms captured from official sources.',domain+'/compare/',compare,{'@context':'https://schema.org','@type':'WebPage','name':'Compare hosting terms'}))
+    def reviewed_row(record):
+        total=money(record['first_term_total'])
+        monthly=money(record['monthly_equivalent'])
+        renewal=money(record['renewal_monthly_rate'])
+        months=record['commitment_months']
+        return (f'<tr id="plan-{e(record["provider"])}"><td><strong>{e(byid[record["provider"]]["name"])}</strong>'
+                f'<span>{e(record["plan"])}</span></td>'
+                f'<td>{reviewed_link(record,"first_term_total",total)}</td>'
+                f'<td>{reviewed_link(record,"commitment_months",str(months)+" months")}</td>'
+                f'<td>{monthly}<span>Calculated: {total} ÷ {months}</span></td>'
+                f'<td>{reviewed_link(record,"renewal_monthly_rate",renewal+"/mo")}</td>'
+                f'<td>{e(review_date)} PT<span>Manual official-page review</span></td></tr>')
+    compare=template('compare.html',review_intro=e(review_intro),rows=''.join(reviewed_row(record) for record in reviewed),empty='' if reviewed else '<div class="empty"><h3>No complete plan comparison is documented yet</h3><p>Plans appear after their official upfront total, term, and renewal monthly rate are all checked.</p></div>')
+    write(Path('compare/index.html'),page('Compare plan terms | HostDealRadar','Compare documented upfront totals, terms, and renewal monthly rates from official hosting pages.',domain+'/compare/',compare,{'@context':'https://schema.org','@type':'WebPage','name':'Compare documented hosting plan terms'}))
     prose=lambda heading,body: f'<section class="wrap section prose"><div class="eyebrow">HOSTDEALRADAR</div><h1>{heading}</h1>{body}</section>'
     methodology='<p class="lead">Every listed term comes from an official public provider page. We do not estimate missing prices or invent promotions.</p><h2>What is included</h2><ul><li>We retrieve public pages only when robots.txt allows it.</li><li>We record the source URL and capture time with every record.</li><li>A term is listed as current only when the latest source check reconfirmed that exact record. A promotion also needs a verified end date; a successful fetch alone does not establish that it is still valid.</li></ul><h2 id="display-order">How pages are ordered</h2><p>Provider grids follow the configured source-list order. Offer cards and comparison rows follow the captured record order in the latest dataset. Homepage examples require current records with an established renewal rate above the initial rate. We group them by currency, billing unit, and service label. If any explicitly identify a first-month rate, only those records are eligible for the example group; otherwise all eligible records are considered. We choose the group with the most eligible records; ties use alphabetical currency, unit, and label order. Up to three records from that group come first, ordered by the larger numeric change within each record; equal changes use the record identifier. The remaining positions, up to nine cards in total, follow stored record order, excluding those examples. The example count is recalculated for each published snapshot. Initial terms and plan resources can differ, so the examples do not establish equivalent plans or an amount a buyer would save. These display orders are not recommendations, quality rankings, price rankings, or value rankings.</p>'+category_guide(offers)+'<h2>What happens when a source cannot be checked</h2><ul><li>If a source is blocked, challenged, or unclear, we publish no new offer for it.</li><li>Unverified or earlier records retain their actual capture time and are not shown as current offers.</li><li>Expired promotions are labelled expired and are never shown as a current offer.</li></ul><h2>What to verify before purchase</h2><p>Confirm checkout total, tax, eligibility, billing term, and renewal amount with the provider. A captured offer is not a checkout test or a performance review.</p>'
     old_order=('Offer cards and comparison rows follow the captured record order in the latest dataset. Homepage examples require current records with an established renewal rate above the initial rate. We group them by currency, billing unit, and service label. If any explicitly identify a first-month rate, only those records are eligible for the example group; otherwise all eligible records are considered. We choose the group with the most eligible records; ties use alphabetical currency, unit, and label order. Up to three records from that group come first, ordered by the larger numeric change within each record; equal changes use the record identifier. The remaining positions, up to nine cards in total, follow stored record order, excluding those examples. The example count is recalculated for each published snapshot.')
-    methodology=methodology.replace(old_order, 'Homepage comparison cards and comparison rows include only current records meeting the three-term standard below; they follow stored record order. Up to nine qualifying cards appear on the homepage. No price-derived ranking is applied.')
+    methodology=methodology.replace(old_order, 'Homepage comparison cards and comparison rows show only complete, dated manual plan reviews, in review order. Provider grids follow the configured source-list order. Neither display is a recommendation or a price ranking.')
     methodology += ('<h2 id="three-term-standard">Three-term comparison standard</h2>'
-                    '<p>A row enters the homepage comparison or compare table only when one current official record states the first-payment total, the published monthly equivalent for its documented initial commitment, and the monthly renewal rate. Each displayed figure keeps its source wording and capture time. We do not calculate a total from a monthly rate, infer a renewal invoice, or combine different plans, terms, or currencies. A missing term removes that row from the comparison; provider pages can still display the individual terms their official source supports. The qualifying count is recalculated from each published snapshot and may be zero.</p>')
+                    '<p>A plan enters the homepage and comparison table only after a dated manual review documents its first-term total, commitment in months, and renewal monthly rate from official pages for that same plan. The monthly equivalent is labelled as our calculation: first-term total divided by commitment months. Each source value links to its own official page. We do not calculate a total from an advertised monthly rate, infer a renewal invoice, or combine different plans, terms, or currencies. Missing values keep a plan off these two displays. The manual examples are separate from the automated source-record statuses on provider pages and are not a live checkout test or a price ranking.</p>')
     write(Path('methodology/index.html'),page('How we check | HostDealRadar','How HostDealRadar checks official source pages.',domain+'/methodology/',prose('How we check offers',methodology),{'@context':'https://schema.org','@type':'WebPage','name':'Methodology'}))
     about='<p class="lead">HostDealRadar publishes source-checked records of publicly available hosting terms.</p><p>Every listing links to the provider page it came from and carries its own capture time. We show a price, currency, billing unit, and renewal term only when the official page supports that field.</p><p>Source checks run every six hours. When a source cannot be checked, we do not publish a new price for it; earlier records stay labelled as earlier records instead of being presented as current.</p><p>HostDealRadar is maintained under the HostDealRadar name. It is not a hosting provider and does not sell hosting plans.</p><p>Read <a href="/methodology/">how we check sources</a> for the rules behind the records.</p>'
     write(Path('about/index.html'),page('About | HostDealRadar','What HostDealRadar records and how the site is maintained.',domain+'/about/',prose('About HostDealRadar',about),{'@context':'https://schema.org','@type':'AboutPage','name':'About HostDealRadar'}))
