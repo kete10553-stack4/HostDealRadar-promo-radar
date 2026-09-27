@@ -841,11 +841,11 @@
       "fetched_at": "2026-09-27T00:33:52Z",
       "evidence": "Portfoliobox plan card: the plan name is followed by the monthly rate.",
       "field_evidence": {
-        "price": "15.9 /month"
+        "price": "$15.9 /month"
       },
       "claim_evidence": {
         "price": {
-          "quote": "15.9 /month",
+          "quote": "$15.9 /month",
           "excerpt": "Professional $15.9 /month Everything you need for your portfolio. 1,000 images and pages Custom domain included* Custom email (hello@yourname.com) E-commerce store, 0% commission Bookings and appointments Invoicing an",
           "visible_excerpt": "Professional $15.9 /month Everything you need for your portfolio. 1,000 images and pages Custom domain included* Custom email (hello@yourname.com) E-commerce store, 0% commission Bookings and appointments Invoicing an",
           "location": "configured field pattern: price",
@@ -869,11 +869,11 @@
       "fetched_at": "2026-09-27T00:33:52Z",
       "evidence": "Portfoliobox plan card, read the same way as Professional.",
       "field_evidence": {
-        "price": "8.9 /month"
+        "price": "$8.9 /month"
       },
       "claim_evidence": {
         "price": {
-          "quote": "8.9 /month",
+          "quote": "$8.9 /month",
           "excerpt": "Personal $8.9 /month A great personal portfolio. 150 images 15 pages 100 blog posts Custom domain included* Get Personal Prices do not include VAT, which is based on the user's billing country. The final price wi",
           "visible_excerpt": "Personal $8.9 /month A great personal portfolio. 150 images 15 pages 100 blog posts Custom domain included* Get Personal Prices do not include VAT, which is based on the user's billing country. The final price wi",
           "location": "configured field pattern: price",
@@ -973,11 +973,11 @@
       "fetched_at": "2026-09-27T00:33:56Z",
       "evidence": "Voog plan card: the plan name is followed by the monthly rate and the annual saving.",
       "field_evidence": {
-        "price": "1.25/mo"
+        "price": "\u20ac1.25/mo"
       },
       "claim_evidence": {
         "price": {
-          "quote": "1.25/mo",
+          "quote": "\u20ac1.25/mo",
           "excerpt": "Starter \u20ac1.25/mo For one-pager websites or landing pages. Save \u20ac9 annually Start free trial",
           "visible_excerpt": "Starter \u20ac1.25/mo For one-pager websites or landing pages. Save \u20ac9 annually Start free trial",
           "location": "configured field pattern: price",
@@ -1001,11 +1001,11 @@
       "fetched_at": "2026-09-27T00:33:56Z",
       "evidence": "Voog plan card, read the same way as Starter.",
       "field_evidence": {
-        "price": "11/mo"
+        "price": "\u20ac11/mo"
       },
       "claim_evidence": {
         "price": {
-          "quote": "11/mo",
+          "quote": "\u20ac11/mo",
           "excerpt": "Standard \u20ac11/mo Good for simple websites. Save \u20ac36 annually Start free trial",
           "visible_excerpt": "Standard \u20ac11/mo Good for simple websites. Save \u20ac36 annually Start free trial",
           "location": "configured field pattern: price",
@@ -1029,11 +1029,11 @@
       "fetched_at": "2026-09-27T00:33:56Z",
       "evidence": "Voog plan card, read the same way as Starter.",
       "field_evidence": {
-        "price": "17/mo"
+        "price": "\u20ac17/mo"
       },
       "claim_evidence": {
         "price": {
-          "quote": "17/mo",
+          "quote": "\u20ac17/mo",
           "excerpt": "Plus \u20ac17/mo The right fit for 90% of customers. Save \u20ac60 annually Start free trial",
           "visible_excerpt": "Plus \u20ac17/mo The right fit for 90% of customers. Save \u20ac60 annually Start free trial",
           "location": "configured field pattern: price",
@@ -1057,11 +1057,11 @@
       "fetched_at": "2026-09-27T00:33:56Z",
       "evidence": "Voog plan card, read the same way as Starter.",
       "field_evidence": {
-        "price": "39/mo"
+        "price": "\u20ac39/mo"
       },
       "claim_evidence": {
         "price": {
-          "quote": "39/mo",
+          "quote": "\u20ac39/mo",
           "excerpt": "Premium \u20ac39/mo For more advanced customer. Save \u20ac132 annually Start free trial Features Free custom domain Free domain Our annual plans include a free custom domain. This applies only to yearly billing and",
           "visible_excerpt": "Premium \u20ac39/mo For more advanced customer. Save \u20ac132 annually Start free trial Features Free custom domain Free domain Our annual plans include a free custom domain. This applies only to yearly billing and",
           "location": "configured field pattern: price",
@@ -9907,12 +9907,12 @@
       "lastmod": "2026-09-26T02:46:11Z"
     },
     "/providers/portfoliobox/": {
-      "hash": "d58f64bd6771fa153999a61e0dd152ce46b28305b6c921aeff3a2b20cf3b3f63",
-      "lastmod": "2026-09-27T00:35:46Z"
+      "hash": "ef4b8b517e67ec9abc24a0c3291af2d09d06960fdc3cd0e00c7b1170368cefe5",
+      "lastmod": "2026-09-27T02:42:39Z"
     },
     "/providers/voog/": {
-      "hash": "14f953c7fd71fccb5ee7a6ecba51fd4a85fc023a9f69af450e0b553ee2469fb6",
-      "lastmod": "2026-09-26T02:46:11Z"
+      "hash": "fbb5913c2b1e9f36e4867d2637df7186e13a9abf4149efd207e60236beae0aad",
+      "lastmod": "2026-09-27T02:42:39Z"
     },
     "/providers/beehiiv/": {
       "hash": "15e4394d3cc4fc538f5ba62a8fbadf7172c02858d5d957b24ef229215f5ab154",
