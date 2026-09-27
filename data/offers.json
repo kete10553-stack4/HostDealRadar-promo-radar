@@ -9831,16 +9831,16 @@
   },
   "page_lastmod": {
     "/": {
-      "hash": "92aa38ea880da3806fba8cb45cf20b5e7b60a3c76a44b36348019935bc28bd00",
-      "lastmod": "2026-09-27T01:24:52Z"
+      "hash": "90493f98475735aef469d2f7a8060016e36be998b44fed808f1d0a6f2f37b97c",
+      "lastmod": "2026-09-27T01:53:04Z"
     },
     "/providers/": {
       "hash": "4a0acfd6186a7e27da736dbf55882d26deb557df9d7824e29c092735ae848892",
       "lastmod": "2026-09-27T00:35:46Z"
     },
     "/compare/": {
-      "hash": "bc5779579a394ec9acb2916b5d027c62b7adddbbcfb9ad56fa09d3013b9478b5",
-      "lastmod": "2026-09-27T01:24:52Z"
+      "hash": "a25f98021e55ee2c454dd93356cf34e410461c239d9ca2fcd2a126505095fdd4",
+      "lastmod": "2026-09-27T01:53:04Z"
     },
     "/methodology/": {
       "hash": "3d25bed8a9a1395a1cb38ec882b70c8a037e2441f9631b5fbba428a4d27f070c",
@@ -10317,6 +10317,34 @@
         "other_official_quote": "then $131.88 /1yr.",
         "entry_url": "https://www.dreamhost.com/hosting-3/",
         "missing_reasons": {}
+      },
+      {
+        "provider": "inmotion-hosting",
+        "plan": "Launch shared hosting, 1-year term",
+        "currency": "USD",
+        "first_term_total": 57.48,
+        "commitment_months": 12,
+        "monthly_equivalent": 4.79,
+        "renewal_monthly_rate": 14.99,
+        "calculation": "57.48 / 12 = 4.79 USD/month",
+        "advertised_price_quote": "$4.79 /mo",
+        "checked_on": "2026-09-26",
+        "field_evidence": {
+          "first_term_total": {
+            "quote": "$57.48",
+            "url": "https://central.inmotionhosting.com/amp/checkout#complete"
+          },
+          "commitment_months": {
+            "quote": "1 Year @ $4.79/mo",
+            "url": "https://central.inmotionhosting.com/amp/checkout#complete"
+          },
+          "renewal_monthly_rate": {
+            "quote": "Renews at $14.99 /mo",
+            "url": "https://www.inmotionhosting.com/shared-hosting"
+          }
+        },
+        "entry_url": "https://www.inmotionhosting.com/shared-hosting",
+        "cart_note": "The official order summary showed the Launch hosting line item separately from preselected add-ons; no order was submitted."
       }
     ]
   }
