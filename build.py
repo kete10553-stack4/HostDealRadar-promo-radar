@@ -581,7 +581,8 @@ def build(config_path=None, output=None):
     provider_tiles=''.join(tile(p) for p in public_providers)
     complete=[o for o in current if complete_three_terms(o, rules.get((o['provider'],o['title']), {}))]
     reviewed=[record for record in documented_plan_rows(payload) if record['provider'] in byid]
-    review_date=date_text((payload.get('browser_term_observations') or {}).get('checked_on'))
+    def record_review_date(record):
+        return date_text(record.get('checked_on') or (payload.get('browser_term_observations') or {}).get('checked_on'))
     def reviewed_link(record, field, label):
         source=record['field_evidence'][field]['url']
         return f'<a href="{e(source)}" rel="noopener noreferrer">{e(label)}</a>'
@@ -598,11 +599,11 @@ def build(config_path=None, output=None):
                 f'<dl><div><dt>Commitment</dt><dd>{reviewed_link(record,"commitment_months",str(months)+" months")}</dd></div>'
                 f'<div><dt>Monthly equivalent</dt><dd>{monthly} (calculated: {total} ÷ {months})</dd></div>'
                 f'<div><dt>Renewal monthly rate</dt><dd>{reviewed_link(record,"renewal_monthly_rate",renewal+"/mo")}</dd></div></dl>'
-                f'<p class="capture">Official pages checked {e(review_date)} PT. Confirm the latest price and tax at checkout.'
+                f'<p class="capture">Official pages checked {e(record_review_date(record))} PT. Confirm the latest price and tax at checkout.'
                 + (' The upfront total was seen in an official cart after plan selection; cart contents may vary by session.' if record.get('entry_url') else '')
                 + '</p></article>')
     review_intro=(f'{len(reviewed)} plan examples have an official upfront total, commitment term, and renewal monthly rate. '
-                  f'The monthly equivalent is calculated from the first two figures. Official pages checked {review_date} PT; '
+                  'The monthly equivalent is calculated from the first two figures. Each example shows its own official-page check date; '
                   'these dated examples are not a live checkout test, savings claim, or price ranking. '
                   'A linked cart may need the same plan selected before its total appears.')
     home=template('index.html',month=datetime.now().strftime('%B %Y'),complete_count=len(reviewed),provider_count=len(providers),review_intro=e(review_intro),offers='<div class="cards">'+''.join(reviewed_card(record) for record in reviewed)+'</div>' if reviewed else '<div class="empty"><h3>No complete plan comparison is documented yet</h3><p>Only plans with an official upfront total, term, and renewal monthly rate appear here.</p></div>',providers=provider_tiles)
@@ -751,7 +752,7 @@ def build(config_path=None, output=None):
                 f'<td>{reviewed_link(record,"commitment_months",str(months)+" months")}</td>'
                 f'<td>{monthly}<span>Calculated: {total} ÷ {months}</span></td>'
                 f'<td>{reviewed_link(record,"renewal_monthly_rate",renewal+"/mo")}</td>'
-                f'<td>{e(review_date)} PT<span>Manual official-page review</span></td></tr>')
+                f'<td>{e(record_review_date(record))} PT<span>Manual official-page review</span></td></tr>')
     compare=template('compare.html',review_intro=e(review_intro),rows=''.join(reviewed_row(record) for record in reviewed),empty='' if reviewed else '<div class="empty"><h3>No complete plan comparison is documented yet</h3><p>Plans appear after their official upfront total, term, and renewal monthly rate are all checked.</p></div>')
     write(Path('compare/index.html'),page('Compare plan terms | HostDealRadar','Compare documented upfront totals, terms, and renewal monthly rates from official hosting pages.',domain+'/compare/',compare,{'@context':'https://schema.org','@type':'WebPage','name':'Compare documented hosting plan terms'}))
     prose=lambda heading,body: f'<section class="wrap section prose"><div class="eyebrow">HOSTDEALRADAR</div><h1>{heading}</h1>{body}</section>'
