@@ -9831,20 +9831,20 @@
   },
   "page_lastmod": {
     "/": {
-      "hash": "cceda3a658d8ea4ffd8707bce2b932c18feb24f5f38d90606e8a3ff3640fb705",
-      "lastmod": "2026-09-27T02:05:05Z"
+      "hash": "528d74c0efe8a30c26be75e50c2a531f43dd13d22e77b84f8b6d752cbe55adce",
+      "lastmod": "2026-09-27T02:07:45Z"
     },
     "/providers/": {
       "hash": "4a0acfd6186a7e27da736dbf55882d26deb557df9d7824e29c092735ae848892",
       "lastmod": "2026-09-27T00:35:46Z"
     },
     "/compare/": {
-      "hash": "3bcc2cabd0d4127c38e621713d18d2dfb3f915ebd5434ebe24bd095cc981349a",
-      "lastmod": "2026-09-27T02:05:05Z"
+      "hash": "03162548a361e820e024bd71350b45ec1afa2301fdd4fd456151a397823f4174",
+      "lastmod": "2026-09-27T02:07:45Z"
     },
     "/methodology/": {
       "hash": "22dee56f92f0f96a890f3b621e025631df982e15a2a88a15683b60550f85fd26",
-      "lastmod": "2026-09-27T02:03:19Z"
+      "lastmod": "2026-09-27T02:07:45Z"
     },
     "/about/": {
       "hash": "f94ee8b394e21e322c0116f339565d66b969717d807eeb7f1a65d32bfb48133f",
@@ -9872,7 +9872,7 @@
     },
     "/guides/namecheap-promo-code/": {
       "hash": "1970ca0e0da38be3734c0a54a6fb2df65d10ec0725baeb4ff2bdf058ad7df4aa",
-      "lastmod": "2026-09-27T02:03:19Z"
+      "lastmod": "2026-09-27T02:07:45Z"
     },
     "/guides/cloudways-coupon-code/": {
       "hash": "cc9c627ffda3fcc492719f4cb6f901a77a79c89d804094b1438f53073d019cf3",
@@ -10321,6 +10321,34 @@
         "other_official_quote": "then $131.88 /1yr.",
         "entry_url": "https://www.dreamhost.com/hosting-3/",
         "missing_reasons": {}
+      },
+      {
+        "provider": "inmotion-hosting",
+        "plan": "Launch shared hosting, 1-year term",
+        "currency": "USD",
+        "first_term_total": 57.48,
+        "commitment_months": 12,
+        "monthly_equivalent": 4.79,
+        "renewal_monthly_rate": 14.99,
+        "calculation": "57.48 / 12 = 4.79 USD/month",
+        "advertised_price_quote": "$4.79 /mo",
+        "checked_on": "2026-09-26",
+        "field_evidence": {
+          "first_term_total": {
+            "quote": "$57.48",
+            "url": "https://central.inmotionhosting.com/amp/checkout#complete"
+          },
+          "commitment_months": {
+            "quote": "1 Year @ $4.79/mo",
+            "url": "https://central.inmotionhosting.com/amp/checkout#complete"
+          },
+          "renewal_monthly_rate": {
+            "quote": "Renews at $14.99 /mo",
+            "url": "https://www.inmotionhosting.com/shared-hosting"
+          }
+        },
+        "entry_url": "https://www.inmotionhosting.com/shared-hosting",
+        "cart_note": "The official order summary showed the Launch hosting line item separately from preselected add-ons; no order was submitted."
       }
     ]
   }

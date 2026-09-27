@@ -581,7 +581,8 @@ def build(config_path=None, output=None):
     provider_tiles=''.join(tile(p) for p in public_providers)
     complete=[o for o in current if complete_three_terms(o, rules.get((o['provider'],o['title']), {}))]
     reviewed=[record for record in documented_plan_rows(payload) if record['provider'] in byid]
-    review_date=date_text((payload.get('browser_term_observations') or {}).get('checked_on'))
+    def record_review_date(record):
+        return date_text(record.get('checked_on') or (payload.get('browser_term_observations') or {}).get('checked_on'))
     def reviewed_link(record, field, label):
         source=record['field_evidence'][field]['url']
         return f'<a href="{e(source)}" rel="noopener noreferrer">{e(label)}</a>'
@@ -598,7 +599,7 @@ def build(config_path=None, output=None):
                 f'<dl><div><dt>Commitment</dt><dd>{reviewed_link(record,"commitment_months",str(months)+" months")}</dd></div>'
                 f'<div><dt>Monthly equivalent</dt><dd>{monthly} (calculated: {total} ÷ {months})</dd></div>'
                 f'<div><dt>Renewal monthly rate</dt><dd>{reviewed_link(record,"renewal_monthly_rate",renewal+"/mo")}</dd></div></dl>'
-                f'<p class="capture">Official pages checked {e(review_date)} PT. Confirm the latest price and tax at checkout.'
+                f'<p class="capture">Official pages checked {e(record_review_date(record))} PT. Confirm the latest price and tax at checkout.'
                 + (' The upfront total was seen in an official cart after plan selection; cart contents may vary by session.' if record.get('entry_url') else '')
                 + '</p></article>')
     # A dated observation may support only one or two terms. Keep those
@@ -622,10 +623,10 @@ def build(config_path=None, output=None):
         return (f'<article class="card"><div class="card-top"><span class="provider-name">{e(byid[record["provider"]]["name"])}</span>'
                 '<span class="tag reference">Dated source note</span></div>'
                 f'<h3>{e(record["plan"])}</h3><dl>{"".join(fields)}</dl>'
-                f'<p class="capture">Official pages checked {e(review_date)} PT. This is not a complete plan comparison or checkout test.</p></article>')
+                f'<p class="capture">Official pages checked {e(record_review_date(record))} PT. This is not a complete plan comparison or checkout test.</p></article>')
     partial_cards=''.join(partial_card(record) for record in partial)
     review_intro=(f'{len(reviewed)} plan examples have an official upfront total, commitment term, and renewal monthly rate. '
-                  f'The monthly equivalent is calculated from the first two figures. Official pages checked {review_date} PT; '
+                  'The monthly equivalent is calculated from the first two figures. Each example shows its own official-page check date; '
                   'these dated examples are not a live checkout test, savings claim, or price ranking. '
                   'A linked cart may need the same plan selected before its total appears.')
     home_reviewed=('<section class="wrap section"><div class="section-head"><div><div class="eyebrow">DOCUMENTED PLAN TERMS</div>'
@@ -782,7 +783,7 @@ def build(config_path=None, output=None):
                 f'<td>{reviewed_link(record,"commitment_months",str(months)+" months")}</td>'
                 f'<td>{monthly}<span>Calculated: {total} ÷ {months}</span></td>'
                 f'<td>{reviewed_link(record,"renewal_monthly_rate",renewal+"/mo")}</td>'
-                f'<td>{e(review_date)} PT<span>Manual official-page review</span></td></tr>')
+                f'<td>{e(record_review_date(record))} PT<span>Manual official-page review</span></td></tr>')
     compare_reviewed=('<h2>Complete plan examples</h2><p>'+e(review_intro)+'</p><div class="table-wrap"><table>'
                       '<caption>Complete plan examples from a dated manual review, in review order</caption>'
                       '<thead><tr><th>Provider / plan</th><th>First-term total</th><th>Commitment</th>'
