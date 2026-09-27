@@ -320,7 +320,7 @@ def check():
     assert 'Unknown' not in home and 'Unknown' not in compare, 'Comparison pages still publish an unverified field'
     assert compare.count('<tbody>') == (1 if reviewed else 0) and compare.count('</tr>') == (len(reviewed)+1 if reviewed else 0), 'Comparison row count differs from documented complete plans'
     assert home.count('<span class="tag reference">Manual review</span>') == len(reviewed), 'Homepage complete-card count differs from documented complete plans'
-    assert '0 complete' not in home and 'No complete plan comparison' not in compare, 'A zero-row conclusion is printed on a page'
+    assert '0 complete' not in home and '0 current listings' not in home and 'No complete plan comparison' not in compare, 'A zero-row conclusion is printed on a page'
     for record in reviewed:
         assert f'id="plan-{record["provider"]}"' in compare, f'{record["provider"]} is absent from comparison'
         for field in ('first_term_total','commitment_months','renewal_monthly_rate'):

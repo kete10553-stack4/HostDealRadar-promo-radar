@@ -551,7 +551,7 @@ def build(config_path=None, output=None):
         if p['id'] in state_only:
             label=state_only_display(status, blockers.get(p['id']))[2]
         elif status.get('status') == 'evidenced' and status.get('capture_status') == 'matched' and status.get('http_status') == 200 and status.get('visible_excerpt'):
-            label=f'{count} current listings →'
+            label=f'{count} current listings →' if count else 'Source-check details →'
         elif status.get('status') == 'evidenced' and status.get('capture_status') == 'unmatched':
             label='Latest source check produced no published record →'
         else:
