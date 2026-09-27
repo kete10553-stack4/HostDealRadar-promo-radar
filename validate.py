@@ -223,7 +223,7 @@ def check():
     home=(ROOT/'site/index.html').read_text(encoding='utf-8')
     assert f'{len(ids)} providers in our source list' in home, 'Homepage provider count mismatch'
     reviewed=[record for record in build.documented_plan_rows(payload) if record['provider'] in ids]
-    assert f'{len(reviewed)} complete plan examples' in home, 'Homepage qualification count mismatch'
+    assert home.count('<span class="tag reference">Manual review</span>') == len(reviewed), 'Homepage qualification count mismatch'
     directory=(ROOT/'site/providers/index.html').read_text(encoding='utf-8')
     groups=[re.search(r'<h2 id="'+group+r'">.*?<div class="provider-grid">(.*?)</div></section>',directory,re.S)
             for group in ('current-records','without-current-records')]
@@ -318,14 +318,19 @@ def check():
     assert listed == allowed, 'Homepage structured data differs from the documented plan rows'
     compare=(ROOT/'site/compare/index.html').read_text(encoding='utf-8')
     assert 'Unknown' not in home and 'Unknown' not in compare, 'Comparison pages still publish an unverified field'
-    assert compare.count('<tbody>') == 1 and compare.count('</tr>') == len(reviewed)+1, 'Comparison row count differs from documented complete plans'
-    assert home.count('class="card"><div class="card-top"') == len(reviewed), 'Homepage card count differs from documented complete plans'
+    assert compare.count('<tbody>') == (1 if reviewed else 0) and compare.count('</tr>') == (len(reviewed)+1 if reviewed else 0), 'Comparison row count differs from documented complete plans'
+    assert home.count('<span class="tag reference">Manual review</span>') == len(reviewed), 'Homepage complete-card count differs from documented complete plans'
+    assert '0 complete' not in home and 'No complete plan comparison' not in compare, 'A zero-row conclusion is printed on a page'
     for record in reviewed:
         assert f'id="plan-{record["provider"]}"' in compare, f'{record["provider"]} is absent from comparison'
         for field in ('first_term_total','commitment_months','renewal_monthly_rate'):
             source=record['field_evidence'][field]['url']
             assert build.e(source) in compare and build.e(source) in home, f'{record["provider"]} {field} lacks its official link'
     assert 'id="three-term-standard"' in (ROOT/'site/methodology/index.html').read_text(encoding='utf-8'), 'Methodology omits the three-term inclusion standard'
+    namecheap_promo=(ROOT/'site/guides/namecheap-promo-code/index.html').read_text(encoding='utf-8')
+    assert all(code in namecheap_promo for code in ('WORKMODEDOM','WORKMODEPE','WORKMODESSL')), 'Namecheap guide is missing a cited official code card'
+    assert '/guides/namecheap-promo-code/' in home and '/guides/namecheap-promo-code/' in namecheap, 'Namecheap promo guide lacks home or provider entry'
+    assert 'https://hostdealradar.com/guides/namecheap-promo-code/' in sitemap, 'Sitemap omits the Namecheap promo guide'
     assert (ROOT/'site/robots.txt').exists() and (ROOT/'site/sitemap.xml').exists()
     robots=(ROOT/'site/robots.txt').read_text(encoding='utf-8')
     assert 'Sitemap: '+cfg['site']['domain'].rstrip('/')+'/sitemap.xml' in robots, 'robots.txt must advertise the canonical sitemap'

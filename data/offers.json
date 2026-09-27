@@ -9831,20 +9831,20 @@
   },
   "page_lastmod": {
     "/": {
-      "hash": "92aa38ea880da3806fba8cb45cf20b5e7b60a3c76a44b36348019935bc28bd00",
-      "lastmod": "2026-09-27T01:24:52Z"
+      "hash": "cceda3a658d8ea4ffd8707bce2b932c18feb24f5f38d90606e8a3ff3640fb705",
+      "lastmod": "2026-09-27T02:05:05Z"
     },
     "/providers/": {
       "hash": "4a0acfd6186a7e27da736dbf55882d26deb557df9d7824e29c092735ae848892",
       "lastmod": "2026-09-27T00:35:46Z"
     },
     "/compare/": {
-      "hash": "bc5779579a394ec9acb2916b5d027c62b7adddbbcfb9ad56fa09d3013b9478b5",
-      "lastmod": "2026-09-27T01:24:52Z"
+      "hash": "3bcc2cabd0d4127c38e621713d18d2dfb3f915ebd5434ebe24bd095cc981349a",
+      "lastmod": "2026-09-27T02:05:05Z"
     },
     "/methodology/": {
-      "hash": "3d25bed8a9a1395a1cb38ec882b70c8a037e2441f9631b5fbba428a4d27f070c",
-      "lastmod": "2026-09-27T01:22:55Z"
+      "hash": "22dee56f92f0f96a890f3b621e025631df982e15a2a88a15683b60550f85fd26",
+      "lastmod": "2026-09-27T02:03:19Z"
     },
     "/about/": {
       "hash": "f94ee8b394e21e322c0116f339565d66b969717d807eeb7f1a65d32bfb48133f",
@@ -9869,6 +9869,10 @@
     "/guides/namecheap-domain-renewal-coupon/": {
       "hash": "40f61e1967ee800675e2edbd45667263b0723f3bc3f2791a472997a1501f8deb",
       "lastmod": "2026-09-21T01:00:16Z"
+    },
+    "/guides/namecheap-promo-code/": {
+      "hash": "1970ca0e0da38be3734c0a54a6fb2df65d10ec0725baeb4ff2bdf058ad7df4aa",
+      "lastmod": "2026-09-27T02:03:19Z"
     },
     "/guides/cloudways-coupon-code/": {
       "hash": "cc9c627ffda3fcc492719f4cb6f901a77a79c89d804094b1438f53073d019cf3",
