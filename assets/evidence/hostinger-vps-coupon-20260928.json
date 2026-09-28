@@ -1,0 +1,18 @@
+{
+  "source_url": "https://www.hostinger.com/coupons",
+  "observed_at": "2026-09-28T09:02:56.392Z",
+  "method": "Chrome visible-page observation after selecting VPS hosting under Pick your perfect plan",
+  "http_status": null,
+  "http_status_note": "Browser observation did not expose a document response status; none is inferred.",
+  "scope": "Official public coupon cards, not checkout or redemption testing",
+  "cards": [
+    {"plan": "KVM 1", "displayed_monthly_rate": "$6.17/mo", "code_wording": "'COUPONSPAGE' coupon applied"},
+    {"plan": "KVM 2", "displayed_monthly_rate": "$8.54/mo", "code_wording": "'COUPONSPAGE' coupon applied"},
+    {"plan": "KVM 4", "displayed_monthly_rate": "$12.34/mo", "code_wording": "'COUPONSPAGE' coupon applied"},
+    {"plan": "KVM 8", "displayed_monthly_rate": "$24.69/mo", "code_wording": "'COUPONSPAGE' coupon applied"}
+  ],
+  "published_deadline": null,
+  "deadline_note": "No exact end date was visible on the selected VPS cards.",
+  "community_code": {"code": "VPSHOSTINGREDDIT", "status": "unverified owner-supplied community report", "verified_at": null},
+  "separate_automated_attempt": {"url": "https://www.hostinger.com/robots.txt", "date": "2026-09-28", "http_status": 403, "result": "Stopped before fetching offer pages. Does not establish that an offer has expired."}
+}

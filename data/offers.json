@@ -9837,8 +9837,8 @@
   },
   "page_lastmod": {
     "/": {
-      "hash": "073952af76eb6ce52a4d4ffd3324d1b56e5dd2c562cad5d7070d750e8885c33b",
-      "lastmod": "2026-09-28T06:36:18Z"
+      "hash": "aade85ed05f9cc82f8cbcdee5ad96a17f3e5a3686ecaed222b85f7e053448f01",
+      "lastmod": "2026-09-28T09:08:10Z"
     },
     "/providers/": {
       "hash": "be2741ae6c9ab075e13d34e355f3d016c68906118c567f86e33c81830fbe98b2",
@@ -9897,8 +9897,12 @@
       "lastmod": "2026-09-25T10:27:28Z"
     },
     "/guides/hostinger-coupon-code/": {
-      "hash": "23fb10df12a71c9812d31c1c5c630bdb015e612eec0d5a4284c6271622fd86e9",
-      "lastmod": "2026-09-25T11:16:28Z"
+      "hash": "648f45e0b0706787c431e9cde58a940c74ac8f5da605d7536c834b3cf61d7e48",
+      "lastmod": "2026-09-28T09:08:10Z"
+    },
+    "/guides/hostinger-vps-coupon-code/": {
+      "hash": "7f00f3ee75b0b1944f85c2d2683bafe340f131370cd78fa5f5e45b8a4111dda9",
+      "lastmod": "2026-09-28T09:10:03Z"
     },
     "/providers/webdock/": {
       "hash": "04716508c9c8263f3c6a1e6aa83f8edba4c7dd1edc79696eccd212621f0604ea",
