@@ -1,0 +1,63 @@
+{
+  "page": "/guides/hostinger-domain-coupon-code/",
+  "checked_date": "2026-09-29",
+  "method": "Public official-page text returned by the web reader, read by the editor. This reader did not expose an origin HTTP status or raw-response capture timestamp; neither is invented here.",
+  "checkout_test": false,
+  "scope": "Five named public official pages. No account-specific cart, redemption, or complete multi-year payment was tested. Short excerpts have section locators; summaries are editorial paraphrases.",
+  "records": [
+    {
+      "id": "D1",
+      "url": "https://www.hostinger.com/tld/com-domain",
+      "checked_date": "2026-09-29",
+      "origin_http_status": null,
+      "offer_window": null,
+      "sections": [
+        {"location": "Top banner", "excerpt": "Best value for 3 year term", "observation": "The banner displays $0.01/1st year alongside $19.99/yr and a three-year term hint. A full multi-year payable amount was not captured."},
+        {"location": "FAQ: How much does a .com domain cost?", "excerpt": "the renewal fee is $19.99/year", "observation": "The FAQ separately labels $0.01 as the first-year price and $19.99/year as renewal."},
+        {"location": "Domain information for .com; footer", "excerpt": "ICANN fee", "observation": "The information section lists $0.20 for this fee. The footer states prices exclude VAT. No domain code is printed with this offer."}
+      ]
+    },
+    {
+      "id": "D2",
+      "url": "https://www.hostinger.com/free-domain",
+      "checked_date": "2026-09-29",
+      "origin_http_status": null,
+      "offer_window": null,
+      "sections": [
+        {"location": "How to get your free domain; eligibility FAQs", "excerpt": "12 months or longer", "observation": "A first-year free domain accompanies Premium or Unlimited hosting at this term. One free domain per account; available extensions depend on country. Later years use regular renewal pricing."},
+        {"location": "Free-domain extension explanation", "excerpt": ".ai and .io", "observation": "These two extensions are excluded from the free-domain offer."},
+        {"location": "FAQ: free domain transfer", "excerpt": "new Premium or Unlimited hosting plan", "observation": "An eligible transfer is offered with a new plan of at least 12 months. Exclusions include VPS, Business Email, Single Web Hosting, monthly plans, renewals, upgrades, and existing billing-cycle changes."}
+      ]
+    },
+    {
+      "id": "D3",
+      "url": "https://www.hostinger.com/coupons",
+      "checked_date": "2026-09-29",
+      "origin_http_status": null,
+      "offer_window": null,
+      "sections": [
+        {"location": "Web-hosting plan cards", "excerpt": "COUPONSPAGE", "observation": "The visible hosting cards show this code as applied. That does not establish its acceptance for a standalone domain order or renewal. No such code was verified in the official sources read."}
+      ]
+    },
+    {
+      "id": "D4",
+      "url": "https://www.hostinger.com/legal/refund-policy",
+      "checked_date": "2026-09-29",
+      "origin_http_status": null,
+      "sections": [
+        {"location": "Domain Name Registrations", "excerpt": "96 hours", "observation": "A refund must be initiated within 96 hours and more than 24 hours must have elapsed since initiating the last refund of another domain registration. Extension exclusions apply. The .br, .com.br and .net.br exception is 168 hours."},
+        {"location": "Non-refundable products", "excerpt": "Domain Name Renewals", "observation": "Domain renewals, successful domain transfers, and redemption fees are non-refundable."},
+        {"location": "Special deals", "excerpt": "deduct the price of the free domain", "observation": "Hostinger reserves this deduction from a hosting refund. The domain stays usable for its remaining billing period."}
+      ]
+    },
+    {
+      "id": "D5",
+      "url": "https://www.hostinger.com/domain-name-search",
+      "checked_date": "2026-09-29",
+      "origin_http_status": null,
+      "sections": [
+        {"location": "Domain benefits", "excerpt": "Free privacy protection", "observation": "The page qualifies the benefit by supported domain extensions. It is not a promise for every extension."}
+      ]
+    }
+  ]
+}
