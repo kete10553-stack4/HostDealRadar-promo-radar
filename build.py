@@ -786,6 +786,9 @@ def build(config_path=None, output=None):
     hostinger_vps=template('hostinger-vps-coupon-code.html')
     hostinger_vps_schema={'@context':'https://schema.org','@type':'Article','headline':'Hostinger VPS coupon code: which code does the official page show?','datePublished':'2026-09-28','dateModified':'2026-09-28','author':{'@type':'Organization','name':'HostDealRadar'},'publisher':{'@type':'Organization','name':'HostDealRadar'},'mainEntityOfPage':domain+hostinger_vps_route}
     write(Path('guides/hostinger-vps-coupon-code/index.html'),page('Hostinger VPS coupon code: official code and last check | HostDealRadar','See the code shown on Hostinger official KVM VPS cards, its individual check date, product scope, and what was not verified at checkout.',domain+hostinger_vps_route,hostinger_vps,hostinger_vps_schema))
+    hostinger_domain_route='/guides/hostinger-domain-coupon-code/'
+    hostinger_domain_schema={'@context':'https://schema.org','@type':'Article','headline':'Hostinger domain coupon code: what can you actually use?','datePublished':'2026-09-29','dateModified':'2026-09-29','author':{'@type':'Organization','name':'HostDealRadar'},'publisher':{'@type':'Organization','name':'HostDealRadar'},'mainEntityOfPage':domain+hostinger_domain_route}
+    write(Path('guides/hostinger-domain-coupon-code/index.html'),page('Hostinger domain coupon code: registration, free domains and renewal | HostDealRadar','Official domain offer check: .com first-year and renewal prices, free-domain eligibility, transfer limits and refund exceptions, with dated source records.',domain+hostinger_domain_route,template('hostinger-domain-coupon-code.html'),hostinger_domain_schema))
     def reviewed_row(record):
         total=money(record['first_term_total'])
         monthly=money(record['monthly_equivalent'])
@@ -943,6 +946,7 @@ Planned endpoints return HTTP 503 with `temporarily_unavailable` until authentic
     write(Path('404.html'),page('Page not found | HostDealRadar','This page does not exist.',domain+'/404.html',prose('Page not found','<p><a href="/">Return to current offers</a></p>'),{'@context':'https://schema.org','@type':'WebPage','name':'Page not found'}))
     routes=['/','/providers/','/compare/','/methodology/','/about/','/contact/','/disclosure/','/privacy/',guide_route,namecheap_guide_route,namecheap_promo_route,cloudways_guide_route,cloudways_archive_route,digitalocean_guide_route,hosting_coupons_route,hostinger_guide_route]
     routes.append(hostinger_vps_route)
+    routes.append(hostinger_domain_route)
     # Keep zero-current provider pages accessible for truthful status reporting,
     # but do not submit them as index targets until a current source record exists.
     routes+=[f'/providers/{p["id"]}/' for p in public_providers if p['id'] in current_provider_ids]
