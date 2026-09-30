@@ -119,7 +119,8 @@ def renewal_supported(offer, rule=None):
     condition = offer.get('condition') or ''
     if re.search(r'billed annually or|month.to.month|comparison figure', evidence + ' ' + condition, re.I):
         return False
-    currencies = set(re.findall(r'\b(?:USD|CAD|AUD|GBP|EUR)\b', evidence))
+    currency_evidence = (offer.get('field_evidence') or {}).get('renewal_currency', '')
+    currencies = set(re.findall(r'\b(?:USD|CAD|AUD|GBP|EUR)\b', evidence + ' ' + currency_evidence))
     if '£' in evidence: currencies.add('GBP')
     if '€' in evidence: currencies.add('EUR')
     if currencies and currencies != {offer['currency']}:
@@ -165,6 +166,8 @@ def currency_wording(offer, field='price'):
     official wording contains the code or a matching currency marker.
     """
     evidence=captured_field_evidence(offer, field)
+    if field == 'renewal_price' and not has_currency_marker_for_offer(offer, evidence):
+        evidence = captured_field_evidence(offer, 'renewal_currency')
     currency=offer.get('currency')
     markers={
         'USD': ('USD', 'US$'),
@@ -178,6 +181,14 @@ def currency_wording(offer, field='price'):
                        else re.search(r'(?<![A-Za-z])'+re.escape(marker)+r'(?![A-Za-z])', evidence, re.I)):
             return marker
     return ''
+
+def has_currency_marker_for_offer(offer, evidence):
+    """Allow a field's currency proof to be a separately quoted source fragment."""
+    if any(marker in evidence for marker in ('$', '€', '£')):
+        return True
+    currency=offer.get('currency')
+    marker={'USD':'USD','CAD':'CAD','AUD':'AUD','GBP':'GBP','EUR':'EUR'}.get(currency)
+    return bool(marker and re.search(r'(?<![A-Za-z])'+marker+r'(?![A-Za-z])', evidence, re.I))
 
 def billing_wording(offer, field='price'):
     """Return the exact billing marker present in this field's quote."""
@@ -229,7 +240,10 @@ def rate_pair(offer, rule=None):
         initial_source=rate_source(offer)
     if renewal_supported(offer, rule):
         renewal=captured_field_evidence(offer, 'renewal_price')
-        renewal_source=rate_source(offer)
+        renewal_currency=captured_field_evidence(offer, 'renewal_currency')
+        currency_note=(f'<small class="capture">Currency on source: “{e(renewal_currency)}”</small>'
+                       if renewal_currency else '')
+        renewal_source=rate_source(offer)+currency_note
     else:
         renewal='Unknown'
         renewal_source=''
@@ -515,6 +529,7 @@ def build(config_path=None, output=None):
         evidence_fields=[
             ('Commitment',captured_field_evidence(o,'commitment_months') if o.get('commitment_months') else ''),
             ('Renewal price',renewal_evidence),
+            ('Renewal currency',captured_field_evidence(o,'renewal_currency')),
             ('Coupon code',captured_field_evidence(o,'coupon_code') if o.get('coupon_code') else ''),
             ('Valid until',captured_field_evidence(o,'valid_until') if o.get('valid_until') else ''),
         ]

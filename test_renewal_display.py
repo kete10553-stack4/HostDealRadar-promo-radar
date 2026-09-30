@@ -50,6 +50,21 @@ class RenewalDisplay(unittest.TestCase):
             with self.subTest(changes=changes):
                 self.assertFalse(build.renewal_supported(self.record(**changes)))
 
+    def test_separate_official_currency_fragment_supports_renewal_without_repeating_price(self):
+        record=self.record(
+            price=6.71, renewal_price=8.95, currency='USD',
+            field_evidence={
+                'price':'$ 6.71 /mo',
+                'renewal_price':'Renews at 8.95 /mo',
+                'renewal_currency':'priceCurrency" content="USD"',
+            })
+        text=build.rate_pair(record)
+        self.assertTrue(build.renewal_supported(record))
+        self.assertEqual(build.currency_wording(record,'renewal_price'),'USD')
+        self.assertIn('Renews at 8.95 /mo',text)
+        self.assertIn('priceCurrency&quot; content=&quot;USD&quot;',text)
+        self.assertEqual(text.count('$ 6.71 /mo'),1)
+
     def test_rule_with_explicit_renewal_check_can_support_listprice(self):
         record = self.record(field_evidence={'renewal_price': 'ListPrice: 10'})
         self.assertFalse(build.renewal_supported(record))

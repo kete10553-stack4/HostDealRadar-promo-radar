@@ -3,6 +3,7 @@ from pathlib import Path
 from datetime import datetime, timezone
 from urllib.parse import urlsplit, unquote
 from html.parser import HTMLParser
+from html import unescape as html_unescape
 from config import ROOT, load_config
 import build
 
@@ -13,6 +14,9 @@ BLOCKERS={'price_rendered_by_js','unstable_field_structure','no_public_price','l
 
 def compact(value):
     return re.sub(r'\s+', ' ', value or '').strip()
+
+def has_currency_marker(value):
+    return bool(re.search(r'\$|\u20ac|\u00a3|\u00a5|\b(?:USD|CAD|AUD|NZD|EUR|GBP|JPY|CHF|SEK|NOK|DKK)\b', value or '', re.I))
 
 class Links(HTMLParser):
     def __init__(self): super().__init__(); self.urls=[]
@@ -105,6 +109,11 @@ def check():
         assert any(offer.get(k) for k in ('price','price_text','discount_percent','coupon_code')), 'Empty offer'
         if offer.get('price') is not None:
             assert offer['price'] > 0 and offer.get('currency') and offer.get('billing_period'), 'Incomplete price terms'
+        for field in ('price','renewal_price','first_term_total','renewal_monthly_rate'):
+            if offer.get(field) is not None:
+                evidence=(offer.get('field_evidence') or {}).get(field,'')
+                separate_currency=(offer.get('field_evidence') or {}).get('renewal_currency','') if field=='renewal_price' else ''
+                assert (has_currency_marker(evidence) or has_currency_marker(separate_currency)), f'{offer["slug"]}:{field} has no currency marker in its official quote or separate official currency fragment'
         assert datetime.fromisoformat(offer['fetched_at'].replace('Z','+00:00')) <= datetime.now(timezone.utc), 'Capture time is in the future'
         status=statuses.get(offer['provider'], {})
         # A provider-level HTTP response is insufficient for a captured offer:
@@ -114,7 +123,10 @@ def check():
             claims=offer.get('claim_evidence', {})
             for field, quote in (offer.get('field_evidence') or {}).items():
                 claim=claims.get(field, {})
-                assert compact(quote) and compact(quote) in compact(claim.get('excerpt')), f'{offer["slug"]}:{field} lacks a claim-covering excerpt'
+                covered=(compact(quote) in compact(claim.get('excerpt'))
+                         or compact(quote) in compact(html_unescape(claim.get('excerpt') or ''))
+                         or compact(quote) in compact(claim.get('visible_excerpt')))
+                assert compact(quote) and covered, f'{offer["slug"]}:{field} lacks a claim-covering excerpt'
                 assert claim.get('location') and claim.get('surface'), f'{offer["slug"]}:{field} lacks evidence location or surface'
     # Per-record state must be recorded for every slug, not only per provider.
     for provider_id, status in statuses.items():

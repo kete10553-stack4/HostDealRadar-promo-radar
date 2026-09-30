@@ -213,7 +213,7 @@ def normalize_date(value):
 
 CURRENCY_CODES = {'USD', 'CAD', 'AUD', 'NZD', 'EUR', 'GBP', 'JPY', 'CHF', 'SEK', 'NOK', 'DKK'}
 PERIOD_PATTERNS = {
-    'month': r'(?:/\s*(?:mo(?:nth)?|month)\b|\bper\s+month\b)',
+    'month': r'(?:/\s*(?:mo(?:nth)?|month)\b|\bper\s+month\b|\bpaid\s+monthly\b)',
     'year': r'(?:/\s*(?:yr|year)\b|\bper\s+year\b)',
     'site': r'(?:/\s*site\b|\bper\s+site\b)',
     'server': r'(?:/\s*server\b|\bper\s+server\b)',
