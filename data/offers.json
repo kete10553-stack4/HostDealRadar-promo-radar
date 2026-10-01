@@ -10016,16 +10016,16 @@
   },
   "page_lastmod": {
     "/": {
-      "hash": "9ecb10d81cad2c9eafe1ccfb6d0a071f0b6f0c4ea0a1c144cc7c2c827f83d617",
-      "lastmod": "2026-10-01T02:02:16Z"
+      "hash": "c7758b57ab2ef278c51da89c99a4327b47479dc5c9b38e1609139b2fe4b3c539",
+      "lastmod": "2026-10-01T03:26:33Z"
     },
     "/providers/": {
       "hash": "2f9ee8880c53ca682a6a13500e11ca44a9f8d862d040eb0885b82a5708ef9d8b",
       "lastmod": "2026-10-01T00:38:50Z"
     },
     "/compare/": {
-      "hash": "65b881a5cfc28c2b81ef19fff582a0d5c4d0b29ac5be2dddb46a03d0d023a81b",
-      "lastmod": "2026-10-01T02:02:16Z"
+      "hash": "6ea7d1395ea4473ff95a3f94b5a7890cb7268e6d0d1126e9bb6f5df63c68688c",
+      "lastmod": "2026-10-01T03:26:33Z"
     },
     "/methodology/": {
       "hash": "22dee56f92f0f96a890f3b621e025631df982e15a2a88a15683b60550f85fd26",
@@ -10763,6 +10763,238 @@
         },
         "entry_url": "https://www.inmotionhosting.com/shared-hosting",
         "cart_note": "The official order summary showed the Launch hosting line item separately from preselected add-ons; no order was submitted."
+      },
+      {
+        "provider": "knownhost",
+        "plan": "Basic Shared shared hosting, 3-year checkout",
+        "plan_id": "knownhost-basic",
+        "currency": "USD",
+        "first_term_total": 124.92,
+        "commitment_months": 36,
+        "monthly_equivalent": 3.47,
+        "renewal_monthly_rate": 7.16,
+        "calculation": "124.92 / 36 = 3.47 USD/month",
+        "advertised_price_quote": "$3.47/mo",
+        "checked_on": "2026-09-30",
+        "captured_at": "2026-10-01T03:24:17.000Z",
+        "entry_url": "https://www.knownhost.com/web-hosting",
+        "field_evidence": {
+          "first_term_total": {
+            "quote": "Total Due Today: $124.92",
+            "url": "https://my.knownhost.com/order/main/packages/shared-cloud-hosting/?group_id=16&pricing_id=499",
+            "captured_at": "2026-10-01T03:24:17.000Z",
+            "context": "Basic Shared; 3-year term; Atlanta location and included features; no paid optional add-ons."
+          },
+          "commitment_months": {
+            "quote": "3 Years",
+            "url": "https://my.knownhost.com/order/main/packages/shared-cloud-hosting/?group_id=16&pricing_id=499",
+            "captured_at": "2026-10-01T03:24:17.000Z",
+            "context": "The same order selector shows 3 Years @ $124.92 (renews @ $257.76)."
+          },
+          "renewal_monthly_rate": {
+            "quote": "Renews at 7.16 /mo",
+            "url": "https://www.knownhost.com/web-hosting",
+            "captured_at": "2026-10-01T03:25:08.883Z",
+            "context": "Basic Shared card on the 3 YEAR selection; exact USD markup is preserved in renewal_currency evidence."
+          },
+          "renewal_currency": {
+            "quote": "priceCurrency\" content=\"USD\"",
+            "html_excerpt": "<meta itemprop=\"priceCurrency\" content=\"USD\">",
+            "url": "https://www.knownhost.com/web-hosting",
+            "captured_at": "2026-10-01T03:25:08.883Z"
+          },
+          "renewal_total": {
+            "quote": "Total When Renewing: 3 Years @ $257.76",
+            "url": "https://my.knownhost.com/order/main/packages/shared-cloud-hosting/?group_id=16&pricing_id=499",
+            "captured_at": "2026-10-01T03:24:17.000Z"
+          }
+        },
+        "rendered_checkout_evidence": {
+          "url": "https://my.knownhost.com/order/main/packages/shared-cloud-hosting/?group_id=16&pricing_id=499",
+          "captured_at": "2026-10-01T03:24:17.000Z",
+          "selected_plan": "Basic Shared",
+          "selected_term": "3 Years",
+          "first_total": "$124.92",
+          "renewal_total": "$257.76",
+          "paid_optional_addons": false,
+          "taxes_note": "Any applicable taxes will be calculated after you register or log in.",
+          "order_submitted": false
+        },
+        "missing_reasons": {}
+      },
+      {
+        "provider": "knownhost",
+        "plan": "Standard Shared shared hosting, 3-year checkout",
+        "plan_id": "knownhost-standard",
+        "currency": "USD",
+        "first_term_total": 233.1,
+        "commitment_months": 36,
+        "monthly_equivalent": 6.48,
+        "renewal_monthly_rate": 11.01,
+        "calculation": "233.10 / 36 = 6.48 USD/month",
+        "advertised_price_quote": "$6.48/mo",
+        "checked_on": "2026-09-30",
+        "captured_at": "2026-10-01T03:24:01.451Z",
+        "entry_url": "https://www.knownhost.com/web-hosting",
+        "field_evidence": {
+          "first_term_total": {
+            "quote": "Total Due Today: $233.10",
+            "url": "https://my.knownhost.com/order/main/packages/shared-cloud-hosting/?group_id=16&pricing_id=503",
+            "captured_at": "2026-10-01T03:24:01.451Z",
+            "context": "Standard Shared; 3-year term; Atlanta location and included features; no paid optional add-ons."
+          },
+          "commitment_months": {
+            "quote": "3 Years",
+            "url": "https://my.knownhost.com/order/main/packages/shared-cloud-hosting/?group_id=16&pricing_id=503",
+            "captured_at": "2026-10-01T03:24:01.451Z",
+            "context": "The same order selector shows 3 Years @ $233.10 (renews @ $396.27)."
+          },
+          "renewal_monthly_rate": {
+            "quote": "Renews at 11.01 /mo",
+            "url": "https://www.knownhost.com/web-hosting",
+            "captured_at": "2026-10-01T03:25:08.883Z",
+            "context": "Standard Shared card on the 3 YEAR selection; exact USD markup is preserved in renewal_currency evidence."
+          },
+          "renewal_currency": {
+            "quote": "priceCurrency\" content=\"USD\"",
+            "html_excerpt": "<meta itemprop=\"priceCurrency\" content=\"USD\">",
+            "url": "https://www.knownhost.com/web-hosting",
+            "captured_at": "2026-10-01T03:25:08.883Z"
+          },
+          "renewal_total": {
+            "quote": "Total When Renewing: 3 Years @ $396.27",
+            "url": "https://my.knownhost.com/order/main/packages/shared-cloud-hosting/?group_id=16&pricing_id=503",
+            "captured_at": "2026-10-01T03:24:01.451Z"
+          }
+        },
+        "rendered_checkout_evidence": {
+          "url": "https://my.knownhost.com/order/main/packages/shared-cloud-hosting/?group_id=16&pricing_id=503",
+          "captured_at": "2026-10-01T03:24:01.451Z",
+          "selected_plan": "Standard Shared",
+          "selected_term": "3 Years",
+          "first_total": "$233.10",
+          "renewal_total": "$396.27",
+          "paid_optional_addons": false,
+          "taxes_note": "Any applicable taxes will be calculated after you register or log in.",
+          "order_submitted": false
+        },
+        "missing_reasons": {}
+      },
+      {
+        "provider": "knownhost",
+        "plan": "Professional Shared shared hosting, 3-year checkout",
+        "plan_id": "knownhost-professional",
+        "currency": "USD",
+        "first_term_total": 359.1,
+        "commitment_months": 36,
+        "monthly_equivalent": 9.98,
+        "renewal_monthly_rate": 16.96,
+        "calculation": "359.10 / 36 = 9.98 USD/month",
+        "advertised_price_quote": "$9.98/mo",
+        "checked_on": "2026-09-30",
+        "captured_at": "2026-10-01T03:24:17.618Z",
+        "entry_url": "https://www.knownhost.com/web-hosting",
+        "field_evidence": {
+          "first_term_total": {
+            "quote": "Total Due Today: $359.10",
+            "url": "https://my.knownhost.com/order/main/packages/shared-cloud-hosting/?group_id=16&pricing_id=507",
+            "captured_at": "2026-10-01T03:24:17.618Z",
+            "context": "Professional Shared; 3-year term; Atlanta location and included features; no paid optional add-ons."
+          },
+          "commitment_months": {
+            "quote": "3 Years",
+            "url": "https://my.knownhost.com/order/main/packages/shared-cloud-hosting/?group_id=16&pricing_id=507",
+            "captured_at": "2026-10-01T03:24:17.618Z",
+            "context": "The same order selector shows 3 Years @ $359.10 (renews @ $610.47)."
+          },
+          "renewal_monthly_rate": {
+            "quote": "Renews at 16.96 /mo",
+            "url": "https://www.knownhost.com/web-hosting",
+            "captured_at": "2026-10-01T03:25:08.883Z",
+            "context": "Professional Shared card on the 3 YEAR selection; exact USD markup is preserved in renewal_currency evidence."
+          },
+          "renewal_currency": {
+            "quote": "priceCurrency\" content=\"USD\"",
+            "html_excerpt": "<meta itemprop=\"priceCurrency\" content=\"USD\">",
+            "url": "https://www.knownhost.com/web-hosting",
+            "captured_at": "2026-10-01T03:25:08.883Z"
+          },
+          "renewal_total": {
+            "quote": "Total When Renewing: 3 Years @ $610.47",
+            "url": "https://my.knownhost.com/order/main/packages/shared-cloud-hosting/?group_id=16&pricing_id=507",
+            "captured_at": "2026-10-01T03:24:17.618Z"
+          }
+        },
+        "rendered_checkout_evidence": {
+          "url": "https://my.knownhost.com/order/main/packages/shared-cloud-hosting/?group_id=16&pricing_id=507",
+          "captured_at": "2026-10-01T03:24:17.618Z",
+          "selected_plan": "Professional Shared",
+          "selected_term": "3 Years",
+          "first_total": "$359.10",
+          "renewal_total": "$610.47",
+          "paid_optional_addons": false,
+          "taxes_note": "Any applicable taxes will be calculated after you register or log in.",
+          "order_submitted": false
+        },
+        "missing_reasons": {}
+      },
+      {
+        "provider": "knownhost",
+        "plan": "Premium Shared shared hosting, 3-year checkout",
+        "plan_id": "knownhost-premium",
+        "currency": "USD",
+        "first_term_total": 719.1,
+        "commitment_months": 36,
+        "monthly_equivalent": 19.98,
+        "renewal_monthly_rate": 33.96,
+        "calculation": "719.10 / 36 = 19.98 USD/month",
+        "advertised_price_quote": "$19.98/mo",
+        "checked_on": "2026-09-30",
+        "captured_at": "2026-10-01T03:25:52.408Z",
+        "entry_url": "https://www.knownhost.com/web-hosting",
+        "field_evidence": {
+          "first_term_total": {
+            "quote": "Total Due Today: $719.10",
+            "url": "https://my.knownhost.com/order/main/packages/shared-cloud-hosting/?group_id=16&pricing_id=915",
+            "captured_at": "2026-10-01T03:25:52.408Z",
+            "context": "Premium Shared; 3-year term; Atlanta location and included features; no paid optional add-ons."
+          },
+          "commitment_months": {
+            "quote": "3 Years",
+            "url": "https://my.knownhost.com/order/main/packages/shared-cloud-hosting/?group_id=16&pricing_id=915",
+            "captured_at": "2026-10-01T03:25:52.408Z",
+            "context": "The same order selector shows 3 Years @ $719.10 (renews @ $1,222.47)."
+          },
+          "renewal_monthly_rate": {
+            "quote": "Renews at 33.96 /mo",
+            "url": "https://www.knownhost.com/web-hosting",
+            "captured_at": "2026-10-01T03:25:08.883Z",
+            "context": "Premium Shared card on the 3 YEAR selection; exact USD markup is preserved in renewal_currency evidence."
+          },
+          "renewal_currency": {
+            "quote": "priceCurrency\" content=\"USD\"",
+            "html_excerpt": "<meta itemprop=\"priceCurrency\" content=\"USD\">",
+            "url": "https://www.knownhost.com/web-hosting",
+            "captured_at": "2026-10-01T03:25:08.883Z"
+          },
+          "renewal_total": {
+            "quote": "Total When Renewing: 3 Years @ $1,222.47",
+            "url": "https://my.knownhost.com/order/main/packages/shared-cloud-hosting/?group_id=16&pricing_id=915",
+            "captured_at": "2026-10-01T03:25:52.408Z"
+          }
+        },
+        "rendered_checkout_evidence": {
+          "url": "https://my.knownhost.com/order/main/packages/shared-cloud-hosting/?group_id=16&pricing_id=915",
+          "captured_at": "2026-10-01T03:25:52.408Z",
+          "selected_plan": "Premium Shared",
+          "selected_term": "3 Years",
+          "first_total": "$719.10",
+          "renewal_total": "$1,222.47",
+          "paid_optional_addons": false,
+          "taxes_note": "Any applicable taxes will be calculated after you register or log in.",
+          "order_submitted": false
+        },
+        "missing_reasons": {}
       }
     ]
   }
