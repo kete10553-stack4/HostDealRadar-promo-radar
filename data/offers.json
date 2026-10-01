@@ -9983,8 +9983,8 @@
   },
   "page_lastmod": {
     "/": {
-      "hash": "d98f789ab59c462f920315a2cbc9a4c5521a8a7b18b866968698c9246dba293f",
-      "lastmod": "2026-10-01T12:42:50Z"
+      "hash": "4b0231423c11d0af9c4ebee62876e1b82af8637ff1bedaa88c18891a18d1c316",
+      "lastmod": "2026-10-01T17:42:04Z"
     },
     "/providers/": {
       "hash": "ed003dc4ad605934cf8e1c1277325e70c00ab991f80f40c1c22216e24a2ff2da",
@@ -10059,8 +10059,12 @@
       "lastmod": "2026-10-01T10:53:45Z"
     },
     "/guides/wp-engine-renewal-overage/": {
-      "hash": "0ea26797a515815618a17264024c32baa750718f878ac8d9330b3d26bcb1f549",
-      "lastmod": "2026-10-01T12:25:58Z"
+      "hash": "97328185431838788ebac9dc72db630b72f3b03018bdde2a101e57c47a25d821",
+      "lastmod": "2026-10-01T17:42:04Z"
+    },
+    "/guides/wp-engine-vs-kinsta/": {
+      "hash": "4c28d3469b6eb9422f652ec67d7535fd54c0a156afddc6dc18136a36904f2167",
+      "lastmod": "2026-10-01T17:42:04Z"
     },
     "/providers/webdock/": {
       "hash": "04716508c9c8263f3c6a1e6aa83f8edba4c7dd1edc79696eccd212621f0604ea",

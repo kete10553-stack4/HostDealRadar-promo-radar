@@ -1,0 +1,46 @@
+{
+  "review_date": "2026-10-01",
+  "method": "Official public text read through web retrieval. No account, invoice, checkout, code redemption or performance measurement.",
+  "guide": "https://hostdealradar.com/guides/wp-engine-vs-kinsta/",
+  "scope": "An existing WP Engine renewal decision compared with published Kinsta alternatives; not matched new-customer checkout quotes.",
+  "sources": [
+    {"url":"https://wordpress.com/support/com-vs-org/","topic":"Software versus hosted service"},
+    {"url":"https://content.wpengine.com/wp-engine-updated-pricing","topic":"Existing subscription renewal schedule effective March 11, 2026; match account and currency"},
+    {"url":"https://wpengine.com/plans/","topic":"First-year eligibility, migration services, plugin-manager inclusion; dynamic new-customer amount not established"},
+    {"url":"https://kinsta.com/pricing/","topic":"Lead and Agency 20 published monthly/annual prices and different allowances"},
+    {"url":"https://kinsta.com/docs/billing/wordpress-hosting-plans/","topic":"Entry-plan first-month eligibility; do not apply to Lead or Agency 20"},
+    {"url":"https://kinsta.com/docs/billing/wordpress-hosting-plans/wordpress-choosing-the-right-plan/","topic":"Launch through Lead bandwidth-only; other plans may offer a choice"},
+    {"url":"https://wpengine.com/overage-pricing/","topic":"Named-plan visit rates; monthly overages despite annual subscription"},
+    {"url":"https://kinsta.com/docs/billing/wordpress-hosting-plans/overages/","topic":"Resource-specific rates, storage proration and accrued charges"},
+    {"url":"https://wpengine.com/support/count-visits/","topic":"Billable IP/day methodology and environments"},
+    {"url":"https://kinsta.com/docs/wordpress-hosting/wordpress-analytics-mykinsta/","topic":"Current traffic exclusions; CDN/edge distinction"},
+    {"url":"https://kinsta.com/docs/wordpress-hosting/wordpress-add-ons/","topic":"Storage increments and Premium Staging"},
+    {"url":"https://wpengine.com/support/change-plan-user-portal/","topic":"Sites, included environments and purchased capacity"},
+    {"url":"https://kinsta.com/docs/wordpress-hosting/staging-environment/","topic":"Staging disk exclusion; Premium Staging CDN consumption"},
+    {"url":"https://wpengine.com/support/wordpress-updates/","topic":"Core release testing and major/minor deferral rules"},
+    {"url":"https://wpengine.com/support/wordpress-update-source/","topic":"Account/site repository selection, failover and WP-CLI"},
+    {"url":"https://wpengine.com/support/smart-plugin-manager/","topic":"Separate scheduling, visual checks and rollback"},
+    {"url":"https://kinsta.com/add-ons/kinsta-automatic-updates/","topic":"Optional per-environment automated update product"},
+    {"url":"https://kinsta.com/docs/wordpress-hosting/wordpress-migrations/migrating-to-kinsta/","topic":"Standard/expedited migration, credits, testing and cutover"},
+    {"url":"https://wpengine.com/support/wp-engine-site-migration/","topic":"Plugin migration boundaries, testing, DNS and resync"}
+  ],
+  "calculations": [
+    {"name":"Twelve monthly charges","formulae":["330*12=3960","299*12=3588","340*12=4080"],"boundary":"Unchanged rates; excludes extras; not annual-plan invoices."},
+    {"name":"Annual equivalents","formulae":["2990/12=249.1666667","3400/12=283.3333333"],"boundary":"Rounded to cents; prepaid cost equivalents, not monthly instalments."},
+    {"name":"Lead hypothetical month","assumptions":{"monthly_billing":true,"server_bandwidth_gb":300,"live_storage_gb_entire_month":75,"cdn_bandwidth_gb":1100,"other_extras":0},"formula":"299+(300-275)*0.50+(75-60)*2+(1100-1000)*0.05","result_usd":346.50,"boundary":"Current bandwidth-based Lead, not visits-based Agency; storage steady all month; before tax."},
+    {"name":"Full-month storage add-on alternative","formula":"299+12.50+20+5","result_usd":336.50,"boundary":"20 GB storage increment active all month; remaining assumptions unchanged."},
+    {"name":"Move and payback illustration","formulae":["6*50+100=400","330-299=31","400/31=12.9032258"],"boundary":"Labour/overlap hypothetical. Use complete sustained savings after usage and extras, not base-price difference alone; no positive savings means no payback."},
+    {"name":"Optional update product","formulae":["20*3=60","40*3=120"],"boundary":"Enabled environments after free first month; not total hosting costs."}
+  ],
+  "reader_supplied_topic_leads": [
+    {"url":"https://www.reddit.com/r/webdev/comments/1w3laj6/","topic":"WordPress names"},
+    {"url":"https://www.reddit.com/r/WebsiteSEO/comments/1t02jzg/","topic":"Introductory term versus renewal"},
+    {"url":"https://www.reddit.com/r/Wordpress/comments/1wnid7n/","topic":"Update timing"}
+  ],
+  "limitations": [
+    "Reddit full threads could not be independently retrieved; supplied excerpts establish topic leads, not tariffs, vote verification or incident diagnosis.",
+    "No universal three-year WP Engine deal verified. Existing Scale allowances cannot be inferred from current Essential product slots.",
+    "No matched workload capacity, invoice, performance or support-quality comparison. Different billing meters cannot be equated by a guessed conversion.",
+    "Prices may change; future renewal and legacy contract terms require account confirmation."
+  ]
+}
