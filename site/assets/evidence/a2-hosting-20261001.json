@@ -1,0 +1,19 @@
+{
+  "reviewed_on": "2026-10-01",
+  "method": "Public page text read; not a checkout, account quote, invoice or coupon-redemption test. Read date is not an origin-server capture timestamp.",
+  "offer_boundary": "No universally applicable public renewal code was established from the official pages read. Account-specific offers remain unverified.",
+  "sources": [
+    {"id":"A1","url":"https://hosting.com/about/coupons/","supports":"Promotional first term followed by regular renewal pricing; no universal renewal code established."},
+    {"id":"A2","url":"https://hosting.com/about/renewal-pricing/","supports":"Regular renewal follows the prepaid introductory period; no numeric renewal grid recorded."},
+    {"id":"A3","url":"https://terms.hosting.com/refund-billing-policy","supports":"Plan-change invoice limits, downgrade credit and potential fee, separate hosting/domain billing schedules, and migration conditions."},
+    {"id":"A4","url":"https://terms.hosting.com/","supports":"First-term, once-only guarantee boundaries and termination limits for backups and email forwarding."},
+    {"id":"A5","url":"https://hosting.com/blog/you-spoke-weve-acted-heres-whats-new-at-hostingcom/","supports":"May 2025 clarification about an earlier September 2024 adjustment appearing at renewal."},
+    {"id":"A6","url":"https://www.namecheap.com/support/knowledgebase/article.aspx/9778/2199/hosting-migration-to-namecheap/","supports":"Full-cPanel migration eligibility depends on destination fit and backup access; other migrations assessed separately."},
+    {"id":"A7","url":"https://docs.hetzner.com/general/company-and-policy/data-protection-at-hetzner/","supports":"Cloud servers are unmanaged and require customer administration."},
+    {"id":"A8","url":"https://coolify.io/docs/core/backup-and-recovery/instance-restore","supports":"Restoring Coolify's instance database does not restore application data and service volumes."},
+    {"id":"R1","url":"https://www.reddit.com/r/webhosting/comments/1r6nt5u/hostingcom_formerly_a2_hosting_raised_my_annual/","kind":"individual_report","thread_date_supplied":"2026-02-16","supports":"Author reports annual amounts 85.97 and 155 USD and a one-time 10 percent offer; invoice and discount basis not independently verified."},
+    {"id":"R2","url":"https://www.reddit.com/r/Hosting/comments/1u9xcmt/any_alternative_to_hostingcom_formally_a2_hosting/","kind":"individual_report","thread_date_supplied":"2026-06-19","supports":"One commenter reports improvement after a server move; no general performance conclusion."},
+    {"id":"R3","url":"https://www.reddit.com/r/Hostinger/comments/1w5wv42/any_discount_coupons_or_tips_to_save_on_a/","kind":"individual_report_about_different_provider","thread_date_supplied":"2026-09-03","supports":"A Hostinger customer reports a same-account new-plan move; not proof of Hosting.com offer eligibility."}
+  ],
+  "conditional_arithmetic": {"reported_old_annual_usd":85.97,"reported_new_annual_usd":155,"undiscounted_increase_percent_rounded":80.3,"assumed_discount_basis_usd":155,"hypothetical_discount_percent":10,"hypothetical_total_usd":139.5,"hypothetical_increase_percent_rounded":62.3,"warning":"Derived example only; no invoice, applicable discount basis or account eligibility verified."}
+}
