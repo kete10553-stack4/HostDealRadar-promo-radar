@@ -383,7 +383,7 @@ def run(config_path=None):
     # here would reset every lastmod on the next refresh run.
     for key, value in previous.items():
         if key not in payload: payload[key] = value
-    DATA.write_text(json.dumps(payload, indent=2) + '\n', encoding='utf-8')
+    DATA.write_text(json.dumps(payload, indent=2, ensure_ascii=False) + '\n', encoding='utf-8')
     return payload
 
 if __name__ == '__main__':
