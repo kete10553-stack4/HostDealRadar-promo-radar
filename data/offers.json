@@ -10016,16 +10016,16 @@
   },
   "page_lastmod": {
     "/": {
-      "hash": "c348fbf4c4f338633ef0829b14faa6e956ed86596fa2e0e40f587a7bf6a1ae3d",
-      "lastmod": "2026-10-01T01:58:13Z"
+      "hash": "9ecb10d81cad2c9eafe1ccfb6d0a071f0b6f0c4ea0a1c144cc7c2c827f83d617",
+      "lastmod": "2026-10-01T02:02:16Z"
     },
     "/providers/": {
       "hash": "2f9ee8880c53ca682a6a13500e11ca44a9f8d862d040eb0885b82a5708ef9d8b",
       "lastmod": "2026-10-01T00:38:50Z"
     },
     "/compare/": {
-      "hash": "ed01c9923ce4a9740aaec61ec10786ad8d6b7ccfc10c2d8ad2fc41a34b11c140",
-      "lastmod": "2026-10-01T01:58:13Z"
+      "hash": "65b881a5cfc28c2b81ef19fff582a0d5c4d0b29ac5be2dddb46a03d0d023a81b",
+      "lastmod": "2026-10-01T02:02:16Z"
     },
     "/methodology/": {
       "hash": "22dee56f92f0f96a890f3b621e025631df982e15a2a88a15683b60550f85fd26",
@@ -10334,22 +10334,127 @@
         "monthly_equivalent": 2.99,
         "renewal_monthly_rate": 10.99,
         "calculation": "143.52 / 48 = 2.99 USD/month",
-        "advertised_price_quote": "$2.99 /mo",
+        "advertised_price_quote": "$2.99/mo",
         "field_evidence": {
           "first_term_total": {
+            "url": "https://www.hostinger.com/web-hosting",
+            "captured_at": "2026-10-01T02:01:42.781Z",
             "quote": "Get 48 months for $143.52",
-            "url": "https://www.hostinger.com/web-hosting"
+            "context": "Premium card; United States / English; 48 months plan"
           },
           "commitment_months": {
+            "url": "https://www.hostinger.com/web-hosting",
+            "captured_at": "2026-10-01T02:01:42.781Z",
             "quote": "Get 48 months for $143.52",
-            "url": "https://www.hostinger.com/web-hosting"
+            "context": "Premium card; United States / English; 48 months plan"
           },
           "renewal_monthly_rate": {
+            "url": "https://www.hostinger.com/web-hosting",
+            "captured_at": "2026-10-01T02:01:42.781Z",
             "quote": "Renews at $10.99/mo.",
-            "url": "https://www.hostinger.com/web-hosting"
+            "context": "Premium card; United States / English; 48 months plan"
           }
         },
-        "missing_reasons": {}
+        "missing_reasons": {},
+        "checked_on": "2026-09-30",
+        "captured_at": "2026-10-01T02:01:42.781Z",
+        "rendered_pricing_evidence": {
+          "url": "https://www.hostinger.com/web-hosting",
+          "captured_at": "2026-10-01T02:01:42.781Z",
+          "selected_term": "48 months plan",
+          "selected_location": "United States",
+          "excerpt": "Premium\nGet 48 months for $143.52 (regular price $575.52). Renews at $10.99/mo.",
+          "billing_quote": "All plans are paid upfront. The monthly rate reflects the total plan price divided by the number of months in your plan.",
+          "tax_quote": "Prices are listed without VAT"
+        }
+      },
+      {
+        "provider": "hostinger",
+        "plan": "Cloud Startup hosting, 48-month card",
+        "currency": "USD",
+        "first_term_total": 383.52,
+        "commitment_months": 48,
+        "monthly_equivalent": 7.99,
+        "renewal_monthly_rate": 25.99,
+        "checked_on": "2026-09-30",
+        "captured_at": "2026-10-01T02:01:42.781Z",
+        "calculation": "383.52 / 48 = 7.99 USD/month",
+        "advertised_price_quote": "$7.99/mo",
+        "missing_reasons": {},
+        "plan_id": "hostinger-cloud-startup",
+        "field_evidence": {
+          "first_term_total": {
+            "url": "https://www.hostinger.com/web-hosting",
+            "captured_at": "2026-10-01T02:01:42.781Z",
+            "quote": "Get 48 months for $383.52",
+            "context": "Cloud Startup card; United States / English; 48 months plan"
+          },
+          "commitment_months": {
+            "url": "https://www.hostinger.com/web-hosting",
+            "captured_at": "2026-10-01T02:01:42.781Z",
+            "quote": "Get 48 months for $383.52",
+            "context": "Cloud Startup card; United States / English; 48 months plan"
+          },
+          "renewal_monthly_rate": {
+            "url": "https://www.hostinger.com/web-hosting",
+            "captured_at": "2026-10-01T02:01:42.781Z",
+            "quote": "Renews at $25.99/mo.",
+            "context": "Cloud Startup card; United States / English; 48 months plan"
+          }
+        },
+        "rendered_pricing_evidence": {
+          "url": "https://www.hostinger.com/web-hosting",
+          "captured_at": "2026-10-01T02:01:42.781Z",
+          "selected_term": "48 months plan",
+          "selected_location": "United States",
+          "excerpt": "Cloud Startup\nGet 48 months for $383.52 (regular price $1,343.52). Renews at $25.99/mo.",
+          "billing_quote": "All plans are paid upfront. The monthly rate reflects the total plan price divided by the number of months in your plan.",
+          "tax_quote": "Prices are listed without VAT"
+        }
+      },
+      {
+        "provider": "hostinger",
+        "plan": "Unlimited hosting, 48-month card",
+        "currency": "USD",
+        "first_term_total": 191.52,
+        "commitment_months": 48,
+        "monthly_equivalent": 3.99,
+        "renewal_monthly_rate": 16.99,
+        "checked_on": "2026-09-30",
+        "captured_at": "2026-10-01T02:01:42.781Z",
+        "calculation": "191.52 / 48 = 3.99 USD/month",
+        "advertised_price_quote": "$3.99/mo",
+        "missing_reasons": {},
+        "plan_id": "hostinger-unlimited",
+        "field_evidence": {
+          "first_term_total": {
+            "url": "https://www.hostinger.com/web-hosting",
+            "captured_at": "2026-10-01T02:01:42.781Z",
+            "quote": "Get 48 months for $191.52",
+            "context": "Unlimited card; United States / English; 48 months plan"
+          },
+          "commitment_months": {
+            "url": "https://www.hostinger.com/web-hosting",
+            "captured_at": "2026-10-01T02:01:42.781Z",
+            "quote": "Get 48 months for $191.52",
+            "context": "Unlimited card; United States / English; 48 months plan"
+          },
+          "renewal_monthly_rate": {
+            "url": "https://www.hostinger.com/web-hosting",
+            "captured_at": "2026-10-01T02:01:42.781Z",
+            "quote": "Renews at $16.99/mo.",
+            "context": "Unlimited card; United States / English; 48 months plan"
+          }
+        },
+        "rendered_pricing_evidence": {
+          "url": "https://www.hostinger.com/web-hosting",
+          "captured_at": "2026-10-01T02:01:42.781Z",
+          "selected_term": "48 months plan",
+          "selected_location": "United States",
+          "excerpt": "Unlimited\nGet 48 months for $191.52 (regular price $911.52). Renews at $16.99/mo.",
+          "billing_quote": "All plans are paid upfront. The monthly rate reflects the total plan price divided by the number of months in your plan.",
+          "tax_quote": "Prices are listed without VAT"
+        }
       },
       {
         "provider": "godaddy",
