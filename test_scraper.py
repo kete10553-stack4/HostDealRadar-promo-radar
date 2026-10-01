@@ -19,6 +19,26 @@ class SourceSafety(unittest.TestCase):
     def test_no_record_when_price_is_missing(self):
         self.assertIsNone(scraper.offer_from_rule(self.provider,self.rule,'<p>Basic plan: Contact sales</p>'))
 
+    def test_knownhost_mixed_static_term_prices_cannot_reappear(self):
+        cfg = load_config()
+        provider = next(p for p in cfg['providers'] if p['id'] == 'knownhost')
+        rules = [r for r in cfg['extractors'] if r['provider'] == 'knownhost']
+        raw = ('<button class="pkg-active">3 Year</button>'
+               '<meta itemprop="priceCurrency" content="USD">'
+               '<strong class="price-basic">6.71</strong>/mo '
+               'Renews at <span class="price-basic-original">8.95</span>/mo')
+        with tempfile.TemporaryDirectory() as folder:
+            data = Path(folder) / 'offers.json'
+            archive = [{'record': {'slug': 'withdrawn-basic', 'price': 6.71}}]
+            data.write_text(json.dumps({'offers': [], 'withdrawn_automated_records': archive}), encoding='utf-8')
+            scoped = {**cfg, 'providers': [provider], 'extractors': rules}
+            with patch.object(scraper, 'DATA', data), patch.object(scraper, 'load_config', return_value=scoped), patch.object(scraper, 'fetch_source', return_value=(200, raw, provider['source_url'])):
+                result = scraper.run()
+        self.assertEqual(result['offers'], [])
+        self.assertEqual(result['withdrawn_automated_records'], archive)
+        self.assertEqual(result['source_status']['knownhost']['capture_status'], 'no_price_rule')
+        self.assertIn('billing term', build.BLOCKER_TEXT[result['source_status']['knownhost']['blocker']])
+
     def test_voog_and_portfoliobox_price_quotes_include_official_currency(self):
         cfg = load_config()
         examples = {
