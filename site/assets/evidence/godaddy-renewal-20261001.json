@@ -1,0 +1,27 @@
+{
+  "reviewed_on": "2026-10-01",
+  "method": "Official public page text and linked individual reports read. Not a checkout, invoice, account, redemption, transfer or email-migration test. Read date is not an origin-server capture timestamp.",
+  "page": "/guides/godaddy-renewal-coupon/",
+  "renewal_code_finding": "GoDaddy describes occasional, rare, usually customer-specific renewal codes. No universally redeemable public renewal code was established.",
+  "price_observations": [
+    {"registrar":"Porkbun","tld":"com","currency":"USD","years":1,"renewal":11.08,"transfer":11.08,"premium":false,"fee_scope":"Pricing page says ICANN and other fees included; no tax checkout tested.","url":"https://porkbun.com/products/domains"},
+    {"registrar":"Dynadot","tld":"com","currency":"USD","years":1,"renewal":10.88,"transfer":10.88,"premium":false,"fee_scope":"Published columns; final fees and taxes not tested.","url":"https://www.dynadot.com/domain/com"},
+    {"registrar":"Namecheap","tld":"com","currency":"USD","years":1,"renewal_listed":18.48,"transfer_sale_listed":11.48,"premium":false,"fee_scope":"Page separately describes a 0.20 USD ICANN fee for affected domains; no payable total established.","url":"https://www.namecheap.com/domains/registration/gtld/com/"}
+  ],
+  "sources": [
+    {"id":"G1","url":"https://www.godaddy.com/en/promos/renewal-codes","supports":"Rare account-specific renewal offers, email eligibility and support inquiries."},
+    {"id":"G2","url":"https://www.godaddy.com/en/legal/agreements/domain-name-registration-agreement","supports":"Sale versus renewal pricing, changing rates, renewal term and refund boundaries."},
+    {"id":"G3","url":"https://www.godaddy.com/help/turn-my-domain-auto-renew-on-or-off-41085","read_language":"English body through lc=en-US link; Danish host/navigation","supports":"Domain Portfolio, Renew toggle, confirmation and delayed display."},
+    {"id":"G4","url":"https://www.godaddy.com/help/turn-off-auto-renew-20008","read_locale":"English India help body","supports":"Pending updates can block domain auto-renew changes; not a price source."},
+    {"id":"G5","url":"https://www.godaddy.com/help/transfer-my-domain-away-from-godaddy-3560","read_locale":"Danish official help body","supports":"Eligibility, authorization workflow and transfer estimate; not a regional price source."},
+    {"id":"G6","url":"https://www.godaddy.com/help/move-my-microsoft-365-email-away-from-godaddy-40094","read_locale":"English US body","supports":"Existing tenant move, mailbox-purchase order and license boundaries."},
+    {"id":"P1","url":"https://kb.porkbun.com/article/56-how-to-transfer-a-domain-to-porkbun","supports":"Transfer-year exception and process; current guide updated September 10, 2026."},
+    {"id":"P2","url":"https://kb.porkbun.com/article/89-how-to-transfer-a-domain-to-porkbun-with-no-downtime","supports":"Nameserver continuity depends on DNS service; import completeness needs review."}
+  ],
+  "unverified": ["Current GoDaddy US DDC and .com prices: public read redirected to European pricing; previous September 15 figures not treated as current.","Account-specific offer eligibility and coupon redemption.","Community invoices and claimed percentage savings."],
+  "community_threads": [
+    "https://www.reddit.com/r/Hosting/comments/1q4ihq9/godaddy_promo_code_domain_2026_am_i_missing/",
+    "https://www.reddit.com/r/godaddysupport/comments/1wj7u3y/help_godaddy_support_doesnt_understand_issues/",
+    "https://www.reddit.com/r/Domains/comments/1wgcivw/godaddys_latest_price_increases/"
+  ]
+}
