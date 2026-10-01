@@ -85,6 +85,7 @@ Krystal | https://krystal.uk/ | https://krystal.uk/web-hosting |
 Scaleway | https://www.scaleway.com/ | https://www.scaleway.com/en/pricing/ |
 SITE123 | https://www.site123.com/ | https://www.site123.com/pricing |
 A2 Hosting | https://www.a2hosting.com/ | https://www.a2hosting.com/web-hosting/ |
+Hosting.com | https://hosting.com/ | https://hosting.com/hosting/ |
 Hostinger | https://www.hostinger.com/ | https://www.hostinger.com/pricing |
 SiteGround | https://www.siteground.com/ | https://www.siteground.com/web-hosting.htm |
 DreamHost | https://www.dreamhost.com/ | https://www.dreamhost.com/hosting/ |
@@ -425,6 +426,7 @@ title price currency offer_url valid_from valid_until source_url fetched_at cate
 {"provider":"20i","mode":"anchored_text","title":"Plan 4","category":"Web hosting","kind":"promotion","anchor":"Plan 4 First Month","window_chars":200,"currency":"GBP","billing_period":"month","checks":["Then only £"],"required_fields":["price"],"field_patterns":{"price":"£\\s?(?P<value>[0-9]+)(?=\\s*Then only)","renewal_price":"Then only £(?P<value>[0-9]+)/mo"},"condition":"First month at the advertised amount; the page states the rate charged afterwards.","structure":"20i pricing card, read the same way as Startup."}
 {"provider":"20i","mode":"anchored_text","title":"Plan 5","category":"Web hosting","kind":"promotion","anchor":"Plan 5 First Month","window_chars":200,"currency":"GBP","billing_period":"month","checks":["Then only £"],"required_fields":["price"],"field_patterns":{"price":"£\\s?(?P<value>[0-9]+)(?=\\s*Then only)","renewal_price":"Then only £(?P<value>[0-9]+)/mo"},"condition":"First month at the advertised amount; the page states the rate charged afterwards.","structure":"20i pricing card, read the same way as Startup."}
 
+{"provider":"hosting-com","mode":"availability_only","title":"Official shared hosting pricing","category":"Web hosting","source_url":"https://hosting.com/package-comparison/","blocker":"billing_term_unbound","blocker_evidence":"The official comparison matrix displays Every 36 months; the Starter checkout read on 2026-10-01 instead binds the selected option to 4-year term and Renews every 4 years. Automated prices stay withheld until a stable plan-specific price and billing-term rule is verified; the dated manual checkout example is separate."}
 ::MODULE{BROWSER_OBSERVATIONS|title:人工浏览器观察不作为自动抓价或当前优惠证据}
 {
   "seravo":{"url":"https://seravo.com/en/plans/","observed_at":"2026-09-22 UTC","quote":"Price per month when you choose annual billing.","context":"Pricing footnote."},
