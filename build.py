@@ -15,6 +15,7 @@ CURRENT='current'; HISTORY=('retained','stale','expired','unverified')
 OFFICIAL_FIELD_MISSING='Not published in the official wording captured for this record.'
 # Why a reachable official page still yields no deterministic price rule.
 BLOCKER_TEXT={'price_rendered_by_js':'The published prices on this page are rendered by JavaScript, so no figure can be read without executing scripts.',
+              'billing_term_unbound':'The source response does not reliably bind the displayed prices to the selected billing term. Automated prices are withheld; dated manual checkout examples are separate.',
               'unstable_field_structure':'The page markup changes between loads, so no stable field can be bound to a named plan.',
               'no_public_price':'This official page does not publish a price publicly.',
               'login_or_region_gated':'This official page requires a login or is limited to certain regions.',
@@ -495,7 +496,8 @@ def build(config_path=None, output=None):
     guide_templates={'godaddy':'provider-guide.html','namecheap':'namecheap-provider-guide.html','cloudways':'cloudways-provider-guide.html','digitalocean':'digitalocean-provider-guide.html','hostinger':'hostinger-provider-guide.html'}
     # A source-only provider needs either a concrete official-page observation or
     # an existing editorial guide. Otherwise it has no public page to publish.
-    unpublished_source_only={pid for pid in state_only if pid not in cfg['browser_observations'] and pid not in guide_templates}
+    reviewed_providers={record['provider'] for record in documented_plan_rows(payload)}
+    unpublished_source_only={pid for pid in state_only if pid not in cfg['browser_observations'] and pid not in guide_templates and pid not in reviewed_providers}
     public_providers=[p for p in providers if p['id'] not in unpublished_source_only]
     rendered={}
     if OUT.exists(): shutil.rmtree(OUT)
@@ -689,6 +691,8 @@ def build(config_path=None, output=None):
         if p['id'] in state_only:
             status_text, detail, _ = state_only_display(status, blockers.get(p['id']))
             current_html='<div class="empty"><h3>'+e(status_text)+'</h3><p>'+e(detail)+'</p></div>'
+            if p['id'] in reviewed_providers:
+                current_html+='<p><a href="/compare/">View dated manual plan examples and their official sources</a>.</p>'
             observation=cfg['browser_observations'].get(p['id'])
             if observation:
                 current_html+=source_observation_record(p, observation, status)

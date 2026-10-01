@@ -10,7 +10,7 @@ import build
 NS={'sm':'http://www.sitemaps.org/schemas/sitemap/0.9'}
 # Approved reasons a configured source can carry no deterministic price rule.
 # A robots failure is kept separate from failures after a page was fetched.
-BLOCKERS={'price_rendered_by_js','unstable_field_structure','no_public_price','login_or_region_gated','source_page_forbidden','robots_check_failed'}
+BLOCKERS={'price_rendered_by_js','billing_term_unbound','unstable_field_structure','no_public_price','login_or_region_gated','source_page_forbidden','robots_check_failed'}
 
 def compact(value):
     return re.sub(r'\s+', ' ', value or '').strip()
@@ -101,7 +101,8 @@ def check():
     state_only={rule['provider'] for rule in cfg['extractors'] if rule.get('mode')=='availability_only'}
     state_only={pid for pid in state_only if not any(r.get('mode')!='availability_only' for r in cfg['extractors'] if r.get('provider')==pid)}
     guide_provider_ids={'godaddy','namecheap','cloudways'}
-    unpublished_source_only={pid for pid in state_only if pid not in cfg['browser_observations'] and pid not in guide_provider_ids}
+    reviewed_providers={record['provider'] for record in build.documented_plan_rows(payload)}
+    unpublished_source_only={pid for pid in state_only if pid not in cfg['browser_observations'] and pid not in guide_provider_ids and pid not in reviewed_providers}
     for pid in sorted(state_only):
         assert pid not in {o['provider'] for o in payload['offers']}, f'A state-only provider published an offer: {pid}'
     for offer in payload['offers']:

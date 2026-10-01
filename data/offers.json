@@ -6226,53 +6226,6 @@
       "source_sha256": "6a42a1329cf51d67813c3b00cc21889d25bfb05596630f713cb4fb784d379bac"
     },
     {
-      "slug": "knownhost-basic-web-hosting-three-year-term",
-      "provider": "knownhost",
-      "title": "Basic web hosting (three-year term)",
-      "category": "Web hosting",
-      "source_url": "https://www.knownhost.com/web-hosting",
-      "offer_url": "https://www.knownhost.com/web-hosting",
-      "fetched_at": "2026-10-01T00:38:26Z",
-      "evidence": "The official card labels its renewal amount and monthly unit; the same plan's source metadata separately identifies USD. Both source fragments are retained and displayed without repeating the starting-price quote.",
-      "field_evidence": {
-        "price": "$ 6.71 /mo",
-        "renewal_price": "Renews at 8.95 /mo",
-        "renewal_currency": "priceCurrency\" content=\"USD\""
-      },
-      "claim_evidence": {
-        "price": {
-          "quote": "$ 6.71 /mo",
-          "excerpt": "<small class=\"d-block kh_text-red text-center\">Starting at</small> <span class=\"align-top\">$</span><strong class=\"price-basic\">6.71</strong><strong class=\"fs-1\">/mo</strong> <div class=\"pgk-origin-price\"> <span>Renews at</span> <span class=\"price-basic-original\">8.95</span><small>/mo</small>",
-          "visible_excerpt": "Starting at $ 6.71 /mo Renews at 8.95 /mo",
-          "location": "configured field pattern: price",
-          "surface": "source response markup"
-        },
-        "renewal_price": {
-          "quote": "Renews at 8.95 /mo",
-          "excerpt": "\"fs-1\">/mo</strong> <div class=\"pgk-origin-price\"> <span>Renews at</span> <span class=\"price-basic-original\">8.95</span><small>/mo</small> </div> </h3> <div class=\"kh_package-btns mx-1\"> <a href=\"https://my.knownhost.com/order/main/packages/shared-cloud",
-          "visible_excerpt": "\"fs-1\">/mo Renews at 8.95 /mo",
-          "location": "configured field pattern: renewal_price",
-          "surface": "source response markup"
-        },
-        "renewal_currency": {
-          "quote": "priceCurrency\" content=\"USD\"",
-          "excerpt": ">1 Month</button> </div> <div class=\"fade-in row mt-5\" id=\"packages\"> <meta itemprop=\"priceCurrency\" content=\"USD\"></meta> <meta itemprop=\"image\" content=\"/assets/meta/shared.png\"></meta> <meta itemprop=\"offerCount\" content=\"999\"></meta> <meta itemprop=\"lowPrice\" content=\"3.47\" /> <meta it",
-          "visible_excerpt": ">1 Month",
-          "location": "configured field pattern: renewal_currency",
-          "surface": "source response markup"
-        }
-      },
-      "currency": "USD",
-      "billing_period": "month",
-      "commitment_months": 36,
-      "condition": "Advertised starting monthly equivalent based on a three-year commitment.",
-      "kind": "regular_price",
-      "price": 6.71,
-      "renewal_price": 8.95,
-      "renewal_currency": "USD",
-      "source_sha256": "f59f34eb88cfe1048774a9ba4ec65d679f9290a9ffff6dea344f3397e38b57f4"
-    },
-    {
       "slug": "wp-engine-managed-hosting-platform-1-site-annual-billing",
       "provider": "wp-engine",
       "title": "Managed Hosting Platform (1 site, annual billing)",
@@ -9508,18 +9461,17 @@
       "request_url": "https://www.knownhost.com/web-hosting",
       "http_status": 200,
       "visible_excerpt": "Shared Web Hosting with Expert 24/7 Support | KnownHost Sign In Support +1(866) 332-9894 Hosting Hosting Web Hosting PCI Compliant Hosting Reseller Hosting Semi-Dedicated Hosting Hosting for WordPress Managed VPS Servers Managed NVMe VPS Servers Managed Cloud Servers Managed Dedi",
-      "checked_at": "2026-10-01T00:38:26Z",
-      "capture_status": "matched",
-      "reason": "Official source checked; matched configured extraction rules.",
-      "published_count": 1,
-      "captured_count": 1,
+      "checked_at": "2026-10-01T03:50:27Z",
+      "capture_status": "no_price_rule",
+      "reason": "Official source and robots.txt checked successfully. Automated price record withdrawn because its billing term was not bound to the source price. Dated manual checkout examples remain separate.",
+      "published_count": 0,
+      "captured_count": 0,
       "retained_count": 0,
-      "captured_slugs": [
-        "knownhost-basic-web-hosting-three-year-term"
-      ],
+      "captured_slugs": [],
       "retained_slugs": [],
       "rule_errors": [],
-      "unmatched_rules": []
+      "blocker": "billing_term_unbound",
+      "blocker_evidence": "The source response contains a 3 Year active button but the Basic price markup contains 6.71/mo and renewal 8.95/mo. Chrome checkout explicitly binds those amounts to 1 Month; the rendered 3 YEAR card shows 3.47/mo and renewal 7.16/mo. A page-level active button does not bind static card prices to a term."
     },
     "wp-engine": {
       "status": "evidenced",
@@ -10016,12 +9968,12 @@
   },
   "page_lastmod": {
     "/": {
-      "hash": "c7758b57ab2ef278c51da89c99a4327b47479dc5c9b38e1609139b2fe4b3c539",
-      "lastmod": "2026-10-01T03:26:33Z"
+      "hash": "711925bd7656d26c12449f32420bc9caa6049dc2a2c91221f94d14f25e7ee7d1",
+      "lastmod": "2026-10-01T04:01:29Z"
     },
     "/providers/": {
-      "hash": "2f9ee8880c53ca682a6a13500e11ca44a9f8d862d040eb0885b82a5708ef9d8b",
-      "lastmod": "2026-10-01T00:38:50Z"
+      "hash": "44e9afcf1ceebe9b317597bc6440ca896cc90f9f738a8315199e35d00ac3319a",
+      "lastmod": "2026-10-01T04:01:29Z"
     },
     "/compare/": {
       "hash": "6ea7d1395ea4473ff95a3f94b5a7890cb7268e6d0d1126e9bb6f5df63c68688c",
@@ -10278,10 +10230,6 @@
     "/providers/site123/": {
       "hash": "92c23b63681b38cb940e12a1d7a1cd944eb3e4f79010a9e3b7fb5b5851766be8",
       "lastmod": "2026-09-26T02:46:11Z"
-    },
-    "/providers/knownhost/": {
-      "hash": "602473d490dd25a1864b9a2b3a1e7804c19a4cee07facfb027d090a2f431651b",
-      "lastmod": "2026-09-30T06:45:09Z"
     },
     "/providers/netlify/": {
       "hash": "065d30dd9ca221b6a830da318675a0b4408f49e96ecf7d549870e2759b999839",
@@ -10776,42 +10724,42 @@
         "calculation": "124.92 / 36 = 3.47 USD/month",
         "advertised_price_quote": "$3.47/mo",
         "checked_on": "2026-09-30",
-        "captured_at": "2026-10-01T03:24:17.000Z",
+        "captured_at": "2026-10-01T03:48:18.477Z",
         "entry_url": "https://www.knownhost.com/web-hosting",
         "field_evidence": {
           "first_term_total": {
             "quote": "Total Due Today: $124.92",
             "url": "https://my.knownhost.com/order/main/packages/shared-cloud-hosting/?group_id=16&pricing_id=499",
-            "captured_at": "2026-10-01T03:24:17.000Z",
+            "captured_at": "2026-10-01T03:48:18.477Z",
             "context": "Basic Shared; 3-year term; Atlanta location and included features; no paid optional add-ons."
           },
           "commitment_months": {
             "quote": "3 Years",
             "url": "https://my.knownhost.com/order/main/packages/shared-cloud-hosting/?group_id=16&pricing_id=499",
-            "captured_at": "2026-10-01T03:24:17.000Z",
+            "captured_at": "2026-10-01T03:48:18.477Z",
             "context": "The same order selector shows 3 Years @ $124.92 (renews @ $257.76)."
           },
           "renewal_monthly_rate": {
-            "quote": "Renews at 7.16 /mo",
+            "quote": "Renews at 7.16/mo",
             "url": "https://www.knownhost.com/web-hosting",
-            "captured_at": "2026-10-01T03:25:08.883Z",
+            "captured_at": "2026-10-01T03:49:53.472Z",
             "context": "Basic Shared card on the 3 YEAR selection; exact USD markup is preserved in renewal_currency evidence."
           },
           "renewal_currency": {
             "quote": "priceCurrency\" content=\"USD\"",
             "html_excerpt": "<meta itemprop=\"priceCurrency\" content=\"USD\">",
             "url": "https://www.knownhost.com/web-hosting",
-            "captured_at": "2026-10-01T03:25:08.883Z"
+            "captured_at": "2026-10-01T03:49:53.472Z"
           },
           "renewal_total": {
             "quote": "Total When Renewing: 3 Years @ $257.76",
             "url": "https://my.knownhost.com/order/main/packages/shared-cloud-hosting/?group_id=16&pricing_id=499",
-            "captured_at": "2026-10-01T03:24:17.000Z"
+            "captured_at": "2026-10-01T03:48:18.477Z"
           }
         },
         "rendered_checkout_evidence": {
           "url": "https://my.knownhost.com/order/main/packages/shared-cloud-hosting/?group_id=16&pricing_id=499",
-          "captured_at": "2026-10-01T03:24:17.000Z",
+          "captured_at": "2026-10-01T03:48:18.477Z",
           "selected_plan": "Basic Shared",
           "selected_term": "3 Years",
           "first_total": "$124.92",
@@ -10820,7 +10768,8 @@
           "taxes_note": "Any applicable taxes will be calculated after you register or log in.",
           "order_submitted": false
         },
-        "missing_reasons": {}
+        "missing_reasons": {},
+        "timestamp_note": "Checkout captured_at records the start of the Chrome DOM read. It replaces an unsupported millisecond timestamp from the earlier write. Pricing-card fields have their own read time."
       },
       {
         "provider": "knownhost",
@@ -10831,7 +10780,7 @@
         "commitment_months": 36,
         "monthly_equivalent": 6.48,
         "renewal_monthly_rate": 11.01,
-        "calculation": "233.10 / 36 = 6.48 USD/month",
+        "calculation": "233.10 / 36 = 6.48 USD/month (rounded to cents)",
         "advertised_price_quote": "$6.48/mo",
         "checked_on": "2026-09-30",
         "captured_at": "2026-10-01T03:24:01.451Z",
@@ -10889,17 +10838,17 @@
         "commitment_months": 36,
         "monthly_equivalent": 9.98,
         "renewal_monthly_rate": 16.96,
-        "calculation": "359.10 / 36 = 9.98 USD/month",
+        "calculation": "359.10 / 36 = 9.98 USD/month (rounded to cents)",
         "advertised_price_quote": "$9.98/mo",
         "checked_on": "2026-09-30",
         "captured_at": "2026-10-01T03:24:17.618Z",
         "entry_url": "https://www.knownhost.com/web-hosting",
         "field_evidence": {
           "first_term_total": {
-            "quote": "Total Due Today: $359.10",
+            "quote": "3 Years @ $359.10 (renews @ $610.47)",
             "url": "https://my.knownhost.com/order/main/packages/shared-cloud-hosting/?group_id=16&pricing_id=507",
             "captured_at": "2026-10-01T03:24:17.618Z",
-            "context": "Professional Shared; 3-year term; Atlanta location and included features; no paid optional add-ons."
+            "context": "Professional Shared; selected 3 Years option. Total and renewal total are printed explicitly in that option; this timestamp refers to the term selection read, not a subsequent order-summary read."
           },
           "commitment_months": {
             "quote": "3 Years",
@@ -10920,7 +10869,7 @@
             "captured_at": "2026-10-01T03:25:08.883Z"
           },
           "renewal_total": {
-            "quote": "Total When Renewing: 3 Years @ $610.47",
+            "quote": "3 Years @ $359.10 (renews @ $610.47)",
             "url": "https://my.knownhost.com/order/main/packages/shared-cloud-hosting/?group_id=16&pricing_id=507",
             "captured_at": "2026-10-01T03:24:17.618Z"
           }
@@ -10934,7 +10883,8 @@
           "renewal_total": "$610.47",
           "paid_optional_addons": false,
           "taxes_note": "Any applicable taxes will be calculated after you register or log in.",
-          "order_submitted": false
+          "order_submitted": false,
+          "evidence_surface": "Selected term option; not a separately timestamped order-summary read."
         },
         "missing_reasons": {}
       },
@@ -10947,7 +10897,7 @@
         "commitment_months": 36,
         "monthly_equivalent": 19.98,
         "renewal_monthly_rate": 33.96,
-        "calculation": "719.10 / 36 = 19.98 USD/month",
+        "calculation": "719.10 / 36 = 19.98 USD/month (rounded to cents)",
         "advertised_price_quote": "$19.98/mo",
         "checked_on": "2026-09-30",
         "captured_at": "2026-10-01T03:25:52.408Z",
@@ -10997,5 +10947,61 @@
         "missing_reasons": {}
       }
     ]
-  }
+  },
+  "withdrawn_automated_records": [
+    {
+      "record": {
+        "slug": "knownhost-basic-web-hosting-three-year-term",
+        "provider": "knownhost",
+        "title": "Basic web hosting (three-year term)",
+        "category": "Web hosting",
+        "source_url": "https://www.knownhost.com/web-hosting",
+        "offer_url": "https://www.knownhost.com/web-hosting",
+        "fetched_at": "2026-10-01T00:38:26Z",
+        "evidence": "The official card labels its renewal amount and monthly unit; the same plan's source metadata separately identifies USD. Both source fragments are retained and displayed without repeating the starting-price quote.",
+        "field_evidence": {
+          "price": "$ 6.71 /mo",
+          "renewal_price": "Renews at 8.95 /mo",
+          "renewal_currency": "priceCurrency\" content=\"USD\""
+        },
+        "claim_evidence": {
+          "price": {
+            "quote": "$ 6.71 /mo",
+            "excerpt": "<small class=\"d-block kh_text-red text-center\">Starting at</small> <span class=\"align-top\">$</span><strong class=\"price-basic\">6.71</strong><strong class=\"fs-1\">/mo</strong> <div class=\"pgk-origin-price\"> <span>Renews at</span> <span class=\"price-basic-original\">8.95</span><small>/mo</small>",
+            "visible_excerpt": "Starting at $ 6.71 /mo Renews at 8.95 /mo",
+            "location": "configured field pattern: price",
+            "surface": "source response markup"
+          },
+          "renewal_price": {
+            "quote": "Renews at 8.95 /mo",
+            "excerpt": "\"fs-1\">/mo</strong> <div class=\"pgk-origin-price\"> <span>Renews at</span> <span class=\"price-basic-original\">8.95</span><small>/mo</small> </div> </h3> <div class=\"kh_package-btns mx-1\"> <a href=\"https://my.knownhost.com/order/main/packages/shared-cloud",
+            "visible_excerpt": "\"fs-1\">/mo Renews at 8.95 /mo",
+            "location": "configured field pattern: renewal_price",
+            "surface": "source response markup"
+          },
+          "renewal_currency": {
+            "quote": "priceCurrency\" content=\"USD\"",
+            "excerpt": ">1 Month</button> </div> <div class=\"fade-in row mt-5\" id=\"packages\"> <meta itemprop=\"priceCurrency\" content=\"USD\"></meta> <meta itemprop=\"image\" content=\"/assets/meta/shared.png\"></meta> <meta itemprop=\"offerCount\" content=\"999\"></meta> <meta itemprop=\"lowPrice\" content=\"3.47\" /> <meta it",
+            "visible_excerpt": ">1 Month",
+            "location": "configured field pattern: renewal_currency",
+            "surface": "source response markup"
+          }
+        },
+        "currency": "USD",
+        "billing_period": "month",
+        "commitment_months": 36,
+        "condition": "Advertised starting monthly equivalent based on a three-year commitment.",
+        "kind": "regular_price",
+        "price": 6.71,
+        "renewal_price": 8.95,
+        "renewal_currency": "USD",
+        "source_sha256": "f59f34eb88cfe1048774a9ba4ec65d679f9290a9ffff6dea344f3397e38b57f4"
+      },
+      "reviewed_on": "2026-09-30",
+      "withdrawal_reason": "The source response contains a 3 Year active button but the Basic price markup contains 6.71/mo and renewal 8.95/mo. Chrome checkout explicitly binds those amounts to 1 Month; the rendered 3 YEAR card shows 3.47/mo and renewal 7.16/mo. A page-level active button does not bind static card prices to a term.",
+      "checkout_quote": "1 Month @ $6.71 (renews @ $8.95)",
+      "checkout_url": "https://my.knownhost.com/order/main/packages/shared-cloud-hosting/?group_id=16&pricing_id=499",
+      "checkout_captured_at": "2026-10-01T03:48:18.477Z"
+    }
+  ]
 }
