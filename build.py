@@ -41,7 +41,11 @@ CATEGORY_DEFINITIONS={
     'Website builder':'A service for building and publishing a website.'
 }
 def e(value): return html.escape(str(value or ''), quote=True)
-def money(value, currency='USD'): return f'${float(value):,.2f}' if currency=='USD' else f'{currency} {float(value):,.2f}'
+CURRENCY_SYMBOLS={'USD':'$','GBP':'£','EUR':'€','CAD':'CA$','AUD':'A$','NZD':'NZ$','JPY':'¥'}
+def money(value, currency='USD'):
+    amount=f'{float(value):,.2f}'
+    symbol=CURRENCY_SYMBOLS.get(currency)
+    return f'{symbol}{amount}' if symbol else f'{currency} {amount}'
 def state_only_display(status, blocker):
     """Return truthful copy for a source with no published price record."""
     if status.get('status') == 'evidenced' and status.get('capture_status') == 'no_price_rule' and status.get('http_status') == 200 and status.get('visible_excerpt'):
@@ -77,7 +81,7 @@ def documented_plan_rows(payload):
             if any(not evidence[field]['quote'] or not evidence[field]['url'].startswith('https://')
                    for field in ('first_term_total', 'commitment_months', 'renewal_monthly_rate')):
                 continue
-            if record['currency'] != 'USD' or not record['provider'] or not record['plan']:
+            if record['currency'] not in {'USD','GBP','EUR','CAD','AUD','NZD','JPY','CHF','SEK','NOK','DKK'} or not record['provider'] or not record['plan']:
                 continue
         except (KeyError, TypeError, ValueError, InvalidOperation):
             continue
@@ -617,9 +621,9 @@ def build(config_path=None, output=None):
         return 'plan-' + record.get('plan_id', record['provider'])
     def reviewed_card(record):
         name=byid[record['provider']]['name']
-        total=money(record['first_term_total'])
-        monthly=money(record['monthly_equivalent'])
-        renewal=money(record['renewal_monthly_rate'])
+        total=money(record['first_term_total'],record['currency'])
+        monthly=money(record['monthly_equivalent'],record['currency'])
+        renewal=money(record['renewal_monthly_rate'],record['currency'])
         months=record['commitment_months']
         month_label='month' if months == 1 else 'months'
         return (f'<article class="card"><div class="card-top"><span class="provider-name">{e(name)}</span>'
@@ -818,9 +822,9 @@ def build(config_path=None, output=None):
     wpe_guide_schema={'@context':'https://schema.org','@type':'Article','headline':'Why did my WP Engine bill increase?','datePublished':'2026-10-01','dateModified':'2026-10-01','author':{'@type':'Organization','name':'HostDealRadar'},'publisher':{'@type':'Organization','name':'HostDealRadar'},'mainEntityOfPage':domain+wpe_guide_route}
     write(Path('guides/wp-engine-renewal-overage/index.html'),page('WP Engine renewal increase, overage fees and staging | HostDealRadar','Distinguish WordPress.com from WP Engine, trace a renewal increase, check billable visits and staging usage, and compare Cloudways Flexible with complete agency costs.',domain+wpe_guide_route,template('wp-engine-renewal-overage.html'),wpe_guide_schema))
     def reviewed_row(record):
-        total=money(record['first_term_total'])
-        monthly=money(record['monthly_equivalent'])
-        renewal=money(record['renewal_monthly_rate'])
+        total=money(record['first_term_total'],record['currency'])
+        monthly=money(record['monthly_equivalent'],record['currency'])
+        renewal=money(record['renewal_monthly_rate'],record['currency'])
         months=record['commitment_months']
         month_label='month' if months == 1 else 'months'
         return (f'<tr id="{e(reviewed_anchor(record))}"><td><strong>{e(byid[record["provider"]]["name"])}</strong>'
