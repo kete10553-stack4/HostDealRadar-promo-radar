@@ -1,0 +1,24 @@
+{
+  "review_date": "2026-10-01",
+  "method": "Public-page text read through web retrieval; no account, checkout, invoice or code redemption test.",
+  "scope": "Renewal and usage questions for agencies; not a verified general coupon list.",
+  "sources": [
+    {"url": "https://wordpress.com/support/com-vs-org/", "observation": "WordPress.com includes hosting; WordPress.org supplies free software and requires a separately chosen host."},
+    {"url": "https://wpengine.com/plans/", "observation": "Separate managed host. Public text exposes a discount-code field but did not bind a current general offer, amount and renewal eligibility."},
+    {"url": "https://wpengine.com/blog/find-wp-engine-at-wordcamp-asia/", "observation": "Historical WordCamp Asia 2023 new-customer event promotion; a later article update is not current redemption evidence."},
+    {"url": "https://wpengine.com/support/my-account-overview/", "observation": "Billing-authorized users can download invoices showing service dates, plan, tax, product extensions, overages and credits."},
+    {"url": "https://wpengine.com/support/count-visits/", "observation": "Unique IP per UTC day; dynamic requests count. Static-only requests, known/suspected bots and HTTP403 requests excluded. All environments aggregated for monthly usage."},
+    {"url": "https://wpengine.com/overage-pricing/", "observation": "Listed Startup, Professional, Growth, Scale, Agency Essentials, Agency Plus and Agency Pro: $2 per 1,000 excess monthly visits; annual subscription still has monthly overage billing. Not evidence for every custom/new plan."},
+    {"url": "https://wpengine.com/support/change-plan-user-portal/", "observation": "Production/Staging/Development are environments in one site. Extra sites/storage purchasable. Downgrade eligibility includes target site/storage limits and past-30-day bandwidth/visits."},
+    {"url": "https://www.cloudways.com/en/flexible-hosting.php", "observation": "Flexible offers server resource configurations and unmetered visits; no capacity or savings claim established for an agency portfolio."},
+    {"url": "https://support.cloudways.com/en/articles/5116158-guide-to-billing-at-cloudways", "observation": "Server usage and enabled add-ons billed; bandwidth/storage charges depend on configuration. This guide's comparison concerns Flexible, not every Cloudways product."}
+  ],
+  "community_sources": [
+    {"url": "https://www.reddit.com/r/Wordpress/comments/1w9sc3g/are_there_any_wordpress_coupon_codes_for_annual/", "boundary": "WordPress.com discussion, not WP Engine price evidence."},
+    {"url": "https://www.reddit.com/r/Wordpress/comments/1vgef1z/please_help_wordpress_discount_coupon/", "boundary": "WordPress.com discussion, not WP Engine price evidence."},
+    {"url": "https://www.reddit.com/r/webhosting/comments/1s4c64t/wpengine_is_a_predatory_wordpress_hosting_service/", "boundary": "Replies disputed the sweeping increase claim; not a published tariff or verified invoice."},
+    {"url": "https://www.reddit.com/r/ChoosingVendors/comments/1umqkq9/wp_engine_pricing_is_killing_my_margins_where_are/", "boundary": "Cloudways suggestion is a lead; not proof of lower total cost or performance."}
+  ],
+  "calculation": {"assumption": "Applicable $2/1,000 rate; hypothetical comparable upgrade costs $60 more per month.", "excess_20000_visits": "$40 before tax", "visit_only_break_even": "30,000 excess visits at $60; no invoice rounding policy inferred."},
+  "limitations": ["No current universal renewal code verified", "No universal 37% or severalfold increase inferred", "No general paid-staging conversion established", "No checkout, invoice or destination capacity test"]
+}

@@ -9973,8 +9973,8 @@
   },
   "page_lastmod": {
     "/": {
-      "hash": "4ca36941cf89021bb5cc7a822d5ff3936b2c1a40396a4db2e2f14e0c8ed3a1a5",
-      "lastmod": "2026-10-01T11:51:55Z"
+      "hash": "63b923b6c1745fb7eb9f4a04d48f6315f667ebd775d6007d60f6ab5307deb463",
+      "lastmod": "2026-10-01T12:21:34Z"
     },
     "/providers/": {
       "hash": "10b9c1d00bd5fedaf56d6a02eefcb30d6ca1ee09e5da57098c0ac9939226cab2",
@@ -10047,6 +10047,10 @@
     "/guides/a2-hosting-coupon-code/": {
       "hash": "ec7ac566b1fbdadd78c38b8c7b40fd90d03d42a8afa6716623ac942870103ced",
       "lastmod": "2026-10-01T10:53:45Z"
+    },
+    "/guides/wp-engine-renewal-overage/": {
+      "hash": "0ea26797a515815618a17264024c32baa750718f878ac8d9330b3d26bcb1f549",
+      "lastmod": "2026-10-01T12:21:34Z"
     },
     "/providers/webdock/": {
       "hash": "04716508c9c8263f3c6a1e6aa83f8edba4c7dd1edc79696eccd212621f0604ea",
