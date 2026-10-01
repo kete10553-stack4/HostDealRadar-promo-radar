@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 680" role="img" aria-labelledby="title desc">
+<title id="title">Trace your WP Engine bill</title><desc id="desc">Check subscription, visits across environments, and additional sites or storage before comparing a plan change with migration.</desc>
+<rect width="720" height="680" rx="22" fill="#edf7f5"/>
+<g font-family="Arial,sans-serif" fill="#183b36">
+<text x="36" y="55" font-size="34" font-weight="700">Where did the bill grow?</text>
+<rect x="28" y="84" width="664" height="146" rx="16" fill="#fff"/>
+<text x="48" y="125" font-size="29" font-weight="700">1. Subscription</text>
+<text x="48" y="165" font-size="26">Compare base price and discount.</text>
+<text x="48" y="204" font-size="26">Use the same billing period.</text>
+<rect x="28" y="248" width="664" height="146" rx="16" fill="#fff"/>
+<text x="48" y="289" font-size="29" font-weight="700">2. Visits</text>
+<text x="48" y="329" font-size="26">Use WP Engine's billable count.</text>
+<text x="48" y="368" font-size="26">Include staging and development.</text>
+<rect x="28" y="412" width="664" height="146" rx="16" fill="#fff"/>
+<text x="48" y="453" font-size="29" font-weight="700">3. Sites and storage</text>
+<text x="48" y="493" font-size="26">Included environment ≠ extra site.</text>
+<text x="48" y="532" font-size="26">Ask which invoice line changed.</text>
+<text x="36" y="606" font-size="27" font-weight="700">Stay, change plan, or move?</text>
+<text x="36" y="645" font-size="25">Compare complete 12-month quotes.</text>
+</g></svg>

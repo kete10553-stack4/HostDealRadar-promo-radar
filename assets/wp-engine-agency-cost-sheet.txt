@@ -1,0 +1,25 @@
+AGENCY HOSTING COST SHEET
+Complete one copy per option: current WP Engine / revised WP Engine / destination Flexible.
+Use your own invoices and written quotes. No provider prices are prefilled.
+
+Option:
+Currency:
+12-month comparison period, start and end:
+Production site count:
+Staging and development inventory:
+Required storage and peak workload:
+
+COSTS FOR THAT SAME PERIOD
+Base hosting payable total:
+Forecast visits or resource charges:
+Required backups and support:
+Email and other required add-ons:
+Migration charge:
+Overlapping subscriptions:
+Administration hours and assigned cost:
+Total before tax (add the cost lines above):
+Tax, separately:
+
+Next renewal amount and date:
+Migration and recovery responsibility:
+Invoice / quote references and unresolved assumptions:

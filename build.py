@@ -493,7 +493,7 @@ def build(config_path=None, output=None):
     current=[o for o in offers if states[o['slug']][0]==CURRENT]
     history=[o for o in offers if states[o['slug']][0] in HISTORY]
     providers=cfg['providers']
-    guide_templates={'godaddy':'provider-guide.html','namecheap':'namecheap-provider-guide.html','cloudways':'cloudways-provider-guide.html','digitalocean':'digitalocean-provider-guide.html','hostinger':'hostinger-provider-guide.html','a2-hosting':'a2-provider-guide.html'}
+    guide_templates={'godaddy':'provider-guide.html','namecheap':'namecheap-provider-guide.html','cloudways':'cloudways-provider-guide.html','digitalocean':'digitalocean-provider-guide.html','hostinger':'hostinger-provider-guide.html','a2-hosting':'a2-provider-guide.html','wp-engine':'wp-engine-provider-guide.html'}
     # A source-only provider needs either a concrete official-page observation or
     # an existing editorial guide. Otherwise it has no public page to publish.
     reviewed_providers={record['provider'] for record in documented_plan_rows(payload)}
@@ -814,6 +814,9 @@ def build(config_path=None, output=None):
     a2_guide_route='/guides/a2-hosting-coupon-code/'
     a2_guide_schema={'@context':'https://schema.org','@type':'Article','headline':'A2 Hosting coupon code & renewal savings','datePublished':'2026-10-01','dateModified':'2026-10-01','author':{'@type':'Organization','name':'HostDealRadar'},'publisher':{'@type':'Organization','name':'HostDealRadar'},'mainEntityOfPage':domain+a2_guide_route}
     write(Path('guides/a2-hosting-coupon-code/index.html'),page('A2 Hosting coupon code and Hosting.com renewal savings | HostDealRadar','Check first-term offers and three routes for a higher Hosting.com renewal: account quotes, new-plan eligibility and migration, with dated official sources.',domain+a2_guide_route,template('a2-hosting-coupon-code.html'),a2_guide_schema))
+    wpe_guide_route='/guides/wp-engine-renewal-overage/'
+    wpe_guide_schema={'@context':'https://schema.org','@type':'Article','headline':'Why did my WP Engine bill increase?','datePublished':'2026-10-01','dateModified':'2026-10-01','author':{'@type':'Organization','name':'HostDealRadar'},'publisher':{'@type':'Organization','name':'HostDealRadar'},'mainEntityOfPage':domain+wpe_guide_route}
+    write(Path('guides/wp-engine-renewal-overage/index.html'),page('WP Engine renewal increase, overage fees and staging | HostDealRadar','Distinguish WordPress.com from WP Engine, trace a renewal increase, check billable visits and staging usage, and compare Cloudways Flexible with complete agency costs.',domain+wpe_guide_route,template('wp-engine-renewal-overage.html'),wpe_guide_schema))
     def reviewed_row(record):
         total=money(record['first_term_total'])
         monthly=money(record['monthly_equivalent'])
@@ -974,6 +977,7 @@ Planned endpoints return HTTP 503 with `temporarily_unavailable` until authentic
     routes.append(hostinger_vps_route)
     routes.append(hostinger_domain_route)
     routes.append(a2_guide_route)
+    routes.append(wpe_guide_route)
     # Keep zero-current provider pages accessible for truthful status reporting,
     # but do not submit them as index targets until a current source record exists.
     routes+=[f'/providers/{p["id"]}/' for p in public_providers if p['id'] in current_provider_ids]
