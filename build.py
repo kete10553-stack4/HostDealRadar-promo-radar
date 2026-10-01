@@ -989,7 +989,7 @@ Planned endpoints return HTTP 503 with `temporarily_unavailable` until authentic
         next_state[route]={'hash':digest,'lastmod':lastmod}
         entries.append((route,lastmod))
     payload[STATE_KEY]=next_state
-    DATA.write_text(json.dumps(payload,indent=2)+'\n',encoding='utf-8')
+    DATA.write_text(json.dumps(payload,indent=2,ensure_ascii=False)+'\n',encoding='utf-8')
     write(Path('sitemap.xml'),'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'+''.join('<url><loc>'+e(domain+path)+'</loc><lastmod>'+e(lastmod)+'</lastmod></url>' for path,lastmod in entries)+'</urlset>')
     return {'current':len(current),'history':len(history)}
 if __name__=='__main__':
