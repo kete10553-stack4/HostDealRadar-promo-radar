@@ -9973,16 +9973,16 @@
   },
   "page_lastmod": {
     "/": {
-      "hash": "fbf2aa222a91e4824690fa07e9add2b070f1d3473e14899e9d0398bccb7cc9a6",
-      "lastmod": "2026-10-01T12:25:58Z"
+      "hash": "4cedf35818d22ac361666ae9438bbf6fd3ccbb00b1da30cc541f87b3a0605b24",
+      "lastmod": "2026-10-01T12:39:11Z"
     },
     "/providers/": {
       "hash": "10b9c1d00bd5fedaf56d6a02eefcb30d6ca1ee09e5da57098c0ac9939226cab2",
       "lastmod": "2026-10-01T11:51:55Z"
     },
     "/compare/": {
-      "hash": "57544a063ec6b1fdb2bfea295519d8523d4514ea6688eec87a0d83ad75f58937",
-      "lastmod": "2026-10-01T12:20:11Z"
+      "hash": "70d7b34e88e359e65e6331c077b652006a2ca514fd6b49a395acf6d643d4fff0",
+      "lastmod": "2026-10-01T12:39:11Z"
     },
     "/methodology/": {
       "hash": "22dee56f92f0f96a890f3b621e025631df982e15a2a88a15683b60550f85fd26",
@@ -11938,6 +11938,48 @@
           "captured_at": "2026-10-01T12:17:57.907Z",
           "selected_term": "3 Years @ $5.99/mo",
           "excerpt": "Power - Web Hosting; Total $215.64 USD. Optional Backup Manager and Growth Email unchecked; Migration Support included."
+        }
+      },
+      {
+        "provider": "20i",
+        "plan": "Startup web hosting, first-month offer",
+        "plan_id": "20i-startup-first-month",
+        "currency": "GBP",
+        "first_term_total": 1,
+        "commitment_months": 1,
+        "monthly_equivalent": 1,
+        "renewal_monthly_rate": 10,
+        "calculation": "1 / 1 = £1.00/month",
+        "advertised_price_quote": "First Month £1",
+        "checked_on": "2026-10-01",
+        "captured_at": "2026-10-01T12:35:37.885Z",
+        "field_evidence": {
+          "first_term_total": {
+            "quote": "First Month £1",
+            "url": "https://www.20i.com/web-hosting",
+            "captured_at": "2026-10-01T12:35:37.885Z",
+            "context": "Startup web hosting card; introductory first month; price shown in GBP."
+          },
+          "commitment_months": {
+            "quote": "First Month",
+            "url": "https://www.20i.com/web-hosting",
+            "captured_at": "2026-10-01T12:35:37.885Z",
+            "context": "Startup card states a first-month offer and No contract – cancel any time."
+          },
+          "renewal_monthly_rate": {
+            "quote": "Then only £10/mo",
+            "url": "https://www.20i.com/web-hosting",
+            "captured_at": "2026-10-01T12:35:37.885Z",
+            "context": "Startup card; stated rate after the first-month introductory price."
+          }
+        },
+        "missing_reasons": {},
+        "rendered_pricing_evidence": {
+          "url": "https://www.20i.com/web-hosting",
+          "captured_at": "2026-10-01T12:35:37.885Z",
+          "selected_term": "First Month",
+          "selected_location": "United Kingdom pricing in GBP",
+          "excerpt": "Startup; First Month £1; Then only £10/mo; No contract – cancel any time."
         }
       }
     ]

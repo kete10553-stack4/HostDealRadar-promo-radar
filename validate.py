@@ -70,6 +70,12 @@ def check_earlier_record_path(payload, cfg):
     shutil.rmtree(tmp,ignore_errors=True)
 
 def check():
+    gbp_record={'provider':'20i','plan':'Startup web hosting, first-month offer','currency':'GBP',
+                'first_term_total':1,'commitment_months':1,'monthly_equivalent':1,'renewal_monthly_rate':10,
+                'field_evidence':{field:{'quote':'official quote','url':'https://www.20i.com/web-hosting'}
+                                  for field in ('first_term_total','commitment_months','renewal_monthly_rate')}}
+    gbp_probe={'browser_term_observations':{'checked_on':'2026-10-01','records':[gbp_record]}}
+    assert build.documented_plan_rows(gbp_probe)==[gbp_record] and build.money(1,'GBP')=='£1.00', 'A sourced GBP plan must remain eligible and display in its original currency'
     cfg=load_config(); settings=cfg['settings']; payload=json.loads((ROOT/'data/offers.json').read_text(encoding='utf-8'))
     rules={(rule['provider'],rule.get('title')):rule for rule in cfg['extractors'] if rule.get('title')}
     statuses=payload.get('source_status',{})
@@ -335,6 +341,7 @@ def check():
     assert len(anchors)==len(set(anchors)), 'Comparison plans share duplicate anchors'
     assert all(url.split('#',1)[1] in anchors for url in listed), 'A documented plan link has no comparison row'
     assert 'Unknown' not in home and 'Unknown' not in compare, 'Comparison pages still publish an unverified field'
+    assert '>\u00a31.00</a>' in compare and '\u00a310.00/mo' in compare and '\u00a31.00 \u00f7 1' in compare, 'Manual plan prices must retain their sourced GBP currency and calculation'
     assert compare.count('<tbody>') == (1 if reviewed else 0) and compare.count('</tr>') == (len(reviewed)+1 if reviewed else 0), 'Comparison row count differs from documented complete plans'
     assert home.count('<span class="tag reference">Manual review</span>') == len(reviewed), 'Homepage complete-card count differs from documented complete plans'
     assert '0 complete' not in home and '0 current listings' not in home and 'No complete plan comparison' not in compare, 'A zero-row conclusion is printed on a page'
