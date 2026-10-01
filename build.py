@@ -611,6 +611,8 @@ def build(config_path=None, output=None):
     def reviewed_link(record, field, label):
         source=record['field_evidence'][field]['url']
         return f'<a href="{e(source)}" rel="noopener noreferrer">{e(label)}</a>'
+    def reviewed_anchor(record):
+        return 'plan-' + record.get('plan_id', record['provider'])
     def reviewed_card(record):
         name=byid[record['provider']]['name']
         total=money(record['first_term_total'])
@@ -665,7 +667,7 @@ def build(config_path=None, output=None):
     home_schema={'@context':'https://schema.org','@graph':[
         {'@type':'WebSite','@id':domain+'/#website','name':cfg['site']['brand'],'url':domain+'/','inLanguage':'en-US','publisher':{'@id':domain+'/#organization'}},
         {'@type':'Organization','@id':domain+'/#organization','name':cfg['site']['brand'],'url':domain+'/','sameAs':[cfg['settings']['repo_url']]},
-        {'@type':'ItemList','name':'Documented hosting plan comparisons','itemListElement':[{'@type':'ListItem','position':i+1,'item':{'@type':'WebPage','name':byid[record['provider']]['name']+' '+record['plan'],'url':domain+'/compare/#plan-'+record['provider']}} for i,record in enumerate(reviewed)]}
+        {'@type':'ItemList','name':'Documented hosting plan comparisons','itemListElement':[{'@type':'ListItem','position':i+1,'item':{'@type':'WebPage','name':byid[record['provider']]['name']+' '+record['plan'],'url':domain+'/compare/#'+reviewed_anchor(record)}} for i,record in enumerate(reviewed)]}
     ]}
     write(Path('index.html'),page('HostDealRadar | Official hosting offers', 'Official hosting offers with source-check status and provider links.',domain+'/',home,home_schema,head_extra="<meta name='impact-site-verification' value='9f3ff63a-c432-478f-8859-af77a6120cbb'>"))
     with_current=[p for p in public_providers if current_by_provider[p['id']]]
@@ -809,7 +811,7 @@ def build(config_path=None, output=None):
         monthly=money(record['monthly_equivalent'])
         renewal=money(record['renewal_monthly_rate'])
         months=record['commitment_months']
-        return (f'<tr id="plan-{e(record["provider"])}"><td><strong>{e(byid[record["provider"]]["name"])}</strong>'
+        return (f'<tr id="{e(reviewed_anchor(record))}"><td><strong>{e(byid[record["provider"]]["name"])}</strong>'
                 f'<span>{e(record["plan"])}</span></td>'
                 f'<td>{reviewed_link(record,"first_term_total",total)}</td>'
                 f'<td>{reviewed_link(record,"commitment_months",str(months)+" months")}</td>'

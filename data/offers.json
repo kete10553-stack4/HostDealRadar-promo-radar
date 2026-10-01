@@ -10016,16 +10016,16 @@
   },
   "page_lastmod": {
     "/": {
-      "hash": "bab1ad589a57a9adbcbd9fe309ca2160e6160e4a64a122d7294e4adbcb3b621b",
-      "lastmod": "2026-10-01T00:38:50Z"
+      "hash": "c348fbf4c4f338633ef0829b14faa6e956ed86596fa2e0e40f587a7bf6a1ae3d",
+      "lastmod": "2026-10-01T01:58:13Z"
     },
     "/providers/": {
       "hash": "2f9ee8880c53ca682a6a13500e11ca44a9f8d862d040eb0885b82a5708ef9d8b",
       "lastmod": "2026-10-01T00:38:50Z"
     },
     "/compare/": {
-      "hash": "03162548a361e820e024bd71350b45ec1afa2301fdd4fd456151a397823f4174",
-      "lastmod": "2026-09-27T02:07:45Z"
+      "hash": "ed01c9923ce4a9740aaec61ec10786ad8d6b7ccfc10c2d8ad2fc41a34b11c140",
+      "lastmod": "2026-10-01T01:58:13Z"
     },
     "/methodology/": {
       "hash": "22dee56f92f0f96a890f3b621e025631df982e15a2a88a15683b60550f85fd26",
@@ -10449,32 +10449,144 @@
       },
       {
         "provider": "siteground",
-        "plan": "StartUp web hosting",
+        "plan": "StartUp web hosting, 12-month term",
+        "plan_id": "siteground-startup",
         "currency": "USD",
-        "first_term_total": null,
+        "first_term_total": 35.88,
         "commitment_months": 12,
-        "monthly_equivalent": null,
+        "monthly_equivalent": 2.99,
         "renewal_monthly_rate": 17.99,
-        "calculation": null,
-        "advertised_price_quote": "$2.99 /mo.",
+        "calculation": "35.88 / 12 = 2.99 USD/month",
+        "advertised_price_quote": "$2.99/mo.",
+        "checked_on": "2026-09-30",
+        "captured_at": "2026-10-01T01:56:20.648Z",
+        "entry_url": "https://www.siteground.com/web-hosting.htm",
         "field_evidence": {
+          "first_term_total": {
+            "quote": "TOTAL: 35.88 USD",
+            "url": "https://www.siteground.com/shared/step3.htm?domain=hostdealradar.com&owndomain=1&p=1",
+            "captured_at": "2026-10-01T01:56:20.648Z",
+            "context": "StartUp selected; 12 months - BEST DEAL; now bill $35.88 *; optional add-ons unchecked."
+          },
           "commitment_months": {
             "quote": "Prepaid for 12 months.",
-            "url": "https://www.siteground.com/web-hosting.htm"
+            "url": "https://www.siteground.com/web-hosting.htm",
+            "captured_at": "2026-10-01T01:54:59.271Z",
+            "context": "StartUp card"
           },
           "renewal_monthly_rate": {
-            "quote": "Renews at $17.99 /mo.",
-            "url": "https://www.siteground.com/web-hosting.htm"
+            "quote": "Renews at $17.99/mo.",
+            "url": "https://www.siteground.com/web-hosting.htm",
+            "captured_at": "2026-10-01T01:54:59.271Z",
+            "context": "StartUp card"
           }
         },
-        "source_urls": [
-          "https://www.siteground.com/web-hosting.htm",
-          "https://www.siteground.com/shared/step2.htm?p=1"
-        ],
-        "missing_reasons": {
-          "first_term_total": "The pricing card does not print a first-term total; the order page asks for a domain before its review step.",
-          "monthly_equivalent": "A monthly advertising rate is visible, but without an official first-term total the required derived field is empty."
-        }
+        "rendered_checkout_evidence": {
+          "url": "https://www.siteground.com/shared/step3.htm?domain=hostdealradar.com&owndomain=1&p=1",
+          "captured_at": "2026-10-01T01:56:20.648Z",
+          "selected_plan": "StartUp",
+          "selected_term": "12 months - BEST DEAL",
+          "excerpt": "now bill $35.88 *\nORDER SUMMARY\nTOTAL:\n35.88 USD",
+          "country": "United States",
+          "optional_addons_selected": false,
+          "order_submitted": false
+        },
+        "cart_note": "US checkout preview with an existing domain and optional add-ons unchecked. No order submitted; complete billing/tax address was not entered, so final taxes may differ.",
+        "missing_reasons": {}
+      },
+      {
+        "provider": "siteground",
+        "plan": "GrowBig web hosting, 12-month term",
+        "plan_id": "siteground-growbig",
+        "currency": "USD",
+        "first_term_total": 59.88,
+        "commitment_months": 12,
+        "monthly_equivalent": 4.99,
+        "renewal_monthly_rate": 29.99,
+        "calculation": "59.88 / 12 = 4.99 USD/month",
+        "advertised_price_quote": "$4.99/mo.",
+        "checked_on": "2026-09-30",
+        "captured_at": "2026-10-01T01:54:32.090Z",
+        "entry_url": "https://www.siteground.com/web-hosting.htm",
+        "field_evidence": {
+          "first_term_total": {
+            "quote": "TOTAL: 59.88 USD",
+            "url": "https://www.siteground.com/shared/step3.htm?domain=hostdealradar.com&owndomain=1&p=2",
+            "captured_at": "2026-10-01T01:54:32.090Z",
+            "context": "GrowBig selected; 12 months - BEST DEAL; now bill $59.88 *; optional add-ons unchecked."
+          },
+          "commitment_months": {
+            "quote": "Prepaid for 12 months.",
+            "url": "https://www.siteground.com/web-hosting.htm",
+            "captured_at": "2026-10-01T01:54:59.271Z",
+            "context": "GrowBig card"
+          },
+          "renewal_monthly_rate": {
+            "quote": "Renews at $29.99/mo.",
+            "url": "https://www.siteground.com/web-hosting.htm",
+            "captured_at": "2026-10-01T01:54:59.271Z",
+            "context": "GrowBig card"
+          }
+        },
+        "rendered_checkout_evidence": {
+          "url": "https://www.siteground.com/shared/step3.htm?domain=hostdealradar.com&owndomain=1&p=2",
+          "captured_at": "2026-10-01T01:54:32.090Z",
+          "selected_plan": "GrowBig",
+          "selected_term": "12 months - BEST DEAL",
+          "excerpt": "now bill $59.88 *\nORDER SUMMARY\nTOTAL:\n59.88 USD",
+          "country": "United States",
+          "optional_addons_selected": false,
+          "order_submitted": false
+        },
+        "cart_note": "US checkout preview with an existing domain and optional add-ons unchecked. No order submitted; complete billing/tax address was not entered, so final taxes may differ.",
+        "missing_reasons": {}
+      },
+      {
+        "provider": "siteground",
+        "plan": "GoGeek web hosting, 12-month term",
+        "plan_id": "siteground-gogeek",
+        "currency": "USD",
+        "first_term_total": 95.88,
+        "commitment_months": 12,
+        "monthly_equivalent": 7.99,
+        "renewal_monthly_rate": 44.99,
+        "calculation": "95.88 / 12 = 7.99 USD/month",
+        "advertised_price_quote": "$7.99/mo.",
+        "checked_on": "2026-09-30",
+        "captured_at": "2026-10-01T01:55:53.797Z",
+        "entry_url": "https://www.siteground.com/web-hosting.htm",
+        "field_evidence": {
+          "first_term_total": {
+            "quote": "TOTAL: 95.88 USD",
+            "url": "https://www.siteground.com/shared/step3.htm?domain=hostdealradar.com&owndomain=1&p=3",
+            "captured_at": "2026-10-01T01:55:53.797Z",
+            "context": "GoGeek selected; 12 months - BEST DEAL; now bill $95.88 *; optional add-ons unchecked."
+          },
+          "commitment_months": {
+            "quote": "Prepaid for 12 months.",
+            "url": "https://www.siteground.com/web-hosting.htm",
+            "captured_at": "2026-10-01T01:54:59.271Z",
+            "context": "GoGeek card"
+          },
+          "renewal_monthly_rate": {
+            "quote": "Renews at $44.99/mo.",
+            "url": "https://www.siteground.com/web-hosting.htm",
+            "captured_at": "2026-10-01T01:54:59.271Z",
+            "context": "GoGeek card"
+          }
+        },
+        "rendered_checkout_evidence": {
+          "url": "https://www.siteground.com/shared/step3.htm?domain=hostdealradar.com&owndomain=1&p=3",
+          "captured_at": "2026-10-01T01:55:53.797Z",
+          "selected_plan": "GoGeek",
+          "selected_term": "12 months - BEST DEAL",
+          "excerpt": "now bill $95.88 *\nORDER SUMMARY\nTOTAL:\n95.88 USD",
+          "country": "United States",
+          "optional_addons_selected": false,
+          "order_submitted": false
+        },
+        "cart_note": "US checkout preview with an existing domain and optional add-ons unchecked. No order submitted; complete billing/tax address was not entered, so final taxes may differ.",
+        "missing_reasons": {}
       },
       {
         "provider": "bluehost",
