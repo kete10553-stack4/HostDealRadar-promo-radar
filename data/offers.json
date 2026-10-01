@@ -9957,16 +9957,16 @@
   },
   "page_lastmod": {
     "/": {
-      "hash": "57ff350170cefe593856d0f09dd045a8d67aefcf399b8e4bcf422401285f76ad",
-      "lastmod": "2026-10-01T10:56:04Z"
+      "hash": "b9e7e18df40a73420c5a644610bf44bfffdc63c2f79deac8204fa470955a14b6",
+      "lastmod": "2026-10-01T11:07:32Z"
     },
     "/providers/": {
       "hash": "df1995c44b87e0fbe17a72123dc79b71155718f2554d5062ced5d320b8e2eae3",
       "lastmod": "2026-10-01T06:37:27Z"
     },
     "/compare/": {
-      "hash": "80fcc01cde4aefeb2a17b52ba59a3a2af291e19cd6bd8ba89425fbdfbd3d71e0",
-      "lastmod": "2026-10-01T10:56:04Z"
+      "hash": "2562e5d72cec9228acc3ee834227d954f60322de7030056480e547949da7e538",
+      "lastmod": "2026-10-01T11:07:32Z"
     },
     "/methodology/": {
       "hash": "22dee56f92f0f96a890f3b621e025631df982e15a2a88a15683b60550f85fd26",
@@ -10507,6 +10507,136 @@
           "selected_plan": "Shared \"Stellar\"",
           "selected_term": "1 month (duration=1&durationtype=month)",
           "first_total": "$5.88",
+          "currency_quote": "$ USD",
+          "domain_entered": false,
+          "paid_optional_addons": false,
+          "order_submitted": false
+        },
+        "timestamp_note": "Captured times are local Windows timestamps converted from America/Los_Angeles (UTC\u22127), rounded to milliseconds immediately after each Chrome DOM read.",
+        "missing_reasons": {}
+      },
+      {
+        "provider": "namecheap",
+        "plan": "Stellar Plus shared hosting, 1-month US data-center checkout",
+        "plan_id": "namecheap-stellar-plus-monthly",
+        "currency": "USD",
+        "first_term_total": 7.88,
+        "commitment_months": 1,
+        "monthly_equivalent": 7.88,
+        "renewal_monthly_rate": 7.88,
+        "calculation": "7.88 / 1 = 7.88 USD/month",
+        "advertised_price_quote": "$7.88/mo; Billed monthly",
+        "checked_on": "2026-10-01",
+        "captured_at": "2026-10-01T11:05:13.468Z",
+        "entry_url": "https://www.namecheap.com/hosting/shared/",
+        "field_evidence": {
+          "first_term_total": {
+            "quote": "Total $7.88",
+            "url": "https://www.namecheap.com/hosting/purchase/domain-connection/?product=stellar-plus&addons=server-location%3Bserver-location-us&duration=1&durationtype=month",
+            "captured_at": "2026-10-01T11:05:35.812Z",
+            "context": "Shared \"Stellar Plus\"; selected monthly plan with US data center; checkout Total is $7.88. No domain added to cart; no order submitted."
+          },
+          "commitment_months": {
+            "quote": "Billed monthly",
+            "url": "https://www.namecheap.com/hosting/shared/",
+            "captured_at": "2026-10-01T11:05:13.468Z",
+            "context": "Stellar Plus plan card; Monthly selected; Free trial unchecked; US data center selected. The matching checkout URL uses duration=1&durationtype=month."
+          },
+          "renewal_monthly_rate": {
+            "quote": "The new renewal prices for your Shared Hosting plans are as follows: Stellar Plus \u2014 1 month \u2014 $7.88",
+            "url": "https://www.namecheap.com/support/knowledgebase/article.aspx/10780/22/shared-hosting-pricing-changes-may-2026/",
+            "captured_at": "2026-10-01T10:52:22.542Z",
+            "context": "Official renewal table; Stellar Plus, 1-month billing cycle. Article says updated renewal pricing applies to invoices issued on or after May 19, 2026."
+          },
+          "currency": {
+            "quote": "$ USD",
+            "url": "https://www.namecheap.com/hosting/shared/",
+            "captured_at": "2026-10-01T10:52:56.102Z",
+            "context": "Official page currency selector in the rendered Chrome page."
+          }
+        },
+        "rendered_pricing_evidence": {
+          "url": "https://www.namecheap.com/hosting/shared/",
+          "captured_at": "2026-10-01T11:05:13.468Z",
+          "selected_plan": "Stellar Plus",
+          "selected_term": "Monthly",
+          "monthly_rate_quote": "$7.88/mo",
+          "billing_quote": "Billed monthly",
+          "trial_selected": false,
+          "currency_quote": "$ USD",
+          "data_center": "US"
+        },
+        "rendered_checkout_evidence": {
+          "url": "https://www.namecheap.com/hosting/purchase/domain-connection/?product=stellar-plus&addons=server-location%3Bserver-location-us&duration=1&durationtype=month",
+          "captured_at": "2026-10-01T11:05:35.812Z",
+          "selected_plan": "Shared \"Stellar Plus\"",
+          "selected_term": "1 month (duration=1&durationtype=month)",
+          "first_total": "$7.88",
+          "currency_quote": "$ USD",
+          "domain_entered": false,
+          "paid_optional_addons": false,
+          "order_submitted": false
+        },
+        "timestamp_note": "Captured times are local Windows timestamps converted from America/Los_Angeles (UTC\u22127), rounded to milliseconds immediately after each Chrome DOM read.",
+        "missing_reasons": {}
+      },
+      {
+        "provider": "namecheap",
+        "plan": "Stellar Business shared hosting, 1-month US data-center checkout",
+        "plan_id": "namecheap-stellar-business-monthly",
+        "currency": "USD",
+        "first_term_total": 11.88,
+        "commitment_months": 1,
+        "monthly_equivalent": 11.88,
+        "renewal_monthly_rate": 11.88,
+        "calculation": "11.88 / 1 = 11.88 USD/month",
+        "advertised_price_quote": "$11.88/mo; Billed monthly",
+        "checked_on": "2026-10-01",
+        "captured_at": "2026-10-01T11:06:02.893Z",
+        "entry_url": "https://www.namecheap.com/hosting/shared/",
+        "field_evidence": {
+          "first_term_total": {
+            "quote": "Total $11.88",
+            "url": "https://www.namecheap.com/hosting/purchase/domain-connection/?product=stellar-business&addons=server-location%3Bserver-location-us&duration=1&durationtype=month",
+            "captured_at": "2026-10-01T11:06:12.381Z",
+            "context": "Shared \"Stellar Business\"; selected monthly plan with US data center; checkout Total is $11.88. No domain added to cart; no order submitted."
+          },
+          "commitment_months": {
+            "quote": "Billed monthly",
+            "url": "https://www.namecheap.com/hosting/shared/",
+            "captured_at": "2026-10-01T11:06:02.893Z",
+            "context": "Stellar Business plan card; Monthly selected; Free trial unchecked; US data center selected. The matching checkout URL uses duration=1&durationtype=month."
+          },
+          "renewal_monthly_rate": {
+            "quote": "The new renewal prices for your Shared Hosting plans are as follows: Stellar Business \u2014 1 month \u2014 $11.88",
+            "url": "https://www.namecheap.com/support/knowledgebase/article.aspx/10780/22/shared-hosting-pricing-changes-may-2026/",
+            "captured_at": "2026-10-01T10:52:22.542Z",
+            "context": "Official renewal table; Stellar Business, 1-month billing cycle. Article says updated renewal pricing applies to invoices issued on or after May 19, 2026."
+          },
+          "currency": {
+            "quote": "$ USD",
+            "url": "https://www.namecheap.com/hosting/shared/",
+            "captured_at": "2026-10-01T10:52:56.102Z",
+            "context": "Official page currency selector in the rendered Chrome page."
+          }
+        },
+        "rendered_pricing_evidence": {
+          "url": "https://www.namecheap.com/hosting/shared/",
+          "captured_at": "2026-10-01T11:06:02.893Z",
+          "selected_plan": "Stellar Business",
+          "selected_term": "Monthly",
+          "monthly_rate_quote": "$11.88/mo",
+          "billing_quote": "Billed monthly",
+          "trial_selected": false,
+          "currency_quote": "$ USD",
+          "data_center": "US"
+        },
+        "rendered_checkout_evidence": {
+          "url": "https://www.namecheap.com/hosting/purchase/domain-connection/?product=stellar-business&addons=server-location%3Bserver-location-us&duration=1&durationtype=month",
+          "captured_at": "2026-10-01T11:06:12.381Z",
+          "selected_plan": "Shared \"Stellar Business\"",
+          "selected_term": "1 month (duration=1&durationtype=month)",
+          "first_total": "$11.88",
           "currency_quote": "$ USD",
           "domain_entered": false,
           "paid_optional_addons": false,
