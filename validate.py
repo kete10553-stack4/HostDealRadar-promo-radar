@@ -248,8 +248,9 @@ def check():
                          [pid for pid in visible if pid not in current_ids]], 'Provider directory groups or order disagree with the published snapshot'
     assert 'no configured extraction rule matched' not in directory.lower(), 'Provider directory exposes pipeline jargon'
     guide=(ROOT/'site/guides/godaddy-renewal-coupon/index.html').read_text(encoding='utf-8')
-    assert 'The official answer' in guide and guide.count('class="card community-report"') == 3, 'GoDaddy guide is missing its official answer or three linked user reports'
-    assert guide.count('Auto-renews Jul. 2027 at $') == 3 and 'automatically renews annually' in guide, 'GoDaddy guide omits the three displayed membership renewals or their annual recurrence'
+    assert 'Does GoDaddy have renewal discounts?' in guide and 'not establish a universal renewal coupon' in guide, 'GoDaddy guide omits its official renewal-code answer'
+    assert all(source in guide for source in ('https://porkbun.com/products/domains','https://www.dynadot.com/domain/com','https://www.namecheap.com/domains/registration/gtld/com/')), 'GoDaddy guide omits an official .com renewal-price source'
+    assert 'How to turn off GoDaddy domain auto-renew' in guide and 'Transfer a .com away from GoDaddy' in guide and 'godaddy-renewal-transfer.svg' in guide, 'GoDaddy guide omits its account-setting or transfer guidance'
     assert '/guides/godaddy-renewal-coupon/' in home, 'Homepage does not link the GoDaddy renewal guide'
     godaddy=(ROOT/'site/providers/godaddy/index.html').read_text(encoding='utf-8')
     assert '/guides/godaddy-renewal-coupon/' in godaddy, 'GoDaddy provider page does not link its renewal guide'
