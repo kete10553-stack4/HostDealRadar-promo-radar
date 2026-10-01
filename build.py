@@ -757,9 +757,9 @@ def build(config_path=None, output=None):
             {'@context':'https://schema.org','@type':'CollectionPage','name':heading},
             head_extra='<meta name="robots" content="noindex,follow">' if not po else ''))
     guide_route='/guides/godaddy-renewal-coupon/'
-    guide=template('godaddy-renewal-coupon.html')
-    guide_schema={'@context':'https://schema.org','@type':'Article','headline':'GoDaddy renewal coupon: do renewal promo codes work?','datePublished':'2026-09-15','dateModified':'2026-09-15','author':{'@type':'Organization','name':'HostDealRadar'},'publisher':{'@type':'Organization','name':'HostDealRadar'},'mainEntityOfPage':domain+guide_route}
-    write(Path('guides/godaddy-renewal-coupon/index.html'),page('GoDaddy renewal coupon: do renewal promo codes work? | HostDealRadar','GoDaddy renewal coupons, customer-specific renewal codes, current .com renewal terms, and three linked user reports.',domain+guide_route,guide,guide_schema))
+    guide=template('godaddy-domain-renewal.html')
+    guide_schema={'@context':'https://schema.org','@type':'Article','headline':'GoDaddy coupon code: renewal savings','datePublished':'2026-09-15','dateModified':'2026-10-01','author':{'@type':'Organization','name':'HostDealRadar'},'publisher':{'@type':'Organization','name':'HostDealRadar'},'mainEntityOfPage':domain+guide_route}
+    write(Path('guides/godaddy-renewal-coupon/index.html'),page('GoDaddy coupon code: renewal prices and transfer steps | HostDealRadar','Compare official .com renewal and transfer prices, rare account-specific GoDaddy renewal codes, auto-renew settings, transfer locks, DNS and email migration.',domain+guide_route,guide,guide_schema))
     namecheap_guide_route='/guides/namecheap-domain-renewal-coupon/'
     namecheap_guide=template('namecheap-domain-renewal-coupon.html')
     namecheap_guide_schema={'@context':'https://schema.org','@type':'Article','headline':'Namecheap domain renewal coupon: what works at renewal?','datePublished':'2026-09-15','dateModified':'2026-09-15','author':{'@type':'Organization','name':'HostDealRadar'},'publisher':{'@type':'Organization','name':'HostDealRadar'},'mainEntityOfPage':domain+namecheap_guide_route}
