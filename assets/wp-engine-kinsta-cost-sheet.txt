@@ -1,0 +1,52 @@
+WP ENGINE VS KINSTA — PORTFOLIO COST COMPARISON
+Prepared 2026-10-01. Fill with your own account quotes and usage.
+USD before tax in the published examples; use one currency for your comparison.
+Guide: https://hostdealradar.com/guides/wp-engine-vs-kinsta/
+
+Use one column for staying and one for each destination plan.
+Do not copy an existing Scale renewal into a new Essential quote.
+
+1. CONTRACT / BILLING PERIOD
+Provider and exact plan:
+Quote source and date:
+First amount due:
+Service months purchased:
+Next renewal amount, date and service months:
+Monthly equivalent = amount / service months (not monthly cash payment).
+Tax shown separately:
+Refund / cancellation / prepaid balance treatment:
+
+2. PORTFOLIO AND RECURRING COSTS
+Production sites / included staging / paid environments:
+Storage, server bandwidth, CDN, visits from each billing dashboard:
+Selected traffic meter and included allowance:
+Monthly base + usage + required add-ons + administration hours x rate:
+Backup retention and recovery requirements:
+Update licences / enabled environments:
+Peak workload and capacity confirmed by destination:
+Keep visits and server-bandwidth billing alternatives separate.
+Do not convert Google Analytics sessions into billing units.
+
+3. MOVE COST AND DECISION
+Migration service quote (check included credits):
+Staff hours x hourly cost:
+Subscription overlap and other necessary setup:
+One-time total:
+Monthly savings = current complete recurring cost - destination complete cost.
+Payback months = one-time total / positive monthly savings.
+No positive savings means no cost-saving payback.
+Record operational reasons separately from financial savings.
+
+ILLUSTRATIONS — NOT CUSTOMER BILLS
+Kinsta Lead monthly: 299 + 25 x 0.50 server GB + 15 x 2 storage GB
++ 100 x 0.05 CDN GB = 346.50.
+Assumes 300 GB server usage, 75 GB live storage all month, 1100 GB CDN.
+With full-month 20 GB storage add-on: 299 + 12.50 + 20 + 5 = 336.50.
+No visit overage added to Lead. No other extras included.
+
+Assumed migration: 6 hours x 50 + 100 overlap = 400.
+At sustained complete savings of 31/month: 400 / 31 = 12.90 months.
+The 31 base-price difference alone is not complete savings.
+
+Before cancellation: independent backup, destination checks, final content
+sync, DNS/HTTPS, forms, email, scheduled jobs, restore and billing dates.

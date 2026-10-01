@@ -821,6 +821,9 @@ def build(config_path=None, output=None):
     wpe_guide_route='/guides/wp-engine-renewal-overage/'
     wpe_guide_schema={'@context':'https://schema.org','@type':'Article','headline':'Why did my WP Engine bill increase?','datePublished':'2026-10-01','dateModified':'2026-10-01','author':{'@type':'Organization','name':'HostDealRadar'},'publisher':{'@type':'Organization','name':'HostDealRadar'},'mainEntityOfPage':domain+wpe_guide_route}
     write(Path('guides/wp-engine-renewal-overage/index.html'),page('WP Engine renewal increase, overage fees and staging | HostDealRadar','Distinguish WordPress.com from WP Engine, trace a renewal increase, check billable visits and staging usage, and compare Cloudways Flexible with complete agency costs.',domain+wpe_guide_route,template('wp-engine-renewal-overage.html'),wpe_guide_schema))
+    wpk_guide_route='/guides/wp-engine-vs-kinsta/'
+    wpk_guide_schema={'@context':'https://schema.org','@type':'Article','headline':'WP Engine vs Kinsta: what will renewal cost?','datePublished':'2026-10-01','dateModified':'2026-10-01','author':{'@type':'Organization','name':'HostDealRadar'},'publisher':{'@type':'Organization','name':'HostDealRadar'},'mainEntityOfPage':domain+wpk_guide_route}
+    write(Path('guides/wp-engine-vs-kinsta/index.html'),page('WP Engine vs Kinsta: renewal, overage and migration costs | HostDealRadar','Compare an existing WP Engine renewal with Kinsta Lead and Agency 20: billing periods, traffic meters, staging, update tools and illustrated migration payback.',domain+wpk_guide_route,template('wp-engine-vs-kinsta.html'),wpk_guide_schema))
     def reviewed_row(record):
         total=money(record['first_term_total'],record['currency'])
         monthly=money(record['monthly_equivalent'],record['currency'])
@@ -982,6 +985,7 @@ Planned endpoints return HTTP 503 with `temporarily_unavailable` until authentic
     routes.append(hostinger_domain_route)
     routes.append(a2_guide_route)
     routes.append(wpe_guide_route)
+    routes.append(wpk_guide_route)
     # Keep zero-current provider pages accessible for truthful status reporting,
     # but do not submit them as index targets until a current source record exists.
     routes+=[f'/providers/{p["id"]}/' for p in public_providers if p['id'] in current_provider_ids]

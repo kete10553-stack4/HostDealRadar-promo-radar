@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="760" viewBox="0 0 720 760" role="img" aria-labelledby="title desc">
+<title id="title">WP Engine vs Kinsta: trace the full cost</title><desc id="desc">Compare the contract, recurring bill, and move cost. An illustrative $400 move takes 12.9 months to recover at $31 monthly savings. Savings must remain positive after usage and extras.</desc>
+<rect width="720" height="760" rx="18" fill="#f1f6f7"/>
+<g font-family="Arial, sans-serif" fill="#18343e">
+<text x="34" y="53" font-size="28" font-weight="700">What will the whole portfolio cost?</text>
+<text x="34" y="82" font-size="17" fill="#52616b">Published rates + your contract + your workload</text>
+<rect x="28" y="110" width="664" height="144" rx="12" fill="white"/>
+<text x="50" y="148" font-size="23" font-weight="700">1. Match the contract</text>
+<text x="50" y="183" font-size="20">First payment • renewal • billing term</text>
+<text x="50" y="219" font-size="18">Same site count does not mean the same service.</text>
+<path d="M360 259v26m-8-8 8 8 8-8" fill="none" stroke="#167365" stroke-width="3"/>
+<rect x="28" y="290" width="664" height="157" rx="12" fill="white"/>
+<text x="50" y="328" font-size="23" font-weight="700">2. Add the recurring extras</text>
+<text x="50" y="365" font-size="20">Traffic meter • storage • CDN • paid features</text>
+<text x="50" y="402" font-size="18">Lead example: $299 base → $346.50 total</text>
+<text x="50" y="427" font-size="16" fill="#52616b">Illustrative usage; before tax; see assumptions in the guide.</text>
+<path d="M360 452v26m-8-8 8 8 8-8" fill="none" stroke="#167365" stroke-width="3"/>
+<rect x="28" y="483" width="664" height="181" rx="12" fill="#e0efeb"/>
+<text x="50" y="523" font-size="23" font-weight="700">3. Recover the move cost</text>
+<text x="50" y="560" font-size="20">Service + staff time + subscription overlap</text>
+<text x="50" y="598" font-size="24" font-weight="700">$400 ÷ $31/month = 12.9 months</text>
+<text x="50" y="634" font-size="17">Assumed move cost and sustained complete savings.</text>
+<text x="34" y="706" font-size="20" font-weight="700">No positive recurring savings → no saving-based payback</text>
+<text x="34" y="738" font-size="15" fill="#52616b">HostDealRadar • Official sources read October 1, 2026 • Not a customer bill</text>
+</g></svg>
