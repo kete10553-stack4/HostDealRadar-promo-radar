@@ -621,11 +621,12 @@ def build(config_path=None, output=None):
         monthly=money(record['monthly_equivalent'])
         renewal=money(record['renewal_monthly_rate'])
         months=record['commitment_months']
+        month_label='month' if months == 1 else 'months'
         return (f'<article class="card"><div class="card-top"><span class="provider-name">{e(name)}</span>'
                 '<span class="tag reference">Manual review</span></div>'
                 f'<h3>{e(record["plan"])}</h3><p class="price">{reviewed_link(record,"first_term_total",total)}'
-                f'<span class="period"> upfront for {months} months</span></p>'
-                f'<dl><div><dt>Commitment</dt><dd>{reviewed_link(record,"commitment_months",str(months)+" months")}</dd></div>'
+                f'<span class="period"> upfront for {months} {month_label}</span></p>'
+                f'<dl><div><dt>Commitment</dt><dd>{reviewed_link(record,"commitment_months",str(months)+" "+month_label)}</dd></div>'
                 f'<div><dt>Monthly equivalent</dt><dd>{monthly} (calculated: {total} ÷ {months})</dd></div>'
                 f'<div><dt>Renewal monthly rate</dt><dd>{reviewed_link(record,"renewal_monthly_rate",renewal+"/mo")}</dd></div></dl>'
                 f'<p class="capture">Official pages checked {e(record_review_date(record))} PT. Confirm the latest price and tax at checkout.'
@@ -815,10 +816,11 @@ def build(config_path=None, output=None):
         monthly=money(record['monthly_equivalent'])
         renewal=money(record['renewal_monthly_rate'])
         months=record['commitment_months']
+        month_label='month' if months == 1 else 'months'
         return (f'<tr id="{e(reviewed_anchor(record))}"><td><strong>{e(byid[record["provider"]]["name"])}</strong>'
                 f'<span>{e(record["plan"])}</span></td>'
                 f'<td>{reviewed_link(record,"first_term_total",total)}</td>'
-                f'<td>{reviewed_link(record,"commitment_months",str(months)+" months")}</td>'
+                f'<td>{reviewed_link(record,"commitment_months",str(months)+" "+month_label)}</td>'
                 f'<td>{monthly}<span>Calculated: {total} ÷ {months}</span></td>'
                 f'<td>{reviewed_link(record,"renewal_monthly_rate",renewal+"/mo")}</td>'
                 f'<td>{e(record_review_date(record))} PT<span>Manual official-page review</span></td></tr>')

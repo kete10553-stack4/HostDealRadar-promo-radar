@@ -9957,16 +9957,16 @@
   },
   "page_lastmod": {
     "/": {
-      "hash": "4bd0bc57574356f07ca5d6eea7f7aa08346d432a7e8edbe8c9746f1dcf256230",
-      "lastmod": "2026-10-01T07:41:42Z"
+      "hash": "63b9c1c15b8466d404c805b111dca55d515661f55cdc104f0467e923dd7ed144",
+      "lastmod": "2026-10-01T08:40:54Z"
     },
     "/providers/": {
       "hash": "df1995c44b87e0fbe17a72123dc79b71155718f2554d5062ced5d320b8e2eae3",
       "lastmod": "2026-10-01T06:37:27Z"
     },
     "/compare/": {
-      "hash": "920e7fa21e64669839c5c43655416462b04069b72e5b6911541d4302e7296681",
-      "lastmod": "2026-10-01T07:41:42Z"
+      "hash": "118e87b93a18b26314598cd284bff2fce81fd169349154b16af705fafaf7fead",
+      "lastmod": "2026-10-01T08:40:54Z"
     },
     "/methodology/": {
       "hash": "22dee56f92f0f96a890f3b621e025631df982e15a2a88a15683b60550f85fd26",
@@ -11371,6 +11371,250 @@
           "context": "The page-wide footnote remains unchanged after the selector changes. The term is bound by the active 2 YEAR control, that plan card's checkout URL, and the selected 2 Years checkout option; the three-year footnote is not used as evidence of the selected term."
         },
         "timestamp_note": "captured_at records the start of the corresponding Chrome DOM read; pricing and checkout reads have separate times.",
+        "missing_reasons": {}
+      },
+      {
+        "provider": "knownhost",
+        "plan": "Basic Shared shared hosting, 1-month checkout",
+        "plan_id": "knownhost-basic-monthly",
+        "currency": "USD",
+        "first_term_total": 6.71,
+        "commitment_months": 1,
+        "monthly_equivalent": 6.71,
+        "renewal_monthly_rate": 8.95,
+        "calculation": "6.71 / 1 = 6.71 USD/month",
+        "advertised_price_quote": "$6.71/mo (1-month checkout option)",
+        "checked_on": "2026-10-01",
+        "captured_at": "2026-10-01T08:37:29.493Z",
+        "entry_url": "https://www.knownhost.com/web-hosting",
+        "field_evidence": {
+          "first_term_total": {
+            "quote": "Total Due Today: $6.71",
+            "url": "https://my.knownhost.com/order/main/packages/shared-cloud-hosting/?group_id=16&pricing_id=499",
+            "captured_at": "2026-10-01T08:37:29.493Z",
+            "context": "Basic Shared; selected 1 Month; Atlanta location, plan-included features only, no paid add-ons. Taxes are calculated after registration or login; no order submitted."
+          },
+          "commitment_months": {
+            "quote": "1 Month @ $6.71 (renews @ $8.95)",
+            "url": "https://my.knownhost.com/order/main/packages/shared-cloud-hosting/?group_id=16&pricing_id=499",
+            "captured_at": "2026-10-01T08:37:29.493Z",
+            "context": "Basic Shared; selected 1 Month; Atlanta location, plan-included features only, no paid add-ons. Taxes are calculated after registration or login; no order submitted."
+          },
+          "renewal_monthly_rate": {
+            "quote": "1 Month @ $6.71 (renews @ $8.95)",
+            "url": "https://my.knownhost.com/order/main/packages/shared-cloud-hosting/?group_id=16&pricing_id=499",
+            "captured_at": "2026-10-01T08:37:29.493Z",
+            "context": "Basic Shared; selected 1 Month; Atlanta location, plan-included features only, no paid add-ons. Taxes are calculated after registration or login; no order submitted."
+          },
+          "renewal_currency": {
+            "quote": "priceCurrency\" content=\"USD\"",
+            "html_excerpt": "<meta itemprop=\"priceCurrency\" content=\"USD\">",
+            "url": "https://www.knownhost.com/web-hosting",
+            "captured_at": "2026-10-01T07:40:15.872Z"
+          },
+          "renewal_total": {
+            "quote": "Total When Renewing: 1 Month @ $8.95",
+            "url": "https://my.knownhost.com/order/main/packages/shared-cloud-hosting/?group_id=16&pricing_id=499",
+            "captured_at": "2026-10-01T08:37:29.493Z",
+            "context": "Basic Shared; selected 1 Month; Atlanta location, plan-included features only, no paid add-ons. Taxes are calculated after registration or login; no order submitted."
+          }
+        },
+        "rendered_checkout_evidence": {
+          "url": "https://my.knownhost.com/order/main/packages/shared-cloud-hosting/?group_id=16&pricing_id=499",
+          "captured_at": "2026-10-01T08:37:29.493Z",
+          "selected_plan": "Basic Shared",
+          "selected_term": "1 Month",
+          "selected_option_quote": "1 Month @ $6.71 (renews @ $8.95)",
+          "first_total": "$6.71",
+          "renewal_total": "1 Month @ $8.95",
+          "paid_optional_addons": false,
+          "taxes_note": "Any applicable taxes will be calculated after you register or log in.",
+          "order_submitted": false
+        },
+        "timestamp_note": "captured_at records the start of the corresponding Chrome DOM read; the currency metadata time is the recorded official KnownHost priceCurrency USD markup read.",
+        "missing_reasons": {}
+      },
+      {
+        "provider": "knownhost",
+        "plan": "Standard Shared shared hosting, 1-month checkout",
+        "plan_id": "knownhost-standard-monthly",
+        "currency": "USD",
+        "first_term_total": 9.71,
+        "commitment_months": 1,
+        "monthly_equivalent": 9.71,
+        "renewal_monthly_rate": 12.95,
+        "calculation": "9.71 / 1 = 9.71 USD/month",
+        "advertised_price_quote": "$9.71/mo (1-month checkout option)",
+        "checked_on": "2026-10-01",
+        "captured_at": "2026-10-01T08:38:09.352Z",
+        "entry_url": "https://www.knownhost.com/web-hosting",
+        "field_evidence": {
+          "first_term_total": {
+            "quote": "Total Due Today: $9.71",
+            "url": "https://my.knownhost.com/order/main/packages/shared-cloud-hosting/?group_id=16&pricing_id=503",
+            "captured_at": "2026-10-01T08:38:09.352Z",
+            "context": "Standard Shared; selected 1 Month; Atlanta location, plan-included features only, no paid add-ons. Taxes are calculated after registration or login; no order submitted."
+          },
+          "commitment_months": {
+            "quote": "1 Month @ $9.71 (renews @ $12.95)",
+            "url": "https://my.knownhost.com/order/main/packages/shared-cloud-hosting/?group_id=16&pricing_id=503",
+            "captured_at": "2026-10-01T08:38:09.352Z",
+            "context": "Standard Shared; selected 1 Month; Atlanta location, plan-included features only, no paid add-ons. Taxes are calculated after registration or login; no order submitted."
+          },
+          "renewal_monthly_rate": {
+            "quote": "1 Month @ $9.71 (renews @ $12.95)",
+            "url": "https://my.knownhost.com/order/main/packages/shared-cloud-hosting/?group_id=16&pricing_id=503",
+            "captured_at": "2026-10-01T08:38:09.352Z",
+            "context": "Standard Shared; selected 1 Month; Atlanta location, plan-included features only, no paid add-ons. Taxes are calculated after registration or login; no order submitted."
+          },
+          "renewal_currency": {
+            "quote": "priceCurrency\" content=\"USD\"",
+            "html_excerpt": "<meta itemprop=\"priceCurrency\" content=\"USD\">",
+            "url": "https://www.knownhost.com/web-hosting",
+            "captured_at": "2026-10-01T07:40:15.872Z"
+          },
+          "renewal_total": {
+            "quote": "Total When Renewing: 1 Month @ $12.95",
+            "url": "https://my.knownhost.com/order/main/packages/shared-cloud-hosting/?group_id=16&pricing_id=503",
+            "captured_at": "2026-10-01T08:38:09.352Z",
+            "context": "Standard Shared; selected 1 Month; Atlanta location, plan-included features only, no paid add-ons. Taxes are calculated after registration or login; no order submitted."
+          }
+        },
+        "rendered_checkout_evidence": {
+          "url": "https://my.knownhost.com/order/main/packages/shared-cloud-hosting/?group_id=16&pricing_id=503",
+          "captured_at": "2026-10-01T08:38:09.352Z",
+          "selected_plan": "Standard Shared",
+          "selected_term": "1 Month",
+          "selected_option_quote": "1 Month @ $9.71 (renews @ $12.95)",
+          "first_total": "$9.71",
+          "renewal_total": "1 Month @ $12.95",
+          "paid_optional_addons": false,
+          "taxes_note": "Any applicable taxes will be calculated after you register or log in.",
+          "order_submitted": false
+        },
+        "timestamp_note": "captured_at records the start of the corresponding Chrome DOM read; the currency metadata time is the recorded official KnownHost priceCurrency USD markup read.",
+        "missing_reasons": {}
+      },
+      {
+        "provider": "knownhost",
+        "plan": "Professional Shared shared hosting, 1-month checkout",
+        "plan_id": "knownhost-professional-monthly",
+        "currency": "USD",
+        "first_term_total": 14.96,
+        "commitment_months": 1,
+        "monthly_equivalent": 14.96,
+        "renewal_monthly_rate": 19.95,
+        "calculation": "14.96 / 1 = 14.96 USD/month",
+        "advertised_price_quote": "$14.96/mo (1-month checkout option)",
+        "checked_on": "2026-10-01",
+        "captured_at": "2026-10-01T08:38:28.471Z",
+        "entry_url": "https://www.knownhost.com/web-hosting",
+        "field_evidence": {
+          "first_term_total": {
+            "quote": "Total Due Today: $14.96",
+            "url": "https://my.knownhost.com/order/main/packages/shared-cloud-hosting/?group_id=16&pricing_id=507",
+            "captured_at": "2026-10-01T08:38:28.471Z",
+            "context": "Professional Shared; selected 1 Month; Atlanta location, plan-included features only, no paid add-ons. Taxes are calculated after registration or login; no order submitted."
+          },
+          "commitment_months": {
+            "quote": "1 Month @ $14.96 (renews @ $19.95)",
+            "url": "https://my.knownhost.com/order/main/packages/shared-cloud-hosting/?group_id=16&pricing_id=507",
+            "captured_at": "2026-10-01T08:38:28.471Z",
+            "context": "Professional Shared; selected 1 Month; Atlanta location, plan-included features only, no paid add-ons. Taxes are calculated after registration or login; no order submitted."
+          },
+          "renewal_monthly_rate": {
+            "quote": "1 Month @ $14.96 (renews @ $19.95)",
+            "url": "https://my.knownhost.com/order/main/packages/shared-cloud-hosting/?group_id=16&pricing_id=507",
+            "captured_at": "2026-10-01T08:38:28.471Z",
+            "context": "Professional Shared; selected 1 Month; Atlanta location, plan-included features only, no paid add-ons. Taxes are calculated after registration or login; no order submitted."
+          },
+          "renewal_currency": {
+            "quote": "priceCurrency\" content=\"USD\"",
+            "html_excerpt": "<meta itemprop=\"priceCurrency\" content=\"USD\">",
+            "url": "https://www.knownhost.com/web-hosting",
+            "captured_at": "2026-10-01T07:40:15.872Z"
+          },
+          "renewal_total": {
+            "quote": "Total When Renewing: 1 Month @ $19.95",
+            "url": "https://my.knownhost.com/order/main/packages/shared-cloud-hosting/?group_id=16&pricing_id=507",
+            "captured_at": "2026-10-01T08:38:28.471Z",
+            "context": "Professional Shared; selected 1 Month; Atlanta location, plan-included features only, no paid add-ons. Taxes are calculated after registration or login; no order submitted."
+          }
+        },
+        "rendered_checkout_evidence": {
+          "url": "https://my.knownhost.com/order/main/packages/shared-cloud-hosting/?group_id=16&pricing_id=507",
+          "captured_at": "2026-10-01T08:38:28.471Z",
+          "selected_plan": "Professional Shared",
+          "selected_term": "1 Month",
+          "selected_option_quote": "1 Month @ $14.96 (renews @ $19.95)",
+          "first_total": "$14.96",
+          "renewal_total": "1 Month @ $19.95",
+          "paid_optional_addons": false,
+          "taxes_note": "Any applicable taxes will be calculated after you register or log in.",
+          "order_submitted": false
+        },
+        "timestamp_note": "captured_at records the start of the corresponding Chrome DOM read; the currency metadata time is the recorded official KnownHost priceCurrency USD markup read.",
+        "missing_reasons": {}
+      },
+      {
+        "provider": "knownhost",
+        "plan": "Premium Shared shared hosting, 1-month checkout",
+        "plan_id": "knownhost-premium-monthly",
+        "currency": "USD",
+        "first_term_total": 29.96,
+        "commitment_months": 1,
+        "monthly_equivalent": 29.96,
+        "renewal_monthly_rate": 39.95,
+        "calculation": "29.96 / 1 = 29.96 USD/month",
+        "advertised_price_quote": "$29.96/mo (1-month checkout option)",
+        "checked_on": "2026-10-01",
+        "captured_at": "2026-10-01T08:38:44.406Z",
+        "entry_url": "https://www.knownhost.com/web-hosting",
+        "field_evidence": {
+          "first_term_total": {
+            "quote": "Total Due Today: $29.96",
+            "url": "https://my.knownhost.com/order/main/packages/shared-cloud-hosting/?group_id=16&pricing_id=915",
+            "captured_at": "2026-10-01T08:38:44.406Z",
+            "context": "Premium Shared; selected 1 Month; Atlanta location, plan-included features only, no paid add-ons. Taxes are calculated after registration or login; no order submitted."
+          },
+          "commitment_months": {
+            "quote": "1 Month @ $29.96 (renews @ $39.95)",
+            "url": "https://my.knownhost.com/order/main/packages/shared-cloud-hosting/?group_id=16&pricing_id=915",
+            "captured_at": "2026-10-01T08:38:44.406Z",
+            "context": "Premium Shared; selected 1 Month; Atlanta location, plan-included features only, no paid add-ons. Taxes are calculated after registration or login; no order submitted."
+          },
+          "renewal_monthly_rate": {
+            "quote": "1 Month @ $29.96 (renews @ $39.95)",
+            "url": "https://my.knownhost.com/order/main/packages/shared-cloud-hosting/?group_id=16&pricing_id=915",
+            "captured_at": "2026-10-01T08:38:44.406Z",
+            "context": "Premium Shared; selected 1 Month; Atlanta location, plan-included features only, no paid add-ons. Taxes are calculated after registration or login; no order submitted."
+          },
+          "renewal_currency": {
+            "quote": "priceCurrency\" content=\"USD\"",
+            "html_excerpt": "<meta itemprop=\"priceCurrency\" content=\"USD\">",
+            "url": "https://www.knownhost.com/web-hosting",
+            "captured_at": "2026-10-01T07:40:15.872Z"
+          },
+          "renewal_total": {
+            "quote": "Total When Renewing: 1 Month @ $39.95",
+            "url": "https://my.knownhost.com/order/main/packages/shared-cloud-hosting/?group_id=16&pricing_id=915",
+            "captured_at": "2026-10-01T08:38:44.406Z",
+            "context": "Premium Shared; selected 1 Month; Atlanta location, plan-included features only, no paid add-ons. Taxes are calculated after registration or login; no order submitted."
+          }
+        },
+        "rendered_checkout_evidence": {
+          "url": "https://my.knownhost.com/order/main/packages/shared-cloud-hosting/?group_id=16&pricing_id=915",
+          "captured_at": "2026-10-01T08:38:44.406Z",
+          "selected_plan": "Premium Shared",
+          "selected_term": "1 Month",
+          "selected_option_quote": "1 Month @ $29.96 (renews @ $39.95)",
+          "first_total": "$29.96",
+          "renewal_total": "1 Month @ $39.95",
+          "paid_optional_addons": false,
+          "taxes_note": "Any applicable taxes will be calculated after you register or log in.",
+          "order_submitted": false
+        },
+        "timestamp_note": "captured_at records the start of the corresponding Chrome DOM read; the currency metadata time is the recorded official KnownHost priceCurrency USD markup read.",
         "missing_reasons": {}
       }
     ]
