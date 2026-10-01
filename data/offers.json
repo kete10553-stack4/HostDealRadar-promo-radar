@@ -9953,20 +9953,36 @@
         "Plan 4",
         "Plan 5"
       ]
+    },
+    "hosting-com": {
+      "status": "evidenced",
+      "request_url": "https://hosting.com/hosting/",
+      "http_status": 200,
+      "visible_excerpt": "Web Hosting Plans That Grow With You Partners United States (Global) Select your country Australia Bangladesh Canada Colombia Spain India Kenya Mexico Nigeria Rwanda United Kingdom United States (Global) 3 million websites hosted Contact us Support you can rely on Live Chat Real-",
+      "checked_at": "2026-10-01T11:49:20Z",
+      "capture_status": "no_price_rule",
+      "reason": "Official source and robots.txt were checked successfully. No deterministic price rule can be written (billing_term_unbound), so no offer was published. Evidence: The official comparison matrix displays Every 36 months; the Starter checkout read on 2026-10-01 instead binds the selected option to 4-year term and Renews every 4 years. Automated prices stay withheld until a stable plan-specific price and billing-term rule is verified; the dated manual checkout example is separate.",
+      "blocker": "billing_term_unbound",
+      "blocker_evidence": "The official comparison matrix displays Every 36 months; the Starter checkout read on 2026-10-01 instead binds the selected option to 4-year term and Renews every 4 years. Automated prices stay withheld until a stable plan-specific price and billing-term rule is verified; the dated manual checkout example is separate.",
+      "published_count": 0,
+      "captured_count": 0,
+      "retained_count": 0,
+      "captured_slugs": [],
+      "retained_slugs": []
     }
   },
   "page_lastmod": {
     "/": {
-      "hash": "b9e7e18df40a73420c5a644610bf44bfffdc63c2f79deac8204fa470955a14b6",
-      "lastmod": "2026-10-01T11:07:32Z"
+      "hash": "3a7e95a2eb09d551d55ca249a9fb139c8251624cf4ec0e744072900b03d27043",
+      "lastmod": "2026-10-01T11:49:32Z"
     },
     "/providers/": {
-      "hash": "df1995c44b87e0fbe17a72123dc79b71155718f2554d5062ced5d320b8e2eae3",
-      "lastmod": "2026-10-01T06:37:27Z"
+      "hash": "10b9c1d00bd5fedaf56d6a02eefcb30d6ca1ee09e5da57098c0ac9939226cab2",
+      "lastmod": "2026-10-01T11:49:32Z"
     },
     "/compare/": {
-      "hash": "2562e5d72cec9228acc3ee834227d954f60322de7030056480e547949da7e538",
-      "lastmod": "2026-10-01T11:07:32Z"
+      "hash": "90fb90379fe5e6c3c2447c99ac3e00b208117beb7649eda946c2b26987f68776",
+      "lastmod": "2026-10-01T11:49:32Z"
     },
     "/methodology/": {
       "hash": "22dee56f92f0f96a890f3b621e025631df982e15a2a88a15683b60550f85fd26",
@@ -11814,6 +11830,61 @@
           "order_submitted": false
         },
         "timestamp_note": "captured_at records the start of the corresponding Chrome DOM read; the currency metadata time is the recorded official KnownHost priceCurrency USD markup read.",
+        "missing_reasons": {}
+      },
+      {
+        "provider": "hosting-com",
+        "plan": "Starter (Shared Hosting), 4-year checkout",
+        "plan_id": "hosting-com-starter-four-year",
+        "currency": "USD",
+        "first_term_total": 95.49,
+        "commitment_months": 48,
+        "monthly_equivalent": 1.99,
+        "renewal_monthly_rate": 13.99,
+        "calculation": "First term: 95.49 / 48 = 1.989375 USD/month, displayed as $1.99. Renewal: $671.52 / 48 months = $13.99 USD/month.",
+        "advertised_price_quote": "4-year term $1.99 / mo",
+        "checked_on": "2026-10-01",
+        "captured_at": "2026-10-01T11:41:32.111Z",
+        "entry_url": "https://hosting.com/package-comparison/",
+        "field_evidence": {
+          "first_term_total": {
+            "quote": "Subtotal $95.49; Total $95.49",
+            "url": "https://checkout.hosting.com/order/basket/",
+            "captured_at": "2026-10-01T11:41:32.111Z",
+            "context": "Hosting.com Shared Hosting, Starter; checkout selected 4-year term; USD; Dallas, TX; 5 websites, 3 staging websites, 15GB webspace; WH4YAL discount already active; no domain registered, no paid add-ons, order not submitted. Displayed prices exclude taxes. The package-comparison matrix also displayed \u201cEvery 36 months\u201d; the selected term here is taken from the checkout basket, which states 4 years."
+          },
+          "commitment_months": {
+            "quote": "4-year term; Renews every 4 years.",
+            "url": "https://checkout.hosting.com/order/basket/",
+            "captured_at": "2026-10-01T11:41:32.111Z",
+            "context": "Hosting.com Shared Hosting, Starter; checkout selected 4-year term; USD; Dallas, TX; 5 websites, 3 staging websites, 15GB webspace; WH4YAL discount already active; no domain registered, no paid add-ons, order not submitted. Displayed prices exclude taxes. The package-comparison matrix also displayed \u201cEvery 36 months\u201d; the selected term here is taken from the checkout basket, which states 4 years."
+          },
+          "renewal_monthly_rate": {
+            "quote": "Renews every 4 years. Usually $671.52.",
+            "url": "https://checkout.hosting.com/order/basket/",
+            "captured_at": "2026-10-01T11:41:32.111Z",
+            "context": "Hosting.com Shared Hosting, Starter; checkout selected 4-year term; USD; Dallas, TX; 5 websites, 3 staging websites, 15GB webspace; WH4YAL discount already active; no domain registered, no paid add-ons, order not submitted. Displayed prices exclude taxes. The package-comparison matrix also displayed \u201cEvery 36 months\u201d; the selected term here is taken from the checkout basket, which states 4 years."
+          },
+          "currency": {
+            "quote": "USD",
+            "url": "https://checkout.hosting.com/order/basket/",
+            "captured_at": "2026-10-01T11:41:32.111Z",
+            "context": "Hosting.com Shared Hosting, Starter; checkout selected 4-year term; USD; Dallas, TX; 5 websites, 3 staging websites, 15GB webspace; WH4YAL discount already active; no domain registered, no paid add-ons, order not submitted. Displayed prices exclude taxes. The package-comparison matrix also displayed \u201cEvery 36 months\u201d; the selected term here is taken from the checkout basket, which states 4 years."
+          }
+        },
+        "rendered_checkout_evidence": {
+          "url": "https://checkout.hosting.com/order/basket/",
+          "captured_at": "2026-10-01T11:41:32.111Z",
+          "selected_plan": "Starter",
+          "selected_term": "4-year term",
+          "selected_option_quote": "4-year term $1.99 / mo; Renews every 4 years. Usually $671.52.",
+          "first_total": "$95.49",
+          "renewal_total": "$671.52 every 4 years (official wording: \u201cUsually $671.52.\u201d)",
+          "paid_optional_addons": false,
+          "taxes_note": "Prices shown exclude taxes.",
+          "order_submitted": false
+        },
+        "timestamp_note": "captured_at is the timestamp returned by the browser immediately before reading the rendered checkout DOM on 2026-10-01.",
         "missing_reasons": {}
       }
     ]
