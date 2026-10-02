@@ -26,8 +26,8 @@
   body:has(.wpk-page) .wrap { width: calc(100% - 32px); }
   .wpk-page.section { padding-top: 18px; padding-bottom: 28px; font-size: 16px; line-height: 1.65; }
   .wpk-page .breadcrumbs { margin-bottom: 12px; font-size: 13px; }
-  .wpk-page h1 { margin-bottom: 16px; font-size: 26px; line-height: 1.18; letter-spacing: -.7px; }
-  .wpk-page h2 { margin-top: 32px; font-size: 23px; line-height: 1.25; letter-spacing: -.4px; }
+  .wpk-page h1 { margin-bottom: 18px; font-size: 29px; line-height: 1.23; letter-spacing: -.45px; }
+  .wpk-page h2 { margin-top: 32px; font-size: 23px; line-height: 1.32; letter-spacing: -.2px; }
   .wpk-page h3 { margin-top: 24px; margin-bottom: 8px; font-size: 19px; line-height: 1.35; }
   .wpk-page .answer-box { padding: 12px 14px; font-size: 16px; line-height: 1.5; }
   .wpk-page .answer-box p + p { margin-top: 12px; }
