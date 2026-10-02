@@ -485,6 +485,8 @@ def build(config_path=None, output=None):
     global OUT
     OUT=Path(output) if output else ROOT/'site'
     cfg=load_config(config_path); domain=cfg['site']['domain'].rstrip('/'); payload=json.loads(DATA.read_text(encoding='utf-8'))
+    style_version=hashlib.sha256((ASSETS/'style.css').read_bytes()).hexdigest()[:12]
+    wp_engine_kinsta_css_version=hashlib.sha256((ASSETS/'wp-engine-kinsta.css').read_bytes()).hexdigest()[:12]
     byid={p['id']:p for p in cfg['providers']}; statuses=payload.get('source_status',{})
     rules={(r['provider'], r.get('title')): r for r in cfg['extractors']}
     # A provider whose official page was opened but yields no deterministic rule
@@ -514,7 +516,7 @@ def build(config_path=None, output=None):
     def write_bytes(path, data):
         path=Path(path); target=OUT/path; target.parent.mkdir(parents=True,exist_ok=True); target.write_bytes(data)
     def page(title, description, canonical, content, schema, head_extra=''):
-        return template('base.html',title=e(title),description=e(description),canonical=e(canonical),brand=e(cfg['site']['brand']),tagline=e(cfg['settings']['tagline']),repo=e(cfg['settings']['repo_url']),social_image='',head_extra=head_extra,footer_status=e('Data source checks are automated.'),content=content,schema=json.dumps(schema,separators=(',',':')))
+        return template('base.html',title=e(title),description=e(description),canonical=e(canonical),brand=e(cfg['site']['brand']),tagline=e(cfg['settings']['tagline']),repo=e(cfg['settings']['repo_url']),social_image='',head_extra=head_extra,footer_status=e('Data source checks are automated.'),content=content,schema=json.dumps(schema,separators=(',',':')),style_version=style_version)
     def card(o, historical=False):
         p=byid[o['provider']]; state, message=states[o['slug']]; terms=[]
         rule=rules.get((o['provider'], o['title']), {})
@@ -823,7 +825,7 @@ def build(config_path=None, output=None):
     write(Path('guides/wp-engine-renewal-overage/index.html'),page('WP Engine renewal increase, overage fees and staging | HostDealRadar','Distinguish WordPress.com from WP Engine, trace a renewal increase, check billable visits and staging usage, and compare Cloudways Flexible with complete agency costs.',domain+wpe_guide_route,template('wp-engine-renewal-overage.html'),wpe_guide_schema))
     wpk_guide_route='/guides/wp-engine-vs-kinsta/'
     wpk_guide_schema={'@context':'https://schema.org','@type':'Article','headline':'WP Engine vs Kinsta: what will renewal cost?','datePublished':'2026-10-01','dateModified':'2026-10-01','author':{'@type':'Organization','name':'HostDealRadar'},'publisher':{'@type':'Organization','name':'HostDealRadar'},'mainEntityOfPage':domain+wpk_guide_route}
-    write(Path('guides/wp-engine-vs-kinsta/index.html'),page('WP Engine vs Kinsta: renewal, overage and migration costs | HostDealRadar','Compare an existing WP Engine renewal with Kinsta Lead and Agency 20: billing periods, traffic meters, staging, update tools and illustrated migration payback.',domain+wpk_guide_route,template('wp-engine-vs-kinsta.html'),wpk_guide_schema,head_extra='<link rel="stylesheet" href="/assets/wp-engine-kinsta.css">'))
+    write(Path('guides/wp-engine-vs-kinsta/index.html'),page('WP Engine vs Kinsta: renewal, overage and migration costs | HostDealRadar','Compare an existing WP Engine renewal with Kinsta Lead and Agency 20: billing periods, traffic meters, staging, update tools and illustrated migration payback.',domain+wpk_guide_route,template('wp-engine-vs-kinsta.html'),wpk_guide_schema,head_extra=f'<link rel="stylesheet" href="/assets/wp-engine-kinsta.css?v={wp_engine_kinsta_css_version}">'))
     def reviewed_row(record):
         total=money(record['first_term_total'],record['currency'])
         monthly=money(record['monthly_equivalent'],record['currency'])
