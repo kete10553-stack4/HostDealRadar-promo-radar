@@ -24,6 +24,19 @@
     {"url":"https://kinsta.com/docs/wordpress-hosting/wordpress-migrations/migrating-to-kinsta/","topic":"Standard/expedited migration, credits, testing and cutover"},
     {"url":"https://wpengine.com/support/wp-engine-site-migration/","topic":"Plugin migration boundaries, testing, DNS and resync"}
   ],
+  "alternatives_review": {
+    "review_date": "2026-10-01",
+    "scope": "Same-page section grouped by billing basis; one row per provider, WP Engine included as the reference. No new alternatives URL.",
+    "method": "Official public price/policy text reviewed; no account, customer invoice, checkout, capacity or support measurement.",
+    "rows": [
+      {"provider":"WP Engine","price_url":"https://wpengine.com/plans/","policy_urls":["https://wpengine.com/support/usage/"],"finding":"Account storage includes Production, Staging, Development and transferable environments; official automated backups excluded. Storage inclusion does not establish an automatic per-GB charge or separate staging tariff."},
+      {"provider":"Kinsta","price_url":"https://kinsta.com/pricing/","policy_urls":["https://kinsta.com/docs/billing/wordpress-hosting-plans/wordpress-choosing-the-right-plan/","https://kinsta.com/docs/wordpress-hosting/staging-environment/"],"finding":"Launch through Lead are server-bandwidth-only; Agency20 has visits/bandwidth options. Staging disk excluded from plan storage; Premium Staging subscription and CDN consumption remain distinct."},
+      {"provider":"Cloudways Flexible (DigitalOcean)","price_url":"https://www.cloudways.com/en/pricing.php","policy_urls":["https://support.cloudways.com/en/articles/5116158-guide-to-billing-at-cloudways","https://support.cloudways.com/en/articles/5124886-how-to-create-a-staging-environment"],"finding":"Server resource billing, unmetered visits, configuration-dependent resource/add-on charges. Staging clone occupies chosen server disk. Comparison does not price Autonomous or assert capacity/savings."},
+      {"provider":"SiteGround shared WordPress","price_url":"https://www.siteground.com/wordpress-hosting.htm","policy_urls":["https://www.siteground.com/kb/fair-use-siteground-hosting/","https://www.siteground.com/tutorials/staging/create-staging","https://www.siteground.com/kb/how_to_reduce_the_number_of_inodes_my_account_uses"],"finding":"Shared resource policy includes CPU/RAM/I/O/inodes. Staging copies use files/inodes; creation requires more than51% free space and more than20% free inodes. No per-visit charge or 20-site matched quote inferred."}
+    ],
+    "illustration": {"assumed_live_files_database_gb":20,"assumed_staging_clone_gb":20,"wp_engine_two_copy_storage_gb":40,"kinsta_live_storage_gb":20,"kinsta_staging_contribution_gb":0,"boundary":"Capacity illustration, not measured usage/invoice or tariff. Excludes other environments, backups, caches and logs."},
+    "community_boundary":"No new single-source comments quoted as evidence; current section supported by official documents. Supplied search volumes and competitor claims are not independently remeasured."
+  },
   "calculations": [
     {"name":"Twelve monthly charges","formulae":["330*12=3960","299*12=3588","340*12=4080"],"boundary":"Unchanged rates; excludes extras; not annual-plan invoices."},
     {"name":"Annual equivalents","formulae":["2990/12=249.1666667","3400/12=283.3333333"],"boundary":"Rounded to cents; prepaid cost equivalents, not monthly instalments."},
