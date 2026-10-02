@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="850" viewBox="0 0 360 850" role="img" aria-labelledby="title desc">
+<title id="title">Compare the full cost</title><desc id="desc">Mobile layout. Match the contract, add usage and required extras, then calculate migration payback. The dollar amounts are illustrative, before tax, and do not establish an equivalent replacement plan.</desc>
+<rect width="360" height="850" rx="14" fill="#f1f6f7"/>
+<g font-family="Arial, sans-serif" fill="#18343e">
+<text x="20" y="37" font-size="23" font-weight="700">Compare the full cost</text>
+<text x="20" y="65" font-size="17">Your contract + your workload</text>
+<rect x="14" y="90" width="332" height="142" rx="10" fill="white"/>
+<text x="28" y="124" font-size="21" font-weight="700">1. Match the contract</text>
+<text x="28" y="159" font-size="18">First payment • renewal • term</text>
+<text x="28" y="191" font-size="17">Same site count does not mean</text>
+<text x="28" y="215" font-size="17">the same service.</text>
+<path d="M180 240v23m-7-7 7 7 7-7" fill="none" stroke="#167365" stroke-width="3"/>
+<rect x="14" y="274" width="332" height="197" rx="10" fill="white"/>
+<text x="28" y="310" font-size="21" font-weight="700">2. Add recurring extras</text>
+<text x="28" y="346" font-size="18">Traffic meter • storage • CDN</text>
+<text x="28" y="373" font-size="18">Required paid features</text>
+<text x="28" y="410" font-size="21" font-weight="700">Lead: $299 → $346.50</text>
+<text x="28" y="440" font-size="16">Illustrative month; before tax.</text>
+<text x="28" y="462" font-size="16">See the guide's usage assumptions.</text>
+<path d="M180 479v23m-7-7 7 7 7-7" fill="none" stroke="#167365" stroke-width="3"/>
+<rect x="14" y="514" width="332" height="204" rx="10" fill="#e0efeb"/>
+<text x="28" y="550" font-size="21" font-weight="700">3. Recover the move cost</text>
+<text x="28" y="585" font-size="18">Service + time + overlap</text>
+<text x="28" y="626" font-size="22" font-weight="700">$400 ÷ $31/month</text>
+<text x="28" y="656" font-size="22" font-weight="700">= 12.9 months</text>
+<text x="28" y="691" font-size="16">Assumed move cost and sustained</text>
+<text x="28" y="711" font-size="16">complete savings, after all extras.</text>
+<text x="20" y="754" font-size="19" font-weight="700">No positive recurring savings?</text>
+<text x="20" y="783" font-size="19" font-weight="700">No saving-based payback.</text>
+<text x="20" y="818" font-size="14" fill="#52616b">HostDealRadar • Sources read Oct 1, 2026</text>
+<text x="20" y="839" font-size="14" fill="#52616b">Illustration, not a customer bill</text>
+</g></svg>

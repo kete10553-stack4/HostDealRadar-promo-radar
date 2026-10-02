@@ -10,6 +10,10 @@
 .wpk-page table { width: 100%; min-width: 0; table-layout: fixed; margin: 22px 0; font-size: 15px; }
 .wpk-page th, .wpk-page td { overflow-wrap: break-word; vertical-align: top; }
 @media (max-width: 760px) {
+  body:has(.wpk-page) .nav { min-height: 0; padding: 8px 0; gap: 4px; flex-wrap: wrap; }
+  body:has(.wpk-page) .nav .brand { min-height: 36px; font-size: 18px; }
+  body:has(.wpk-page) .nav nav { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); width: 100%; gap: 4px; margin: 0; }
+  body:has(.wpk-page) .nav nav a { display: flex; align-items: center; justify-content: center; min-height: 44px; padding: 6px 3px; font-size: 13px; line-height: 1.25; text-align: center; white-space: normal; }
   .wpk-page table, .wpk-page tbody, .wpk-page tr, .wpk-page td { display: block; width: 100%; }
   .wpk-page thead { display: none; }
   .wpk-page caption { display: block; padding: 14px 16px; }
@@ -20,10 +24,6 @@
 }
 @media (max-width: 600px) {
   body:has(.wpk-page) .wrap { width: calc(100% - 32px); }
-  body:has(.wpk-page) .nav { min-height: 0; padding: 8px 0; gap: 4px; }
-  body:has(.wpk-page) .nav .brand { min-height: 36px; font-size: 18px; }
-  body:has(.wpk-page) .nav nav { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); width: 100%; gap: 4px; margin: 0; }
-  body:has(.wpk-page) .nav nav a { display: flex; align-items: center; justify-content: center; min-height: 44px; padding: 6px 3px; font-size: 13px; line-height: 1.25; text-align: center; white-space: normal; }
   .wpk-page.section { padding-top: 18px; padding-bottom: 28px; font-size: 16px; line-height: 1.65; }
   .wpk-page .breadcrumbs { margin-bottom: 12px; font-size: 13px; }
   .wpk-page h1 { margin-bottom: 16px; font-size: 26px; line-height: 1.18; letter-spacing: -.7px; }
