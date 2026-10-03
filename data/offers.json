@@ -9985,16 +9985,16 @@
   },
   "page_lastmod": {
     "/": {
-      "hash": "fc9dbdb8029e7016ccdf39ff108d26b0588ea1eb6a5226ca04cc6486d3703811",
-      "lastmod": "2026-10-03T11:05:50Z"
+      "hash": "6404f633944522ea30732fc4be318f4cd9706d028512bf0efebd77f24336d2f2",
+      "lastmod": "2026-10-03T11:22:56Z"
     },
     "/providers/": {
       "hash": "0921a05594c10c521a5ee32093089f0f5d917118e4f16ea6d38ee1595e049cfa",
       "lastmod": "2026-10-03T11:05:50Z"
     },
     "/compare/": {
-      "hash": "99b5b7474d521a29e174937f4aca34da600f3319f11d75a0d6b24bf39cce99bf",
-      "lastmod": "2026-10-03T11:05:50Z"
+      "hash": "c46b4b1b845d8547fb2dc71798deffcdf030da71319ab6c1f700a8355c23f964",
+      "lastmod": "2026-10-03T11:22:56Z"
     },
     "/methodology/": {
       "hash": "663fc11d10797d45ef9235191bb2bbfd835177183d0c9d827364a57f3f5cc52a",
@@ -10284,12 +10284,12 @@
   "browser_term_observations": {
     "schema_version": 1,
     "purpose": "Dated manual plan comparisons; not automated current-offer records.",
-    "method": "Official provider pages rendered in the user’s Chrome browser; plan, billing term, currency, total and renewal wording were read from the live page and selected cart.",
+    "method": "Official provider pages rendered in the user’s Chrome browser; plan, billing term, currency, first-term total, and renewal wording were read from the live official page, applicable terms, and selected cart.",
     "checked_on": "2026-10-03",
     "checked_timezone": "America/Los_Angeles",
     "checked_between_utc": [
       "2026-10-03T11:04:45.7603720Z",
-      "2026-10-03T11:04:45.7603720Z"
+      "2026-10-03T11:21:27.000Z"
     ],
     "fields": [
       "first_term_total",
@@ -12040,6 +12040,57 @@
           "paid_optional_addons": false,
           "order_submitted": false,
           "excerpt": "Web Hosting Go; 36 months $6.99 /month SAVE 30%; Plan will renew on 2029-10-03 @ $6.99/month; Order Summary $251.64; Promo: WHGO -$111.60; Total $140.04; All prices are in CAD."
+        }
+      },
+      {
+        "provider": "greengeeks",
+        "plan": "Lite shared hosting (Ecosite Lite 25), annual checkout",
+        "plan_id": "greengeeks-lite-annual",
+        "currency": "USD",
+        "first_term_total": 35.4,
+        "commitment_months": 12,
+        "monthly_equivalent": 2.95,
+        "renewal_monthly_rate": 13.95,
+        "calculation": "35.40 / 12 = 2.95 USD/month",
+        "advertised_price_quote": "$2.95 /month",
+        "checked_on": "2026-10-03",
+        "captured_at": "2026-10-03T11:21:20.000Z",
+        "field_evidence": {
+          "first_term_total": {
+            "quote": "Total due today $35.40",
+            "url": "https://www.greengeeks.com/signup/step2",
+            "captured_at": "2026-10-03T11:21:20.000Z",
+            "context": "Ecosite Lite 25, annual plan; the GreenGeeks order form shows the pricing summary before any account, payment, or terms submission. No order was submitted."
+          },
+          "commitment_months": {
+            "quote": "Pre-paid for 12 months.",
+            "url": "https://www.greengeeks.com/shared-hosting/",
+            "captured_at": "2026-10-03T11:20:46.000Z",
+            "context": "Lite shared-hosting card; linked order form selects Ecosite Lite 25 - Annually."
+          },
+          "renewal_monthly_rate": {
+            "quote": "Renews at $13.95/mo after your first term.",
+            "url": "https://www.greengeeks.com/signup/step2",
+            "captured_at": "2026-10-03T11:21:20.000Z",
+            "context": "Ecosite Lite 25, annual plan; the GreenGeeks order form shows the pricing summary before any account, payment, or terms submission. No order was submitted."
+          },
+          "currency": {
+            "quote": "All prices listed are in US Dollars ($), for all services & server locations unless otherwise specified.",
+            "url": "https://www.greengeeks.com/legal/tos",
+            "captured_at": "2026-10-03T11:21:27.000Z",
+            "context": "GreenGeeks Terms of Service, Currency section; applies to all services and server locations."
+          }
+        },
+        "missing_reasons": {},
+        "rendered_pricing_evidence": {
+          "url": "https://www.greengeeks.com/signup/step2",
+          "captured_at": "2026-10-03T11:21:20.000Z",
+          "selected_plan": "Ecosite Lite 25",
+          "selected_term": "Annually (12 months)",
+          "paid_optional_addons": "No separate paid add-on lines shown in the order summary.",
+          "order_submitted": false,
+          "taxes_note": "Listed fees for the Services do not include any applicable sales, use, revenue, excise or other taxes imposed by any taxing authority.",
+          "excerpt": "Ecosite Lite 25 - Annually - $2.95/month; Standard price $167.40/yr; Total due today $35.40; Renews at $13.95/mo after your first term."
         }
       }
     ]
