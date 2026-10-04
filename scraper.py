@@ -325,7 +325,7 @@ def suspended_after_403(provider, records, previous_status):
     """
     reason = (f"Automatic requests suspended after HTTP 403 from {previous_status.get('request_url')}. "
               f"No request was sent in this run. Last 403 response: {previous_status.get('checked_at')}. "
-              "After manual source review, remove this provider's source_status entry in data/offers.json to resume checking.")
+              "A status-row deletion cannot resume checks. One request requires a same-day manual browser review tied to this 403, with the exact official page URL and a verbatim quote from its visible text, plus the official robots.txt HTTP 200 excerpt allowing this configured path, recorded in source_403_clearances.")
     probe = {
         'status': previous_status.get('status', 'unreadable'),
         'request_url': previous_status.get('request_url') or provider['source_url'],
@@ -337,9 +337,42 @@ def suspended_after_403(provider, records, previous_status):
     result['suspended_after_403'] = True
     return result
 
+def source_origin(url):
+    parts = urlsplit(url)
+    return f'{parts.scheme}://{parts.netloc}'
+
+def valid_403_clearance(provider, lock, evidence):
+    """Accept only fresh, one-use human evidence for the exact locked source."""
+    if not isinstance(evidence, dict) or not isinstance(lock, dict):
+        return False
+    source_url = provider['source_url']
+    expected_robots_url = source_origin(source_url) + '/robots.txt'
+    checked_on = datetime.now(timezone.utc).date().isoformat()
+    quote = compact(evidence.get('official_quote') or '')
+    visible_excerpt = compact(evidence.get('official_visible_excerpt') or '')
+    robots_excerpt = evidence.get('robots_excerpt') or ''
+    if (evidence.get('review_method') != 'manual_browser_review'
+            or evidence.get('checked_on') != checked_on
+            or evidence.get('clears_403_checked_at') != lock.get('checked_at')
+            or evidence.get('source_url') != source_url
+            or evidence.get('official_page_url') != source_url
+            or evidence.get('official_http_status') != 200
+            or len(quote) < 12 or quote not in visible_excerpt
+            or evidence.get('robots_url') != expected_robots_url
+            or evidence.get('robots_http_status') != 200
+            or not robots_excerpt.strip()):
+        return False
+    allowed, reason = robots_decision(robots_excerpt, source_url)
+    # Absence of a Disallow directive is not affirmative permission for this
+    # manual reauthorization gate; require an explicit matching Allow rule.
+    return allowed and ': allow:' in reason.lower()
+
 def run(config_path=None):
     cfg = load_config(config_path)
     previous = json.loads(DATA.read_text(encoding='utf-8')) if DATA.exists() else {'offers': []}
+    locks = dict(previous.get('source_403_locks') or {})
+    clearances = dict(previous.get('source_403_clearances') or {})
+    clearance_history = list(previous.get('source_403_history') or [])
     prior_by_provider = {provider['id']: [] for provider in cfg['providers']}
     for offer in previous.get('offers', []):
         if offer.get('provider') in prior_by_provider:
@@ -348,22 +381,57 @@ def run(config_path=None):
     for provider in cfg['providers']:
         old = prior_by_provider[provider['id']]
         prior_status = (previous.get('source_status') or {}).get(provider['id'], {})
-        if prior_status.get('http_status') == 403:
+        if prior_status.get('http_status') == 403 and provider['id'] not in locks:
+            locks[provider['id']] = {key: prior_status.get(key) for key in
+                                     ('request_url', 'http_status', 'checked_at', 'visible_excerpt')}
+        lock = locks.get(provider['id'])
+        clearance = clearances.get(provider['id'])
+        clearance_used = bool(lock and valid_403_clearance(provider, lock, clearance))
+        if lock and not clearance_used:
             output.extend(old)
-            statuses[provider['id']] = suspended_after_403(provider, old, prior_status)
+            status_source = prior_status if prior_status.get('http_status') == 403 else lock
+            statuses[provider['id']] = suspended_after_403(provider, old, status_source)
             continue
+        if clearance_used:
+            # A manual clearance permits one request only. A failed response
+            # consumes it; a new 403 therefore needs fresh human evidence.
+            clearances.pop(provider['id'], None)
         try:
             status, raw, request_url = fetch_source(provider['source_url'], cfg)
         except SourceProbeError as exc:
             output.extend(old)
-            statuses[provider['id']] = retained_status(exc.reason, old,
+            if clearance_used:
+                clearance_history.append({'provider': provider['id'], 'clearance': clearance,
+                                          'attempted_at': now(), 'result': 'request failed',
+                                          'http_status': exc.http_status, 'request_url': exc.request_url})
+            if exc.http_status == 403:
+                locks[provider['id']] = {'request_url': exc.request_url, 'http_status': 403,
+                                         'checked_at': now(), 'visible_excerpt': exc.visible_excerpt}
+                reason = (exc.reason + ' This provider is now locked from further automatic requests. '
+                          'A status-row deletion cannot resume checks; one recheck requires same-day manual evidence of the official page text and an HTTP 200 robots.txt response with an explicit Allow rule for this path, tied to this 403.')
+            else:
+                reason = exc.reason
+                if clearance_used:
+                    reason += ' The prior HTTP 403 lock remains; its one-use manual authorization was consumed, so another recheck requires fresh evidence.'
+            statuses[provider['id']] = retained_status(reason, old,
                 probe_fields(exc.state, exc.request_url, exc.http_status, exc.visible_excerpt))
             continue
         except (URLError, ValueError, TimeoutError, OSError) as exc:
             output.extend(old)
-            statuses[provider['id']] = retained_status(f'Official source could not be checked: {exc}.', old,
+            reason = f'Official source could not be checked: {exc}.'
+            if clearance_used:
+                clearance_history.append({'provider': provider['id'], 'clearance': clearance,
+                                          'attempted_at': now(), 'result': 'request failed',
+                                          'http_status': None, 'request_url': provider['source_url']})
+                reason += ' The prior HTTP 403 lock remains; its one-use manual authorization was consumed, so another recheck requires fresh evidence.'
+            statuses[provider['id']] = retained_status(reason, old,
                 probe_fields('unreadable', provider['source_url']))
             continue
+        if clearance_used:
+            locks.pop(provider['id'], None)
+            clearance_history.append({'provider': provider['id'], 'clearance': clearance,
+                                      'attempted_at': now(), 'result': 'source returned HTTP 200',
+                                      'http_status': status, 'request_url': request_url})
         rules = [rule for rule in cfg['extractors'] if rule.get('provider') == provider['id']]
         source_probe = probe_fields('evidenced', request_url, status, excerpt(raw))
         auxiliary = configured_source_evidence(rules, raw)
@@ -402,7 +470,9 @@ def run(config_path=None):
         else:
             statuses[provider['id']] = {**source_probe, 'capture_status': 'unmatched', 'reason': 'Official source responded, but no configured extraction rule matched; existing records were retained.', 'published_count': len(retained), 'captured_count': 0, 'retained_count': len(retained), 'captured_slugs': [], 'retained_slugs': [offer['slug'] for offer in retained], 'rule_errors': errors}
         statuses[provider['id']]['unmatched_rules'] = unmatched_rules
-    payload = {'generated_at': now(), 'offers': output, 'source_status': statuses}
+    payload = {'generated_at': now(), 'offers': output, 'source_status': statuses,
+               'source_403_locks': locks, 'source_403_clearances': clearances,
+               'source_403_history': clearance_history}
     # Carry over any top-level key this checker does not own. build.py persists
     # the sitemap lastmod state into this same file, so dropping unknown keys
     # here would reset every lastmod on the next refresh run.
