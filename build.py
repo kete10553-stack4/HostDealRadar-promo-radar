@@ -94,6 +94,10 @@ def stamp(): return datetime.now(timezone.utc).replace(microsecond=0).isoformat(
 VOLATILE=re.compile(r'\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z|\b[A-Z][a-z]{2} \d{1,2}, \d{4}\b')
 def material(text): return VOLATILE.sub('<t>', text)
 def template(name, **fields): return Template((TEMPLATES/name).read_text(encoding='utf-8')).safe_substitute(**fields)
+def asset_version(path):
+    """Hash normalized text so Windows CRLF checkout conversion is immaterial."""
+    content=path.read_text(encoding='utf-8').replace('\r\n','\n').replace('\r','\n')
+    return hashlib.sha256(content.encode('utf-8')).hexdigest()[:12]
 def price(offer):
     if offer.get('price') is not None:
         return money(offer['price'], offer.get('currency','USD'))
@@ -485,16 +489,16 @@ def build(config_path=None, output=None):
     global OUT
     OUT=Path(output) if output else ROOT/'site'
     cfg=load_config(config_path); domain=cfg['site']['domain'].rstrip('/'); payload=json.loads(DATA.read_text(encoding='utf-8'))
-    style_version=hashlib.sha256((ASSETS/'style.css').read_bytes()).hexdigest()[:12]
-    wp_engine_kinsta_css_version=hashlib.sha256((ASSETS/'wp-engine-kinsta.css').read_bytes()).hexdigest()[:12]
+    style_version=asset_version(ASSETS/'style.css')
+    wp_engine_kinsta_css_version=asset_version(ASSETS/'wp-engine-kinsta.css')
     ga4_measurement_id=cfg['settings'].get('ga4_measurement_id', '')
     if ga4_measurement_id and not re.fullmatch(r'G-[A-Z0-9]+', ga4_measurement_id):
         raise ValueError('Invalid GA4 measurement ID in SETTINGS')
     analytics_head=''
     analytics_settings=''
     if ga4_measurement_id:
-        analytics_js_version=hashlib.sha256((ASSETS/'analytics.js').read_bytes()).hexdigest()[:12]
-        analytics_css_version=hashlib.sha256((ASSETS/'analytics.css').read_bytes()).hexdigest()[:12]
+        analytics_js_version=asset_version(ASSETS/'analytics.js')
+        analytics_css_version=asset_version(ASSETS/'analytics.css')
         analytics_head=(f'<link rel="stylesheet" href="/assets/analytics.css?v={analytics_css_version}">'
                         f'<script src="/assets/analytics.js?v={analytics_js_version}" data-ga4-id="{e(ga4_measurement_id)}" defer></script>')
         analytics_settings='<button class="analytics-settings" type="button" data-analytics-settings>Analytics cookie settings</button>'
@@ -644,7 +648,9 @@ def build(config_path=None, output=None):
                 f'<h3>{e(record["plan"])}</h3><p class="price">{reviewed_link(record,"first_term_total",total)}'
                 f'<span class="period"> upfront for {months} {month_label}</span></p>'
                 f'<dl><div><dt>Commitment</dt><dd>{reviewed_link(record,"commitment_months",str(months)+" "+month_label)}</dd></div>'
-                f'<div><dt>Monthly equivalent</dt><dd>{monthly} (calculated: {total} ÷ {months})</dd></div>'
+                f'<div><dt>Monthly equivalent</dt><dd>{monthly} (calculated: {total} ÷ {months})'
+                +(f'<small class="capture">{e(record["monthly_note"])}</small>' if record.get('monthly_note') else '')
+                +'</dd></div>'
                 f'<div><dt>Renewal monthly rate</dt><dd>{reviewed_link(record,"renewal_monthly_rate",renewal+"/mo")}</dd></div></dl>'
                 f'<p class="capture">Official pages checked {e(record_review_date(record))} PT. Confirm the latest price and tax at checkout.'
                 + (' The upfront total was seen in an official cart after plan selection; cart contents may vary by session.' if record.get('entry_url') else '')
@@ -710,8 +716,9 @@ def build(config_path=None, output=None):
         if p['id'] in state_only:
             status_text, detail, _ = state_only_display(status, blockers.get(p['id']))
             current_html='<div class="empty"><h3>'+e(status_text)+'</h3><p>'+e(detail)+'</p></div>'
-            if p['id'] in reviewed_providers:
-                current_html+='<p><a href="/compare/">View dated manual plan examples and their official sources</a>.</p>'
+            if manual_plans:
+                links='; '.join(f'<a href="/compare/#{e(reviewed_anchor(record))}">{e(record["plan"])}</a>' for record in manual_plans)
+                current_html+='<p>Dated manual plan-price records, separate from automated offers and coupon codes: '+links+'.</p>'
             observation=cfg['browser_observations'].get(p['id'])
             if observation:
                 current_html+=source_observation_record(p, observation, status)
@@ -729,18 +736,18 @@ def build(config_path=None, output=None):
                          e(display_reason))
             if po:
                 current_html=''
-            elif manual_plans and p['id']=='namehero':
+            elif manual_plans:
                 unverified_promotions=[o for o in mine if states[o['slug']][0]=='unverified' and o.get('kind')=='promotion']
                 if unverified_promotions:
                     detail=('The automated capture matched the official plan cards, but their promotional end dates were not verified, '
                             'so those records are not labeled current. A separate dated manual review records package pricing and billing terms; '
-                            'it is a plan-price record, not a coupon-code record.')
+                            'it is a plan-price record, not a current automated offer or coupon-code record.')
                 else:
-                    detail=('A separate dated manual review records package pricing and billing terms. '
+                    detail=('A dated manual review records package pricing and billing terms separately from automated current offers. '
                             'It is a plan-price record, not a coupon-code record.')
                 links='; '.join(f'<a href="/compare/#{e(reviewed_anchor(record))}">{e(record["plan"])}</a>' for record in manual_plans)
                 current_html=('<div class="empty"><h3>No current automated offer is published for this source</h3><p>'+e(detail)+'</p>'
-                              '<p>Dated manual plan-price record: '+links+'.</p></div>')
+                              '<p>Dated manual plan-price record'+('s' if len(manual_plans)!=1 else '')+': '+links+'.</p></div>')
             else:
                 detail=('Official page read, but no captured record qualifies as a current offer.'
                         if source_matched else display_reason)
@@ -748,15 +755,15 @@ def build(config_path=None, output=None):
         focus=cfg['page_focus'].get(p['id'])
         if po:
             note=provider_summary(po)+' Current source records follow stored record order; this is not a recommendation or a ranking of price, quality, or value.'
-        elif manual_plans and p['id']=='namehero':
+        elif manual_plans:
             note=('This status covers automated current offers. The dated manual plan-price record linked above documents the package price and billing term; '
-                  'it is not a coupon-code record.')
+                  'it is separate from a current automated offer and is not a coupon-code record.')
         else:
             note='No current source record is published. This page remains available to report the latest source-check status; it is not included in the sitemap.'
         if focus and po:
             note=(f'{focus}: official price, billing, and renewal terms appear below only when captured from the provider’s public page. '
                   f'This page keeps related {p["name"]} plan records together. '+note)
-        elif focus:
+        elif focus and not manual_plans:
             note=(f'{focus}: no current source record is published. This page keeps the latest {p["name"]} source-check status only; '
                   'it is not included in the sitemap.')
         related_guide=template(guide_templates[p['id']]) if p['id'] in guide_templates else ''
@@ -771,7 +778,7 @@ def build(config_path=None, output=None):
                          f'{offer_name(p["name"],first["title"])} is shown with the exact price wording from the provider page.')
         else:
             heading=f'{p["name"]} pricing availability'
-            if manual_plans and p['id']=='namehero':
+            if manual_plans:
                 description=(f'No automated {p["name"]} offer is currently published. '
                              'See dated manual plan-price records and the latest official source status.')
             else:
@@ -786,7 +793,7 @@ def build(config_path=None, output=None):
                   'an official upfront total, published monthly equivalent, and monthly renewal rate for the same plan. '
                   'Records below show only the individual fields supported by their official source.'
                   if po else ('No automated offer is marked current for this provider. Dated manual plan-price records appear below; '
-                              'they document package terms and are not coupon-code records.' if manual_plans and p['id']=='namehero' else
+                              'they document package terms and are not coupon-code records.' if manual_plans else
                               'No current source record is published for this provider; no three-term comparison can be made.'))
         content=template('provider.html',provider=e(heading),judgment=e(judgment),note=e(note),source=e(p['source_url']),source_status=e(status_text),related_guide=related_guide,offers=current_html+details,page_disclosure=e(page_disclosure))
         write(Path('providers')/p['id']/'index.html',page(
@@ -872,7 +879,9 @@ def build(config_path=None, output=None):
                 f'<span>{e(record["plan"])}</span></td>'
                 f'<td>{reviewed_link(record,"first_term_total",total)}</td>'
                 f'<td>{reviewed_link(record,"commitment_months",str(months)+" "+month_label)}</td>'
-                f'<td>{monthly}<span>Calculated: {total} ÷ {months}</span></td>'
+                f'<td>{monthly}<span>Calculated: {total} ÷ {months}</span>'
+                +(f'<span>{e(record["monthly_note"])}</span>' if record.get('monthly_note') else '')
+                +'</td>'
                 f'<td>{reviewed_link(record,"renewal_monthly_rate",renewal+"/mo")}</td>'
                 f'<td>{e(record_review_date(record))} PT<span>Manual official-page review</span></td></tr>')
     compare_reviewed=('<h2>Complete plan examples</h2><p>'+e(review_intro)+'</p><div class="table-wrap"><table>'

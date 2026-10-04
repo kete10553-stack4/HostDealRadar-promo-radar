@@ -9991,16 +9991,16 @@
   },
   "page_lastmod": {
     "/": {
-      "hash": "e3d7dd1017245693f184238efeaaa5c77b42082ad271fdd57fee237d856f91ea",
-      "lastmod": "2026-10-04T03:46:23Z"
+      "hash": "136aa5161327fe7ad3e088160fc79521be4ec2db9b1696c8cffcfbf163bd1c5d",
+      "lastmod": "2026-10-04T11:29:06Z"
     },
     "/providers/": {
       "hash": "fc1300b0845d211956b11d5437cf6a1bad8aab607f20a33ca12ff05c37d7ba13",
       "lastmod": "2026-10-04T04:03:10Z"
     },
     "/compare/": {
-      "hash": "c6c1ac00bb05e7d54d375f14b8483c408b6135c7c900ac50cea60bf2354a8f71",
-      "lastmod": "2026-10-04T03:46:23Z"
+      "hash": "dee3699e94550b9829913b32d6ebd41517f45389b867c3a0eb8ad4866699ef82",
+      "lastmod": "2026-10-04T11:29:06Z"
     },
     "/methodology/": {
       "hash": "28eafae87918ce443a12dae54c9c97ba4861192e009d59eab9c28aab9c913f3a",
@@ -12170,6 +12170,73 @@
           "order_submitted": false,
           "excerpt": "Starter Cloud Hosting; Billing Period 36 months; 75% OFF; Auto-renews October 2029 for $418.86; Order Summary Starter Cloud Hosting 3-year plan; Today's Total $104.72."
         }
+      },
+      {
+        "provider": "stablehost",
+        "plan": "Starter shared web hosting, 12-month checkout",
+        "plan_id": "stablehost-starter-12-month-first-year",
+        "currency": "USD",
+        "first_term_total": 76.26,
+        "commitment_months": 12,
+        "monthly_equivalent": 6.36,
+        "renewal_monthly_rate": 12.71,
+        "calculation": "76.26 / 12 = 6.355, rounded to 6.36 USD/month",
+        "advertised_price_quote": "$6.35/month promotional card rate; comparison monthly equivalent uses the observed cart total divided by 12.",
+        "checked_on": "2026-10-04",
+        "captured_at": "2026-10-04T11:24:58.936Z",
+        "entry_url": "https://www.stablehost.com/web-hosting.php",
+        "field_evidence": {
+          "first_term_total": {
+            "quote": "Total pay: $76.26",
+            "url": "https://www.stablehost.com/cart.php",
+            "captured_at": "2026-10-04T11:24:58.936Z",
+            "context": "Unlimited Starter; 12 Months selected. Cart displays Price: $152.52, Discount: $76.26, and Total pay: $76.26. The existing hostdealradar.com domain is listed as Free. Coupon field was blank; order not submitted."
+          },
+          "commitment_months": {
+            "quote": "12 Months - $12.71",
+            "url": "https://www.stablehost.com/cart.php",
+            "captured_at": "2026-10-04T11:24:58.936Z",
+            "context": "The Unlimited Starter checkout selector shows 12 Months - $12.71 as the selected term; matching cart total is $76.26 after the displayed discount."
+          },
+          "renewal_monthly_rate": {
+            "quote": "12 Month Renewal Pricing: $12.71 / month",
+            "url": "https://www.stablehost.com/web-hosting.php",
+            "captured_at": "2026-10-04T11:24:36.392Z",
+            "context": "StableHost Web Hosting page; STARTER column under the 12 Month Renewal Pricing row. The first-year card price and renewal price are separate values."
+          },
+          "currency": {
+            "quote": "USA - English; $76.26",
+            "url": "https://www.stablehost.com/cart.php",
+            "captured_at": "2026-10-04T11:24:58.936Z",
+            "context": "Official checkout locale is USA - English and the selected plan, discount, and total are displayed with the $ symbol; the configured US source currency is USD."
+          }
+        },
+        "rendered_pricing_evidence": {
+          "url": "https://www.stablehost.com/web-hosting.php",
+          "captured_at": "2026-10-04T11:24:36.392Z",
+          "selected_locale": "USA - English",
+          "plan": "STARTER",
+          "plan_card_excerpt": "50% off; $12.71 $ 6.35 per month",
+          "renewal_quote": "12 Month Renewal Pricing: $12.71 / month",
+          "context": "Rendered official Web Hosting page; same STARTER column and 12-month renewal pricing table."
+        },
+        "rendered_checkout_evidence": {
+          "url": "https://www.stablehost.com/cart.php",
+          "captured_at": "2026-10-04T11:24:58.936Z",
+          "selected_plan": "Unlimited Starter",
+          "selected_term": "12 Months - $12.71",
+          "first_total": "$76.26",
+          "price_before_discount": "$152.52",
+          "discount": "$76.26",
+          "currency_locale": "USA - English",
+          "existing_domain": "hostdealradar.com (Existing Domain; Free)",
+          "paid_optional_addons": false,
+          "coupon_field": "blank",
+          "order_submitted": false,
+          "tax_note": "No separate tax line appeared at this cart step; checkout was not advanced to payment."
+        },
+        "rounding_note": "The official STARTER card displays $6.35/month, while the cart total divided by 12 is $6.355/month. The comparison column is calculated from the observed cart total and commitment, rounded to cents; the card quote is retained separately.",
+        "monthly_note": "Official card rate: $6.35/mo; the cart ratio is $6.355/mo before cent rounding."
       }
     ]
   },
