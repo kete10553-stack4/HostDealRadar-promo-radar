@@ -1,0 +1,87 @@
+{
+  "checked_at_utc": "2026-10-04T11:47:38.9983692Z",
+  "user_date": "2026-10-04",
+  "timezone": "America/Los_Angeles",
+  "method": "Public official pages requested only after robots.txt returned HTTP 200 text/plain and the requested path was not disallowed. No login, checkout, invoice, coupon redemption or customer account was used. Official update dates were absent from the fetched Hosting.com/terms pages.",
+  "verified_now": [
+    "The coupon page still states that the promotional price is for the first term only and renews at the regular rate.",
+    "The renewal pricing page still states that prepaid-period expiration leads to regular pricing.",
+    "The money-back guarantee page still contains its 30-day guarantee statement.",
+    "The official refund/billing and service-terms pages returned HTTP 200; the tested renewal timing, downgrade and customer-panel cancellation conditions matched.",
+    "The current refund/billing policy still contains the statement that Hosting.com is operated by A2 Hosting, LLC."
+  ],
+  "not_reverified": [
+    "The published user guide still cites the October 3 capture for the A2/Hosting.com shared-operator wording and A2-site redirect. This live run did not establish a current redirect or match the operator sentence.",
+    "The Hosting.com migration FAQ URL in the supplied report now returns 404 at the plural address; the guide does not rely on that FAQ."
+  ],
+  "sources": [
+    {
+      "url": "https://hosting.com/about/coupons/",
+      "http_status": 200,
+      "title": "Web Hosting Coupons | hosting.com Discount Coupons & Codes",
+      "source_modified_dates": null,
+      "sha256": "8a17ccb37fa736d89f6736e1ca8c595c978d7fb31e0019cc3657f3f4e601261a",
+      "checks": {
+        "firstTermOnly": true
+      },
+      "limitations": null
+    },
+    {
+      "url": "https://hosting.com/about/renewal-pricing/",
+      "http_status": 200,
+      "title": "Renewal Pricing For Our High Performance, Secure Web Hosting",
+      "source_modified_dates": null,
+      "sha256": "520aabb7461a11c3f9d36072b17f147dae334b6a5265166fee086f48e908ad8c",
+      "checks": {
+        "regularRenewal": true
+      },
+      "limitations": null
+    },
+    {
+      "url": "https://hosting.com/about/money-back-guarantee/",
+      "http_status": 200,
+      "title": "Money Back Guarantee Hosting | 30 Day Hosting Guarantee",
+      "source_modified_dates": null,
+      "sha256": "883365c4bf73eb7b646ba7319aedb0fecd59e31cc75a5f6a50d7f10af9bc5750",
+      "checks": {
+        "thirtyDays": true
+      },
+      "limitations": null
+    },
+    {
+      "url": "https://terms.hosting.com/refund-billing-policy",
+      "http_status": 200,
+      "title": "Refund Billing Policy - hosting.com",
+      "source_modified_dates": null,
+      "sha256": "4c2113182d743e82d1bed6d1c63a617c28e8d465ba4ee10dcdfbdd876f9ae27c",
+      "checks": {
+        "renewalTiming": true,
+        "planChangeTerms": true,
+        "operator_statement_current": true
+      },
+      "limitations": null,
+      "operator_statement_check_method": "A follow-up request to this same source returned HTTP 200 and contained the exact operator sentence."
+    },
+    {
+      "url": "https://terms.hosting.com/service-terms",
+      "http_status": 200,
+      "title": "Service Terms - hosting.com",
+      "source_modified_dates": null,
+      "sha256": "83a5abe6e7c0dc39202aa9a54827d185821ebd4c086e7ba328db14f7728bf7a2",
+      "checks": {
+        "cancelThroughPortal": true
+      },
+      "limitations": null
+    },
+    {
+      "url": "https://hosting.com/about/contract-migration-faq/",
+      "http_status": 404,
+      "note": "An incorrectly singular path was queried by the first audit script. It is not the documented FAQ address."
+    },
+    {
+      "url": "https://hosting.com/about/contract-migration-faqs/",
+      "http_status": 404,
+      "note": "Follow-up check of the plural path shown in the supplied report. It returned 404; no redirects were followed."
+    }
+  ]
+}

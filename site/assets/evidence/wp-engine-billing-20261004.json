@@ -1,0 +1,86 @@
+{
+  "checked_at_utc": "2026-10-04T11:47:38.9983692Z",
+  "user_date": "2026-10-04",
+  "timezone": "America/Los_Angeles",
+  "method": "Public official pages checked under the current robots.txt policy. The WP Engine robots file specifies crawl-delay: 5 seconds. The page requests were sent too quickly; the final plan-change request returned HTTP 429 and all further requests to wpengine.com were stopped. No user account, invoice, checkout or coupon redemption was used.",
+  "verified_now": [
+    "The overage page returned HTTP 200, still matched $2 per 1,000 excess monthly visits for the named plans, and still matched monthly charges during annual subscription prepayment. Its current metadata reports 2026/2/9 7:41:44.",
+    "The bandwidth/storage page returned HTTP 200. Its metadata reports 2026/7/12 16:55:11. Storage purchase wording and all-environments storage wording matched.",
+    "The visit-count page returned HTTP 200 and matched unique IP per UTC day and suspected-bot text; metadata reports 2025/12/3 6:29:02.",
+    "The environments page returned HTTP 200 and matched the non-billable Sandbox wording; metadata reports 2026/8/26 11:25:17."
+  ],
+  "not_reverified": [
+    "The exact bandwidth-no-overage wording saved on October 3 did not match the October 4 fetched HTML check. This does not establish whether the official rule changed or the page markup/text changed. Do not infer a current $0 bandwidth-overage rule from that failed text match.",
+    "The plan-change page returned HTTP 429. Its immediate-upgrade/30-day-downgrade terms remain dated to the October 3 capture (then reported as updated September 14, 2026)."
+  ],
+  "sources": [
+    {
+      "url": "https://wpengine.com/overage-pricing/",
+      "http_status": 200,
+      "title": "Overage Pricing & Visitor Limits | WP Engine Support",
+      "source_modified_dates": [
+        "2026-02-09T15:41:44+00:00"
+      ],
+      "sha256": "5143870fc1b1b827e9e145b093a390b4c4c769d9ccbf28f40ce827eaf95a13c4",
+      "checks": {
+        "visitorRate": true,
+        "annualStillMonthly": true
+      },
+      "limitations": null
+    },
+    {
+      "url": "https://wpengine.com/support/bandwidth-cause-effects/",
+      "http_status": 200,
+      "title": "Reduce Bandwidth and Storage Usage | WP Engine Support",
+      "source_modified_dates": [
+        "2026-07-12T23:55:11+00:00",
+        "2026-07-12T18:55:11-05:00"
+      ],
+      "sha256": "560350158a4d77a0a43cc8f8740316ade3e7d7dc0c9e3ef1ffa8661558e2895d",
+      "checks": {
+        "bandwidthNoOverage": false,
+        "storageConflict": true,
+        "allEnvironmentsCount": true
+      },
+      "limitations": null
+    },
+    {
+      "url": "https://wpengine.com/support/count-visits/",
+      "http_status": 200,
+      "title": "Understand Billable Visits | WP Engine Support",
+      "source_modified_dates": [
+        "2025-12-03T14:29:02+00:00",
+        "2025-12-03T08:29:02-06:00"
+      ],
+      "sha256": "013e5862661afcea57327bfb49d1cd3335a7d9049c65efe48a79aa9111e960a0",
+      "checks": {
+        "uniqueIpPerDay": true,
+        "suspectedBotsMentioned": true
+      },
+      "limitations": null
+    },
+    {
+      "url": "https://wpengine.com/support/environments/",
+      "http_status": 200,
+      "title": "Manage Sites and Environments | WP Engine Support",
+      "source_modified_dates": [
+        "2026-08-26T18:25:17+00:00",
+        "2026-08-26T13:25:17-05:00"
+      ],
+      "sha256": "67686c403cf41528b439f631068b84fbce84d20e34939c69ffcfa46d08775333",
+      "checks": {
+        "nonBillableSandbox": true
+      },
+      "limitations": null
+    },
+    {
+      "url": "https://wpengine.com/support/change-plan-user-portal/",
+      "http_status": 429,
+      "title": null,
+      "source_modified_dates": null,
+      "sha256": null,
+      "checks": {},
+      "limitations": "Response status code does not indicate success: 429 (Too Many Requests)."
+    }
+  ]
+}
