@@ -425,6 +425,23 @@ def check():
     compare=(ROOT/'site/compare/index.html').read_text(encoding='utf-8')
     anchors=re.findall(r'<tr id="([^"]+)"',compare)
     assert len(anchors)==len(set(anchors)), 'Comparison plans share duplicate anchors'
+    comparison_rows={}
+    for anchor, row_html in re.findall(r'<tr id="(plan-[^"]+)"(.*?)</tr>',compare,re.S):
+        raw_cells=re.findall(r'<td\b[^>]*>(.*?)</td>',row_html,re.S)
+        comparison_rows[anchor]=[compact(html_unescape(re.sub(r'<[^>]+>',' ',cell))) for cell in raw_cells]
+    assert len(comparison_rows)==len(reviewed), 'Comparison row count differs from the documented plan count'
+    assert set(comparison_rows)=={f'plan-{record.get("plan_id",record["provider"])}' for record in reviewed}, 'Comparison row identifiers differ from the documented plans'
+    for record in reviewed:
+        anchor=f'plan-{record.get("plan_id",record["provider"])}'
+        cells=comparison_rows[anchor]
+        assert len(cells)==6, f'{anchor} does not contain all six comparison columns'
+        total=build.money(record['first_term_total'],record['currency'])
+        monthly=build.money(record['monthly_equivalent'],record['currency'])
+        months=record['commitment_months']
+        expected_calculation=f'Calculated: {total} ÷ {months}'
+        assert cells[3].startswith(monthly) and expected_calculation in cells[3], f'{anchor} is missing its explicit, matching Calculated marker'
+        check_date=build.date_text(record.get('checked_on') or payload.get('browser_term_observations',{}).get('checked_on'))
+        assert check_date+' PT' in cells[5] and 'Manual official-page review' in cells[5], f'{anchor} is missing its own check date or review marker'
     assert all(url.split('#',1)[1] in anchors for url in listed), 'A documented plan link has no comparison row'
     assert 'Unknown' not in home and 'Unknown' not in compare, 'Comparison pages still publish an unverified field'
     assert '>\u00a31.00</a>' in compare and '\u00a310.00/mo' in compare and '\u00a31.00 \u00f7 1' in compare, 'Manual plan prices must retain their sourced GBP currency and calculation'
@@ -436,6 +453,19 @@ def check():
         for field in ('first_term_total','commitment_months','renewal_monthly_rate'):
             source=record['field_evidence'][field]['url']
             assert build.e(source) in compare and build.e(source) in home, f'{record["provider"]} {field} lacks its official link'
+    manual_by_provider={}
+    for record in reviewed:
+        manual_by_provider.setdefault(record['provider'],[]).append(record)
+    for provider_id, records in manual_by_provider.items():
+        provider_page=(ROOT/'site/providers'/provider_id/'index.html').read_text(encoding='utf-8')
+        manual_links=[f'/compare/#plan-{record.get("plan_id",record["provider"])}' for record in records]
+        has_current=any(offer['provider']==provider_id and build.record_state(offer,payload['source_status'],settings)[0]==build.CURRENT for offer in payload['offers'])
+        if not has_current:
+            assert all(link in provider_page for link in manual_links), f'{provider_id} provider page omits a dated manual plan-price record'
+            assert ('No current automated offer is published for this source' in provider_page
+                    or 'This status covers automated current offers.' in provider_page), f'{provider_id} does not distinguish the automated offer state from its manual plan records'
+            assert 'not a coupon-code record' in provider_page, f'{provider_id} does not identify its manual plan-price records'
+            assert 'No current source record is published for this provider; no three-term comparison can be made.' not in provider_page, f'{provider_id} page contradicts its published manual plan records'
     assert 'id="three-term-standard"' in (ROOT/'site/methodology/index.html').read_text(encoding='utf-8'), 'Methodology omits the three-term inclusion standard'
     namecheap_promo=(ROOT/'site/guides/namecheap-promo-code/index.html').read_text(encoding='utf-8')
     assert all(code in namecheap_promo for code in ('WORKMODEDOM','WORKMODEPE','WORKMODESSL')), 'Namecheap guide is missing a cited official code card'
