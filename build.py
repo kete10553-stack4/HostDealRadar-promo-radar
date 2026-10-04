@@ -694,6 +694,7 @@ def build(config_path=None, output=None):
     for p in public_providers:
         mine=[o for o in offers if o['provider']==p['id']]
         po=[o for o in mine if states[o['slug']][0]==CURRENT]
+        manual_plans=[record for record in reviewed if record['provider']==p['id']]
         status=statuses.get(p['id'],{'status':'not checked','reason':'No source check has run yet.'})
         if p['id'] in state_only:
             status_text, detail, _ = state_only_display(status, blockers.get(p['id']))
@@ -717,6 +718,18 @@ def build(config_path=None, output=None):
                          e(display_reason))
             if po:
                 current_html=''
+            elif manual_plans and p['id']=='namehero':
+                unverified_promotions=[o for o in mine if states[o['slug']][0]=='unverified' and o.get('kind')=='promotion']
+                if unverified_promotions:
+                    detail=('The automated capture matched the official plan cards, but their promotional end dates were not verified, '
+                            'so those records are not labeled current. A separate dated manual review records package pricing and billing terms; '
+                            'it is a plan-price record, not a coupon-code record.')
+                else:
+                    detail=('A separate dated manual review records package pricing and billing terms. '
+                            'It is a plan-price record, not a coupon-code record.')
+                links='; '.join(f'<a href="/compare/#{e(reviewed_anchor(record))}">{e(record["plan"])}</a>' for record in manual_plans)
+                current_html=('<div class="empty"><h3>No current automated offer is published for this source</h3><p>'+e(detail)+'</p>'
+                              '<p>Dated manual plan-price record: '+links+'.</p></div>')
             else:
                 detail=('Official page read, but no captured record qualifies as a current offer.'
                         if source_matched else display_reason)
@@ -724,6 +737,9 @@ def build(config_path=None, output=None):
         focus=cfg['page_focus'].get(p['id'])
         if po:
             note=provider_summary(po)+' Current source records follow stored record order; this is not a recommendation or a ranking of price, quality, or value.'
+        elif manual_plans and p['id']=='namehero':
+            note=('This status covers automated current offers. The dated manual plan-price record linked above documents the package price and billing term; '
+                  'it is not a coupon-code record.')
         else:
             note='No current source record is published. This page remains available to report the latest source-check status; it is not included in the sitemap.'
         if focus and po:
@@ -744,8 +760,12 @@ def build(config_path=None, output=None):
                          f'{offer_name(p["name"],first["title"])} is shown with the exact price wording from the provider page.')
         else:
             heading=f'{p["name"]} pricing availability'
-            description=(f'No current {p["name"]} pricing record is published. '
-                         'See the latest official source status and source link.')
+            if manual_plans and p['id']=='namehero':
+                description=(f'No automated {p["name"]} offer is currently published. '
+                             'See dated manual plan-price records and the latest official source status.')
+            else:
+                description=(f'No current {p["name"]} pricing record is published. '
+                             'See the latest official source status and source link.')
         page_disclosure=(f'Links on this page may be affiliate links; HostDealRadar may earn a commission at no extra cost to you.'
                          if p['affiliate_url'] else
                          f'Links on this page go to official {p["name"]} pages. HostDealRadar has no active affiliate relationship with {p["name"]}.')
@@ -754,7 +774,9 @@ def build(config_path=None, output=None):
         judgment=(f'{len(qualified)} of {len(po)} current records meet the three-term comparison standard: '
                   'an official upfront total, published monthly equivalent, and monthly renewal rate for the same plan. '
                   'Records below show only the individual fields supported by their official source.'
-                  if po else 'No current source record is published for this provider; no three-term comparison can be made.')
+                  if po else ('No automated offer is marked current for this provider. Dated manual plan-price records appear below; '
+                              'they document package terms and are not coupon-code records.' if manual_plans and p['id']=='namehero' else
+                              'No current source record is published for this provider; no three-term comparison can be made.'))
         content=template('provider.html',provider=e(heading),judgment=e(judgment),note=e(note),source=e(p['source_url']),source_status=e(status_text),related_guide=related_guide,offers=current_html+details,page_disclosure=e(page_disclosure))
         write(Path('providers')/p['id']/'index.html',page(
             f'{heading} | HostDealRadar',
