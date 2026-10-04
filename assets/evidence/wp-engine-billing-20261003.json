@@ -1,0 +1,265 @@
+{
+  "source_capture_date": "2026-10-03",
+  "supplement_added_on": "2026-10-04",
+  "method": "Supplement from supplied section 2 and archived public-source captures. Rendered quotes are copied literally from that section; archived-source matching normalizes HTML entities, typography and whitespace. No new source request or customer-account test was made.",
+  "adopted_entries": [
+    "B-1",
+    "B-2",
+    "B-3",
+    "B-4",
+    "B-5",
+    "B-6"
+  ],
+  "limitations": [
+    "Only report section 2 entries B-1 through B-6 supply this supplement.",
+    "The visit rate applies to the named plan list, not every custom or newer contract.",
+    "Bandwidth rules do not remove visitor overage billing.",
+    "Storage add-ons are not an automatic storage-overage penalty.",
+    "The same-page shared-plan upgrade/add-on conflict is retained; account eligibility and checkout require confirmation.",
+    "Non-billable site status does not establish a blanket storage exemption.",
+    "No customer overage invoice or current account checkout was verified.",
+    "Old performance/price reviews in B-7/B-8 were not adopted."
+  ],
+  "sources": [
+    {
+      "report_entry": "B-3",
+      "kind": "official",
+      "url": "https://wpengine.com/support/count-visits/",
+      "quote": "A single visit is one unique IP address logged per day (UTC).",
+      "captured_on": "2026-10-03",
+      "source_updated_on": "2025-12-03",
+      "raw_file_sha256": "013e5862661afcea57327bfb49d1cd3335a7d9049c65efe48a79aa9111e960a0",
+      "destination_section": "visit-count"
+    },
+    {
+      "report_entry": "B-1",
+      "kind": "official",
+      "url": "https://wpengine.com/overage-pricing/",
+      "quote": "The overages will appear as a \"Visitor Overage Charge\" on your monthly invoice.",
+      "captured_on": "2026-10-03",
+      "source_updated_on": "2026-02-09",
+      "raw_file_sha256": "e51a90b9b6ede34d58632a102338e452577a92889616cec8687427877195fd82",
+      "destination_section": "visit-charge"
+    },
+    {
+      "report_entry": "B-1",
+      "kind": "official",
+      "url": "https://wpengine.com/overage-pricing/",
+      "quote": "When your number of visits exceeds your plan limit (here's how we count visits), we charge you a small overage for each 1,000 visitors over your limit. Customers on Startup, Professional, Growth, Scale, Agency Essentials, Agency Plus, or Agency Pro plans will incur an overage cost of $2 per 1,000 extra monthly visitors.",
+      "captured_on": "2026-10-03",
+      "source_updated_on": "2026-02-09",
+      "raw_file_sha256": "e51a90b9b6ede34d58632a102338e452577a92889616cec8687427877195fd82",
+      "destination_section": "visit-charge"
+    },
+    {
+      "report_entry": "B-1",
+      "kind": "official",
+      "url": "https://wpengine.com/overage-pricing/",
+      "quote": "The overage will be charged to the card you have on file on your \"month-versary\" (the day of the month your account was setup). It is quite possible you have prepaid for a full year. If this is true, you will still be charged monthly for overages.",
+      "captured_on": "2026-10-03",
+      "source_updated_on": "2026-02-09",
+      "raw_file_sha256": "e51a90b9b6ede34d58632a102338e452577a92889616cec8687427877195fd82",
+      "destination_section": "visit-charge"
+    },
+    {
+      "report_entry": "B-2",
+      "kind": "official",
+      "url": "https://wpengine.com/support/bandwidth-cause-effects/",
+      "quote": "Shared plans are not charged overages for bandwidth. If you exceed your bandwidth limit we'll have someone reach out to help you comply with our Acceptable use policy and to discuss options to help you reduce your usage or switch to another plan that better meets the performance needs for your account.",
+      "captured_on": "2026-10-03",
+      "source_updated_on": "2026-07-12",
+      "raw_file_sha256": "b72594c9245d491506e3a47ea86c94934260f9e44c8c679b9852efa87788ed5b",
+      "destination_section": "bandwidth"
+    },
+    {
+      "report_entry": "B-2",
+      "kind": "official",
+      "url": "https://wpengine.com/support/bandwidth-cause-effects/",
+      "quote": "Premium plans are also not charged for bandwidth overages.",
+      "captured_on": "2026-10-03",
+      "source_updated_on": "2026-07-12",
+      "raw_file_sha256": "b72594c9245d491506e3a47ea86c94934260f9e44c8c679b9852efa87788ed5b",
+      "destination_section": "bandwidth"
+    },
+    {
+      "report_entry": "B-4",
+      "kind": "official",
+      "url": "https://wpengine.com/support/bandwidth-cause-effects/",
+      "quote": "Shared plans (e.g. Startup, Professional, Growth, Scale) must upgrade their plan level to increase storage.",
+      "captured_on": "2026-10-03",
+      "source_updated_on": "2026-07-12",
+      "raw_file_sha256": "b72594c9245d491506e3a47ea86c94934260f9e44c8c679b9852efa87788ed5b",
+      "destination_section": "storage"
+    },
+    {
+      "report_entry": "B-4",
+      "kind": "official",
+      "url": "https://wpengine.com/support/bandwidth-cause-effects/",
+      "quote": "5GB, 10GB, 25GB, and 50GB at a price of $1 per gigabyte (GB), and increments 250GB at a price of $0.40 per gigabyte (GB)",
+      "captured_on": "2026-10-03",
+      "source_updated_on": "2026-07-12",
+      "raw_file_sha256": "b72594c9245d491506e3a47ea86c94934260f9e44c8c679b9852efa87788ed5b",
+      "destination_section": "storage"
+    },
+    {
+      "report_entry": "B-5",
+      "kind": "official",
+      "url": "https://wpengine.com/support/environments/",
+      "quote": "Sandbox Sites are non-billable and include a single Development environment.",
+      "captured_on": "2026-10-03",
+      "source_updated_on": "2026-08-26",
+      "raw_file_sha256": "67686c403cf41528b439f631068b84fbce84d20e34939c69ffcfa46d08775333",
+      "destination_section": "staging"
+    },
+    {
+      "report_entry": "B-5",
+      "kind": "official",
+      "url": "https://wpengine.com/support/bandwidth-cause-effects/",
+      "quote": "All environments (PRD, STG, DEV) including transferable environments contribute to total account storage.",
+      "captured_on": "2026-10-03",
+      "source_updated_on": "2026-07-12",
+      "raw_file_sha256": "b72594c9245d491506e3a47ea86c94934260f9e44c8c679b9852efa87788ed5b",
+      "destination_section": "staging"
+    },
+    {
+      "report_entry": "B-5",
+      "kind": "official",
+      "url": "https://wpengine.com/support/bandwidth-cause-effects/",
+      "quote": "WP Engine automated backups are not counted as part of the plan's storage usage.",
+      "captured_on": "2026-10-03",
+      "source_updated_on": "2026-07-12",
+      "raw_file_sha256": "b72594c9245d491506e3a47ea86c94934260f9e44c8c679b9852efa87788ed5b",
+      "destination_section": "staging"
+    },
+    {
+      "report_entry": "B-6",
+      "kind": "official",
+      "url": "https://wpengine.com/support/change-plan-user-portal/",
+      "quote": "Upgrades will be performed immediately upon request, granting you access to the new plan's features.",
+      "captured_on": "2026-10-03",
+      "source_updated_on": "2026-09-14",
+      "raw_file_sha256": "bfe13b8dee1899e28ff2d8b862d3123371ac2985ec1b84f2eec25ac44d05b70d",
+      "destination_section": "plan-changes"
+    },
+    {
+      "report_entry": "B-6",
+      "kind": "official",
+      "url": "https://wpengine.com/support/change-plan-user-portal/",
+      "quote": "Downgrades will become effective on your next billing date. Please provide 30 days notice to ensure that your new plan is reflected on your next invoice.",
+      "captured_on": "2026-10-03",
+      "source_updated_on": "2026-09-14",
+      "raw_file_sha256": "bfe13b8dee1899e28ff2d8b862d3123371ac2985ec1b84f2eec25ac44d05b70d",
+      "destination_section": "plan-changes"
+    },
+    {
+      "report_entry": "B-6",
+      "kind": "official",
+      "url": "https://wpengine.com/support/change-plan-user-portal/",
+      "quote": "Prorated credit (current plan) up to the end of the billing cycle",
+      "captured_on": "2026-10-03",
+      "source_updated_on": "2026-09-14",
+      "raw_file_sha256": "bfe13b8dee1899e28ff2d8b862d3123371ac2985ec1b84f2eec25ac44d05b70d",
+      "destination_section": "plan-changes"
+    },
+    {
+      "report_entry": "B-6",
+      "kind": "official",
+      "url": "https://wpengine.com/support/change-plan-user-portal/",
+      "quote": "additional bandwidth and additional visits are determined by your plan and cannot be purchased as a product extension.",
+      "captured_on": "2026-10-03",
+      "source_updated_on": "2026-09-14",
+      "raw_file_sha256": "bfe13b8dee1899e28ff2d8b862d3123371ac2985ec1b84f2eec25ac44d05b70d",
+      "destination_section": "plan-changes"
+    },
+    {
+      "report_entry": "B-1",
+      "kind": "official",
+      "url": "https://wpengine.com/overage-pricing/",
+      "quote": "As an example—if you are on a Startup plan and your product is featured on Shark Tank your site might serve 10,000 visitors over your plan limit. In this case you'll see an overage charge on your bill for $20.",
+      "captured_on": "2026-10-03",
+      "source_updated_on": "2026-02-09",
+      "raw_file_sha256": "e51a90b9b6ede34d58632a102338e452577a92889616cec8687427877195fd82",
+      "destination_section": "visit-charge"
+    },
+    {
+      "report_entry": "B-1",
+      "kind": "official",
+      "url": "https://wpengine.com/overage-pricing/",
+      "quote": "We never throttle customers or cut their sites off for getting a traffic spike.",
+      "captured_on": "2026-10-03",
+      "source_updated_on": "2026-02-09",
+      "raw_file_sha256": "e51a90b9b6ede34d58632a102338e452577a92889616cec8687427877195fd82",
+      "destination_section": "visit-charge"
+    },
+    {
+      "report_entry": "B-2",
+      "kind": "official",
+      "url": "https://wpengine.com/support/bandwidth-cause-effects/",
+      "quote": "This change will NOT lead to any automatic overage charges or automatic throttling.",
+      "captured_on": "2026-10-03",
+      "source_updated_on": "2026-07-12",
+      "raw_file_sha256": "b72594c9245d491506e3a47ea86c94934260f9e44c8c679b9852efa87788ed5b",
+      "destination_section": "bandwidth"
+    },
+    {
+      "report_entry": "B-3",
+      "kind": "official",
+      "url": "https://wpengine.com/support/count-visits/",
+      "quote": "Static assets such as images, css, js, and other files do not count as a visit, and are excluded.",
+      "captured_on": "2026-10-03",
+      "source_updated_on": "2025-12-03",
+      "raw_file_sha256": "013e5862661afcea57327bfb49d1cd3335a7d9049c65efe48a79aa9111e960a0",
+      "destination_section": "visit-count"
+    },
+    {
+      "report_entry": "B-3",
+      "kind": "official",
+      "url": "https://wpengine.com/support/count-visits/",
+      "quote": "Requests that return a \"403 Forbidden\" response code are not counted as a visit.",
+      "captured_on": "2026-10-03",
+      "source_updated_on": "2025-12-03",
+      "raw_file_sha256": "013e5862661afcea57327bfb49d1cd3335a7d9049c65efe48a79aa9111e960a0",
+      "destination_section": "visit-count"
+    },
+    {
+      "report_entry": "B-3",
+      "kind": "official",
+      "url": "https://wpengine.com/support/count-visits/",
+      "quote": "Starting September 2025, suspected bots will also be excluded from billable visits, reducing costs for many accounts.",
+      "captured_on": "2026-10-03",
+      "source_updated_on": "2025-12-03",
+      "raw_file_sha256": "013e5862661afcea57327bfb49d1cd3335a7d9049c65efe48a79aa9111e960a0",
+      "destination_section": "visit-count"
+    },
+    {
+      "report_entry": "B-4",
+      "kind": "official",
+      "url": "https://wpengine.com/support/bandwidth-cause-effects/",
+      "quote": "can purchase additional storage in increments of 250GB for $100",
+      "captured_on": "2026-10-03",
+      "source_updated_on": "2026-07-12",
+      "raw_file_sha256": "b72594c9245d491506e3a47ea86c94934260f9e44c8c679b9852efa87788ed5b",
+      "destination_section": "storage"
+    },
+    {
+      "report_entry": "B-4",
+      "kind": "official",
+      "url": "https://wpengine.com/support/bandwidth-cause-effects/",
+      "quote": "if the account exceeds its allotted storage capacity, WP Engine may require storage be reduced to protect server and platform functionality.",
+      "captured_on": "2026-10-03",
+      "source_updated_on": "2026-07-12",
+      "raw_file_sha256": "b72594c9245d491506e3a47ea86c94934260f9e44c8c679b9852efa87788ed5b",
+      "destination_section": "storage"
+    },
+    {
+      "report_entry": "B-5",
+      "kind": "official",
+      "url": "https://wpengine.com/support/environments/",
+      "quote": "A site is simply a container for your three environments (PRD/STG/DEV)",
+      "captured_on": "2026-10-03",
+      "source_updated_on": "2026-08-26",
+      "raw_file_sha256": "67686c403cf41528b439f631068b84fbce84d20e34939c69ffcfa46d08775333",
+      "destination_section": "staging"
+    }
+  ]
+}
