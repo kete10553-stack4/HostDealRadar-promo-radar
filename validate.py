@@ -440,6 +440,8 @@ def check():
         months=record['commitment_months']
         expected_calculation=f'Calculated: {total} ÷ {months}'
         assert cells[3].startswith(monthly) and expected_calculation in cells[3], f'{anchor} is missing its explicit, matching Calculated marker'
+        if record.get('monthly_note'):
+            assert record['monthly_note'] in cells[3], f'{anchor} omits its official monthly-price note'
         check_date=build.date_text(record.get('checked_on') or payload.get('browser_term_observations',{}).get('checked_on'))
         assert check_date+' PT' in cells[5] and 'Manual official-page review' in cells[5], f'{anchor} is missing its own check date or review marker'
     assert all(url.split('#',1)[1] in anchors for url in listed), 'A documented plan link has no comparison row'
