@@ -317,6 +317,26 @@ def retained_status(reason, records, probe):
             'captured_count': 0, 'retained_count': len(records),
             'captured_slugs': [], 'retained_slugs': slugs}
 
+def suspended_after_403(provider, records, previous_status):
+    """Keep a 403-blocked source dormant until a person reviews and clears it.
+
+    Scheduled runs must not turn a persistent denial into a request every six
+    hours. The stored request URL and timestamp remain those of the actual 403.
+    """
+    reason = (f"Automatic requests suspended after HTTP 403 from {previous_status.get('request_url')}. "
+              f"No request was sent in this run. Last 403 response: {previous_status.get('checked_at')}. "
+              "After manual source review, remove this provider's source_status entry in data/offers.json to resume checking.")
+    probe = {
+        'status': previous_status.get('status', 'unreadable'),
+        'request_url': previous_status.get('request_url') or provider['source_url'],
+        'http_status': 403,
+        'visible_excerpt': previous_status.get('visible_excerpt'),
+        'checked_at': previous_status.get('checked_at'),
+    }
+    result = retained_status(reason, records, probe)
+    result['suspended_after_403'] = True
+    return result
+
 def run(config_path=None):
     cfg = load_config(config_path)
     previous = json.loads(DATA.read_text(encoding='utf-8')) if DATA.exists() else {'offers': []}
@@ -327,6 +347,11 @@ def run(config_path=None):
     output, statuses = [], {}
     for provider in cfg['providers']:
         old = prior_by_provider[provider['id']]
+        prior_status = (previous.get('source_status') or {}).get(provider['id'], {})
+        if prior_status.get('http_status') == 403:
+            output.extend(old)
+            statuses[provider['id']] = suspended_after_403(provider, old, prior_status)
+            continue
         try:
             status, raw, request_url = fetch_source(provider['source_url'], cfg)
         except SourceProbeError as exc:
