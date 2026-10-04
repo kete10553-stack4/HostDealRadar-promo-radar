@@ -487,6 +487,17 @@ def build(config_path=None, output=None):
     cfg=load_config(config_path); domain=cfg['site']['domain'].rstrip('/'); payload=json.loads(DATA.read_text(encoding='utf-8'))
     style_version=hashlib.sha256((ASSETS/'style.css').read_bytes()).hexdigest()[:12]
     wp_engine_kinsta_css_version=hashlib.sha256((ASSETS/'wp-engine-kinsta.css').read_bytes()).hexdigest()[:12]
+    ga4_measurement_id=cfg['settings'].get('ga4_measurement_id', '')
+    if ga4_measurement_id and not re.fullmatch(r'G-[A-Z0-9]+', ga4_measurement_id):
+        raise ValueError('Invalid GA4 measurement ID in SETTINGS')
+    analytics_head=''
+    analytics_settings=''
+    if ga4_measurement_id:
+        analytics_js_version=hashlib.sha256((ASSETS/'analytics.js').read_bytes()).hexdigest()[:12]
+        analytics_css_version=hashlib.sha256((ASSETS/'analytics.css').read_bytes()).hexdigest()[:12]
+        analytics_head=(f'<link rel="stylesheet" href="/assets/analytics.css?v={analytics_css_version}">'
+                        f'<script src="/assets/analytics.js?v={analytics_js_version}" data-ga4-id="{e(ga4_measurement_id)}" defer></script>')
+        analytics_settings='<button class="analytics-settings" type="button" data-analytics-settings>Analytics cookie settings</button>'
     byid={p['id']:p for p in cfg['providers']}; statuses=payload.get('source_status',{})
     rules={(r['provider'], r.get('title')): r for r in cfg['extractors']}
     # A provider whose official page was opened but yields no deterministic rule
@@ -516,7 +527,7 @@ def build(config_path=None, output=None):
     def write_bytes(path, data):
         path=Path(path); target=OUT/path; target.parent.mkdir(parents=True,exist_ok=True); target.write_bytes(data)
     def page(title, description, canonical, content, schema, head_extra=''):
-        return template('base.html',title=e(title),description=e(description),canonical=e(canonical),brand=e(cfg['site']['brand']),tagline=e(cfg['settings']['tagline']),repo=e(cfg['settings']['repo_url']),social_image='',head_extra=head_extra,footer_status=e('Data source checks are automated.'),content=content,schema=json.dumps(schema,separators=(',',':')),style_version=style_version)
+        return template('base.html',title=e(title),description=e(description),canonical=e(canonical),brand=e(cfg['site']['brand']),tagline=e(cfg['settings']['tagline']),repo=e(cfg['settings']['repo_url']),social_image='',head_extra=head_extra,analytics=analytics_head,analytics_settings=analytics_settings,footer_status=e('Data source checks are automated.'),content=content,schema=json.dumps(schema,separators=(',',':')),style_version=style_version)
     def card(o, historical=False):
         p=byid[o['provider']]; state, message=states[o['slug']]; terms=[]
         rule=rules.get((o['provider'], o['title']), {})
@@ -883,7 +894,17 @@ def build(config_path=None, output=None):
     contact='<p class="lead">Contact HostDealRadar about a source record, a correction, or a change on a provider page.</p><p>Email <a href="mailto:contact@hostdealradar.com">contact@hostdealradar.com</a>.</p><p>This address reaches the person who maintains HostDealRadar. For a record correction, include the page URL and the specific term that has changed so it can be checked against the official source.</p>'
     write(Path('contact/index.html'),page('Contact | HostDealRadar','Contact HostDealRadar about source records and corrections.',domain+'/contact/',prose('Contact',contact),{'@context':'https://schema.org','@type':'ContactPage','name':'Contact HostDealRadar'}))
     write(Path('disclosure/index.html'),page('Affiliate disclosure | HostDealRadar','Affiliate disclosure for HostDealRadar.',domain+'/disclosure/',prose('Affiliate disclosure','<p class="lead">HostDealRadar currently links to official provider pages and does not use affiliate links.</p><p>If we later use an approved affiliate link, the link and relevant page will say so clearly. We will not use cookie injection, self-referrals, brand-keyword ads, or links that break an affiliate program’s terms.</p>'),{'@context':'https://schema.org','@type':'WebPage','name':'Affiliate disclosure'}))
-    write(Path('privacy/index.html'),page('Privacy | HostDealRadar','Privacy information for HostDealRadar.',domain+'/privacy/',prose('Privacy','<p class="lead">This static site does not require accounts or collect purchase details.</p><p>Provider links open their own sites, where their privacy policies apply. We do not use affiliate-cookie injection or sell visitor information.</p><p>HostDealRadar currently does not display third-party advertising or use affiliate links. If either is introduced, we will disclose it here and update this page.</p>'),{'@context':'https://schema.org','@type':'WebPage','name':'Privacy'}))
+    analytics_privacy=''
+    if ga4_measurement_id:
+        analytics_privacy=('''<h2>Optional Google Analytics</h2>
+<p>We use Google Analytics 4 to understand page visits and engagement and improve this website. The Google Analytics tag loads only after you choose Allow analytics. Reject analytics keeps that tag from loading. Google processes usage data on our behalf, including page paths, browser and device information and approximate location. We do not deliberately send your name, email address, purchase details, or page URL query strings to Google Analytics.</p>
+<p>After you allow analytics, Google Analytics may store first-party cookies named _ga and _ga_&lt;identifier&gt; in your browser. We configure their lifetime to 180 days; browsers may shorten this. Advertising consent remains denied, and our tag disables Google signals and advertising personalization.</p>
+<p>We store your analytics choice and its date in your browser's local storage for up to 180 days. This stores the choice without sending it to Google before consent. You can change or withdraw your choice through Analytics cookie settings in the footer of any page. Rejection stops subsequent Analytics collection on this page and removes accessible Google Analytics cookies for this hostname; it does not erase data already sent. If browser storage is unavailable, we ask again on the next page.</p>
+<p>Read <a href="https://policies.google.com/technologies/partner-sites">how Google uses information from sites that use its services</a>, the <a href="https://policies.google.com/privacy">Google Privacy Policy</a>, and the <a href="https://business.safety.google/adsprocessorterms/">Google data processing terms</a>. Google and its contracted processors may process data in other countries. You may also use Google's <a href="https://tools.google.com/dlpage/gaoptout">Analytics opt-out browser add-on</a>.</p>
+<h2>Hosting and traffic statistics</h2>
+<p>Cloudflare delivers this site and processes network requests, including IP addresses, for hosting and security. Its server-side traffic statistics operate separately from the optional Google Analytics tag. Rejecting Google Analytics does not stop the processing needed to deliver and protect the website. Read the <a href="https://www.cloudflare.com/privacypolicy/">Cloudflare Privacy Policy</a>.</p>
+<h2>Privacy questions</h2><p>Use the <a href="/contact/">contact page</a> to ask about this policy. Please do not include passwords or payment details.</p>''')
+    write(Path('privacy/index.html'),page('Privacy | HostDealRadar','Privacy information for HostDealRadar.',domain+'/privacy/',prose('Privacy','<p class="lead">This static site does not require accounts or collect purchase details.</p><p>Provider links open their own sites, where their privacy policies apply. We do not use affiliate-cookie injection or sell visitor information.</p><p>HostDealRadar currently does not display third-party advertising or use affiliate links. If either is introduced, we will disclose it here and update this page.</p>'+analytics_privacy),{'@context':'https://schema.org','@type':'WebPage','name':'Privacy'}))
     agent_markdown='''# HostDealRadar agent guide
 
 HostDealRadar is a public English-language reference for hosting, VPS, website-builder, and domain-price terms recorded from official provider pages. It is not a hosting provider, checkout service, performance review, or purchasing agent.

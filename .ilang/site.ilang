@@ -4,7 +4,7 @@
 ::STATE{@SITE, brand:HostDealRadar, niche:VPS and hosting deals, domain:https://hostdealradar.com}
 
 ::MODULE{SETTINGS|title:运行与展示规则}
-{"locale":"en-US","currency":"USD","update_cron":"17 */6 * * *","fresh_hours":18,"timeout_seconds":25,"max_response_bytes":6000000,"user_agent":"HostDealRadar/1.0 (+https://github.com/kete10553-stack4/HostDealRadar-promo-radar)","repo_url":"https://github.com/kete10553-stack4/HostDealRadar-promo-radar","tagline":"Hosting offers, with the terms in view."}
+{"locale":"en-US","currency":"USD","update_cron":"17 */6 * * *","fresh_hours":18,"timeout_seconds":25,"max_response_bytes":6000000,"user_agent":"HostDealRadar/1.0 (+https://github.com/kete10553-stack4/HostDealRadar-promo-radar)","repo_url":"https://github.com/kete10553-stack4/HostDealRadar-promo-radar","tagline":"Hosting offers, with the terms in view.","ga4_measurement_id":"G-Y5PKT4FR6C","ga4_report_timezone":"America/Los_Angeles"}
 
 ::MODULE{PROVIDERS|title:唯一厂商清单；删除或改名后重建即改变网站}
 Raidboxes | https://raidboxes.io/ | https://raidboxes.io/en/pricing/ |
