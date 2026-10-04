@@ -1,0 +1,153 @@
+{
+  "reviewed_on": "2026-10-04",
+  "locale": "en-US",
+  "topic": "hostgator coupon code; renewal and new-package eligibility on one URL",
+  "official_sources": [
+    {
+      "title": "What is the Best Coupon Code for Me?",
+      "url": "https://www.hostgator.com/help/article/what-is-the-best-coupon-code-for-me",
+      "review_method": "web_reading_tool",
+      "manual_browser_verified": false,
+      "short_quote": "If this occurs, you will be billed retroactively for the discounted amount.",
+      "quote_context": "Cancellation and transfer of an existing package to obtain a new-package discount; context is paraphrased."
+    },
+    {
+      "title": "Hosting Price Chart",
+      "url": "https://www.hostgator.com/help/article/hosting-price-chart",
+      "review_method": "web_reading_tool",
+      "manual_browser_verified": false,
+      "price_type": "published_regular_renewal",
+      "monthly_values": "official_published_not_calculated",
+      "currency": "USD",
+      "shared_hatchling": [
+        {
+          "term": "1 month",
+          "regular_total": 17.59,
+          "official_monthly": 17.59
+        },
+        {
+          "term": "1 year",
+          "regular_total": 158.27,
+          "official_monthly": 13.19
+        },
+        {
+          "term": "3 years",
+          "regular_total": 395.61,
+          "official_monthly": 10.99
+        }
+      ],
+      "standalone_cpanel_license": [
+        {
+          "term": "1 month",
+          "regular_total": 15
+        },
+        {
+          "term": "1 year",
+          "regular_total": 180
+        },
+        {
+          "term": "3 years",
+          "regular_total": 540
+        }
+      ],
+      "footnote_summary": "Regular monthly breakdown; the selected full term is paid upfront."
+    }
+  ],
+  "access_limits": {
+    "chrome_price_page": "Security verification displayed; stopped without completing it.",
+    "automated_source_lock": "Historical source restriction retained; editorial tool reading did not authorize or clear a crawler lock."
+  },
+  "checkout": {
+    "tested": false,
+    "invoice_reviewed": false,
+    "code_redeemed": false,
+    "working_code": null,
+    "code_expiry": null,
+    "email_official_fee_schedule": null
+  },
+  "community_sources": [
+    {
+      "url": "https://www.reddit.com/r/webhosting/comments/1uffxxo/im_done_with_hostgator_just_got_an_email_that/",
+      "method": "web_reading_tool",
+      "status": "Individual reports; charges and invoices not independently verified.",
+      "use": "Distinguish an email product, reported charge and unspecified notice period from control-panel licensing."
+    },
+    {
+      "url": "https://www.reddit.com/r/HostGator/comments/1u5cmu5/do_not_use_hostgator/",
+      "method": "web_reading_tool",
+      "status": "Individual migration comments; no measured service or migration claim."
+    }
+  ],
+  "competitor_body_sample": {
+    "date": "2026-10-04",
+    "method": "Signed-in Chrome; ten readable natural-result bodies including replacements for inaccessible candidates.",
+    "domains": [
+      "couponfollow.com",
+      "wired.com",
+      "hostadvice.com",
+      "techradar.com",
+      "hostgator.worthepenny.com",
+      "groupon.com",
+      "wp-tweaks.com",
+      "hostgator.tenereteam.com",
+      "mmanuts.com",
+      "isitwp.com"
+    ],
+    "scope": "WIRED covers only the readable article and displayed cards; inaccessible and unopened regions excluded. Not the complete original top ten."
+  },
+  "increment_review": {
+    "basis": "Nine merged information groups in this guide; three conservatively counted sourced differences absent from the readable sample.",
+    "groups": [
+      {
+        "id": 1,
+        "name": "Initial invoice versus renewal",
+        "counted_increment": false
+      },
+      {
+        "id": 2,
+        "name": "Existing customer buying a genuinely new package",
+        "counted_increment": true
+      },
+      {
+        "id": 3,
+        "name": "Cancellation/transfer discount recovery",
+        "counted_increment": true
+      },
+      {
+        "id": 4,
+        "name": "Non-hosting products excluded",
+        "counted_increment": false
+      },
+      {
+        "id": 5,
+        "name": "Automatic versus manual application; no redemption test",
+        "counted_increment": false
+      },
+      {
+        "id": 6,
+        "name": "Regular term totals, official monthly values and arithmetic precision",
+        "counted_increment": false
+      },
+      {
+        "id": 7,
+        "name": "Control-panel license inclusion and separate email product",
+        "counted_increment": true
+      },
+      {
+        "id": 8,
+        "name": "Email discussion and incompatible reporting periods",
+        "counted_increment": false
+      },
+      {
+        "id": 9,
+        "name": "Same-period stay/move budgeting framework",
+        "counted_increment": false
+      }
+    ],
+    "numerator": 3,
+    "denominator": 9,
+    "formula": "3 / 9 * 100",
+    "percent": 33.3333333333,
+    "limits": "Editorial information-group comparison, not a performance measurement or a claim of worldwide exclusivity. Method disclosure is not counted as a separate increment; duplicate FAQ answers are merged."
+  }
+}
