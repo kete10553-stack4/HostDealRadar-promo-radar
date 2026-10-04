@@ -1,0 +1,53 @@
+{
+  "reviewed_on": "2026-10-03",
+  "locale": "en-US",
+  "query_intent": "Bluehost promo code; coupon-code spelling is covered on the same page",
+  "official_source_access": {
+    "status": "not reviewed in this audit",
+    "reason": "The project's saved source-permission record states https://www.bluehost.com/robots.txt returned HTTP 403 on 2026-09-12. Project instructions require stopping when robots permission is denied and prohibit bypassing.",
+    "interpretation": "This does not establish that no Bluehost offer exists or that a specific coupon page contains no offer."
+  },
+  "checkout": {
+    "tested": false,
+    "account_quote": false,
+    "invoice_reviewed": false,
+    "redemption": false,
+    "verification_price": null
+  },
+  "offer_fields": {
+    "code_confirmed_from_readable_official_source": null,
+    "new_customer_eligibility": null,
+    "existing_customer_or_renewal_eligibility": null,
+    "product_or_plan": null,
+    "validity_date": null,
+    "renewal_price": null
+  },
+  "serp_body_review": {
+    "collected_on": "2026-10-03",
+    "method": "Signed-in Google Chrome. Opened and read ten pages. The dated research report records exact URLs, visible card positions and per-page notes. Ads, AI Overview, People Also Ask and video results were excluded.",
+    "read_pages": [
+      "https://www.reddit.com/r/BlueHost/comments/1rf1uav/any_bluehost_promo_code/",
+      "https://www.techradar.com/coupons/bluehost",
+      "https://couponfollow.com/site/bluehost.com",
+      "https://www.tomsguide.com/computing/internet/website-builders-hosting/bluehost-coupon-codes",
+      "https://www.theblogstarter.com/bluehost-coupon-codes/",
+      "https://hostadvice.com/hosting-company/blue-host-coupons/blue-host-renewal-coupon/",
+      "https://www.websiteplanet.com/coupon/bluehost/",
+      "https://simplycodes.com/store/bluehost.com",
+      "https://www.dontpayfull.com/at/bluehost.com",
+      "https://www.affiliatebooster.com/bluehost-coupon-code/"
+    ],
+    "not_read_or_excluded": [
+      {"source":"Bluehost official blog result","reason":"Not opened due the saved robots/challenge stop rule."},
+      {"source":"Offers.com","reason":"Browser safety policy denied navigation; no alternate route attempted."},
+      {"source":"CouponCabin","reason":"Returned Access Denied; stopped."},
+      {"source":"YouTube result","reason":"Video excluded from natural webpage sample."}
+    ],
+    "limits": "Third-party offer labels and community reports were not treated as official terms, live verification, or proof of redemption. SERP absence of a detail is not evidence of search demand for that detail."
+  },
+  "community_context": {
+    "source": "https://www.reddit.com/r/BlueHost/comments/1rf1uav/any_bluehost_promo_code/",
+    "kind": "user discussion; not an official source or independent transaction test",
+    "note": "Replies discuss third-party code lists, introductory-price overlap, and differences between billing terms. The article uses this only as context for checking plan/term totals."
+  }
+}
