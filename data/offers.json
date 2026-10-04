@@ -9852,7 +9852,7 @@
       "visible_excerpt": "Access Denied Access Denied You don't have permission to access \"http://www.godaddy.com/robots.txt\" on this server. Reference #18.6a18d017.1791066292.2dd5324e https://errors.edgesuite.net/18.6a18d017.1791066292.2dd5324e",
       "checked_at": "2026-10-03T22:24:52Z",
       "capture_status": "not_attempted",
-      "reason": "Automatic requests suspended after HTTP 403 from https://www.godaddy.com/robots.txt. No request was sent in this run. Last 403 response: 2026-10-03T22:24:52Z. After manual source review, remove this provider's source_status entry in data/offers.json to resume checking.",
+      "reason": "Automatic requests suspended after HTTP 403 from https://www.godaddy.com/robots.txt. No request was sent in this run. Last 403 response: 2026-10-03T22:24:52Z. A status-row deletion cannot resume checks. One request requires same-day manual evidence tied to this 403: the exact official page URL and a verbatim quote from its visible text, plus the official robots.txt HTTP 200 excerpt with an explicit Allow rule for this configured path, recorded in source_403_clearances.",
       "published_count": 0,
       "captured_count": 0,
       "retained_count": 0,
@@ -9867,7 +9867,7 @@
       "visible_excerpt": "Just a moment...",
       "checked_at": "2026-10-03T22:24:52Z",
       "capture_status": "not_attempted",
-      "reason": "Automatic requests suspended after HTTP 403 from https://www.namecheap.com/domains/registration/gtld/com/. No request was sent in this run. Last 403 response: 2026-10-03T22:24:52Z. After manual source review, remove this provider's source_status entry in data/offers.json to resume checking.",
+      "reason": "Automatic requests suspended after HTTP 403 from https://www.namecheap.com/domains/registration/gtld/com/. No request was sent in this run. Last 403 response: 2026-10-03T22:24:52Z. A status-row deletion cannot resume checks. One request requires same-day manual evidence tied to this 403: the exact official page URL and a verbatim quote from its visible text, plus the official robots.txt HTTP 200 excerpt with an explicit Allow rule for this configured path, recorded in source_403_clearances.",
       "published_count": 0,
       "captured_count": 0,
       "retained_count": 0,
@@ -9995,8 +9995,8 @@
       "lastmod": "2026-10-04T03:46:23Z"
     },
     "/providers/": {
-      "hash": "f0d11bda402478922b5798a33e3c7e2482043df42be3b943c829aeecb8f0e3c6",
-      "lastmod": "2026-10-04T03:46:23Z"
+      "hash": "fc1300b0845d211956b11d5437cf6a1bad8aab607f20a33ca12ff05c37d7ba13",
+      "lastmod": "2026-10-04T04:03:10Z"
     },
     "/compare/": {
       "hash": "c6c1ac00bb05e7d54d375f14b8483c408b6135c7c900ac50cea60bf2354a8f71",
@@ -12234,13 +12234,15 @@
       "request_url": "https://www.godaddy.com/robots.txt",
       "http_status": 403,
       "checked_at": "2026-10-03T22:24:52Z",
-      "visible_excerpt": "Access Denied Access Denied You don't have permission to access \"http://www.godaddy.com/robots.txt\" on this server. Reference #18.6a18d017.1791066292.2dd5324e https://errors.edgesuite.net/18.6a18d017.1791066292.2dd5324e"
+      "visible_excerpt": "Access Denied Access Denied You don't have permission to access \"http://www.godaddy.com/robots.txt\" on this server. Reference #18.6a18d017.1791066292.2dd5324e https://errors.edgesuite.net/18.6a18d017.1791066292.2dd5324e",
+      "status": "challenge"
     },
     "namecheap": {
       "request_url": "https://www.namecheap.com/domains/registration/gtld/com/",
       "http_status": 403,
       "checked_at": "2026-10-03T22:24:52Z",
-      "visible_excerpt": "Just a moment..."
+      "visible_excerpt": "Just a moment...",
+      "status": "challenge"
     }
   },
   "source_403_clearances": {},
