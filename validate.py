@@ -6,6 +6,7 @@ from html.parser import HTMLParser
 from html import unescape as html_unescape
 from config import ROOT, load_config
 import build
+import scraper
 
 NS={'sm':'http://www.sitemaps.org/schemas/sitemap/0.9'}
 # Approved reasons a configured source can carry no deterministic price rule.
@@ -69,7 +70,36 @@ def check_earlier_record_path(payload, cfg):
     assert cell not in compare, 'A retained record appears in the three-term current comparison'
     shutil.rmtree(tmp,ignore_errors=True)
 
+def check_403_source_suspension():
+    """A persisted HTTP 403 must prevent another scheduled source request."""
+    provider={'id':'blocked-provider','source_url':'https://example.com/pricing'}
+    old={'slug':'blocked-plan','provider':'blocked-provider','fetched_at':'2026-09-01T00:00:00Z'}
+    blocked={'status':'unreadable','request_url':'https://example.com/robots.txt',
+             'http_status':403,'visible_excerpt':'Forbidden','checked_at':'2026-10-03T00:00:00Z'}
+    previous={'generated_at':'2026-10-03T00:00:00Z','offers':[old],
+              'source_status':{'blocked-provider':blocked}}
+    cfg={'providers':[provider],'settings':{},'extractors':[]}
+    with tempfile.TemporaryDirectory() as directory:
+        data=Path(directory)/'offers.json'
+        data.write_text(json.dumps(previous),encoding='utf-8')
+        saved=(scraper.DATA,scraper.load_config,scraper.fetch_source)
+        def unexpected_request(*args,**kwargs):
+            raise AssertionError('A source request was sent after a persisted HTTP 403')
+        scraper.DATA=data
+        scraper.load_config=lambda path=None: cfg
+        scraper.fetch_source=unexpected_request
+        try:
+            result=scraper.run()
+        finally:
+            scraper.DATA,scraper.load_config,scraper.fetch_source=saved
+    status=result['source_status']['blocked-provider']
+    assert result['offers']==[old], 'A 403 suspension must preserve the prior source-backed record unchanged'
+    assert status.get('suspended_after_403') and status.get('http_status')==403, 'A blocked source must remain visibly suspended'
+    assert status.get('checked_at')==blocked['checked_at'], 'A suspension must not pretend a new source check occurred'
+    assert 'No request was sent in this run' in status.get('reason',''), 'Suspension status must say that no request was sent'
+
 def check():
+    check_403_source_suspension()
     gbp_record={'provider':'20i','plan':'Startup web hosting, first-month offer','currency':'GBP',
                 'first_term_total':1,'commitment_months':1,'monthly_equivalent':1,'renewal_monthly_rate':10,
                 'field_evidence':{field:{'quote':'official quote','url':'https://www.20i.com/web-hosting'}

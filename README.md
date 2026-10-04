@@ -14,7 +14,7 @@ Run `python validate.py` to build the static site and verify the configuration-d
 
 ## Automation
 
-GitHub Actions checks sources every six hours and commits changed source data and static output. Scheduled Actions can be delayed, and GitHub may disable inactive public-repository schedules; manual dispatch remains available. Cloudflare Pages is connected to the `main` branch. The initial GitHub Actions run will verify that an Actions-created commit triggers a Pages deployment; a Pages deploy hook is the documented fallback if it does not.
+GitHub Actions checks sources every six hours and commits changed source data and static output. A source or `robots.txt` response of HTTP 403 suspends further automated requests to that provider until a person reviews the source and clears its stored source status; later six-hour runs do not retry it. Scheduled Actions can be delayed, and GitHub may disable inactive public-repository schedules; manual dispatch remains available. Cloudflare Pages is connected to the `main` branch. The initial GitHub Actions run will verify that an Actions-created commit triggers a Pages deployment; a Pages deploy hook is the documented fallback if it does not.
 
 ## Source of truth
 
