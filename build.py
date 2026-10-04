@@ -648,7 +648,9 @@ def build(config_path=None, output=None):
                 f'<h3>{e(record["plan"])}</h3><p class="price">{reviewed_link(record,"first_term_total",total)}'
                 f'<span class="period"> upfront for {months} {month_label}</span></p>'
                 f'<dl><div><dt>Commitment</dt><dd>{reviewed_link(record,"commitment_months",str(months)+" "+month_label)}</dd></div>'
-                f'<div><dt>Monthly equivalent</dt><dd>{monthly} (calculated: {total} ÷ {months})</dd></div>'
+                f'<div><dt>Monthly equivalent</dt><dd>{monthly} (calculated: {total} ÷ {months})'
+                +(f'<small class="capture">{e(record["monthly_note"])}</small>' if record.get('monthly_note') else '')
+                +'</dd></div>'
                 f'<div><dt>Renewal monthly rate</dt><dd>{reviewed_link(record,"renewal_monthly_rate",renewal+"/mo")}</dd></div></dl>'
                 f'<p class="capture">Official pages checked {e(record_review_date(record))} PT. Confirm the latest price and tax at checkout.'
                 + (' The upfront total was seen in an official cart after plan selection; cart contents may vary by session.' if record.get('entry_url') else '')
@@ -877,7 +879,9 @@ def build(config_path=None, output=None):
                 f'<span>{e(record["plan"])}</span></td>'
                 f'<td>{reviewed_link(record,"first_term_total",total)}</td>'
                 f'<td>{reviewed_link(record,"commitment_months",str(months)+" "+month_label)}</td>'
-                f'<td>{monthly}<span>Calculated: {total} ÷ {months}</span></td>'
+                f'<td>{monthly}<span>Calculated: {total} ÷ {months}</span>'
+                +(f'<span>{e(record["monthly_note"])}</span>' if record.get('monthly_note') else '')
+                +'</td>'
                 f'<td>{reviewed_link(record,"renewal_monthly_rate",renewal+"/mo")}</td>'
                 f'<td>{e(record_review_date(record))} PT<span>Manual official-page review</span></td></tr>')
     compare_reviewed=('<h2>Complete plan examples</h2><p>'+e(review_intro)+'</p><div class="table-wrap"><table>'
