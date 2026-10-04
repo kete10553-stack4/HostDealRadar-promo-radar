@@ -863,6 +863,9 @@ def build(config_path=None, output=None):
     bluehost_guide_route='/guides/bluehost-promo-code/'
     bluehost_guide_schema={'@context':'https://schema.org','@type':'Article','headline':'Bluehost promo code: what can be verified?','datePublished':'2026-10-03','dateModified':'2026-10-03','author':{'@type':'Organization','name':'HostDealRadar'},'publisher':{'@type':'Organization','name':'HostDealRadar'},'mainEntityOfPage':domain+bluehost_guide_route}
     write(Path('guides/bluehost-promo-code/index.html'),page('Bluehost promo code: what can be verified? | HostDealRadar','A dated Bluehost promo-code check: what is unknown about eligibility, validity and checkout, and how to verify your own order total.',domain+bluehost_guide_route,template('bluehost-promo-code.html'),bluehost_guide_schema))
+    hostgator_guide_route='/guides/hostgator-coupon-code/'
+    hostgator_guide_schema={'@context':'https://schema.org','@type':'Article','headline':'HostGator coupon code: check the renewal rules first','datePublished':'2026-10-04','dateModified':'2026-10-04','author':{'@type':'Organization','name':'HostDealRadar'},'publisher':{'@type':'Organization','name':'HostDealRadar'},'mainEntityOfPage':domain+hostgator_guide_route}
+    write(Path('guides/hostgator-coupon-code/index.html'),page('HostGator coupon code: renewal rules and regular prices | HostDealRadar','HostGator warns against cancelling and transferring an existing package to obtain a new-package discount. Check renewal totals, cPanel license inclusion and separate email charges.',domain+hostgator_guide_route,template('hostgator-coupon-code.html'),hostgator_guide_schema))
     wpe_guide_route='/guides/wp-engine-renewal-overage/'
     wpe_guide_schema={'@context':'https://schema.org','@type':'Article','headline':'Why did my WP Engine bill increase?','datePublished':'2026-10-01','dateModified':'2026-10-04','author':{'@type':'Organization','name':'HostDealRadar'},'publisher':{'@type':'Organization','name':'HostDealRadar'},'mainEntityOfPage':domain+wpe_guide_route}
     write(Path('guides/wp-engine-renewal-overage/index.html'),page('WP Engine renewal increase, overage fees and staging | HostDealRadar','Distinguish WordPress.com from WP Engine, trace a renewal increase, check billable visits and staging usage, and compare Cloudways Flexible with complete agency costs.',domain+wpe_guide_route,template('wp-engine-renewal-overage.html'),wpe_guide_schema))
@@ -1042,6 +1045,7 @@ Planned endpoints return HTTP 503 with `temporarily_unavailable` until authentic
     routes.append(hostinger_domain_route)
     routes.append(a2_guide_route)
     routes.append(bluehost_guide_route)
+    routes.append(hostgator_guide_route)
     routes.append(wpe_guide_route)
     routes.append(wpk_guide_route)
     # Keep zero-current provider pages accessible for truthful status reporting,
