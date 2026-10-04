@@ -325,7 +325,7 @@ def suspended_after_403(provider, records, previous_status):
     """
     reason = (f"Automatic requests suspended after HTTP 403 from {previous_status.get('request_url')}. "
               f"No request was sent in this run. Last 403 response: {previous_status.get('checked_at')}. "
-              "A status-row deletion cannot resume checks. One request requires a same-day manual browser review tied to this 403, with the exact official page URL and a verbatim quote from its visible text, plus the official robots.txt HTTP 200 excerpt allowing this configured path, recorded in source_403_clearances.")
+              "A status-row deletion cannot resume checks. One request requires same-day manual evidence tied to this 403: the exact official page URL and a verbatim quote from its visible text, plus the official robots.txt HTTP 200 excerpt with an explicit Allow rule for this configured path, recorded in source_403_clearances.")
     probe = {
         'status': previous_status.get('status', 'unreadable'),
         'request_url': previous_status.get('request_url') or provider['source_url'],
@@ -383,7 +383,7 @@ def run(config_path=None):
         prior_status = (previous.get('source_status') or {}).get(provider['id'], {})
         if prior_status.get('http_status') == 403 and provider['id'] not in locks:
             locks[provider['id']] = {key: prior_status.get(key) for key in
-                                     ('request_url', 'http_status', 'checked_at', 'visible_excerpt')}
+                                     ('status', 'request_url', 'http_status', 'checked_at', 'visible_excerpt')}
         lock = locks.get(provider['id'])
         clearance = clearances.get(provider['id'])
         clearance_used = bool(lock and valid_403_clearance(provider, lock, clearance))
@@ -405,10 +405,10 @@ def run(config_path=None):
                                           'attempted_at': now(), 'result': 'request failed',
                                           'http_status': exc.http_status, 'request_url': exc.request_url})
             if exc.http_status == 403:
-                locks[provider['id']] = {'request_url': exc.request_url, 'http_status': 403,
+                locks[provider['id']] = {'status': exc.state, 'request_url': exc.request_url, 'http_status': 403,
                                          'checked_at': now(), 'visible_excerpt': exc.visible_excerpt}
                 reason = (exc.reason + ' This provider is now locked from further automatic requests. '
-                          'A status-row deletion cannot resume checks; one recheck requires same-day manual evidence of the official page text and an HTTP 200 robots.txt response with an explicit Allow rule for this path, tied to this 403.')
+                          'A status-row deletion cannot resume checks; one recheck requires same-day manual evidence tied to this 403: the official page text and an HTTP 200 robots.txt response with an explicit Allow rule for this configured path.')
             else:
                 reason = exc.reason
                 if clearance_used:

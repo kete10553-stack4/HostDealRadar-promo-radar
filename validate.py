@@ -76,7 +76,7 @@ def check_403_source_suspension():
     old={'slug':'blocked-plan','provider':'blocked-provider','fetched_at':'2026-09-01T00:00:00Z'}
     blocked={'status':'unreadable','request_url':'https://example.com/robots.txt',
              'http_status':403,'visible_excerpt':'Forbidden','checked_at':'2026-10-03T00:00:00Z'}
-    lock={key:blocked[key] for key in ('request_url','http_status','visible_excerpt','checked_at')}
+    lock={key:blocked[key] for key in ('status','request_url','http_status','visible_excerpt','checked_at')}
     cfg={'providers':[provider],'settings':{},'extractors':[]}
     today=datetime.now(timezone.utc).date().isoformat()
     clearance={'review_method':'manual_browser_review','checked_on':today,
@@ -179,8 +179,9 @@ def check():
             assert status.get('capture_status')=='not_attempted' and not status.get('captured_slugs'), f'{provider_id} published a new capture from an unreadable source'
         if status['http_status']==403:
             assert provider_id in locks, f'{provider_id} HTTP 403 is not durably locked'
+            assert 'status-row deletion cannot resume checks' in status['reason'] and 'explicit Allow rule' in status['reason'], f'{provider_id} does not explain the manual evidence required to clear its HTTP 403 lock'
     for provider_id, lock in locks.items():
-        assert provider_id in ids and lock.get('http_status')==403 and lock.get('checked_at') and lock.get('request_url'), f'{provider_id} has an incomplete or unknown HTTP 403 lock'
+        assert provider_id in ids and lock.get('status') in ('unreadable','challenge') and lock.get('http_status')==403 and lock.get('checked_at') and lock.get('request_url'), f'{provider_id} has an incomplete or unknown HTTP 403 lock'
     providers_by_id={provider['id']:provider for provider in cfg['providers']}
     for provider_id, evidence in clearances.items():
         assert provider_id in locks and scraper.valid_403_clearance(providers_by_id[provider_id],locks[provider_id],evidence), f'{provider_id} has an invalid or stale manual HTTP 403 clearance'
