@@ -1,0 +1,342 @@
+{
+  "source_capture_date": "2026-10-03",
+  "supplement_added_on": "2026-10-04",
+  "method": "Supplement from supplied section 2 and archived public-source captures. Rendered quotes are copied literally from that section; archived-source matching normalizes HTML entities, typography and whitespace. No new source request or customer-account test was made.",
+  "adopted_entries": [
+    "A-1",
+    "A-2",
+    "A-3",
+    "A-4",
+    "A-5",
+    "A-6",
+    "A-7",
+    "A-8",
+    "A-11"
+  ],
+  "limitations": [
+    "Only report section 2 entries A-1 through A-8 and A-11 supply this supplement.",
+    "No source-update date established for Hosting.com; capture date is not a source-update date.",
+    "The prepaid VPS review is an individual statement; its original contract and disputed amount are not established by the quoted terms.",
+    "Cancellation notice and automatic payment dates differ; the one-day renewal deadline is not a safe charge cutoff.",
+    "A downgrade migration fee may be charged; it is not unconditional.",
+    "The material-change response window is not a universal 30-day advance renewal-price notice.",
+    "Third-party renewal-price claims and ownership assertions from A-9/A-10 were not adopted.",
+    "HostAdvice Hosting Plans prices were not used."
+  ],
+  "sources": [
+    {
+      "report_entry": "A-11",
+      "kind": "official",
+      "url": "https://terms.hosting.com/refund-billing-policy",
+      "quote": "Hosting.com is operated by A2 Hosting, LLC.",
+      "captured_on": "2026-10-03",
+      "source_updated_on": null,
+      "raw_file_sha256": "4c2113182d743e82d1bed6d1c63a617c28e8d465ba4ee10dcdfbdd876f9ae27c",
+      "destination_section": "brand introduction"
+    },
+    {
+      "report_entry": "A-1",
+      "kind": "official",
+      "url": "https://hosting.com/about/coupons/",
+      "quote": "The promotional price is for the first term only and renews at the regular rate.",
+      "captured_on": "2026-10-03",
+      "source_updated_on": null,
+      "raw_file_sha256": "35fdb041f5396ebec844cb78807a4b29acf121735d26da3418689ee3c31b2bbb",
+      "destination_section": "first-term"
+    },
+    {
+      "report_entry": "A-6",
+      "kind": "official",
+      "url": "https://terms.hosting.com/refund-billing-policy",
+      "quote": "no price changes will be effective without your consent in the middle of an initial term or any Renewal Term provided that the relevant term has already been invoiced and paid in full, but prices may change between Renewal Terms.",
+      "captured_on": "2026-10-03",
+      "source_updated_on": null,
+      "raw_file_sha256": "4c2113182d743e82d1bed6d1c63a617c28e8d465ba4ee10dcdfbdd876f9ae27c",
+      "destination_section": "price-changes"
+    },
+    {
+      "report_entry": "A-5",
+      "kind": "official",
+      "url": "https://terms.hosting.com/service-terms",
+      "quote": "Submitting a cancellation at least one (1) day before the beginning of a Renewal Term through our online cancellation form found at your customer panel.",
+      "captured_on": "2026-10-03",
+      "source_updated_on": null,
+      "raw_file_sha256": "ec11e860b3977015f34c9aaaf8355b14ef11145db3ee6957ae89f6d218ab14ed",
+      "destination_section": "billing-timing"
+    },
+    {
+      "report_entry": "A-5",
+      "kind": "official",
+      "url": "https://terms.hosting.com/service-terms",
+      "quote": "We only accept cancellations through our online cancellation form found at your customer panel.",
+      "captured_on": "2026-10-03",
+      "source_updated_on": null,
+      "raw_file_sha256": "ec11e860b3977015f34c9aaaf8355b14ef11145db3ee6957ae89f6d218ab14ed",
+      "destination_section": "billing-timing"
+    },
+    {
+      "report_entry": "A-5",
+      "kind": "official",
+      "url": "https://terms.hosting.com/service-terms",
+      "quote": "If you terminate for convenience, you will be responsible for all charges for the duration of the then active Initial or Renewal Term.",
+      "captured_on": "2026-10-03",
+      "source_updated_on": null,
+      "raw_file_sha256": "ec11e860b3977015f34c9aaaf8355b14ef11145db3ee6957ae89f6d218ab14ed",
+      "destination_section": "billing-timing"
+    },
+    {
+      "report_entry": "A-7",
+      "kind": "official",
+      "url": "https://terms.hosting.com/refund-billing-policy",
+      "quote": "When downgrading to a lower-priced plan, the difference between the amount of the current package price already paid over the new package price will be placed on the billing account as a service credit. Refunds will not be issued and a twenty-five dollar ($25) downgrade migration fee may be charged.",
+      "captured_on": "2026-10-03",
+      "source_updated_on": null,
+      "raw_file_sha256": "4c2113182d743e82d1bed6d1c63a617c28e8d465ba4ee10dcdfbdd876f9ae27c",
+      "destination_section": "plan-change-fees"
+    },
+    {
+      "report_entry": "A-3",
+      "kind": "official",
+      "url": "https://terms.hosting.com/service-terms",
+      "quote": "You can choose to exercise this option only once. Moreover, this guaranteee applies to only your first term, not to subsequent extended terms.",
+      "captured_on": "2026-10-03",
+      "source_updated_on": null,
+      "raw_file_sha256": "ec11e860b3977015f34c9aaaf8355b14ef11145db3ee6957ae89f6d218ab14ed",
+      "destination_section": "refunds"
+    },
+    {
+      "report_entry": "A-2",
+      "kind": "individual_statement",
+      "url": "https://hostadvice.com/hosting-company/hosting-com-reviews/",
+      "quote": "I paid 3 years in advance knowing that if I ever decided to leave, I could request a refund at any time",
+      "captured_on": "2026-10-03",
+      "source_updated_on": null,
+      "raw_file_sha256": "ebc5d7eb158f59a048ec3d43077dde28c0e28c64eef5d411996045ff4f1bfa8a",
+      "statement_date": "2025-12-10",
+      "destination_section": "prepayment-dispute"
+    },
+    {
+      "report_entry": "A-2",
+      "kind": "individual_statement",
+      "url": "https://hostadvice.com/hosting-company/hosting-com-reviews/",
+      "quote": "Hosting.com removed this option and doesn't honor the conditions that were in place when I paid upfront. They refuse to return my money",
+      "captured_on": "2026-10-03",
+      "source_updated_on": null,
+      "raw_file_sha256": "ebc5d7eb158f59a048ec3d43077dde28c0e28c64eef5d411996045ff4f1bfa8a",
+      "statement_date": "2025-12-10",
+      "destination_section": "prepayment-dispute"
+    },
+    {
+      "report_entry": "A-2",
+      "kind": "provider_reply_on_review_site",
+      "url": "https://hostadvice.com/hosting-company/hosting-com-reviews/",
+      "quote": "To clarify, our money back guarantee is only for the first 30 days after a new purchase, not a renewal as with most companies.",
+      "captured_on": "2026-10-03",
+      "source_updated_on": null,
+      "raw_file_sha256": "ebc5d7eb158f59a048ec3d43077dde28c0e28c64eef5d411996045ff4f1bfa8a",
+      "statement_date": "2025-12-16",
+      "destination_section": "prepayment-dispute"
+    },
+    {
+      "report_entry": "A-1",
+      "kind": "official",
+      "url": "https://hosting.com/about/renewal-pricing/",
+      "quote": "Throughout the year we offer sales and promotional prices on our products to help folks get started the right way with their websites.",
+      "captured_on": "2026-10-03",
+      "source_updated_on": null,
+      "raw_file_sha256": "ab746d26e7fa95f9b2263c0bd506b53b24f43c9f5af36f7528aad914aeec9ac3",
+      "destination_section": "first-term"
+    },
+    {
+      "report_entry": "A-1",
+      "kind": "official",
+      "url": "https://hosting.com/about/renewal-pricing/",
+      "quote": "As part of these offerings we offer incredible savings when paying for a year or two or three in advance.",
+      "captured_on": "2026-10-03",
+      "source_updated_on": null,
+      "raw_file_sha256": "ab746d26e7fa95f9b2263c0bd506b53b24f43c9f5af36f7528aad914aeec9ac3",
+      "destination_section": "first-term"
+    },
+    {
+      "report_entry": "A-1",
+      "kind": "official",
+      "url": "https://hosting.com/about/renewal-pricing/",
+      "quote": "If you choose monthly, or after that prepaid period ends, your website plans will renew at our regular pricing.",
+      "captured_on": "2026-10-03",
+      "source_updated_on": null,
+      "raw_file_sha256": "ab746d26e7fa95f9b2263c0bd506b53b24f43c9f5af36f7528aad914aeec9ac3",
+      "destination_section": "first-term"
+    },
+    {
+      "report_entry": "A-2",
+      "kind": "individual_statement",
+      "url": "https://hostadvice.com/hosting-company/hosting-com-reviews/",
+      "quote": "I was a customer of A2 Hosting for more than 7 years, hosting more than one VPS with them",
+      "captured_on": "2026-10-03",
+      "source_updated_on": null,
+      "raw_file_sha256": "ebc5d7eb158f59a048ec3d43077dde28c0e28c64eef5d411996045ff4f1bfa8a",
+      "destination_section": "prepayment-dispute",
+      "statement_date": "2025-12-10"
+    },
+    {
+      "report_entry": "A-3",
+      "kind": "official",
+      "url": "https://hosting.com/about/money-back-guarantee/",
+      "quote": "Our 30-day money-back guarantee means you can try our hosting plans with zero commitment.",
+      "captured_on": "2026-10-03",
+      "source_updated_on": null,
+      "raw_file_sha256": "b93cb2b0a463c054c0f4715eaa97581d46c4740537eee5d51e72555784cec2a3",
+      "destination_section": "refunds"
+    },
+    {
+      "report_entry": "A-3",
+      "kind": "official",
+      "url": "https://hosting.com/about/money-back-guarantee/",
+      "quote": "Domains, Microsoft 365, Google Workspace and servers are not included.",
+      "captured_on": "2026-10-03",
+      "source_updated_on": null,
+      "raw_file_sha256": "b93cb2b0a463c054c0f4715eaa97581d46c4740537eee5d51e72555784cec2a3",
+      "destination_section": "refunds"
+    },
+    {
+      "report_entry": "A-3",
+      "kind": "official",
+      "url": "https://hosting.com/about/money-back-guarantee/",
+      "quote": "To be upfront, the guarantee doesn't apply to domain registrations, VPS plans, dedicated servers, or other third-party products like Microsoft 365, and SSL certificates. We'll always refund the hosting portion of your plan.",
+      "captured_on": "2026-10-03",
+      "source_updated_on": null,
+      "raw_file_sha256": "b93cb2b0a463c054c0f4715eaa97581d46c4740537eee5d51e72555784cec2a3",
+      "destination_section": "refunds"
+    },
+    {
+      "report_entry": "A-4",
+      "kind": "official",
+      "url": "https://terms.hosting.com/refund-billing-policy",
+      "quote": "ALL HOSTING PLANS AND DOMAIN NAMES ARE SET TO AUTOMATICALLY RENEW ON THEIR RENEWAL DATE AFTER THE INITIAL TERM AND ANY RENEWAL TERMS TO PREVENT ANY DISRUPTION IN THE SERVICES.",
+      "captured_on": "2026-10-03",
+      "source_updated_on": null,
+      "raw_file_sha256": "4c2113182d743e82d1bed6d1c63a617c28e8d465ba4ee10dcdfbdd876f9ae27c",
+      "destination_section": "billing-timing"
+    },
+    {
+      "report_entry": "A-4",
+      "kind": "official",
+      "url": "https://terms.hosting.com/refund-billing-policy",
+      "quote": "An invoice, which will include the duration and price of such renewal for any Renewal Term, is generated fourteen (14) days prior to the first day of the Renewal Term (the \"Due Date\") and charged three (3) days before the renewal date to ensure continuity of service unless other arrangements have been made or a cancellation request has been submitted from the client portal.",
+      "captured_on": "2026-10-03",
+      "source_updated_on": null,
+      "raw_file_sha256": "4c2113182d743e82d1bed6d1c63a617c28e8d465ba4ee10dcdfbdd876f9ae27c",
+      "destination_section": "billing-timing"
+    },
+    {
+      "report_entry": "A-4",
+      "kind": "official",
+      "url": "https://terms.hosting.com/refund-billing-policy",
+      "quote": "Domain names are set to AUTOMATICALLY RENEW five (5) days before their respective due date",
+      "captured_on": "2026-10-03",
+      "source_updated_on": null,
+      "raw_file_sha256": "4c2113182d743e82d1bed6d1c63a617c28e8d465ba4ee10dcdfbdd876f9ae27c",
+      "destination_section": "billing-timing"
+    },
+    {
+      "report_entry": "A-6",
+      "kind": "official",
+      "url": "https://terms.hosting.com/refund-billing-policy",
+      "quote": "YOU MUST CANCEL YOUR SUBSCRIPTION TO AVOID AN INVOICE TRIGGERING PAYMENT OF THE ADJUSTED PRICE BEING PROCESSED FOR A RENEWAL TERM.",
+      "captured_on": "2026-10-03",
+      "source_updated_on": null,
+      "raw_file_sha256": "4c2113182d743e82d1bed6d1c63a617c28e8d465ba4ee10dcdfbdd876f9ae27c",
+      "destination_section": "price-changes"
+    },
+    {
+      "report_entry": "A-6",
+      "kind": "official",
+      "url": "https://terms.hosting.com/refund-billing-policy",
+      "quote": "you will have thirty (30) days from the date of such notice to either: (i) consent to the change(s) and accept the altered terms for the Services from the date of your consent or (ii) allow the Services to be terminated after the thirty (30) day period expires.",
+      "captured_on": "2026-10-03",
+      "source_updated_on": null,
+      "raw_file_sha256": "4c2113182d743e82d1bed6d1c63a617c28e8d465ba4ee10dcdfbdd876f9ae27c",
+      "destination_section": "price-changes"
+    },
+    {
+      "report_entry": "A-7",
+      "kind": "official",
+      "url": "https://terms.hosting.com/refund-billing-policy",
+      "quote": "When upgrading to a higher-priced hosting plan, we will migrate your account to the new Service at no charge. The data center migration fee is also waived if you choose to move to a new data center during the upgrade process.",
+      "captured_on": "2026-10-03",
+      "source_updated_on": null,
+      "raw_file_sha256": "4c2113182d743e82d1bed6d1c63a617c28e8d465ba4ee10dcdfbdd876f9ae27c",
+      "destination_section": "plan-change-fees"
+    },
+    {
+      "report_entry": "A-7",
+      "kind": "official",
+      "url": "https://terms.hosting.com/refund-billing-policy",
+      "quote": "If you would like to move to another data center without upgrading your account, there is a twenty-five dollar ($25) migration fee.",
+      "captured_on": "2026-10-03",
+      "source_updated_on": null,
+      "raw_file_sha256": "4c2113182d743e82d1bed6d1c63a617c28e8d465ba4ee10dcdfbdd876f9ae27c",
+      "destination_section": "plan-change-fees"
+    },
+    {
+      "report_entry": "A-7",
+      "kind": "official",
+      "url": "https://terms.hosting.com/refund-billing-policy",
+      "quote": "All complementary migrations require the user to provide cPanel account credentials for their previous hosting environment.",
+      "captured_on": "2026-10-03",
+      "source_updated_on": null,
+      "raw_file_sha256": "4c2113182d743e82d1bed6d1c63a617c28e8d465ba4ee10dcdfbdd876f9ae27c",
+      "destination_section": "plan-change-fees"
+    },
+    {
+      "report_entry": "A-7",
+      "kind": "official",
+      "url": "https://terms.hosting.com/refund-billing-policy",
+      "quote": "Clients who migrate from non cPanel hosting environments may incur a charge determined by the migration team and assessed based on the complexity of the migration.",
+      "captured_on": "2026-10-03",
+      "source_updated_on": null,
+      "raw_file_sha256": "4c2113182d743e82d1bed6d1c63a617c28e8d465ba4ee10dcdfbdd876f9ae27c",
+      "destination_section": "plan-change-fees"
+    },
+    {
+      "report_entry": "A-8",
+      "kind": "official",
+      "url": "https://terms.hosting.com/refund-billing-policy",
+      "quote": "Domain registrations, setup fees and migration fees are not refundable at any circumstance.",
+      "captured_on": "2026-10-03",
+      "source_updated_on": null,
+      "raw_file_sha256": "4c2113182d743e82d1bed6d1c63a617c28e8d465ba4ee10dcdfbdd876f9ae27c",
+      "destination_section": "refund-process"
+    },
+    {
+      "report_entry": "A-8",
+      "kind": "official",
+      "url": "https://terms.hosting.com/refund-billing-policy",
+      "quote": "Refund requests of payments made to Hosting.com by bank transfer, check or money order or after one hundred twenty (120) days have passed on a credit card payment will be issued via PayPal only. If you cannot accept PayPal payments, you will not be eligible for a refund via other methods.",
+      "captured_on": "2026-10-03",
+      "source_updated_on": null,
+      "raw_file_sha256": "4c2113182d743e82d1bed6d1c63a617c28e8d465ba4ee10dcdfbdd876f9ae27c",
+      "destination_section": "refund-process"
+    },
+    {
+      "report_entry": "A-8",
+      "kind": "official",
+      "url": "https://terms.hosting.com/refund-billing-policy",
+      "quote": "We will honor invoice errors as long as we are notified of them within ninety (90) days.",
+      "captured_on": "2026-10-03",
+      "source_updated_on": null,
+      "raw_file_sha256": "4c2113182d743e82d1bed6d1c63a617c28e8d465ba4ee10dcdfbdd876f9ae27c",
+      "destination_section": "refund-process"
+    },
+    {
+      "report_entry": "A-8",
+      "kind": "official",
+      "url": "https://terms.hosting.com/refund-billing-policy",
+      "quote": "Any received chargebacks will incur a fifty dollar ($50) investigation fee on the associated billing account and all services will be immediately suspended pending investigation.",
+      "captured_on": "2026-10-03",
+      "source_updated_on": null,
+      "raw_file_sha256": "4c2113182d743e82d1bed6d1c63a617c28e8d465ba4ee10dcdfbdd876f9ae27c",
+      "destination_section": "refund-process"
+    }
+  ]
+}
