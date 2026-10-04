@@ -71,32 +71,78 @@ def check_earlier_record_path(payload, cfg):
     shutil.rmtree(tmp,ignore_errors=True)
 
 def check_403_source_suspension():
-    """A persisted HTTP 403 must prevent another scheduled source request."""
+    """403 locks survive status removal and require exact manual source evidence."""
     provider={'id':'blocked-provider','source_url':'https://example.com/pricing'}
     old={'slug':'blocked-plan','provider':'blocked-provider','fetched_at':'2026-09-01T00:00:00Z'}
     blocked={'status':'unreadable','request_url':'https://example.com/robots.txt',
              'http_status':403,'visible_excerpt':'Forbidden','checked_at':'2026-10-03T00:00:00Z'}
-    previous={'generated_at':'2026-10-03T00:00:00Z','offers':[old],
-              'source_status':{'blocked-provider':blocked}}
+    lock={key:blocked[key] for key in ('request_url','http_status','visible_excerpt','checked_at')}
     cfg={'providers':[provider],'settings':{},'extractors':[]}
-    with tempfile.TemporaryDirectory() as directory:
-        data=Path(directory)/'offers.json'
-        data.write_text(json.dumps(previous),encoding='utf-8')
-        saved=(scraper.DATA,scraper.load_config,scraper.fetch_source)
-        def unexpected_request(*args,**kwargs):
-            raise AssertionError('A source request was sent after a persisted HTTP 403')
-        scraper.DATA=data
-        scraper.load_config=lambda path=None: cfg
-        scraper.fetch_source=unexpected_request
-        try:
-            result=scraper.run()
-        finally:
-            scraper.DATA,scraper.load_config,scraper.fetch_source=saved
+    today=datetime.now(timezone.utc).date().isoformat()
+    clearance={'review_method':'manual_browser_review','checked_on':today,
+               'clears_403_checked_at':lock['checked_at'],'source_url':provider['source_url'],
+               'official_page_url':provider['source_url'],'official_http_status':200,
+               'official_quote':'Official plan price is USD 14 per month.',
+               'official_visible_excerpt':'Plans Official plan price is USD 14 per month. Choose a plan.',
+               'robots_url':'https://example.com/robots.txt','robots_http_status':200,
+               'robots_excerpt':'User-agent: HostDealRadar\nAllow: /pricing'}
+
+    def isolated_run(previous, fetch_impl):
+        with tempfile.TemporaryDirectory() as directory:
+            data=Path(directory)/'offers.json'
+            data.write_text(json.dumps(previous),encoding='utf-8')
+            saved=(scraper.DATA,scraper.load_config,scraper.fetch_source)
+            scraper.DATA=data
+            scraper.load_config=lambda path=None: cfg
+            scraper.fetch_source=fetch_impl
+            try:
+                result=scraper.run()
+            finally:
+                scraper.DATA,scraper.load_config,scraper.fetch_source=saved
+        return result
+
+    def unexpected_request(*args,**kwargs):
+        raise AssertionError('A source request was sent without valid manual 403 clearance')
+
+    # A first run after a recorded 403 creates the independent lock.
+    first={'generated_at':'2026-10-03T00:00:00Z','offers':[old],
+           'source_status':{'blocked-provider':blocked}}
+    first_result=isolated_run(first,unexpected_request)
+    lock=first_result['source_403_locks']['blocked-provider']
+    assert lock.get('http_status')==403 and lock.get('checked_at')==blocked['checked_at'], 'The first persisted 403 must create a durable lock'
+
+    # The independent lock still applies even if someone removes the visible status row.
+    locked={'generated_at':'2026-10-03T00:00:00Z','offers':[old],
+            'source_status':{},'source_403_locks':{'blocked-provider':lock}}
+    result=isolated_run(locked,unexpected_request)
     status=result['source_status']['blocked-provider']
     assert result['offers']==[old], 'A 403 suspension must preserve the prior source-backed record unchanged'
     assert status.get('suspended_after_403') and status.get('http_status')==403, 'A blocked source must remain visibly suspended'
     assert status.get('checked_at')==blocked['checked_at'], 'A suspension must not pretend a new source check occurred'
     assert 'No request was sent in this run' in status.get('reason',''), 'Suspension status must say that no request was sent'
+    assert scraper.valid_403_clearance(provider,lock,clearance), 'Fresh official text and permissive robots evidence should authorize one review attempt'
+    denied=dict(clearance,robots_excerpt='User-agent: HostDealRadar\nDisallow: /pricing')
+    assert not scraper.valid_403_clearance(provider,lock,denied), 'A robots disallow rule must prevent clearance'
+    implicit=dict(clearance,robots_excerpt='User-agent: HostDealRadar\nDisallow: /private')
+    assert not scraper.valid_403_clearance(provider,lock,implicit), 'Absence of a matching disallow is not affirmative clearance evidence'
+    stale=dict(clearance,clears_403_checked_at='different-403-response')
+    assert not scraper.valid_403_clearance(provider,lock,stale), 'Evidence for another 403 response must not clear this lock'
+    old_review=dict(clearance,checked_on='2000-01-01')
+    assert not scraper.valid_403_clearance(provider,lock,old_review), 'A past manual observation must not clear a current 403 lock'
+    unsupported=dict(clearance,official_quote='A quote absent from the observed page.')
+    assert not scraper.valid_403_clearance(provider,lock,unsupported), 'A quote not present in the official visible excerpt must not clear this lock'
+
+    # A valid clearance is consumed by one request and removes only that lock.
+    attempts=[]
+    def one_reviewed_request(url,cfg):
+        attempts.append(url)
+        return 200, 'Plans Official plan price is USD 14 per month.', url
+    authorized={**locked,'source_403_clearances':{'blocked-provider':clearance}}
+    result=isolated_run(authorized,one_reviewed_request)
+    assert attempts==[provider['source_url']], 'Valid human evidence should permit one source request'
+    assert 'blocked-provider' not in result['source_403_locks'], 'A successful reviewed request should clear its lock'
+    assert 'blocked-provider' not in result['source_403_clearances'], 'A manual clearance must be consumed, not reused'
+    assert result['source_403_history'][-1]['clearance']==clearance, 'The cleared 403 and its evidence must remain auditable'
 
 def check():
     check_403_source_suspension()
@@ -109,6 +155,8 @@ def check():
     cfg=load_config(); settings=cfg['settings']; payload=json.loads((ROOT/'data/offers.json').read_text(encoding='utf-8'))
     rules={(rule['provider'],rule.get('title')):rule for rule in cfg['extractors'] if rule.get('title')}
     statuses=payload.get('source_status',{})
+    locks=payload.get('source_403_locks',{})
+    clearances=payload.get('source_403_clearances',{})
     assert {p['id'] for p in cfg['providers']} <= {r['provider'] for r in cfg['extractors']}, 'Every configured provider needs an extraction or availability rule'
     assert {p['id'] for p in cfg['providers']} == set(statuses), 'Every configured provider needs a recorded source status'
     assert all(o.get('price') != 0 for o in payload.get('offers', [])), 'A zero price must be represented as source text, not a monthly price'
@@ -129,6 +177,13 @@ def check():
             assert status.get('capture_status') in ('matched','unmatched','no_price_rule'), f'{provider_id} has no extraction result'
         else:
             assert status.get('capture_status')=='not_attempted' and not status.get('captured_slugs'), f'{provider_id} published a new capture from an unreadable source'
+        if status['http_status']==403:
+            assert provider_id in locks, f'{provider_id} HTTP 403 is not durably locked'
+    for provider_id, lock in locks.items():
+        assert provider_id in ids and lock.get('http_status')==403 and lock.get('checked_at') and lock.get('request_url'), f'{provider_id} has an incomplete or unknown HTTP 403 lock'
+    providers_by_id={provider['id']:provider for provider in cfg['providers']}
+    for provider_id, evidence in clearances.items():
+        assert provider_id in locks and scraper.valid_403_clearance(providers_by_id[provider_id],locks[provider_id],evidence), f'{provider_id} has an invalid or stale manual HTTP 403 clearance'
     for rule in cfg['extractors']:
         if rule.get('mode') != 'availability_only':
             continue

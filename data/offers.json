@@ -12228,5 +12228,21 @@
       "checkout_url": "https://my.knownhost.com/order/main/packages/shared-cloud-hosting/?group_id=16&pricing_id=499",
       "checkout_captured_at": "2026-10-01T03:48:18.477Z"
     }
-  ]
+  ],
+  "source_403_locks": {
+    "godaddy": {
+      "request_url": "https://www.godaddy.com/robots.txt",
+      "http_status": 403,
+      "checked_at": "2026-10-03T22:24:52Z",
+      "visible_excerpt": "Access Denied Access Denied You don't have permission to access \"http://www.godaddy.com/robots.txt\" on this server. Reference #18.6a18d017.1791066292.2dd5324e https://errors.edgesuite.net/18.6a18d017.1791066292.2dd5324e"
+    },
+    "namecheap": {
+      "request_url": "https://www.namecheap.com/domains/registration/gtld/com/",
+      "http_status": 403,
+      "checked_at": "2026-10-03T22:24:52Z",
+      "visible_excerpt": "Just a moment..."
+    }
+  },
+  "source_403_clearances": {},
+  "source_403_history": []
 }
