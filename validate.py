@@ -361,6 +361,8 @@ def check():
     assert 'does not show a human-readable code or manual-entry field' in cloudways_guide and 'works for any account' in cloudways_guide, 'Cloudways guide omits the no-manual-code observation or overstates parameter applicability'
     cloudways_schema=schemas(cloudways_guide)[0]
     assert cloudways_schema.get('@type')=='FAQPage' and len(cloudways_schema.get('mainEntity',[]))==7, 'Cloudways guide must publish its seven visible FAQ answers'
+    cloudways_schema_text=json.dumps(cloudways_schema,ensure_ascii=False)
+    assert 'Sept 16, 2026 14:00:00' in cloudways_schema_text and 'coupon=SUMMER404' in cloudways_schema_text and 'October 5, 2026' in cloudways_schema_text, 'Cloudways FAQ structured data is stale or omits current-page deadline/link attribution'
     # The current-code guide links to, but does not repeat, the historical archive.
     archive_pointer=cloudways_guide[cloudways_guide.index('id="archive"'):cloudways_guide.index('<h2>Before you start a paid plan</h2>')]
     assert '<tr id="archive-' not in cloudways_guide, 'Cloudways guide still carries the archived table that moved to the archive page'
