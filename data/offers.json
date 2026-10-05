@@ -10014,16 +10014,16 @@
   "source_403_history": [],
   "page_lastmod": {
     "/": {
-      "hash": "e71db5bb9644562aed1e27217f617fe665bc96f9bd6cffd0c785a25ccd250a31",
-      "lastmod": "2026-10-05T03:31:30Z"
+      "hash": "886000b667718683b4faeac79b055420a316eee8992117b4353aa70d18d50380",
+      "lastmod": "2026-10-05T03:48:53Z"
     },
     "/providers/": {
       "hash": "090255553222d6b6c8fad6a71a709b527ef67e87d60ed2d65aadf55dadfe9771",
       "lastmod": "2026-10-05T00:38:52Z"
     },
     "/compare/": {
-      "hash": "55e841d9914f663f44cb05ad1285d9ab1c4ff35d750ca5a7af7730b1452639af",
-      "lastmod": "2026-10-05T03:31:30Z"
+      "hash": "9c7720c8d0016bb4d830cac5579ef8dcaa4143c8997c3cb005b118ce60e7f427",
+      "lastmod": "2026-10-05T03:48:53Z"
     },
     "/methodology/": {
       "hash": "28eafae87918ce443a12dae54c9c97ba4861192e009d59eab9c28aab9c913f3a",
@@ -10330,7 +10330,7 @@
     "checked_timezone": "America/Los_Angeles",
     "checked_between_utc": [
       "2026-10-03T11:04:45.7603720Z",
-      "2026-10-05T03:27:48Z"
+      "2026-10-05T03:45:02Z"
     ],
     "fields": [
       "first_term_total",
@@ -12332,6 +12332,72 @@
           "renewal_total": "$119.52",
           "context": "Official table labels this section Basic Renewal Pricing; its Triennially row gives the monthly renewal rate. The cart quote for this Basic triennial term confirms $119.52 USD."
         }
+      },
+      {
+        "provider": "ultahost",
+        "plan": "Linux Shared Hosting — SHARED Starter, biennial term",
+        "plan_id": "ultahost-shared-starter-24-months",
+        "currency": "USD",
+        "first_term_total": 85.07,
+        "commitment_months": 24,
+        "monthly_equivalent": 3.54,
+        "renewal_monthly_rate": 3.44,
+        "calculation": "85.07 / 24 = 3.5446 USD/month, rounded to $3.54; the observed total includes the $2.48 card gateway charge on top of the $82.59 hosting subtotal.",
+        "advertised_price_quote": "$3.44 /mo; “Renews at $3.44 /mo for 2 years.”",
+        "checked_on": "2026-10-04",
+        "captured_at": "2026-10-05T03:42:24Z",
+        "entry_url": "https://bill.ultahost.com/store/shared-hosting/shared-starter?language=english&billingcycle=biennially&currency=1",
+        "field_evidence": {
+          "first_term_total": {
+            "quote": "Subtotal $82.59 USD; Gateway Charge $2.48 USD (3% Card/Stripe); Total Due Today $85.07 USD",
+            "url": "https://bill.ultahost.com/cart.php?a=checkout",
+            "captured_at": "2026-10-05T03:42:24Z",
+            "context": "Official Review & Checkout page for Linux Shared Hosting — SHARED Starter, Biennially. The displayed due-today total includes the card gateway charge; payment was not submitted."
+          },
+          "commitment_months": {
+            "quote": "Biennially $82.59 USD",
+            "url": "https://bill.ultahost.com/cart.php?a=checkout",
+            "captured_at": "2026-10-05T03:42:24Z",
+            "context": "Checkout summary identifies the Starter plan cycle as Biennially; the preceding official plan configuration labels this cycle biennially. Two years equals 24 months."
+          },
+          "renewal_monthly_rate": {
+            "quote": "Renews at $3.44 /mo for 2 years. Cancel anytime.",
+            "url": "https://ultahost.com/web-hosting",
+            "captured_at": "2026-10-05T03:45:02Z",
+            "context": "Official Web Hosting page, SHARED Starter card; the quote binds the renewal monthly rate to the two-year term."
+          },
+          "currency": {
+            "quote": "USD",
+            "url": "https://bill.ultahost.com/cart.php?a=checkout",
+            "captured_at": "2026-10-05T03:42:24Z",
+            "context": "Official checkout explicitly labels the subtotal, gateway charge, recurring amount, and total due today in USD."
+          }
+        },
+        "missing_reasons": {},
+        "rendered_pricing_evidence": {
+          "url": "https://ultahost.com/web-hosting",
+          "captured_at": "2026-10-05T03:45:02Z",
+          "plan": "SHARED Starter",
+          "plan_card_excerpt": "$6.89; Save 40%; $3.44 /mo; Renews at $3.44 /mo for 2 years. Cancel anytime.",
+          "currency_selector": "US Dollar $",
+          "context": "Rendered official Web Hosting plan card; its renewal sentence explicitly specifies a two-year term."
+        },
+        "rendered_checkout_evidence": {
+          "url": "https://bill.ultahost.com/cart.php?a=checkout",
+          "captured_at": "2026-10-05T03:42:24Z",
+          "selected_plan": "Linux Shared Hosting - SHARED Starter",
+          "selected_term": "Biennially (24 months)",
+          "hosting_subtotal": "$82.59 USD",
+          "recurring_total": "$82.59 USD Biennially",
+          "gateway_charge": "$2.48 USD; 3% Card/Stripe fee",
+          "total_due_today": "$85.07 USD",
+          "existing_domain": "hostdealradar.com",
+          "server_location": "Frankfurt, Germany (displayed default)",
+          "taxes_note": "Estimate Taxes was available but not opened; tax is unverified.",
+          "order_submitted": false,
+          "excerpt": "Linux Shared Hosting - SHARED Starter hostdealradar.com; Total Recurring Biennially $82.59 USD; Payment Gateway Charge $2.48 USD; Total Due Today $85.07 USD."
+        },
+        "monthly_note": "Official card and renewal rate: $3.44/mo for 2 years. The $85.07 observed total includes a $2.48 Card/Stripe gateway charge; the hosting subtotal is $82.59."
       }
     ]
   },
