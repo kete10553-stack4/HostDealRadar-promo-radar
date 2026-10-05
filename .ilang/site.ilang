@@ -6,6 +6,19 @@
 ::MODULE{SETTINGS|title:运行与展示规则}
 {"locale":"en-US","currency":"USD","update_cron":"17 */6 * * *","fresh_hours":18,"timeout_seconds":25,"max_response_bytes":6000000,"user_agent":"HostDealRadar/1.0 (+https://github.com/kete10553-stack4/HostDealRadar-promo-radar)","repo_url":"https://github.com/kete10553-stack4/HostDealRadar-promo-radar","tagline":"Hosting offers, with the terms in view.","ga4_measurement_id":"G-Y5PKT4FR6C","ga4_report_timezone":"America/Los_Angeles"}
 
+::MODULE{BRAND_GUIDES|title:已有指南的品牌与意图入口；不新增抓取来源或选题}
+{"provider":"godaddy","guides":[{"path":"/guides/godaddy-renewal-coupon/","title":"Domain renewal and transfer options"}]}
+{"provider":"namecheap","guides":[{"path":"/guides/namecheap-promo-code/","title":"Promo codes by product"},{"path":"/guides/namecheap-domain-renewal-coupon/","title":"Domain renewal coupon and transfer questions"}]}
+{"provider":"cloudways","guides":[{"path":"/guides/cloudways-coupon-code/","title":"Coupon code and eligibility"},{"path":"/guides/cloudways-coupon-archive/","title":"Earlier coupon observations (archive)"}]}
+{"provider":"digitalocean","guides":[{"path":"/guides/digitalocean-promo-code/","title":"Signup credit and promo-code conditions"}]}
+{"provider":"hostinger","guides":[{"path":"/guides/hostinger-coupon-code/","title":"Web hosting coupon and renewal terms"},{"path":"/guides/hostinger-vps-coupon-code/","title":"VPS coupon-code check"},{"path":"/guides/hostinger-domain-coupon-code/","title":"Domain offers and renewal conditions"}]}
+{"provider":"a2-hosting","guides":[{"path":"/guides/a2-hosting-coupon-code/","title":"A2 / Hosting.com coupons and renewal options"}]}
+{"provider":"hosting-com","guides":[{"path":"/guides/a2-hosting-coupon-code/","title":"A2 / Hosting.com coupons and renewal options"}]}
+{"provider":"wp-engine","guides":[{"path":"/guides/wp-engine-renewal-overage/","title":"Renewal, overage and staging bills"},{"path":"/guides/wp-engine-vs-kinsta/","title":"WP Engine vs Kinsta: renewal and migration costs"}]}
+{"provider":"kinsta","guides":[{"path":"/guides/wp-engine-vs-kinsta/","title":"WP Engine vs Kinsta: renewal and migration costs"}]}
+{"id":"bluehost","name":"Bluehost","guides":[{"path":"/guides/bluehost-promo-code/","title":"Promo-code eligibility and verification limits"}]}
+{"id":"hostgator","name":"HostGator","guides":[{"path":"/guides/hostgator-coupon-code/","title":"Coupon restrictions and regular renewal prices"}]}
+
 ::MODULE{PROVIDERS|title:唯一厂商清单；删除或改名后重建即改变网站}
 Raidboxes | https://raidboxes.io/ | https://raidboxes.io/en/pricing/ |
 Webdock | https://webdock.io/ | https://webdock.io/en/pricing |
