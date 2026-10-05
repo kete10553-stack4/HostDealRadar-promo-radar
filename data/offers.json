@@ -10014,16 +10014,16 @@
   "source_403_history": [],
   "page_lastmod": {
     "/": {
-      "hash": "b1048a461a0ecf91b987ea14df46f6f3f4f9612cbadc566506e7af3e46850a5e",
-      "lastmod": "2026-10-05T00:38:52Z"
+      "hash": "e71db5bb9644562aed1e27217f617fe665bc96f9bd6cffd0c785a25ccd250a31",
+      "lastmod": "2026-10-05T03:31:30Z"
     },
     "/providers/": {
       "hash": "090255553222d6b6c8fad6a71a709b527ef67e87d60ed2d65aadf55dadfe9771",
       "lastmod": "2026-10-05T00:38:52Z"
     },
     "/compare/": {
-      "hash": "dee3699e94550b9829913b32d6ebd41517f45389b867c3a0eb8ad4866699ef82",
-      "lastmod": "2026-10-04T11:29:06Z"
+      "hash": "55e841d9914f663f44cb05ad1285d9ab1c4ff35d750ca5a7af7730b1452639af",
+      "lastmod": "2026-10-05T03:31:30Z"
     },
     "/methodology/": {
       "hash": "28eafae87918ce443a12dae54c9c97ba4861192e009d59eab9c28aab9c913f3a",
@@ -10326,11 +10326,11 @@
     "schema_version": 1,
     "purpose": "Dated manual plan comparisons; not automated current-offer records.",
     "method": "Official provider pages rendered in the user’s Chrome browser; plan, billing term, currency, first-term total, and renewal wording were read from the live official page, applicable terms, and selected cart.",
-    "checked_on": "2026-10-03",
+    "checked_on": "2026-10-04",
     "checked_timezone": "America/Los_Angeles",
     "checked_between_utc": [
       "2026-10-03T11:04:45.7603720Z",
-      "2026-10-04T02:32:19.000Z"
+      "2026-10-05T03:27:48Z"
     ],
     "fields": [
       "first_term_total",
@@ -12264,6 +12264,74 @@
         },
         "rounding_note": "The official STARTER card displays $6.35/month, while the cart total divided by 12 is $6.355/month. The comparison column is calculated from the observed cart total and commitment, rounded to cents; the card quote is retained separately.",
         "monthly_note": "Official card rate: $6.35/mo; the cart ratio is $6.355/mo before cent rounding."
+      },
+      {
+        "provider": "mddhosting",
+        "plan": "Basic shared hosting, 3-year term with FALL first-payment promotion",
+        "plan_id": "mddhosting-basic-36-month-fall",
+        "currency": "USD",
+        "first_term_total": 59.76,
+        "commitment_months": 36,
+        "monthly_equivalent": 1.66,
+        "renewal_monthly_rate": 3.32,
+        "calculation": "59.76 / 36 = 1.66 USD/month; the same 36-month renewal total $119.52 / 36 = $3.32 USD/month.",
+        "checked_on": "2026-10-04",
+        "captured_at": "2026-10-05T03:27:09Z",
+        "entry_url": "https://www.mddhosting.com/support/cart.php?a=add&pid=344&billingcycle=triennially&promocode=FALL&skipconfig=0",
+        "field_evidence": {
+          "first_term_total": {
+            "quote": "FALL 50% One Time Discount: $59.76 USD; Total Due Today: $59.76 USD",
+            "url": "https://www.mddhosting.com/support/cart.php?a=view",
+            "captured_at": "2026-10-05T03:27:09Z",
+            "context": "Official Review & Checkout summary for Basic Shared Hosting on the triennial cycle. Cart subtotal $119.52 USD; the official Basic plan link applied FALL as a 50% one-time discount. Existing public domain hostdealradar.com; default options only; order not submitted."
+          },
+          "commitment_months": {
+            "quote": "$119.52 USD Triennially",
+            "url": "https://www.mddhosting.com/support/cart.php?a=view",
+            "captured_at": "2026-10-05T03:27:09Z",
+            "context": "The cart item is Basic Shared Hosting and identifies its cycle as Triennially. The provider’s configuration step labels this cycle Triennially (3 Yrs), equal to 36 months."
+          },
+          "renewal_monthly_rate": {
+            "quote": "Basic Renewal Pricing — Triennially (Save 33%): $3.32 per month",
+            "url": "https://www.mddhosting.com/renewal",
+            "captured_at": "2026-10-05T03:27:48Z",
+            "context": "Official renewal table’s Basic row, same three-year billing cycle. The configured cart separately states it renews at $119.52 USD on Oct 4, 2029."
+          },
+          "currency": {
+            "quote": "USD",
+            "url": "https://www.mddhosting.com/support/cart.php?a=view",
+            "captured_at": "2026-10-05T03:27:09Z",
+            "context": "Official cart explicitly labels the subtotal, discount, recurring total, and total due today in USD."
+          }
+        },
+        "missing_reasons": {},
+        "rendered_checkout_evidence": {
+          "url": "https://www.mddhosting.com/support/cart.php?a=view",
+          "captured_at": "2026-10-05T03:27:09Z",
+          "selected_plan": "Basic Shared Hosting Basic",
+          "selected_term": "Triennially (3 years / 36 months)",
+          "first_total": "$59.76 USD",
+          "price_before_discount": "$119.52 USD",
+          "discount": "FALL - 50% One Time Discount; -$59.76 USD",
+          "renewal_total": "$119.52 USD per triennial term",
+          "renewal_date": "Oct 4, 2029",
+          "currency": "USD",
+          "existing_domain": "hostdealradar.com (existing domain)",
+          "paid_optional_addons": false,
+          "promotion_source": "The official Basic plan link included promocode=FALL; no code was entered by hand.",
+          "taxes_note": "No separate tax line appeared in the Review & Checkout cart summary; the final checkout/payment step was not opened.",
+          "order_submitted": false,
+          "excerpt": "Basic Shared Hosting hostdealradar.com; $119.52 USD Triennially; FALL - 50% One Time Discount: $59.76 USD; Total Due Today $59.76 USD."
+        },
+        "rendered_renewal_evidence": {
+          "url": "https://www.mddhosting.com/renewal",
+          "captured_at": "2026-10-05T03:27:48Z",
+          "plan": "Basic",
+          "billing_cycle": "Triennially (3 years)",
+          "renewal_monthly_rate": "$3.32",
+          "renewal_total": "$119.52",
+          "context": "Official table labels this section Basic Renewal Pricing; its Triennially row gives the monthly renewal rate. The cart quote for this Basic triennial term confirms $119.52 USD."
+        }
       }
     ]
   },
