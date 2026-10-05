@@ -356,7 +356,7 @@ def check():
     assert 'https://hostdealradar.com/guides/namecheap-domain-renewal-coupon/' in sitemap, 'Sitemap omits the Namecheap renewal guide'
     cloudways_guide=(ROOT/'site/guides/cloudways-coupon-code/index.html').read_text(encoding='utf-8')
     assert statuses['cloudways'].get('http_status')==200, 'Cloudways official source was not reachable in the current capture'
-    assert 'Sept 16, 2026 14:00:00' in cloudways_guide and '2026-10-05 01:19 PDT' in cloudways_guide and 'negative' in cloudways_guide, 'Cloudways guide omits the current-page countdown target, read time, or observed overrun'
+    assert 'Sept 16, 2026 14:00:00' in cloudways_guide and '2026-10-05 01:19 PDT' in cloudways_guide and '1:19 a.m. Pacific on October 5, 2026' in cloudways_guide and 'negative' in cloudways_guide, 'Cloudways guide omits the current-page countdown target, read time, or observed overrun'
     assert '40% off all hosting plans for four months' in cloudways_guide and 'Promo code already applied' in cloudways_guide and 'coupon=SUMMER404' in cloudways_guide, 'Cloudways guide omits the rendered offer, automatic-code note, or current signup-link parameter'
     assert 'does not show a human-readable code or manual-entry field' in cloudways_guide and 'works for any account' in cloudways_guide, 'Cloudways guide omits the no-manual-code observation or overstates parameter applicability'
     cloudways_schema=schemas(cloudways_guide)[0]
