@@ -355,11 +355,10 @@ def check():
     sitemap=(ROOT/'site/sitemap.xml').read_text(encoding='utf-8')
     assert 'https://hostdealradar.com/guides/namecheap-domain-renewal-coupon/' in sitemap, 'Sitemap omits the Namecheap renewal guide'
     cloudways_guide=(ROOT/'site/guides/cloudways-coupon-code/index.html').read_text(encoding='utf-8')
-    countdown=((statuses['cloudways'].get('source_claim_evidence') or {}).get('countdown') or {})
-    countdown_visible=countdown.get('visible_excerpt') or countdown.get('quote')
-    assert statuses['cloudways'].get('http_status')==200 and countdown_visible and compact(countdown_visible) in cloudways_guide, 'Cloudways guide omits the separately stored countdown evidence'
-    assert '40% off all hosting plans for four months' in cloudways_guide and 'Promo code already applied' in cloudways_guide and 'coupon=SUMMER404' in cloudways_guide, 'Cloudways guide omits the rendered offer or source-response/code distinction'
-    assert 'September 15, 2026' in cloudways_guide and 'not supported by a retained source excerpt' in cloudways_guide and 'unknown' in cloudways_guide, 'Cloudways guide hides the unsupported-date correction or current deadline uncertainty'
+    assert statuses['cloudways'].get('http_status')==200, 'Cloudways official source was not reachable in the current capture'
+    assert 'Sept 16, 2026 14:00:00' in cloudways_guide and '2026-10-05 01:19 PDT' in cloudways_guide and 'negative' in cloudways_guide, 'Cloudways guide omits the current-page countdown target, read time, or observed overrun'
+    assert '40% off all hosting plans for four months' in cloudways_guide and 'Promo code already applied' in cloudways_guide and 'coupon=SUMMER404' in cloudways_guide, 'Cloudways guide omits the rendered offer, automatic-code note, or current signup-link parameter'
+    assert 'does not show a human-readable code or manual-entry field' in cloudways_guide and 'works for any account' in cloudways_guide, 'Cloudways guide omits the no-manual-code observation or overstates parameter applicability'
     cloudways_schema=schemas(cloudways_guide)[0]
     assert cloudways_schema.get('@type')=='FAQPage' and len(cloudways_schema.get('mainEntity',[]))==7, 'Cloudways guide must publish its seven visible FAQ answers'
     # The current-code guide links to, but does not repeat, the historical archive.
