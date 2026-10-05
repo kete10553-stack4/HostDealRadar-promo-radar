@@ -490,6 +490,7 @@ def build(config_path=None, output=None):
     OUT=Path(output) if output else ROOT/'site'
     cfg=load_config(config_path); domain=cfg['site']['domain'].rstrip('/'); payload=json.loads(DATA.read_text(encoding='utf-8'))
     style_version=asset_version(ASSETS/'style.css')
+    site_js_version=asset_version(ASSETS/'site.js')
     wp_engine_kinsta_css_version=asset_version(ASSETS/'wp-engine-kinsta.css')
     ga4_measurement_id=cfg['settings'].get('ga4_measurement_id', '')
     if ga4_measurement_id and not re.fullmatch(r'G-[A-Z0-9]+', ga4_measurement_id):
@@ -520,6 +521,41 @@ def build(config_path=None, output=None):
     reviewed_providers={record['provider'] for record in documented_plan_rows(payload)}
     unpublished_source_only={pid for pid in state_only if pid not in cfg['browser_observations'] and pid not in guide_templates and pid not in reviewed_providers}
     public_providers=[p for p in providers if p['id'] not in unpublished_source_only]
+    public_provider_ids={p['id'] for p in public_providers}
+    brand_guides={}
+    for entry in cfg['brand_guides']:
+        pid=entry.get('provider') or entry['id']
+        if pid in brand_guides or (entry.get('provider') and pid not in byid):
+            raise ValueError('Duplicate or unknown guide brand: '+pid)
+        if any(not re.fullmatch(r'/guides/[a-z0-9-]+/', guide['path']) for guide in entry['guides']):
+            raise ValueError('Invalid guide path for '+pid)
+        brand_guides[pid]={'name':byid[pid]['name'] if pid in byid else entry['name'], 'guides':entry['guides']}
+    def brand_links(pid, current_route='', include_provider=True):
+        links=[]
+        if include_provider and pid in public_provider_ids:
+            links.append(f'<li><a href="/providers/{e(pid)}/">Official source records</a></li>')
+        for guide in brand_guides.get(pid,{}).get('guides',[]):
+            if guide['path'] != current_route:
+                links.append(f'<li><a href="{e(guide["path"])}">{e(guide["title"])}</a></li>')
+        plans=[record for record in reviewed if record['provider']==pid]
+        if plans:
+            links.append(f'<li><a href="/compare/#evidence-{e(reviewed_anchor(plans[0]))}">Dated plan-price evidence ({len(plans)})</a></li>')
+        return '<ul class="brand-links">'+''.join(links)+'</ul>' if links else ''
+    def guide_navigation(route):
+        items=[]
+        matched=False
+        for pid, group in brand_guides.items():
+            if any(guide['path']==route for guide in group['guides']):
+                matched=True
+                links=brand_links(pid,route)
+                if links:
+                    items.append(f'<div><h3>{e(group["name"])}</h3>{links}</div>')
+        if not matched and route != '/guides/hosting-coupons/':
+            return ''
+        heading='Related brand guides and evidence' if items else 'Explore more brands'
+        return ('<aside class="wrap section brand-resources" aria-label="Related brand resources">'
+                f'<h2>{heading}</h2>'+('<div class="brand-resource-grid">'+''.join(items)+'</div>' if items else '')+
+                '<p><a href="/providers/#brand-guides">Browse guides and evidence by brand →</a></p></aside>')
     rendered={}
     if OUT.exists(): shutil.rmtree(OUT)
     shutil.copytree(ASSETS, OUT/'assets')
@@ -531,7 +567,10 @@ def build(config_path=None, output=None):
     def write_bytes(path, data):
         path=Path(path); target=OUT/path; target.parent.mkdir(parents=True,exist_ok=True); target.write_bytes(data)
     def page(title, description, canonical, content, schema, head_extra=''):
-        return template('base.html',title=e(title),description=e(description),canonical=e(canonical),brand=e(cfg['site']['brand']),tagline=e(cfg['settings']['tagline']),repo=e(cfg['settings']['repo_url']),social_image='',head_extra=head_extra,analytics=analytics_head,analytics_settings=analytics_settings,footer_status=e('Data source checks are automated.'),content=content,schema=json.dumps(schema,separators=(',',':')),style_version=style_version)
+        route=canonical.removeprefix(domain)
+        if route.startswith('/guides/'):
+            content+=guide_navigation(route)
+        return template('base.html',title=e(title),description=e(description),canonical=e(canonical),brand=e(cfg['site']['brand']),tagline=e(cfg['settings']['tagline']),repo=e(cfg['settings']['repo_url']),social_image='',head_extra=head_extra,analytics=analytics_head,analytics_settings=analytics_settings,footer_status=e('Data source checks are automated.'),content=content,schema=json.dumps(schema,separators=(',',':')),style_version=style_version,site_js_version=site_js_version)
     def card(o, historical=False):
         p=byid[o['provider']]; state, message=states[o['slug']]; terms=[]
         rule=rules.get((o['provider'], o['title']), {})
@@ -573,7 +612,9 @@ def build(config_path=None, output=None):
                 f'<p class="lead"><strong>Official price wording:</strong> “{e(advertised)}”</p>'
                 f'<p class="record-state state-{e(state)}"><strong>{e(state.title())} record.</strong> Checked {e(date_text(o["fetched_at"]))}. '
                 f'<a href="{e(o["source_url"])}" rel="noopener noreferrer">Open official source ↗</a></p>'
-                f'<dl class="terms">{terms_html}</dl></section>')
+                f'<p class="small">Captured at <time datetime="{e(o["fetched_at"])}">{e(o["fetched_at"])}</time>.</p>'
+                + citation_link(f'/providers/{p["id"]}/#record-{o["slug"]}', offer_name(p['name'],o['title']))
+                + f'<dl class="terms">{terms_html}</dl></section>')
     def source_observation_record(p, observation, status):
         terms=[('Record type','Official source observation; not a current offer'),
                ('Official price','Not publicly disclosed on the observed page'),
@@ -636,6 +677,40 @@ def build(config_path=None, output=None):
         return f'<a href="{e(source)}" rel="noopener noreferrer">{e(label)}</a>'
     def reviewed_anchor(record):
         return 'plan-' + record.get('plan_id', record['provider'])
+    def citation_link(path, label):
+        return (f'<p class="citation-actions"><a href="{e(path)}">Link to this record</a>'
+                f'<button type="button" class="copy-record-link" data-copy-record="{e(path)}" '
+                f'aria-label="Copy link to {e(label)}" hidden>Copy link</button>'
+                '<span class="copy-status" role="status"></span></p>')
+    def reviewed_evidence(record):
+        name=byid[record['provider']]['name']
+        anchor='evidence-'+reviewed_anchor(record)
+        fields=[]
+        for field,label in (('first_term_total','First-term total'),('commitment_months','Commitment'),
+                            ('renewal_monthly_rate','Renewal monthly rate'),('currency','Currency'),
+                            ('renewal_currency','Renewal currency (official page metadata)')):
+            evidence=record['field_evidence'].get(field,{})
+            if not evidence.get('quote') or not str(evidence.get('url','')).startswith('https://'):
+                continue
+            captured=evidence.get('captured_at')
+            timestamp=(f'<time datetime="{e(captured)}">{e(captured)}</time>' if captured else 'Exact field capture time not recorded')
+            context=f'<p>{e(evidence["context"])}</p>' if evidence.get('context') else ''
+            fields.append(f'<div class="evidence-field"><h4>{e(label)}</h4><blockquote>{e(evidence["quote"])}</blockquote>'
+                          f'{context}<p class="small"><a href="{e(evidence["url"])}" rel="noopener noreferrer">Official source ↗</a> · {timestamp}</p></div>')
+        total=money(record['first_term_total'],record['currency'])
+        monthly=money(record['monthly_equivalent'],record['currency'])
+        notes=''.join(f'<p class="small">{e(record[key])}</p>' for key in ('monthly_note','cart_note','rounding_note') if record.get(key))
+        entry=(f'<p><a href="{e(record["entry_url"])}" rel="noopener noreferrer">Open the official plan selection page ↗</a> '
+               'Cart links may require the same plan, term and options to be selected again.</p>' if record.get('entry_url') else '')
+        return (f'<details class="plan-evidence" id="{e(anchor)}"><summary>{e(name)} — {e(record["plan"])}</summary>'
+                f'<div class="evidence-body"><p><strong>{e(record["currency"])} · Dated manual example.</strong> '
+                f'Review date: {e(record_review_date(record))} PT. Field-level capture times are shown below. '
+                'Confirm current eligibility, fees, taxes and renewal terms with the provider; this record is not a completed purchase.</p>'
+                +citation_link('/compare/#'+anchor,name+' '+record['plan'])+''.join(fields)
+                +f'<p><strong>Calculated monthly equivalent:</strong> {total} ÷ {record["commitment_months"]} months = {monthly}/month. '
+                 'This calculation uses the recorded first-term total.</p>'+notes+entry
+                +f'<p><a href="/compare/#{e(reviewed_anchor(record))}">Back to this comparison row</a> · '
+                 f'<a href="/providers/{e(record["provider"])}/">{e(name)} source records</a></p></div></details>')
     def reviewed_card(record):
         name=byid[record['provider']]['name']
         total=money(record['first_term_total'],record['currency'])
@@ -654,7 +729,7 @@ def build(config_path=None, output=None):
                 f'<div><dt>Renewal monthly rate</dt><dd>{reviewed_link(record,"renewal_monthly_rate",renewal+"/mo")}</dd></div></dl>'
                 f'<p class="capture">Official pages checked {e(record_review_date(record))} PT. Confirm the latest price and tax at checkout.'
                 + (' The upfront total was seen in an official cart after plan selection; cart contents may vary by session.' if record.get('entry_url') else '')
-                + '</p></article>')
+                + f'</p><a class="text-link" href="/compare/#evidence-{e(reviewed_anchor(record))}">Read the source evidence →</a></article>')
     # A dated observation may support only one or two terms. Keep those
     # source-linked fields visible without putting the row in a comparison.
     partial=[record for record in (payload.get('browser_term_observations') or {}).get('records', [])
@@ -698,8 +773,21 @@ def build(config_path=None, output=None):
     write(Path('index.html'),page('HostDealRadar | Official hosting offers', 'Official hosting offers with source-check status and provider links.',domain+'/',home,home_schema,head_extra="<meta name='impact-site-verification' value='9f3ff63a-c432-478f-8859-af77a6120cbb'>"))
     with_current=[p for p in public_providers if current_by_provider[p['id']]]
     without_current=[p for p in public_providers if not current_by_provider[p['id']]]
+    resource_brands=list(brand_guides)
+    resource_brands.extend(pid for pid in dict.fromkeys(record['provider'] for record in reviewed) if pid not in brand_guides)
+    brand_cards=''.join('<article class="brand-resource-card"><h3>'+e(brand_guides[pid]['name'] if pid in brand_guides else byid[pid]['name'])
+                        +'</h3>'+brand_links(pid)+'</article>' for pid in resource_brands)
+    brand_directory=('<section class="wrap section" id="brand-guides"><h2>Find guides and evidence by brand</h2>'
+                     '<p>Choose a brand to read its coupon or billing guides and dated plan-price examples. '
+                     'Each guide and record keeps its own source-check date. Some brands have guides, some plan examples, and some both.</p>'
+                     '<p><a href="/guides/hosting-coupons/">Start here: coupon codes, automatic offers and signup credits</a></p>'
+                     '<div class="brand-resource-grid">'+brand_cards+'</div></section>')
     provider_listing=(
         '<section class="wrap section"><div class="eyebrow">OFFICIAL SOURCES</div><h1>Providers we check</h1>'
+        '<p class="lead">Find a brand’s guides, documented plan prices and official source records.</p>'
+        '<nav class="record-index" aria-label="Provider directory sections"><a href="#brand-guides">Guides and evidence by brand</a>'
+        '<a href="#current-records">Current source records</a><a href="#without-current-records">Other source checks</a></nav></section>'
+        +brand_directory+'<section class="wrap section">'
         '<p class="lead">Browse providers with current source records first. Other checked sources remain below with the result of their latest check. Within each group, providers follow the configured source-list order, not a recommendation or a ranking of price, quality, or value. <a href="/methodology/#service-labels">Read service-label definitions and limits</a>.</p>'
         f'<h2 id="current-records">Providers with current records ({len(with_current)})</h2>'
         '<div class="provider-grid">'+''.join(directory_tile(p) for p in with_current)+'</div></section>'
@@ -766,7 +854,8 @@ def build(config_path=None, output=None):
         elif focus and not manual_plans:
             note=(f'{focus}: no current source record is published. This page keeps the latest {p["name"]} source-check status only; '
                   'it is not included in the sitemap.')
-        related_guide=template(guide_templates[p['id']]) if p['id'] in guide_templates else ''
+        resources=brand_links(p['id'],include_provider=False)
+        related_guide=('<aside class="source-note brand-resources"><h2>Guides and plan evidence</h2>'+resources+'</aside>') if resources else ''
         details=('<div class="record-details">'+''.join(record_detail(o) for o in po)+'</div>') if po else ''
         has_coupon=any(o.get('coupon_code') and captured_field_evidence(o,'coupon_code') for o in po)
         if po:
@@ -873,7 +962,7 @@ def build(config_path=None, output=None):
         months=record['commitment_months']
         month_label='month' if months == 1 else 'months'
         return (f'<tr id="{e(reviewed_anchor(record))}"><td><strong>{e(byid[record["provider"]]["name"])}</strong>'
-                f'<span>{e(record["plan"])}</span></td>'
+                f'<span>{e(record["plan"])}</span><a class="text-link" href="#evidence-{e(reviewed_anchor(record))}">Source evidence</a></td>'
                 f'<td>{reviewed_link(record,"first_term_total",total)}</td>'
                 f'<td>{reviewed_link(record,"commitment_months",str(months)+" "+month_label)}</td>'
                 f'<td>{monthly}<span>Calculated: {total} ÷ {months}</span>'
@@ -886,7 +975,13 @@ def build(config_path=None, output=None):
                       '<thead><tr><th>Provider / plan</th><th>First-term total</th><th>Commitment</th>'
                       '<th>Monthly equivalent</th><th>Renewal monthly rate</th><th>Checked</th></tr></thead><tbody>'
                       +''.join(reviewed_row(record) for record in reviewed)+'</tbody></table></div>') if reviewed else ''
-    compare=template('compare.html',reviewed_section=compare_reviewed,partial_cards=partial_cards)
+    evidence_index='<nav class="record-index" aria-label="Plan evidence by brand">'+''.join(
+        f'<a href="#evidence-{e(reviewed_anchor(next(record for record in reviewed if record["provider"]==pid)))}">{e(byid[pid]["name"])}</a>'
+        for pid in dict.fromkeys(record['provider'] for record in reviewed))+'</nav>'
+    evidence_section=('<section class="plan-evidence-list" id="source-evidence"><h2>Source evidence for each plan</h2>'
+                      '<p>Open a record to read the captured official wording, source links, conditions and capture times. '
+                      'Use its record link to cite these dated observations.</p>'+evidence_index+''.join(reviewed_evidence(record) for record in reviewed)+'</section>') if reviewed else ''
+    compare=template('compare.html',reviewed_section=compare_reviewed,partial_cards=partial_cards,evidence_section=evidence_section)
     write(Path('compare/index.html'),page('Compare plan terms | HostDealRadar','Compare documented upfront totals, terms, and renewal monthly rates from official hosting pages.',domain+'/compare/',compare,{'@context':'https://schema.org','@type':'WebPage','name':'Compare documented hosting plan terms'}))
     prose=lambda heading,body: f'<section class="wrap section prose"><div class="eyebrow">HOSTDEALRADAR</div><h1>{heading}</h1>{body}</section>'
     methodology='<p class="lead">Every listed term comes from an official public provider page. We do not estimate missing prices or invent promotions.</p><h2>What is included</h2><ul><li>We retrieve public pages only when robots.txt allows it.</li><li>We record the source URL and capture time with every record.</li><li>A term is listed as current only when the latest source check reconfirmed that exact record. A promotion also needs a verified end date; a successful fetch alone does not establish that it is still valid.</li></ul><h2>Coupon and promotion evidence</h2><ul><li>Each coupon guide separates what the official page showed at its last actual read from archived responses and dated user reports.</li><li>We mark each source-read date and time when the record preserves it. If only a date was saved, we say the time was not recorded; a snapshot timestamp is not a later archive-review time.</li><li>A code shown on a page, already applied, or present in a signup URL records page content. It does not prove eligibility or redemption for any account.</li></ul><h2 id="display-order">How pages are ordered</h2><p>Provider grids follow the configured source-list order. Offer cards and comparison rows follow the captured record order in the latest dataset. Homepage examples require current records with an established renewal rate above the initial rate. We group them by currency, billing unit, and service label. If any explicitly identify a first-month rate, only those records are eligible for the example group; otherwise all eligible records are considered. We choose the group with the most eligible records; ties use alphabetical currency, unit, and label order. Up to three records from that group come first, ordered by the larger numeric change within each record; equal changes use the record identifier. The remaining positions, up to nine cards in total, follow stored record order, excluding those examples. The example count is recalculated for each published snapshot. Initial terms and plan resources can differ, so the examples do not establish equivalent plans or an amount a buyer would save. These display orders are not recommendations, quality rankings, price rankings, or value rankings.</p>'+category_guide(offers)+'<h2>What happens when a source cannot be checked</h2><ul><li>If a source is blocked, challenged, or unclear, we publish no new offer for it.</li><li>Unverified or earlier records retain their actual capture time and are not shown as current offers.</li><li>Expired promotions are labelled expired and are never shown as a current offer.</li></ul><h2>What to verify before purchase</h2><p>Confirm checkout total, tax, eligibility, billing term, and renewal amount with the provider. A captured offer is not a checkout test or a performance review.</p>'
