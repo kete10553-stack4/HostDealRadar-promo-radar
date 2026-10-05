@@ -367,7 +367,8 @@ def check():
     archive_pointer=cloudways_guide[cloudways_guide.index('id="archive"'):cloudways_guide.index('<h2>Before you start a paid plan</h2>')]
     assert '<tr id="archive-' not in cloudways_guide, 'Cloudways guide still carries the archived table that moved to the archive page'
     assert archive_pointer.count('<p>')==1 and archive_pointer.count('/guides/cloudways-coupon-archive/')==1, 'Cloudways archive section must stay one introduction and one link'
-    assert cloudways_guide.count('/guides/cloudways-coupon-archive/')==5, 'Cloudways guide must preserve its five contextual archive links'
+    cloudways_article=cloudways_guide.split('<aside class="wrap section brand-resources"',1)[0]
+    assert cloudways_article.count('/guides/cloudways-coupon-archive/')==5, 'Cloudways article must preserve its five contextual archive links, separate from brand navigation'
     # The archive page must preserve every cited row and the limits that keep
     # historical evidence from being presented as a current offer or live test.
     cloudways_archive=(ROOT/'site/guides/cloudways-coupon-archive/index.html').read_text(encoding='utf-8')
@@ -458,6 +459,31 @@ def check():
             source=record['field_evidence'][field]['url']
             assert build.e(source) in compare and build.e(source) in home, f'{record["provider"]} {field} lacks its official link'
     manual_by_provider={}
+    # Each shareable record must retain its own evidence rather than borrowing
+    # source wording or timestamps from a neighbouring plan.
+    evidence_blocks=dict(re.findall(r'<details class="plan-evidence" id="([^"]+)">(.*?)</details>',compare,re.S))
+    assert len(evidence_blocks)==len(reviewed), 'Missing or duplicate plan-evidence identifiers'
+    for record in reviewed:
+        anchor='evidence-plan-'+record.get('plan_id',record['provider'])
+        block=evidence_blocks[anchor]
+        assert f'href="/compare/#{anchor}"' in block, f'{anchor} has no stable citation link'
+        assert build.e(record['currency']) in block and 'Calculated monthly equivalent:' in block, f'{anchor} lacks currency/calculation attribution'
+        for field in ('first_term_total','commitment_months','renewal_monthly_rate'):
+            evidence=record['field_evidence'][field]
+            assert build.e(evidence['quote']) in block and build.e(evidence['url']) in block, f'{anchor} omits its own {field} source evidence'
+            if evidence.get('captured_at'):
+                assert build.e(evidence['captured_at']) in block, f'{anchor} changed a field capture time'
+    directory=(ROOT/'site/providers/index.html').read_text(encoding='utf-8')
+    for group in cfg['brand_guides']:
+        for guide_link in group['guides']:
+            route=guide_link['path']
+            assert f'href="{route}"' in directory, f'{route} has no brand-directory entry'
+            guide_page=(ROOT/'site'/route.strip('/')/'index.html').read_text(encoding='utf-8')
+            assert 'href="/providers/#brand-guides"' in guide_page, f'{route} has no return to the brand directory'
+            if group.get('provider'):
+                provider_file=ROOT/'site/providers'/group['provider']/'index.html'
+                if provider_file.exists():
+                    assert f'href="{route}"' in provider_file.read_text(encoding='utf-8'), f'{route} is disconnected from its provider'
     for record in reviewed:
         manual_by_provider.setdefault(record['provider'],[]).append(record)
     for provider_id, records in manual_by_provider.items():
