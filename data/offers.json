@@ -10014,16 +10014,16 @@
   "source_403_history": [],
   "page_lastmod": {
     "/": {
-      "hash": "886000b667718683b4faeac79b055420a316eee8992117b4353aa70d18d50380",
-      "lastmod": "2026-10-05T03:48:53Z"
+      "hash": "44d8cf65aac00dd1f82cc25d0bef401a8d23681b24afdd3f19fbbd9a3ee84652",
+      "lastmod": "2026-10-05T11:27:48Z"
     },
     "/providers/": {
       "hash": "090255553222d6b6c8fad6a71a709b527ef67e87d60ed2d65aadf55dadfe9771",
       "lastmod": "2026-10-05T00:38:52Z"
     },
     "/compare/": {
-      "hash": "9c7720c8d0016bb4d830cac5579ef8dcaa4143c8997c3cb005b118ce60e7f427",
-      "lastmod": "2026-10-05T03:48:53Z"
+      "hash": "bd7e949ea81381b14cd343eae6768c190d4542aa591a21d8ecd1e0badc34dfc4",
+      "lastmod": "2026-10-05T11:27:48Z"
     },
     "/methodology/": {
       "hash": "28eafae87918ce443a12dae54c9c97ba4861192e009d59eab9c28aab9c913f3a",
@@ -12398,6 +12398,71 @@
           "excerpt": "Linux Shared Hosting - SHARED Starter hostdealradar.com; Total Recurring Biennially $82.59 USD; Payment Gateway Charge $2.48 USD; Total Due Today $85.07 USD."
         },
         "monthly_note": "Official card and renewal rate: $3.44/mo for 2 years. The $85.07 observed total includes a $2.48 Card/Stripe gateway charge; the hosting subtotal is $82.59."
+      },
+      {
+        "provider": "kualo",
+        "plan": "SOLO shared web hosting, 1-month billing",
+        "plan_id": "kualo-solo-1-month",
+        "currency": "USD",
+        "first_term_total": 9.99,
+        "commitment_months": 1,
+        "monthly_equivalent": 9.99,
+        "renewal_monthly_rate": 9.99,
+        "calculation": "9.99 / 1 = 9.99 USD/month",
+        "advertised_price_quote": "JUST $9.99; 1 Month $9.99",
+        "checked_on": "2026-10-05",
+        "captured_at": "2026-10-05T11:26:30Z",
+        "entry_url": "https://www.kualo.com/webhosting",
+        "field_evidence": {
+          "first_term_total": {
+            "quote": "Total Due Today: $9.99 USD",
+            "url": "https://my.kualo.com/usa/cart.php?pid=311",
+            "captured_at": "2026-10-05T11:26:30Z",
+            "context": "Official Order Summary for Solo Plan; 1 Month selected. Subtotal is $9.99 USD and Total Due Today is $9.99 USD. Existing public domain hostdealradar.com; no promotion entered; no paid optional add-ons; order not submitted."
+          },
+          "commitment_months": {
+            "quote": "1 Month Price - $9.99 USD MONTHLY",
+            "url": "https://my.kualo.com/usa/cart.php?pid=311",
+            "captured_at": "2026-10-05T11:26:30Z",
+            "context": "Solo plan billing-cycle selector with 1 Month selected; the order summary identifies Solo Plan and hostdealradar.com."
+          },
+          "renewal_monthly_rate": {
+            "quote": "$9.99 USD Monthly",
+            "url": "https://my.kualo.com/usa/cart.php?pid=311",
+            "captured_at": "2026-10-05T11:26:30Z",
+            "context": "Shown under Recurring Charges, immediately after: \"These are your future renewal charges broken down by payment cycle.\" The selected Solo billing cycle is Monthly."
+          },
+          "currency": {
+            "quote": "$9.99 USD",
+            "url": "https://my.kualo.com/usa/cart.php?pid=311",
+            "captured_at": "2026-10-05T11:26:30Z",
+            "context": "The official cart explicitly labels the line item, subtotal, total due today, and recurring charge in USD. The provider page currency selector showed USD."
+          }
+        },
+        "missing_reasons": {},
+        "rendered_pricing_evidence": {
+          "url": "https://www.kualo.com/webhosting",
+          "captured_at": "2026-10-05T11:11:15.809Z",
+          "selected_currency": "US Dollar (USD)",
+          "plan": "SOLO",
+          "plan_card_excerpt": "JUST $9.99; 1 Month $9.99",
+          "context": "Official Shared Hosting page with the USD currency selector selected. The plan card labels SOLO and shows a 1 Month $9.99 option."
+        },
+        "rendered_checkout_evidence": {
+          "url": "https://my.kualo.com/usa/cart.php?pid=311",
+          "captured_at": "2026-10-05T11:26:30Z",
+          "selected_plan": "Solo Plan",
+          "selected_term": "1 Month Price - $9.99 USD MONTHLY",
+          "subtotal": "$9.99 USD",
+          "total_due_today": "$9.99 USD",
+          "recurring_total": "$9.99 USD Monthly",
+          "existing_domain": "hostdealradar.com",
+          "promotion_code_field": "blank; no code entered",
+          "paid_optional_addons": false,
+          "taxes_note": "No separate tax line appeared in the cart summary. The account and payment step was not opened, so final tax treatment is unverified.",
+          "order_submitted": false,
+          "excerpt": "Solo Plan hostdealradar.com; 1 Month Price - $9.99 USD MONTHLY; Subtotal: $9.99 USD; Total Due Today: $9.99 USD; Recurring Charges: $9.99 USD Monthly."
+        }
       }
     ]
   },
