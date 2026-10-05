@@ -470,7 +470,16 @@ def check():
                     or 'This status covers automated current offers.' in provider_page), f'{provider_id} does not distinguish the automated offer state from its manual plan records'
             assert 'not a coupon-code record' in provider_page, f'{provider_id} does not identify its manual plan-price records'
             assert 'No current source record is published for this provider; no three-term comparison can be made.' not in provider_page, f'{provider_id} page contradicts its published manual plan records'
-    assert 'id="three-term-standard"' in (ROOT/'site/methodology/index.html').read_text(encoding='utf-8'), 'Methodology omits the three-term inclusion standard'
+    methodology_page=(ROOT/'site/methodology/index.html').read_text(encoding='utf-8')
+    assert 'id="three-term-standard"' in methodology_page, 'Methodology omits the three-term inclusion standard'
+    assert 'Coupon and promotion evidence' in methodology_page and 'a later archive-review time' in methodology_page, 'Methodology omits the current-page/archive separation and source-read-time rule'
+    coupon_guide_slugs=('a2-hosting-coupon-code','bluehost-promo-code','cloudways-coupon-code','cloudways-coupon-archive',
+                        'digitalocean-promo-code','godaddy-renewal-coupon','hostgator-coupon-code','hosting-coupons',
+                        'hostinger-coupon-code','hostinger-domain-coupon-code','hostinger-vps-coupon-code',
+                        'namecheap-domain-renewal-coupon','namecheap-promo-code')
+    for slug in coupon_guide_slugs:
+        coupon_page=(ROOT/f'site/guides/{slug}/index.html').read_text(encoding='utf-8')
+        assert 'class="source-note"' in coupon_page, f'{slug} omits its official-page/history evidence boundary'
     namecheap_promo=(ROOT/'site/guides/namecheap-promo-code/index.html').read_text(encoding='utf-8')
     assert all(code in namecheap_promo for code in ('WORKMODEDOM','WORKMODEPE','WORKMODESSL')), 'Namecheap guide is missing a cited official code card'
     assert '/guides/namecheap-promo-code/' in home and '/guides/namecheap-promo-code/' in namecheap, 'Namecheap promo guide lacks home or provider entry'
