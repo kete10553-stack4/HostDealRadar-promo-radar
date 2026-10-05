@@ -357,10 +357,11 @@ def check():
     cloudways_guide=(ROOT/'site/guides/cloudways-coupon-code/index.html').read_text(encoding='utf-8')
     countdown=((statuses['cloudways'].get('source_claim_evidence') or {}).get('countdown') or {})
     countdown_visible=countdown.get('visible_excerpt') or countdown.get('quote')
-    assert statuses['cloudways'].get('http_status')==200 and countdown_visible and compact(countdown_visible) in cloudways_guide, 'Cloudways guide omits the stored countdown evidence'
-    assert 'September 15, 2026' in cloudways_guide and 'not supported by a retained source excerpt' in cloudways_guide and 'time zone is not stated' in cloudways_guide, 'Cloudways guide hides the unsupported-date correction or date ambiguity'
+    assert statuses['cloudways'].get('http_status')==200 and countdown_visible and compact(countdown_visible) in cloudways_guide, 'Cloudways guide omits the separately stored countdown evidence'
+    assert '40% off all hosting plans for four months' in cloudways_guide and 'Promo code already applied' in cloudways_guide and 'coupon=SUMMER404' in cloudways_guide, 'Cloudways guide omits the rendered offer or source-response/code distinction'
+    assert 'September 15, 2026' in cloudways_guide and 'not supported by a retained source excerpt' in cloudways_guide and 'unknown' in cloudways_guide, 'Cloudways guide hides the unsupported-date correction or current deadline uncertainty'
     cloudways_schema=schemas(cloudways_guide)[0]
-    assert cloudways_schema.get('@type')=='FAQPage' and len(cloudways_schema.get('mainEntity',[]))==5, 'Cloudways guide must publish its five visible FAQ answers'
+    assert cloudways_schema.get('@type')=='FAQPage' and len(cloudways_schema.get('mainEntity',[]))==7, 'Cloudways guide must publish its seven visible FAQ answers'
     # The current-code guide links to, but does not repeat, the historical archive.
     archive_pointer=cloudways_guide[cloudways_guide.index('id="archive"'):cloudways_guide.index('<h2>Before you start a paid plan</h2>')]
     assert '<tr id="archive-' not in cloudways_guide, 'Cloudways guide still carries the archived table that moved to the archive page'

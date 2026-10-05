@@ -816,22 +816,16 @@ def build(config_path=None, output=None):
     write(Path('guides/namecheap-promo-code/index.html'),page('Namecheap promo code: official September 2026 cards | HostDealRadar','Namecheap official September promo codes by product, with the published window, renewal limit, source links, and a dated checkout boundary.',domain+namecheap_promo_route,namecheap_promo,namecheap_promo_schema))
     cloudways_guide_route='/guides/cloudways-coupon-code/'
     cloudways_guide=template('cloudways-coupon-code.html')
-    cloudways_status=statuses.get('cloudways', {})
-    countdown=(cloudways_status.get('source_claim_evidence') or {}).get('countdown', {})
-    countdown_quote=countdown.get('visible_excerpt') or countdown.get('quote') or 'No countdown statement was captured in this release.'
-    checked_at=cloudways_status.get('checked_at', '')
-    checked_date=checked_at[:10] if checked_at else 'the recorded source-check time'
-    cloudways_guide=(cloudways_guide
-        .replace('{{CLOUDWAYS_CHECKED_DATE}}', e(checked_date))
-        .replace('{{CLOUDWAYS_COUNTDOWN_QUOTE}}', e(countdown_quote)))
     cloudways_guide_schema={'@context':'https://schema.org','@type':'FAQPage','mainEntity':[
-        {'@type':'Question','name':'Is SUMMER404 a verified current Cloudways hosting coupon code?','acceptedAnswer':{'@type':'Answer','text':'No. The source check found historical page material and a zeroed countdown, but it did not verify current checkout redemption.'}},
-        {'@type':'Question','name':'What date does the official promo page show?','acceptedAnswer':{'@type':'Answer','text':'The stored source evidence says: '+countdown_quote+'. The response does not state a time zone, so the guide does not convert it to another date.'}},
-        {'@type':'Question','name':'Did this check verify another current general hosting coupon code?','acceptedAnswer':{'@type':'Answer','text':'No current general code was verified by this page check. It did not test checkout or every Cloudways product.'}},
+        {'@type':'Question','name':'What Cloudways offer does the official page show?','acceptedAnswer':{'@type':'Answer','text':'As read on October 4, 2026, it displayed 40% off all hosting plans for four months, with the promo code applied automatically, plus unlimited free migrations for WordPress and WooCommerce websites. This page check did not test checkout.'}},
+        {'@type':'Question','name':'What code should I enter?','acceptedAnswer':{'@type':'Answer','text':'The visible page says the promo code is already applied and does not print a human-readable code. A saved signup-link parameter contains SUMMER404, but that does not prove it is the code for the displayed offer.'}},
+        {'@type':'Question','name':'Does Cloudways list an exact end date for this offer?','acceptedAnswer':{'@type':'Answer','text':'No calendar deadline was visible on the offer page when checked on October 4, 2026. It labels the promotion as limited-time.'}},
+        {'@type':'Question','name':'Who qualifies for the displayed Cloudways offer?','acceptedAnswer':{'@type':'Answer','text':'The official FAQ says new users who sign up and upgrade from the free trial to a paid plan; it says existing customers are not eligible. We did not verify an account or checkout.'}},
+        {'@type':'Question','name':'Did this check verify checkout or the amount on a final bill?','acceptedAnswer':{'@type':'Answer','text':'No. It records the public page only, not signup, checkout, account eligibility, tax, or a final bill.'}},
         {'@type':'Question','name':"What were Cloudways’ own Black Friday codes?",'acceptedAnswer':{'@type':'Answer','text':'Saved Cloudways pages printed BFCM18, BFCM40, BFCM2021 and BFCM4030 in their respective years. These are historical source statements, not current working codes. The retained 2020 response is a security-check page with no offer text.'}},
         {'@type':'Question','name':'Are the Cloudways codes on coupon sites Cloudways codes?','acceptedAnswer':{'@type':'Answer','text':"Not necessarily. Cloudways’ saved roundups also listed partner offers for Inspectlet, NotificationX and MexBS. Those were not additional Cloudways hosting discounts."}}
     ]}
-    write(Path('guides/cloudways-coupon-code/index.html'),page('Cloudways coupon code: current source check | HostDealRadar','Cloudways source evidence for SUMMER404, the stored countdown and its limits. Historical Black Friday records are linked separately.',domain+cloudways_guide_route,cloudways_guide,cloudways_guide_schema))
+    write(Path('guides/cloudways-coupon-code/index.html'),page('Cloudways coupon code: current official 40% offer | HostDealRadar','Cloudways currently displays 40% off hosting plans for four months, eligibility, automatic code application, migration offer, and evidence limits.',domain+cloudways_guide_route,cloudways_guide,cloudways_guide_schema))
     # The archived table moved here from the coupon guide so the head query stays
     # with the current-status guide; this page carries the archive wording only.
     cloudways_archive_route='/guides/cloudways-coupon-archive/'
