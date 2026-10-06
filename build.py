@@ -1003,6 +1003,25 @@ def build(config_path=None, output=None):
                                    '" loading="lazy" decoding="async"></a><figcaption>'+e(shot['caption'])+'</figcaption></figure>')
         premium_primary_screenshots=''.join(premium_figures[i] for i in (0,1) if i<len(premium_figures))
         premium_extra_screenshots=''.join(premium_figures[i] for i in (2,3) if i<len(premium_figures))
+        essential_cart=campaign.get('essential_cart_observation',{})
+        essential_items=essential_cart.get('items',[])
+        essential_item_by_id={item['id']:item for item in essential_items}
+        essential_plan=essential_item_by_id.get('essential-hosting',{})
+        essential_domain=essential_item_by_id.get('essential-com-domain',{})
+        essential_ssl=essential_item_by_id.get('ssl-xpress',{})
+        essential_rows=''.join('<tr><th scope="row"><q>'+e(item['name_quote'])+'</q></th><td><q>'+e(item['initial_line_quote'])+
+                              '</q>'+(' ('+e(item['benefit_quote'])+')' if item.get('benefit_quote') else '')+'</td><td><q>'+e(item['term_quote'])+
+                              '</q></td><td><q>'+e(item['renewal_quote'])+'</q></td></tr>' for item in essential_items)
+        essential_cart_table=('<div class="table-wrap"><table class="pricing-table"><caption>Essential cart lines, manually read from official cart screenshots</caption>'
+                              '<thead><tr><th scope="col">Product</th><th scope="col">Initial line amount</th><th scope="col">Selected billing term</th>'
+                              '<th scope="col">Renewal quote</th></tr></thead><tbody>'+essential_rows+'</tbody></table></div>') if essential_rows else ''
+        essential_figures=[]
+        for shot in essential_cart.get('original_screenshots',[]):
+            essential_figures.append('<figure class="cart-proof"><a href="'+e(shot['path'])+'"><img src="'+e(shot['path'])+
+                                     '" alt="'+e(shot['caption'])+'" width="'+str(shot['width'])+'" height="'+str(shot['height'])+
+                                     '" loading="lazy" decoding="async"></a><figcaption>'+e(shot['caption'])+'</figcaption></figure>')
+        essential_primary_screenshots=''.join(essential_figures[i] for i in (0,1) if i<len(essential_figures))
+        essential_extra_screenshots=''.join(essential_figures[i] for i in (2,) if i<len(essential_figures))
         figures=[]
         for shot in cart.get('original_screenshots',[]):
             figures.append('<figure class="cart-proof"><a href="'+e(shot['path'])+'"><img src="'+e(shot['path'])+
@@ -1034,6 +1053,16 @@ def build(config_path=None, output=None):
                          premium_domain_term=e(premium_domain.get('term_quote','')),premium_domain_renewal=e(premium_domain.get('renewal_quote','')),
                          premium_ssl_initial=e(premium_ssl.get('initial_line_quote','')),premium_ssl_term=e(premium_ssl.get('term_quote','')),
                          premium_ssl_renewal=e(premium_ssl.get('renewal_quote','')),premium_capture_note=e(premium_cart.get('capture_time_note','')),
+                         essential_cart_table=essential_cart_table,essential_primary_screenshots=essential_primary_screenshots,
+                         essential_extra_screenshots=essential_extra_screenshots,essential_read_label=e(essential_cart.get('review_label','')),
+                         essential_item_count=e(essential_cart.get('item_count_quote','')),essential_today_total=e(essential_cart.get('today_total_quote','')),
+                         essential_savings=e(essential_cart.get('applied_savings_quote','')),essential_code_prompt=e(essential_cart.get('promo_code_prompt_quote','')),
+                         essential_capture_note=e(essential_cart.get('capture_time_note','')),
+                         essential_initial=e(essential_plan.get('initial_line_quote','')),essential_term=e(essential_plan.get('term_quote','')),
+                         essential_renewal=e(essential_plan.get('renewal_quote','')),essential_domain_initial=e(essential_domain.get('initial_line_quote','')),
+                         essential_domain_term=e(essential_domain.get('term_quote','')),essential_domain_renewal=e(essential_domain.get('renewal_quote','')),
+                         essential_ssl_initial=e(essential_ssl.get('initial_line_quote','')),essential_ssl_term=e(essential_ssl.get('term_quote','')),
+                         essential_ssl_renewal=e(essential_ssl.get('renewal_quote','')),
                          cart_primary_screenshots=cart_primary_screenshots,cart_extra_screenshots=cart_extra_screenshots,
                          cart_initial_line=e(starter.get('initial_line_quote','Not verified.')),
                          cart_term=e(starter.get('term_quote','Not verified.')),
@@ -1065,6 +1094,7 @@ def build(config_path=None, output=None):
                   'checkout_tested_scope':'Automated cart request was blocked by a security check before reaching the cart; cart screenshots were read manually.',
                   'cart_observation':cart or None,
                   'additional_cart_observation':premium_cart or None,
+                  'essential_cart_observation':essential_cart or None,
                   'initial_payable_total':cart.get('today_total_quote'),
                   'initial_payable_total_scope':cart.get('today_total_scope'),
                   'initial_hosting_line_amount':starter.get('initial_line_quote'),
