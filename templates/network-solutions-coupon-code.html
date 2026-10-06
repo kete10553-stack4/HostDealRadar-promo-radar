@@ -17,6 +17,7 @@
 <h1 data-campaign-heading>$campaign_heading</h1>
 <div class="answer-box" id="official-offer">
 <p><strong>Observed Starter cart from a manual screenshot reading:</strong> <q>$cart_initial_line</q> with <q>$cart_term</q> selected, followed by <q>$cart_renewal_quote</q>. The cart screenshots show <q>$cart_code</q> marked <q>$cart_code_status</q>. These are quoted cart amounts; no payment was completed.</p>
+<p><strong>Premium Hosting cart line:</strong> <q>$premium_initial</q> for <q>$premium_term</q>, with <q>$premium_renewal</q>. Its separate new .COM Domain is <q>$premium_domain_initial</q> for <q>$premium_domain_term</q> and shows <q>$premium_domain_renewal</q>; SSL Certificate (Xpress) is <q>$premium_ssl_initial</q> for <q>$premium_ssl_term</q> and shows <q>$premium_ssl_renewal</q>. The displayed <q>$premium_item_count</q> total of <q>$premium_today_total</q> includes other cart items and is not a Premium-only total.</p>
 <strong>The complete official Halloween offer sentence</strong>
 <blockquote>$official_quote</blockquote>
 <p class="source-date"><a href="$source_url" rel="noopener noreferrer">Network Solutions official October deals article</a> · Read $source_read_label.</p>
@@ -48,6 +49,13 @@ $cart_table
 <p>These images are unedited. Select an image to open its original size.</p>
 $cart_primary_screenshots
 <details><summary>View the privacy item and the applied-savings panel</summary>$cart_extra_screenshots</details>
+<h3 id="premium-cart">Premium hosting and its new .COM domain</h3>
+<p>The separate manual cart reading shows Premium Hosting at <q>$premium_initial</q> for <q>$premium_term</q>, renewing at <q>$premium_renewal</q>. Its associated new .COM Domain is <q>$premium_domain_initial</q> for <q>$premium_domain_term</q> (shown as one year free), renewing at <q>$premium_domain_renewal</q>. SSL Certificate (Xpress) is also listed at <q>$premium_ssl_initial</q> for <q>$premium_ssl_term</q> (one year free), renewing at <q>$premium_ssl_renewal</q>.</p>
+$premium_cart_table
+<p>This was a <q>$premium_item_count</q> mixed cart with <q>Today's Total:</q> <q>$premium_today_total</q>, including Starter and Premium Hosting, two .COM lines, SSL, and two privacy items. It is not the all-in total for Premium alone. One .COM line elsewhere in the same cart remains <q>$11.99</q>; it is separate from the free-for-one-year domain listed with Premium. The savings panel shows <q>$premium_savings</q>. The promo-code field also displayed <q>$premium_code_message</q> after the code was already applied; we do not treat this duplicate-entry message as a failed application.</p>
+<p class="source-date"><a href="$cart_source_url" rel="noopener noreferrer">Official cart</a> · Premium-cart screenshots manually read $premium_read_label. $premium_capture_note</p>
+$premium_primary_screenshots
+<details><summary>View Premium cart total and applied-savings screenshots</summary>$premium_extra_screenshots</details>
 <details id="cart-attempt"><summary>Automated cart request stopped at a security check</summary>$checkout_attempt_section<p>We read the cart separately and manually from the screenshots above; this evidence was not produced by the automated request.</p></details>
 
 <h2 id="extras">Domain Privacy + Protection: a separate monthly item</h2>

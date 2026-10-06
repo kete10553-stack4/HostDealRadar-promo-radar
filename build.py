@@ -984,6 +984,25 @@ def build(config_path=None, output=None):
         cart_table=('<div class="table-wrap"><table class="pricing-table"><caption>Official cart wording, manually read from screenshots</caption>'
                     '<thead><tr><th scope="col">Product</th><th scope="col">Initial line amount</th><th scope="col">Selected billing term</th>'
                     '<th scope="col">Renewal quote</th></tr></thead><tbody>'+cart_rows+'</tbody></table></div>') if cart_rows else ''
+        premium_cart=campaign.get('premium_cart_observation',{})
+        premium_items=premium_cart.get('items',[])
+        premium_item_by_id={item['id']:item for item in premium_items}
+        premium_plan=premium_item_by_id.get('premium-hosting',{})
+        premium_domain=premium_item_by_id.get('premium-com-domain',{})
+        premium_ssl=premium_item_by_id.get('ssl-xpress',{})
+        premium_rows=''.join('<tr><th scope="row"><q>'+e(item['name_quote'])+'</q></th><td><q>'+e(item['initial_line_quote'])+
+                            '</q>'+(' ('+e(item['benefit_quote'])+')' if item.get('benefit_quote') else '')+'</td><td><q>'+e(item['term_quote'])+
+                            '</q></td><td><q>'+e(item['renewal_quote'])+'</q></td></tr>' for item in premium_items)
+        premium_cart_table=('<div class="table-wrap"><table class="pricing-table"><caption>Premium cart lines, manually read from official cart screenshots</caption>'
+                            '<thead><tr><th scope="col">Product</th><th scope="col">Initial line amount</th><th scope="col">Selected billing term</th>'
+                            '<th scope="col">Renewal quote</th></tr></thead><tbody>'+premium_rows+'</tbody></table></div>') if premium_rows else ''
+        premium_figures=[]
+        for shot in premium_cart.get('original_screenshots',[]):
+            premium_figures.append('<figure class="cart-proof"><a href="'+e(shot['path'])+'"><img src="'+e(shot['path'])+
+                                   '" alt="'+e(shot['caption'])+'" width="'+str(shot['width'])+'" height="'+str(shot['height'])+
+                                   '" loading="lazy" decoding="async"></a><figcaption>'+e(shot['caption'])+'</figcaption></figure>')
+        premium_primary_screenshots=''.join(premium_figures[i] for i in (0,1) if i<len(premium_figures))
+        premium_extra_screenshots=''.join(premium_figures[i] for i in (2,3) if i<len(premium_figures))
         figures=[]
         for shot in cart.get('original_screenshots',[]):
             figures.append('<figure class="cart-proof"><a href="'+e(shot['path'])+'"><img src="'+e(shot['path'])+
@@ -1005,6 +1024,16 @@ def build(config_path=None, output=None):
                          pricing_table=pricing_table,pricing_source_url=e(pricing.get('source_url','')),
                          pricing_read_label=e(pricing.get('read_label','')),pricing_terms_read_label=e(pricing.get('terms_read_label','')),
                          checkout_attempt_section=checkout_attempt_section,cart_table=cart_table,
+                         premium_cart_table=premium_cart_table,premium_primary_screenshots=premium_primary_screenshots,
+                         premium_extra_screenshots=premium_extra_screenshots,premium_read_label=e(premium_cart.get('review_label','')),
+                         premium_item_count=e(premium_cart.get('item_count_quote','')),premium_today_total=e(premium_cart.get('today_total_quote','')),
+                         premium_code=e(premium_cart.get('code','')),premium_code_message=e(premium_cart.get('code_field_message_quote','')),
+                         premium_savings=e(premium_cart.get('applied_savings_quote','')),
+                         premium_initial=e(premium_plan.get('initial_line_quote','')),premium_term=e(premium_plan.get('term_quote','')),
+                         premium_renewal=e(premium_plan.get('renewal_quote','')),premium_domain_initial=e(premium_domain.get('initial_line_quote','')),
+                         premium_domain_term=e(premium_domain.get('term_quote','')),premium_domain_renewal=e(premium_domain.get('renewal_quote','')),
+                         premium_ssl_initial=e(premium_ssl.get('initial_line_quote','')),premium_ssl_term=e(premium_ssl.get('term_quote','')),
+                         premium_ssl_renewal=e(premium_ssl.get('renewal_quote','')),premium_capture_note=e(premium_cart.get('capture_time_note','')),
                          cart_primary_screenshots=cart_primary_screenshots,cart_extra_screenshots=cart_extra_screenshots,
                          cart_initial_line=e(starter.get('initial_line_quote','Not verified.')),
                          cart_term=e(starter.get('term_quote','Not verified.')),
@@ -1035,6 +1064,7 @@ def build(config_path=None, output=None):
                   'checkout_attempt':cart_attempt,'redemption_verified':False,
                   'checkout_tested_scope':'Automated cart request was blocked by a security check before reaching the cart; cart screenshots were read manually.',
                   'cart_observation':cart or None,
+                  'additional_cart_observation':premium_cart or None,
                   'initial_payable_total':cart.get('today_total_quote'),
                   'initial_payable_total_scope':cart.get('today_total_scope'),
                   'initial_hosting_line_amount':starter.get('initial_line_quote'),
