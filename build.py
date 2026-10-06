@@ -967,9 +967,9 @@ def build(config_path=None, output=None):
         checkout_attempt_section=''
         if cart_attempt:
             checkout_attempt_section=(
-                '<p>On '+e(cart_attempt['read_label'])+', we selected the official <strong>'+e(cart_attempt['plan'])+
-                '</strong> plan and followed its Add to cart link. The resulting page stated: <q>'+e(cart_attempt['result_quote'])+
-                '</q> The cart did not load, so this attempt produced no payable total, cart billing term or renewal amount. The code was not entered, and no order was placed. '
+                '<p>On '+e(cart_attempt['read_label'])+', an automated request through the official <strong>'+e(cart_attempt['plan'])+
+                '</strong> Add to cart route was stopped by a security check. The page stated: <q>'+e(cart_attempt['result_quote'])+
+                '</q> The request did not reach the cart, so it produced no payable total, cart billing term or renewal amount. The code was not entered, and no order was placed. '
                 '<a href="'+e(pricing.get('source_url',''))+'" rel="noopener noreferrer">Open the official hosting page containing the Starter card</a>.</p>'
             )
         cart=campaign.get('cart_observation',{})
@@ -977,11 +977,11 @@ def build(config_path=None, output=None):
         starter=cart_items.get('starter',{})
         privacy=cart_items.get('domain-privacy-protection',{})
         if cart and not archived:
-            note='The supplied cart screenshot shows this code as applied. The quoted prices and eligibility belong to that observed order.'
+            note='We manually read this code as applied in the cart screenshots. The quoted prices and eligibility belong to that observed order.'
         cart_rows=''.join('<tr><th scope="row"><q>'+e(item['name_quote'])+'</q></th><td><q>'+e(item['initial_line_quote'])+
                           '</q></td><td><q>'+e(item['term_quote'])+'</q></td><td><q>'+e(item['renewal_quote'])+'</q></td></tr>'
                           for item in cart.get('items',[]))
-        cart_table=('<div class="table-wrap"><table class="pricing-table"><caption>Official cart wording in user-supplied screenshots</caption>'
+        cart_table=('<div class="table-wrap"><table class="pricing-table"><caption>Official cart wording, manually read from screenshots</caption>'
                     '<thead><tr><th scope="col">Product</th><th scope="col">Initial line amount</th><th scope="col">Selected billing term</th>'
                     '<th scope="col">Renewal quote</th></tr></thead><tbody>'+cart_rows+'</tbody></table></div>') if cart_rows else ''
         figures=[]
@@ -1033,7 +1033,7 @@ def build(config_path=None, output=None):
                   'source_read_at':campaign['source_read_at'],'window':campaign['window_label'],
                   'cutoff_time_and_timezone':None,'checkout_tested':False,'checkout_attempted':bool(cart_attempt),
                   'checkout_attempt':cart_attempt,'redemption_verified':False,
-                  'checkout_tested_scope':'Assistant live checkout completion; user-supplied cart screenshots are separately recorded.',
+                  'checkout_tested_scope':'Automated cart request was blocked by a security check before reaching the cart; cart screenshots were read manually.',
                   'cart_observation':cart or None,
                   'initial_payable_total':cart.get('today_total_quote'),
                   'initial_payable_total_scope':cart.get('today_total_scope'),
