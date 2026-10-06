@@ -10008,16 +10008,16 @@
   "source_403_history": [],
   "page_lastmod": {
     "/": {
-      "hash": "3d42fbd65bd8f6bef5a6692b20a9e451c30df3412b1b726823acc7c4513b8cbd",
-      "lastmod": "2026-10-06T02:44:31Z"
+      "hash": "f0a9ba7bbbb07dd072d54a76cc4cc85e2fe29bc1659f8393e31f6d55893de450",
+      "lastmod": "2026-10-06T03:43:53Z"
     },
     "/providers/": {
-      "hash": "1894ca621759c7a82a704eb0790fb9a48d51df6c0f486a60ef0b5f4418cec9e4",
-      "lastmod": "2026-10-06T02:43:03Z"
+      "hash": "39720e12371f23eaa8cf52ea3cf856233057e1cf9ada03b26328215ae25001e4",
+      "lastmod": "2026-10-06T03:43:53Z"
     },
     "/compare/": {
-      "hash": "c62417d16a5cb18a748057d033ef613b7c0e6af65c1f6d06decb2407c83a8896",
-      "lastmod": "2026-10-05T13:30:54Z"
+      "hash": "162d0ff1b12a04580ab0b4337d496a511ff377051c88ab86434b16f4a49da1f9",
+      "lastmod": "2026-10-06T03:43:53Z"
     },
     "/methodology/": {
       "hash": "f1425516cf79600aee5d149b21cc580a1e91b0e4d79ad1a9134fe1dcac5ac55a",
@@ -10096,8 +10096,8 @@
       "lastmod": "2026-10-06T02:26:28Z"
     },
     "/guides/dynadot-coupon-code/": {
-      "hash": "3fced5df94f0b1c772e89ba6bb8ddf0ffbcaef0d718fff13079dace00f4b9c44",
-      "lastmod": "2026-10-06T02:43:03Z"
+      "hash": "04147259ac9f05fd2d8f64c159f218ea052a462d211d890b15a5c0a7e5dca903",
+      "lastmod": "2026-10-06T03:43:53Z"
     },
     "/guides/wp-engine-renewal-overage/": {
       "hash": "56c72e1049c9d578fc703488997bb64f17f32458cbd35dfdb0fe079bd4de05e4",
@@ -10208,8 +10208,8 @@
       "lastmod": "2026-10-05T13:23:31Z"
     },
     "/providers/hawkhost/": {
-      "hash": "717b986c63d32d72745d6c863cb36d0b85691f15ec8e2d32845ee9d57836b9a4",
-      "lastmod": "2026-10-05T13:23:31Z"
+      "hash": "3206d73135762a8fb8a1e804c065849ed17b79759feff94249da57cf63c5e0f9",
+      "lastmod": "2026-10-06T03:43:53Z"
     },
     "/providers/eukhost/": {
       "hash": "2516c30aac78d4d22ae11b1295d513904bc97082a9c52159e10fcea0c1d43ac2",
@@ -12464,6 +12464,74 @@
           "taxes_note": "No separate tax line appeared in the cart summary. The account and payment step was not opened, so final tax treatment is unverified.",
           "order_submitted": false,
           "excerpt": "Solo Plan hostdealradar.com; 1 Month Price - $9.99 USD MONTHLY; Subtotal: $9.99 USD; Total Due Today: $9.99 USD; Recurring Charges: $9.99 USD Monthly."
+        }
+      },
+      {
+        "provider": "hawkhost",
+        "plan": "Starter shared web hosting, 12-month checkout",
+        "plan_id": "hawkhost-starter-12-month-promo",
+        "currency": "USD",
+        "first_term_total": 31.3,
+        "commitment_months": 12,
+        "monthly_equivalent": 2.61,
+        "renewal_monthly_rate": 5.22,
+        "calculation": "31.30 / 12 = 2.6083, rounded to 2.61 USD/month",
+        "advertised_price_quote": "50% off! $2.61/mo; Get 12 months for $31.30 (regular $62.60). Renews at $5.22/mo.",
+        "checked_on": "2026-10-05",
+        "captured_at": "2026-10-06T03:42:14Z",
+        "entry_url": "https://www.hawkhost.com/shared-web-hosting",
+        "field_evidence": {
+          "first_term_total": {
+            "quote": "Total Due Today $31.30 USD",
+            "url": "https://my.hawkhost.com/cart.php?a=view",
+            "captured_at": "2026-10-06T03:42:14Z",
+            "context": "Official Review & Checkout cart for Starter shared hosting on the annual cycle. Subtotal $62.60 USD; starteroct2026 - 50% One Time Discount, $31.30 USD; Total Due Today $31.30 USD. Existing public domain hostdealradar.com; First Available hosting location; no paid optional add-ons; order not submitted."
+          },
+          "commitment_months": {
+            "quote": "12 Month Price - $5.22 USD; Annually",
+            "url": "https://my.hawkhost.com/cart.php?a=confproduct&i=0",
+            "captured_at": "2026-10-06T03:42:14Z",
+            "context": "The official Starter configuration selector identifies the selected term as 12 Month Price; the cart item labels its cycle Annually."
+          },
+          "renewal_monthly_rate": {
+            "quote": "Get 12 months for $31.30 (regular $62.60). Renews at $5.22/mo.",
+            "url": "https://www.hawkhost.com/shared-web-hosting",
+            "captured_at": "2026-10-06T03:42:31Z",
+            "context": "Official shared web hosting pricing page, Starter card with 1 Year selected. The same card pairs the 12-month first-term amount with the renewal monthly rate."
+          },
+          "currency": {
+            "quote": "English / $ USD; $31.30 USD",
+            "url": "https://my.hawkhost.com/cart.php?a=view",
+            "captured_at": "2026-10-06T03:42:14Z",
+            "context": "The official cart currency selector reads English / $ USD; the subtotal, discount, and total due today are labeled USD."
+          }
+        },
+        "missing_reasons": {},
+        "rendered_pricing_evidence": {
+          "url": "https://www.hawkhost.com/shared-web-hosting",
+          "captured_at": "2026-10-06T03:42:31Z",
+          "selected_term": "1 Year",
+          "plan": "Starter",
+          "plan_card_excerpt": "was $5.22 now 50% off! $2.61/mo; Get 12 months for $31.30 (regular $62.60). Renews at $5.22/mo.",
+          "sign_up_url": "https://my.hawkhost.com/store/shared-hosting/starter?billingcycle=annually&promocode=starteroct2026",
+          "context": "Official shared web hosting pricing page; the Starter plan card was displayed with the 1 Year tab selected."
+        },
+        "rendered_checkout_evidence": {
+          "url": "https://my.hawkhost.com/cart.php?a=view",
+          "captured_at": "2026-10-06T03:42:14Z",
+          "selected_plan": "Starter Shared Hosting",
+          "selected_term": "12 Month Price - $5.22 USD; Annually",
+          "subtotal": "$62.60 USD",
+          "promotion": "starteroct2026 - 50% One Time Discount; $31.30 USD",
+          "first_total": "$31.30 USD",
+          "total_due_today": "$31.30 USD",
+          "currency": "USD",
+          "existing_domain": "hostdealradar.com",
+          "hosting_location": "First Available",
+          "paid_optional_addons": false,
+          "taxes_note": "Estimate Taxes was available but not opened; tax is unverified. Checkout/payment was not opened.",
+          "order_submitted": false,
+          "excerpt": "Starter Shared Hosting hostdealradar.com; $62.60 USD Annually; starteroct2026 - 50% One Time Discount; Total Due Today $31.30 USD."
         }
       }
     ]
