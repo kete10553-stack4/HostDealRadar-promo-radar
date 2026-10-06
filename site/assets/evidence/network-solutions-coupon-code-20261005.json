@@ -126,6 +126,96 @@
       }
     ]
   },
+  "additional_cart_observation": {
+    "source_url": "https://www.networksolutions.com/checkout/v2",
+    "evidence_type": "manual_reading_of_original_screenshots_of_official_cart",
+    "screenshots_manually_read_at": "2026-10-06T03:57:36Z",
+    "review_label": "October 5, 2026, 8:57:36 p.m. PDT (03:57:36 UTC on October 6)",
+    "screenshot_captured_at": null,
+    "capture_time_note": "The taskbar visible in the last screenshots shows 8:53 p.m. local time; the date and exact per-image capture times were not recorded. The screenshots were read manually at the review time above; no exact capture time was reconstructed.",
+    "currency_symbol": "$",
+    "currency_code_explicit_in_screenshots": null,
+    "code": "HALLOWEEN50OFF",
+    "code_field_message_quote": "Already applied HALLOWEEN50OFF PromoCode",
+    "applied_savings_quote": "50% off Hosting",
+    "payment_completed": false,
+    "completed_redemption_verified": false,
+    "items": [
+      {
+        "id": "premium-hosting",
+        "name_quote": "Premium Hosting",
+        "initial_line_quote": "$41.94",
+        "term_quote": "1 Year",
+        "renewal_quote": "Renews at $224.99"
+      },
+      {
+        "id": "ssl-xpress",
+        "name_quote": "SSL Certificate (Xpress)",
+        "initial_line_quote": "$0.00",
+        "term_quote": "1 Year",
+        "renewal_quote": "Renews at $69.99",
+        "benefit_quote": "1 Year Free"
+      },
+      {
+        "id": "premium-com-domain",
+        "name_quote": ".COM Domain",
+        "initial_line_quote": "$0.00",
+        "term_quote": "1 Year",
+        "renewal_quote": "Renews at $22.99",
+        "benefit_quote": "1 Year Free"
+      },
+      {
+        "id": "premium-privacy",
+        "name_quote": "Domain Privacy + Protection",
+        "initial_line_quote": "$0.00",
+        "term_quote": "Monthly",
+        "renewal_quote": "Renews at $3.99",
+        "benefit_quote": "1 Month Free"
+      }
+    ],
+    "item_count_quote": "7 items in cart",
+    "subtotal_quote": "$454.93",
+    "total_savings_quote": "-$383.06",
+    "tax_quote": "$0.00",
+    "icann_fee_quote": "$0.20",
+    "today_total_quote": "$72.07",
+    "today_total_scope": "Mixed seven-item cart containing Starter and Premium Hosting, two .COM domain lines, SSL Certificate (Xpress), and two Domain Privacy + Protection lines. It is not the Premium-only payable total.",
+    "premium_only_all_in_total": null,
+    "original_screenshots": [
+      {
+        "path": "/assets/evidence/network-solutions-premium-cart-20261005-1.png",
+        "sha256": "13e8ae41ca0bdb7bf8e4ee4d7e660bdda4da2c0f1ececa3af27471493a054a2c",
+        "width": 1007,
+        "height": 553,
+        "caption": "Original cart screenshot: the existing Starter item and separate .COM Domain remain in the cart; Domain Privacy + Protection is selected.",
+        "edited": false
+      },
+      {
+        "path": "/assets/evidence/network-solutions-premium-cart-20261005-2.png",
+        "sha256": "a8bfcf7d1e1305b1310866fb4052016529a5907ee96b734b16a3cb715fbf5fcd",
+        "width": 987,
+        "height": 633,
+        "caption": "Original cart screenshot: Premium Hosting is $41.94 for 1 Year and renews at $224.99; SSL Certificate (Xpress) and a separate .COM Domain are each $0.00 for 1 Year and show their renewal quotes.",
+        "edited": false
+      },
+      {
+        "path": "/assets/evidence/network-solutions-premium-cart-20261005-3.png",
+        "sha256": "dada4917ec4e3d92a21b7dd0e0bc6d7ad0f552b40b29d4deb916f188bbcc7195",
+        "width": 404,
+        "height": 637,
+        "caption": "Original cart screenshot: seven mixed items total $72.07 today; the code field reports that HALLOWEEN50OFF is already applied.",
+        "edited": false
+      },
+      {
+        "path": "/assets/evidence/network-solutions-premium-cart-20261005-4.png",
+        "sha256": "d0fa603451624e10c899e7bab834d254a4134f77901d689fdcc8efdada45fa15",
+        "width": 410,
+        "height": 637,
+        "caption": "Original cart screenshot: the savings panel lists 50% off Hosting and the first month of Domain Privacy + Protection free.",
+        "edited": false
+      }
+    ]
+  },
   "initial_payable_total": "$30.13",
   "initial_payable_total_scope": "One Starter Hosting item, one new .COM Domain and Domain Privacy + Protection, including the displayed tax and ICANN fee; not hosting alone",
   "initial_hosting_line_amount": "$17.94",
