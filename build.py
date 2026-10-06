@@ -1049,7 +1049,14 @@ def build(config_path=None, output=None):
                        e(pricing.get('read_label',''))+'</caption><thead><tr><th scope="col">Plan</th><th scope="col">Published monthly rate (USD)</th>'
                        '<th scope="col">Advertised initial term</th></tr></thead>'
                        '<tbody>'+pricing_rows+'</tbody></table></div>') if pricing_rows else ''
+        security=campaign.get('security_bundle_observation',{})
+        security_archived=bool(security) and datetime.now(timezone.utc)>=datetime.fromisoformat(security['archive_from_utc'].replace('Z','+00:00'))
+        security_rows=''.join('<tr><th scope="row">'+e(b['name'])+'</th><td><code>'+e(b['code'])+'</code></td><td>'+e(', '.join(b['components']))+'</td><td>Not verified</td><td>Not verified</td></tr>' for b in security.get('bundles',[]))
+        security_table=('<div class="table-wrap"><table class="pricing-table"><caption>Three separate security bundles — official page read '+e(security.get('read_label',''))+'</caption><thead><tr><th scope="col">Bundle</th><th scope="col">Its code</th><th scope="col">Included products</th><th scope="col">Initial total / billing term</th><th scope="col">Bundle renewal</th></tr></thead><tbody>'+security_rows+'</tbody></table></div>') if security_rows else ''
         content=template(campaign['template'],campaign_heading=e(heading),campaign_status=e(status),campaign_note=e(note),
+                         security_table=security_table,security_read_label=e(security.get('read_label','')),
+                         security_status='Historical promotion — stated window ended' if security_archived else 'Dated official security-bundle promotion',
+                         security_archive_at=e(security.get('archive_from_utc','')),ssl_read_label=e(security.get('ssl_read_label','')),
                          archive_at=e(campaign['archive_from_utc']),archive_heading=e(campaign['archive_headline']),
                          official_quote=e(campaign['official_quote']),source_url=e(campaign['source_url']),
                          source_read_label=e(campaign['source_read_label']),window_label=e(campaign['window_label']),
@@ -1115,6 +1122,7 @@ def build(config_path=None, output=None):
                   'additional_cart_observation':premium_cart or None,
                   'essential_cart_observation':essential_cart or None,
                   'wordpress_cart_observation':wordpress_cart or None,
+                  'security_bundle_observation':dict(security,record_state='historical' if security_archived else 'dated_official_observation') if security else None,
                   'initial_payable_total':cart.get('today_total_quote'),
                   'initial_payable_total_scope':cart.get('today_total_scope'),
                   'initial_hosting_line_amount':starter.get('initial_line_quote'),

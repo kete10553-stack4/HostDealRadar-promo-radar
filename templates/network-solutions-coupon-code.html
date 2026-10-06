@@ -29,7 +29,7 @@
 <p class="source-date"><a href="$cart_source_url" rel="noopener noreferrer">Official cart URL</a> · Screenshots manually read $cart_read_label. Exact screenshot capture time was not recorded.</p>
 <p class="lead">The observed Starter hosting line is separate from the domain and privacy service. The three-item cart's <q>Today's Total:</q> is <q>$cart_total</q>; that amount includes all three products and the displayed ICANN fee.</p>
 <aside class="source-note"><strong>Official source readings and cart screenshots</strong><p>We read the offer and shared-hosting plan cards directly on the official pages at their stated times. We manually read the shared-hosting carts from the original screenshots and the WordPress cart in the browser, preserving its original capture. Private-registration bundle, forwarding, transfer and cancellation reference quotations retain their separate dates and unresolved current status. The Starter and Premium observations show an applied-savings panel; the Essential observation shows the promo-code prompt but not a code entry. The later WordPress code field reports that HALLOWEEN50OFF is already applied. No reading demonstrates completed payment, transfer or cancellation.</p></aside>
-<nav aria-label="Article contents"><p><a href="#billing">Initial price and renewal</a> · <a href="#extras">Private registration and forwarding</a> · <a href="#transfer">Transfer-out timing</a> · <a href="#cancel">Cancellation</a> · <a href="#essential-cart">Essential cart</a> · <a href="#premium-cart">Premium cart</a> · <a href="#wordpress-cart">WordPress cart</a> · <a href="#archive">After the window</a></p></nav>
+<nav aria-label="Article contents"><p><a href="#billing">Initial price and renewal</a> · <a href="#extras">Private registration and forwarding</a> · <a href="#transfer">Transfer-out timing</a> · <a href="#cancel">Cancellation</a> · <a href="#essential-cart">Essential cart</a> · <a href="#premium-cart">Premium cart</a> · <a href="#wordpress-cart">WordPress cart</a> · <a href="#security-bundles">Security bundles and SSL alternatives</a> · <a href="#archive">After the window</a></p></nav>
 
 <h2 id="billing">What will you pay now, and what will renewal cost?</h2>
 <div class="billing-map">
@@ -67,6 +67,7 @@ $essential_cart_table
 $essential_primary_screenshots
 <details><summary>View the Essential cart savings screenshot</summary>$essential_extra_screenshots</details>
 
+<p><a href="#security-bundles">Considering the Website Security Bundle with WordPress hosting? Compare its separate offer and SSL requirements.</a> The standalone cart below does not verify that security bundle’s price or renewal.</p>
 <h3 id="wordpress-cart">WordPress Entrepreneurs: first charge, renewal and bundled extras</h3>
 <p>We selected the entry-level WordPress® for Entrepreneurs plan, kept the preselected Domain Privacy + Protection option and searched a new .COM domain. In the cart, we changed the hosting term from <q>Monthly</q> to <q>1 Year</q>. The annual hosting line then showed <q>$wordpress_initial</q> and <q>$wordpress_renewal</q>. These are the cart’s quoted amounts; we did not calculate them from a monthly rate or a 50% discount.</p>
 $wordpress_cart_table
@@ -79,6 +80,39 @@ $wordpress_cart_table
 <p><strong>Scope:</strong> This reading covers WordPress Entrepreneurs in the observed mixed cart. Growing Businesses and Professionals were not checked in the cart. No payment was completed; the displayed renewal is not a guaranteed future invoice.</p>
 
 <details id="cart-attempt"><summary>Automated cart request stopped at a security check</summary>$checkout_attempt_section<p>The shared-hosting screenshots and later WordPress browser cart were read manually; they are separate from the automated request, which did not reach any cart.</p></details>
+
+<section id="security-bundles" data-security-archive-at="$security_archive_at">
+<h2>Already have hosting: do you need to buy SSL again?</h2>
+<p><strong>Check your existing certificate and installation route before buying another bundle.</strong> The Essential and Premium carts above each include a first-year Xpress SSL line with a separate renewal quote. That does not establish coverage for another plan or an existing account. A third-party certificate has an official support route, but we have not verified free certificate installation or its fee on a specific Network Solutions plan.</p>
+<h3>Three security bundles, three separate codes</h3>
+<p><strong data-security-status>$security_status</strong> · The official page lists 20% off these bundles from <strong>October 1 through October 31, 2026</strong>, using the code for the selected bundle at checkout and pairing it with a Network Solutions domain already managed or newly registered. <strong>Official cutoff hour and timezone: not verified.</strong></p>
+$security_table
+<p>Each code belongs only to its listed bundle; we have not verified it against another bundle or completed a bundle checkout. The official article provides no verified initial total, billing term or numerical bundle renewal in this reading. A 20% discount does not supply those amounts.</p>
+<p><strong>Official caveat:</strong> <q>Promotions may change or end at any time.</q> The same note also flags product, eligibility, term and renewal restrictions and asks buyers to review full offer details.</p>
+<p class="source-date"><a href="$source_url">Official October deals page</a> · Security-bundle window, codes and caveat read $security_read_label.</p>
+<p><strong>The two windows are separate.</strong> These security-bundle codes end October 31 in the stated window. HALLOWEEN50OFF covers eligible Shared Hosting or WordPress hosting from October 1 through November 1; its complete official quotation and own read time remain above. Neither offer establishes that the two discounts stack.</p>
+<p>The Website Security Bundle includes WordPress hosting, SSL and cWatch. <a href="#wordpress-cart">Compare our separately observed WordPress Entrepreneurs cart and renewal</a>. That cart used HALLOWEEN50OFF, not WEBSEC20, and is not a quote for this security bundle.</p>
+<h3>Using a certificate bought elsewhere: confirm support, then get the CSR</h3>
+<p>Network Solutions’ installation article includes this specific note: <q>For information on installing a 3rd party SSL certificate on your Network Solutions hosting, please contact customer support.</q> Its other instructions concern Network Solutions certificates on other servers; they do not supply a tested walkthrough for importing a Namecheap certificate into every Network Solutions plan.</p>
+<p class="source-date"><a href="https://www.networksolutions.com/help/article/install-ssl-on-third-party-servers">Official Network Solutions installation note</a> · Read $ssl_read_label.</p>
+<ol>
+<li>Ask Network Solutions support whether your exact hosting plan accepts an outside certificate, where its CSR/private-key controls are, whether a dedicated IP is required, and whether installation has a charge. Those plan-specific answers and fees are not verified here.</li>
+<li>If supported, generate the CSR for that hosting server and retain its matching private key. Namecheap’s official prerequisite is: <q>Check with your hosting provider whether they support third-party SSL certificates.</q></li>
+<li>In Namecheap, open SSL Certificates, select Activate and enter the CSR. Complete domain-control validation, then download the issued certificate and install it with the matching private key and certificate chain using the host’s supported route. Activation alone does not install it on Network Solutions.</li>
+</ol>
+<p class="source-date"><a href="https://www.namecheap.com/support/knowledgebase/article/794/67/how-do-i-activate-an-ssl-certificate/">Official Namecheap activation guide</a> · Read $ssl_read_label.</p>
+<h3>Can free Cloudflare SSL replace the paid certificate?</h3>
+<p><strong>Cloudflare offers a free certificate route; compatibility with your Network Solutions host still needs confirmation.</strong> Universal SSL supplies a browser-facing certificate after the domain is activated on Cloudflare. In a full setup it covers the root domain and first-level subdomains. It does not establish that a certificate is installed on your hosting server.</p>
+<p class="source-date"><a href="https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl/">Official Cloudflare Universal SSL documentation</a> · Read $ssl_read_label.</p>
+<p>Cloudflare Origin CA is also available on its Free plan. It must be installed on the origin server before using Full (strict). Its official limitation is: <q>These certificates only encrypt traffic between Cloudflare and your origin server, not traffic from client browsers to your origin.</q> Pausing Cloudflare or disabling its proxy can expose browser trust errors. We have not verified Origin CA installation on the Network Solutions plans in these carts. Ask the host to confirm the origin-certificate route before treating free browser-facing SSL as a complete replacement.</p>
+<p class="source-date"><a href="https://developers.cloudflare.com/ssl/origin-configuration/origin-ca/">Official Cloudflare Origin CA documentation</a> · Read $ssl_read_label.</p>
+<details><summary>Why this question matters: attributed community reports</summary>
+<p>On September 10, 2026, <strong>u/Forsaken-Founder</strong> described difficulty installing a Namecheap certificate with Network Solutions domain/hosting in <a href="https://www.reddit.com/r/Domains/comments/1wcy1g1/need_help_with_third_party_ssl_on_a_network/">r/Domains</a> and <a href="https://www.reddit.com/r/NameCheap/comments/1wcxema/namecheap_for_ssl_network_solutions_for/">r/NameCheap</a>. These are two posts by the same author, not two independent buyers.</p>
+<p>In the r/NameCheap thread, <strong>u/RobRoy2350</strong> suggested generating a CSR at the host before Namecheap activation. <strong>u/Puzzleheaded-Tune646</strong> reported using Cloudflare for free SSL with several providers including Network Solutions. <strong>u/tamar</strong> offered support installation; that commenter’s service affiliation is unconfirmed in the material we read. These are personal reports and advice, not official compatibility rules or a promise of free installation.</p>
+<p class="source-date">Thread text and comments read October 5, 2026, 11:36:44–11:37:12 p.m. PDT (06:36:44–06:37:12 UTC on October 6). The dated search rendering gives September 10; the opened r/NameCheap rendering uses a conflicting relative age. We retain that discrepancy rather than derive a precise posting time.</p>
+</details>
+<p><strong>After this window:</strong> retain this subsection, codes and evidence on the same URL as historical. Its status retires when November 1 begins in UTC as an editorial precaution; this does not assert an official cutoff hour or timezone. The hosting campaign has its own separate retirement rule.</p>
+</section>
 
 <h2 id="extras">Domain Privacy + Protection: a separate monthly item</h2>
 <p>The cart screenshots show <q>Domain Privacy + Protection</q> separately at <q>$cart_privacy_initial</q>, with <q>$cart_privacy_benefit</q>, <q>$cart_privacy_term</q> selected and <q>$cart_privacy_renewal</q>. An earlier screenshot of the domain-selection page showed this optional service already checked. This evidence describes that cart's selected product and quoted billing period.</p>
@@ -130,6 +164,13 @@ $wordpress_cart_table
     article.querySelector('[data-campaign-heading]').textContent = article.dataset.archiveHeading;
     article.querySelector('[data-campaign-note]').textContent = 'This quotation is historical. The stated campaign window has ended; it is not a current offer.';
   };
+  const security = article.querySelector('[data-security-archive-at]');
+  const retireSecurity = () => {
+    if (security && Date.now() >= Date.parse(security.dataset.securityArchiveAt))
+      security.querySelector('[data-security-status]').textContent = 'Historical promotion — stated window ended';
+  };
+  retireSecurity();
+  setInterval(retireSecurity, 60000);
   retire();
   setInterval(retire, 60000);
 })();

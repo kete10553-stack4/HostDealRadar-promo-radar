@@ -409,6 +409,107 @@
       }
     ]
   },
+  "security_bundle_observation": {
+    "source_url": "https://www.networksolutions.com/blog/network-solutions-deals-and-coupons/",
+    "read_at": "2026-10-06T06:35:53Z",
+    "read_label": "October 5, 2026, 11:35:53 p.m. PDT (06:35:53 UTC on October 6)",
+    "window_start": "2026-10-01",
+    "window_end": "2026-10-31",
+    "cutoff_hour_and_timezone": null,
+    "discount_percent": 20,
+    "domain_requirement": "Pair the selected bundle with an existing managed or newly registered Network Solutions domain.",
+    "caveat_quote": "Promotions may change or end at any time.",
+    "archive_from_utc": "2026-11-01T00:00:00Z",
+    "archive_boundary_scope": "Editorial precaution: retire the dated promotion when November 1 begins in UTC. This is not a verified official cutoff time or timezone.",
+    "checkout_verified": false,
+    "bundles": [
+      {
+        "name": "Business Trust Bundle",
+        "code": "BIZTRUST20",
+        "components": [
+          "SSL certificate",
+          "cWatch security monitoring",
+          "Domain Privacy + Protection"
+        ],
+        "initial_total": null,
+        "billing_term": null,
+        "renewal": null
+      },
+      {
+        "name": "Website Security Bundle",
+        "code": "WEBSEC20",
+        "components": [
+          "WordPress hosting",
+          "SSL certificate",
+          "cWatch security monitoring"
+        ],
+        "initial_total": null,
+        "billing_term": null,
+        "renewal": null
+      },
+      {
+        "name": "Domain Defense Bundle",
+        "code": "DOMDEF20",
+        "components": [
+          "Domain Privacy + Protection",
+          "Domain Expiration Protection",
+          "SSL certificate"
+        ],
+        "initial_total": null,
+        "billing_term": null,
+        "renewal": null
+      }
+    ],
+    "ssl_sources_read_at": "2026-10-06T06:36:44Z",
+    "ssl_read_label": "October 5, 2026, 11:36:44 p.m. PDT (06:36:44 UTC on October 6)",
+    "official_ssl_sources": [
+      {
+        "url": "https://www.networksolutions.com/help/article/install-ssl-on-third-party-servers",
+        "quote": "For information on installing a 3rd party SSL certificate on your Network Solutions hosting, please contact customer support.",
+        "scope": "Incoming third-party certificate note; the rest of the article concerns Network Solutions certificates on other servers. Exact plan support and installation fee remain unverified."
+      },
+      {
+        "url": "https://www.namecheap.com/support/knowledgebase/article/794/67/how-do-i-activate-an-ssl-certificate/",
+        "quote": "Check with your hosting provider whether they support third-party SSL certificates.",
+        "scope": "CSR, private key, activation, domain validation and installation are separate steps. Not confirmation of Network Solutions plan compatibility."
+      },
+      {
+        "url": "https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl/",
+        "scope": "Free Universal SSL; activated domain, browser-facing certificate. Not proof of an installed origin certificate at Network Solutions."
+      },
+      {
+        "url": "https://developers.cloudflare.com/ssl/origin-configuration/origin-ca/",
+        "quote": "These certificates only encrypt traffic between Cloudflare and your origin server, not traffic from client browsers to your origin.",
+        "scope": "Available on Free; origin installation and Full (strict) required; direct browser access can show trust errors. Network Solutions compatibility unverified."
+      }
+    ],
+    "community_read_interval_utc": [
+      "2026-10-06T06:36:44Z",
+      "2026-10-06T06:37:12Z"
+    ],
+    "community": [
+      {
+        "url": "https://www.reddit.com/r/Domains/comments/1wcy1g1/need_help_with_third_party_ssl_on_a_network/",
+        "author": "Forsaken-Founder",
+        "posted_date": "2026-09-10"
+      },
+      {
+        "url": "https://www.reddit.com/r/NameCheap/comments/1wcxema/namecheap_for_ssl_network_solutions_for/",
+        "author": "Forsaken-Founder",
+        "posted_date": "2026-09-10",
+        "comment_authors": {
+          "cloudflare": "Puzzleheaded-Tune646",
+          "csr": "RobRoy2350",
+          "support_installation": "tamar"
+        },
+        "support_comment_affiliation": "Unconfirmed",
+        "independent_buyers": false
+      }
+    ],
+    "free_ssl_on_network_solutions_plan_verified": false,
+    "third_party_ssl_installation_tested": false,
+    "record_state": "dated_official_observation"
+  },
   "initial_payable_total": "$30.13",
   "initial_payable_total_scope": "One Starter Hosting item, one new .COM Domain and Domain Privacy + Protection, including the displayed tax and ICANN fee; not hosting alone",
   "initial_hosting_line_amount": "$17.94",
