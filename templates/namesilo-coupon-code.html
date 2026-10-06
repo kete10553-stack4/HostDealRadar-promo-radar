@@ -4,17 +4,38 @@
 </style>
 <article class="wrap section prose namesilo-guide" data-guide-archive-at="$archive_at" data-archive-heading="$archive_headline">
 <div class="breadcrumbs"><a href="/guides/hosting-coupons/">Hosting coupons</a> / NameSilo</div>
-<div class="eyebrow">Dated official source review · October 5, 2026</div>
+<div class="eyebrow">Dated source review and manual cart · October 6, 2026</div>
 <h1 data-guide-heading>$headline</h1>
 <div class="answer-box">
 <span class="tag">Official .com renewal table</span>
 <p><strong>Retail renewal: $$17.29</strong><br>Discount Program, 0–99 active domains: <b>$$11.05</b>.<br>Discount Program, 100–499 active domains: <b>$$11.00</b>.</p>
 <p>Start with the renewal column. The advertised $$8.75 registration price belongs to the 100+ active-domain tier; it is not the renewal price or the price for every account.</p>
-<p class="source-date"><a href="$pricing_url" rel="noopener noreferrer">NameSilo pricing → Renewal tab</a> · Read $renewal_read_label.</p>
+<p class="source-date"><a href="$pricing_url" rel="noopener noreferrer">NameSilo pricing → Renewal tab</a> · Read $renewal_read_label · <a href="$cart_evidence_url">Dated tier observations</a>.</p>
+<p><strong>Cart check:</strong> one anonymous retail .COM cart showed a $17.29 registration line and $0.00 WHOIS privacy, with a $17.29 subtotal. The official coupon page said no direct coupons were active when we read it.</p>
+<p class="source-date">Cart read $cart_read_label · <a href="$cart_evidence_url">Dated cart record</a>. The cart required login to show updated taxes and discounts; $17.29 is a subtotal, not a verified final payable total.</p>
 </div>
 <p class="lead">For a single .com, compare the renewal rate and the payment conditions before choosing a coupon. NameSilo's entry Discount Program tier and its retail price lead to different comparisons with Porkbun.</p>
-<aside class="source-note"><b data-guide-status>$guide_status</b><p data-guide-note>$guide_note</p><p>These are published price observations, not completed orders. Account eligibility, tax, the final checkout total and future renewal prices were not verified.</p></aside>
-<nav aria-label="Article contents"><p><a href="#renewal">Renewal evidence</a> · <a href="#compare">Porkbun and Cloudflare</a> · <a href="#registration">Registration promotion</a> · <a href="#transfer">Transfer</a> · <a href="#included">Privacy, parking and email</a> · <a href="#codes">Coupon questions</a></p></nav>
+<aside class="source-note"><b data-guide-status>$guide_status</b><p data-guide-note>$guide_note</p><p>The cart read covers one logged-out retail test item. The Discount Program requires account eligibility and Account Funds; none of its higher tiers were tested in cart. Taxes and the final payable total remain unverified.</p></aside>
+<nav aria-label="Article contents"><p><a href="#cart-read">Manual cart: registration, renewal and add-ons</a> · <a href="#renewal">Renewal evidence</a> · <a href="#compare">Porkbun and Cloudflare</a> · <a href="#registration">Registration promotion and account tiers</a> · <a href="#transfer">Transfer</a> · <a href="#included">Privacy, parking and email</a> · <a href="#codes">Coupon questions</a></p></nav>
+
+<section id="cart-read">
+<h2>What did the manual .COM cart show?</h2>
+<p>We searched for <code>hostdealradar-cart-check-20261006.com</code>, added that available test name and opened the official cart. The name was used only to read the price; we did not create an account, submit the order or register it.</p>
+<div class="table-wrap"><table class="pricing-table"><caption>One anonymous retail .COM cart read · USD</caption><thead><tr><th scope="col">Item</th><th scope="col">Observed amount</th><th scope="col">Scope</th></tr></thead><tbody>
+<tr><th scope="row">Domain registration</th><td class="price">$17.29</td><td>One test .COM registration; the cart did not display a billing-term label on this line.</td></tr>
+<tr><th scope="row">WHOIS Privacy</th><td class="price">$0.00</td><td>Shown as a cart line.</td></tr>
+<tr><th scope="row">Cart subtotal</th><td class="price">$17.29</td><td>Not a verified final total: the page said, “Log in to view updated taxes and discounts to your cart at checkout.”</td></tr>
+<tr><th scope="row">Renewal</th><td class="price">$17.29</td><td>The search result and official renewal table showed this retail .COM rate; it was not a completed renewal.</td></tr>
+</tbody></table></div>
+<p class="source-date">Cart and search read $cart_read_label · <a href="$pricing_url" rel="noopener noreferrer">Official registration and renewal tables</a> · <a href="$cart_evidence_url">Full dated cart evidence</a>. The test cart was not ordered.</p>
+<h3>Free items and separate optional services</h3>
+<p><strong>Cart-confirmed free item:</strong> WHOIS Privacy was $0.00. NameSilo's public pricing page also describes WHOIS Privacy, email forwarding, Domain Defender Protection, Custom WHOIS Records and DNS Management as free add-ons; those services were not all separate lines in this cart.</p>
+<p class="source-date"><a href="$pricing_url" rel="noopener noreferrer">NameSilo pricing page</a> · Read $free_services_read_label.</p>
+<p><strong>Optional services shown outside the domain subtotal:</strong> Hosting $6.99/month, Email $2.99/month, Premium DNS $9.00/year and Website Builder $0 for the first month. None was selected. The cart did not show the Website Builder price after its first month.</p>
+<p class="source-date">Optional-service labels read $cart_read_label in the official domain-search cart. Email here is the separately priced Email option, not free email forwarding.</p>
+<h3>Account tiers are published prices, not cart readings</h3>
+<p>NameSilo labels the Discount Program by active account domains. Its current table publishes first-registration and renewal rates by tier; this logged-out cart showed retail pricing only. Access to updated discounts and taxes required login, so no higher-tier cart amount is claimed here.</p>
+</section>
 
 <h2 id="renewal">What does the official renewal row actually say?</h2>
 <p>The captured table is headed <q>Renewal</q>. Its program columns are grouped under <q>Discount Program (active account domains)</q>. The original .com row, in column order:</p>
@@ -24,8 +45,12 @@
 <tr><th scope="row">Retail, 1–49 registrations</th><td class="price">$$17.29</td><td class="price">$$17.29</td></tr>
 <tr><th scope="row">Discount Program, 0–99 active domains</th><td class="price">$$11.05</td><td class="price">$$11.05</td></tr>
 <tr><th scope="row">Discount Program, 100–499 active domains</th><td class="price"><s>$$11.00</s> $$8.75 promotion</td><td class="price">$$11.00</td></tr>
+<tr><th scope="row">Discount Program, 500–999 active domains</th><td class="price"><s>$$10.95</s> $$8.50 promotion</td><td class="price">$$10.95</td></tr>
+<tr><th scope="row">Discount Program, 1,000–2,499 active domains</th><td class="price"><s>$$10.90</s> $$8.30 promotion</td><td class="price">$$10.90</td></tr>
+<tr><th scope="row">Discount Program, 2,500–4,999 active domains</th><td class="price"><s>$$10.85</s> $$8.15 promotion</td><td class="price">$$10.85</td></tr>
+<tr><th scope="row">Discount Program, 5,000+ active domains</th><td class="price"><s>$$10.80</s> $$8.00 promotion</td><td class="price">$$10.80</td></tr>
 </tbody></table></div>
-<p class="source-date">Registration tab read $registration_read_label. Prices here are for standard .com domains. NameSilo's table shows dollar symbols; its <a href="$funds_url" rel="noopener noreferrer">Account Funds terms</a> require US dollars. No premium-domain quote was obtained.</p>
+<p class="source-date">Registration and Renewal tabs manually read $registration_read_label and $renewal_read_label. The tier prices above are published table values, not separate cart tests. NameSilo's <a href="$funds_url" rel="noopener noreferrer">Account Funds terms</a> require US dollars. <a href="$cart_evidence_url">See the dated table and cart record</a>. No premium-domain quote was obtained.</p>
 
 <h2 id="compare">How does renewal compare with Porkbun and Cloudflare?</h2>
 <div class="table-wrap"><table class="pricing-table"><caption>Published renewal observations, not matching checkout invoices</caption><thead><tr><th scope="col">Registrar / condition</th><th scope="col">.com renewal</th><th scope="col">What changes the decision?</th></tr></thead><tbody>
@@ -38,11 +63,12 @@
 <p>Cloudflare states: <q>Buy and renew your domain at cost with Cloudflare Registrar.</q> We read its public domain page and Registrar documentation, but did not reach an account-specific .com renewal quote. The dollar difference remains unknown; check your dashboard before moving.</p>
 <p>If you would join NameSilo's program solely for one domain, weigh pre-funding against the three-cent published difference. Keep taxes and payment costs beside these figures; only Porkbun's cited table explicitly establishes fee inclusion. This comparison does not promise next year's rate.</p>
 
-<h2 id="registration">Who can get the $$8.75 registration promotion?</h2>
-<p>The <a href="$promotions_url" rel="noopener noreferrer">official .COM Registration card</a> displays <b>21%</b>, a crossed-out <b>$$11.00</b> and <b>$$8.75</b>. Those are the site's own labels, not a percentage calculated here.</p>
+<h2 id="registration">What do the official pages show about the registration offer?</h2>
+<p>The current <a href="$pricing_url" rel="noopener noreferrer">.COM Registration table</a> still lists $$8.75 for the 100+ active-domain Discount Program tier and lower table amounts for larger tiers. But the <a href="$promotions_url" rel="noopener noreferrer">official promotions listing</a> displayed “No results” when we read it on October 6. We cannot tell from these pages whether the table amounts are currently redeemable.</p>
+<p>The promotion card captured on October 5 showed <b>21%</b>, a crossed-out <b>$$11.00</b>, <b>$$8.75</b>, and an October 31 expiration date. That is a dated prior observation; we do not present its date as a confirmed current cutoff.</p>
 <blockquote>Discount Program Promo for Tiers 2-6 - register new .COM domains as low as $$8.00 by joining our Discount Program</blockquote>
-<p>The registration table binds $$8.75 to <b>100+ active account domains</b>. The $$8.00 minimum belongs to the 5000+ tier. The card's stated expiration is <b>October 31, 2026</b>; no exact cutoff time or timezone is displayed.</p>
-<p class="source-date">Rendered promotion cards read $promo_read_label. The official <a href="$com_url" rel="noopener noreferrer">.com product page</a> describes a first-year standard-registration offer without a coupon; the pricing tier still determines which amount you can use.</p>
+<p>The pricing table binds its $$8.75 row to <b>100+ active account domains</b>; its lower table values extend through $$8.00 at 5,000+. The account thresholds are listed facts, but a cart did not verify any Discount Program tier. This is a registration price, not a renewal amount or a coupon code.</p>
+<p class="source-date">Pricing table read $registration_read_label. Promotions listing read $promotions_page_read_label and displayed “No results.” The October 5 card read $promo_read_label. <a href="$cart_evidence_url">See the dated records and current-page conflict</a>. The official <a href="$com_url" rel="noopener noreferrer">.com product page</a> describes a first-year standard-registration offer without a coupon.</p>
 <h3>Program membership is free; funding is a separate condition</h3>
 <p>The <a href="$program_url" rel="noopener noreferrer">Discount Program</a> requires activation and checkout with Account Funds. Each fund addition must be at least $$50 during participation and for 30 days after cancellation; there is no minimum balance to keep. This is prepaid account credit, not a $$50 membership fee. Active-domain counts exclude expired or suspended domains.</p>
 <p>The official restriction is explicit: <q>Coupon codes cannot be used while enrolled in the Discount Program.</q> A separately advertised coupon cannot be assumed to stack with these rates.</p>
@@ -63,7 +89,7 @@
 
 <h2 id="codes">Is there a verified NameSilo renewal coupon code?</h2>
 <p>No direct renewal coupon was verified in this round. The <a href="$coupons_url" rel="noopener noreferrer">official direct-coupon support page</a> says: <q>Sorry, we do not currently have any active coupons.</q> It distinguishes direct coupons from affiliate-created coupons. That statement does not erase the separate registration and transfer promotions above or prove that every external code fails.</p>
-<p class="source-date">Coupon support read October 5, 2026, 9:24:30–32 p.m. PDT. No affiliate code was redeemed. “NameSilo coupon,” “promo code,” “promotion code,” “discount code” and renewal-code questions are covered on this same page.</p>
+<p class="source-date">Coupon support read $coupon_read_label. No affiliate code was redeemed. “NameSilo coupon,” “promo code,” “promotion code,” “discount code” and renewal-code questions are covered on this same page.</p>
 
 <h2 id="community">What does the credit discussion establish?</h2>
 <span class="tag reported">Individual user report · not official pricing evidence</span>
@@ -72,7 +98,7 @@
 
 <h2 id="archive">One page, with the evidence kept when the promotion changes</h2>
 <p>We conservatively archive this promotion record at the start of October 31 in UTC, before treating it as an ongoing offer beyond the displayed expiration date. That is our editorial cutoff, not an official NameSilo expiry time. The same URL keeps the quoted prices and original read times; a replacement offer needs a fresh official reading.</p>
-<p class="small"><a href="$evidence_url">Download dated source evidence</a> · <a href="/guides/dynadot-coupon-code/">Dynadot: first-year registrar and renewal conditions</a> · <a href="/methodology/">Methodology</a> · <a href="/disclosure/">Disclosure</a></p>
+<p class="small"><a href="$evidence_url">October 5 source evidence</a> · <a href="$cart_evidence_url">October 6 cart evidence</a> · <a href="/guides/dynadot-coupon-code/">Dynadot: first-year registrar and renewal conditions</a> · <a href="/methodology/">Methodology</a> · <a href="/disclosure/">Disclosure</a></p>
 </article>
 <script>
 (() => {

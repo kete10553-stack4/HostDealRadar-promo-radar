@@ -1,0 +1,134 @@
+{
+  "brand": "NameSilo",
+  "observed_at": "2026-10-06T08:45:40Z",
+  "observed_at_label": "October 6, 2026, 1:45:40 a.m. PDT (08:45:40 UTC)",
+  "retrieval_method": "Manually read official NameSilo pages and anonymous cart in Chrome; not signed in; test order not submitted.",
+  "currency": "USD",
+  "test_item": {
+    "domain": "hostdealradar-cart-check-20261006.com",
+    "status": "Available in search result",
+    "purpose": "Fictional test name used only to read one retail .COM cart; not purchased or registered."
+  },
+  "cart_url": "https://www.namesilo.com/cart",
+  "cart_observation": {
+    "registration_line": "USD 17.29",
+    "billing_term_displayed_on_cart_line": null,
+    "whois_privacy_line": "USD 0.00",
+    "subtotal": "USD 17.29",
+    "tax_and_discount_message": "Log in to view updated taxes and discounts to your cart at checkout.",
+    "taxes_verified": false,
+    "final_payable_total_verified": false,
+    "coupon_code_applied": null,
+    "account_specific_discount_accessible": false
+  },
+  "domain_search_cart_options": [
+    {
+      "item": "Hosting",
+      "displayed_price": "USD 6.99/month",
+      "selected": false
+    },
+    {
+      "item": "Email",
+      "displayed_price": "USD 2.99/month",
+      "selected": false,
+      "note": "This is the separately priced Email option, not free email forwarding."
+    },
+    {
+      "item": "Website Builder",
+      "displayed_price": "USD 0 for the first month",
+      "selected": false,
+      "later_price_displayed": false
+    },
+    {
+      "item": "Premium DNS",
+      "displayed_price": "USD 9.00/year",
+      "selected": false
+    }
+  ],
+  "free_services": {
+    "cart_line_items": [
+      {
+        "item": "WHOIS Privacy",
+        "displayed_price": "USD 0.00"
+      }
+    ],
+    "official_pricing_page_claim": "WHOIS Privacy, Email Forwarding, Domain Defender Protection, Custom WHOIS Records and DNS Management are 100% free add-ons.",
+    "source_url": "https://www.namesilo.com/pricing",
+    "source_read_at": "2026-10-06T08:52:36Z",
+    "cart_did_not_show_other_services_as_separate_line_items": true
+  },
+  "published_com_tier_prices_read_manually": {
+    "registration_source_url": "https://www.namesilo.com/pricing",
+    "registration_table_read_at": "2026-10-06T08:47:14Z",
+    "renewal_source_url": "https://www.namesilo.com/pricing",
+    "renewal_table_read_at": "2026-10-06T08:46:34Z",
+    "account_tier_basis": "Discount Program active account domains; table values, not separate cart readings.",
+    "retail": {
+      "registration": "USD 17.29",
+      "renewal": "USD 17.29"
+    },
+    "discount_program": [
+      {
+        "active_domains": "0–99",
+        "registration": "USD 11.05",
+        "renewal": "USD 11.05",
+        "cart_read": false
+      },
+      {
+        "active_domains": "100–499",
+        "registration_regular": "USD 11.00",
+        "registration_promotion": "USD 8.75",
+        "renewal": "USD 11.00",
+        "cart_read": false
+      },
+      {
+        "active_domains": "500–999",
+        "registration_regular": "USD 10.95",
+        "registration_promotion": "USD 8.50",
+        "renewal": "USD 10.95",
+        "cart_read": false
+      },
+      {
+        "active_domains": "1,000–2,499",
+        "registration_regular": "USD 10.90",
+        "registration_promotion": "USD 8.30",
+        "renewal": "USD 10.90",
+        "cart_read": false
+      },
+      {
+        "active_domains": "2,500–4,999",
+        "registration_regular": "USD 10.85",
+        "registration_promotion": "USD 8.15",
+        "renewal": "USD 10.85",
+        "cart_read": false
+      },
+      {
+        "active_domains": "5,000+",
+        "registration_regular": "USD 10.80",
+        "registration_promotion": "USD 8.00",
+        "renewal": "USD 10.80",
+        "cart_read": false
+      }
+    ],
+    "account_access_limitation": "Anonymous cart showed retail only; checkout said log in to view updated taxes and discounts. No account was created or accessed."
+  },
+  "official_direct_coupon_status": {
+    "url": "https://www.namesilo.com/support/v2/articles/ordering/promotion-coupons",
+    "read_at": "2026-10-06T08:48:23Z",
+    "quote": "Sorry, we do not currently have any active coupons.",
+    "scope": "Direct coupons offered by NameSilo; distinct from the separately listed Discount Program registration promotion."
+  },
+  "limits": [
+    "Cart subtotal is not a final payable total.",
+    "No account was created or logged into; no higher-tier cart was tested.",
+    "No checkout submission, payment, registration or renewal was completed.",
+    "The public price table is the source for higher Discount Program tiers; those numbers are not represented as cart readings."
+  ],
+  "official_promotions_page_status": {
+    "url": "https://www.namesilo.com/discounts-and-promotions",
+    "read_at": "2026-10-06T08:54:00Z",
+    "visible_text": "We are currently running the following promotions: ... No results.",
+    "meaning": "The live promotions listing showed no result cards, while the pricing table still showed discounted registration values. Current redemption status of the tier values is unresolved.",
+    "does_not_establish": "The October 5 card’s October 31 date is not confirmed as the current cutoff."
+  }
+}

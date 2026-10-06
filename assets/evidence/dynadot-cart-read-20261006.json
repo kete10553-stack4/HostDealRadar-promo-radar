@@ -1,0 +1,58 @@
+{
+  "brand": "Dynadot",
+  "observed_at": "2026-10-06T08:33:55Z",
+  "observed_at_label": "October 6, 2026, 1:33:55 a.m. PDT (08:33:55 UTC)",
+  "retrieval_method": "Manual read in the user Chrome browser; Dynadot account not signed in; no order submitted.",
+  "currency": "USD",
+  "cart_page_url": "https://www.dynadot.com/domain/search?domain=hostdealradar-cart-check-20261006.com",
+  "test_item": {
+    "domain": "hostdealradar-cart-check-20261006.com",
+    "status_on_search_page": "Available",
+    "purpose": "Fictional test name used to read one .COM registration cart; not purchased or registered."
+  },
+  "official_promotion_source": {
+    "url": "https://www.dynadot.com/help/question/com-registration-promotion",
+    "page_updated": "2026-05-29",
+    "quote": "Enter promo code 899COM at checkout and your .COM registration will be reduced to $8.99 for the first year.",
+    "terms": "No set end date; first come, first served; promotion stops when allocated registrations are exhausted."
+  },
+  "cart_observation": {
+    "coupon_code": "899COM",
+    "coupon_status": "Applied in this test cart; cart panel displayed “Promo Code: 899COM - $8.99 .COM Registrations.”",
+    "registration_term": "1 year",
+    "pre_discount_registration_amount": "USD 10.88",
+    "discount": "USD 1.89",
+    "first_term_line_amount_after_code": "USD 8.99",
+    "cart_total_after_code": "USD 8.99",
+    "renewal_line": "Renews Oct 2027 for $10.88",
+    "tax_line": "No tax line was visible in the cart view; tax was not confirmed as zero."
+  },
+  "free_addons_displayed_in_cart": [
+    "Domain Privacy — FREE",
+    "Website — FREE",
+    "Email — FREE",
+    "Logos — FREE",
+    "Registry Lock — FREE"
+  ],
+  "separate_optional_items": [
+    {
+      "name": "Pro Registry Lock",
+      "price": "USD 100 per year",
+      "price_source_url": "https://www.dynadot.com/domain/security",
+      "selected_in_cart": false,
+      "note": "Separate from the standard Registry Lock item marked FREE in the cart."
+    },
+    {
+      "name": "Email Hosting promotion",
+      "offer": "USD 3 off a .COM when connecting Email Hosting",
+      "condition": "Domain nameservers are locked to Email Hosting for 4 months.",
+      "price_displayed": false,
+      "selected_in_cart": false
+    }
+  ],
+  "scope_limits": [
+    "This is one anonymous cart observation using a fictional test domain, not evidence of universal account eligibility.",
+    "Checkout was not submitted; no payment, registration, renewal, tax total, or account-specific eligibility was verified.",
+    "No cart add-on upgrade controls were opened; their prices were not read in this observation."
+  ]
+}
