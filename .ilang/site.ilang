@@ -12,8 +12,8 @@
 {"provider":"cloudways","guides":[{"path":"/guides/cloudways-coupon-code/","title":"Coupon code and eligibility"},{"path":"/guides/cloudways-coupon-archive/","title":"Earlier coupon observations (archive)"}]}
 {"provider":"digitalocean","guides":[{"path":"/guides/digitalocean-promo-code/","title":"Signup credit and promo-code conditions"}]}
 {"provider":"hostinger","guides":[{"path":"/guides/hostinger-coupon-code/","title":"Web hosting coupon and renewal terms"},{"path":"/guides/hostinger-vps-coupon-code/","title":"VPS coupon-code check"},{"path":"/guides/hostinger-domain-coupon-code/","title":"Domain offers and renewal conditions"}]}
-{"provider":"a2-hosting","guides":[{"path":"/guides/a2-hosting-coupon-code/","title":"A2 / Hosting.com coupons and renewal options"}]}
-{"provider":"hosting-com","guides":[{"path":"/guides/a2-hosting-coupon-code/","title":"A2 / Hosting.com coupons and renewal options"}]}
+{"provider":"a2-hosting","guides":[{"path":"/guides/a2-hosting-coupon-code/","title":"A2 / Hosting.com cart prices, promo code and renewal terms"}]}
+{"provider":"hosting-com","guides":[{"path":"/guides/a2-hosting-coupon-code/","title":"A2 / Hosting.com cart prices, promo code and renewal terms"}]}
 {"provider":"wp-engine","guides":[{"path":"/guides/wp-engine-renewal-overage/","title":"Renewal, overage and staging bills"},{"path":"/guides/wp-engine-vs-kinsta/","title":"WP Engine vs Kinsta: renewal and migration costs"}]}
 {"provider":"kinsta","guides":[{"path":"/guides/wp-engine-vs-kinsta/","title":"WP Engine vs Kinsta: renewal and migration costs"}]}
 {"id":"bluehost","name":"Bluehost","guides":[{"path":"/guides/bluehost-promo-code/","title":"Promo-code eligibility and verification limits"}]}
