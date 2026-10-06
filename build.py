@@ -963,20 +963,65 @@ def build(config_path=None, output=None):
         note=('This quotation is historical. The stated campaign window has ended; it is not a current offer.' if archived else
               'This records the official wording at its last read. It does not establish that the code works in your checkout.')
         pricing=campaign.get('pricing_observation',{})
+        cart_attempt=pricing.get('checkout_attempt')
+        checkout_attempt_section=''
+        if cart_attempt:
+            checkout_attempt_section=(
+                '<p>On '+e(cart_attempt['read_label'])+', we selected the official <strong>'+e(cart_attempt['plan'])+
+                '</strong> plan and followed its Add to cart link. The resulting page stated: <q>'+e(cart_attempt['result_quote'])+
+                '</q> The cart did not load, so this attempt produced no payable total, cart billing term or renewal amount. The code was not entered, and no order was placed. '
+                '<a href="'+e(pricing.get('source_url',''))+'" rel="noopener noreferrer">Open the official hosting page containing the Starter card</a>.</p>'
+            )
+        cart=campaign.get('cart_observation',{})
+        cart_items={item['id']:item for item in cart.get('items',[])}
+        starter=cart_items.get('starter',{})
+        privacy=cart_items.get('domain-privacy-protection',{})
+        if cart and not archived:
+            note='The supplied cart screenshot shows this code as applied. The quoted prices and eligibility belong to that observed order.'
+        cart_rows=''.join('<tr><th scope="row"><q>'+e(item['name_quote'])+'</q></th><td><q>'+e(item['initial_line_quote'])+
+                          '</q></td><td><q>'+e(item['term_quote'])+'</q></td><td><q>'+e(item['renewal_quote'])+'</q></td></tr>'
+                          for item in cart.get('items',[]))
+        cart_table=('<div class="table-wrap"><table class="pricing-table"><caption>Official cart wording in user-supplied screenshots</caption>'
+                    '<thead><tr><th scope="col">Product</th><th scope="col">Initial line amount</th><th scope="col">Selected billing term</th>'
+                    '<th scope="col">Renewal quote</th></tr></thead><tbody>'+cart_rows+'</tbody></table></div>') if cart_rows else ''
+        figures=[]
+        for shot in cart.get('original_screenshots',[]):
+            figures.append('<figure class="cart-proof"><a href="'+e(shot['path'])+'"><img src="'+e(shot['path'])+
+                           '" alt="'+e(shot['caption'])+'" width="'+str(shot['width'])+'" height="'+str(shot['height'])+
+                           '" loading="lazy" decoding="async"></a><figcaption>'+e(shot['caption'])+'</figcaption></figure>')
+        cart_primary_screenshots=''.join(figures[i] for i in (0,2) if i<len(figures))
+        cart_extra_screenshots=''.join(figures[i] for i in (1,3) if i<len(figures))
         pricing_rows=''.join(f'<tr id="shared-{e(row["plan"].lower())}"><th scope="row">{e(row["plan"])}</th>'
-                             f'<td><q>{e(row["price_quote"])}</q> per month</td><td>One year</td>'
-                             '<td><span class="missing">Not verified.</span></td><td><span class="missing">Not verified.</span></td></tr>'
+                             f'<td><q>{e(row["price_quote"])}</q> per month</td><td>One year</td></tr>'
                              for row in pricing.get('plans',[]))
         pricing_table=('<div class="table-wrap"><table class="pricing-table"><caption>Official shared-hosting plan cards — read '+
                        e(pricing.get('read_label',''))+'</caption><thead><tr><th scope="col">Plan</th><th scope="col">Published monthly rate (USD)</th>'
-                       '<th scope="col">Initial term</th><th scope="col">Initial payable total</th><th scope="col">Renewal monthly rate</th></tr></thead>'
+                       '<th scope="col">Advertised initial term</th></tr></thead>'
                        '<tbody>'+pricing_rows+'</tbody></table></div>') if pricing_rows else ''
         content=template(campaign['template'],campaign_heading=e(heading),campaign_status=e(status),campaign_note=e(note),
                          archive_at=e(campaign['archive_from_utc']),archive_heading=e(campaign['archive_headline']),
                          official_quote=e(campaign['official_quote']),source_url=e(campaign['source_url']),
                          source_read_label=e(campaign['source_read_label']),window_label=e(campaign['window_label']),
                          pricing_table=pricing_table,pricing_source_url=e(pricing.get('source_url','')),
-                         pricing_read_label=e(pricing.get('read_label','')),pricing_terms_read_label=e(pricing.get('terms_read_label','')))
+                         pricing_read_label=e(pricing.get('read_label','')),pricing_terms_read_label=e(pricing.get('terms_read_label','')),
+                         checkout_attempt_section=checkout_attempt_section,cart_table=cart_table,
+                         cart_primary_screenshots=cart_primary_screenshots,cart_extra_screenshots=cart_extra_screenshots,
+                         cart_initial_line=e(starter.get('initial_line_quote','Not verified.')),
+                         cart_term=e(starter.get('term_quote','Not verified.')),
+                         cart_renewal_quote=e(starter.get('renewal_quote','Not verified.')),
+                         cart_read_label=e(cart.get('review_label','')),cart_source_url=e(cart.get('source_url','')),
+                         cart_total=e(cart.get('today_total_quote','Not verified.')),
+                         cart_code=e(cart.get('code','')),cart_code_status=e(cart.get('code_status_quote','')),
+                         cart_hosting_savings=e(cart.get('hosting_savings_quote','')),
+                         cart_item_count=e(cart.get('item_count_quote','')),
+                         cart_tax=e(cart.get('tax_quote','Not verified.')),cart_icann_fee=e(cart.get('icann_fee_quote','Not verified.')),
+                         pre_code_starter_line=e(cart.get('pre_code_observation',{}).get('starter_initial_line_quote','Not verified.')),
+                         pre_code_cart_total=e(cart.get('pre_code_observation',{}).get('today_total_quote','Not verified.')),
+                         pre_code_read_label=e(cart.get('pre_code_observation',{}).get('review_label','')),
+                         cart_privacy_initial=e(privacy.get('initial_line_quote','Not verified.')),
+                         cart_privacy_renewal=e(privacy.get('renewal_quote','Not verified.')),
+                         cart_privacy_term=e(privacy.get('term_quote','Not verified.')),
+                         cart_privacy_benefit=e(privacy.get('benefit_quote','Not verified.')))
         schema={'@context':'https://schema.org','@type':'Article','headline':heading,
                 'datePublished':campaign['published_on'],'dateModified':campaign['modified_on'],
                 'author':{'@type':'Organization','name':cfg['site']['brand']},
@@ -986,8 +1031,16 @@ def build(config_path=None, output=None):
                   'record_state':'historical' if archived else 'dated_official_observation',
                   'official_quote':campaign['official_quote'],'source_url':campaign['source_url'],
                   'source_read_at':campaign['source_read_at'],'window':campaign['window_label'],
-                  'cutoff_time_and_timezone':None,'checkout_tested':False,'redemption_verified':False,
-                  'initial_payable_total':None,'initial_billing_term':None,'renewal_rate':None,
+                  'cutoff_time_and_timezone':None,'checkout_tested':False,'checkout_attempted':bool(cart_attempt),
+                  'checkout_attempt':cart_attempt,'redemption_verified':False,
+                  'checkout_tested_scope':'Assistant live checkout completion; user-supplied cart screenshots are separately recorded.',
+                  'cart_observation':cart or None,
+                  'initial_payable_total':cart.get('today_total_quote'),
+                  'initial_payable_total_scope':cart.get('today_total_scope'),
+                  'initial_hosting_line_amount':starter.get('initial_line_quote'),
+                  'initial_billing_term':starter.get('term_quote'),
+                  'renewal_rate':starter.get('renewal_amount'),'renewal_rate_scope':starter.get('renewal_scope'),
+                  'renewal_monthly_rate':None,'domain_privacy_protection':privacy or None,
                   'pricing_observation':pricing or None,
                   'private_registration_price':None,'domain_forwarding_price':None,
                   'reference_policy_current_verification':None}
