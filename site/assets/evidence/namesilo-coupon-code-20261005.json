@@ -1,0 +1,227 @@
+{
+  "brand": "NameSilo",
+  "record_state": "dated_official_observation",
+  "currency": "USD",
+  "currency_basis": "NameSilo table displays dollar signs; official Account Funds terms require US Dollars. Porkbun explicitly states USD.",
+  "checkout_tested": false,
+  "redemption_verified": false,
+  "registration_or_transfer_completed": false,
+  "future_renewal_price_guaranteed": false,
+  "final_payable_total_verified": false,
+  "official_sources": [
+    {
+      "url": "https://www.namesilo.com/pricing",
+      "read_at": "2026-10-06T04:21:34.954Z",
+      "method": "Codex in-app browser, Renewal tab, logged out",
+      "selected_tab": "Renewal",
+      "column_group_quote": "Discount Program (active account domains)",
+      "headers": [
+        "TLD",
+        "Retail",
+        "0+",
+        "100+",
+        "500+",
+        "1000+",
+        "2500+",
+        "5000+"
+      ],
+      "row_quote": "com | $17.29 | $11.05 | $11.00 | $10.95 | $10.90 | $10.85 | $10.80",
+      "retail_renewal": "17.29",
+      "program_0_to_99_renewal": "11.05",
+      "program_100_to_499_renewal": "11.00"
+    },
+    {
+      "url": "https://www.namesilo.com/pricing",
+      "read_at": "2026-10-06T04:22:15.326Z",
+      "method": "Codex in-app browser, Registrations tab",
+      "selected_tab": "Registrations",
+      "retail_1_to_49": "17.29",
+      "program_0_to_99": "11.05",
+      "program_100_to_499": {
+        "regular_crossed_out": "11.00",
+        "promotion": "8.75"
+      },
+      "program_5000_plus_promotion": "8.00"
+    },
+    {
+      "url": "https://www.namesilo.com/pricing",
+      "read_at": "2026-10-06T04:22:15.802Z",
+      "method": "Codex in-app browser, Transfer tab",
+      "selected_tab": "Transfer",
+      "com_transfer": "10.80",
+      "regular_crossed_out": "11.95"
+    },
+    {
+      "url": "https://www.namesilo.com/discounts-and-promotions",
+      "read_at": "2026-10-06T04:23:40.465Z",
+      "method": "Codex in-app browser, visible rendered promotions cards",
+      "registration": {
+        "official_percentage_label": "21%",
+        "regular_crossed_out": "11.00",
+        "promotion": "8.75",
+        "official_quote": "Discount Program Promo for Tiers 2-6 - register new .COM domains as low as $8.00 by joining our Discount Program",
+        "expires_on": "2026-10-31",
+        "cutoff_time_and_timezone": null
+      },
+      "transfer": {
+        "regular_crossed_out": "11.95",
+        "promotion": "10.80",
+        "expires_on": "2026-10-31",
+        "term_extension_years": 1
+      },
+      "rendering_note": "Rendered browser cards were visible. Text-only reader returned No results and was not used as evidence that promotions were absent."
+    },
+    {
+      "url": "https://www.namesilo.com/discount-program",
+      "read_started_at": "2026-10-06T04:24:22.259Z",
+      "read_finished_at": "2026-10-06T04:24:23.264Z",
+      "method": "Codex in-app browser DOM snapshot, logged out",
+      "join_or_leave_fee": "0",
+      "payment_method_required": "Account Funds",
+      "minimum_each_fund_addition": "50.00",
+      "minimum_addition_applies_for_days_after_cancellation": 30,
+      "minimum_balance_required": false,
+      "active_domain_count_excludes": [
+        "expired",
+        "suspended"
+      ],
+      "quote": "Coupon codes cannot be used while enrolled in the Discount Program."
+    },
+    {
+      "url": "https://www.namesilo.com/tld/com",
+      "read_at": "2026-10-06T04:24:22.256Z",
+      "period_label": "/ 1st yr",
+      "coupon_needed_for_described_standard_registration_offer": false,
+      "tier_eligibility_not_waived": true
+    },
+    {
+      "url": "https://www.namesilo.com/support/v2/articles/domain-manager/whois-privacy",
+      "read_started_at": "2026-10-06T04:24:23.274Z",
+      "read_finished_at": "2026-10-06T04:24:26.735Z",
+      "method": "Codex in-app browser DOM snapshot, logged out",
+      "quote": "we provide WHOIS Privacy for free at all times, no exceptions!",
+      "excluded_tlds": [
+        "us",
+        "in",
+        "tickets"
+      ],
+      "ca_note": "WHOIS can be hidden for individuals; privacy service unavailable",
+      "scope": "All eligible domain holders; com not excluded. Ongoing after an inbound transfer is an interpretation of that holder-wide policy; not tested in an account."
+    },
+    {
+      "url": "https://www.namesilo.com/support/v2/articles/email/email-forwarding",
+      "read_started_at": "2026-10-06T04:24:26.773Z",
+      "read_finished_at": "2026-10-06T04:24:28.902Z",
+      "method": "Codex in-app browser DOM snapshot, logged out",
+      "quote": "Free with every domain",
+      "forwarding_addresses_per_domain": 100,
+      "required_configuration": "MX records",
+      "first_year_only_limit_found": false,
+      "hosted_mailbox_included": false,
+      "transferred_domain_configuration_tested": false
+    },
+    {
+      "url": "https://www.namesilo.com/support/v2/articles/domain-manager/parking-manager",
+      "read_started_at": "2026-10-06T04:24:29.542Z",
+      "read_finished_at": "2026-10-06T04:24:30.986Z",
+      "method": "Codex in-app browser DOM snapshot, logged out",
+      "quote": "There are no fees associated with NameSilo domain parking.",
+      "first_year_only_limit_found": false,
+      "optional_service": true,
+      "transferred_domain_configuration_tested": false
+    },
+    {
+      "url": "https://www.namesilo.com/support/v2/articles/ordering/promotion-coupons",
+      "read_started_at": "2026-10-06T04:24:30.988Z",
+      "read_finished_at": "2026-10-06T04:24:32.544Z",
+      "method": "Codex in-app browser DOM snapshot, logged out",
+      "quote": "Sorry, we do not currently have any active coupons.",
+      "scope": "Direct NameSilo coupons, separate from affiliate-created coupons and displayed promotions",
+      "direct_renewal_coupon_verified": false
+    },
+    {
+      "url": "https://porkbun.com/products/domains",
+      "read_at": "2026-10-06T04:28:57.210Z",
+      "headers": [
+        "extension",
+        "registration",
+        "renewal",
+        "transfer"
+      ],
+      "row_quote": ".com | $11.08 | $11.08 | $11.08",
+      "renewal": "11.08",
+      "term_years": 1,
+      "currency": "USD",
+      "premium": false,
+      "icann_and_other_fees_included": true
+    },
+    {
+      "url": "https://www.namesilo.com/support/v2/articles/account-options/account-funds-manager",
+      "read_started_at": "2026-10-06T04:29:07Z",
+      "read_finished_at": "2026-10-06T04:29:08Z",
+      "method": "Web page reader",
+      "quote": "All funds must be sent in US Dollars"
+    },
+    {
+      "url": "https://www.namesilo.com/support/v2/articles/ordering/transfer-frequently",
+      "read_started_at": "2026-10-06T04:29:07Z",
+      "read_finished_at": "2026-10-06T04:29:08Z",
+      "method": "Web page reader",
+      "extra_year_exceptions": [
+        "Renewed at previous registrar within 45 days of transfer",
+        "Maximum registry/ICANN term would be exceeded, typically ten years"
+      ],
+      "default_nameserver_behavior": "No changes"
+    },
+    {
+      "url": "https://developers.cloudflare.com/registrar/",
+      "read_started_at": "2026-10-06T04:29:07Z",
+      "read_finished_at": "2026-10-06T04:29:08Z",
+      "method": "Web page reader",
+      "quote": "Buy and renew your domain at cost with Cloudflare Registrar.",
+      "exact_com_renewal_price": null,
+      "attempt_stage": "Read public domain product page and Registrar overview; no account renewal quote obtained."
+    },
+    {
+      "url": "https://developers.cloudflare.com/dns/concepts/",
+      "read_started_at": "2026-10-06T04:29:07Z",
+      "read_finished_at": "2026-10-06T04:29:08Z",
+      "method": "Web page reader",
+      "primary_authoritative_dns_required": "Cloudflare"
+    }
+  ],
+  "community_sources": [
+    {
+      "url": "https://www.reddit.com/r/Domains/comments/1szdtrv/namesilo_are_you_really_this_sleazy_now/",
+      "classification": "individual_user_report",
+      "thread_date": "2026-04-29",
+      "date_basis": "User-supplied date and dated search result; page reader uses relative dates",
+      "summary": "Thread discusses credit associated with posting; comments disagree over whether positive sentiment was required.",
+      "original_marketing_material_independently_verified": false,
+      "credit_payment_verified": false,
+      "read_started_at": "2026-10-06T04:23:21Z",
+      "read_finished_at": "2026-10-06T04:23:22Z"
+    },
+    {
+      "url": "https://www.reddit.com/r/Domains/comments/1ivmt3e/experiences_with_namesilo/",
+      "classification": "single_source_user_discussion",
+      "thread_date": "2025-02-22",
+      "summary": "Mixed personal experiences; not a verified service rating or policy.",
+      "read_started_at": "2026-10-06T04:23:21Z",
+      "read_finished_at": "2026-10-06T04:23:22Z"
+    }
+  ],
+  "editorial_archive_policy": {
+    "archive_from_utc": "2026-10-31T00:00:00Z",
+    "official_cutoff_time_and_timezone": null,
+    "reason": "Conservative editorial cutoff at start of displayed expiry date in UTC; not asserted to be the official expiry time. Preserve one URL and original read times."
+  },
+  "calculated_price_differences": {
+    "basis": "Dated published renewal prices, not checkout totals",
+    "retail_namesilo_minus_porkbun_usd": "6.21",
+    "program_0_to_99_namesilo_minus_porkbun_usd": "-0.03",
+    "cloudflare_difference": null,
+    "discount_percentage_computed": false
+  },
+  "promotion_record_state": "dated_official_observation"
+}
