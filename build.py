@@ -927,7 +927,7 @@ def build(config_path=None, output=None):
     write(Path('guides/digitalocean-promo-code/index.html'),page('DigitalOcean promo code: official signup credit and code terms | HostDealRadar','DigitalOcean says its first-team signup credit needs no code. Read the official eligibility, expiration and billing limits beside the separate promotional-code terms.',domain+digitalocean_guide_route,digitalocean_guide,digitalocean_guide_schema))
     hosting_coupons_route='/guides/hosting-coupons/'
     hosting_coupons=template('hosting-coupons.html')
-    hosting_coupons_schema={'@context':'https://schema.org','@type':'Article','headline':'Hosting coupons: first find out what actually applies','datePublished':'2026-09-24','dateModified':'2026-09-24','author':{'@type':'Organization','name':'HostDealRadar'},'publisher':{'@type':'Organization','name':'HostDealRadar'},'mainEntityOfPage':domain+hosting_coupons_route}
+    hosting_coupons_schema={'@context':'https://schema.org','@type':'Article','headline':'Hosting coupons: first find out what actually applies','datePublished':'2026-09-24','dateModified':'2026-10-05','author':{'@type':'Organization','name':'HostDealRadar'},'publisher':{'@type':'Organization','name':'HostDealRadar'},'mainEntityOfPage':domain+hosting_coupons_route}
     write(Path('guides/hosting-coupons/index.html'),page('Hosting coupons: code, no-code sale, or signup credit? | HostDealRadar','Three official examples show why a hosting code, an automatic promotion, and an account credit need different eligibility and billing checks.',domain+hosting_coupons_route,hosting_coupons,hosting_coupons_schema))
     hostinger_guide_route='/guides/hostinger-coupon-code/'
     hostinger_guide=template('hostinger-coupon-code.html')
@@ -993,6 +993,22 @@ def build(config_path=None, output=None):
                   'reference_policy_current_verification':None}
         write(Path('assets/evidence')/(route.strip('/').split('/')[-1]+'-'+campaign['published_on'].replace('-','')+'.json'),json.dumps(evidence,ensure_ascii=False,indent=2)+'\n')
         campaign_routes.append(route)
+    research_routes=[]
+    for guide in cfg['research_guides']:
+        route=guide['path']
+        if not re.fullmatch(r'/guides/[a-z0-9-]+/',route) or route in rendered:
+            raise ValueError('Invalid or duplicate research guide path: '+route)
+        if not re.fullmatch(r'[a-z0-9-]+\.html',guide['template']):
+            raise ValueError('Invalid research guide template')
+        content=template(guide['template'],**{key:e(value) for key,value in guide['template_fields'].items()})
+        schema={'@context':'https://schema.org','@type':'Article','headline':guide['headline'],
+                'datePublished':guide['published_on'],'dateModified':guide['modified_on'],
+                'author':{'@type':'Organization','name':cfg['site']['brand']},
+                'publisher':{'@type':'Organization','name':cfg['site']['brand']},'mainEntityOfPage':domain+route}
+        write(Path(route.strip('/'))/'index.html',page(guide['headline']+' | '+cfg['site']['brand'],guide['description'],domain+route,content,schema))
+        evidence_name=route.strip('/').split('/')[-1]+'-'+guide['published_on'].replace('-','')+'.json'
+        write(Path('assets/evidence')/evidence_name,json.dumps(guide['evidence'],ensure_ascii=False,indent=2)+'\n')
+        research_routes.append(route)
     wpe_guide_route='/guides/wp-engine-renewal-overage/'
     wpe_guide_schema={'@context':'https://schema.org','@type':'Article','headline':'Why did my WP Engine bill increase?','datePublished':'2026-10-01','dateModified':'2026-10-04','author':{'@type':'Organization','name':'HostDealRadar'},'publisher':{'@type':'Organization','name':'HostDealRadar'},'mainEntityOfPage':domain+wpe_guide_route}
     write(Path('guides/wp-engine-renewal-overage/index.html'),page('WP Engine renewal increase, overage fees and staging | HostDealRadar','Distinguish WordPress.com from WP Engine, trace a renewal increase, check billable visits and staging usage, and compare Cloudways Flexible with complete agency costs.',domain+wpe_guide_route,template('wp-engine-renewal-overage.html'),wpe_guide_schema))
@@ -1180,6 +1196,7 @@ Planned endpoints return HTTP 503 with `temporarily_unavailable` until authentic
     routes.append(bluehost_guide_route)
     routes.append(hostgator_guide_route)
     routes.extend(campaign_routes)
+    routes.extend(research_routes)
     routes.append(wpe_guide_route)
     routes.append(wpk_guide_route)
     # Keep zero-current provider pages accessible for truthful status reporting,

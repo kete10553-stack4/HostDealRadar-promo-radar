@@ -1,0 +1,91 @@
+{
+  "brand": "Dynadot",
+  "record_state": "dated_official_observation",
+  "retrieval_method": "Web reader; not logged-in Chrome or account verification",
+  "checkout_tested": false,
+  "redemption_verified": false,
+  "official_sources": [
+    {
+      "url": "https://www.dynadot.com/help/question/com-registration-promotion/",
+      "read_started_at": "2026-10-06T02:39:30Z",
+      "read_finished_at": "2026-10-06T02:39:31Z",
+      "page_updated_on": "2026-05-29",
+      "coupon": "899COM",
+      "currency": "USD",
+      "first_year_registration_price": "8.99",
+      "redemptions_per_account": "No stated count limit; finite promotion allocation",
+      "ends_at": null,
+      "deadline_wording": "No set end date; first come, first served",
+      "first_year_registrar": "Unnamed partner registrar",
+      "renewal_lock_days": 60,
+      "renewal_triggers_transfer_to": "Dynadot",
+      "auto_renew_settings_first_60_days": "Cannot change; follows account default",
+      "first_year_sales_networks_unavailable": [
+        "Afternic Fast Transfer",
+        "Sedo MLS"
+      ],
+      "other_limitations": [
+        "No grace deletions",
+        "WHOIS privacy enabled and unchangeable during first year",
+        "No smart domain folders",
+        "No DNSSEC"
+      ],
+      "abuse_route": "Partner registrar reviews first-year reports; Dynadot support can appeal after underlying issue is addressed; partner coordination takes longer. Following the lock and renewal into Dynadot, future matters handled directly by Dynadot."
+    },
+    {
+      "url": "https://www.dynadot.com/domain/com",
+      "read_started_at": "2026-10-06T02:39:30Z",
+      "read_finished_at": "2026-10-06T02:39:31Z",
+      "quote": "Renewal Price (1 year) | $10.88",
+      "standard_renewal_price": "10.88",
+      "currency": "USD",
+      "term_years": 1,
+      "premium_domain_price_verified": false,
+      "future_renewal_price_guaranteed": false,
+      "tax_or_checkout_total_verified": false
+    },
+    {
+      "url": "https://www.dynadot.com/blog/three-rs-registry-registrar-reseller",
+      "read_started_at": "2026-10-06T02:41:02Z",
+      "read_finished_at": "2026-10-06T02:41:03Z",
+      "source_type": "General official explanatory blog; publication date not displayed in retrieved excerpt",
+      "quote": "When you purchase a domain name through us, you are always the owner"
+    }
+  ],
+  "forum_sources": [
+    {
+      "category": "individual_user_report",
+      "url": "https://www.reddit.com/r/Domains/comments/1u061uq/did_dynadot_cancel_my_domain_and_claim_it_itself/",
+      "thread_date": "2026-06-08",
+      "date_basis": "User-supplied thread date; search excerpt dated June 8; page reader shows relative dates",
+      "author": "disturbance_oki",
+      "observed_update": "Domain registered in poster's account; poster says they are now the owner",
+      "independently_verified": false
+    },
+    {
+      "category": "forum_support_account_reply",
+      "url": "https://www.reddit.com/r/Domains/comments/1remb4b/comment/o82g0mw/",
+      "thread_date": "2026-02-25",
+      "reply_date": "2026-03-01",
+      "date_basis": "Search text dates; page reader shows relative dates",
+      "account": "DynadotSupport",
+      "account_authorization_independently_verified": false,
+      "quote": "In Dynadot, we do not own domain names; instead, the domain owner lists them in our auction or user listing.",
+      "official_website_policy": false
+    },
+    {
+      "category": "single_source_user_report",
+      "url": "https://www.reddit.com/r/webhosting/comments/1wvnzga/dynadot_just_suspended_our_legitimate_saas_domain/",
+      "thread_date": "2026-10-02",
+      "date_basis": "User-supplied date; reader shows relative date",
+      "author": "darko777",
+      "independently_verified": false,
+      "promotion_used_unknown": true,
+      "claim_summary": "Alleged mistaken phishing suspension of SaaS domain; poster claims 500+ customers and transfer of 30+ domains to Porkbun.",
+      "attribution_correction": "Hypotheticals quotation belongs to Fast_Current_3569 after a suggestion to contact Porkbun; it is not a verified Dynadot support response."
+    }
+  ],
+  "forum_retrieval_started_at": "2026-10-06T02:39:30Z",
+  "forum_retrieval_finished_at": "2026-10-06T02:39:31Z",
+  "historical_promotion_used_as_current": false
+}
