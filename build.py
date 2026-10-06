@@ -1113,14 +1113,25 @@ def build(config_path=None, output=None):
             raise ValueError('Invalid or duplicate research guide path: '+route)
         if not re.fullmatch(r'[a-z0-9-]+\.html',guide['template']):
             raise ValueError('Invalid research guide template')
-        content=template(guide['template'],**{key:e(value) for key,value in guide['template_fields'].items()})
-        schema={'@context':'https://schema.org','@type':'Article','headline':guide['headline'],
+        fields=dict(guide['template_fields'])
+        archived=False
+        if guide.get('archive_from_utc'):
+            archived=datetime.now(timezone.utc)>=datetime.fromisoformat(guide['archive_from_utc'].replace('Z','+00:00'))
+            fields.update(guide_status=guide['archive_status'] if archived else guide['current_status'],
+                          guide_note=guide['archive_note'] if archived else guide['current_note'])
+        heading=guide.get('archive_headline',guide['headline']) if archived else guide['headline']
+        fields['headline']=heading
+        content=template(guide['template'],**{key:e(value) for key,value in fields.items()})
+        schema={'@context':'https://schema.org','@type':'Article','headline':heading,
                 'datePublished':guide['published_on'],'dateModified':guide['modified_on'],
                 'author':{'@type':'Organization','name':cfg['site']['brand']},
                 'publisher':{'@type':'Organization','name':cfg['site']['brand']},'mainEntityOfPage':domain+route}
-        write(Path(route.strip('/'))/'index.html',page(guide['headline']+' | '+cfg['site']['brand'],guide['description'],domain+route,content,schema))
+        write(Path(route.strip('/'))/'index.html',page(heading+' | '+cfg['site']['brand'],guide['description'],domain+route,content,schema))
         evidence_name=route.strip('/').split('/')[-1]+'-'+guide['published_on'].replace('-','')+'.json'
-        write(Path('assets/evidence')/evidence_name,json.dumps(guide['evidence'],ensure_ascii=False,indent=2)+'\n')
+        evidence=dict(guide['evidence'])
+        if guide.get('archive_from_utc'):
+            evidence['promotion_record_state']='archived_pending_recheck' if archived else 'dated_official_observation'
+        write(Path('assets/evidence')/evidence_name,json.dumps(evidence,ensure_ascii=False,indent=2)+'\n')
         research_routes.append(route)
     wpe_guide_route='/guides/wp-engine-renewal-overage/'
     wpe_guide_schema={'@context':'https://schema.org','@type':'Article','headline':'Why did my WP Engine bill increase?','datePublished':'2026-10-01','dateModified':'2026-10-04','author':{'@type':'Organization','name':'HostDealRadar'},'publisher':{'@type':'Organization','name':'HostDealRadar'},'mainEntityOfPage':domain+wpe_guide_route}

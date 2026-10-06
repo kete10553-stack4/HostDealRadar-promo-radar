@@ -10008,12 +10008,12 @@
   "source_403_history": [],
   "page_lastmod": {
     "/": {
-      "hash": "f0a9ba7bbbb07dd072d54a76cc4cc85e2fe29bc1659f8393e31f6d55893de450",
-      "lastmod": "2026-10-06T03:43:53Z"
+      "hash": "87b7ea3ee52beb29be064c0cdf37c24e6a8e3290f30f29e0797a1c830113df55",
+      "lastmod": "2026-10-06T04:33:11Z"
     },
     "/providers/": {
-      "hash": "39720e12371f23eaa8cf52ea3cf856233057e1cf9ada03b26328215ae25001e4",
-      "lastmod": "2026-10-06T03:43:53Z"
+      "hash": "30812064563349db7f389784808d7ad1e0ecddd7b559917278389533d6559d41",
+      "lastmod": "2026-10-06T04:31:57Z"
     },
     "/compare/": {
       "hash": "162d0ff1b12a04580ab0b4337d496a511ff377051c88ab86434b16f4a49da1f9",
@@ -10064,8 +10064,8 @@
       "lastmod": "2026-10-05T13:23:31Z"
     },
     "/guides/hosting-coupons/": {
-      "hash": "b680271ce95358b820765133bb1a871098d4603a342966ad737ea003e0334129",
-      "lastmod": "2026-10-06T02:44:31Z"
+      "hash": "dbacbf68b69b2c94b32c228f40defa43f53bf4fcabab7b560acf61845845d7c7",
+      "lastmod": "2026-10-06T04:33:11Z"
     },
     "/guides/hostinger-coupon-code/": {
       "hash": "9973d7b30d9476b0b9029e6f81863ce06e394ed92e9c9fd04f0e359bdbcb111c",
@@ -10098,6 +10098,10 @@
     "/guides/dynadot-coupon-code/": {
       "hash": "04147259ac9f05fd2d8f64c159f218ea052a462d211d890b15a5c0a7e5dca903",
       "lastmod": "2026-10-06T03:43:53Z"
+    },
+    "/guides/namesilo-coupon-code/": {
+      "hash": "3b2d082ffaaa958ccd9b58f7b696bbc88f569df856c791b914ec45dcd154c0e0",
+      "lastmod": "2026-10-06T04:31:57Z"
     },
     "/guides/wp-engine-renewal-overage/": {
       "hash": "56c72e1049c9d578fc703488997bb64f17f32458cbd35dfdb0fe079bd4de05e4",
