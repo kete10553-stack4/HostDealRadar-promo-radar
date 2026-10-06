@@ -1,0 +1,95 @@
+<style>
+.dynadot-guide .answer-box{padding:20px;background:#edf7f5;border-left:4px solid #167365;border-radius:8px}
+.dynadot-guide .answer-box blockquote{margin:10px 0;padding:0;border:0;font-size:20px;line-height:1.5}
+.dynadot-guide .source-note{padding:14px 18px;background:#f5f7f9;border-left:3px solid #748396}
+.dynadot-guide .source-date{font-size:14px;color:#52616b;overflow-wrap:anywhere}
+.dynadot-guide .timeline{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:22px 0}
+.dynadot-guide .timeline div{padding:16px;border:1px solid #dce3e8;border-radius:10px}
+.dynadot-guide .timeline strong{display:block;color:#167365;margin-bottom:8px}
+.dynadot-guide .evidence-label{display:inline-block;padding:4px 10px;border-radius:6px;font-size:13px;font-weight:650;background:#e8f3f0;color:#245449}
+.dynadot-guide .reported{background:#fff3df;color:#765118}.dynadot-guide .forum{background:#edf0fa;color:#404d81}
+.dynadot-guide .renewal-quote{font-size:21px;font-weight:650}.dynadot-guide a,.dynadot-guide p{overflow-wrap:anywhere}
+@media(max-width:600px){.dynadot-guide h1{font-size:27px;line-height:1.22;letter-spacing:-.6px}.dynadot-guide .timeline{grid-template-columns:1fr}.dynadot-guide .answer-box{padding:14px}.dynadot-guide .answer-box blockquote{font-size:18px}}
+</style>
+<article class="wrap section prose dynadot-guide">
+<div class="breadcrumbs"><a href="/guides/hosting-coupons/">Hosting coupons</a> / Dynadot</div>
+<div class="eyebrow">Dated source review · October 5, 2026</div>
+<h1>$headline</h1>
+<div class="answer-box">
+<span class="evidence-label">Official website wording</span>
+<blockquote>Enter promo code $coupon at checkout</blockquote>
+<p><strong>.COM registration: $first_year_price for the first year.</strong></p>
+<p class="source-date"><a href="$promo_url" rel="noopener noreferrer">Official promotion instructions</a> · Read $read_label.</p>
+</div>
+<p class="lead">Your account, the registrar named in WHOIS, and the team handling an abuse report are three separate questions. They belong beside the price when you decide where to register a domain.</p>
+<aside class="source-note"><strong>Current-page observations and saved evidence</strong><p>The official pages below were read at the stated times. Saved captures preserve those observations; they are not a later reread. The community discussions are dated reports, separate from official website wording and a forum support-account reply. No checkout, redemption, registration, renewal or appeal was tested.</p></aside>
+<nav aria-label="Article contents"><p><a href="#official-terms">Registration and renewal timeline</a> · <a href="#holder">Who holds the domain?</a> · <a href="#renewal">Standard renewal price</a> · <a href="#abuse">Who handles a suspension?</a> · <a href="#community">User reports</a> · <a href="#forum-reply">Forum support reply</a></p></nav>
+
+<section id="official-terms">
+<h2>1. Official website: what changes during the first year?</h2>
+<div class="timeline">
+<div><strong>After registration</strong>Manage your domain in Dynadot; public WHOIS names its partner registrar. Nameservers, account pushes and Dynadot Marketplace sales remain available.</div>
+<div><strong>First 60 days</strong>No renewal: it triggers a transfer, blocked by the new-registration lock. Auto-renew settings cannot change; your account default applies.</div>
+<div><strong>When you renew after the lock</strong>The domain transfers into Dynadot at standard renewal pricing.</div>
+</div>
+<ul>
+<li><strong>Allocation:</strong> Unlimited uses per account; finite registration supply. No fixed end date; the code stops when supply runs out.</li>
+<li><strong>Sales networks:</strong> No Afternic Fast Transfer or Sedo MLS during the first year; eligible after renewal and transfer into Dynadot.</li>
+<li><strong>Other restrictions:</strong> No grace deletions, smart domain folders or DNSSEC. WHOIS privacy stays enabled and cannot change during the first year.</li>
+</ul>
+<p class="source-date"><a href="$promo_url" rel="noopener noreferrer">Official promotion conditions</a> · Read $read_label. The source labels its own update May 29, 2026.</p>
+</section>
+
+<section id="holder">
+<h2>Does the partner's WHOIS name mean it owns my domain?</h2>
+<p><strong>You remain the domain holder.</strong> A registrar is the company administering registration; the registrant is the holder. Dynadot's general official explanation says:</p>
+<blockquote>When you purchase a domain name through us, you are always the owner</blockquote>
+<p class="source-date"><a href="$owner_url" rel="noopener noreferrer">Official explanation of registries, registrars and resellers</a> · Read $owner_read_label. This is a general explanatory article; its publication date was not displayed in the retrieved text.</p>
+<p><strong>Our reading:</strong> The account-management description in the promotion and that ownership explanation distinguish the registrar from the holder. The partner's name alone does not show that it bought your domain. Check the fields separately; a private public contact record may not display your personal name. This review did not inspect any customer's registration record or identify the unnamed partner.</p>
+</section>
+
+<section id="renewal">
+<h2>What is Dynadot's standard .com renewal price?</h2>
+<blockquote class="renewal-quote">Renewal Price (1 year) | $renewal_price</blockquote>
+<p class="source-date"><a href="$renewal_url" rel="noopener noreferrer">Official .com pricing and information table</a> · Read $read_label.</p>
+<p>The page displays USD ($). This is its standard one-year renewal figure at the read time, not a renewal coupon or a promise of next year's price. Premium domains have different pricing, and the page notes possible currency-exchange fluctuations. Tax and a final account-specific payable total were not checked.</p>
+<p>The same page's general .com information lists DNSSEC support and a deletion grace period. Those general capabilities do not override the promotion-specific restrictions above. Use the terms for the registration you are actually buying.</p>
+</section>
+
+<section id="abuse">
+<h2>Who handles an abuse report during the promotional year?</h2>
+<span class="evidence-label">Official website wording, paraphrased</span>
+<p>First-year abuse reports go to the partner registrar. After you address the underlying issue, Dynadot support can appeal on your behalf; partner coordination takes longer. After the lock and renewal into Dynadot, its team handles future abuse matters directly.</p>
+<p class="source-date"><a href="$promo_url" rel="noopener noreferrer">Official promotion: Abuse-Related Suspensions</a> · Read $read_label.</p>
+<p><strong>A practical question for support:</strong> “For this domain, which registrar is reviewing the report, what evidence should I submit, and where can I track the appeal?” Keep the registration confirmation and support case number. The published route does not provide a resolution deadline or guarantee reinstatement.</p>
+</section>
+
+<section id="community">
+<h2>2. User reports: ownership anxiety and a disputed suspension</h2>
+<span class="evidence-label reported">Individual experiences · not independently verified</span>
+<h3>“Did Dynadot Cancel My Domain and Claim it itself?”</h3>
+<p>In the June 8, 2026 r/Domains discussion, <strong>disturbance_oki</strong> described conflicting registration and refund emails, then added:</p>
+<blockquote>Domain was registered to my account and I am now the owner!</blockquote>
+<p>The update matters: quoting only the original fear would leave out the reported outcome. A commenter, mcyger, expressed personal confidence in founder Todd Han; another, DPW38, offered an explanation of payment and registration order. Those are community explanations, not an official investigation or verified billing procedure. No company reply was identified in the discussion text read here.</p>
+<p class="source-date"><a href="https://www.reddit.com/r/Domains/comments/1u061uq/did_dynadot_cancel_my_domain_and_claim_it_itself/" rel="noopener noreferrer">Original ownership discussion and update</a> · Read $read_label.</p>
+<h3>“Dynadot just suspended our legitimate SaaS domain (500+ users) over a false phishing claim”</h3>
+<p>In the October 2, 2026 r/webhosting thread, <strong>darko777</strong> alleged a mistaken phishing suspension affecting a SaaS with more than 500 customers. The poster also said they had moved more than 30 domains to Porkbun.</p>
+<p><strong>Single-source report:</strong> We did not verify the underlying complaint, customer count, suspension mechanism or outcome. The thread does not establish that the poster used this promotion. Its allegation of automated handling cannot establish company policy.</p>
+<p>A separate comment's quoted reply about refusing to discuss hypothetical abuse cases follows a suggestion to contact Porkbun. It is not established as a Dynadot support reply and is not used here as one.</p>
+<p class="source-date"><a href="https://www.reddit.com/r/webhosting/comments/1wvnzga/dynadot_just_suspended_our_legitimate_saas_domain/" rel="noopener noreferrer">Original suspension discussion</a> · Read $read_label. Thread dates are supplied research dates; the reader displays relative ages.</p>
+</section>
+
+<section id="forum-reply">
+<h2>3. Forum support reply: registrar does not mean owner</h2>
+<span class="evidence-label forum">Reply signed DynadotSupport · forum context</span>
+<p>In “bidding on dynadot?”, opened February 25, 2026, the reply signed <strong>DynadotSupport</strong> explains that a WHOIS registrar entry identifies the registrar, then says:</p>
+<blockquote>In Dynadot, we do not own domain names; instead, the domain owner lists them in our auction or user listing.</blockquote>
+<p class="source-date"><a href="https://www.reddit.com/r/Domains/comments/1remb4b/comment/o82g0mw/" rel="noopener noreferrer">Original support-account comment</a> · Read $read_label. Search text dates the reply March 1, 2026; the page reader displays a relative age.</p>
+<p>This answers a marketplace question in a forum. It is kept separate from the official website's ownership explanation and promotion terms. The account's authorization was not independently verified in this review.</p>
+</section>
+
+<h2>What to check before using the code</h2>
+<p>Confirm the exact domain and final cart amount, save the confirmation, and check who is listed as registrant in your account. For a business-critical name, ask support about its review and escalation process before registration. For a resale workflow, compare the listed restrictions with the services you need. These checks give you a basis for your own decision.</p>
+<p>If you arrived through “Dynadot promo code,” “Dynadot coupon” or “Dynadot discount code,” this is the same offer review. We have not verified a separate renewal coupon.</p>
+<p><a href="$evidence_url">Dated source record</a> · <a href="/methodology/">How we distinguish observations and historical evidence</a> · <a href="/guides/namecheap-promo-code/">Namecheap codes by product</a></p>
+</article>
