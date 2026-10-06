@@ -7,8 +7,8 @@
   "official_sources": [
     {
       "url": "https://www.dynadot.com/help/question/com-registration-promotion/",
-      "read_started_at": "2026-10-06T02:39:30Z",
-      "read_finished_at": "2026-10-06T02:39:31Z",
+      "read_started_at": "2026-10-06T03:00:11Z",
+      "read_finished_at": "2026-10-06T03:00:33Z",
       "page_updated_on": "2026-05-29",
       "coupon": "899COM",
       "currency": "USD",
@@ -30,19 +30,24 @@
         "No smart domain folders",
         "No DNSSEC"
       ],
-      "abuse_route": "Partner registrar reviews first-year reports; Dynadot support can appeal after underlying issue is addressed; partner coordination takes longer. Following the lock and renewal into Dynadot, future matters handled directly by Dynadot."
+      "abuse_route": "Partner registrar reviews first-year reports; Dynadot support can appeal after underlying issue is addressed; partner coordination takes longer. Following the lock and renewal into Dynadot, future matters handled directly by Dynadot.",
+      "official_quote": "Enter promo code 899COM at checkout and your .COM registration will be reduced to $8.99 for the first year."
     },
     {
       "url": "https://www.dynadot.com/domain/com",
-      "read_started_at": "2026-10-06T02:39:30Z",
-      "read_finished_at": "2026-10-06T02:39:31Z",
+      "read_started_at": "2026-10-06T03:00:11Z",
+      "read_finished_at": "2026-10-06T03:00:12Z",
       "quote": "Renewal Price (1 year) | $10.88",
       "standard_renewal_price": "10.88",
       "currency": "USD",
       "term_years": 1,
       "premium_domain_price_verified": false,
       "future_renewal_price_guaranteed": false,
-      "tax_or_checkout_total_verified": false
+      "tax_or_checkout_total_verified": false,
+      "privacy_allowed": true,
+      "privacy_fee_after_transfer_usd": 0,
+      "forwarding_and_stealth_included": true,
+      "renewal_quote": "Renewal Price (1 year) | $10.88"
     },
     {
       "url": "https://www.dynadot.com/blog/three-rs-registry-registrar-reseller",
@@ -50,6 +55,32 @@
       "read_finished_at": "2026-10-06T02:41:03Z",
       "source_type": "General official explanatory blog; publication date not displayed in retrieved excerpt",
       "quote": "When you purchase a domain name through us, you are always the owner"
+    },
+    {
+      "url": "https://www.dynadot.com/domain/security",
+      "read_started_at": "2026-10-06T03:00:11Z",
+      "read_finished_at": "2026-10-06T03:00:12Z",
+      "privacy_fee_usd": 0,
+      "condition": "Eligible domain registration or transfer to Dynadot; source describes free privacy for life",
+      "registry_lock_pro_price_usd_per_year": 100,
+      "registry_lock_is_separate_optional_addon": true,
+      "promotion_specific_account_eligibility_tested": false,
+      "privacy_quote": "Domain privacy protection is free for life with every eligible domain registration or transfer.",
+      "free_privacy_price_quote": "Free Privacy + Account Security | Free | $0",
+      "registry_lock_pro_price_quote": "Pro | $100.00 | /year"
+    },
+    {
+      "url": "https://www.dynadot.com/help/question/what-is-forwarding",
+      "read_started_at": "2026-10-06T03:00:11Z",
+      "read_finished_at": "2026-10-06T03:00:12Z",
+      "included_free_types": [
+        "domain forwarding",
+        "stealth forwarding",
+        "email forwarding"
+      ],
+      "condition": "Domains registered or transferred to Dynadot",
+      "promotion_partner_first_year_availability_verified": false,
+      "forwarding_quote": "Dynadot provides all three forwarding types free of charge for domains you register or transfer to us."
     }
   ],
   "forum_sources": [
@@ -87,5 +118,14 @@
   ],
   "forum_retrieval_started_at": "2026-10-06T02:39:30Z",
   "forum_retrieval_finished_at": "2026-10-06T02:39:31Z",
-  "historical_promotion_used_as_current": false
+  "historical_promotion_used_as_current": false,
+  "archive_policy": {
+    "trigger": "Dynadot states allocation is exhausted or withdraws/removes promotion",
+    "preserve": [
+      "official wording",
+      "source URL",
+      "dated source-read timestamp"
+    ],
+    "this_is_editorial_policy": true
+  }
 }
