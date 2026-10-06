@@ -52,7 +52,9 @@ def load_config(path=None):
     browser_observations = json.loads('\n'.join(sections.get('BROWSER_OBSERVATIONS', ['{}'])))
     page_focus = json.loads('\n'.join(sections.get('PAGE_FOCUS', ['{}'])))
     brand_guides = [json.loads(line) for line in sections.get('BRAND_GUIDES', [])]
+    campaign_guides = [json.loads(line) for line in sections.get('CAMPAIGN_GUIDES', [])]
     return dict(site=site, settings=settings, providers=providers, extractors=rules,
                 brand_guides=brand_guides,
+                campaign_guides=campaign_guides,
                 fields=sections['FIELDS'][0].split(), notes=notes, browser_observations=browser_observations, page_focus=page_focus,
                 excluded=sections.get('EXCLUDED', []), references=sections.get('REFERENCE_SOURCES', []), raw=raw)

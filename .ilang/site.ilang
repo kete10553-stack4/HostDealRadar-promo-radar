@@ -18,6 +18,10 @@
 {"provider":"kinsta","guides":[{"path":"/guides/wp-engine-vs-kinsta/","title":"WP Engine vs Kinsta: renewal and migration costs"}]}
 {"id":"bluehost","name":"Bluehost","guides":[{"path":"/guides/bluehost-promo-code/","title":"Promo-code eligibility and verification limits"}]}
 {"id":"hostgator","name":"HostGator","guides":[{"path":"/guides/hostgator-coupon-code/","title":"Coupon restrictions and regular renewal prices"}]}
+{"id":"network-solutions","name":"Network Solutions","guides":[{"path":"/guides/network-solutions-coupon-code/","title":"Halloween offer, renewal and service charges"}]}
+
+::MODULE{CAMPAIGN_GUIDES|title:有官方窗口的单页指南；到期保留原址与证据}
+{"path":"/guides/network-solutions-coupon-code/","template":"network-solutions-coupon-code.html","headline":"Network Solutions coupon code: the Halloween window and renewal questions","archive_headline":"Network Solutions Halloween offer: historical terms and renewal questions","description":"The official HALLOWEEN50OFF sentence, October 1–November 1, 2026 window, and separate verification status for initial prices, renewals, privacy, forwarding, transfers and cancellation.","published_on":"2026-10-05","modified_on":"2026-10-05","archive_from_utc":"2026-11-02T08:00:00Z","source_url":"https://www.networksolutions.com/blog/network-solutions-deals-and-coupons/","source_read_at":"2026-10-06T02:02:14.803Z","source_read_label":"October 5, 2026, 7:02:14 p.m. PDT (02:02:14 UTC on October 6)","official_quote":"From October 1 through November 1, 2026, get 50% off eligible Shared Hosting or WordPress hosting with code HALLOWEEN50OFF at checkout.","window_label":"October 1 through November 1, 2026"}
 
 ::MODULE{PROVIDERS|title:唯一厂商清单；删除或改名后重建即改变网站}
 Raidboxes | https://raidboxes.io/ | https://raidboxes.io/en/pricing/ |
