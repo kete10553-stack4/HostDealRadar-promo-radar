@@ -216,6 +216,87 @@
       }
     ]
   },
+  "essential_cart_observation": {
+    "source_url": "https://www.networksolutions.com/checkout/v2",
+    "evidence_type": "manual_reading_of_original_screenshots_of_official_cart",
+    "screenshots_manually_read_at": "2026-10-06T04:12:54Z",
+    "review_label": "October 5, 2026, 9:12:54 p.m. PDT (04:12:54 UTC on October 6)",
+    "screenshot_captured_at": null,
+    "capture_time_note": "A visible taskbar in the first screenshot shows 9:05 p.m. local time; the date and exact per-image capture times were not recorded. Screenshots were manually read at the review time above; no capture timestamp was reconstructed.",
+    "currency_symbol": "$",
+    "currency_code_explicit_in_screenshots": null,
+    "promo_code_prompt_quote": "Add Promo Code",
+    "code_entry_observed": false,
+    "applied_savings_quote": "50% off Hosting",
+    "payment_completed": false,
+    "completed_redemption_verified": false,
+    "items": [
+      {
+        "id": "essential-hosting",
+        "name_quote": "Essential Hosting",
+        "initial_line_quote": "$29.94",
+        "term_quote": "1 Year",
+        "renewal_quote": "Renews at $184.99"
+      },
+      {
+        "id": "ssl-xpress",
+        "name_quote": "SSL Certificate (Xpress)",
+        "initial_line_quote": "$0.00",
+        "term_quote": "1 Year",
+        "renewal_quote": "Renews at $69.99",
+        "benefit_quote": "1 Year Free"
+      },
+      {
+        "id": "essential-com-domain",
+        "name_quote": ".COM Domain",
+        "initial_line_quote": "$0.00",
+        "term_quote": "1 Year",
+        "renewal_quote": "Renews at $22.99",
+        "benefit_quote": "1 Year Free"
+      },
+      {
+        "id": "essential-privacy",
+        "name_quote": "Domain Privacy + Protection",
+        "initial_line_quote": "$0.00",
+        "term_quote": "Monthly",
+        "renewal_quote": "Renews at $3.99",
+        "benefit_quote": "1 Month Free"
+      }
+    ],
+    "item_count_quote": "4 items in cart",
+    "subtotal_quote": "$281.96",
+    "total_savings_quote": "-$252.02",
+    "tax_quote": "$0.00",
+    "today_total_quote": "$29.94",
+    "today_total_scope": "Four-item cart containing Essential Hosting, one-year SSL Certificate (Xpress), one-year .COM Domain, and monthly Domain Privacy + Protection. It is the cart total; this reading does not separately establish code entry or completed payment.",
+    "essential_only_payment_scope": "Cart shows four line items and Today’s Total $29.94; no separate Essential-only total was calculated.",
+    "original_screenshots": [
+      {
+        "path": "/assets/evidence/network-solutions-essential-cart-20261005-1.png",
+        "sha256": "4e55b0bec0490fe1ab3161dac287e6234bf40a77d21b9865f26f7416a70e7a3a",
+        "width": 1010,
+        "height": 689,
+        "edited": false,
+        "caption": "Original cart screenshot: Essential Hosting is $29.94 for 1 Year and renews at $184.99; SSL and a .COM Domain are separately shown at $0.00 for one year."
+      },
+      {
+        "path": "/assets/evidence/network-solutions-essential-cart-20261005-2.png",
+        "sha256": "751a01294c64d9b01bf5e302c2f2524e00775c66f5ebef899133200eb93f9189",
+        "width": 993,
+        "height": 626,
+        "edited": false,
+        "caption": "Original cart screenshot: the .COM Domain is marked 1 Year Free and renews at $22.99; Domain Privacy + Protection is selected at $0.00, Monthly, and renews at $3.99. The order summary shows 4 items and $29.94 due today."
+      },
+      {
+        "path": "/assets/evidence/network-solutions-essential-cart-20261005-3.png",
+        "sha256": "25a81296ef0ae315c8f28f6bb344ac39286c71a55fc8bde1ca0662cdc9ecf0c9",
+        "width": 710,
+        "height": 568,
+        "edited": false,
+        "caption": "Original cart screenshot: Today’s Total is $29.94; the savings panel shows 50% off Hosting and the first month of Domain Privacy + Protection free. The promo-code prompt remains Add Promo Code."
+      }
+    ]
+  },
   "initial_payable_total": "$30.13",
   "initial_payable_total_scope": "One Starter Hosting item, one new .COM Domain and Domain Privacy + Protection, including the displayed tax and ICANN fee; not hosting alone",
   "initial_hosting_line_amount": "$17.94",
