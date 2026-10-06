@@ -1022,6 +1022,19 @@ def build(config_path=None, output=None):
                                      '" loading="lazy" decoding="async"></a><figcaption>'+e(shot['caption'])+'</figcaption></figure>')
         essential_primary_screenshots=''.join(essential_figures[i] for i in (0,1) if i<len(essential_figures))
         essential_extra_screenshots=''.join(essential_figures[i] for i in (2,) if i<len(essential_figures))
+        wordpress_cart=campaign.get('wordpress_cart_observation',{})
+        wordpress_items=wordpress_cart.get('items',[])
+        wordpress_plan=next((item for item in wordpress_items if item['id']=='wordpress-entrepreneurs'),{})
+        wordpress_rows=''.join('<tr><th scope="row"><q>'+e(item['name_quote'])+'</q></th><td><q>'+e(item['initial_line_quote'])+
+                              '</q>'+(' ('+e(item['benefit_quote'])+')' if item.get('benefit_quote') else '')+'</td><td><q>'+e(item['term_quote'])+
+                              '</q></td><td><q>'+e(item['renewal_quote'])+'</q></td></tr>' for item in wordpress_items)
+        wordpress_cart_table=('<div class="table-wrap"><table class="pricing-table"><caption>Official WordPress cart wording — read '+e(wordpress_cart.get('review_label',''))+'</caption>'
+                              '<thead><tr><th scope="col">Product</th><th scope="col">Initial line amount</th><th scope="col">Selected billing term</th>'
+                              '<th scope="col">Renewal quote</th></tr></thead><tbody>'+wordpress_rows+'</tbody></table></div>') if wordpress_rows else ''
+        wordpress_screenshots=''.join('<figure class="cart-proof"><a href="'+e(shot['path'])+'"><img src="'+e(shot['path'])+
+                                    '" alt="'+e(shot['caption'])+'" width="'+str(shot['width'])+'" height="'+str(shot['height'])+
+                                    '" loading="lazy" decoding="async"></a><figcaption>'+e(shot['caption'])+'</figcaption></figure>'
+                                    for shot in wordpress_cart.get('original_screenshots',[]))
         figures=[]
         for shot in cart.get('original_screenshots',[]):
             figures.append('<figure class="cart-proof"><a href="'+e(shot['path'])+'"><img src="'+e(shot['path'])+
@@ -1063,6 +1076,12 @@ def build(config_path=None, output=None):
                          essential_domain_term=e(essential_domain.get('term_quote','')),essential_domain_renewal=e(essential_domain.get('renewal_quote','')),
                          essential_ssl_initial=e(essential_ssl.get('initial_line_quote','')),essential_ssl_term=e(essential_ssl.get('term_quote','')),
                          essential_ssl_renewal=e(essential_ssl.get('renewal_quote','')),
+                         wordpress_cart_table=wordpress_cart_table,wordpress_screenshots=wordpress_screenshots,
+                         wordpress_initial=e(wordpress_plan.get('initial_line_quote','')),wordpress_term=e(wordpress_plan.get('term_quote','')),
+                         wordpress_renewal=e(wordpress_plan.get('renewal_quote','')),wordpress_read_label=e(wordpress_cart.get('review_label','')),
+                         wordpress_monthly_read_label=e(wordpress_cart.get('monthly_observation',{}).get('review_label','')),
+                         wordpress_code_message=e(wordpress_cart.get('code_field_message_quote','')),
+                         wordpress_item_count=e(wordpress_cart.get('item_count_quote','')),wordpress_today_total=e(wordpress_cart.get('today_total_quote','')),
                          cart_primary_screenshots=cart_primary_screenshots,cart_extra_screenshots=cart_extra_screenshots,
                          cart_initial_line=e(starter.get('initial_line_quote','Not verified.')),
                          cart_term=e(starter.get('term_quote','Not verified.')),
@@ -1091,10 +1110,11 @@ def build(config_path=None, output=None):
                   'source_read_at':campaign['source_read_at'],'window':campaign['window_label'],
                   'cutoff_time_and_timezone':None,'checkout_tested':False,'checkout_attempted':bool(cart_attempt),
                   'checkout_attempt':cart_attempt,'redemption_verified':False,
-                  'checkout_tested_scope':'Automated cart request was blocked by a security check before reaching the cart; cart screenshots were read manually.',
+                  'checkout_tested_scope':'Earlier automated cart request was blocked before the cart. Shared-hosting screenshots and the later WordPress browser cart were read manually; no payment was completed.',
                   'cart_observation':cart or None,
                   'additional_cart_observation':premium_cart or None,
                   'essential_cart_observation':essential_cart or None,
+                  'wordpress_cart_observation':wordpress_cart or None,
                   'initial_payable_total':cart.get('today_total_quote'),
                   'initial_payable_total_scope':cart.get('today_total_scope'),
                   'initial_hosting_line_amount':starter.get('initial_line_quote'),

@@ -22,7 +22,7 @@
     "order_placed": false
   },
   "redemption_verified": false,
-  "checkout_tested_scope": "Automated cart request was blocked by a security check before reaching the cart; cart screenshots were read manually.",
+  "checkout_tested_scope": "Earlier automated cart request was blocked before the cart. Shared-hosting screenshots and the later WordPress browser cart were read manually; no payment was completed.",
   "cart_observation": {
     "source_url": "https://www.networksolutions.com/checkout/v2",
     "evidence_type": "manual_reading_of_original_screenshots_of_official_cart",
@@ -294,6 +294,118 @@
         "height": 568,
         "edited": false,
         "caption": "Original cart screenshot: Today’s Total is $29.94; the savings panel shows 50% off Hosting and the first month of Domain Privacy + Protection free. The promo-code prompt remains Add Promo Code."
+      }
+    ]
+  },
+  "wordpress_cart_observation": {
+    "source_url": "https://www.networksolutions.com/checkout/v2",
+    "evidence_type": "manual_browser_reading_of_visible_official_cart_and_original_capture",
+    "read_at": "2026-10-06T04:32:30.350Z",
+    "review_label": "October 5, 2026, 9:32:30 p.m. PDT (04:32:30 UTC on October 6)",
+    "screenshot_capture_interval": {
+      "start": "2026-10-06T04:32:23.577Z",
+      "end": "2026-10-06T04:32:30.888Z"
+    },
+    "currency_symbol": "$",
+    "currency_code_explicit_in_cart": null,
+    "code": "HALLOWEEN50OFF",
+    "code_field_message_quote": "Already applied HALLOWEEN50OFF PromoCode",
+    "applied_savings_quotes": [
+      "50% off Hosting",
+      "Free Xcitium Basic with WordPress bundle"
+    ],
+    "payment_completed": false,
+    "completed_redemption_verified": false,
+    "items": [
+      {
+        "id": "wordpress-entrepreneurs",
+        "name_quote": "WordPress® for Entrepreneurs",
+        "initial_line_quote": "$17.94",
+        "term_quote": "1 Year",
+        "renewal_quote": "Renews at $131.99"
+      },
+      {
+        "id": "xcitium-backup",
+        "name_quote": "Xcitium Backup",
+        "initial_line_quote": "$0.00",
+        "term_quote": "1 Year",
+        "renewal_quote": "Renews at $19.90",
+        "benefit_quote": "1 Year Free"
+      },
+      {
+        "id": "wordpress-com-domain",
+        "name_quote": ".COM Domain",
+        "initial_line_quote": "$0.00",
+        "term_quote": "1 Year",
+        "renewal_quote": "Renews at $22.99",
+        "benefit_quote": "1 Year Free"
+      },
+      {
+        "id": "wordpress-privacy",
+        "name_quote": "Domain Privacy + Protection",
+        "initial_line_quote": "$0.00",
+        "term_quote": "Monthly",
+        "renewal_quote": "Renews at $3.99",
+        "benefit_quote": "1 Month Free"
+      }
+    ],
+    "item_count_quote": "8 items in cart",
+    "subtotal_quote": "$460.83",
+    "total_savings_quote": "-$412.95",
+    "tax_quote": "$0.00",
+    "today_total_quote": "$47.88",
+    "today_total_scope": "Mixed eight-item cart: four existing Essential bundle items plus WordPress for Entrepreneurs, Xcitium Backup, a new .COM Domain and Domain Privacy + Protection. The displayed total is not a WordPress-only checkout total.",
+    "wordpress_only_checkout_total": null,
+    "selected_privacy_default_observed": true,
+    "monthly_observation": {
+      "read_at": "2026-10-06T04:30:16.717Z",
+      "review_label": "October 5, 2026, 9:30:16 p.m. PDT (04:30:16 UTC on October 6)",
+      "items": [
+        {
+          "name_quote": "WordPress® for Entrepreneurs",
+          "initial_line_quote": "$3.00",
+          "term_quote": "Monthly",
+          "renewal_quote": "Renews at $12.99"
+        },
+        {
+          "name_quote": "Xcitium Backup",
+          "initial_line_quote": "$2.16",
+          "term_quote": "Monthly",
+          "renewal_quote": null
+        },
+        {
+          "name_quote": ".COM Domain",
+          "initial_line_quote": "$11.99",
+          "term_quote": "1 Year",
+          "renewal_quote": "Renews at $22.99"
+        },
+        {
+          "name_quote": "Domain Privacy + Protection",
+          "initial_line_quote": "$0.00",
+          "term_quote": "Monthly",
+          "renewal_quote": "Renews at $3.99",
+          "benefit_quote": "1 Month Free"
+        }
+      ],
+      "today_total_quote": "$47.29",
+      "scope": "Mixed cart with existing Essential items; this default monthly term differs from the annual observation. No WordPress-only total was inferred."
+    },
+    "original_screenshots": [
+      {
+        "path": "/assets/evidence/network-solutions-wordpress-code-cart-20261005.jpg",
+        "sha256": "0612f1a2df78e991f40ad0efd6d2f557f533bada67dc4251a1a0d68575dd9c08",
+        "width": 1009,
+        "height": 2495,
+        "edited": false,
+        "caption": "Unedited official cart capture: WordPress® for Entrepreneurs is $17.94 for 1 Year and renews at $131.99. The $47.88 total includes the existing Essential bundle. The code field states Already applied HALLOWEEN50OFF PromoCode."
+      },
+      {
+        "path": "/assets/evidence/network-solutions-wordpress-monthly-cart-20261005.jpg",
+        "sha256": "d0a9bfc0c3c842bc92c82ec14cc3da90e40cf966f045620fbce7888b0c6c9eaf",
+        "width": 1009,
+        "height": 2384,
+        "edited": false,
+        "caption": "Earlier unedited official cart capture: WordPress® for Entrepreneurs initially selected Monthly, with $3.00 shown and Renews at $12.99. Xcitium Backup was a separate $2.16 Monthly line. This is a different term from the annual observation."
       }
     ]
   },
