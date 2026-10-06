@@ -949,6 +949,38 @@ def build(config_path=None, output=None):
     hostgator_guide_route='/guides/hostgator-coupon-code/'
     hostgator_guide_schema={'@context':'https://schema.org','@type':'Article','headline':'HostGator coupon code: check the renewal rules first','datePublished':'2026-10-04','dateModified':'2026-10-04','author':{'@type':'Organization','name':'HostDealRadar'},'publisher':{'@type':'Organization','name':'HostDealRadar'},'mainEntityOfPage':domain+hostgator_guide_route}
     write(Path('guides/hostgator-coupon-code/index.html'),page('HostGator coupon code: renewal rules and regular prices | HostDealRadar','HostGator warns against cancelling and transferring an existing package to obtain a new-package discount. Check renewal totals, cPanel license inclusion and separate email charges.',domain+hostgator_guide_route,template('hostgator-coupon-code.html'),hostgator_guide_schema))
+    campaign_routes=[]
+    for campaign in cfg['campaign_guides']:
+        route=campaign['path']
+        if not re.fullmatch(r'/guides/[a-z0-9-]+/',route) or route in campaign_routes:
+            raise ValueError('Invalid or duplicate campaign guide path: '+route)
+        if not re.fullmatch(r'[a-z0-9-]+\.html',campaign['template']):
+            raise ValueError('Invalid campaign template')
+        archive_at=datetime.fromisoformat(campaign['archive_from_utc'].replace('Z','+00:00'))
+        archived=datetime.now(timezone.utc)>=archive_at
+        heading=campaign['archive_headline'] if archived else campaign['headline']
+        status='Historical campaign — stated window has ended' if archived else 'Dated official offer — see source-read time'
+        note=('This quotation is historical. The stated campaign window has ended; it is not a current offer.' if archived else
+              'This records the official wording at its last read. It does not establish that the code works in your checkout.')
+        content=template(campaign['template'],campaign_heading=e(heading),campaign_status=e(status),campaign_note=e(note),
+                         archive_at=e(campaign['archive_from_utc']),archive_heading=e(campaign['archive_headline']),
+                         official_quote=e(campaign['official_quote']),source_url=e(campaign['source_url']),
+                         source_read_label=e(campaign['source_read_label']),window_label=e(campaign['window_label']))
+        schema={'@context':'https://schema.org','@type':'Article','headline':heading,
+                'datePublished':campaign['published_on'],'dateModified':campaign['modified_on'],
+                'author':{'@type':'Organization','name':cfg['site']['brand']},
+                'publisher':{'@type':'Organization','name':cfg['site']['brand']},'mainEntityOfPage':domain+route}
+        write(Path(route.strip('/'))/'index.html',page(heading+' | '+cfg['site']['brand'],campaign['description'],domain+route,content,schema))
+        evidence={'brand':next(group['name'] for group in brand_guides.values() if any(g['path']==route for g in group['guides'])),
+                  'record_state':'historical' if archived else 'dated_official_observation',
+                  'official_quote':campaign['official_quote'],'source_url':campaign['source_url'],
+                  'source_read_at':campaign['source_read_at'],'window':campaign['window_label'],
+                  'cutoff_time_and_timezone':None,'checkout_tested':False,'redemption_verified':False,
+                  'initial_payable_total':None,'initial_billing_term':None,'renewal_rate':None,
+                  'private_registration_price':None,'domain_forwarding_price':None,
+                  'reference_policy_current_verification':None}
+        write(Path('assets/evidence')/(route.strip('/').split('/')[-1]+'-'+campaign['published_on'].replace('-','')+'.json'),json.dumps(evidence,ensure_ascii=False,indent=2)+'\n')
+        campaign_routes.append(route)
     wpe_guide_route='/guides/wp-engine-renewal-overage/'
     wpe_guide_schema={'@context':'https://schema.org','@type':'Article','headline':'Why did my WP Engine bill increase?','datePublished':'2026-10-01','dateModified':'2026-10-04','author':{'@type':'Organization','name':'HostDealRadar'},'publisher':{'@type':'Organization','name':'HostDealRadar'},'mainEntityOfPage':domain+wpe_guide_route}
     write(Path('guides/wp-engine-renewal-overage/index.html'),page('WP Engine renewal increase, overage fees and staging | HostDealRadar','Distinguish WordPress.com from WP Engine, trace a renewal increase, check billable visits and staging usage, and compare Cloudways Flexible with complete agency costs.',domain+wpe_guide_route,template('wp-engine-renewal-overage.html'),wpe_guide_schema))
@@ -1135,6 +1167,7 @@ Planned endpoints return HTTP 503 with `temporarily_unavailable` until authentic
     routes.append(a2_guide_route)
     routes.append(bluehost_guide_route)
     routes.append(hostgator_guide_route)
+    routes.extend(campaign_routes)
     routes.append(wpe_guide_route)
     routes.append(wpk_guide_route)
     # Keep zero-current provider pages accessible for truthful status reporting,

@@ -10008,12 +10008,12 @@
   "source_403_history": [],
   "page_lastmod": {
     "/": {
-      "hash": "8832afbf06069276ffb329359bb7d2dbdd43d3a814a6ba9e165f5e6e77c7c2f4",
-      "lastmod": "2026-10-06T00:39:53Z"
+      "hash": "905e9605ac620e58858e277c382c6a4bd1c63dc4a916279a861fa3ed4b2586f5",
+      "lastmod": "2026-10-06T02:11:29Z"
     },
     "/providers/": {
-      "hash": "7a9aa3b9a383689b1d0caab72957dfa574e047ac46e356f307f93d1c19e03c0b",
-      "lastmod": "2026-10-06T00:39:53Z"
+      "hash": "5525cf944158ed333252dbd940114d5aee9c66e51c201478f36f49e7f5cca240",
+      "lastmod": "2026-10-06T02:11:29Z"
     },
     "/compare/": {
       "hash": "c62417d16a5cb18a748057d033ef613b7c0e6af65c1f6d06decb2407c83a8896",
@@ -10064,8 +10064,8 @@
       "lastmod": "2026-10-05T13:23:31Z"
     },
     "/guides/hosting-coupons/": {
-      "hash": "e0eef23bbf5ad830c18c083979e79c79088f500e84c96cd1f185610e0a0567a3",
-      "lastmod": "2026-10-05T13:23:31Z"
+      "hash": "b668e874761053c52b792481a336742c0b0890b0ff22ee631c2bf26d85ec9521",
+      "lastmod": "2026-10-06T02:11:29Z"
     },
     "/guides/hostinger-coupon-code/": {
       "hash": "9973d7b30d9476b0b9029e6f81863ce06e394ed92e9c9fd04f0e359bdbcb111c",
@@ -10090,6 +10090,10 @@
     "/guides/hostgator-coupon-code/": {
       "hash": "19f9c1074b1d1d8cc338ff930e8b42f1df18a6d73933964f9f4df17a7dddae19",
       "lastmod": "2026-10-05T13:23:31Z"
+    },
+    "/guides/network-solutions-coupon-code/": {
+      "hash": "461ebebbd55122b9d59338bbea88fbe09930c96d4ae9ff9f15cc630974e1ee45",
+      "lastmod": "2026-10-06T02:11:29Z"
     },
     "/guides/wp-engine-renewal-overage/": {
       "hash": "56c72e1049c9d578fc703488997bb64f17f32458cbd35dfdb0fe079bd4de05e4",
