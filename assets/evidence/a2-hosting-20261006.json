@@ -1,0 +1,85 @@
+{
+  "checked_at_utc": "2026-10-06T07:55:53.709Z",
+  "checked_local": "2026-10-06 00:55:53.709 America/Los_Angeles (PDT)",
+  "method": "Read official Hosting.com plan and coupon pages in Chrome; opened each plan through its official Choose link and manually read the anonymous checkout basket. Screenshot timestamps were recorded immediately when captured. For a single-plan cart reading, the earlier plan added to this temporary cart was removed before capturing the next one. No login, payment, account quote, domain registration or checkout submission occurred.",
+  "locale": "United States (Global)",
+  "currency": "USD",
+  "sources": [
+    {
+      "url": "https://hosting.com/hosting/",
+      "read_at_utc": "2026-10-06T07:54:54.928Z",
+      "read_at_local": "2026-10-06 00:54:54.928 America/Los_Angeles (PDT)",
+      "official_plan_text": {
+        "starter": "86% OFF $1.99 / month For a 4-year term. Pay $95.49 today, then $13.99/mo on renewal.",
+        "pro": "81% OFF $3.79 / month For a 4-year term. Pay $181.93 today, then $19.99/mo on renewal.",
+        "max": "72% OFF $7.79 / month For a 4-year term. Pay $373.90 today, then $27.99/mo on renewal."
+      },
+      "shared_features": ["AI Website Builder for WordPress", "Emails & Security Included", "Malware Detection & Removal", "Free managed migration", "Free SSL Certificate", "Daily Backups", "OpenAPI and MCP Server"],
+      "starter_features": ["5 Websites", "15GB NVMe Disk Space", "Free Domain Name Registration"],
+      "starter_cart_features": "5 websites · 3 staging websites · 15GB webspace",
+      "pro_additions": ["10 Websites", "50GB NVMe Disk Space", "More CPU & RAM", "Staging Sites", "Preview URLs", "Claude Skills Pack"],
+      "pro_cart_features": "up to 10 websites · 20 staging websites · 50GB webspace",
+      "max_additions": ["50 Websites", "100GB NVMe storage", "Highest CPU & RAM", "40 Mailboxes", "Service level agreement", "Premium SSL Certificate", "Priority Support", "AI Chatbot for your own website"],
+      "max_cart_features": "up to 50 websites · 200 staging websites · 100GB webspace"
+    },
+    {
+      "url": "https://hosting.com/about/coupons/",
+      "read_at_utc": "2026-10-06T07:55:53.709Z",
+      "read_at_local": "2026-10-06 00:55:53.709 America/Los_Angeles (PDT)",
+      "official_quote": "The promotional price is for the first term only and renews at the regular rate.",
+      "limitation": "The page does not give an end date for these shared-hosting cart prices; the visible deal cards on this page are self-managed Linux VPS offers, not the three shared-hosting plans below."
+    }
+  ],
+  "manual_cart_reads": [
+    {
+      "plan": "Starter",
+      "read_at_utc": "2026-10-06T07:51:11.257Z",
+      "read_at_local": "2026-10-06 00:51:11.257 America/Los_Angeles (PDT)",
+      "cart_line_intro_usd": 95.49,
+      "cart_selected_term": "4 years",
+      "cart_monthly_rate_label": "$1.99 / mo",
+      "cart_renewal_text": "Renews every 4 years. Usually $671.52.",
+      "cart_usual_renewal_usd": 671.52,
+      "voucher_state": "WH4YAL shown under Active discounts; not typed by us",
+      "domain_state": "I'll decide later selected; registration not priced or added",
+      "server_location": "Dallas, TX (default)",
+      "price_note": "Prices shown exclude taxes.",
+      "screenshot": "/assets/evidence/a2-starter-cart-20261006.png"
+    },
+    {
+      "plan": "Pro",
+      "read_at_utc": "2026-10-06T07:52:27.955Z",
+      "read_at_local": "2026-10-06 00:52:27.955 America/Los_Angeles (PDT)",
+      "cart_line_intro_usd": 181.93,
+      "cart_selected_term": "4 years",
+      "cart_monthly_rate_label": "$3.79 / mo",
+      "cart_renewal_text": "Renews every 4 years. Usually $959.52.",
+      "cart_usual_renewal_usd": 959.52,
+      "voucher_state": "WH4YAL shown under Active discounts; not typed by us",
+      "domain_state": "I'll decide later selected; registration not priced or added",
+      "server_location": "Dallas, TX (default)",
+      "price_note": "Prices shown exclude taxes.",
+      "screenshot": "/assets/evidence/a2-pro-cart-20261006.png"
+    },
+    {
+      "plan": "Max",
+      "read_at_utc": "2026-10-06T07:53:33.285Z",
+      "read_at_local": "2026-10-06 00:53:33.285 America/Los_Angeles (PDT)",
+      "cart_line_intro_usd": 373.90,
+      "cart_selected_term": "4 years",
+      "cart_monthly_rate_label": "$7.79 / mo",
+      "cart_renewal_text": "Renews every 4 years. Usually $1,343.52.",
+      "cart_usual_renewal_usd": 1343.52,
+      "voucher_state": "WH4YAL shown under Active discounts; not typed by us",
+      "domain_state": "I'll decide later selected; registration not priced or added",
+      "server_location": "Dallas, TX (default)",
+      "price_note": "Prices shown exclude taxes.",
+      "screenshot": "/assets/evidence/a2-max-cart-20261006.png"
+    }
+  ],
+  "limitations": [
+    "The code's appearance in an anonymous cart is not an eligibility guarantee and no manual code redemption was tested.",
+    "The checkout cart showed one hosting line and no separately priced SSL, security or backup add-on. Optional domain registration was not selected, so domain pricing was not established.",
+    "These are current public cart examples, not an existing customer's account-specific quote."
+  ]
+}
