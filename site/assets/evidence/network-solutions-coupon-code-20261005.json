@@ -11,6 +11,37 @@
   "initial_payable_total": null,
   "initial_billing_term": null,
   "renewal_rate": null,
+  "pricing_observation": {
+    "source_url": "https://www.networksolutions.com/hosting",
+    "read_at": "2026-10-06T02:23:58.406Z",
+    "read_label": "October 5, 2026, 7:23:58 p.m. PDT (02:23:58 UTC on October 6)",
+    "terms_read_at": "2026-10-06T02:24:10.880Z",
+    "terms_read_label": "October 5, 2026, 7:24:10 p.m. PDT (02:24:10 UTC on October 6)",
+    "billing_term_quote": "/month for a one year term*",
+    "billing_quote": "monthly rate billed annually",
+    "renewal_quote": "then current rate",
+    "plans": [
+      {
+        "plan": "Starter",
+        "price_quote": "$2.99",
+        "monthly_rate": "2.99"
+      },
+      {
+        "plan": "Essential",
+        "price_quote": "$4.99",
+        "monthly_rate": "4.99"
+      },
+      {
+        "plan": "Premium",
+        "price_quote": "$6.99",
+        "monthly_rate": "6.99"
+      }
+    ],
+    "currency": "USD",
+    "initial_payable_total": null,
+    "renewal_monthly_rate": null,
+    "coupon_application_verified": false
+  },
   "private_registration_price": null,
   "domain_forwarding_price": null,
   "reference_policy_current_verification": null

@@ -962,10 +962,21 @@ def build(config_path=None, output=None):
         status='Historical campaign — stated window has ended' if archived else 'Dated official offer — see source-read time'
         note=('This quotation is historical. The stated campaign window has ended; it is not a current offer.' if archived else
               'This records the official wording at its last read. It does not establish that the code works in your checkout.')
+        pricing=campaign.get('pricing_observation',{})
+        pricing_rows=''.join(f'<tr id="shared-{e(row["plan"].lower())}"><th scope="row">{e(row["plan"])}</th>'
+                             f'<td><q>{e(row["price_quote"])}</q> per month</td><td>One year</td>'
+                             '<td><span class="missing">Not verified.</span></td><td><span class="missing">Not verified.</span></td></tr>'
+                             for row in pricing.get('plans',[]))
+        pricing_table=('<div class="table-wrap"><table class="pricing-table"><caption>Official shared-hosting plan cards — read '+
+                       e(pricing.get('read_label',''))+'</caption><thead><tr><th scope="col">Plan</th><th scope="col">Published monthly rate (USD)</th>'
+                       '<th scope="col">Initial term</th><th scope="col">Initial payable total</th><th scope="col">Renewal monthly rate</th></tr></thead>'
+                       '<tbody>'+pricing_rows+'</tbody></table></div>') if pricing_rows else ''
         content=template(campaign['template'],campaign_heading=e(heading),campaign_status=e(status),campaign_note=e(note),
                          archive_at=e(campaign['archive_from_utc']),archive_heading=e(campaign['archive_headline']),
                          official_quote=e(campaign['official_quote']),source_url=e(campaign['source_url']),
-                         source_read_label=e(campaign['source_read_label']),window_label=e(campaign['window_label']))
+                         source_read_label=e(campaign['source_read_label']),window_label=e(campaign['window_label']),
+                         pricing_table=pricing_table,pricing_source_url=e(pricing.get('source_url','')),
+                         pricing_read_label=e(pricing.get('read_label','')),pricing_terms_read_label=e(pricing.get('terms_read_label','')))
         schema={'@context':'https://schema.org','@type':'Article','headline':heading,
                 'datePublished':campaign['published_on'],'dateModified':campaign['modified_on'],
                 'author':{'@type':'Organization','name':cfg['site']['brand']},
@@ -977,6 +988,7 @@ def build(config_path=None, output=None):
                   'source_read_at':campaign['source_read_at'],'window':campaign['window_label'],
                   'cutoff_time_and_timezone':None,'checkout_tested':False,'redemption_verified':False,
                   'initial_payable_total':None,'initial_billing_term':None,'renewal_rate':None,
+                  'pricing_observation':pricing or None,
                   'private_registration_price':None,'domain_forwarding_price':None,
                   'reference_policy_current_verification':None}
         write(Path('assets/evidence')/(route.strip('/').split('/')[-1]+'-'+campaign['published_on'].replace('-','')+'.json'),json.dumps(evidence,ensure_ascii=False,indent=2)+'\n')
