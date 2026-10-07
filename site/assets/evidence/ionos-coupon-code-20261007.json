@@ -1,0 +1,107 @@
+{
+  "brand": "IONOS",
+  "record_state": "dated_manual_cart_observation",
+  "read_on": "2026-10-07",
+  "market": "United States / en-US",
+  "currency": "USD",
+  "currency_basis": "US English purchase path (locale=en-us), dollar-denominated quote; no conversion from another regional site.",
+  "cart_inspected": true,
+  "code_entered": false,
+  "code_redemption_verified": false,
+  "order_submitted": false,
+  "payment_completed": false,
+  "account_cancellation_tested": false,
+  "final_payable_total_verified": false,
+  "campaign_expires_at": null,
+  "official_sources": [
+    {
+      "url": "https://my.ionos.com/checkout/overview",
+      "read_at": "2026-10-07T12:36:15.743Z",
+      "method": "Browser, cart overview with Contract Details expanded",
+      "session_dependent": true,
+      "entry_url": "https://www.ionos.com/servers/vps.html",
+      "plan": "IONOS VPS Linux S+",
+      "configuration": {
+        "term_months": 12,
+        "data_center": "United States",
+        "os": "Alma 9 (latest)",
+        "vcpu": 1,
+        "ram_gb": 2,
+        "nvme_gb": 60,
+        "paid_addons_selected": false
+      },
+      "quotes": [
+        "$2/month for 3 months",
+        "Then only $6/month",
+        "Minimum contract term 12 months",
+        "Billing: 12 months in advance",
+        "Renews automatically"
+      ],
+      "subtotal_label": "Subtotal",
+      "subtotal": "60.00",
+      "reference_amount": "72.00",
+      "intro_monthly_rate": "2.00",
+      "intro_months": 3,
+      "post_intro_monthly_rate": "6.00",
+      "minimum_term_months": 12,
+      "billing_months_in_advance": 12,
+      "renews_automatically": true,
+      "tax_inclusive_total": null,
+      "separately_labeled_second_year_total": null,
+      "promo_code_field_present": true,
+      "observed_before_code_entry": true,
+      "money_back_guarantee_days_displayed": 30
+    },
+    {
+      "url": "https://www.ionos.com/help/my-account/cancellation/cancelling-your-entire-ionos-contract/",
+      "read_at": "2026-10-07T12:37:42.223Z",
+      "method": "Browser, public official help page",
+      "quotes": [
+        "Cancellation via the IONOS account",
+        "Make a note of cancellation now"
+      ],
+      "documented_routes": [
+        "online account",
+        "telephone"
+      ],
+      "confirmation_described": [
+        "cancellation date displayed",
+        "email confirmation"
+      ],
+      "interpretation": "The page does not support a blanket claim that calling is mandatory. No account-specific flow was tested."
+    },
+    {
+      "url": "https://www.ionos.com/help/my-account/cancellation/notice-periods-for-termination-of-the-contract/",
+      "read_at": "2026-10-07T12:38:23.331Z",
+      "method": "Browser, public official help page",
+      "quote": "provided you comply with the minimum contract term and the agreed notice period",
+      "plan_specific_notice_days": null,
+      "refund_conditions_tested": false
+    }
+  ],
+  "editorial_calculations": [
+    {
+      "formula": "3 * 2 + 9 * 6",
+      "result_usd": "60.00",
+      "meaning": "First-year base cost; agrees with observed subtotal, excluding tax"
+    },
+    {
+      "formula": "60 / 12",
+      "result_usd": "5.00",
+      "meaning": "First-year monthly average, not a monthly-billed offer"
+    },
+    {
+      "formula": "12 * 6",
+      "result_usd": "72.00",
+      "meaning": "Conditional later-year estimate if the displayed ongoing rate remains unchanged; not a verified renewal invoice"
+    }
+  ],
+  "limitations": [
+    "No purchase or payment",
+    "No tax-inclusive final total",
+    "No renewal invoice",
+    "No account cancellation or refund test",
+    "No plan-specific notice deadline",
+    "No coupon redemption"
+  ]
+}
