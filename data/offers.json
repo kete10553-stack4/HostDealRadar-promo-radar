@@ -10011,12 +10011,12 @@
   "source_403_history": [],
   "page_lastmod": {
     "/": {
-      "hash": "161b50ad517f60924db15917cd045f195f4cfa7bfc5fb27bf9126b1141b5cd06",
-      "lastmod": "2026-10-07T12:38:18Z"
+      "hash": "7daf0b600196523b6a30d03f29f6ae1bda1261f51c8b2d33f3ae1acca4a2b588",
+      "lastmod": "2026-10-07T12:43:59Z"
     },
     "/providers/": {
-      "hash": "3b1a92a78ccbf94ca8291853a993effa13d369c2127aaefbff1fb1ebf1356590",
-      "lastmod": "2026-10-07T12:38:18Z"
+      "hash": "2df50fa44c39b9577e74ab437994c630ed5fb5db50478cd114fa14edd10b38f9",
+      "lastmod": "2026-10-07T12:43:59Z"
     },
     "/compare/": {
       "hash": "162d0ff1b12a04580ab0b4337d496a511ff377051c88ab86434b16f4a49da1f9",
@@ -10067,8 +10067,8 @@
       "lastmod": "2026-10-05T13:23:31Z"
     },
     "/guides/hosting-coupons/": {
-      "hash": "8e0e194b4a8e3f8a4177859cf103117ec31c07e57ffc9071b790d2c78e5f1d11",
-      "lastmod": "2026-10-06T04:53:23Z"
+      "hash": "207a4a0b240e118018b269d4f88eb3ccea2a5ade42e2e82c30625831d4df2acf",
+      "lastmod": "2026-10-07T12:43:59Z"
     },
     "/guides/hostinger-coupon-code/": {
       "hash": "9973d7b30d9476b0b9029e6f81863ce06e394ed92e9c9fd04f0e359bdbcb111c",
@@ -10097,6 +10097,10 @@
     "/guides/network-solutions-coupon-code/": {
       "hash": "ffe32374b6229aa3081950ce0d0b94cd694e1b7b5b0e25ecbf7e458487a85e68",
       "lastmod": "2026-10-06T06:39:44Z"
+    },
+    "/guides/ionos-coupon-code/": {
+      "hash": "4623cbca8dbb434f4eafa60947e4f96843a9e6467ca9396e6c9618c8f7d5329b",
+      "lastmod": "2026-10-07T12:43:59Z"
     },
     "/guides/dynadot-coupon-code/": {
       "hash": "0cf6176bd880cebc2e5a09dd2585ed21e751dea3a61b7632349c639d795fb6a0",
