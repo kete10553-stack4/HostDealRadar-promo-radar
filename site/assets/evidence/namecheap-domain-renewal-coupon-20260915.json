@@ -1,0 +1,180 @@
+{
+  "brand": "Namecheap",
+  "currency": "USD",
+  "observation_state": "dated_manual_official_page_observations",
+  "sources": [
+    {
+      "id": "domains",
+      "url": "https://www.namecheap.com/domains/",
+      "read_at": "2026-10-07T16:55:35.981Z",
+      "method": "manual reading in user Chrome",
+      "official_quotes": [
+        "Claim a .com for just $6.79. New customers only."
+      ],
+      "notes": "USD selected. NEWCOM679; 55% off; .COM 1-year table: registration $10.98 (Namecheap Birthday), renewal $18.48, transfer $11.48. The card reference is $14.98. No NEWCOM679 calendar expiry stated.",
+      "read_label": "October 7, 2026, 09:55:35 AM PDT (16:55:35 UTC)"
+    },
+    {
+      "id": "com",
+      "url": "https://www.namecheap.com/domains/registration/gtld/com/",
+      "read_at": "2026-10-07T16:59:39.910Z",
+      "method": "manual reading in user Chrome",
+      "official_quotes": [
+        "This promotion applies to new customer first year registrations and is limited to one domain purchase per user/household."
+      ],
+      "notes": "New-customer special $6.79. Registration $10.98; renewal $18.48; transfer $11.48 for 1 year. PremiumDNS $4.88/year displayed as an optional add-on; its renewal not verified. Standard SSL from $5.99/year is a starting quote, not a product-specific renewal.",
+      "read_label": "October 7, 2026, 09:59:39 AM PDT (16:59:39 UTC)"
+    },
+    {
+      "id": "icann",
+      "url": "https://www.namecheap.com/legal/domains/icann-fee/",
+      "read_at": "2026-10-07T16:57:32.612Z",
+      "method": "manual reading in user Chrome",
+      "official_quotes": [
+        "itemized in your shopping cart"
+      ],
+      "notes": "Mandatory $0.20 for each year of registration, renewal or transfer. Affected extensions list includes .com. No cart total or tax verified.",
+      "read_label": "October 7, 2026, 09:57:32 AM PDT (16:57:32 UTC)"
+    },
+    {
+      "id": "privacy",
+      "url": "https://www.namecheap.com/security/domain-privacy-service/",
+      "read_at": "2026-10-07T16:58:39.065Z",
+      "method": "manual reading in user Chrome",
+      "official_quotes": [
+        "Free for life with every new registration or transfer"
+      ],
+      "notes": "Eligible domains only; Withheld for Privacy; registry exclusions listed. This is not a first-year paid privacy trial.",
+      "read_label": "October 7, 2026, 09:58:39 AM PDT (16:58:39 UTC)"
+    },
+    {
+      "id": "email",
+      "url": "https://www.namecheap.com/hosting/email/",
+      "read_at": "2026-10-07T16:57:32.612Z",
+      "method": "manual reading in user Chrome",
+      "official_quotes": [
+        "Free trials convert to an annual (1-year) plan."
+      ],
+      "notes": "30-day trial: Launch 1 mailbox then $14.88/year; Expand 3 mailboxes then $41.88/year; Scale 5 mailboxes then $71.88/year. No credit card needed. Additional mailboxes are separate. MAILDEAL discounts only the initial paid annual/biyearly purchase. Trial-specific subsequent charge not tested.",
+      "read_label": "October 7, 2026, 09:57:32 AM PDT (16:57:32 UTC)"
+    },
+    {
+      "id": "hosting-cancel",
+      "url": "https://www.namecheap.com/support/knowledgebase/article.aspx/170/21/how-do-i-cancel-my-hosting-account/",
+      "read_at": "2026-10-07T16:59:24.325Z",
+      "method": "manual reading in user Chrome",
+      "official_quotes": [
+        "Canceling the hosting account does NOT cancel your related domain name registration."
+      ],
+      "notes": "Hosting List > Manage: disable auto-renew to expire later, or Cancel service > Yes, cancel hosting for immediate cancellation/data erasure. Dedicated servers: contact Billing/Sales by Live Chat or email. No telephone step specified.",
+      "read_label": "October 7, 2026, 09:59:24 AM PDT (16:59:24 UTC)"
+    },
+    {
+      "id": "email-cancel",
+      "url": "https://www.namecheap.com/support/knowledgebase/article.aspx/10788/2179/how-to-cancel-your-private-email-subscription-via-namecheap-admin-panel/",
+      "read_at": "2026-10-07T16:59:24.325Z",
+      "method": "manual reading in user Chrome",
+      "official_quotes": [
+        "Private Email subscriptions canceled through the Admin Panel are non-refundable."
+      ],
+      "notes": "Private Email > Manage > Cancel > Cancel subscription. Guide updated August 27, 2026. This is a reading of instructions, not an actual account cancellation.",
+      "read_label": "October 7, 2026, 09:59:24 AM PDT (16:59:24 UTC)"
+    },
+    {
+      "id": "forwarding",
+      "url": "https://www.namecheap.com/support/api/methods/domains-dns/set-default/",
+      "read_at": "2026-10-07T16:59:26.016Z",
+      "method": "manual reading in user Chrome",
+      "official_quotes": [
+        "Required for free services like Host record management, URL forwarding, email forwarding, dynamic dns and other value added services."
+      ],
+      "notes": "Namecheap default DNS is required for these free services. URL forwarding and email forwarding are not a paid Private Email mailbox. No API call made.",
+      "read_label": "October 7, 2026, 09:59:26 AM PDT (16:59:26 UTC)"
+    },
+    {
+      "id": "monthly",
+      "url": "https://www.namecheap.com/promos/coupons/",
+      "read_at": "2026-10-07T16:58:39.980Z",
+      "method": "manual reading in user Chrome",
+      "official_quotes": [
+        "Valid October 1 - October 31, 2026"
+      ],
+      "notes": "GHOSTDOT: .COM registration $11.08 + $0.20 ICANN; transfer $11.28 + $0.20. GHOSTPE: Launch $11.30/1 year or $20.53/2 years; Expand $30.15/1 year or $53.60/2 years; Scale $48.16/1 year or $86.26/2 years. GHOSTSSL: Standard Wildcard SSL 1 year $78.99/yr, 2-4 years $67.99/yr, 5 years $36.99/yr. Valid during stated window or while supplies last. Domain disclaimer: first-year registrations/transfers only, no premium/aftermarket domains. No domain-renewal code among these three cards; not a statement about all promotions.",
+      "read_label": "October 7, 2026, 09:58:39 AM PDT (16:58:39 UTC)"
+    },
+    {
+      "id": "birthday",
+      "url": "https://www.namecheap.com/promos/company-birthday-offers-anniversary-deals/",
+      "read_at": "2026-10-07T16:58:43.711Z",
+      "method": "manual reading in user Chrome",
+      "official_quotes": [
+        "Promotional prices on this page are available from October 6 until October 12, 11:59 PM ET.",
+        "Come back on Oct 13 for 15% off renewals"
+      ],
+      "notes": "Presale: .COM registration $10.98/first year; transfer $10.48/first year with BDAYTRANSFER26, up to 100 domains/business or household. $0.20 ICANN extra for affected TLDs. Highest discount only when multiple promotions cover a product. Existing-customer renewal offer announced Oct13-14; no renewal code or exact start/end hour published in this reading; do not apply 15% to $18.48 to invent a cart quote. Transfer timing includes 60-day restrictions for some TLDs and 45-day post-expiry renewal caveat.",
+      "read_label": "October 7, 2026, 09:58:43 AM PDT (16:58:43 UTC)"
+    },
+    {
+      "id": "easywp",
+      "url": "https://www.namecheap.com/wordpress/pricing/",
+      "read_at": "2026-10-07T16:59:44.725Z",
+      "method": "manual reading in user Chrome",
+      "official_quotes": [
+        "You have to click the link and sign up for a free 3-month RelateSEO trial."
+      ],
+      "notes": "RelateSEO bonus only with yearly/biyearly EasyWP Turbo or Supersonic, one per user/household and eligible countries. Activate from add-ons at any time in first EasyWP year. Offer-specific post-trial charge not stated in this reading. Business Email Launch bonus separately free for 1 year on eligible Turbo/Supersonic annual/biyearly plans; additional mailboxes at regular price.",
+      "read_label": "October 7, 2026, 09:59:44 AM PDT (16:59:44 UTC)"
+    },
+    {
+      "id": "seo",
+      "url": "https://www.namecheap.com/relate/seo/",
+      "read_at": "2026-10-07T16:59:54.480Z",
+      "method": "manual reading in user Chrome",
+      "official_quotes": [
+        "Renews at $9.88/mo"
+      ],
+      "notes": "Standalone RelateSEO Pro card shows a 4-week trial and $9.88/mo renewal. Its FAQ permits account-panel cancellation or support and says auto-renews until canceled. This standalone route does not verify the 3-month EasyWP bonus rollover amount.",
+      "read_label": "October 7, 2026, 09:59:54 AM PDT (16:59:54 UTC)"
+    },
+    {
+      "id": "refund",
+      "url": "https://www.namecheap.com/legal/general/refund-policy/",
+      "read_at": "2026-10-07T16:59:30.672Z",
+      "method": "manual reading in user Chrome",
+      "official_quotes": [],
+      "notes": "Domains: generally non-refundable; valid registration/renewal cancellation within 5 days may be refunded at Namecheap discretion, registry exclusions apply. Private Email: contact support with valid cancellation reason within 7 days after charge; refund discretionary. Admin-panel cancellation guide has a separate non-refundable warning. Domain renewal section read again at 16:59:54.552Z.",
+      "read_label": "October 7, 2026, 09:59:30 AM PDT (16:59:30 UTC)"
+    },
+    {
+      "id": "shared",
+      "url": "https://www.namecheap.com/hosting/shared/",
+      "read_at": "2026-10-07T16:57:43.339Z",
+      "method": "manual reading in user Chrome",
+      "official_quotes": [
+        "Billed yearly"
+      ],
+      "notes": "US data center, Stellar trial unchecked and Yearly selected: $2.28/mo billed yearly. Card reference Was $5.88/mo is not an explicitly labeled renewal quote. Free 50 Standard SSL certificates for 1 year. Dedicated IP $4.00/mo in tech specs. Numerical annual renewal not verified.",
+      "read_label": "October 7, 2026, 09:57:43 AM PDT (16:57:43 UTC)"
+    },
+    {
+      "id": "shared-config",
+      "url": "https://www.namecheap.com/hosting/purchase/domain-connection/?product=stellar&addons=server-location%3Bserver-location-us&duration=1&durationtype=year",
+      "read_at": "2026-10-07T16:58:26.608Z",
+      "method": "manual reading in user Chrome",
+      "official_quotes": [
+        "Shared \"Stellar\"",
+        "$26.88 /yr"
+      ],
+      "notes": "Configuration summary: $26.88 total; no domain selected; Add to cart disabled. This is not a final all-in checkout or accepted coupon. No account, cart addition or purchase completed.",
+      "read_label": "October 7, 2026, 09:58:26 AM PDT (16:58:26 UTC)"
+    }
+  ],
+  "cart_tested": false,
+  "payment_completed": false,
+  "account_cancellation_performed": false,
+  "three_month_bonus_rollover_amount": null,
+  "final_domain_checkout_total": null,
+  "all_in_tax_amount": null,
+  "competitor_read_scope": "HostDean current Namecheap coupons page: all 17 displayed active offer detail blocks and all 14 FAQ answers read in user Chrome; expired section opened, only first three expired detail blocks expanded. No claim about its other pages.",
+  "competitor_read_at": "2026-10-07T16:58:26.608Z"
+}

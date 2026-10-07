@@ -10011,8 +10011,8 @@
   "source_403_history": [],
   "page_lastmod": {
     "/": {
-      "hash": "7daf0b600196523b6a30d03f29f6ae1bda1261f51c8b2d33f3ae1acca4a2b588",
-      "lastmod": "2026-10-07T12:43:59Z"
+      "hash": "d1efe2b4c4e4bff04e2cecd9092d596ceac6839d2c6d0411304c4c67c3360eac",
+      "lastmod": "2026-10-07T17:09:08Z"
     },
     "/providers/": {
       "hash": "2df50fa44c39b9577e74ab437994c630ed5fb5db50478cd114fa14edd10b38f9",
@@ -10044,14 +10044,6 @@
     },
     "/guides/godaddy-renewal-coupon/": {
       "hash": "ae1bfb3517f9da4bddf13eebb8242b3ba5db443900564c84270ac3843bb55637",
-      "lastmod": "2026-10-05T13:23:31Z"
-    },
-    "/guides/namecheap-domain-renewal-coupon/": {
-      "hash": "93d7a0872a85e0120c12fdaa3efc9a45ffcda19226cf6e8aca6ccb958ca50e8a",
-      "lastmod": "2026-10-05T13:23:31Z"
-    },
-    "/guides/namecheap-promo-code/": {
-      "hash": "0adaf009129a86b5bdf88d5d53236828ca76c068510fd49ec42584a269e0fd45",
       "lastmod": "2026-10-05T13:23:31Z"
     },
     "/guides/cloudways-coupon-code/": {
@@ -10097,6 +10089,14 @@
     "/guides/network-solutions-coupon-code/": {
       "hash": "ffe32374b6229aa3081950ce0d0b94cd694e1b7b5b0e25ecbf7e458487a85e68",
       "lastmod": "2026-10-06T06:39:44Z"
+    },
+    "/guides/namecheap-promo-code/": {
+      "hash": "2743749afa67b032e2d1a2c40d01840fc8487de057562200f0558158a10ded17",
+      "lastmod": "2026-10-07T17:09:08Z"
+    },
+    "/guides/namecheap-domain-renewal-coupon/": {
+      "hash": "fff776207f3a2f445421a9f32578b596854b73d80aaa012cbf7177e322b75dc9",
+      "lastmod": "2026-10-07T17:09:08Z"
     },
     "/guides/ionos-coupon-code/": {
       "hash": "4623cbca8dbb434f4eafa60947e4f96843a9e6467ca9396e6c9618c8f7d5329b",

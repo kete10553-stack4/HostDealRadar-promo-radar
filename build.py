@@ -896,13 +896,7 @@ def build(config_path=None, output=None):
     guide_schema={'@context':'https://schema.org','@type':'Article','headline':'GoDaddy coupon code: renewal savings','datePublished':'2026-09-15','dateModified':'2026-10-01','author':{'@type':'Organization','name':'HostDealRadar'},'publisher':{'@type':'Organization','name':'HostDealRadar'},'mainEntityOfPage':domain+guide_route}
     write(Path('guides/godaddy-renewal-coupon/index.html'),page('GoDaddy coupon code: renewal prices and transfer steps | HostDealRadar','Compare official .com renewal and transfer prices, rare account-specific GoDaddy renewal codes, auto-renew settings, transfer locks, DNS and email migration.',domain+guide_route,guide,guide_schema))
     namecheap_guide_route='/guides/namecheap-domain-renewal-coupon/'
-    namecheap_guide=template('namecheap-domain-renewal-coupon.html')
-    namecheap_guide_schema={'@context':'https://schema.org','@type':'Article','headline':'Namecheap domain renewal coupon: what works at renewal?','datePublished':'2026-09-15','dateModified':'2026-09-15','author':{'@type':'Organization','name':'HostDealRadar'},'publisher':{'@type':'Organization','name':'HostDealRadar'},'mainEntityOfPage':domain+namecheap_guide_route}
-    write(Path('guides/namecheap-domain-renewal-coupon/index.html'),page('Namecheap domain renewal coupon: what works at renewal? | HostDealRadar','Namecheap renewal coupons, current .com renewal pricing, official terms, and three linked user reports.',domain+namecheap_guide_route,namecheap_guide,namecheap_guide_schema))
     namecheap_promo_route='/guides/namecheap-promo-code/'
-    namecheap_promo=template('namecheap-promo-code.html')
-    namecheap_promo_schema={'@context':'https://schema.org','@type':'Article','headline':'Namecheap promo code: which September codes does Namecheap publish?','datePublished':'2026-09-26','dateModified':'2026-09-26','author':{'@type':'Organization','name':'HostDealRadar'},'publisher':{'@type':'Organization','name':'HostDealRadar'},'mainEntityOfPage':domain+namecheap_promo_route}
-    write(Path('guides/namecheap-promo-code/index.html'),page('Namecheap promo code: official September 2026 cards | HostDealRadar','Namecheap official September promo codes by product, with the published window, renewal limit, source links, and a dated checkout boundary.',domain+namecheap_promo_route,namecheap_promo,namecheap_promo_schema))
     cloudways_guide_route='/guides/cloudways-coupon-code/'
     cloudways_guide=template('cloudways-coupon-code.html')
     cloudways_guide_schema={'@context':'https://schema.org','@type':'FAQPage','mainEntity':[
@@ -1142,6 +1136,9 @@ def build(config_path=None, output=None):
         if not re.fullmatch(r'[a-z0-9-]+\.html',guide['template']):
             raise ValueError('Invalid research guide template')
         fields=dict(guide['template_fields'])
+        for window in guide.get('section_windows', []):
+            if datetime.now(timezone.utc)>=datetime.fromisoformat(window['until'].replace('Z','+00:00')):
+                fields[window['field']]=window['expired']
         archived=False
         if guide.get('archive_from_utc'):
             archived=datetime.now(timezone.utc)>=datetime.fromisoformat(guide['archive_from_utc'].replace('Z','+00:00'))
@@ -1341,7 +1338,7 @@ Planned endpoints return HTTP 503 with `temporarily_unavailable` until authentic
     write(Path('_worker.js'),agent_worker(unpublished_source_only))
     write(Path('robots.txt'),'User-agent: *\nAllow: /\nContent-Signal: ai-train=no, search=yes, ai-input=no\nAgentmap: '+domain+'/.well-known/ai-catalog.json\nSitemap: '+domain+'/sitemap.xml\n')
     write(Path('404.html'),page('Page not found | HostDealRadar','This page does not exist.',domain+'/404.html',prose('Page not found','<p><a href="/">Return to current offers</a></p>'),{'@context':'https://schema.org','@type':'WebPage','name':'Page not found'}))
-    routes=['/','/providers/','/compare/','/methodology/','/about/','/contact/','/disclosure/','/privacy/',guide_route,namecheap_guide_route,namecheap_promo_route,cloudways_guide_route,cloudways_archive_route,digitalocean_guide_route,hosting_coupons_route,hostinger_guide_route]
+    routes=['/','/providers/','/compare/','/methodology/','/about/','/contact/','/disclosure/','/privacy/',guide_route,cloudways_guide_route,cloudways_archive_route,digitalocean_guide_route,hosting_coupons_route,hostinger_guide_route]
     routes.append(hostinger_vps_route)
     routes.append(hostinger_domain_route)
     routes.append(a2_guide_route)
