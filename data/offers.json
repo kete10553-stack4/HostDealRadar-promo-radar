@@ -10011,16 +10011,16 @@
   "source_403_history": [],
   "page_lastmod": {
     "/": {
-      "hash": "d1efe2b4c4e4bff04e2cecd9092d596ceac6839d2c6d0411304c4c67c3360eac",
-      "lastmod": "2026-10-08T06:37:13Z"
+      "hash": "43c6f481d35028fb155bb00ae52cb1d195237ae3ee9e016829c3949c00b4b883",
+      "lastmod": "2026-10-08T08:15:37Z"
     },
     "/providers/": {
-      "hash": "2df50fa44c39b9577e74ab437994c630ed5fb5db50478cd114fa14edd10b38f9",
-      "lastmod": "2026-10-08T06:37:13Z"
+      "hash": "db2bd58eab35eaec14dfdf4e0d662d8f55acb56d82e0fa239f8fe4d168b53cf9",
+      "lastmod": "2026-10-08T08:15:37Z"
     },
     "/compare/": {
-      "hash": "162d0ff1b12a04580ab0b4337d496a511ff377051c88ab86434b16f4a49da1f9",
-      "lastmod": "2026-10-06T03:43:53Z"
+      "hash": "71d68d8bb64706a96ef36b9f63f46e3e38dec4fd410cda0fbb51cb4483b51952",
+      "lastmod": "2026-10-08T08:15:37Z"
     },
     "/methodology/": {
       "hash": "f1425516cf79600aee5d149b21cc580a1e91b0e4d79ad1a9134fe1dcac5ac55a",
@@ -10059,8 +10059,8 @@
       "lastmod": "2026-10-05T13:23:31Z"
     },
     "/guides/hosting-coupons/": {
-      "hash": "207a4a0b240e118018b269d4f88eb3ccea2a5ade42e2e82c30625831d4df2acf",
-      "lastmod": "2026-10-07T12:43:59Z"
+      "hash": "82c3cef9fe2a6ac7fed53284f11ecf28e7a916bbb0a257eb7adf6d5a6e27bad5",
+      "lastmod": "2026-10-08T08:15:37Z"
     },
     "/guides/hostinger-coupon-code/": {
       "hash": "9973d7b30d9476b0b9029e6f81863ce06e394ed92e9c9fd04f0e359bdbcb111c",
@@ -10089,6 +10089,10 @@
     "/guides/network-solutions-coupon-code/": {
       "hash": "ffe32374b6229aa3081950ce0d0b94cd694e1b7b5b0e25ecbf7e458487a85e68",
       "lastmod": "2026-10-06T06:39:44Z"
+    },
+    "/guides/dreamhost-coupon-code/": {
+      "hash": "714110711ee54857923bdf316cc407d2036770ce5abcf18c0177d78e39f567e5",
+      "lastmod": "2026-10-08T08:17:25Z"
     },
     "/guides/namecheap-promo-code/": {
       "hash": "7572fc1c0b749305bcf87d8024f33133d878734749fd973e5ddb955fb1b79954",
@@ -12539,6 +12543,41 @@
           "taxes_note": "Estimate Taxes was available but not opened; tax is unverified. Checkout/payment was not opened.",
           "order_submitted": false,
           "excerpt": "Starter Shared Hosting hostdealradar.com; $62.60 USD Annually; starteroct2026 - 50% One Time Discount; Total Due Today $31.30 USD."
+        }
+      },
+      {
+        "provider": "dreamhost",
+        "plan_id": "dreamhost-launch-four-year",
+        "plan": "Launch, four-year plan",
+        "currency": "USD",
+        "checked_on": "2026-10-08",
+        "first_term_total": 95.52,
+        "commitment_months": 48,
+        "monthly_equivalent": 1.99,
+        "renewal_monthly_rate": 7.99,
+        "entry_url": "https://www.dreamhost.com/wordpress-3/",
+        "cart_note": "Anonymous cart: taxes calculated after billing address. One email mailbox free for three months, then $19.99/year separately. No purchase. Published hosting renewal $383.52 per four years; future rate not guaranteed.",
+        "field_evidence": {
+          "first_term_total": {
+            "quote": "First 4 years $95.52/4yr.",
+            "url": "https://www.dreamhost.com/cart/",
+            "captured_at": "2026-10-08T08:01:39.328Z"
+          },
+          "commitment_months": {
+            "quote": "4 Year Plan",
+            "url": "https://www.dreamhost.com/cart/",
+            "captured_at": "2026-10-08T08:01:39.328Z"
+          },
+          "renewal_monthly_rate": {
+            "quote": "Auto-renews at $7.99 /mo after 4 years.",
+            "url": "https://www.dreamhost.com/wordpress-3/",
+            "captured_at": "2026-10-08T08:00:38.879Z"
+          },
+          "currency": {
+            "quote": "$ USD",
+            "url": "https://www.dreamhost.com/cart/",
+            "captured_at": "2026-10-08T08:01:39.328Z"
+          }
         }
       }
     ]
