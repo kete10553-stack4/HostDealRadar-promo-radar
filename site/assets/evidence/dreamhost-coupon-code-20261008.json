@@ -1,0 +1,128 @@
+{
+  "brand": "DreamHost",
+  "currency": "USD",
+  "record_state": "dated_current_official_page_observations",
+  "sources": [
+    {
+      "id": "03-wordpress-four-year",
+      "url": "https://www.dreamhost.com/wordpress-3/",
+      "title": "WordPress Hosting - Fast & Secure - DreamHost",
+      "read_at": "2026-10-08T08:00:38.879Z",
+      "method": "manual reading in user Chrome"
+    },
+    {
+      "id": "04-four-year-cart",
+      "url": "https://www.dreamhost.com/cart/",
+      "title": "DreamHost",
+      "read_at": "2026-10-08T08:01:39.328Z",
+      "method": "manual reading in user Chrome"
+    },
+    {
+      "id": "05-terms",
+      "url": "https://www.dreamhost.com/legal/terms-of-service/",
+      "title": "Terms of Service",
+      "read_at": "2026-10-08T08:01:39.510Z",
+      "method": "manual reading in user Chrome"
+    },
+    {
+      "id": "06-reddit-price-increase",
+      "url": "https://www.reddit.com/r/dreamhost/comments/1svow6z/shared_hosting_is_going_up_20_any_other_hosts/",
+      "title": "Shared Hosting is going up 20%. Any other hosts offer unlimited email plans? : r/dreamhost",
+      "read_at": "2026-10-08T08:02:15.952Z",
+      "method": "manual reading in user Chrome"
+    },
+    {
+      "id": "07-account-closure",
+      "url": "https://help.dreamhost.com/hc/en-us/articles/215202457-Closing-your-account-overview",
+      "title": "Closing your account overview — DreamHost Knowledge Base",
+      "read_at": "2026-10-08T08:03:56.730Z",
+      "method": "manual reading in user Chrome"
+    },
+    {
+      "id": "08-refunds",
+      "url": "https://help.dreamhost.com/hc/en-us/articles/215206997-Refunds-and-Account-Credits",
+      "title": "Refunds and Account Credits — DreamHost Knowledge Base",
+      "read_at": "2026-10-08T08:04:16.021Z",
+      "method": "manual reading in user Chrome"
+    },
+    {
+      "id": "09-domains-privacy",
+      "url": "https://www.dreamhost.com/domains/",
+      "title": "Domain Names - Find Your Perfect Domain Name - DreamHost",
+      "read_at": "2026-10-08T08:04:16.247Z",
+      "method": "manual reading in user Chrome"
+    },
+    {
+      "id": "10-shared-cancel-timing",
+      "url": "https://help.dreamhost.com/hc/en-us/articles/215202377-Deleting-a-Shared-Hosting-plan",
+      "title": "Deleting a Shared Hosting plan — DreamHost Knowledge Base",
+      "read_at": "2026-10-08T08:04:50.311Z",
+      "method": "manual reading in user Chrome"
+    },
+    {
+      "id": "11-domain-price-table",
+      "url": "https://www.dreamhost.com/domains/",
+      "title": "Domain Names - Find Your Perfect Domain Name - DreamHost",
+      "read_at": "2026-10-08T08:05:53.735Z",
+      "method": "manual reading in user Chrome"
+    },
+    {
+      "id": "12-domain-auto-renew",
+      "url": "https://help.dreamhost.com/hc/en-us/articles/360021174532-How-Auto-Renew-registrations-are-billed",
+      "title": "How Auto-Renew registrations are billed — DreamHost Knowledge Base",
+      "read_at": "2026-10-08T08:05:54.492Z",
+      "method": "manual reading in user Chrome"
+    }
+  ],
+  "plan": {
+    "name": "Launch",
+    "official_page_category": "WordPress Hosting",
+    "cart_category": "Web Hosting",
+    "term_months": 48,
+    "first_term_hosting_subtotal": 95.52,
+    "advertised_monthly_rate": 1.99,
+    "published_renewal_total": 383.52,
+    "renewal_term_months": 48,
+    "published_renewal_monthly_rate": 7.99,
+    "taxes": "Calculated after billing address; final tax-inclusive amount not verified"
+  },
+  "email": {
+    "selected_mailboxes": 1,
+    "trial_months": 3,
+    "trial_price": 0,
+    "subsequent_annual_price": 19.99
+  },
+  "domain": {
+    "selected_in_cart": false,
+    "eligible_first_year_credit": true,
+    "published_com_renewal": 21.99,
+    "privacy": "Free for life of eligible domain",
+    "forwarding_price_verified": false
+  },
+  "promo": {
+    "current_official_link_parameter": "WH-BF2025",
+    "manual_code_entered": false,
+    "redemption_completed": false,
+    "calendar_deadline_observed": false
+  },
+  "cancellation": {
+    "official_online_route": "Manage Account",
+    "account_action_tested": false,
+    "timing_conflict": "Terms describe termination at end of current term; shared-plan deletion article says immediate termination and also describes a pending-cancellation state. Verify account-specific effective date."
+  },
+  "community": {
+    "thread_url": "https://www.reddit.com/r/dreamhost/comments/1svow6z/shared_hosting_is_going_up_20_any_other_hosts/",
+    "read_at": "2026-10-08T08:02:15.952Z",
+    "user_reports_independently_verified": false,
+    "reports": "Different legacy renewal histories; $36.48/year increase in 2021 is one commenter report, not official pricing. 20% is the poster-specific claim.",
+    "forum_support_reply": "DreamHostCare self-identifies as support and says it sent a DM; not an official policy or resolution record."
+  },
+  "limitations": [
+    "No purchase, payment, renewal invoice or cancellation completed",
+    "No tax-inclusive final total",
+    "No universal coupon eligibility claim",
+    "No four-year renewal refund eligibility independently established",
+    "Other supplied forum leads not independently read; not used as established facts"
+  ],
+  "archive_policy": "When the offer is withdrawn or changed, move its observation into a clearly labeled archive section at this URL and retain original sources and read times."
+}
