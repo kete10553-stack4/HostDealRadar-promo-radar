@@ -8,7 +8,7 @@
 | Item | Value |
 | --- | --- |
 | Repository | https://github.com/kete10553-stack4/HostDealRadar-promo-radar |
-| Local checkout | `C:\\Users\\Administrator\\Documents\\Codex\\2026-09-10\\agent-powershell-openssh-1-3-powershell\\outputs\\HostDealRadar-promo-radar` |
+| Local checkout | a local clone of this repository (absolute path intentionally not published) |
 | Branch | `main` |
 | Local-change backup baseline | `a46f2bb1f1b237c9c01bd3d22c778511c0c8f35b` — `Refresh official source snapshot` |
 | Remote baseline when this document was published | `6ec8d39` — `Refresh official source snapshot` |
@@ -27,11 +27,11 @@ The live site had HTTP 200 responses for its home page, `/robots.txt`, and `/sit
 3. `python validate.py` validates and also rebuilds `site/`. It is **not read-only**: it removes and regenerates the configured output directory.
 4. GitHub Actions commits changed `data/offers.json` and `site/`; Cloudflare Pages receives the Git push and deploys it.
 
-Use the bundled Python currently available on this machine:
+Use the project's bundled Python interpreter (its absolute path is intentionally not published):
 
 ```powershell
-C:\Users\Administrator\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe scraper.py
-C:\Users\Administrator\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe validate.py
+python scraper.py
+python validate.py
 ```
 
 Run mutable checks only in an isolated clone/worktree or after a complete backup of the working tree. Never run `validate.py` merely to inspect it.
@@ -71,9 +71,7 @@ At handoff time, these files are modified or untracked:
 | `templates/index.html` | Copy/count wording update. |
 | `test_scraper.py` | New unit tests for extraction boundaries, robots precedence, invalid prices, and retention. |
 
-A recovery copy was made before this handoff at:
-
-`C:\\Users\\Administrator\\Documents\\Codex\\2026-09-10\\handoff-backup-20260911-1700`
+A recovery copy was made before this handoff, outside this repository (its absolute path is intentionally not published).
 
 It contains `base-commit.txt`, `status.txt`, `uncommitted.patch`, and direct copies of the dirty/untracked files. SHA-256 for `uncommitted.patch` is `8AFBEB49C8478EA67BB1EE0319F139532D27E330E7A2D2C9C65F1A4DECCE583B`.
 
