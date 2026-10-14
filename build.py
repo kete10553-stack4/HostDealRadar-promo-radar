@@ -1159,7 +1159,7 @@ def build(config_path=None, output=None):
         write(Path('assets/evidence')/evidence_name,json.dumps(evidence,ensure_ascii=False,indent=2)+'\n')
         research_routes.append(route)
     wpe_guide_route='/guides/wp-engine-renewal-overage/'
-    wpe_guide_schema={'@context':'https://schema.org','@type':'Article','headline':'Why did my WP Engine bill increase?','datePublished':'2026-10-01','dateModified':'2026-10-04','author':{'@type':'Organization','name':'HostDealRadar'},'publisher':{'@type':'Organization','name':'HostDealRadar'},'mainEntityOfPage':domain+wpe_guide_route}
+    wpe_guide_schema={'@context':'https://schema.org','@type':'Article','headline':'Why did my WP Engine bill increase?','datePublished':'2026-10-01','dateModified':'2026-10-14','author':{'@type':'Organization','name':'HostDealRadar'},'publisher':{'@type':'Organization','name':'HostDealRadar'},'mainEntityOfPage':domain+wpe_guide_route}
     write(Path('guides/wp-engine-renewal-overage/index.html'),page('WP Engine renewal increase, overage fees and staging | HostDealRadar','Distinguish WordPress.com from WP Engine, trace a renewal increase, check billable visits and staging usage, and compare Cloudways Flexible with complete agency costs.',domain+wpe_guide_route,template('wp-engine-renewal-overage.html'),wpe_guide_schema))
     wpk_guide_route='/guides/wp-engine-vs-kinsta/'
     wpk_guide_schema={'@context':'https://schema.org','@type':'Article','headline':'WP Engine vs Kinsta: what will renewal cost?','datePublished':'2026-10-01','dateModified':'2026-10-01','author':{'@type':'Organization','name':'HostDealRadar'},'publisher':{'@type':'Organization','name':'HostDealRadar'},'mainEntityOfPage':domain+wpk_guide_route}
