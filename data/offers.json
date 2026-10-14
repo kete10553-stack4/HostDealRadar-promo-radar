@@ -10017,16 +10017,16 @@
   "source_403_history": [],
   "page_lastmod": {
     "/": {
-      "hash": "38fe2b97c93e36e1957f10e73981f5008c98a1ce67783c2988e6a9089a523666",
-      "lastmod": "2026-10-14T04:52:12Z"
+      "hash": "117906d3df5647e0284f9d3cad2cd92169fd0853530d5b5d0ab1da356f5f4ec1",
+      "lastmod": "2026-10-14T06:15:58Z"
     },
     "/providers/": {
-      "hash": "7c87dbc8859a7f0a8eb94a8cfb3d999ce135434a8ac1a793f97df9cf4e3e1eeb",
-      "lastmod": "2026-10-14T04:52:12Z"
+      "hash": "b3b9c774150cc2659288f743e7e60e0d98bb3f1c54dff28dbf8b1adea346b3db",
+      "lastmod": "2026-10-14T06:15:58Z"
     },
     "/compare/": {
-      "hash": "71d68d8bb64706a96ef36b9f63f46e3e38dec4fd410cda0fbb51cb4483b51952",
-      "lastmod": "2026-10-08T08:15:37Z"
+      "hash": "ef87ce84d3f0bb2584175aa84f48bb93587ce11d1fa952057308ff65ad056d42",
+      "lastmod": "2026-10-14T06:15:58Z"
     },
     "/methodology/": {
       "hash": "f1425516cf79600aee5d149b21cc580a1e91b0e4d79ad1a9134fe1dcac5ac55a",
@@ -10301,8 +10301,8 @@
       "lastmod": "2026-10-05T13:23:31Z"
     },
     "/providers/pressable/": {
-      "hash": "fc656c59ff35d2ace51418bc146c635ddfd8f26851430f0958714002d44d6273",
-      "lastmod": "2026-10-05T13:23:31Z"
+      "hash": "c80910bb1db3e7e7f72892ab6bbcce703958924da7146953dcc1efcd37f37ff4",
+      "lastmod": "2026-10-14T06:15:58Z"
     },
     "/providers/krystal/": {
       "hash": "4b8020449bf054b2069ab9bd23523aeaaeb768f409508f8fcc2fa1b76dc24b1a",
@@ -12584,6 +12584,150 @@
             "url": "https://www.dreamhost.com/cart/",
             "captured_at": "2026-10-08T08:01:39.328Z"
           }
+        }
+      },
+      {
+        "provider": "one-com",
+        "plan": "Starter web hosting, 1-year subscription",
+        "currency": "GBP",
+        "first_term_total": 23.88,
+        "commitment_months": 12,
+        "monthly_equivalent": 1.99,
+        "renewal_monthly_rate": 7.99,
+        "checked_on": "2026-10-08",
+        "entry_url": "https://www.one.com/en-gb/plans-pricing/",
+        "advertised_price_quote": "£7.99/mo. You save 75% £1.99 /mo. 1-year subscription Pay £23.88 now, then £95.88 on renewal.",
+        "calculation": "23.88 / 12 = 1.99 GBP/month",
+        "cart_note": "Official UK plans page stated the one-year subscription amount due now and its renewal amount. No checkout details were entered and no order was submitted.",
+        "field_evidence": {
+          "first_term_total": {
+            "quote": "Pay £23.88 now, then £95.88 on renewal.",
+            "url": "https://www.one.com/en-gb/plans-pricing/",
+            "context": "Starter Hosting card; English (United Kingdom), GBP; one-year subscription."
+          },
+          "commitment_months": {
+            "quote": "1-year subscription",
+            "url": "https://www.one.com/en-gb/plans-pricing/",
+            "context": "Starter Hosting card."
+          },
+          "renewal_monthly_rate": {
+            "quote": "£7.99/mo. You save 75% £1.99 /mo. 1-year subscription Pay £23.88 now, then £95.88 on renewal.",
+            "url": "https://www.one.com/en-gb/plans-pricing/",
+            "context": "The same Starter Hosting card shows the regular monthly rate and amount due on renewal after the one-year subscription."
+          },
+          "currency": {
+            "quote": "£7.99/mo; Pay £23.88 now",
+            "url": "https://www.one.com/en-gb/plans-pricing/",
+            "context": "The official English (United Kingdom) plans page displays prices in GBP."
+          }
+        },
+        "missing_reasons": {},
+        "rendered_pricing_evidence": {
+          "url": "https://www.one.com/en-gb/plans-pricing/",
+          "selected_term": "1-year subscription",
+          "plan": "Starter Hosting",
+          "excerpt": "£7.99/mo. You save 75% £1.99 /mo. 1-year subscription Pay £23.88 now, then £95.88 on renewal.",
+          "context": "Official UK-hosted plans page; plan currency shown in GBP."
+        }
+      },
+      {
+        "provider": "123-reg",
+        "plan": "Economy web hosting, 3-year term",
+        "currency": "GBP",
+        "first_term_total": 71.64,
+        "commitment_months": 36,
+        "monthly_equivalent": 1.99,
+        "renewal_monthly_rate": 6.99,
+        "checked_on": "2026-10-08",
+        "entry_url": "https://www.123-reg.co.uk/web-hosting/",
+        "advertised_price_quote": "SAVE 71% £6.99 £1.99 /mo. With a 3-yr term. You pay £71.64 today. Renews at £251.64. Prices exclude VAT.",
+        "calculation": "71.64 / 36 = 1.99 GBP/month",
+        "cart_note": "The official card states prices exclude VAT. The £6.99/mo regular rate appears on the same card as the stated £251.64 renewal amount. No checkout details were entered and no order was submitted.",
+        "field_evidence": {
+          "first_term_total": {
+            "quote": "With a 3-yr term. You pay £71.64 today. Renews at £251.64.",
+            "url": "https://www.123-reg.co.uk/web-hosting/",
+            "context": "Economy Web Hosting pricing card."
+          },
+          "commitment_months": {
+            "quote": "With a 3-yr term.",
+            "url": "https://www.123-reg.co.uk/web-hosting/",
+            "context": "Economy Web Hosting pricing card."
+          },
+          "renewal_monthly_rate": {
+            "quote": "£6.99 £1.99 /mo. With a 3-yr term. Renews at £251.64.",
+            "url": "https://www.123-reg.co.uk/web-hosting/",
+            "context": "The Economy card pairs the regular £6.99 monthly rate with its renewal total for the same three-year product term."
+          },
+          "currency": {
+            "quote": "£6.99; You pay £71.64 today.",
+            "url": "https://www.123-reg.co.uk/web-hosting/",
+            "context": "Official 123 Reg UK pricing card, GBP."
+          }
+        },
+        "missing_reasons": {},
+        "rendered_pricing_evidence": {
+          "url": "https://www.123-reg.co.uk/web-hosting/",
+          "selected_term": "3-yr term",
+          "plan": "Economy",
+          "excerpt": "£6.99 £1.99 /mo. With a 3-yr term. You pay £71.64 today. Renews at £251.64. Prices exclude VAT.",
+          "context": "Official Web Hosting plans page. Regular and introductory monthly prices are printed alongside the total payable and renewal total."
+        }
+      },
+      {
+        "provider": "pressable",
+        "plan": "Signature 1 Monthly",
+        "currency": "USD",
+        "first_term_total": 25.0,
+        "commitment_months": 1,
+        "monthly_equivalent": 25.0,
+        "renewal_monthly_rate": 25.0,
+        "checked_on": "2026-10-08",
+        "entry_url": "https://pressable.com/pricing/",
+        "advertised_price_quote": "$25.00/mo; Billed in USD monthly.",
+        "calculation": "25.00 / 1 = 25.00 USD/month",
+        "cart_note": "The official checkout showed $25.00 due today and a recurring fee of $25.00 every month. The country and billing fields were left blank; displayed tax was $0.00 before location selection, so final tax is unverified. No account fields were filled and Complete Order was not clicked.",
+        "field_evidence": {
+          "first_term_total": {
+            "quote": "Today's Total $25.00",
+            "url": "https://my.pressable.com/checkout?p=signature-1-monthly",
+            "context": "Official Signature 1 Monthly checkout summary; order was not submitted."
+          },
+          "commitment_months": {
+            "quote": "Billed in USD monthly; Selected Plan: Signature 1 Monthly",
+            "url": "https://pressable.com/pricing/",
+            "context": "Signature 1 with Pay Monthly selected; checkout summary identifies the same monthly plan."
+          },
+          "renewal_monthly_rate": {
+            "quote": "Recurring Fee (Every Month) $25.00",
+            "url": "https://my.pressable.com/checkout?p=signature-1-monthly",
+            "context": "Official checkout summary for Signature 1 Monthly."
+          },
+          "currency": {
+            "quote": "Billed in USD monthly; Plan Price $25.00",
+            "url": "https://pressable.com/pricing/",
+            "context": "Official pricing page and checkout identify monthly billing in USD."
+          }
+        },
+        "missing_reasons": {},
+        "rendered_pricing_evidence": {
+          "url": "https://pressable.com/pricing/",
+          "selected_term": "Pay Monthly",
+          "plan": "Signature 1",
+          "plan_card_excerpt": "$25.00/mo; Billed in USD monthly.",
+          "context": "Official pricing page with the Pay Monthly option selected."
+        },
+        "rendered_checkout_evidence": {
+          "url": "https://my.pressable.com/checkout?p=signature-1-monthly",
+          "selected_plan": "Signature 1 Monthly",
+          "subtotal": "$25.00",
+          "total_due_today": "$25.00",
+          "recurring_total": "$25.00 every month",
+          "currency": "USD",
+          "taxes_note": "Tax displayed as $0.00 before country and billing address selection; final tax unverified.",
+          "account_fields_entered": false,
+          "order_submitted": false,
+          "excerpt": "Selected Plan: Signature 1 Monthly; Plan Price $25.00; Today's Total $25.00; Recurring Fee (Every Month) $25.00."
         }
       }
     ]
