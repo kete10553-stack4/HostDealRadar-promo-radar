@@ -561,6 +561,11 @@ def check():
         assert noindex == (url not in sitemap_urls), f'Provider robots meta disagrees with sitemap eligibility: {pid}'
         if pid in indexable_provider_ids - current_provider_ids:
             assert 'Dated manual plan-price evidence' in provider_html and 'calculated:' in provider_html and 'Official pages checked' in provider_html, f'Indexable manual provider lacks rendered price evidence: {pid}'
+        for record in reviewed:
+            if record['provider'] == pid and record.get('cart_note'):
+                manual_section=provider_html.split('<section class="manual-plan-evidence">',1)[1].split('</section>',1)[0]
+                assert build.e(record['cart_note']) in manual_section, f'Manual provider card omits checkout or tax context: {pid}'
+                assert build.e(record['cart_note']) in home, f'Homepage plan card omits checkout or tax context: {pid}'
     worker=(ROOT/'site/_worker.js').read_text(encoding='utf-8')
     for pid in unpublished_source_only:
         assert f'/providers/{pid}/' in worker and 'status: 410' in worker, f'Withdrawn provider path lacks an explicit 410 response: {pid}'

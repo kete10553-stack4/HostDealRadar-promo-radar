@@ -728,8 +728,9 @@ def build(config_path=None, output=None):
                 +'</dd></div>'
                 f'<div><dt>Renewal monthly rate</dt><dd>{reviewed_link(record,"renewal_monthly_rate",renewal+"/mo")}</dd></div></dl>'
                 f'<p class="capture">Official pages checked {e(record_review_date(record))} PT. Confirm the latest price and tax at checkout.'
-                + (' The upfront total was seen in an official cart after plan selection; cart contents may vary by session.' if record.get('entry_url') else '')
-                + f'</p><a class="text-link" href="/compare/#evidence-{e(reviewed_anchor(record))}">Read the source evidence →</a></article>')
+                + '</p>'
+                + (f'<p class="small">{e(record["cart_note"])}</p>' if record.get('cart_note') else '')
+                + f'<a class="text-link" href="/compare/#evidence-{e(reviewed_anchor(record))}">Read the source evidence →</a></article>')
     # A dated observation may support only one or two terms. Keep those
     # source-linked fields visible without putting the row in a comparison.
     partial=[record for record in (payload.get('browser_term_observations') or {}).get('records', [])
