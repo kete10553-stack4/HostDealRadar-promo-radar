@@ -305,12 +305,13 @@ def check():
     cloudways=(ROOT/'site/providers/cloudways/index.html').read_text(encoding='utf-8')
     assert '#record-cloudways-summer404' not in cloudways and 'id="record-cloudways-summer404"' not in cloudways, 'Undated Cloudways promotion remains on the provider page'
     assert 'No current offer is published for this source' in cloudways, 'Cloudways page does not disclose that it has no current source record'
-    # A state-only page must say why nothing is published and must carry no figure.
+    # Automated status-only content must carry no figures. Separately sourced
+    # manual plan evidence is allowed and checked with the comparison records.
     for pid in sorted(state_only):
         if pid in unpublished_source_only:
             continue
         page=(ROOT/'site/providers'/pid/'index.html').read_text(encoding='utf-8')
-        automated_section=page.split('<section class="record-detail source-observation"',1)[0]
+        automated_section=re.sub(r'<section class="manual-plan-evidence">.*?</section>', '', page, flags=re.S).split('<section class="record-detail source-observation"',1)[0]
         figures=re.findall(r'\$[0-9]|[0-9](?:\.[0-9]+)?\s?%', automated_section)
         assert not figures, f'A state-only provider page shows price or discount figures: {pid} -> {figures[:5]}'
         status = statuses[pid]
@@ -549,14 +550,17 @@ def check():
     for pid in unpublished_source_only:
         assert cfg['site']['domain'].rstrip('/')+f'/providers/{pid}/' not in sitemap_urls, f'Unverified source-only provider is still in sitemap: {pid}'
     current_provider_ids={o['provider'] for o in current}
+    indexable_provider_ids=current_provider_ids | {record['provider'] for record in build.documented_plan_rows(payload)}
     public_provider_ids={p['id'] for p in cfg['providers']} - unpublished_source_only
     for pid in public_provider_ids:
         url=cfg['site']['domain'].rstrip('/')+f'/providers/{pid}/'
-        assert (url in sitemap_urls) == (pid in current_provider_ids), f'Provider sitemap eligibility disagrees with current records: {pid}'
+        assert (url in sitemap_urls) == (pid in indexable_provider_ids), f'Provider sitemap eligibility disagrees with current or manual records: {pid}'
         provider_html=(ROOT/'site/providers'/pid/'index.html').read_text(encoding='utf-8')
         head=provider_html.split('</head>',1)[0]
         noindex='<meta name="robots" content="noindex,follow">' in head
         assert noindex == (url not in sitemap_urls), f'Provider robots meta disagrees with sitemap eligibility: {pid}'
+        if pid in indexable_provider_ids - current_provider_ids:
+            assert 'Dated manual plan-price evidence' in provider_html and 'calculated:' in provider_html and 'Official pages checked' in provider_html, f'Indexable manual provider lacks rendered price evidence: {pid}'
     worker=(ROOT/'site/_worker.js').read_text(encoding='utf-8')
     for pid in unpublished_source_only:
         assert f'/providers/{pid}/' in worker and 'status: 410' in worker, f'Withdrawn provider path lacks an explicit 410 response: {pid}'

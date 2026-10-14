@@ -765,6 +765,7 @@ def build(config_path=None, output=None):
     # The homepage lists different services; its entries are navigation targets,
     # not merchant Offers for products that HostDealRadar sells.
     current_provider_ids={o['provider'] for o in current}
+    indexable_provider_ids=current_provider_ids | reviewed_providers
     home_schema={'@context':'https://schema.org','@graph':[
         {'@type':'WebSite','@id':domain+'/#website','name':cfg['site']['brand'],'url':domain+'/','inLanguage':'en-US','publisher':{'@id':domain+'/#organization'}},
         {'@type':'Organization','@id':domain+'/#organization','name':cfg['site']['brand'],'url':domain+'/','sameAs':[cfg['settings']['repo_url']]},
@@ -793,7 +794,7 @@ def build(config_path=None, output=None):
         '<div class="provider-grid">'+''.join(directory_tile(p) for p in with_current)+'</div></section>'
         '<section class="wrap section"><h2 id="without-current-records">Sources without current records '
         f'({len(without_current)})</h2><p>These provider pages remain available for source-check details, '
-        'but any earlier records are kept as history, not displayed as current offers. These pages are not listed in the sitemap.</p>'
+        'but any earlier records are kept as history, not displayed as current offers. Pages with complete dated manual plan evidence remain in the sitemap; source-status-only pages do not.</p>'
         '<div class="provider-grid">'+''.join(directory_tile(p) for p in without_current)+'</div></section>')
     write(Path('providers/index.html'),page('Providers | HostDealRadar','Hosting providers and their latest source-check status.',domain+'/providers/',provider_listing,{'@context':'https://schema.org','@type':'CollectionPage','name':'Providers'}))
     for p in public_providers:
@@ -878,6 +879,10 @@ def build(config_path=None, output=None):
                          f'Links on this page go to official {p["name"]} pages. HostDealRadar has no active affiliate relationship with {p["name"]}.')
         page_disclosure+=' Confirm availability, tax, billing terms, and renewal terms with the provider. Service labels are HostDealRadar classifications, not provider claims.'
         qualified=[o for o in po if complete_three_terms(o, rules.get((o['provider'],o['title']), {}))]
+        if manual_plans:
+            current_html+=('<section class="manual-plan-evidence"><h2>Dated manual plan-price evidence</h2>'
+                           '<p>These official-page observations retain their own check dates. They are not live checkout quotes or coupon-code records.</p>'
+                           '<div class="cards">'+''.join(reviewed_card(record).replace('<article class="card">','<article class="card manual-plan-card">',1) for record in manual_plans)+'</div></section>')
         judgment=(f'{len(qualified)} of {len(po)} current records meet the three-term comparison standard: '
                   'an official upfront total, published monthly equivalent, and monthly renewal rate for the same plan. '
                   'Records below show only the individual fields supported by their official source.'
@@ -890,7 +895,7 @@ def build(config_path=None, output=None):
             description,
             domain+'/providers/'+p['id']+'/', content,
             {'@context':'https://schema.org','@type':'CollectionPage','name':heading},
-            head_extra='<meta name="robots" content="noindex,follow">' if not po else ''))
+            head_extra='<meta name="robots" content="noindex,follow">' if p['id'] not in indexable_provider_ids else ''))
     guide_route='/guides/godaddy-renewal-coupon/'
     guide=template('godaddy-domain-renewal.html')
     guide_schema={'@context':'https://schema.org','@type':'Article','headline':'GoDaddy coupon code: renewal savings','datePublished':'2026-09-15','dateModified':'2026-10-01','author':{'@type':'Organization','name':'HostDealRadar'},'publisher':{'@type':'Organization','name':'HostDealRadar'},'mainEntityOfPage':domain+guide_route}
@@ -1353,8 +1358,8 @@ Planned endpoints return HTTP 503 with `temporarily_unavailable` until authentic
     routes.append(wpe_guide_route)
     routes.append(wpk_guide_route)
     # Keep zero-current provider pages accessible for truthful status reporting,
-    # but do not submit them as index targets until a current source record exists.
-    routes+=[f'/providers/{p["id"]}/' for p in public_providers if p['id'] in current_provider_ids]
+    # Complete dated manual plan evidence also supports a substantive provider page.
+    routes+=[f'/providers/{p["id"]}/' for p in public_providers if p['id'] in indexable_provider_ids]
     # lastmod tracks the rendered page itself: it only moves when the page's
     # material content changes, not when a capture timestamp is refreshed.
     previous=payload.get(STATE_KEY)
