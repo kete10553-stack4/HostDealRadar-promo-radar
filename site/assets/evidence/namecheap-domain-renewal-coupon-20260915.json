@@ -1,7 +1,7 @@
 {
   "brand": "Namecheap",
   "currency": "USD",
-  "observation_state": "dated_manual_official_page_observations",
+  "observation_state": "dated_official_observations_with_original_methods_and_dates",
   "sources": [
     {
       "id": "domains",
@@ -167,6 +167,42 @@
       ],
       "notes": "Configuration summary: $26.88 total; no domain selected; Add to cart disabled. This is not a final all-in checkout or accepted coupon. No account, cart addition or purchase completed.",
       "read_label": "October 7, 2026, 09:58:26 AM PDT (16:58:26 UTC)"
+    },
+    {
+      "id": "domains-20261013",
+      "url": "https://www.namecheap.com/domains/",
+      "read_at": null,
+      "read_date_local": "2026-10-13",
+      "read_label": "October 13, 2026 PDT; web-reader snapshot; exact source capture time unavailable",
+      "method": "public web-reader returned snapshot, marked crawled today; HTTP status not exposed",
+      "official_quotes": [
+        "Claim a .com for just $6.48. New customers only."
+      ],
+      "notes": "Displayed code NEWCOM648, USD $6.48/year, reference $14.98, 57% display. Published .COM rows: registration $10.98 first year, standard renewal $18.48/year, transfer $11.48. .COM is starred; annual $0.20 ICANN additional. No cart, redemption, tax or exact code expiry verified."
+    },
+    {
+      "id": "com-20261013",
+      "url": "https://www.namecheap.com/domains/registration/gtld/com/",
+      "read_at": null,
+      "read_date_local": "2026-10-13",
+      "read_label": "October 13, 2026 PDT; web-reader snapshot; exact source capture time unavailable",
+      "method": "public web-reader returned snapshot, marked crawled today; HTTP status not exposed",
+      "official_quotes": [],
+      "notes": "New-customer special $6.48, first-year registrations only, one domain per user/household. 1-year standard .COM renewal $18.48. This is an official-page observation, not checkout code acceptance."
+    },
+    {
+      "id": "birthday-20261013",
+      "url": "https://www.namecheap.com/promos/company-birthday-offers-anniversary-deals/",
+      "read_at": null,
+      "read_date_local": "2026-10-13",
+      "read_label": "October 13, 2026 PDT; web-reader snapshot; exact source capture time unavailable",
+      "method": "public web-reader returned snapshot, marked crawled today; HTTP status not exposed",
+      "official_quotes": [
+        "BDAYGEN26",
+        "BDAYHOSTING26",
+        "BDAYTRANSFER26"
+      ],
+      "notes": "26th birthday. Advertised 15% renewals from Oct13 12:00 AM ET to Oct14 11:59 PM ET 2026. BDAYGEN26 for eligible domains, Private Email, PremiumDNS and SSL; BDAYHOSTING26 for eligible Shared/Reseller/VPS hosting, separate order, 30-day window for annual/biennial/semiannual and 15-day window for monthly/quarterly. Dedicated hosting excluded. Renewal discount not automatic for auto-renew. Premium/expired domains excluded; TLD and account-price restrictions. Registration/transfer terms now show Oct6-14 through11:59PM ET, BDAYTRANSFER26 .COM $10.48 firstyear, limit100 whole campaign; this extends the Oct7 observed Oct6-12 presale. No account-specific discount amount tested."
     }
   ],
   "cart_tested": false,
@@ -176,5 +212,11 @@
   "final_domain_checkout_total": null,
   "all_in_tax_amount": null,
   "competitor_read_scope": "HostDean current Namecheap coupons page: all 17 displayed active offer detail blocks and all 14 FAQ answers read in user Chrome; expired section opened, only first three expired detail blocks expanded. No claim about its other pages.",
-  "competitor_read_at": "2026-10-07T16:58:26.608Z"
+  "competitor_read_at": "2026-10-07T16:58:26.608Z",
+  "latest_read_date_local": "2026-10-13",
+  "latest_limitations": [
+    "Web-reader snapshots; source capture time and HTTP status unavailable",
+    "No cart/redemption/payment/current account-specific renewal quote",
+    "October7 sources retained unchanged"
+  ]
 }
