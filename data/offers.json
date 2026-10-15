@@ -10022,8 +10022,8 @@
   "source_403_history": [],
   "page_lastmod": {
     "/": {
-      "hash": "1bc59341ad299fa6a8a86b58a2bab023f1c91d4ed7070b48ba60fcd20b8faccc",
-      "lastmod": "2026-10-15T11:27:18Z"
+      "hash": "0f6e7b5b6115e0b5665d2d01e65cf575f4d9f168892488365b6d36f5e68c1254",
+      "lastmod": "2026-10-15T12:46:30Z"
     },
     "/providers/": {
       "hash": "cd9ffd31daa2f642f16746b5d4ade45a6809cdddae91774b02966a1f0211498a",
@@ -10410,8 +10410,8 @@
       "lastmod": "2026-10-13T14:10:29Z"
     },
     "/providers/render/": {
-      "hash": "1a57821745a9552abf5ad20461f2596b5f86d7c23812d8615c28324c14715080",
-      "lastmod": "2026-10-05T13:23:31Z"
+      "hash": "d167cb7a76b99b8d6e04e8d247b329676493661a24c6cac9026ce345718090e8",
+      "lastmod": "2026-10-15T12:46:30Z"
     },
     "/providers/amazon-lightsail/": {
       "hash": "46b4a1711d53b1e407af58e610efdeebb207252286cc3101f18816f20060110d",
