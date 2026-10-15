@@ -858,6 +858,10 @@ def build(config_path=None, output=None):
                   'it is not included in the sitemap.')
         resources=brand_links(p['id'],include_provider=False)
         related_guide=('<aside class="source-note brand-resources"><h2>Guides and plan evidence</h2>'+resources+'</aside>') if resources else ''
+        if p['id']=='ovhcloud':
+            related_guide=('<aside class="source-note brand-resources"><h2>OVH promo code and renewal</h2>'
+                           '<p>For code eligibility, commitment terms and renewal checks, read the '
+                           '<a href="/guides/ovh-promo-code/">OVH promo code eligibility and renewal guide</a>.</p></aside>')
         details=('<div class="record-details">'+''.join(record_detail(o) for o in po)+'</div>') if po else ''
         has_coupon=any(o.get('coupon_code') and captured_field_evidence(o,'coupon_code') for o in po)
         if po:
