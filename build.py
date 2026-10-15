@@ -949,6 +949,9 @@ def build(config_path=None, output=None):
     hostgator_guide_route='/guides/hostgator-coupon-code/'
     hostgator_guide_schema={'@context':'https://schema.org','@type':'Article','headline':'HostGator coupon code: check the renewal rules first','datePublished':'2026-10-04','dateModified':'2026-10-04','author':{'@type':'Organization','name':'HostDealRadar'},'publisher':{'@type':'Organization','name':'HostDealRadar'},'mainEntityOfPage':domain+hostgator_guide_route}
     write(Path('guides/hostgator-coupon-code/index.html'),page('HostGator coupon code: renewal rules and regular prices | HostDealRadar','HostGator warns against cancelling and transferring an existing package to obtain a new-package discount. Check renewal totals, cPanel license inclusion and separate email charges.',domain+hostgator_guide_route,template('hostgator-coupon-code.html'),hostgator_guide_schema))
+    ovh_guide_route='/guides/ovh-promo-code/'
+    ovh_guide_schema={'@context':'https://schema.org','@type':'Article','headline':'OVH promo code: check eligibility, commitment and renewal','datePublished':'2026-10-15','dateModified':'2026-10-15','author':{'@type':'Organization','name':'HostDealRadar'},'publisher':{'@type':'Organization','name':'HostDealRadar'},'mainEntityOfPage':domain+ovh_guide_route}
+    write(Path('guides/ovh-promo-code/index.html'),page('OVH promo code: check eligibility, commitment and renewal | HostDealRadar','Check OVH offer eligibility, payment frequency, commitment length and renewal quotes against dated customer examples and official US terms.',domain+ovh_guide_route,template('ovh-promo-code.html'),ovh_guide_schema))
     campaign_routes=[]
     for campaign in cfg['campaign_guides']:
         route=campaign['path']
@@ -1354,6 +1357,7 @@ Planned endpoints return HTTP 503 with `temporarily_unavailable` until authentic
     routes.append(a2_guide_route)
     routes.append(bluehost_guide_route)
     routes.append(hostgator_guide_route)
+    routes.append(ovh_guide_route)
     routes.extend(campaign_routes)
     routes.extend(research_routes)
     routes.append(wpe_guide_route)
