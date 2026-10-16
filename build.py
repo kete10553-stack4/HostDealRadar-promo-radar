@@ -907,8 +907,8 @@ def build(config_path=None, output=None):
             head_extra='<meta name="robots" content="noindex,follow">' if p['id'] not in indexable_provider_ids else ''))
     guide_route='/guides/godaddy-renewal-coupon/'
     guide=template('godaddy-domain-renewal.html')
-    guide_schema={'@context':'https://schema.org','@type':'Article','headline':'GoDaddy coupon code: renewal savings','datePublished':'2026-09-15','dateModified':'2026-10-01','author':{'@type':'Organization','name':'HostDealRadar'},'publisher':{'@type':'Organization','name':'HostDealRadar'},'mainEntityOfPage':domain+guide_route}
-    write(Path('guides/godaddy-renewal-coupon/index.html'),page('GoDaddy coupon code: renewal prices and transfer steps | HostDealRadar','Compare official .com renewal and transfer prices, rare account-specific GoDaddy renewal codes, auto-renew settings, transfer locks, DNS and email migration.',domain+guide_route,guide,guide_schema))
+    guide_schema={'@context':'https://schema.org','@type':'Article','headline':'GoDaddy domain renewal price: what a .com renewal costs','datePublished':'2026-09-15','dateModified':'2026-10-16','author':{'@type':'Organization','name':'HostDealRadar'},'publisher':{'@type':'Organization','name':'HostDealRadar'},'mainEntityOfPage':domain+guide_route}
+    write(Path('guides/godaddy-renewal-coupon/index.html'),page('GoDaddy domain renewal price: .com rates and transfer steps | HostDealRadar','GoDaddy’s official .com standard renewal and v3 API auto-renew prices, dated registrar comparisons, transfer steps and coupon eligibility.',domain+guide_route,guide,guide_schema))
     namecheap_guide_route='/guides/namecheap-domain-renewal-coupon/'
     namecheap_promo_route='/guides/namecheap-promo-code/'
     cloudways_guide_route='/guides/cloudways-coupon-code/'

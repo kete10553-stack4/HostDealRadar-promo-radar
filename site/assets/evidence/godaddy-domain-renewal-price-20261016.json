@@ -1,0 +1,60 @@
+{
+  "page": "/guides/godaddy-renewal-coupon/",
+  "reviewed_on": "2026-10-16",
+  "checked_at_utc": "2026-10-16T09:05:13Z",
+  "method": "Read the linked official public pricing pages and help text. No account quote, order, payment, renewal, or tax checkout was performed. Prices are dated page observations, not future guarantees.",
+  "comparison_scope": {
+    "tld": ".com",
+    "term": "one year",
+    "domain_class": "non-premium standard domain",
+    "currency": "USD"
+  },
+  "prices": [
+    {
+      "registrar": "GoDaddy",
+      "source_url": "https://developer.godaddy.com/en/docs/api-users/domains/pricing",
+      "source_type": "Official GoDaddy Domains API pricing documentation",
+      "source_read_at_utc": "2026-10-16T09:05:13Z",
+      "official_excerpt": "Discounted rates apply only to purchases made through the v3 API.",
+      "price_table_excerpt": ".com: $9.79 registration (1 yr); $14.99 auto-renewal (1 yr); $22.99 standard renewal",
+      "standard_renewal_usd_per_year": 22.99,
+      "api_v3_registration_usd_per_year": 9.79,
+      "api_v3_auto_renew_usd_per_year": 14.99,
+      "icann_fee_included": null,
+      "icann_fee_note": "The official pricing page does not state whether an ICANN fee is included in the listed renewal price."
+    },
+    {
+      "registrar": "Porkbun",
+      "source_url": "https://porkbun.com/products/domains",
+      "source_type": "Official Porkbun domain pricing table",
+      "source_read_at_utc": "2026-10-16T09:05:13Z",
+      "official_excerpt": ".com renewal $11.08. All prices include ICANN and any other fees.",
+      "renewal_usd_per_year": 11.08,
+      "icann_fee_included": true,
+      "scope_note": "Official page states all prices include ICANN and any other fees. No tax checkout total was tested."
+    },
+    {
+      "registrar": "Dynadot",
+      "source_url": "https://www.dynadot.com/domain/com",
+      "fee_help_url": "https://www.dynadot.com/help/question/icann-fee",
+      "source_type": "Official Dynadot .com pricing page and ICANN-fee help page",
+      "source_read_at_utc": "2026-10-16T09:05:13Z",
+      "official_excerpt": "One-year .com price table: Regular $11.62; Bulk $10.88. Page heading, TLD summary, and FAQ also show $10.88 without a tier label.",
+      "fee_excerpt": "All fees are included in our domain prices.",
+      "renewal_rate_displayed": {
+        "regular_usd_per_year": 11.62,
+        "bulk_usd_per_year": 10.88,
+        "unqualified_heading_and_faq_usd": 10.88
+      },
+      "icann_fee_included": true,
+      "scope_note": "The page shows different amounts by tier and also displays $10.88 in its heading and FAQ without a tier. The applicable rate was not resolved; verify the account tier. No tax checkout total was tested."
+    }
+  ],
+  "unverified": [
+    "GoDaddy ICANN-fee inclusion in the cited pricing table.",
+    "A specific GoDaddy account's renewal quote, including eligibility for discounted auto-renewal.",
+    "GoDaddy retail first-year registration price; the cited $9.79 registration price is for v3 API purchases.",
+    "Taxes, premium-domain pricing, and final checkout totals for all registrars."
+  ],
+  "refresh_policy": "Manual comparison. No fixed automatic refresh is configured for this page. Recheck the official price source and account quote before renewing."
+}
