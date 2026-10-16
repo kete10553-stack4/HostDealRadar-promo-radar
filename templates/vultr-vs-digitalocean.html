@@ -6,6 +6,16 @@
 </div>
 <p>The prices and configurations below describe individual historical setups, with the year attached. They are not current quotes. The practical recommendations are judgments drawn from those cases, rather than promises about either provider.</p>
 
+<section id="current-pricing">
+<h2>Current entry-plan prices, checked October 16, 2026</h2>
+<p>For a current baseline, compare the providers' published entry configurations before weighing the older migration examples. These are official list-price snapshots, not account quotes or a performance test.</p>
+<div class="table-scroll"><table><caption>Published entry-plan configurations and billing terms read October 16, 2026</caption><thead><tr><th>Provider and plan</th><th>Published entry configuration</th><th>Published price</th><th>Billing details</th></tr></thead><tbody>
+<tr><td>Vultr Cloud Compute</td><td>1 vCPU, 0.5 GB RAM, 10 GB storage</td><td>$0.005 per hour</td><td>Hourly billing, up to 672 hours per month, with a one-hour minimum. Stopped servers continue to incur charges until destroyed.</td></tr>
+<tr><td>DigitalOcean Basic Regular Droplet</td><td>1 vCPU, 512 MiB memory, 10 GiB SSD, 500 GiB transfer</td><td>$4.00 per month, also listed at $0.00595 per hour</td><td>Per-second billing with a 60-second minimum; monthly use is capped at 672 hours. Powered-off Droplets continue to bill.</td></tr>
+</tbody></table></div>
+<p>Vultr lists the entry rate and configuration in its <a href="https://docs.vultr.com/product-overviews/cloud-compute" rel="noopener noreferrer">official Cloud Compute overview</a>; its <a href="https://docs.vultr.com/support/platform/billing/how-am-i-billed-for-my-servers" rel="noopener noreferrer">server billing guide</a> explains hourly charges and stopped instances. DigitalOcean lists its <a href="https://www.digitalocean.com/pricing/droplets" rel="noopener noreferrer">Basic Droplet prices</a> and documents the <a href="https://docs.digitalocean.com/products/droplets/details/pricing/" rel="noopener noreferrer">billing minimum and monthly cap</a>. The published specifications and billing increments differ, so these starting prices are context, not a like-for-like quote. Check the exact region, plan and any added resources before estimating your bill. <a href="/assets/evidence/vultr-vs-digitalocean-pricing-20261016.json">Read the dated source record</a>.</p>
+</section>
+
 <h2>When the lower price makes Vultr worth considering</h2>
 <p>In a migration described in 2020, DigitalOcean had offered 512MB RAM for $5, while Vultr had offered the same memory for $2.50. Price helped trigger the move to Vultr.</p>
 <p>There was another reason: files in DigitalOcean object storage had reportedly become unavailable for several hours every few weeks. This was an object storage problem. It does not establish that the virtual machines themselves were going down.</p>

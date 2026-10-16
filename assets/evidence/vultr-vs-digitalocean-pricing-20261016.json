@@ -1,0 +1,34 @@
+{
+  "page": "/guides/vultr-vs-digitalocean/",
+  "reviewed_on": "2026-10-16",
+  "scope": "Official public entry-plan prices and billing terms. No VM was created, no account quote or invoice was tested, and no performance comparison was run.",
+  "prices": [
+    {
+      "provider": "Vultr",
+      "plan": "Cloud Compute",
+      "source_url": "https://docs.vultr.com/product-overviews/cloud-compute",
+      "billing_source_url": "https://docs.vultr.com/support/platform/billing/how-am-i-billed-for-my-servers",
+      "official_excerpt": "Starting Price $0.005/hr; 1 vCPU 0.5 GB RAM 10 GB storage.",
+      "billing_excerpt": "All other server types, including Cloud Compute, are billed up to 672 hours per month. The minimum billing unit is one hour. Stopped servers continue to incur charges; destroy a server to stop billing.",
+      "observed_rate": "$0.005 per hour",
+      "observed_configuration": "1 vCPU, 0.5 GB RAM, 10 GB storage",
+      "observed_on": "2026-10-16"
+    },
+    {
+      "provider": "DigitalOcean",
+      "plan": "Basic Regular Droplet",
+      "source_url": "https://www.digitalocean.com/pricing/droplets",
+      "billing_source_url": "https://docs.digitalocean.com/products/droplets/details/pricing/",
+      "official_excerpt": "512 MiB, 1 vCPU, 500 GiB transfer, 10 GiB SSD, $0.00595/hr, $4.00/mo.",
+      "billing_excerpt": "Bundled-plan CPU Droplets are billed per second with a minimum charge of 60 seconds or $0.01, whichever is higher. Usage is capped at 672 hours per month. Powered-off Droplets remain billable.",
+      "observed_rate": "$4.00 per month; $0.00595 per hour",
+      "observed_configuration": "1 vCPU, 512 MiB memory, 500 GiB transfer, 10 GiB SSD",
+      "observed_on": "2026-10-16"
+    }
+  ],
+  "interpretation_limits": [
+    "The entry configurations are not identical: Vultr lists 0.5 GB RAM and does not state included transfer on the cited overview; DigitalOcean lists 512 MiB and 500 GiB transfer.",
+    "Rates are dated public list-price observations, not account-specific quotes or a guarantee of current availability by region.",
+    "These price and billing facts do not establish comparative performance or reliability."
+  ]
+}
