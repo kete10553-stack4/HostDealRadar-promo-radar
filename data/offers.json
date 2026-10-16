@@ -10135,6 +10135,10 @@
       "hash": "5d3bb7e4724a587f816c18d995a0c8612fcf9e929bc7c694e8ddd876835ae790",
       "lastmod": "2026-10-15T12:14:35Z"
     },
+    "/guides/vultr-vs-digitalocean/": {
+      "hash": "c3450f0bae9d509687d1416fc932f42ebba8cf48d540efe84a5cbb576927ba9c",
+      "lastmod": "2026-10-16T09:41:11Z"
+    },
     "/providers/webdock/": {
       "hash": "ca3aa85c85e5eebe9a619c53a37df79e18fa24bb11d9c4dede1b1b538ed5872d",
       "lastmod": "2026-10-05T13:23:31Z"

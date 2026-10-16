@@ -1185,6 +1185,9 @@ def build(config_path=None, output=None):
     rv_css_version=asset_version(ASSETS/'render-vs-railway.css')
     rv_guide_schema={'@context':'https://schema.org','@type':'Article','headline':'Render vs Railway: test the same app before you choose','datePublished':'2026-10-15','dateModified':'2026-10-15','author':{'@type':'Organization','name':'HostDealRadar'},'publisher':{'@type':'Organization','name':'HostDealRadar'},'mainEntityOfPage':domain+rv_guide_route}
     write(Path('guides/render-vs-railway/index.html'),page('Render vs Railway: dated plan terms and a same-app test | HostDealRadar','Compare dated free-plan terms, follow a deployment checklist and download a printable worksheet for testing the same app on Render and Railway.',domain+rv_guide_route,template('render-vs-railway.html'),rv_guide_schema,head_extra=f'<link rel="stylesheet" href="/assets/render-vs-railway.css?v={rv_css_version}">'))
+    vdo_guide_route='/guides/vultr-vs-digitalocean/'
+    vdo_guide_schema={'@context':'https://schema.org','@type':'Article','headline':'vultr vs digitalocean','datePublished':'2026-10-16','dateModified':'2026-10-16','author':{'@type':'Organization','name':cfg['site']['brand']},'publisher':{'@type':'Organization','name':cfg['site']['brand']},'mainEntityOfPage':domain+vdo_guide_route}
+    write(Path('guides/vultr-vs-digitalocean/index.html'),page('Vultr vs DigitalOcean: choose by workload, not by a universal winner | HostDealRadar','A conditional Vultr vs DigitalOcean comparison based on dated configurations, opposite migrations, network problems, location, IPv6 and credits.',domain+vdo_guide_route,template('vultr-vs-digitalocean.html'),vdo_guide_schema))
     def reviewed_row(record):
         total=money(record['first_term_total'],record['currency'])
         monthly=money(record['monthly_equivalent'],record['currency'])
@@ -1375,6 +1378,7 @@ Planned endpoints return HTTP 503 with `temporarily_unavailable` until authentic
     routes.append(wpe_guide_route)
     routes.append(wpk_guide_route)
     routes.append(rv_guide_route)
+    routes.append(vdo_guide_route)
     # Keep zero-current provider pages accessible for truthful status reporting,
     # Complete dated manual plan evidence also supports a substantive provider page.
     routes+=[f'/providers/{p["id"]}/' for p in public_providers if p['id'] in indexable_provider_ids]
