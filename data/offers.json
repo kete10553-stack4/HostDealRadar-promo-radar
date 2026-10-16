@@ -12805,6 +12805,73 @@
           "excerpt": "Selected Plan: Signature 1 Monthly; Plan Price $25.00; Today's Total $25.00; Recurring Fee (Every Month) $25.00."
         }
       }
+    ],
+    "incomplete_checks": [
+      {
+        "provider": "eukhost",
+        "plan": "cPanel Basic shared hosting",
+        "checked_on": "2026-10-15",
+        "currency": "GBP",
+        "source_observations": [
+          {
+            "url": "https://www.eukhost.com/cpanel-web-hosting",
+            "quote": "£4.07 /mo ex VAT",
+            "context": "Official cPanel Basic plan card. The Order Now path led to Choose a Domain; no billing term, first-term total, or renewal amount was shown before a domain was requested."
+          }
+        ],
+        "missing_reasons": {
+          "first_term_total": "The public pricing card shows only a monthly rate. The selected-product flow asks for a domain before displaying any term-specific amount; no first-term total was obtained.",
+          "commitment_months": "No billing term was shown on the official plan card or the observed domain-selection step.",
+          "renewal_monthly_rate": "No renewal rate was shown on the observed official pages.",
+          "monthly_equivalent": "No first-term total and commitment term to divide; the displayed monthly rate was not used to invent a prepaid total."
+        }
+      },
+      {
+        "provider": "netcup",
+        "plan": "VPS 1000 G12.5",
+        "checked_on": "2026-10-15",
+        "currency": "EUR",
+        "source_observations": [
+          {
+            "url": "https://www.netcup.com/en/server/vps",
+            "quote": "12 months contract period, from monthly €14.50; €16.68 (incl. 19% VAT)",
+            "context": "Official VPS overview with the 12-month option selected."
+          },
+          {
+            "url": "https://www.netcup.com/en/server/vps/vps-1000-g12.5-iv-24m-eu#vps-1000-g12.5-iv-12m-eu",
+            "quote": "Minimum contract period: 24 months; Billing period: 24 months; €12.32 per month (incl. 19% VAT)",
+            "context": "Official product details opened from the VPS 1000 G12.5 order link. The displayed default configuration was 24 months; no first-term total or renewal amount appeared."
+          }
+        ],
+        "missing_reasons": {
+          "first_term_total": "The overview and product details display monthly rates, but no actual amount due for the selected contract term.",
+          "renewal_monthly_rate": "No renewal rate was shown on the observed official pages.",
+          "plan_mapping": "The older G12 product names in the existing source rules differ from the currently displayed G12.5 plan names; no old-plan row was inferred from the new product."
+        }
+      },
+      {
+        "provider": "raidboxes",
+        "plan": "WordPress hosting plans, annual-payment pricing",
+        "checked_on": "2026-10-15",
+        "currency": "EUR",
+        "source_observations": [
+          {
+            "url": "https://raidboxes.io/en/wordpress-hosting-pricing/",
+            "quote": "Yearly; 55% discount; Mini €8.10, Starter €10.80, Fully Managed €15.75, Pro €29.25, Pro XL €58.50, Business €85.50 per month. All prices are subject to 19% VAT.",
+            "context": "Official pricing page with Yearly payment frequency selected. The six displayed amounts are monthly equivalents; the page did not show a payable annual total or a renewal rate. The offer note says new customers receive 50% off their first hosting contract for up to 12 months, in addition to the 10% annual-payment discount, through December 30, 2026."
+          },
+          {
+            "url": "https://dashboard.raidboxes.de/neu/",
+            "quote": "50% discount for new customers! Test for up to 14 days free of charge, no payment details required.",
+            "context": "Official trial-start page requests an email address to proceed. No email was entered or submitted and no paid checkout total was shown."
+          }
+        ],
+        "missing_reasons": {
+          "first_term_total": "The official annual-payment page displays monthly equivalents but no payable annual total. No total was calculated from the monthly amounts.",
+          "renewal_monthly_rate": "No renewal price or renewal cadence was shown on the observed official pages.",
+          "plan_comparison": "The current promotion and monthly equivalents are verified, but the first-term total and renewal terms required for a complete comparison row are absent."
+        }
+      }
     ]
   },
   "withdrawn_automated_records": [
