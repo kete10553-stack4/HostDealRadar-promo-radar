@@ -1,0 +1,28 @@
+{
+  "page": "/guides/digitalocean-promo-code/",
+  "checked_date": "2026-10-16",
+  "method": "Manual reading of DigitalOcean's public Signup Credit documentation and Promotional Credit & Discount Terms; no account or checkout test.",
+  "sources": [
+    {
+      "url": "https://docs.digitalocean.com/platform/billing/signup-credit/",
+      "source_last_verified": "15 Jul 2026",
+      "sections": [
+        {"location": "Signup Credit", "excerpt": "When you create your first team, DigitalOcean automatically applies a $5 signup credit. No promo code is required.", "observation": "First-team signup credit is automatic and does not require a code."},
+        {"location": "Signup Credit conditions", "excerpt": "Signup credits expire 90 days after signup.", "observation": "The published signup-credit expiry is 90 days after signup."},
+        {"location": "Signup Credit conditions", "excerpt": "all products except SaaS Add-Ons", "observation": "The page lists the eligible product scope and excludes SaaS Add-Ons."},
+        {"location": "Signup Credit conditions", "excerpt": "You must add a valid payment method before you can create Droplets or other resources.", "observation": "A valid payment method is required before creating resources."}
+      ]
+    },
+    {
+      "url": "https://www.digitalocean.com/legal/promotional-credit-discount-terms",
+      "source_last_updated": "June 7, 2024",
+      "sections": [
+        {"location": "Clause 2", "excerpt": "Each Promotional Credit or Discount code can only be redeemed once and only on one DigitalOcean account.", "observation": "An issued promotional code is single-use on one account; this does not publish a general code."},
+        {"location": "Clause 7", "excerpt": "Promotional Credits and Discounts may not be used in conjunction with any other promotional or incentive offer", "observation": "Combining offers requires DigitalOcean authorization."},
+        {"location": "Clause 8", "excerpt": "will not be applied against any sales, use, gross receipts, or similar transaction based taxes", "observation": "Promotional credit does not offset the listed transaction taxes."},
+        {"location": "Clause 10", "excerpt": "expiration date indicated when you receive the applicable Promotional Credit or Discount code", "observation": "Expiration is tied to the specific issued offer terms, not a universal date."}
+      ]
+    }
+  ],
+  "scope": "Today's reread confirms the public rules in the earlier September 24 guide. It does not establish that no account-specific or privately issued promotion exists. No code was entered, account created, or checkout tested."
+}

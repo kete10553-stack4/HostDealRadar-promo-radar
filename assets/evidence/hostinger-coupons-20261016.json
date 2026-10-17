@@ -1,0 +1,35 @@
+{
+  "source_url": "https://www.hostinger.com/coupons",
+  "checked_date": "2026-10-16",
+  "method": "Manual reading of Hostinger's public coupon page and selected VPS tab in the original Chrome browser; no checkout or redemption test.",
+  "http_status": null,
+  "http_status_note": "The browser observation did not expose an origin response status; none is inferred.",
+  "currency": "USD",
+  "currency_evidence": "US English page view; the cards use $ and the page footer states prices are listed without VAT.",
+  "web_hosting": {
+    "initial_term_months": 48,
+    "payment_wording": "All plans are paid upfront. The monthly rate reflects the total plan price divided by the number of months in your plan.",
+    "plans": [
+      {"plan": "Premium", "regular_monthly_rate": "$11.99", "displayed_monthly_rate": "$2.84/mo", "code_wording": "'COUPONSPAGE' coupon applied", "initial_total": "$136.32 for 48 months", "renewal_wording": "Renews at $10.99/mo", "regular_term_total": "$575.52"},
+      {"plan": "Unlimited", "regular_monthly_rate": "$18.99", "displayed_monthly_rate": "$3.79/mo", "code_wording": "'COUPONSPAGE' coupon applied", "initial_total": "$181.92 for 48 months", "renewal_wording": "Renews at $16.99/mo", "regular_term_total": "$911.52"},
+      {"plan": "Cloud Startup", "regular_monthly_rate": "$27.99", "displayed_monthly_rate": "$7.59/mo", "code_wording": "'COUPONSPAGE' coupon applied", "initial_total": "$364.32 for 48 months", "renewal_wording": "Renews at $25.99/mo", "regular_term_total": "$1,343.52"}
+    ],
+    "coupon_faq": {
+      "one_coupon_per_order": true,
+      "existing_customers": "Discount codes may be used when ordering new hosting plans; renewal discounts are accessed through hPanel.",
+      "deadline": "No exact deadline shown on the observed cards."
+    }
+  },
+  "vps": {
+    "tab": "VPS hosting",
+    "plans": [
+      {"plan": "KVM 1", "displayed_monthly_rate": "$6.17/mo", "code_wording": "'COUPONSPAGE' coupon applied", "renewal_wording": "Renews at $11.99/mo for 2 years."},
+      {"plan": "KVM 2", "displayed_monthly_rate": "$8.54/mo", "code_wording": "'COUPONSPAGE' coupon applied", "renewal_wording": "Renews at $14.99/mo for 2 years."},
+      {"plan": "KVM 4", "displayed_monthly_rate": "$12.34/mo", "code_wording": "'COUPONSPAGE' coupon applied", "renewal_wording": "Renews at $28.99/mo for 2 years."},
+      {"plan": "KVM 8", "displayed_monthly_rate": "$24.69/mo", "code_wording": "'COUPONSPAGE' coupon applied", "renewal_wording": "Renews at $49.99/mo for 2 years."}
+    ],
+    "not_shown": ["initial prepaid total", "initial commitment term"],
+    "deadline": "No exact deadline shown on the observed VPS cards."
+  },
+  "scope": "Current public-page observations only. The cards do not establish account-specific eligibility, checkout acceptance, or the next renewal invoice total. The VPS card observation does not establish its initial term or prepaid total."
+}

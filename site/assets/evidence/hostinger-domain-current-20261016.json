@@ -1,0 +1,24 @@
+{
+  "page": "/guides/hostinger-domain-coupon-code/",
+  "checked_date": "2026-10-16",
+  "method": "Manual reading of Hostinger's public .com domain page and public coupon page; no standalone domain order or checkout test.",
+  "sources": [
+    {
+      "url": "https://www.hostinger.com/tld/com-domain",
+      "sections": [
+        {"location": "Price banner", "excerpt": "$19.99/yr $0.01/1st year", "observation": "The current page displays $0.01 for the first year beside $19.99/year."},
+        {"location": "Price banner", "excerpt": "Best value for 3 year term", "observation": "A three-year term hint is shown, but no complete three-year payable total was observed."},
+        {"location": "Domain information for .com", "excerpt": "Minimum registration period 1 year; Maximum registration period 10 years; ICANN fee $0.20", "observation": "The page lists these registration limits and fee; no standalone domain code is printed alongside the .com offer."},
+        {"location": "FAQ: How much does a .com domain cost?", "excerpt": "After that, the renewal fee is $19.99/year.", "observation": "The FAQ identifies $0.01 as the first-year price and $19.99/year as renewal."}
+      ]
+    },
+    {
+      "url": "https://www.hostinger.com/coupons",
+      "sections": [
+        {"location": "Web-hosting coupon cards and FAQ", "excerpt": "'COUPONSPAGE' coupon applied", "observation": "The displayed coupon applies to web-hosting plans. The page does not show a standalone domain-registration or domain-renewal code."},
+        {"location": "Footer", "excerpt": "Prices are listed without VAT", "observation": "The page states displayed prices exclude VAT."}
+      ]
+    }
+  ],
+  "scope": "This current check refreshes the .com price, renewal FAQ, and hosting-code product boundary. The free-domain terms, refund exceptions, and privacy details remain dated to their separate September 29, 2026 reads in hostinger-domain-20260929.json. No account-specific code, domain order, or full multi-year payment was tested."
+}
