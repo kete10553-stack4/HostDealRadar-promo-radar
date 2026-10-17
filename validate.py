@@ -361,8 +361,12 @@ def check():
     assert '40% off all hosting plans for four months' in cloudways_guide and 'Promo code already applied' in cloudways_guide and 'coupon=SUMMER404' in cloudways_guide, 'Cloudways guide omits the rendered offer, automatic-code note, or current signup-link parameter'
     assert 'does not show a human-readable code or manual-entry field' in cloudways_guide and 'works for any account' in cloudways_guide, 'Cloudways guide omits the no-manual-code observation or overstates parameter applicability'
     cloudways_schema=schemas(cloudways_guide)[0]
-    assert cloudways_schema.get('@type')=='FAQPage' and len(cloudways_schema.get('mainEntity',[]))==7, 'Cloudways guide must publish its seven visible FAQ answers'
-    cloudways_schema_text=json.dumps(cloudways_schema,ensure_ascii=False)
+    cloudways_graph=cloudways_schema.get('@graph',[])
+    cloudways_faq=next((item for item in cloudways_graph if item.get('@type')=='FAQPage'),{})
+    cloudways_article_schema=next((item for item in cloudways_graph if item.get('@type')=='Article'),{})
+    assert len(cloudways_faq.get('mainEntity',[]))==7, 'Cloudways guide must publish its seven visible FAQ answers'
+    assert cloudways_article_schema.get('datePublished')=='2026-09-19' and cloudways_article_schema.get('dateModified')=='2026-10-16', 'Cloudways guide Article dates must preserve original publication and record the substantive update'
+    cloudways_schema_text=json.dumps(cloudways_faq,ensure_ascii=False)
     assert 'Sept 16, 2026 14:00:00' in cloudways_schema_text and 'coupon=SUMMER404' in cloudways_schema_text and 'October 5, 2026' in cloudways_schema_text, 'Cloudways FAQ structured data is stale or omits current-page deadline/link attribution'
     # The current-code guide links to, but does not repeat, the historical archive.
     archive_pointer=cloudways_guide[cloudways_guide.index('id="archive"'):cloudways_guide.index('<h2>Before you start a paid plan</h2>')]

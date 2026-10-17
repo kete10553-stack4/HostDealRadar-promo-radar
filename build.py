@@ -913,7 +913,7 @@ def build(config_path=None, output=None):
     namecheap_promo_route='/guides/namecheap-promo-code/'
     cloudways_guide_route='/guides/cloudways-coupon-code/'
     cloudways_guide=template('cloudways-coupon-code.html')
-    cloudways_guide_schema={'@context':'https://schema.org','@type':'FAQPage','mainEntity':[
+    cloudways_guide_schema={'@context':'https://schema.org','@graph':[{'@type':'Article','headline':'Cloudways coupon code: what the official page showed and how billing works','datePublished':'2026-09-19','dateModified':'2026-10-16','author':{'@type':'Organization','name':cfg['site']['brand']},'publisher':{'@type':'Organization','name':cfg['site']['brand']},'mainEntityOfPage':domain+cloudways_guide_route},{'@type':'FAQPage','mainEntity':[
         {'@type':'Question','name':'What Cloudways offer does the official page show?','acceptedAnswer':{'@type':'Answer','text':'As read on October 5, 2026 at 1:19 a.m. Pacific, the current page showed a countdown target of Sept 16, 2026 14:00:00, a signup link carrying coupon=SUMMER404, and “Promo code already applied”; its timer values were negative because the target had passed. This page check did not test checkout or whether the parameter works for any account.'}},
         {'@type':'Question','name':'What code should I enter?','acceptedAnswer':{'@type':'Answer','text':'As read on October 5, 2026 at 1:19 a.m. Pacific, the current page said “Promo code already applied,” showed no human-readable code or manual-entry field, and linked to signup with coupon=SUMMER404. The URL parameter alone does not establish whether it can be redeemed by any account.'}},
         {'@type':'Question','name':'Does Cloudways list an exact end date for this offer?','acceptedAnswer':{'@type':'Answer','text':'The current page contains the countdown target Sept 16, 2026 14:00:00, read on October 5, 2026 at 1:19 a.m. Pacific. At that time the counter values were negative, not zero; the page does not state the timer’s time zone.'}},
@@ -921,7 +921,7 @@ def build(config_path=None, output=None):
         {'@type':'Question','name':'Did this check verify checkout or the amount on a final bill?','acceptedAnswer':{'@type':'Answer','text':'No. It records the public page only, not signup, checkout, account eligibility, tax, or a final bill.'}},
         {'@type':'Question','name':"What were Cloudways’ own Black Friday codes?",'acceptedAnswer':{'@type':'Answer','text':'Saved Cloudways pages printed BFCM18, BFCM40, BFCM2021 and BFCM4030 in their respective years. These are historical source statements, not current working codes. The retained 2020 response is a security-check page with no offer text.'}},
         {'@type':'Question','name':'Are the Cloudways codes on coupon sites Cloudways codes?','acceptedAnswer':{'@type':'Answer','text':"Not necessarily. Cloudways’ saved roundups also listed partner offers for Inspectlet, NotificationX and MexBS. Those were not additional Cloudways hosting discounts."}}
-    ]}
+    ]}]}
     write(Path('guides/cloudways-coupon-code/index.html'),page('Cloudways coupon code: current official 40% offer | HostDealRadar','Cloudways currently displays 40% off hosting plans for four months, eligibility, automatic code application, migration offer, and evidence limits.',domain+cloudways_guide_route,cloudways_guide,cloudways_guide_schema))
     # The archived table moved here from the coupon guide so the head query stays
     # with the current-status guide; this page carries the archive wording only.
