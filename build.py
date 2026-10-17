@@ -923,6 +923,10 @@ def build(config_path=None, output=None):
         {'@type':'Question','name':'Are the Cloudways codes on coupon sites Cloudways codes?','acceptedAnswer':{'@type':'Answer','text':"Not necessarily. Cloudways’ saved roundups also listed partner offers for Inspectlet, NotificationX and MexBS. Those were not additional Cloudways hosting discounts."}}
     ]}]}
     write(Path('guides/cloudways-coupon-code/index.html'),page('Cloudways coupon code: has the official offer expired? | HostDealRadar','The official Cloudways promo page lists four months at 40% off, but its September 16, 2026 end target has passed; current availability is not confirmed.',domain+cloudways_guide_route,cloudways_guide,cloudways_guide_schema))
+    cloudways_trial_route='/guides/cloudways-free-trial/'
+    cloudways_trial=template('cloudways-free-trial.html')
+    cloudways_trial_schema={'@context':'https://schema.org','@type':'Article','headline':'Cloudways free trial: 3 days, when billing starts, and what to check','datePublished':'2026-10-17','dateModified':'2026-10-17','author':{'@type':'Organization','name':cfg['site']['brand']},'publisher':{'@type':'Organization','name':cfg['site']['brand']},'mainEntityOfPage':domain+cloudways_trial_route}
+    write(Path('guides/cloudways-free-trial/index.html'),page('Cloudways free trial: 3 days, billing, and trial-end rules | HostDealRadar','Cloudways says its standard trial lasts 3 days without a credit card. Compare Flexible and Autonomous trial rules, billing timing, and how to avoid an unintended paid upgrade.',domain+cloudways_trial_route,cloudways_trial,cloudways_trial_schema))
     # The archived table moved here from the coupon guide so the head query stays
     # with the current-status guide; this page carries the archive wording only.
     cloudways_archive_route='/guides/cloudways-coupon-archive/'
@@ -1366,7 +1370,7 @@ Planned endpoints return HTTP 503 with `temporarily_unavailable` until authentic
     write(Path('_worker.js'),agent_worker(unpublished_source_only))
     write(Path('robots.txt'),'User-agent: *\nAllow: /\nContent-Signal: ai-train=no, search=yes, ai-input=no\nAgentmap: '+domain+'/.well-known/ai-catalog.json\nSitemap: '+domain+'/sitemap.xml\n')
     write(Path('404.html'),page('Page not found | HostDealRadar','This page does not exist.',domain+'/404.html',prose('Page not found','<p><a href="/">Return to current offers</a></p>'),{'@context':'https://schema.org','@type':'WebPage','name':'Page not found'}))
-    routes=['/','/providers/','/compare/','/methodology/','/about/','/contact/','/disclosure/','/privacy/',guide_route,cloudways_guide_route,cloudways_archive_route,digitalocean_guide_route,hosting_coupons_route,hostinger_guide_route]
+    routes=['/','/providers/','/compare/','/methodology/','/about/','/contact/','/disclosure/','/privacy/',guide_route,cloudways_guide_route,cloudways_archive_route,cloudways_trial_route,digitalocean_guide_route,hosting_coupons_route,hostinger_guide_route]
     routes.append(hostinger_vps_route)
     routes.append(hostinger_domain_route)
     routes.append(a2_guide_route)

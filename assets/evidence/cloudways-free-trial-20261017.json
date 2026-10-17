@@ -1,0 +1,37 @@
+{
+  "topic": "Cloudways free trial",
+  "checked_at": "2026-10-17",
+  "sources": [
+    {
+      "url": "https://support.cloudways.com/en/articles/5245051-getting-started-faqs",
+      "publisher": "Cloudways Help Center",
+      "statements_used": [
+        "The standard trial is 3 days and starts when a trial server is created.",
+        "Cloudways says it does not provide permanent free hosting; paid use after trial is pay-as-you-go.",
+        "Charges depend on the server plan, provider, server size, bandwidth and paid add-ons."
+      ]
+    },
+    {
+      "url": "https://support.cloudways.com/en/articles/5116141-how-to-upgrade-cloudways-account-from-trial-to-full",
+      "publisher": "Cloudways Help Center",
+      "statements_used": [
+        "The standard trial does not require a credit card.",
+        "Usage is invoiced at the start of the following month.",
+        "A card authorization may be temporarily $1 and reversed; PayPal $5 is applied toward balance or next invoice."
+      ]
+    },
+    {
+      "url": "https://support.cloudways.com/en/articles/10061824-how-to-subscribe-autonomous-trial",
+      "publisher": "Cloudways Help Center",
+      "statements_used": [
+        "Autonomous has a 3-day trial without requiring a card to start.",
+        "If a payment method was already added, Cloudways says the account is automatically upgraded to Plan 1 after the trial.",
+        "The article says delete the application or unsubscribe before expiry to avoid the automatic upgrade."
+      ]
+    }
+  ],
+  "limits": [
+    "No account was created and no trial or checkout was tested.",
+    "Published terms are attributed to Cloudways; actual account state and charges must be checked in the user's dashboard."
+  ]
+}

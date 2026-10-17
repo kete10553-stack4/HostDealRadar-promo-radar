@@ -10011,12 +10011,12 @@
   "source_403_history": [],
   "page_lastmod": {
     "/": {
-      "hash": "99c5533ff118a83afa4494f40a111971ac80dd596a94038dccf0366a0ba6d1c6",
-      "lastmod": "2026-10-17T03:22:03Z"
+      "hash": "7cf007865debfe8e8bd2d86ca7002e27012ac38dfd67b6f672d3a1ea0b8a8522",
+      "lastmod": "2026-10-17T11:52:04Z"
     },
     "/providers/": {
-      "hash": "2d0f19c5cbf4dd8a182e913db4ace504b7d90169e4615e8be7dacfbc6a67ae41",
-      "lastmod": "2026-10-17T03:05:52Z"
+      "hash": "84dde8cdf57b76cd199fd354f7f058e7ae926eb181d178385f9a462ec78148bc",
+      "lastmod": "2026-10-17T11:52:04Z"
     },
     "/compare/": {
       "hash": "ded6b829c4625d573961c212930682310eb1cc9dd84884f71bc14ebde189db1c",
@@ -10047,12 +10047,16 @@
       "lastmod": "2026-10-16T10:32:04Z"
     },
     "/guides/cloudways-coupon-code/": {
-      "hash": "86bf1198f62e90c24f148d2f80640d5f46176c1c24e1c31fb04773d09704db5e",
-      "lastmod": "2026-10-17T02:14:03Z"
+      "hash": "2efbdc6be4f15fcbaab8185a8e80ffdd5c31ce8cc6f9ac87318a296d1bbd4a60",
+      "lastmod": "2026-10-17T11:52:04Z"
     },
     "/guides/cloudways-coupon-archive/": {
-      "hash": "24ff9ff3f65ce1c0ec3a09fa7636ee24a9e93d37f5f5d4b45b39fdf41187ad09",
-      "lastmod": "2026-10-05T13:23:31Z"
+      "hash": "b6ca8f0f76a46899957fb48f06a8fd63cd1d5cd45017a746eb451703bb1e0c19",
+      "lastmod": "2026-10-17T11:52:04Z"
+    },
+    "/guides/cloudways-free-trial/": {
+      "hash": "b89ab80731a9dc3f708c01daf7a165750a0ba888afb3b00686a29c681db51f1d",
+      "lastmod": "2026-10-17T11:52:04Z"
     },
     "/guides/digitalocean-promo-code/": {
       "hash": "fb22ac2c01a9e8da6accd1d3d6fc1a54bb441e390ab93313588db0c5b8503375",

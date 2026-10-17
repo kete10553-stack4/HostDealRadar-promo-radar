@@ -10,7 +10,7 @@
 {"provider":"ionos","guides":[{"path":"/guides/ionos-coupon-code/","title":"VPS cart, advance billing and cancellation"}]}
 {"provider":"godaddy","guides":[{"path":"/guides/godaddy-renewal-coupon/","title":"Domain renewal and transfer options"}]}
 {"provider":"namecheap","guides":[{"path":"/guides/namecheap-promo-code/","title":"Promo codes by product"},{"path":"/guides/namecheap-domain-renewal-coupon/","title":"Domain renewal coupon and transfer questions"}]}
-{"provider":"cloudways","guides":[{"path":"/guides/cloudways-coupon-code/","title":"Coupon code and eligibility"},{"path":"/guides/cloudways-coupon-archive/","title":"Earlier coupon observations (archive)"}]}
+{"provider":"cloudways","guides":[{"path":"/guides/cloudways-coupon-code/","title":"Coupon code and eligibility"},{"path":"/guides/cloudways-free-trial/","title":"Free-trial billing and expiry"},{"path":"/guides/cloudways-coupon-archive/","title":"Earlier coupon observations (archive)"}]}
 {"provider":"digitalocean","guides":[{"path":"/guides/digitalocean-promo-code/","title":"Signup credit and promo-code conditions"}]}
 {"provider":"hostinger","guides":[{"path":"/guides/hostinger-coupon-code/","title":"Web hosting coupon and renewal terms"},{"path":"/guides/hostinger-vps-coupon-code/","title":"VPS coupon-code check"},{"path":"/guides/hostinger-domain-coupon-code/","title":"Domain offers and renewal conditions"}]}
 {"provider":"a2-hosting","guides":[{"path":"/guides/a2-hosting-coupon-code/","title":"A2 / Hosting.com cart prices, promo code and renewal terms"}]}

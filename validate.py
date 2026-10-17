@@ -409,6 +409,14 @@ def check():
     assert '/guides/cloudways-coupon-code/' in (ROOT/'site/providers/cloudways/index.html').read_text(encoding='utf-8'), 'Cloudways provider page does not link the official promo guide'
     assert '/guides/cloudways-coupon-archive/' in (ROOT/'site/providers/cloudways/index.html').read_text(encoding='utf-8'), 'Cloudways provider page points its historical claims at the current-code guide'
     assert 'https://hostdealradar.com/guides/cloudways-coupon-code/' in sitemap, 'Sitemap omits the Cloudways promo guide'
+    cloudways_trial=(ROOT/'site/guides/cloudways-free-trial/index.html').read_text(encoding='utf-8')
+    assert '<h1>Cloudways free trial: 3 days, when billing starts, and what to check</h1>' in cloudways_trial, 'Cloudways free-trial page is missing its distinct search intent'
+    assert 'does not provide permanent free hosting' in cloudways_trial and 'automatically upgraded to Plan 1' in cloudways_trial, 'Cloudways free-trial page omits the free-plan distinction or Autonomous trial-end rule'
+    assert all(source in cloudways_trial for source in ('https://support.cloudways.com/en/articles/5245051-getting-started-faqs','https://support.cloudways.com/en/articles/5116141-how-to-upgrade-cloudways-account-from-trial-to-full','https://support.cloudways.com/en/articles/10061824-how-to-subscribe-autonomous-trial')), 'Cloudways free-trial page omits an official source'
+    trial_schema=schemas(cloudways_trial)[0]
+    assert trial_schema.get('datePublished')=='2026-10-17' and trial_schema.get('dateModified')=='2026-10-17', 'Cloudways free-trial page must carry its original publication date'
+    assert '/guides/cloudways-free-trial/' in home and '/guides/cloudways-free-trial/' in (ROOT/'site/providers/cloudways/index.html').read_text(encoding='utf-8'), 'Cloudways free-trial page lacks a home or provider link'
+    assert 'https://hostdealradar.com/guides/cloudways-free-trial/' in sitemap, 'Sitemap omits the Cloudways free-trial page'
     digitalocean_guide=(ROOT/'site/guides/digitalocean-promo-code/index.html').read_text(encoding='utf-8')
     assert 'No. DigitalOcean says' in digitalocean_guide and 'We did not create an account' in digitalocean_guide, 'DigitalOcean guide omits its answer or evidence limit'
     assert 'https://docs.digitalocean.com/platform/billing/signup-credit/' in digitalocean_guide and 'https://www.digitalocean.com/legal/promotional-credit-discount-terms' in digitalocean_guide, 'DigitalOcean guide omits an official source'
