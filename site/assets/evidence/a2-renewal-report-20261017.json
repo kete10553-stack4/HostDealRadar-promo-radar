@@ -1,0 +1,37 @@
+{
+  "recorded_at_utc": "2026-10-18T02:46:33Z",
+  "read_date_local": "2026-10-17 America/Los_Angeles (PDT)",
+  "source_type": "Customer report, not an official price or verified invoice",
+  "url": "https://www.reddit.com/r/webhosting/comments/1r6nt5u/hostingcom_formerly_a2_hosting_raised_my_annual/",
+  "title": "Hosting.com (formerly A2 Hosting) raised my annual plan. Looking for advice",
+  "posted_date": "2026-02-16",
+  "author": "wheat",
+  "source_excerpts": {
+    "annual_amounts": "My annual rate has been $85.97 all of that time. My account includes multiple email accounts and multiple domains, all managed via Cpanel. But it's all hobby project stuff for me and my family. My domain names are registered elsewhere. I got an email saying it'll now be $155, an 80% jump.",
+    "monthly_equivalent": "I'm trying to beat this new rate, which is ~$13/mo",
+    "author_comment": "But an 80% jump in one year is not a good way to do business."
+  },
+  "editorial_calculations": {
+    "annual_increase_percent": "(155 - 85.97) / 85.97 * 100 = approximately 80.3%",
+    "monthly_equivalent_usd": "155 / 12 = approximately 12.92; this is not monthly billing",
+    "conditional_one_time_discount": "If a 10% offer applies to the full $155, payable amount is $139.50, approximately 62.3% above $85.97. The post's 69% figure is not adopted."
+  },
+  "code_evidence": {
+    "code": "WH4YAL",
+    "observed_date": "2026-10-06",
+    "record": "/assets/evidence/a2-hosting-20261006.json",
+    "scope": "Automatically displayed in an anonymous new-purchase cart; not manually entered or redeemed",
+    "renewal_eligibility_verified": false,
+    "rechecked_on_this_edit": false
+  },
+  "limitations": [
+    "No customer invoice, account or retention-discount terms were accessed.",
+    "One customer's historical bill does not establish a universal price increase or current official pricing.",
+    "The October 2026 title month indicates the editorial update; the report itself is dated February 16 and the cart evidence October 6.",
+    "The separately read October threads are discussion context only and do not corroborate the annual amounts."
+  ],
+  "other_discussions_read": [
+    "https://www.reddit.com/r/webhosting/comments/1x134pi/hostingcom_formerly_a2hosting_1_year_later_how/",
+    "https://www.reddit.com/r/HostingReport/comments/1ww2rnz/a2hostingcom_support_has_hit_rock_bottom/"
+  ]
+}
