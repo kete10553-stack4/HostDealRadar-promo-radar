@@ -10017,8 +10017,8 @@
   "source_403_history": [],
   "page_lastmod": {
     "/": {
-      "hash": "b733f81ac6d3a8dc2f61c765e6d804ebec60873edf888ee93c67272b2ed5daa4",
-      "lastmod": "2026-10-18T03:12:46Z"
+      "hash": "e78ced1cd1611b0a20df92e04d74a95d38878403fc7f8f51784249a6c129b3d8",
+      "lastmod": "2026-10-18T03:17:42Z"
     },
     "/providers/": {
       "hash": "253983c0782fd12adddf63c1922019a9d74a579fb445e04ce0457f00c2f19c0e",
@@ -10049,100 +10049,100 @@
       "lastmod": "2026-10-14T07:13:45Z"
     },
     "/guides/godaddy-renewal-coupon/": {
-      "hash": "469d8701fd9de109d01885491358448a4cefbbf8e4d5469bd62706c8c0347131",
-      "lastmod": "2026-10-16T10:32:04Z"
+      "hash": "0ed1c10b2dac87ec1e6ce267b17c4d97afe57095df1cb6e94cbbd77bf0fdbb87",
+      "lastmod": "2026-10-18T03:17:42Z"
     },
     "/guides/cloudways-coupon-code/": {
-      "hash": "2efbdc6be4f15fcbaab8185a8e80ffdd5c31ce8cc6f9ac87318a296d1bbd4a60",
-      "lastmod": "2026-10-17T11:52:04Z"
+      "hash": "12f5611fbd36efd8dc705ba90a58fc30cfe656a25b38c6257777d827f2c650bf",
+      "lastmod": "2026-10-18T03:17:42Z"
     },
     "/guides/cloudways-coupon-archive/": {
-      "hash": "b6ca8f0f76a46899957fb48f06a8fd63cd1d5cd45017a746eb451703bb1e0c19",
-      "lastmod": "2026-10-17T11:52:04Z"
+      "hash": "07d4c4162297af07e87232fa82007348e663f52e792246db04a5622ab8f9e3be",
+      "lastmod": "2026-10-18T03:17:42Z"
     },
     "/guides/cloudways-free-trial/": {
-      "hash": "b89ab80731a9dc3f708c01daf7a165750a0ba888afb3b00686a29c681db51f1d",
-      "lastmod": "2026-10-17T11:52:04Z"
+      "hash": "dc54624a8fcfff5fd832adaba635593b1e953d7a08441f3f379975bb392edefc",
+      "lastmod": "2026-10-18T03:17:42Z"
     },
     "/guides/digitalocean-promo-code/": {
-      "hash": "fb22ac2c01a9e8da6accd1d3d6fc1a54bb441e390ab93313588db0c5b8503375",
-      "lastmod": "2026-10-17T02:48:12Z"
+      "hash": "3c76699b7206d4e8532ad03bc163397bbe04c4660804391a7df40c98b3fc88ab",
+      "lastmod": "2026-10-18T03:17:42Z"
     },
     "/guides/hosting-coupons/": {
-      "hash": "82c3cef9fe2a6ac7fed53284f11ecf28e7a916bbb0a257eb7adf6d5a6e27bad5",
-      "lastmod": "2026-10-08T08:15:37Z"
+      "hash": "9385944b6c2739c553912c199a0f58d4e0d5496f42acb4910fcebaabce64cb58",
+      "lastmod": "2026-10-18T03:17:42Z"
     },
     "/guides/hostinger-coupon-code/": {
-      "hash": "606cd012b17eece390ccc5e28aa02ed99e12361a32b0a711c3d522ead7581557",
-      "lastmod": "2026-10-17T02:48:12Z"
+      "hash": "e8ccdf3c4dc838544f29b02eb15b8351a9031692bc87b829ed6a2d8828820de5",
+      "lastmod": "2026-10-18T03:17:42Z"
     },
     "/guides/hostinger-vps-coupon-code/": {
-      "hash": "f6398bd6694c83afc0f314e060d5b72360e091f8ada3615a5d63d3b4f0888ad4",
-      "lastmod": "2026-10-17T02:48:12Z"
+      "hash": "c007b70dbb9c4cecb07b0e7436a6ba91ab238db13af9b8bcbe2b452ca6e342cf",
+      "lastmod": "2026-10-18T03:17:42Z"
     },
     "/guides/hostinger-domain-coupon-code/": {
-      "hash": "b041743d7b9cc540209b1c75eb58829e327cd2bb384e2345d5c55a6b09ec740a",
-      "lastmod": "2026-10-17T02:48:12Z"
+      "hash": "796d5f4c4703bb37a33edfb5caa7836f4bc40adbaa045dfd19196b9989bcefda",
+      "lastmod": "2026-10-18T03:17:42Z"
     },
     "/guides/a2-hosting-coupon-code/": {
       "hash": "b6e606a5d4be9a3c3315aaa6b51b7f5b9f09049934619d03cc6e10ea20183838",
       "lastmod": "2026-10-18T03:00:38Z"
     },
     "/guides/bluehost-promo-code/": {
-      "hash": "48f410661e4527e22ad3b0af9e55e5a6809a343582b97659a57c876e9070410f",
-      "lastmod": "2026-10-05T13:23:31Z"
+      "hash": "63791b08b0df1dcae30beed6276f9112b0807b45439536c680aa863d3aebc5b1",
+      "lastmod": "2026-10-18T03:17:42Z"
     },
     "/guides/hostgator-coupon-code/": {
-      "hash": "19f9c1074b1d1d8cc338ff930e8b42f1df18a6d73933964f9f4df17a7dddae19",
-      "lastmod": "2026-10-05T13:23:31Z"
+      "hash": "b1fed8d301f3e509d3e62f589582f851576c81d87aef7f755df2e74b572cc5f0",
+      "lastmod": "2026-10-18T03:17:42Z"
     },
     "/guides/ovh-promo-code/": {
-      "hash": "f54e649675c349aee611ead749ab7d9b5df23481f2343ab5f81f5c6940c54f67",
-      "lastmod": "2026-10-15T08:54:03Z"
+      "hash": "c713b502a07fd53f8fbecd0fe77f301308dbb2d748b92bef453537070607e706",
+      "lastmod": "2026-10-18T03:17:42Z"
     },
     "/guides/network-solutions-coupon-code/": {
-      "hash": "ffe32374b6229aa3081950ce0d0b94cd694e1b7b5b0e25ecbf7e458487a85e68",
-      "lastmod": "2026-10-06T06:39:44Z"
+      "hash": "753391fda719af996c51a8bdcd3fc575511c5c92e283b50946d77eec558312df",
+      "lastmod": "2026-10-18T03:17:42Z"
     },
     "/guides/dreamhost-coupon-code/": {
-      "hash": "714110711ee54857923bdf316cc407d2036770ce5abcf18c0177d78e39f567e5",
-      "lastmod": "2026-10-08T08:17:25Z"
+      "hash": "abe8e945069c1d7446b2e48e14cd61552a5bddf00dabe3934ea7de33a378d9b5",
+      "lastmod": "2026-10-18T03:17:42Z"
     },
     "/guides/namecheap-promo-code/": {
-      "hash": "3ce7012515cb477e02dbaa4b5c31f1a6bd8960fd729519be2bac4d6c709cd07c",
-      "lastmod": "2026-10-15T04:36:44Z"
+      "hash": "f7b6bf375a7ed9af570b76c8dc1928a9ef158e39852343d6e965b0571843297b",
+      "lastmod": "2026-10-18T03:17:42Z"
     },
     "/guides/namecheap-domain-renewal-coupon/": {
-      "hash": "cf20f76a4797254795b653eb2a0d7ea6cb46e9410e85f8b2eb55847deac75f69",
-      "lastmod": "2026-10-15T04:36:44Z"
+      "hash": "f6cb45331c922002c738bbfafbcd04908b2e50d74a7166e0fd0a90617fa7000b",
+      "lastmod": "2026-10-18T03:17:42Z"
     },
     "/guides/ionos-coupon-code/": {
-      "hash": "4800216441dc4e68f7ed2a522be2c65b5f5c7916318f64f875d5d867b7d5001c",
-      "lastmod": "2026-10-17T03:05:52Z"
+      "hash": "2b7c4f8cd3ed576d55bad2cea8804c591ef1189042c84aa29ed5170ebf69d435",
+      "lastmod": "2026-10-18T03:17:42Z"
     },
     "/guides/dynadot-coupon-code/": {
-      "hash": "0cf6176bd880cebc2e5a09dd2585ed21e751dea3a61b7632349c639d795fb6a0",
-      "lastmod": "2026-10-06T09:00:58Z"
+      "hash": "86d31b9eb62967093582ce3c9d4c6b89ff7574fcb82124506fb79954ae3f2ef9",
+      "lastmod": "2026-10-18T03:17:42Z"
     },
     "/guides/namesilo-coupon-code/": {
-      "hash": "6cde4a33e6d9e91508be1952aed89d29ae6a84f4eb5f3978c6230c7599f5dae7",
-      "lastmod": "2026-10-17T02:42:04Z"
+      "hash": "8e16582705b09ed073e6530cf50c7d9e8331cf49a8018f1e6b9e3356d8381238",
+      "lastmod": "2026-10-18T03:17:42Z"
     },
     "/guides/wp-engine-renewal-overage/": {
-      "hash": "6520a1148fa4d419a51e011890f5c74954d519ae4c8d961b47ff79d767bef64c",
-      "lastmod": "2026-10-14T07:53:50Z"
+      "hash": "8251eb09e6352d3dd5cd645a491d4ea701b3713a0e7dec78aa1e2ba890e88c41",
+      "lastmod": "2026-10-18T03:17:42Z"
     },
     "/guides/wp-engine-vs-kinsta/": {
-      "hash": "a8408873d1f945e1d919ec9501f2cc349700af0b501ec48696019a66304c3aa0",
-      "lastmod": "2026-10-17T03:24:02Z"
+      "hash": "d8a38f79e34163f38a2337af6ea6f706ca3a6793980fc77daa12b4586ec4727d",
+      "lastmod": "2026-10-18T03:17:42Z"
     },
     "/guides/render-vs-railway/": {
-      "hash": "5d3bb7e4724a587f816c18d995a0c8612fcf9e929bc7c694e8ddd876835ae790",
-      "lastmod": "2026-10-15T12:14:35Z"
+      "hash": "f533a9f4c4a482dfce30b7fbbc1ee9218aba6362fc35856acf984660c240f3c4",
+      "lastmod": "2026-10-18T03:17:42Z"
     },
     "/guides/vultr-vs-digitalocean/": {
-      "hash": "ebf240bde77793ecb4ad760e4af6038a8642c855fb80b71570698804ed23e63c",
-      "lastmod": "2026-10-16T10:30:06Z"
+      "hash": "7856724550eee3b84be8c9edf821cffc676c784f90a3584d38a69cd44959c979",
+      "lastmod": "2026-10-18T03:17:42Z"
     },
     "/providers/webdock/": {
       "hash": "ca3aa85c85e5eebe9a619c53a37df79e18fa24bb11d9c4dede1b1b538ed5872d",

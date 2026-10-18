@@ -27,6 +27,82 @@ class Links(HTMLParser):
 def schemas(text):
     return [json.loads(raw) for raw in re.findall(r'<script type="application/ld\+json">(.*?)</script>', text)]
 
+def check_home_article_dates(home, articles):
+    """Every article needs one dated homepage card, ordered by editorial date."""
+    seen=[]; dates=[]
+    for block in re.findall(r'<section class="guide-band">(.*?)</section>', home, re.S):
+        link=re.search(r'href="(/guides/[^"#?]+/)"', block)
+        if not link:
+            continue
+        route=link.group(1)
+        assert route in articles, f'Homepage article has no Article metadata: {route}'
+        assert route not in seen, f'Duplicate homepage article: {route}'
+        seen.append(route)
+        visible=compact(html_unescape(re.sub('<[^>]+>', ' ', block)))
+        match=re.search(r'\b(Published|Updated) ([A-Z][a-z]+ \d{1,2}, \d{4})(?:; originally published ([A-Z][a-z]+ \d{1,2}, \d{4}))?\.', visible)
+        assert match, f'Homepage article lacks publication/update label: {route}'
+        status, latest, original=match.groups()
+        latest=datetime.strptime(latest, '%B %d, %Y').date().isoformat()
+        article=articles[route]; published=article['datePublished']; modified=article['dateModified']
+        assert latest==modified, f'Homepage date disagrees with Article dateModified: {route}'
+        assert status==('Updated' if modified>published else 'Published'), f'Homepage update is mislabeled as a new publication: {route}'
+        if modified>published:
+            assert original and datetime.strptime(original, '%B %d, %Y').date().isoformat()==published, f'Homepage update lost its original publication date: {route}'
+        else:
+            assert original is None, f'Unchanged article has a contradictory publication label: {route}'
+        dates.append(latest)
+    assert set(seen)==set(articles), f'Articles missing a homepage card: {sorted(set(articles)-set(seen))}'
+    assert dates==sorted(dates, reverse=True), 'Homepage articles are not ordered by latest publication/update date'
+
+def check_article_dates(files, home):
+    articles={}
+    for path in files:
+        text=path.read_text(encoding='utf-8')
+        for schema in schemas(text):
+            for article in schema.get('@graph',[schema]):
+                if article.get('@type')!='Article':
+                    continue
+                route='/'+path.parent.relative_to(ROOT/'site').as_posix()+'/'
+                published=article['datePublished']; modified=article['dateModified']
+                assert all(re.fullmatch(r'\d{4}-\d{2}-\d{2}',d) for d in (published,modified)), f'Invalid Article date: {route}'
+                datetime.strptime(published,'%Y-%m-%d'); dt=datetime.strptime(modified,'%Y-%m-%d')
+                assert modified>=published, f'Article update predates publication: {route}'
+                assert route not in articles, f'Duplicate Article metadata: {route}'
+                articles[route]=article
+                dateline=re.search(r'<p class="article-dates small">(.*?)</p>',text,re.S)
+                # A previously dated heading can carry the same label without a
+                # second line; this preserves the frozen A2 experiment page.
+                visible=dateline.group(1) if dateline else text.split('<main',1)[1].split('</h1>',1)[0]
+                visible=compact(html_unescape(re.sub(r'<style>.*?</style>|<[^>]+>', ' ', visible, flags=re.S)))
+                status='Updated' if modified>published else 'Published'
+                date_label=dt.strftime('%B ')+str(dt.day)+dt.strftime(', %Y')
+                assert re.search(r'\b'+status+r'\s+'+re.escape(date_label)+r'\b',visible,re.I), f'Article lacks its visible publication/update date: {route}'
+                if dateline and modified>published:
+                    dt=datetime.strptime(published,'%Y-%m-%d')
+                    original=dt.strftime('%B ')+str(dt.day)+dt.strftime(', %Y')
+                    assert 'originally published '+original in visible, f'Article update lost its visible original date: {route}'
+    check_home_article_dates(home,articles)
+
+def check_article_date_guard():
+    # Exercise stale dates, false-new labels, omitted originals and bad ordering.
+    articles={'/guides/new/':{'datePublished':'2026-10-17','dateModified':'2026-10-17'},
+              '/guides/old/':{'datePublished':'2026-09-15','dateModified':'2026-10-16'}}
+    def card(route,label):
+        return f'<section class="guide-band"><a href="{route}">Guide</a><span>{label}</span></section>'
+    new=card('/guides/new/','Published October 17, 2026.')
+    old=card('/guides/old/','Updated October 16, 2026; originally published September 15, 2026.')
+    check_home_article_dates(new+old,articles)
+    invalid=[old+new,new,new+old+old,
+             new+old.replace('Updated','Published'),
+             new+old.replace('October 16','October 15'),
+             new+old.replace('; originally published September 15, 2026','')]
+    for home in invalid:
+        try:
+            check_home_article_dates(home,articles)
+        except AssertionError:
+            continue
+        raise AssertionError('Homepage article date guard accepted invalid metadata or order')
+
 def sitemap_lastmods(path=None):
     root=ET.parse(path or (ROOT/'site/sitemap.xml')).getroot()
     return {e.findtext('sm:loc',default='',namespaces=NS): e.findtext('sm:lastmod',default='',namespaces=NS) for e in root.findall('sm:url',NS)}
@@ -146,6 +222,7 @@ def check_403_source_suspension():
 
 def check():
     check_403_source_suspension()
+    check_article_date_guard()
     gbp_record={'provider':'20i','plan':'Startup web hosting, first-month offer','currency':'GBP',
                 'first_term_total':1,'commitment_months':1,'monthly_equivalent':1,'renewal_monthly_rate':10,
                 'field_evidence':{field:{'quote':'official quote','url':'https://www.20i.com/web-hosting'}
@@ -327,6 +404,7 @@ def check():
             assert 'does not mean that no promotion exists' in page, f'Observation lacks the public-price limitation: {pid}'
             assert 'does not change the automated source-check status' in page, f'Manual observation is confused with an automated source check: {pid}'
     home=(ROOT/'site/index.html').read_text(encoding='utf-8')
+    check_article_dates(files,home)
     assert f'{len(ids)} providers in our source list' in home, 'Homepage provider count mismatch'
     reviewed=[record for record in build.documented_plan_rows(payload) if record['provider'] in ids]
     assert home.count('<span class="tag reference">Manual review</span>') == len(reviewed), 'Homepage qualification count mismatch'

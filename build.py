@@ -57,6 +57,28 @@ def date_text(value):
         dt = datetime.fromisoformat(value.replace('Z','+00:00'))
         return dt.strftime('%b ') + str(dt.day) + dt.strftime(', %Y')
     except (ValueError, AttributeError): return str(value)
+def article_date_text(value):
+    dt=datetime.strptime(value, '%Y-%m-%d')
+    return dt.strftime('%B ') + str(dt.day) + dt.strftime(', %Y')
+
+def article_dates(content, article):
+    """Display editorial dates from Article metadata, apart from source checks."""
+    published=article['datePublished']; modified=article['dateModified']
+    if modified < published:
+        raise ValueError('Article update predates publication')
+    status='Updated' if modified > published else 'Published'
+    latest=article_date_text(modified)
+    # Preserve a dated heading already in place, including the frozen A2 page.
+    heading=html.unescape(re.sub('<[^>]+>', ' ', content.split('</h1>',1)[0]))
+    if re.search(r'\b'+status+r'\s+'+re.escape(latest)+r'\b', heading, re.I):
+        return content
+    label=f'{status} <time datetime="{modified}">{latest}</time>'
+    if modified > published:
+        label+=f'; originally published <time datetime="{published}">{article_date_text(published)}</time>'
+    if '</h1>' not in content:
+        raise ValueError('Article has no heading for its publication dates')
+    return content.replace('</h1>', '</h1>\n<p class="article-dates small">'+label+'.</p>', 1)
+
 def documented_plan_rows(payload):
     """Dated browser-reviewed examples, never automated current-offer records."""
     review=payload.get('browser_term_observations') or {}
@@ -568,6 +590,9 @@ def build(config_path=None, output=None):
         path=Path(path); target=OUT/path; target.parent.mkdir(parents=True,exist_ok=True); target.write_bytes(data)
     def page(title, description, canonical, content, schema, head_extra=''):
         route=canonical.removeprefix(domain)
+        article=next((item for item in schema.get('@graph',[schema]) if item.get('@type')=='Article'), None)
+        if article:
+            content=article_dates(content, article)
         if route.startswith('/guides/'):
             content+=guide_navigation(route)
         return template('base.html',title=e(title),description=e(description),canonical=e(canonical),brand=e(cfg['site']['brand']),tagline=e(cfg['settings']['tagline']),repo=e(cfg['settings']['repo_url']),social_image='',head_extra=head_extra,analytics=analytics_head,analytics_settings=analytics_settings,footer_status=e('Data source checks are automated.'),content=content,schema=json.dumps(schema,separators=(',',':')),style_version=style_version,site_js_version=site_js_version)
@@ -931,7 +956,7 @@ def build(config_path=None, output=None):
     # with the current-status guide; this page carries the archive wording only.
     cloudways_archive_route='/guides/cloudways-coupon-archive/'
     cloudways_archive=template('cloudways-coupon-archive.html')
-    cloudways_archive_schema={'@context':'https://schema.org','@type':'Article','headline':'Cloudways coupon archive: what Cloudways’ own pages printed, 2018 to 2022','datePublished':'2026-09-25','dateModified':'2026-09-25','author':{'@type':'Organization','name':'HostDealRadar'},'publisher':{'@type':'Organization','name':'HostDealRadar'},'mainEntityOfPage':domain+cloudways_archive_route}
+    cloudways_archive_schema={'@context':'https://schema.org','@type':'Article','headline':'Cloudways coupon archive: what Cloudways’ own pages printed, 2018 to 2022','datePublished':'2026-09-25','dateModified':'2026-10-05','author':{'@type':'Organization','name':'HostDealRadar'},'publisher':{'@type':'Organization','name':'HostDealRadar'},'mainEntityOfPage':domain+cloudways_archive_route}
     write(Path('guides/cloudways-coupon-archive/index.html'),page('Cloudways coupon archive: 2018–2022 codes Cloudways itself printed | HostDealRadar','Archived Cloudways records: BFCM18, BFCM40, BFCM2021 and BFCM4030 as printed on Cloudways’ own pages, with Common Crawl snapshots and explicit evidence limits.',domain+cloudways_archive_route,cloudways_archive,cloudways_archive_schema))
     digitalocean_guide_route='/guides/digitalocean-promo-code/'
     digitalocean_guide=template('digitalocean-promo-code.html')
@@ -939,7 +964,7 @@ def build(config_path=None, output=None):
     write(Path('guides/digitalocean-promo-code/index.html'),page('DigitalOcean promo code: official signup credit and code terms | HostDealRadar','DigitalOcean says its first-team signup credit needs no code. Read the official eligibility, expiration and billing limits beside the separate promotional-code terms.',domain+digitalocean_guide_route,digitalocean_guide,digitalocean_guide_schema))
     hosting_coupons_route='/guides/hosting-coupons/'
     hosting_coupons=template('hosting-coupons.html')
-    hosting_coupons_schema={'@context':'https://schema.org','@type':'Article','headline':'Hosting coupons: October checks and earlier examples','datePublished':'2026-09-24','dateModified':'2026-10-07','author':{'@type':'Organization','name':'HostDealRadar'},'publisher':{'@type':'Organization','name':'HostDealRadar'},'mainEntityOfPage':domain+hosting_coupons_route}
+    hosting_coupons_schema={'@context':'https://schema.org','@type':'Article','headline':'Hosting coupons: October checks and earlier examples','datePublished':'2026-09-24','dateModified':'2026-10-08','author':{'@type':'Organization','name':'HostDealRadar'},'publisher':{'@type':'Organization','name':'HostDealRadar'},'mainEntityOfPage':domain+hosting_coupons_route}
     write(Path('guides/hosting-coupons/index.html'),page('Hosting coupons: October checks and earlier examples | HostDealRadar','October hosting and domain offer checks, including an IONOS annual prepaid VPS cart, campaign windows, coupon observations and renewal tiers. Earlier examples retain their dates.',domain+hosting_coupons_route,hosting_coupons,hosting_coupons_schema))
     hostinger_guide_route='/guides/hostinger-coupon-code/'
     hostinger_guide=template('hostinger-coupon-code.html')
@@ -957,10 +982,10 @@ def build(config_path=None, output=None):
     a2_guide_schema={'@context':'https://schema.org','@type':'Article','headline':a2_guide_title,'datePublished':'2026-10-01','dateModified':'2026-10-17','author':{'@type':'Organization','name':'HostDealRadar'},'publisher':{'@type':'Organization','name':'HostDealRadar'},'mainEntityOfPage':domain+a2_guide_route}
     write(Path('guides/a2-hosting-coupon-code/index.html'),page(a2_guide_title,'WH4YAL is a new-purchase code, not a renewal discount. See the reported A2 annual-bill increase and the renewal math with dated evidence.',domain+a2_guide_route,template('a2-hosting-coupon-code.html'),a2_guide_schema))
     bluehost_guide_route='/guides/bluehost-promo-code/'
-    bluehost_guide_schema={'@context':'https://schema.org','@type':'Article','headline':'Bluehost promo code: what can be verified?','datePublished':'2026-10-03','dateModified':'2026-10-03','author':{'@type':'Organization','name':'HostDealRadar'},'publisher':{'@type':'Organization','name':'HostDealRadar'},'mainEntityOfPage':domain+bluehost_guide_route}
+    bluehost_guide_schema={'@context':'https://schema.org','@type':'Article','headline':'Bluehost promo code: what can be verified?','datePublished':'2026-10-03','dateModified':'2026-10-05','author':{'@type':'Organization','name':'HostDealRadar'},'publisher':{'@type':'Organization','name':'HostDealRadar'},'mainEntityOfPage':domain+bluehost_guide_route}
     write(Path('guides/bluehost-promo-code/index.html'),page('Bluehost promo code: what can be verified? | HostDealRadar','A dated Bluehost promo-code check: what is unknown about eligibility, validity and checkout, and how to verify your own order total.',domain+bluehost_guide_route,template('bluehost-promo-code.html'),bluehost_guide_schema))
     hostgator_guide_route='/guides/hostgator-coupon-code/'
-    hostgator_guide_schema={'@context':'https://schema.org','@type':'Article','headline':'HostGator coupon code: check the renewal rules first','datePublished':'2026-10-04','dateModified':'2026-10-04','author':{'@type':'Organization','name':'HostDealRadar'},'publisher':{'@type':'Organization','name':'HostDealRadar'},'mainEntityOfPage':domain+hostgator_guide_route}
+    hostgator_guide_schema={'@context':'https://schema.org','@type':'Article','headline':'HostGator coupon code: check the renewal rules first','datePublished':'2026-10-04','dateModified':'2026-10-05','author':{'@type':'Organization','name':'HostDealRadar'},'publisher':{'@type':'Organization','name':'HostDealRadar'},'mainEntityOfPage':domain+hostgator_guide_route}
     write(Path('guides/hostgator-coupon-code/index.html'),page('HostGator coupon code: renewal rules and regular prices | HostDealRadar','HostGator warns against cancelling and transferring an existing package to obtain a new-package discount. Check renewal totals, cPanel license inclusion and separate email charges.',domain+hostgator_guide_route,template('hostgator-coupon-code.html'),hostgator_guide_schema))
     ovh_guide_route='/guides/ovh-promo-code/'
     ovh_guide_schema={'@context':'https://schema.org','@type':'Article','headline':'OVH promo code: check eligibility, commitment and renewal','datePublished':'2026-10-15','dateModified':'2026-10-15','author':{'@type':'Organization','name':'HostDealRadar'},'publisher':{'@type':'Organization','name':'HostDealRadar'},'mainEntityOfPage':domain+ovh_guide_route}
