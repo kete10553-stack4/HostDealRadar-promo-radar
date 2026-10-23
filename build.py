@@ -428,7 +428,7 @@ def agent_record(offer, provider, state):
         'limitations': 'Prices, eligibility, checkout totals, and renewal terms must be confirmed with the provider.'
     }
 
-def agent_worker(withdrawn_provider_ids=()):
+def agent_worker(withdrawn_provider_ids=(), legacy_redirects=None):
     """Return the Pages Worker for public agent discovery and read-only lookup."""
     worker = r'''const LINK_HEADER = [
   '</.well-known/api-catalog>; rel="api-catalog"',
@@ -437,6 +437,7 @@ def agent_worker(withdrawn_provider_ids=()):
   '</.well-known/ai-catalog.json>; rel="describedby"'
 ].join(', ');
 const WITHDRAWN_PROVIDER_PATHS = new Set(/*WITHDRAWN_PROVIDER_PATHS*/);
+const LEGACY_REDIRECTS = /*LEGACY_REDIRECTS*/;
 function mergedResponse(response, additions = {}) {
   const headers = new Headers(response.headers);
   for (const [name, value] of Object.entries(additions)) headers.set(name, value);
@@ -482,6 +483,9 @@ export default {
     if (WITHDRAWN_PROVIDER_PATHS.has(normalizedPath)) {
       return new Response('This provider page is not published because no verifiable official source record is available.', { status: 410, headers: { 'content-type': 'text/plain; charset=utf-8', 'cache-control': 'no-store' } });
     }
+    if (Object.hasOwn(LEGACY_REDIRECTS, normalizedPath)) {
+      return Response.redirect(new URL(LEGACY_REDIRECTS[normalizedPath], url.origin), 301);
+    }
     const oldRecord = path.match(/^\/deals\/([a-z0-9-]+)\/?$/);
     if (oldRecord) {
       const result = await publicLookup(env, '', oldRecord[1]);
@@ -505,7 +509,7 @@ export default {
 };
 '''
     paths=sorted('/providers/'+provider_id+'/' for provider_id in withdrawn_provider_ids)
-    return worker.replace('/*WITHDRAWN_PROVIDER_PATHS*/', json.dumps(paths))
+    return worker.replace('/*WITHDRAWN_PROVIDER_PATHS*/', json.dumps(paths)).replace('/*LEGACY_REDIRECTS*/', json.dumps(legacy_redirects or {}))
 
 def build(config_path=None, output=None):
     global OUT
@@ -1346,6 +1350,13 @@ Planned endpoints return HTTP 503 with `temporarily_unavailable` until authentic
 `agent_auth` metadata is published only to describe the future contract. The planned registration endpoint is `/agent-auth/register`, but agent registration is unavailable: it creates no account, issues no credential, and accepts no identity data. The sole planned identity type is `anonymous`, with the planned credential type `planned_contract_only`; neither is an available enrollment method. The planned claim and revocation endpoints also return HTTP 503. Until a real implementation exists, agents use the public read-only lookup without credentials.
 '''
     agent_records=[agent_record(o, byid[o['provider']], states[o['slug']][0]) for o in offers]
+    # Records withheld from the rendered provider page have no record anchor.
+    # Their legacy URLs can still lead to the provider's honest availability note.
+    for record in agent_records:
+        route, _, anchor = record['record_url'].partition('#')
+        provider_html = (OUT/route.strip('/')/'index.html').read_text(encoding='utf-8')
+        if f'id="{anchor}"' not in provider_html:
+            record['record_url'] = route
     write(Path('agent-data.json'),json.dumps(agent_records,separators=(',',':')))
     write(Path('ai/index.md'),agent_markdown)
     write(Path('ai/index.ilang'),'''::ILANG
@@ -1393,7 +1404,7 @@ Planned endpoints return HTTP 503 with `temporarily_unavailable` until authentic
   }, { signal: controller.signal });
 })();
 ''')
-    write(Path('_worker.js'),agent_worker(unpublished_source_only))
+    write(Path('_worker.js'),agent_worker(unpublished_source_only, cfg['settings'].get('legacy_redirects', {})))
     write(Path('robots.txt'),'User-agent: *\nAllow: /\nContent-Signal: ai-train=no, search=yes, ai-input=no\nAgentmap: '+domain+'/.well-known/ai-catalog.json\nSitemap: '+domain+'/sitemap.xml\n')
     write(Path('404.html'),page('Page not found | HostDealRadar','This page does not exist.',domain+'/404.html',prose('Page not found','<p><a href="/">Return to current offers</a></p>'),{'@context':'https://schema.org','@type':'WebPage','name':'Page not found'}))
     routes=['/','/providers/','/compare/','/methodology/','/about/','/contact/','/disclosure/','/privacy/',guide_route,cloudways_guide_route,cloudways_archive_route,cloudways_trial_route,digitalocean_guide_route,hosting_coupons_route,hostinger_guide_route]

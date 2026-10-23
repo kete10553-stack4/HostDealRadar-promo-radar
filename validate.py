@@ -621,6 +621,12 @@ def check():
     assert catalog['linkset'][0]['service-doc'][0]['href']==cfg['site']['domain'].rstrip('/')+'/ai/', 'API catalog lacks the Markdown service documentation'
     records=json.loads((ROOT/'site/agent-data.json').read_text(encoding='utf-8'))
     assert len(records)==len(payload['offers']) and all({'id','provider','record_state','source_url','captured_at','record_url'} <= set(record) for record in records), 'Read-only API projection is incomplete'
+    for record in records:
+        route, _, anchor = record['record_url'].partition('#')
+        provider_file = ROOT/'site'/route.strip('/')/'index.html'
+        assert provider_file.is_file(), f'Record URL has no provider page: {record["id"]}'
+        if anchor:
+            assert f'id="{anchor}"' in provider_file.read_text(encoding='utf-8'), f'Record URL points to a missing anchor: {record["id"]}'
     protected=json.loads((ROOT/'site/.well-known/oauth-protected-resource').read_text(encoding='utf-8'))
     assert protected['resource']==cfg['site']['domain'].rstrip('/'), 'OAuth protected resource must use the canonical origin, not an endpoint path'
     mcp_card=json.loads((ROOT/'site/.well-known/mcp/server-card.json').read_text(encoding='utf-8'))
@@ -637,6 +643,16 @@ def check():
         output=ROOT/'site'/route/'index.html' if route else ROOT/'site/index.html'
         assert output.exists(), f'Sitemap URL has no generated page: {loc}'
     sitemap_urls={entry.findtext('sm:loc',default='',namespaces=NS) for entry in entries}
+    for old_path, target in cfg['settings'].get('legacy_redirects', {}).items():
+        assert re.fullmatch(r'/deals/[a-z0-9-]+/', old_path), f'Invalid legacy redirect source: {old_path}'
+        assert target.startswith('/') and not target.startswith('//') and '?' not in target and '..' not in target, f'Invalid legacy redirect target: {target}'
+        route, _, fragment = target.partition('#')
+        target_file = ROOT/'site'/route.strip('/')/'index.html' if route != '/' else ROOT/'site/index.html'
+        assert target_file.is_file(), f'Legacy redirect target missing: {target}'
+        assert cfg['site']['domain'].rstrip('/')+route in sitemap_urls, f'Legacy redirect target is not indexable: {target}'
+        if fragment:
+            assert f'id="{fragment}"' in target_file.read_text(encoding='utf-8'), f'Legacy redirect anchor missing: {target}'
+        assert json.dumps(old_path) in (ROOT/'site/_worker.js').read_text(encoding='utf-8'), f'Legacy redirect omitted from Worker: {old_path}'
     for pid in unpublished_source_only:
         assert cfg['site']['domain'].rstrip('/')+f'/providers/{pid}/' not in sitemap_urls, f'Unverified source-only provider is still in sitemap: {pid}'
     current_provider_ids={o['provider'] for o in current}

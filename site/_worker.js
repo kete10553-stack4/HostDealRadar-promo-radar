@@ -5,6 +5,7 @@ const LINK_HEADER = [
   '</.well-known/ai-catalog.json>; rel="describedby"'
 ].join(', ');
 const WITHDRAWN_PROVIDER_PATHS = new Set(["/providers/infomaniak/", "/providers/wix/"]);
+const LEGACY_REDIRECTS = {"/deals/knownhost-basic-web-hosting-three-year-term/": "/compare/#plan-knownhost-basic"};
 function mergedResponse(response, additions = {}) {
   const headers = new Headers(response.headers);
   for (const [name, value] of Object.entries(additions)) headers.set(name, value);
@@ -49,6 +50,9 @@ export default {
     const normalizedPath = path.endsWith('/') ? path : path + '/';
     if (WITHDRAWN_PROVIDER_PATHS.has(normalizedPath)) {
       return new Response('This provider page is not published because no verifiable official source record is available.', { status: 410, headers: { 'content-type': 'text/plain; charset=utf-8', 'cache-control': 'no-store' } });
+    }
+    if (Object.hasOwn(LEGACY_REDIRECTS, normalizedPath)) {
+      return Response.redirect(new URL(LEGACY_REDIRECTS[normalizedPath], url.origin), 301);
     }
     const oldRecord = path.match(/^\/deals\/([a-z0-9-]+)\/?$/);
     if (oldRecord) {
