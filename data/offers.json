@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-24T11:13:20Z",
+  "generated_at": "2026-10-24T15:42:26Z",
   "offers": [
     {
       "slug": "raidboxes-mini",
@@ -6552,6 +6552,186 @@
       "source_sha256": "2df8287b716cc8d2834b70b32e7e02f4ed5d441e4bed769cba53e83e38b5a5e8"
     },
     {
+      "slug": "cloudways-flexible-digitalocean-basic-premium-micro-1gb",
+      "provider": "cloudways",
+      "title": "Flexible DigitalOcean Basic Premium Micro (1GB)",
+      "category": "Managed cloud hosting",
+      "source_url": "https://www.cloudways.com/wp-content/themes/cw_multilingual/template/assets/js/pages/widget_pricing25_v2_multilingual.js?ver=7.1.3",
+      "offer_url": "https://www.cloudways.com/en/pricing.php",
+      "fetched_at": "2026-10-24T15:42:26Z",
+      "evidence": "The official pricing page directly references this public widget data. Select the same index in its DigitalOcean Basic Premium price and resource arrays; the official formatter establishes USD per month. Placeholder values in the page HTML are not used.",
+      "field_evidence": {
+        "price_currency": "USD per month",
+        "billing_period": "USD per month",
+        "price": "14"
+      },
+      "claim_evidence": {
+        "price_currency": {
+          "quote": "USD per month",
+          "excerpt": "$(\".wt_prc25_main_wrapper .wt_prc25_pricings_card .pricing p\").text(\"USD per month\");",
+          "visible_excerpt": "USD per month",
+          "location": "official pricing-widget formatter",
+          "surface": "source response markup"
+        },
+        "billing_period": {
+          "quote": "USD per month",
+          "excerpt": "$(\".wt_prc25_main_wrapper .wt_prc25_pricings_card .pricing p\").text(\"USD per month\");",
+          "visible_excerpt": "USD per month",
+          "location": "official pricing-widget formatter",
+          "surface": "source response markup"
+        },
+        "price": {
+          "quote": "14",
+          "excerpt": "[14, 28, 54]",
+          "visible_excerpt": "[14, 28, 54]",
+          "location": "configured field pattern: price",
+          "surface": "source response markup"
+        }
+      },
+      "array_evidence": {
+        "index": 0,
+        "resources": {
+          "ram": "1GB",
+          "vcpu": "1 vCPU",
+          "storage": "25GB NVMe",
+          "bandwidth": "1TB"
+        },
+        "source_arrays": {
+          "price": "[14, 28, 54]",
+          "ram": "[\"1GB\", \"2GB\", \"4GB\"]",
+          "vcpu": "[\"1 vCPU\", \"1 vCPU\", \"2 vCPU\"]",
+          "storage": "[\"25GB NVMe\", \"50GB NVMe\", \"80GB NVMe\"]",
+          "bandwidth": "[\"1TB\", \"2TB\", \"4TB\"]"
+        }
+      },
+      "currency": "USD",
+      "billing_period": "month",
+      "condition": "Published base monthly rate for the named DigitalOcean Basic Premium preset. The original price token, USD/month formatter, RAM, vCPU, NVMe storage and transfer arrays are retained. An active campaign control prevents capture rather than guessing a discounted quote. No prepaid total or future renewal rate is inferred. Taxes and location-specific changes are not verified.",
+      "kind": "plan_price",
+      "price": 14.0,
+      "source_sha256": "64cba7c3a589061d5ff923d4bdb28f631e53ebb154870aa18e5dd89474b90a88"
+    },
+    {
+      "slug": "cloudways-flexible-digitalocean-basic-premium-small-2gb",
+      "provider": "cloudways",
+      "title": "Flexible DigitalOcean Basic Premium Small (2GB)",
+      "category": "Managed cloud hosting",
+      "source_url": "https://www.cloudways.com/wp-content/themes/cw_multilingual/template/assets/js/pages/widget_pricing25_v2_multilingual.js?ver=7.1.3",
+      "offer_url": "https://www.cloudways.com/en/pricing.php",
+      "fetched_at": "2026-10-24T15:42:26Z",
+      "evidence": "The official pricing page directly references this public widget data. Select the same index in its DigitalOcean Basic Premium price and resource arrays; the official formatter establishes USD per month. Placeholder values in the page HTML are not used.",
+      "field_evidence": {
+        "price_currency": "USD per month",
+        "billing_period": "USD per month",
+        "price": "28"
+      },
+      "claim_evidence": {
+        "price_currency": {
+          "quote": "USD per month",
+          "excerpt": "$(\".wt_prc25_main_wrapper .wt_prc25_pricings_card .pricing p\").text(\"USD per month\");",
+          "visible_excerpt": "USD per month",
+          "location": "official pricing-widget formatter",
+          "surface": "source response markup"
+        },
+        "billing_period": {
+          "quote": "USD per month",
+          "excerpt": "$(\".wt_prc25_main_wrapper .wt_prc25_pricings_card .pricing p\").text(\"USD per month\");",
+          "visible_excerpt": "USD per month",
+          "location": "official pricing-widget formatter",
+          "surface": "source response markup"
+        },
+        "price": {
+          "quote": "28",
+          "excerpt": "[14, 28, 54]",
+          "visible_excerpt": "[14, 28, 54]",
+          "location": "configured field pattern: price",
+          "surface": "source response markup"
+        }
+      },
+      "array_evidence": {
+        "index": 1,
+        "resources": {
+          "ram": "2GB",
+          "vcpu": "1 vCPU",
+          "storage": "50GB NVMe",
+          "bandwidth": "2TB"
+        },
+        "source_arrays": {
+          "price": "[14, 28, 54]",
+          "ram": "[\"1GB\", \"2GB\", \"4GB\"]",
+          "vcpu": "[\"1 vCPU\", \"1 vCPU\", \"2 vCPU\"]",
+          "storage": "[\"25GB NVMe\", \"50GB NVMe\", \"80GB NVMe\"]",
+          "bandwidth": "[\"1TB\", \"2TB\", \"4TB\"]"
+        }
+      },
+      "currency": "USD",
+      "billing_period": "month",
+      "condition": "Published base monthly rate for the named DigitalOcean Basic Premium preset. The original price token, USD/month formatter, RAM, vCPU, NVMe storage and transfer arrays are retained. An active campaign control prevents capture rather than guessing a discounted quote. No prepaid total or future renewal rate is inferred. Taxes and location-specific changes are not verified.",
+      "kind": "plan_price",
+      "price": 28.0,
+      "source_sha256": "64cba7c3a589061d5ff923d4bdb28f631e53ebb154870aa18e5dd89474b90a88"
+    },
+    {
+      "slug": "cloudways-flexible-digitalocean-basic-premium-medium-4gb",
+      "provider": "cloudways",
+      "title": "Flexible DigitalOcean Basic Premium Medium (4GB)",
+      "category": "Managed cloud hosting",
+      "source_url": "https://www.cloudways.com/wp-content/themes/cw_multilingual/template/assets/js/pages/widget_pricing25_v2_multilingual.js?ver=7.1.3",
+      "offer_url": "https://www.cloudways.com/en/pricing.php",
+      "fetched_at": "2026-10-24T15:42:26Z",
+      "evidence": "The official pricing page directly references this public widget data. Select the same index in its DigitalOcean Basic Premium price and resource arrays; the official formatter establishes USD per month. Placeholder values in the page HTML are not used.",
+      "field_evidence": {
+        "price_currency": "USD per month",
+        "billing_period": "USD per month",
+        "price": "54"
+      },
+      "claim_evidence": {
+        "price_currency": {
+          "quote": "USD per month",
+          "excerpt": "$(\".wt_prc25_main_wrapper .wt_prc25_pricings_card .pricing p\").text(\"USD per month\");",
+          "visible_excerpt": "USD per month",
+          "location": "official pricing-widget formatter",
+          "surface": "source response markup"
+        },
+        "billing_period": {
+          "quote": "USD per month",
+          "excerpt": "$(\".wt_prc25_main_wrapper .wt_prc25_pricings_card .pricing p\").text(\"USD per month\");",
+          "visible_excerpt": "USD per month",
+          "location": "official pricing-widget formatter",
+          "surface": "source response markup"
+        },
+        "price": {
+          "quote": "54",
+          "excerpt": "[14, 28, 54]",
+          "visible_excerpt": "[14, 28, 54]",
+          "location": "configured field pattern: price",
+          "surface": "source response markup"
+        }
+      },
+      "array_evidence": {
+        "index": 2,
+        "resources": {
+          "ram": "4GB",
+          "vcpu": "2 vCPU",
+          "storage": "80GB NVMe",
+          "bandwidth": "4TB"
+        },
+        "source_arrays": {
+          "price": "[14, 28, 54]",
+          "ram": "[\"1GB\", \"2GB\", \"4GB\"]",
+          "vcpu": "[\"1 vCPU\", \"1 vCPU\", \"2 vCPU\"]",
+          "storage": "[\"25GB NVMe\", \"50GB NVMe\", \"80GB NVMe\"]",
+          "bandwidth": "[\"1TB\", \"2TB\", \"4TB\"]"
+        }
+      },
+      "currency": "USD",
+      "billing_period": "month",
+      "condition": "Published base monthly rate for the named DigitalOcean Basic Premium preset. The original price token, USD/month formatter, RAM, vCPU, NVMe storage and transfer arrays are retained. An active campaign control prevents capture rather than guessing a discounted quote. No prepaid total or future renewal rate is inferred. Taxes and location-specific changes are not verified.",
+      "kind": "plan_price",
+      "price": 54.0,
+      "source_sha256": "64cba7c3a589061d5ff923d4bdb28f631e53ebb154870aa18e5dd89474b90a88"
+    },
+    {
       "slug": "cloudways-summer404",
       "provider": "cloudways",
       "title": "Cloudways hosting promotion",
@@ -10386,37 +10566,31 @@
       "request_url": "https://www.cloudways.com/en/pricing.php",
       "http_status": 200,
       "visible_excerpt": "Cloudways Pricing & Plans: Simple Managed Cloud Hosting Cloudways Velocity is here. Deploy Node.js apps on managed, predictable infrastructure. Start Hosting Now migration_campaign_2026 Open Nav Platform Solutions Agencies Resources Affiliate Pricing Contact Sales Login Start Fre",
-      "checked_at": "2026-10-24T11:13:20Z",
+      "checked_at": "2026-10-24T15:42:26Z",
       "source_resources": [
         {
           "request_url": "https://www.cloudways.com/wp-content/themes/cw_multilingual/template/assets/js/pages/widget_pricing25_v2_multilingual.js?ver=7.1.3",
           "http_status": 200,
-          "checked_at": "2026-10-24T11:13:20Z",
+          "checked_at": "2026-10-24T15:42:26Z",
           "sha256": "64cba7c3a589061d5ff923d4bdb28f631e53ebb154870aa18e5dd89474b90a88"
-        },
-        {
-          "request_url": "https://www.cloudways.com/wp-content/themes/cw_multilingual/template/assets/js/pages/cw_pricing_uplift.js?ver=7.1.3",
-          "http_status": 200,
-          "checked_at": "2026-10-24T11:13:20Z",
-          "sha256": "bc7d8463516f6d65d10af703080dcb1cc608cd1849a3e4fa330ab17315b8dd54"
         }
       ],
-      "capture_status": "unmatched",
-      "reason": "Official source responded, but no configured extraction rule matched; existing records were retained.",
-      "published_count": 1,
-      "captured_count": 0,
+      "capture_status": "matched",
+      "reason": "Official source checked; matched configured extraction rules. Some earlier records remain because their configured rule did not match this run.",
+      "published_count": 4,
+      "captured_count": 3,
       "retained_count": 1,
-      "captured_slugs": [],
+      "captured_slugs": [
+        "cloudways-flexible-digitalocean-basic-premium-medium-4gb",
+        "cloudways-flexible-digitalocean-basic-premium-micro-1gb",
+        "cloudways-flexible-digitalocean-basic-premium-small-2gb"
+      ],
       "retained_slugs": [
         "cloudways-summer404"
       ],
       "rule_errors": [],
-      "unmatched_rules": [
-        "Cloudways hosting promotion"
-      ],
-      "rule_failures": {
-        "Cloudways hosting promotion": "Required source wording was not found."
-      }
+      "unmatched_rules": [],
+      "rule_failures": {}
     },
     "scalahosting": {
       "status": "evidenced",
@@ -11066,12 +11240,12 @@
   ],
   "page_lastmod": {
     "/": {
-      "hash": "abf466083500efc66938bb4e00df38d18dc21aa224e5737530200b8ffd2452c7",
-      "lastmod": "2026-10-24T11:09:00Z"
+      "hash": "e534bceb3a3d18ac8c25e9937bd0749d9b1a40233a2effcfeb90c123f07ef267",
+      "lastmod": "2026-10-24T15:42:27Z"
     },
     "/providers/": {
-      "hash": "6da2f160a18528713630014520cdaecd7cf7028cdf4b49721bb89040ca591321",
-      "lastmod": "2026-10-24T11:09:00Z"
+      "hash": "b95c06ebcdfa66193a44f836b72a70bdd1ca77d256642c47af843564b7985059",
+      "lastmod": "2026-10-24T15:42:27Z"
     },
     "/compare/": {
       "hash": "ded6b829c4625d573961c212930682310eb1cc9dd84884f71bc14ebde189db1c",
@@ -11448,6 +11622,10 @@
     "/providers/kinsta/": {
       "hash": "5fc8021e23d7a389bfcc16c5091e3dd4a6db57841027716548b7e63549efe211",
       "lastmod": "2026-10-24T11:09:00Z"
+    },
+    "/providers/cloudways/": {
+      "hash": "39d8ea0847b9d9ad58bb4b61dae9804dccd558faae3267da8a5c3bfed9057986",
+      "lastmod": "2026-10-24T15:42:27Z"
     },
     "/providers/greengeeks/": {
       "hash": "aaed783f96df4d6a58c180682f4a6260c6e72cece8249fd5f4a59adf4206ce5f",
