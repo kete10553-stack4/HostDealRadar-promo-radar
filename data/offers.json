@@ -10007,8 +10007,8 @@
   "source_403_history": [],
   "page_lastmod": {
     "/": {
-      "hash": "c475b15fedaa42ae19879c016a440f707a3ca02fb41c7393e3aa66d4f49ab9b8",
-      "lastmod": "2026-10-24T04:40:41Z"
+      "hash": "9f8602d50065c273b67022243a58d0141d9c0f38929c228ea93e27700f99f874",
+      "lastmod": "2026-10-24T10:45:58Z"
     },
     "/providers/": {
       "hash": "db948bfe09e6448b6a55aa115fb931ea08b86099f3019cfbfadbc978a878c919",
@@ -10123,8 +10123,8 @@
       "lastmod": "2026-10-18T03:17:42Z"
     },
     "/guides/wp-engine-vs-kinsta/": {
-      "hash": "3c1ebee5ae1ff44a5bcaea88b320e5fcc4b9abf33888b464aabbe780cb3dc8fc",
-      "lastmod": "2026-10-24T01:23:38Z"
+      "hash": "b20f908dfe3731458c3f284b28301f4e1b100354c102c792fc309319c933405e",
+      "lastmod": "2026-10-24T10:45:58Z"
     },
     "/guides/render-vs-railway/": {
       "hash": "f533a9f4c4a482dfce30b7fbbc1ee9218aba6362fc35856acf984660c240f3c4",
@@ -13156,6 +13156,30 @@
         "missing_reasons": {
           "dated_plan_evidence": "The October 16 Chrome summary does not establish the full Agency 20 row. A new permitted official reading must bind the exact plan, term, total and allowances; the web-retrieval capture date is uncertain.",
           "renewal_monthly_rate": "The public page shows the current annual amount but does not guarantee or state an exact future renewal amount. No complete comparison row is published."
+        }
+      },
+      {
+        "provider": "kinsta",
+        "plan": "Business WP 20 managed WordPress hosting, annual public price",
+        "checked_on": "2026-10-24",
+        "checked_timezone": "America/Los_Angeles",
+        "capture_time": null,
+        "currency": "USD",
+        "evidence_status": "current_official_partial_plan_observation",
+        "source_observations": [
+          {
+            "url": "https://kinsta.com/pricing/",
+            "quote": "WP 20; $340 USD / month; $284 USD / month $3,400 billed annually.",
+            "context": "Official Kinsta pricing page read in Chrome on October 24, 2026, with Annual selected. The 20-site Business-plan table displays $340/month, a rounded $284/month annual equivalent, and $3,400 billed annually. Its resources table lists 20 WordPress installs, 250GB server bandwidth, 50GB storage, 1,000GB CDN bandwidth, and 14 days backup retention. The page states prices exclude tax and are in USD. No checkout or payment was completed. Exact time of day was not recorded."
+          }
+        ],
+        "first_term_total": 3400.0,
+        "commitment_months": 12,
+        "monthly_equivalent": 283.3333333333,
+        "renewal_monthly_rate": null,
+        "calculation": "3,400 / 12 = 283.33 USD/month (Calculated)",
+        "missing_reasons": {
+          "renewal_monthly_rate": "The official page states the current annual amount and monthly list price but does not state an exact future renewal monthly rate. No complete comparison row is published."
         }
       }
     ]

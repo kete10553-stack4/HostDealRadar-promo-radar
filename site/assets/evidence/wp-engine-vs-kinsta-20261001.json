@@ -7,6 +7,7 @@
     "october_16_limit": "Some detailed Kinsta table values came from web retrieval with an uncertain source capture date. Chrome read an Agency summary with Annual selected and Pay today $3,400, but the subsequent detailed Lead/Agency 20 table read timed out. The full table must not be described as verified in Chrome on October 16.",
     "preservation": "Original source URLs, recorded amounts, quotes, currency and calculation assumptions remain historical evidence. October 23 is an evidence-status correction date, not a price-verification date.",
     "wp_engine": "Separate Essential and existing Scale renewal-notice observations retain October 16; other policy-source reviews retain their own dates."
+    ,"kinsta_followup": "On October 24 Chrome read the official pricing page with Annual selected. The current Business WP 20 table stated $3,400 billed annually, $340/month list price, and the rounded display $284/month; the resources table stated 20 sites, 250GB bandwidth, 50GB storage, 1,000GB CDN and 14-day backup retention. Prices exclude tax and are in USD. Calculated 3,400/12 = $283.33/month. No exact future renewal monthly rate was shown; therefore this remains incomplete. Exact time of day was not recorded. The October 16 Lead and Agency 20 records remain historical and were not replaced by WP 20."
   },
   "method": "Official public text read through web retrieval. No account, invoice, checkout, code redemption or performance measurement.",
   "guide": "https://hostdealradar.com/guides/wp-engine-vs-kinsta/",

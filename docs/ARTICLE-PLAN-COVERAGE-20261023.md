@@ -54,8 +54,16 @@ Secondary mentions such as Hetzner with Coolify in the A2 guide name no chosen s
 5. **HostGator / Network Solutions:** provider-list and permission boundaries remain. Do not increase the public count by adding brands. Annual renewal totals remain annual.
 6. Previously accepted failed/incomplete providers (including eUKhost, netcup, Raidboxes, IONOS VPS, OVH VPS, TMDHosting, WPX, Kamatera, AccuWeb) are not retried. Hostwinds' saved browser denial remains unresolved. No historical numbered-queue work is started.
 
-The public comparison must remain 41 rows after the Kinsta evidence correction. Publish acceptance requires the new commit's Pages check plus a real online comparison read (printed count = actual row count), the changed article/date/status, and the home-card date/order. HTML acceptance does not satisfy the still-pending first-screen visual check.
+The public comparison remained 41 rows after the October 23 Kinsta evidence correction. The October 24 addendum below records a new partial Kinsta price observation. Publish acceptance requires the new commit's Pages check plus a real online comparison read (printed count = actual row count), the changed article/date/status, and the home-card date/order. HTML acceptance does not satisfy the first-screen visual check recorded in the October 17 handoff.
 
 ## Local validation
 
 `validate.py` passed after the correction: 147 HTML pages, 147 current automated records and 125 earlier automated records, earlier-record path and configuration-driven rebuild. These automated record counts are not manual plan-row counts. The built comparison still has 41 actual plan rows. All 47 candidate records, automated offers and source locks were unchanged; the only incomplete-check changes are the two Kinsta evidence-status corrections, with their original numeric fields, calculation strings, quotes and source URLs retained. Article publication remains Oct 1; its substantive correction is dated Oct 23, and the one homepage card is first in the article date order.
+
+## October 24 Kinsta source follow-up
+
+Chrome reconnected on October 24. The Kinsta official pricing page showed the annual table for Business WP 20: “$340 USD / month”, a rounded “$284 USD / month”, and “$3,400 billed annually”. Its resources table listed 20 installs, 250GB server bandwidth, 50GB storage, 1,000GB CDN bandwidth, and 14-day backup retention. The same page says prices exclude tax and are USD. The manually read page state did not include an exact time of day; only the date is recorded. No checkout was opened or submitted.
+
+The official amount divided by 12 is **Calculated $283.33 USD/month**. The rounded $284 display was preserved as page text and was not multiplied to derive the total. The page did not state a specific future renewal monthly rate. This is a current, dated partial plan observation and remains outside the complete comparison rows. The old Lead and Agency 20 values remain historical: they were not renamed or replaced with Business WP 20. The Agency summary and detail-table click could not be re-read in this browser session; no Agency 20 claim was updated.
+
+The article and homepage card now show this October 24 read while retaining the October 1 publication date. The dataset has 10 incomplete checks; this Kinsta WP 20 item is one of them. No existing current complete row, automated record or source lock changed.
