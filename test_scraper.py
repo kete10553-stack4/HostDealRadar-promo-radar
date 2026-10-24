@@ -160,6 +160,20 @@ class SourceSafety(unittest.TestCase):
         self.assertTrue(build.complete_three_terms(offer))
         self.assertFalse(build.complete_three_terms(dict(offer,first_term_total=143.52)))
 
+    def test_siteground_card_keeps_renewal_and_prepaid_term_without_inventing_total(self):
+        cfg=load_config()
+        provider=next(p for p in cfg['providers'] if p['id']=='siteground')
+        rules=[r for r in cfg['extractors'] if r['provider']=='siteground']
+        rule=next(r for r in rules if r['title']=='StartUp')
+        raw=('<script type="application/ld+json">{"name":"StartUp","price":"2.99","priceCurrency":"USD"}</script>'
+             '<h2>StartUp</h2><p>For personal projects &amp; small sites</p><s>$17.99</s>'
+             '<p>Save 83% $2.99 /mo.</p><p>Renews at $17.99 /mo. Prepaid for 12 months.</p>'
+             '<h2>GrowBig</h2><p>Perfect for your growing business</p><p>Save 83% $4.99 /mo.</p>')
+        offer=scraper.offer_from_rule(provider,rule,raw,[r['anchor'] for r in rules if r is not rule])
+        self.assertEqual((offer['price'],offer['renewal_price'],offer['commitment_months']),(2.99,17.99,12))
+        self.assertNotIn('first_term_total',offer)
+        self.assertIsNone(scraper.offer_from_rule(provider,rule,raw.replace('"USD"','"EUR"')))
+
     def test_no_record_when_price_is_missing(self):
         self.assertIsNone(scraper.offer_from_rule(self.provider,self.rule,'<p>Basic plan: Contact sales</p>'))
 
