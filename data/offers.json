@@ -10017,8 +10017,8 @@
   "source_403_history": [],
   "page_lastmod": {
     "/": {
-      "hash": "a10c0950038264c22742f67679e3f0792b9d08eb42bc90eb9e2329a891acc54f",
-      "lastmod": "2026-10-23T21:27:38Z"
+      "hash": "44d43eb01e77a61e2d3ae0c53a4b4be79c484bbdec3fc5cef059551c072f5939",
+      "lastmod": "2026-10-24T01:23:38Z"
     },
     "/providers/": {
       "hash": "1c64b7bbb6bd0e28a5d08b2a75b3f966f8a3d2e988107dd7d80d367323d388f3",
@@ -10133,8 +10133,8 @@
       "lastmod": "2026-10-18T03:17:42Z"
     },
     "/guides/wp-engine-vs-kinsta/": {
-      "hash": "d8a38f79e34163f38a2337af6ea6f706ca3a6793980fc77daa12b4586ec4727d",
-      "lastmod": "2026-10-18T03:17:42Z"
+      "hash": "3c1ebee5ae1ff44a5bcaea88b320e5fcc4b9abf33888b464aabbe780cb3dc8fc",
+      "lastmod": "2026-10-24T01:23:38Z"
     },
     "/guides/render-vs-railway/": {
       "hash": "f533a9f4c4a482dfce30b7fbbc1ee9218aba6362fc35856acf984660c240f3c4",
@@ -13119,13 +13119,17 @@
       {
         "provider": "kinsta",
         "plan": "Lead managed WordPress hosting, annual public price",
-        "checked_on": "2026-10-16",
+        "checked_on": null,
+        "previously_claimed_checked_on": "2026-10-16",
+        "evidence_status": "historical_observation_pending_reverification",
+        "evidence_audit_on": "2026-10-23",
+        "evidence_audit_note": "The October 16 session obtained the full table through web retrieval whose source capture may predate that day; an exact source capture time was not preserved. The attempted same-day Chrome table read timed out. The original amounts and quote are retained as historical observations, not an October 16 verified plan quote. No new official page reading occurred during this audit.",
         "currency": "USD",
         "source_observations": [
           {
             "url": "https://kinsta.com/pricing/",
             "quote": "Lead; $299 USD month; $250 USD month; $2,990 billed annually; Save $598.",
-            "context": "Official Kinsta pricing table observed October 16, 2026. The table shows both monthly and annual billing; the annual public total is $2,990. Kinsta states prices exclude tax."
+            "context": "Historical official-page text returned by web retrieval during the October 16 session; underlying capture date is uncertain. The returned table shows monthly and annual billing and an annual public total of $2,990; prices exclude tax. Same-day Chrome verification of the full Lead row was not completed."
           }
         ],
         "first_term_total": 2990.0,
@@ -13134,19 +13138,24 @@
         "renewal_monthly_rate": null,
         "calculation": "2,990 / 12 = 249.17 USD/month (Calculated)",
         "missing_reasons": {
+          "dated_plan_evidence": "The full Lead table row was not verified in Chrome on October 16; the web-retrieval capture date is uncertain. Retained values require a new permitted official-page reading before being described as a current plan quote.",
           "renewal_monthly_rate": "The public pricing table shows the current annual list amount but does not guarantee or state an exact future renewal amount. No complete comparison row is published."
         }
       },
       {
         "provider": "kinsta",
         "plan": "Agency 20 managed WordPress hosting, annual public price",
-        "checked_on": "2026-10-16",
+        "checked_on": null,
+        "previously_claimed_checked_on": "2026-10-16",
+        "evidence_status": "historical_observation_pending_reverification",
+        "evidence_audit_on": "2026-10-23",
+        "evidence_audit_note": "Chrome read an Agency summary with Annual selected and Pay today $3,400 on October 16, but did not complete the detailed Agency 20 table read. Some full table values came from web retrieval whose source capture may predate that day. The original quote and amounts are retained; the summary alone does not verify every amount and allowance against Agency 20. No new official page reading occurred during this audit.",
         "currency": "USD",
         "source_observations": [
           {
             "url": "https://kinsta.com/pricing/",
             "quote": "$340 USD / month; $284 USD / month billed annually; Save $680 by paying annually; Pay today $3,400.",
-            "context": "Official Kinsta pricing page observed October 16, 2026 with Annual selected. The page identifies Agency pricing starting at $340/month, annual billing at a displayed rounded $284/month, and $3,400 due today. Prices exclude tax."
+            "context": "Chrome read the Agency summary with Annual selected and Pay today $3,400 on October 16; the detailed Agency 20 table read subsequently timed out. Full table text also returned through web retrieval with an uncertain underlying capture date. Prices exclude tax. The displayed rounded $284 is not used to reconstruct the $3,400 total; complete binding to Agency 20 remains pending."
           }
         ],
         "first_term_total": 3400.0,
@@ -13155,6 +13164,7 @@
         "renewal_monthly_rate": null,
         "calculation": "3,400 / 12 = 283.33 USD/month (Calculated)",
         "missing_reasons": {
+          "dated_plan_evidence": "The October 16 Chrome summary does not establish the full Agency 20 row. A new permitted official reading must bind the exact plan, term, total and allowances; the web-retrieval capture date is uncertain.",
           "renewal_monthly_rate": "The public page shows the current annual amount but does not guarantee or state an exact future renewal amount. No complete comparison row is published."
         }
       }

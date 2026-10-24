@@ -1,5 +1,13 @@
 {
   "review_date": "2026-10-01",
+  "evidence_status_audit": {
+    "audited_on": "2026-10-23",
+    "new_vendor_reading": false,
+    "kinsta_status": "Historical Lead and Agency 20 price examples pending plan-specific reverification; no complete comparison row.",
+    "october_16_limit": "Some detailed Kinsta table values came from web retrieval with an uncertain source capture date. Chrome read an Agency summary with Annual selected and Pay today $3,400, but the subsequent detailed Lead/Agency 20 table read timed out. The full table must not be described as verified in Chrome on October 16.",
+    "preservation": "Original source URLs, recorded amounts, quotes, currency and calculation assumptions remain historical evidence. October 23 is an evidence-status correction date, not a price-verification date.",
+    "wp_engine": "Separate Essential and existing Scale renewal-notice observations retain October 16; other policy-source reviews retain their own dates."
+  },
   "method": "Official public text read through web retrieval. No account, invoice, checkout, code redemption or performance measurement.",
   "guide": "https://hostdealradar.com/guides/wp-engine-vs-kinsta/",
   "scope": "An existing WP Engine renewal decision compared with published Kinsta alternatives; not matched new-customer checkout quotes.",
