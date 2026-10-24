@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-24T11:05:34Z",
+  "generated_at": "2026-10-24T11:08:59Z",
   "offers": [
     {
       "slug": "raidboxes-mini",
@@ -8,26 +8,35 @@
       "category": "Web hosting",
       "source_url": "https://raidboxes.io/en/pricing/",
       "offer_url": "https://raidboxes.io/en/pricing/",
-      "fetched_at": "2026-09-30T12:36:37Z",
+      "fetched_at": "2026-10-24T11:08:47Z",
       "evidence": "Raidboxes plan card: the plan name is followed by the standard monthly rate, the discount, and then the discounted monthly rate.",
       "field_evidence": {
-        "price": "instead of € 18.00 20 % discount € 14.40 per month"
+        "price": "instead of € 18.00 50 % discount € 9.00 per month",
+        "discount_percent": "50 % discount"
       },
       "claim_evidence": {
         "price": {
-          "quote": "instead of € 18.00 20 % discount € 14.40 per month",
-          "excerpt": "Mini Suitable for small static WordPress websites or simple blogs. instead of € 18.00 20 % discount € 14.40 per month Test now 1 vCore CPU 4 GB RAM 5 GB SSD 7-day backup retention 128 MB PHP memory limit WordPress templates & staging Auto Plugin & Theme updates Support chat (8:00-22:00) Domain & E-Mail as ad",
-          "visible_excerpt": "Mini Suitable for small static WordPress websites or simple blogs. instead of € 18.00 20 % discount € 14.40 per month Test now 1 vCore CPU 4 GB RAM 5 GB SSD 7-day backup retention 128 MB PHP memory limit WordPress templates & staging Auto Plugin & Theme updates Support chat (8:00-22:00) Domain & E-Mail as ad",
+          "quote": "instead of € 18.00 50 % discount € 9.00 per month",
+          "excerpt": "Mini Suitable for small static WordPress websites or simple blogs. instead of € 18.00 50 % discount € 9.00 per month Test now 1 vCore CPU 4 GB RAM 5 GB SSD 7-day backup retention 128 MB PHP memory limit WordPress templates & staging Auto Plugin & Theme updates Support chat (8:00-22:00) Domain & E-Mail as ad",
+          "visible_excerpt": "Mini Suitable for small static WordPress websites or simple blogs. instead of € 18.00 50 % discount € 9.00 per month Test now 1 vCore CPU 4 GB RAM 5 GB SSD 7-day backup retention 128 MB PHP memory limit WordPress templates & staging Auto Plugin & Theme updates Support chat (8:00-22:00) Domain & E-Mail as ad",
           "location": "configured field pattern: price",
+          "surface": "visible source text"
+        },
+        "discount_percent": {
+          "quote": "50 % discount",
+          "excerpt": "Mini Suitable for small static WordPress websites or simple blogs. instead of € 18.00 50 % discount € 9.00 per month Test now 1 vCore CPU 4 GB RAM 5 GB SSD 7-day backup retention 128 MB PHP memory limit WordPress templates & staging Auto Plugin & Theme updates Support chat (8:00-22:00) Doma",
+          "visible_excerpt": "Mini Suitable for small static WordPress websites or simple blogs. instead of € 18.00 50 % discount € 9.00 per month Test now 1 vCore CPU 4 GB RAM 5 GB SSD 7-day backup retention 128 MB PHP memory limit WordPress templates & staging Auto Plugin & Theme updates Support chat (8:00-22:00) Doma",
+          "location": "configured field pattern: discount_percent",
           "surface": "visible source text"
         }
       },
       "currency": "EUR",
       "billing_period": "month",
-      "condition": "Discounted monthly rate shown on the official pricing card; the card prints the standard monthly rate of 18.00 next to it and states the discount is 20%.",
-      "kind": "promotion",
-      "price": 14.4,
-      "source_sha256": "75608acabf44e376f3d8eecfe2966d0121375be3ae2073b6307f7567c051a75f"
+      "condition": "The current introductory monthly price and discount are read from this plan card. The crossed-out standard rate is not treated as renewal. The official page states prices are subject to 19% VAT; prepaid totals and future renewal are not inferred.",
+      "kind": "plan_price",
+      "price": 9.0,
+      "discount_percent": 50,
+      "source_sha256": "96546515255bca619691f8b97d5c8f3e45a0b93f9ca46d4f2e2818f28ddf64d3"
     },
     {
       "slug": "raidboxes-starter",
@@ -36,26 +45,35 @@
       "category": "Web hosting",
       "source_url": "https://raidboxes.io/en/pricing/",
       "offer_url": "https://raidboxes.io/en/pricing/",
-      "fetched_at": "2026-09-30T12:36:37Z",
+      "fetched_at": "2026-10-24T11:08:47Z",
       "evidence": "Raidboxes plan card, read the same way as Mini.",
       "field_evidence": {
-        "price": "instead of € 24.00 20 % discount € 19.20 per month"
+        "price": "instead of € 24.00 50 % discount € 12.00 per month",
+        "discount_percent": "50 % discount"
       },
       "claim_evidence": {
         "price": {
-          "quote": "instead of € 24.00 20 % discount € 19.20 per month",
-          "excerpt": "20+ Websites 40% saved €230.40 Suitable for small to medium-sized WordPress websites or blogs. instead of € 24.00 20 % discount € 19.20 per month Test now 2 vCores CPU 4 GB RAM 10 GB SSD 14-day backup retention up to 1024 MB PHP memory limit WordPress templates & staging Auto Plugin & Theme updates Support chat (8:00-22:00) Domain & E-",
-          "visible_excerpt": "20+ Websites 40% saved €230.40 Suitable for small to medium-sized WordPress websites or blogs. instead of € 24.00 20 % discount € 19.20 per month Test now 2 vCores CPU 4 GB RAM 10 GB SSD 14-day backup retention up to 1024 MB PHP memory limit WordPress templates & staging Auto Plugin & Theme updates Support chat (8:00-22:00) Domain & E-",
+          "quote": "instead of € 24.00 50 % discount € 12.00 per month",
+          "excerpt": "20+ Websites 40% saved €144.00 Suitable for small to medium-sized WordPress websites or blogs. instead of € 24.00 50 % discount € 12.00 per month Test now 2 vCores CPU 4 GB RAM 10 GB SSD 14-day backup retention up to 1024 MB PHP memory limit WordPress templates & staging Auto Plugin & Theme updates Support chat (8:00-22:00) Domain & E-",
+          "visible_excerpt": "20+ Websites 40% saved €144.00 Suitable for small to medium-sized WordPress websites or blogs. instead of € 24.00 50 % discount € 12.00 per month Test now 2 vCores CPU 4 GB RAM 10 GB SSD 14-day backup retention up to 1024 MB PHP memory limit WordPress templates & staging Auto Plugin & Theme updates Support chat (8:00-22:00) Domain & E-",
           "location": "configured field pattern: price",
+          "surface": "visible source text"
+        },
+        "discount_percent": {
+          "quote": "50 % discount",
+          "excerpt": "aved €144.00 Suitable for small to medium-sized WordPress websites or blogs. instead of € 24.00 50 % discount € 12.00 per month Test now 2 vCores CPU 4 GB RAM 10 GB SSD 14-day backup retention up to 1024 MB PHP memory limit WordPress templates & staging Auto Plugin & Theme updates Support chat (8:00-",
+          "visible_excerpt": "aved €144.00 Suitable for small to medium-sized WordPress websites or blogs. instead of € 24.00 50 % discount € 12.00 per month Test now 2 vCores CPU 4 GB RAM 10 GB SSD 14-day backup retention up to 1024 MB PHP memory limit WordPress templates & staging Auto Plugin & Theme updates Support chat (8:00-",
+          "location": "configured field pattern: discount_percent",
           "surface": "visible source text"
         }
       },
       "currency": "EUR",
       "billing_period": "month",
-      "condition": "Discounted monthly rate shown on the official pricing card; the card prints the standard monthly rate of 24.00 next to it and states the discount is 20%.",
-      "kind": "promotion",
-      "price": 19.2,
-      "source_sha256": "75608acabf44e376f3d8eecfe2966d0121375be3ae2073b6307f7567c051a75f"
+      "condition": "The current introductory monthly price and discount are read from this plan card. The crossed-out standard rate is not treated as renewal. The official page states prices are subject to 19% VAT; prepaid totals and future renewal are not inferred.",
+      "kind": "plan_price",
+      "price": 12.0,
+      "discount_percent": 50,
+      "source_sha256": "96546515255bca619691f8b97d5c8f3e45a0b93f9ca46d4f2e2818f28ddf64d3"
     },
     {
       "slug": "raidboxes-fully-managed",
@@ -64,26 +82,35 @@
       "category": "Web hosting",
       "source_url": "https://raidboxes.io/en/pricing/",
       "offer_url": "https://raidboxes.io/en/pricing/",
-      "fetched_at": "2026-09-30T12:36:37Z",
+      "fetched_at": "2026-10-24T11:08:47Z",
       "evidence": "Raidboxes plan card, read the same way as Mini.",
       "field_evidence": {
-        "price": "instead of € 35.00 20 % discount € 28.00 per month"
+        "price": "instead of € 35.00 50 % discount € 17.50 per month",
+        "discount_percent": "50 % discount"
       },
       "claim_evidence": {
         "price": {
-          "quote": "instead of € 35.00 20 % discount € 28.00 per month",
-          "excerpt": "Fully Managed Suitable for medium-sized websites. Incl. plugin & theme updates. instead of € 35.00 20 % discount € 28.00 per month Test now 2 vCores CPU 4 GB RAM 10 GB SSD 30-day backup retention up to 1024 MB PHP memory limit WordPress templates & staging Auto Plugin & Theme updates Support chat (8:00-22:00) Domain & E-",
-          "visible_excerpt": "Fully Managed Suitable for medium-sized websites. Incl. plugin & theme updates. instead of € 35.00 20 % discount € 28.00 per month Test now 2 vCores CPU 4 GB RAM 10 GB SSD 30-day backup retention up to 1024 MB PHP memory limit WordPress templates & staging Auto Plugin & Theme updates Support chat (8:00-22:00) Domain & E-",
+          "quote": "instead of € 35.00 50 % discount € 17.50 per month",
+          "excerpt": "Fully Managed Suitable for medium-sized websites. Incl. plugin & theme updates. instead of € 35.00 50 % discount € 17.50 per month Test now 2 vCores CPU 4 GB RAM 10 GB SSD 30-day backup retention up to 1024 MB PHP memory limit WordPress templates & staging Auto Plugin & Theme updates Support chat (8:00-22:00) Domain & E-",
+          "visible_excerpt": "Fully Managed Suitable for medium-sized websites. Incl. plugin & theme updates. instead of € 35.00 50 % discount € 17.50 per month Test now 2 vCores CPU 4 GB RAM 10 GB SSD 30-day backup retention up to 1024 MB PHP memory limit WordPress templates & staging Auto Plugin & Theme updates Support chat (8:00-22:00) Domain & E-",
           "location": "configured field pattern: price",
+          "surface": "visible source text"
+        },
+        "discount_percent": {
+          "quote": "50 % discount",
+          "excerpt": "ly Managed Suitable for medium-sized websites. Incl. plugin & theme updates. instead of € 35.00 50 % discount € 17.50 per month Test now 2 vCores CPU 4 GB RAM 10 GB SSD 30-day backup retention up to 1024 MB PHP memory limit WordPress templates & staging Auto Plugin & Theme updates Support chat (8:00-",
+          "visible_excerpt": "ly Managed Suitable for medium-sized websites. Incl. plugin & theme updates. instead of € 35.00 50 % discount € 17.50 per month Test now 2 vCores CPU 4 GB RAM 10 GB SSD 30-day backup retention up to 1024 MB PHP memory limit WordPress templates & staging Auto Plugin & Theme updates Support chat (8:00-",
+          "location": "configured field pattern: discount_percent",
           "surface": "visible source text"
         }
       },
       "currency": "EUR",
       "billing_period": "month",
-      "condition": "Discounted monthly rate shown on the official pricing card; the card prints the standard monthly rate of 35.00 next to it and states the discount is 20%.",
-      "kind": "promotion",
-      "price": 28,
-      "source_sha256": "75608acabf44e376f3d8eecfe2966d0121375be3ae2073b6307f7567c051a75f"
+      "condition": "The current introductory monthly price and discount are read from this plan card. The crossed-out standard rate is not treated as renewal. The official page states prices are subject to 19% VAT; prepaid totals and future renewal are not inferred.",
+      "kind": "plan_price",
+      "price": 17.5,
+      "discount_percent": 50,
+      "source_sha256": "96546515255bca619691f8b97d5c8f3e45a0b93f9ca46d4f2e2818f28ddf64d3"
     },
     {
       "slug": "raidboxes-pro",
@@ -92,26 +119,35 @@
       "category": "Web hosting",
       "source_url": "https://raidboxes.io/en/pricing/",
       "offer_url": "https://raidboxes.io/en/pricing/",
-      "fetched_at": "2026-09-30T12:36:37Z",
+      "fetched_at": "2026-10-24T11:08:47Z",
       "evidence": "Raidboxes plan card, read the same way as Mini.",
       "field_evidence": {
-        "price": "instead of € 65.00 20 % discount € 52.00 per month"
+        "price": "instead of € 65.00 50 % discount € 32.50 per month",
+        "discount_percent": "50 % discount"
       },
       "claim_evidence": {
         "price": {
-          "quote": "instead of € 65.00 20 % discount € 52.00 per month",
-          "excerpt": "Pro For medium-sized dynamic websites and smaller WooCommerce shops. instead of € 65.00 20 % discount € 52.00 per month Test now 4 vCores CPU 8 GB RAM 20 GB SSD 30-day backup retention up to 2048 MB PHP memory limit WordPress templates & staging Auto Plugin & Theme updates Support chat (8:00-22:00) Domain & E-",
-          "visible_excerpt": "Pro For medium-sized dynamic websites and smaller WooCommerce shops. instead of € 65.00 20 % discount € 52.00 per month Test now 4 vCores CPU 8 GB RAM 20 GB SSD 30-day backup retention up to 2048 MB PHP memory limit WordPress templates & staging Auto Plugin & Theme updates Support chat (8:00-22:00) Domain & E-",
+          "quote": "instead of € 65.00 50 % discount € 32.50 per month",
+          "excerpt": "Pro For medium-sized dynamic websites and smaller WooCommerce shops. instead of € 65.00 50 % discount € 32.50 per month Test now 4 vCores CPU 8 GB RAM 20 GB SSD 30-day backup retention up to 2048 MB PHP memory limit WordPress templates & staging Auto Plugin & Theme updates Support chat (8:00-22:00) Domain & E-",
+          "visible_excerpt": "Pro For medium-sized dynamic websites and smaller WooCommerce shops. instead of € 65.00 50 % discount € 32.50 per month Test now 4 vCores CPU 8 GB RAM 20 GB SSD 30-day backup retention up to 2048 MB PHP memory limit WordPress templates & staging Auto Plugin & Theme updates Support chat (8:00-22:00) Domain & E-",
           "location": "configured field pattern: price",
+          "surface": "visible source text"
+        },
+        "discount_percent": {
+          "quote": "50 % discount",
+          "excerpt": "Pro For medium-sized dynamic websites and smaller WooCommerce shops. instead of € 65.00 50 % discount € 32.50 per month Test now 4 vCores CPU 8 GB RAM 20 GB SSD 30-day backup retention up to 2048 MB PHP memory limit WordPress templates & staging Auto Plugin & Theme updates Support chat (8:00-",
+          "visible_excerpt": "Pro For medium-sized dynamic websites and smaller WooCommerce shops. instead of € 65.00 50 % discount € 32.50 per month Test now 4 vCores CPU 8 GB RAM 20 GB SSD 30-day backup retention up to 2048 MB PHP memory limit WordPress templates & staging Auto Plugin & Theme updates Support chat (8:00-",
+          "location": "configured field pattern: discount_percent",
           "surface": "visible source text"
         }
       },
       "currency": "EUR",
       "billing_period": "month",
-      "condition": "Discounted monthly rate shown on the official pricing card; the card prints the standard monthly rate of 65.00 next to it and states the discount is 20%.",
-      "kind": "promotion",
-      "price": 52,
-      "source_sha256": "75608acabf44e376f3d8eecfe2966d0121375be3ae2073b6307f7567c051a75f"
+      "condition": "The current introductory monthly price and discount are read from this plan card. The crossed-out standard rate is not treated as renewal. The official page states prices are subject to 19% VAT; prepaid totals and future renewal are not inferred.",
+      "kind": "plan_price",
+      "price": 32.5,
+      "discount_percent": 50,
+      "source_sha256": "96546515255bca619691f8b97d5c8f3e45a0b93f9ca46d4f2e2818f28ddf64d3"
     },
     {
       "slug": "raidboxes-pro-xl",
@@ -120,26 +156,35 @@
       "category": "Web hosting",
       "source_url": "https://raidboxes.io/en/pricing/",
       "offer_url": "https://raidboxes.io/en/pricing/",
-      "fetched_at": "2026-09-30T12:36:37Z",
+      "fetched_at": "2026-10-24T11:08:47Z",
       "evidence": "Raidboxes plan card, read the same way as Mini.",
       "field_evidence": {
-        "price": "instead of € 130.00 20 % discount € 104.00 per month"
+        "price": "instead of € 130.00 50 % discount € 65.00 per month",
+        "discount_percent": "50 % discount"
       },
       "claim_evidence": {
         "price": {
-          "quote": "instead of € 130.00 20 % discount € 104.00 per month",
-          "excerpt": "Pro XL For medium-sized websites and WooCommerce shops. instead of € 130.00 20 % discount € 104.00 per month Test now 4 vCores CPU (dedicated) 8 GB RAM 25 GB SSD 30-day backup retention up to 2048 MB PHP memory limit WordPress templates & staging Auto Plugin & Theme updates Support chat (8:00-22:00)",
-          "visible_excerpt": "Pro XL For medium-sized websites and WooCommerce shops. instead of € 130.00 20 % discount € 104.00 per month Test now 4 vCores CPU (dedicated) 8 GB RAM 25 GB SSD 30-day backup retention up to 2048 MB PHP memory limit WordPress templates & staging Auto Plugin & Theme updates Support chat (8:00-22:00)",
+          "quote": "instead of € 130.00 50 % discount € 65.00 per month",
+          "excerpt": "Pro XL For medium-sized websites and WooCommerce shops. instead of € 130.00 50 % discount € 65.00 per month Test now 4 vCores CPU (dedicated) 8 GB RAM 25 GB SSD 30-day backup retention up to 2048 MB PHP memory limit WordPress templates & staging Auto Plugin & Theme updates Support chat (8:00-22:00)",
+          "visible_excerpt": "Pro XL For medium-sized websites and WooCommerce shops. instead of € 130.00 50 % discount € 65.00 per month Test now 4 vCores CPU (dedicated) 8 GB RAM 25 GB SSD 30-day backup retention up to 2048 MB PHP memory limit WordPress templates & staging Auto Plugin & Theme updates Support chat (8:00-22:00)",
           "location": "configured field pattern: price",
+          "surface": "visible source text"
+        },
+        "discount_percent": {
+          "quote": "50 % discount",
+          "excerpt": "Pro XL For medium-sized websites and WooCommerce shops. instead of € 130.00 50 % discount € 65.00 per month Test now 4 vCores CPU (dedicated) 8 GB RAM 25 GB SSD 30-day backup retention up to 2048 MB PHP memory limit WordPress templates & staging Auto Plugin & Theme updates Support",
+          "visible_excerpt": "Pro XL For medium-sized websites and WooCommerce shops. instead of € 130.00 50 % discount € 65.00 per month Test now 4 vCores CPU (dedicated) 8 GB RAM 25 GB SSD 30-day backup retention up to 2048 MB PHP memory limit WordPress templates & staging Auto Plugin & Theme updates Support",
+          "location": "configured field pattern: discount_percent",
           "surface": "visible source text"
         }
       },
       "currency": "EUR",
       "billing_period": "month",
-      "condition": "Discounted monthly rate shown on the official pricing card; the card prints the standard monthly rate of 130.00 next to it and states the discount is 20%.",
-      "kind": "promotion",
-      "price": 104,
-      "source_sha256": "75608acabf44e376f3d8eecfe2966d0121375be3ae2073b6307f7567c051a75f"
+      "condition": "The current introductory monthly price and discount are read from this plan card. The crossed-out standard rate is not treated as renewal. The official page states prices are subject to 19% VAT; prepaid totals and future renewal are not inferred.",
+      "kind": "plan_price",
+      "price": 65.0,
+      "discount_percent": 50,
+      "source_sha256": "96546515255bca619691f8b97d5c8f3e45a0b93f9ca46d4f2e2818f28ddf64d3"
     },
     {
       "slug": "raidboxes-business",
@@ -148,26 +193,35 @@
       "category": "Web hosting",
       "source_url": "https://raidboxes.io/en/pricing/",
       "offer_url": "https://raidboxes.io/en/pricing/",
-      "fetched_at": "2026-09-30T12:36:37Z",
+      "fetched_at": "2026-10-24T11:08:47Z",
       "evidence": "Raidboxes plan card, read the same way as Mini.",
       "field_evidence": {
-        "price": "instead of € 190.00 20 % discount € 152.00 per month"
+        "price": "instead of € 190.00 50 % discount € 95.00 per month",
+        "discount_percent": "50 % discount"
       },
       "claim_evidence": {
         "price": {
-          "quote": "instead of € 190.00 20 % discount € 152.00 per month",
-          "excerpt": "Business For large WordPress websites and WooCommerce shops. instead of € 190.00 20 % discount € 152.00 per month Test now 6 vCores CPU (dedicated) 12 GB RAM 30 GB SSD 30-day backup retention up to 3072 MB PHP memory limit WordPress templates & staging Auto Plugin & Theme updates Support chat (8:00-22:00",
-          "visible_excerpt": "Business For large WordPress websites and WooCommerce shops. instead of € 190.00 20 % discount € 152.00 per month Test now 6 vCores CPU (dedicated) 12 GB RAM 30 GB SSD 30-day backup retention up to 3072 MB PHP memory limit WordPress templates & staging Auto Plugin & Theme updates Support chat (8:00-22:00",
+          "quote": "instead of € 190.00 50 % discount € 95.00 per month",
+          "excerpt": "Business For large WordPress websites and WooCommerce shops. instead of € 190.00 50 % discount € 95.00 per month Test now 6 vCores CPU (dedicated) 12 GB RAM 30 GB SSD 30-day backup retention up to 3072 MB PHP memory limit WordPress templates & staging Auto Plugin & Theme updates Support chat (8:00-22:00",
+          "visible_excerpt": "Business For large WordPress websites and WooCommerce shops. instead of € 190.00 50 % discount € 95.00 per month Test now 6 vCores CPU (dedicated) 12 GB RAM 30 GB SSD 30-day backup retention up to 3072 MB PHP memory limit WordPress templates & staging Auto Plugin & Theme updates Support chat (8:00-22:00",
           "location": "configured field pattern: price",
+          "surface": "visible source text"
+        },
+        "discount_percent": {
+          "quote": "50 % discount",
+          "excerpt": "Business For large WordPress websites and WooCommerce shops. instead of € 190.00 50 % discount € 95.00 per month Test now 6 vCores CPU (dedicated) 12 GB RAM 30 GB SSD 30-day backup retention up to 3072 MB PHP memory limit WordPress templates & staging Auto Plugin & Theme updates Suppor",
+          "visible_excerpt": "Business For large WordPress websites and WooCommerce shops. instead of € 190.00 50 % discount € 95.00 per month Test now 6 vCores CPU (dedicated) 12 GB RAM 30 GB SSD 30-day backup retention up to 3072 MB PHP memory limit WordPress templates & staging Auto Plugin & Theme updates Suppor",
+          "location": "configured field pattern: discount_percent",
           "surface": "visible source text"
         }
       },
       "currency": "EUR",
       "billing_period": "month",
-      "condition": "Discounted monthly rate shown on the official pricing card; the card prints the standard monthly rate of 190.00 next to it and states the discount is 20%.",
-      "kind": "promotion",
-      "price": 152,
-      "source_sha256": "75608acabf44e376f3d8eecfe2966d0121375be3ae2073b6307f7567c051a75f"
+      "condition": "The current introductory monthly price and discount are read from this plan card. The crossed-out standard rate is not treated as renewal. The official page states prices are subject to 19% VAT; prepaid totals and future renewal are not inferred.",
+      "kind": "plan_price",
+      "price": 95.0,
+      "discount_percent": 50,
+      "source_sha256": "96546515255bca619691f8b97d5c8f3e45a0b93f9ca46d4f2e2818f28ddf64d3"
     },
     {
       "slug": "webdock-vps-essential",
@@ -1334,6 +1388,43 @@
       "kind": "regular_price",
       "price": 100.0,
       "source_sha256": "95328be2b658805206e156483abd0d09f1dd3e9410402b04dd06d0241ea9b0aa"
+    },
+    {
+      "slug": "appwrite-dedicated-database-starter-per-database",
+      "provider": "appwrite",
+      "title": "Dedicated database Starter (per database)",
+      "category": "Database hosting",
+      "source_url": "https://appwrite.io/pricing",
+      "offer_url": "https://appwrite.io/pricing",
+      "fetched_at": "2026-10-24T11:08:48Z",
+      "evidence": "Current dedicated-compute table binds Starter, 1 core, 1 GB and its monthly price. Older Pro subscription records are retained as history.",
+      "field_evidence": {
+        "price": "$10/mo"
+      },
+      "claim_evidence": {
+        "price": {
+          "quote": "$10/mo",
+          "excerpt": "$10/mo",
+          "visible_excerpt": "$10/mo",
+          "location": "configured field pattern: price",
+          "surface": "visible source text"
+        }
+      },
+      "table_evidence": {
+        "column_quote": "Price",
+        "column_attributes": {
+          "data-slot": "table-head",
+          "class": "h-10 align-middle whitespace-nowrap [&:has([role=checkbox])]:pe-0 [&>[role=checkbox]]:translate-y-[2px] px-4 py-3 text-[12px] font-semibold uppercase tracking-wider text-muted-foreground sm:px-6 text-end"
+        },
+        "row_quote": "Starter",
+        "surface": "official HTML table"
+      },
+      "currency": "USD",
+      "billing_period": "month",
+      "condition": "Dedicated database compute tier per database; not the former platform Pro subscription. Additional platform usage is priced separately.",
+      "kind": "plan_price",
+      "price": 10.0,
+      "source_sha256": "9d9264b350f292c38c9a55a71bdb1841fcd10c1c84a6cf3f9295f547a9176d1e"
     },
     {
       "slug": "appwrite-pro",
@@ -2801,6 +2892,154 @@
       "source_sha256": "60f9ea1425d4286cc9b93eadee38e3030c1b1950f9719073716f9b5a466a2ec3"
     },
     {
+      "slug": "netcup-vps-500-g12-5",
+      "provider": "netcup",
+      "title": "VPS 500 G12.5",
+      "category": "VPS hosting",
+      "source_url": "https://www.netcup.com/en/server/vps",
+      "offer_url": "https://www.netcup.com/en/server/vps",
+      "fetched_at": "2026-10-24T11:08:50Z",
+      "evidence": "Current G12.5 product card, bounded by the next plan name. The monthly amount and 12-month contract wording are captured together; older G12 records remain history.",
+      "field_evidence": {
+        "price": "12 months contract period, from monthly €8.26",
+        "commitment_months": "12 months contract period"
+      },
+      "claim_evidence": {
+        "price": {
+          "quote": "12 months contract period, from monthly €8.26",
+          "excerpt": "ore (x86) 4 GB RAM 64 GB SSD Traffic included Snapshots, Remote console & more View all details 12 months contract period, from monthly €8.26 €9.50 (incl. 19% VAT) Order now >",
+          "visible_excerpt": "ore (x86) 4 GB RAM 64 GB SSD Traffic included Snapshots, Remote console & more View all details 12 months contract period, from monthly €8.26 €9.50 (incl. 19% VAT) Order now >",
+          "location": "configured field pattern: price",
+          "surface": "visible source text"
+        },
+        "commitment_months": {
+          "quote": "12 months contract period",
+          "excerpt": "ore (x86) 4 GB RAM 64 GB SSD Traffic included Snapshots, Remote console & more View all details 12 months contract period, from monthly €8.26 €9.50 (incl. 19% VAT) Order now >",
+          "visible_excerpt": "ore (x86) 4 GB RAM 64 GB SSD Traffic included Snapshots, Remote console & more View all details 12 months contract period, from monthly €8.26 €9.50 (incl. 19% VAT) Order now >",
+          "location": "configured field pattern: commitment_months",
+          "surface": "visible source text"
+        }
+      },
+      "currency": "EUR",
+      "billing_period": "month",
+      "condition": "Displayed from-monthly price with a 12-month contract. The source labels prices incl. 19% VAT. A second comparison amount on the card is not treated as renewal; no prepaid total is inferred.",
+      "kind": "plan_price",
+      "price": 8.26,
+      "commitment_months": 12,
+      "source_sha256": "1c4b2b5aaa7b485c697de14fdb151fd69cdcc008a69a4da1f5cf1af21136245c"
+    },
+    {
+      "slug": "netcup-vps-1000-g12-5",
+      "provider": "netcup",
+      "title": "VPS 1000 G12.5",
+      "category": "VPS hosting",
+      "source_url": "https://www.netcup.com/en/server/vps",
+      "offer_url": "https://www.netcup.com/en/server/vps",
+      "fetched_at": "2026-10-24T11:08:50Z",
+      "evidence": "Current G12.5 product card, bounded by the next plan name. The monthly amount and 12-month contract wording are captured together; older G12 records remain history.",
+      "field_evidence": {
+        "price": "12 months contract period, from monthly €14.50",
+        "commitment_months": "12 months contract period"
+      },
+      "claim_evidence": {
+        "price": {
+          "quote": "12 months contract period, from monthly €14.50",
+          "excerpt": "re (x86) 8 GB RAM 128 GB SSD Traffic included Snapshots, Remote console & more View all details 12 months contract period, from monthly €14.50 €16.68 (incl. 19% VAT) Order now >",
+          "visible_excerpt": "re (x86) 8 GB RAM 128 GB SSD Traffic included Snapshots, Remote console & more View all details 12 months contract period, from monthly €14.50 €16.68 (incl. 19% VAT) Order now >",
+          "location": "configured field pattern: price",
+          "surface": "visible source text"
+        },
+        "commitment_months": {
+          "quote": "12 months contract period",
+          "excerpt": "re (x86) 8 GB RAM 128 GB SSD Traffic included Snapshots, Remote console & more View all details 12 months contract period, from monthly €14.50 €16.68 (incl. 19% VAT) Order now >",
+          "visible_excerpt": "re (x86) 8 GB RAM 128 GB SSD Traffic included Snapshots, Remote console & more View all details 12 months contract period, from monthly €14.50 €16.68 (incl. 19% VAT) Order now >",
+          "location": "configured field pattern: commitment_months",
+          "surface": "visible source text"
+        }
+      },
+      "currency": "EUR",
+      "billing_period": "month",
+      "condition": "Displayed from-monthly price with a 12-month contract. The source labels prices incl. 19% VAT. A second comparison amount on the card is not treated as renewal; no prepaid total is inferred.",
+      "kind": "plan_price",
+      "price": 14.5,
+      "commitment_months": 12,
+      "source_sha256": "1c4b2b5aaa7b485c697de14fdb151fd69cdcc008a69a4da1f5cf1af21136245c"
+    },
+    {
+      "slug": "netcup-vps-2000-g12-5",
+      "provider": "netcup",
+      "title": "VPS 2000 G12.5",
+      "category": "VPS hosting",
+      "source_url": "https://www.netcup.com/en/server/vps",
+      "offer_url": "https://www.netcup.com/en/server/vps",
+      "fetched_at": "2026-10-24T11:08:50Z",
+      "evidence": "Current G12.5 product card, bounded by the next plan name. The monthly amount and 12-month contract wording are captured together; older G12 records remain history.",
+      "field_evidence": {
+        "price": "12 months contract period, from monthly €26.92",
+        "commitment_months": "12 months contract period"
+      },
+      "claim_evidence": {
+        "price": {
+          "quote": "12 months contract period, from monthly €26.92",
+          "excerpt": "e (x86) 16 GB RAM 256 GB SSD Traffic included Snapshots, Remote console & more View all details 12 months contract period, from monthly €26.92 €30.96 (incl. 19% VAT) Order now >",
+          "visible_excerpt": "e (x86) 16 GB RAM 256 GB SSD Traffic included Snapshots, Remote console & more View all details 12 months contract period, from monthly €26.92 €30.96 (incl. 19% VAT) Order now >",
+          "location": "configured field pattern: price",
+          "surface": "visible source text"
+        },
+        "commitment_months": {
+          "quote": "12 months contract period",
+          "excerpt": "e (x86) 16 GB RAM 256 GB SSD Traffic included Snapshots, Remote console & more View all details 12 months contract period, from monthly €26.92 €30.96 (incl. 19% VAT) Order now >",
+          "visible_excerpt": "e (x86) 16 GB RAM 256 GB SSD Traffic included Snapshots, Remote console & more View all details 12 months contract period, from monthly €26.92 €30.96 (incl. 19% VAT) Order now >",
+          "location": "configured field pattern: commitment_months",
+          "surface": "visible source text"
+        }
+      },
+      "currency": "EUR",
+      "billing_period": "month",
+      "condition": "Displayed from-monthly price with a 12-month contract. The source labels prices incl. 19% VAT. A second comparison amount on the card is not treated as renewal; no prepaid total is inferred.",
+      "kind": "plan_price",
+      "price": 26.92,
+      "commitment_months": 12,
+      "source_sha256": "1c4b2b5aaa7b485c697de14fdb151fd69cdcc008a69a4da1f5cf1af21136245c"
+    },
+    {
+      "slug": "netcup-vps-4000-g12-5",
+      "provider": "netcup",
+      "title": "VPS 4000 G12.5",
+      "category": "VPS hosting",
+      "source_url": "https://www.netcup.com/en/server/vps",
+      "offer_url": "https://www.netcup.com/en/server/vps",
+      "fetched_at": "2026-10-24T11:08:50Z",
+      "evidence": "Current G12.5 product card, bounded by the next plan name. The monthly amount and 12-month contract wording are captured together; older G12 records remain history.",
+      "field_evidence": {
+        "price": "12 months contract period, from monthly €45.36",
+        "commitment_months": "12 months contract period"
+      },
+      "claim_evidence": {
+        "price": {
+          "quote": "12 months contract period, from monthly €45.36",
+          "excerpt": "ore (x86) 32 GB RAM 512 GB SSD Traffic included Snapshots, Remote-Konsole uvm. View all details 12 months contract period, from monthly €45.36 €52.16 (incl. 19% VAT) Order now > VPS 8000 G12.5 16 vCore (x86) 64 GB RAM 1 TB SSD Traffic included Snapshots, Remote console & more View all details 12 months contract period, from monthly",
+          "visible_excerpt": "ore (x86) 32 GB RAM 512 GB SSD Traffic included Snapshots, Remote-Konsole uvm. View all details 12 months contract period, from monthly €45.36 €52.16 (incl. 19% VAT) Order now > VPS 8000 G12.5 16 vCore (x86) 64 GB RAM 1 TB SSD Traffic included Snapshots, Remote console & more View all details 12 months contract period, from monthly",
+          "location": "configured field pattern: price",
+          "surface": "visible source text"
+        },
+        "commitment_months": {
+          "quote": "12 months contract period",
+          "excerpt": "ore (x86) 32 GB RAM 512 GB SSD Traffic included Snapshots, Remote-Konsole uvm. View all details 12 months contract period, from monthly €45.36 €52.16 (incl. 19% VAT) Order now > VPS 8000 G12.5 16 vCore (x86) 64 GB RAM 1 TB SSD Traffic included Snapshots, Remote console & more View all details 12 months contract",
+          "visible_excerpt": "ore (x86) 32 GB RAM 512 GB SSD Traffic included Snapshots, Remote-Konsole uvm. View all details 12 months contract period, from monthly €45.36 €52.16 (incl. 19% VAT) Order now > VPS 8000 G12.5 16 vCore (x86) 64 GB RAM 1 TB SSD Traffic included Snapshots, Remote console & more View all details 12 months contract",
+          "location": "configured field pattern: commitment_months",
+          "surface": "visible source text"
+        }
+      },
+      "currency": "EUR",
+      "billing_period": "month",
+      "condition": "Displayed from-monthly price with a 12-month contract. The source labels prices incl. 19% VAT. A second comparison amount on the card is not treated as renewal; no prepaid total is inferred.",
+      "kind": "plan_price",
+      "price": 45.36,
+      "commitment_months": 12,
+      "source_sha256": "1c4b2b5aaa7b485c697de14fdb151fd69cdcc008a69a4da1f5cf1af21136245c"
+    },
+    {
       "slug": "netcup-vps-500-g12",
       "provider": "netcup",
       "title": "VPS 500 G12",
@@ -3247,26 +3486,26 @@
       "category": "Web hosting",
       "source_url": "https://www.crocweb.com/",
       "offer_url": "https://www.crocweb.com/",
-      "fetched_at": "2026-10-04T21:14:54Z",
+      "fetched_at": "2026-10-24T11:08:50Z",
       "evidence": "CrocWeb service card: the service name is followed by the entry monthly rate.",
       "field_evidence": {
-        "price": "starting at $1.02/mo"
+        "price": "From $1.02 /mo"
       },
       "claim_evidence": {
         "price": {
-          "quote": "starting at $1.02/mo",
-          "excerpt": "Cloud Web Hosting Start building a website, blog or online store on the cloud starting at $1.02/mo* Learn More up to 80% Off",
-          "visible_excerpt": "Cloud Web Hosting Start building a website, blog or online store on the cloud starting at $1.02/mo* Learn More up to 80% Off",
+          "quote": "From $1.02 /mo",
+          "excerpt": "Cloud Web Hosting Fast, secure cloud hosting for websites, blogs and online stores From $1.02 /mo* Up to 80% off 29% 1-Click Install Installing WordPress…",
+          "visible_excerpt": "Cloud Web Hosting Fast, secure cloud hosting for websites, blogs and online stores From $1.02 /mo* Up to 80% off 29% 1-Click Install Installing WordPress…",
           "location": "configured field pattern: price",
           "surface": "visible source text"
         }
       },
       "currency": "USD",
       "billing_period": "month",
-      "condition": "Entry monthly rate as printed on the official page; the page states the discount is up to 80%.",
-      "kind": "promotion",
+      "condition": "Advertised entry monthly rate. The page states up to 80% off; no exact prepaid term, upfront total or renewal is inferred.",
+      "kind": "plan_price",
       "price": 1.02,
-      "source_sha256": "57621c3414e5459f44a24d63b50c99ec6bf3b824219014cbc658ecf8e2c042ae"
+      "source_sha256": "a80ea6c4ffd3f640dcbffe20a4a730b562d8409f4e84bbde6aded95c8feff25a"
     },
     {
       "slug": "crocweb-cloud-wordpress-hosting",
@@ -3275,26 +3514,26 @@
       "category": "Web hosting",
       "source_url": "https://www.crocweb.com/",
       "offer_url": "https://www.crocweb.com/",
-      "fetched_at": "2026-10-04T21:14:54Z",
+      "fetched_at": "2026-10-24T11:08:50Z",
       "evidence": "CrocWeb service card, read the same way as Cloud Web Hosting.",
       "field_evidence": {
-        "price": "starting at $1.02/mo"
+        "price": "From $1.02 /mo"
       },
       "claim_evidence": {
         "price": {
-          "quote": "starting at $1.02/mo",
-          "excerpt": "Cloud WordPress Hosting Deploy and create WordPress websites on the cloud starting at $1.02/mo* Learn More up to 80% Off",
-          "visible_excerpt": "Cloud WordPress Hosting Deploy and create WordPress websites on the cloud starting at $1.02/mo* Learn More up to 80% Off",
+          "quote": "From $1.02 /mo",
+          "excerpt": "Cloud WordPress Hosting Managed WordPress hosting optimized for speed and reliability From $1.02 /mo* Up to 80% off domain yourbrand domain yourbrand .com $14.87 USD /yr domain yourbrand .ca $19.92 USD /yr domain yourbrand .io Taken Domains Search, r",
+          "visible_excerpt": "Cloud WordPress Hosting Managed WordPress hosting optimized for speed and reliability From $1.02 /mo* Up to 80% off domain yourbrand domain yourbrand .com $14.87 USD /yr domain yourbrand .ca $19.92 USD /yr domain yourbrand .io Taken Domains Search, r",
           "location": "configured field pattern: price",
           "surface": "visible source text"
         }
       },
       "currency": "USD",
       "billing_period": "month",
-      "condition": "Entry monthly rate as printed on the official page; the page states the discount is up to 80%.",
-      "kind": "promotion",
+      "condition": "Advertised entry monthly rate. The page states up to 80% off; no exact prepaid term, upfront total or renewal is inferred.",
+      "kind": "plan_price",
       "price": 1.02,
-      "source_sha256": "57621c3414e5459f44a24d63b50c99ec6bf3b824219014cbc658ecf8e2c042ae"
+      "source_sha256": "a80ea6c4ffd3f640dcbffe20a4a730b562d8409f4e84bbde6aded95c8feff25a"
     },
     {
       "slug": "crocweb-cloud-reseller-hosting",
@@ -3303,26 +3542,26 @@
       "category": "Reseller hosting",
       "source_url": "https://www.crocweb.com/",
       "offer_url": "https://www.crocweb.com/",
-      "fetched_at": "2026-10-04T21:14:54Z",
+      "fetched_at": "2026-10-24T11:08:50Z",
       "evidence": "CrocWeb service card, read the same way as Cloud Web Hosting.",
       "field_evidence": {
-        "price": "starting at $2.04/mo"
+        "price": "From $2.04 /mo"
       },
       "claim_evidence": {
         "price": {
-          "quote": "starting at $2.04/mo",
-          "excerpt": "Cloud Reseller Hosting Become a cloud hosting provider using our white-label reseller starting at $2.04/mo* Learn More up to 80% Off",
-          "visible_excerpt": "Cloud Reseller Hosting Become a cloud hosting provider using our white-label reseller starting at $2.04/mo* Learn More up to 80% Off",
+          "quote": "From $2.04 /mo",
+          "excerpt": "Cloud Reseller Hosting Launch your own white-label hosting business on CrocWeb's cloud From $2.04 /mo* Up to 80% off Cloud Infrastructure Infrastructure that keeps you online Designed for resilience, with automatic failover, triple data replication,",
+          "visible_excerpt": "Cloud Reseller Hosting Launch your own white-label hosting business on CrocWeb's cloud From $2.04 /mo* Up to 80% off Cloud Infrastructure Infrastructure that keeps you online Designed for resilience, with automatic failover, triple data replication,",
           "location": "configured field pattern: price",
           "surface": "visible source text"
         }
       },
       "currency": "USD",
       "billing_period": "month",
-      "condition": "Entry monthly rate as printed on the official page; the page states the discount is up to 80%.",
-      "kind": "promotion",
+      "condition": "Advertised entry monthly rate. The page states up to 80% off; no exact prepaid term, upfront total or renewal is inferred.",
+      "kind": "plan_price",
       "price": 2.04,
-      "source_sha256": "57621c3414e5459f44a24d63b50c99ec6bf3b824219014cbc658ecf8e2c042ae"
+      "source_sha256": "a80ea6c4ffd3f640dcbffe20a4a730b562d8409f4e84bbde6aded95c8feff25a"
     },
     {
       "slug": "crocweb-cloud-virtual-servers",
@@ -3719,6 +3958,141 @@
       "source_sha256": "389e534a531528d6d55a7b509d448d7125feec43e2da651db692da8a66628399"
     },
     {
+      "slug": "northflank-nf-compute-50",
+      "provider": "northflank",
+      "title": "nf-compute-50",
+      "category": "Application hosting",
+      "source_url": "https://northflank.com/pricing",
+      "offer_url": "https://northflank.com/pricing",
+      "fetched_at": "2026-10-24T11:08:51Z",
+      "evidence": "Official HTML table: bind the exact plan row to its printed monthly-price column. Retain the column heading as billing-unit evidence; do not borrow the hourly column or another plan.",
+      "field_evidence": {
+        "billing_period": "Per month",
+        "price": "$12.00"
+      },
+      "claim_evidence": {
+        "billing_period": {
+          "quote": "Per month",
+          "excerpt": "<th scope=\"col\" class=\"Yr\">Per month</th>",
+          "visible_excerpt": "Per month",
+          "location": "selected price column header",
+          "surface": "visible source text"
+        },
+        "price": {
+          "quote": "$12.00",
+          "excerpt": "$12.00",
+          "visible_excerpt": "$12.00",
+          "location": "configured field pattern: price",
+          "surface": "visible source text"
+        }
+      },
+      "table_evidence": {
+        "column_quote": "Per month",
+        "column_attributes": {
+          "scope": "col",
+          "class": "Yr"
+        },
+        "row_quote": "nf-compute-50 Recommended for dev 0.5 vCPU · 1 GB",
+        "surface": "official HTML table"
+      },
+      "currency": "USD",
+      "billing_period": "month",
+      "condition": "Monthly price for the container plan; the page also prints an hourly price for the same plan.",
+      "kind": "regular_price",
+      "price": 12.0,
+      "source_sha256": "9bd064b4ea13de03399a55f624573fc69b4873a769fa1fea72411d88bec3378c"
+    },
+    {
+      "slug": "northflank-nf-compute-100-2",
+      "provider": "northflank",
+      "title": "nf-compute-100-2",
+      "category": "Application hosting",
+      "source_url": "https://northflank.com/pricing",
+      "offer_url": "https://northflank.com/pricing",
+      "fetched_at": "2026-10-24T11:08:51Z",
+      "evidence": "Official HTML table: bind the exact plan row to its printed monthly-price column. Retain the column heading as billing-unit evidence; do not borrow the hourly column or another plan.",
+      "field_evidence": {
+        "billing_period": "Per month",
+        "price": "$24.00"
+      },
+      "claim_evidence": {
+        "billing_period": {
+          "quote": "Per month",
+          "excerpt": "<th scope=\"col\" class=\"Yr\">Per month</th>",
+          "visible_excerpt": "Per month",
+          "location": "selected price column header",
+          "surface": "visible source text"
+        },
+        "price": {
+          "quote": "$24.00",
+          "excerpt": "$24.00",
+          "visible_excerpt": "$24.00",
+          "location": "configured field pattern: price",
+          "surface": "visible source text"
+        }
+      },
+      "table_evidence": {
+        "column_quote": "Per month",
+        "column_attributes": {
+          "scope": "col",
+          "class": "Yr"
+        },
+        "row_quote": "nf-compute-100-2 Most popular 1 vCPU · 2 GB",
+        "surface": "official HTML table"
+      },
+      "currency": "USD",
+      "billing_period": "month",
+      "condition": "Monthly price for the container plan; the page also prints an hourly price for the same plan.",
+      "kind": "regular_price",
+      "price": 24.0,
+      "source_sha256": "9bd064b4ea13de03399a55f624573fc69b4873a769fa1fea72411d88bec3378c"
+    },
+    {
+      "slug": "northflank-nf-compute-400",
+      "provider": "northflank",
+      "title": "nf-compute-400",
+      "category": "Application hosting",
+      "source_url": "https://northflank.com/pricing",
+      "offer_url": "https://northflank.com/pricing",
+      "fetched_at": "2026-10-24T11:08:51Z",
+      "evidence": "Official HTML table: bind the exact plan row to its printed monthly-price column. Retain the column heading as billing-unit evidence; do not borrow the hourly column or another plan.",
+      "field_evidence": {
+        "billing_period": "Per month",
+        "price": "$96.00"
+      },
+      "claim_evidence": {
+        "billing_period": {
+          "quote": "Per month",
+          "excerpt": "<th scope=\"col\" class=\"Yr\">Per month</th>",
+          "visible_excerpt": "Per month",
+          "location": "selected price column header",
+          "surface": "visible source text"
+        },
+        "price": {
+          "quote": "$96.00",
+          "excerpt": "$96.00",
+          "visible_excerpt": "$96.00",
+          "location": "configured field pattern: price",
+          "surface": "visible source text"
+        }
+      },
+      "table_evidence": {
+        "column_quote": "Per month",
+        "column_attributes": {
+          "scope": "col",
+          "class": "Yr"
+        },
+        "row_quote": "nf-compute-400 Scale 4 vCPU · 8 GB",
+        "surface": "official HTML table"
+      },
+      "currency": "USD",
+      "billing_period": "month",
+      "condition": "Monthly price for the container plan; the page also prints an hourly price for the same plan.",
+      "kind": "regular_price",
+      "price": 96.0,
+      "source_sha256": "9bd064b4ea13de03399a55f624573fc69b4873a769fa1fea72411d88bec3378c"
+    },
+    {
       "slug": "northflank-nf-compute-10",
       "provider": "northflank",
       "title": "nf-compute-10",
@@ -3744,90 +4118,6 @@
       "condition": "Monthly price for the container plan; the page also prints an hourly price for the same plan.",
       "kind": "regular_price",
       "price": 2.7,
-      "source_sha256": "d92ee56da888c8455e113f6f5cbd1d47c4983e008b01d2371abd7c2619acd9fe"
-    },
-    {
-      "slug": "northflank-nf-compute-50",
-      "provider": "northflank",
-      "title": "nf-compute-50",
-      "category": "Application hosting",
-      "source_url": "https://northflank.com/pricing",
-      "offer_url": "https://northflank.com/pricing",
-      "fetched_at": "2026-10-22T11:56:14Z",
-      "evidence": "Northflank container table row, read the same way as nf-compute-10.",
-      "field_evidence": {
-        "price": "Price $ 12.00 /month"
-      },
-      "claim_evidence": {
-        "price": {
-          "quote": "Price $ 12.00 /month",
-          "excerpt": "nf-compute-50 Recommended for dev vCPU 0.5 shared Memory 1024 MB Price $ 12.00 /month ($ 0.0167 /hr) Name",
-          "visible_excerpt": "nf-compute-50 Recommended for dev vCPU 0.5 shared Memory 1024 MB Price $ 12.00 /month ($ 0.0167 /hr) Name",
-          "location": "configured field pattern: price",
-          "surface": "visible source text"
-        }
-      },
-      "currency": "USD",
-      "billing_period": "month",
-      "condition": "Monthly price for the container plan; the page also prints an hourly price for the same plan.",
-      "kind": "regular_price",
-      "price": 12.0,
-      "source_sha256": "d92ee56da888c8455e113f6f5cbd1d47c4983e008b01d2371abd7c2619acd9fe"
-    },
-    {
-      "slug": "northflank-nf-compute-100-2",
-      "provider": "northflank",
-      "title": "nf-compute-100-2",
-      "category": "Application hosting",
-      "source_url": "https://northflank.com/pricing",
-      "offer_url": "https://northflank.com/pricing",
-      "fetched_at": "2026-10-22T11:56:14Z",
-      "evidence": "Northflank container table row, read the same way as nf-compute-10.",
-      "field_evidence": {
-        "price": "Price $ 24.00 /month"
-      },
-      "claim_evidence": {
-        "price": {
-          "quote": "Price $ 24.00 /month",
-          "excerpt": "nf-compute-100-2 Most popular vCPU 1 dedicated Memory 2048 MB Price $ 24.00 /month ($ 0.0333 /hr) Name",
-          "visible_excerpt": "nf-compute-100-2 Most popular vCPU 1 dedicated Memory 2048 MB Price $ 24.00 /month ($ 0.0333 /hr) Name",
-          "location": "configured field pattern: price",
-          "surface": "visible source text"
-        }
-      },
-      "currency": "USD",
-      "billing_period": "month",
-      "condition": "Monthly price for the container plan; the page also prints an hourly price for the same plan.",
-      "kind": "regular_price",
-      "price": 24.0,
-      "source_sha256": "d92ee56da888c8455e113f6f5cbd1d47c4983e008b01d2371abd7c2619acd9fe"
-    },
-    {
-      "slug": "northflank-nf-compute-400",
-      "provider": "northflank",
-      "title": "nf-compute-400",
-      "category": "Application hosting",
-      "source_url": "https://northflank.com/pricing",
-      "offer_url": "https://northflank.com/pricing",
-      "fetched_at": "2026-10-22T11:56:14Z",
-      "evidence": "Northflank container table row, read the same way as nf-compute-10.",
-      "field_evidence": {
-        "price": "Price $ 96.00 /month"
-      },
-      "claim_evidence": {
-        "price": {
-          "quote": "Price $ 96.00 /month",
-          "excerpt": "nf-compute-400 vCPU 4 dedicated Memory 8192 MB Price $ 96.00 /month ($ 0.1333 /hr) Name nf-compute-200-16 vCPU 2 dedicated Memory 16384 MB Price $ 120.00 /month ($ 0.1667 /hr) Name nf-compute-400-16 vCPU 4 dedicated Memory 16384 MB Price $ 144.00 /month ($ 0.",
-          "visible_excerpt": "nf-compute-400 vCPU 4 dedicated Memory 8192 MB Price $ 96.00 /month ($ 0.1333 /hr) Name nf-compute-200-16 vCPU 2 dedicated Memory 16384 MB Price $ 120.00 /month ($ 0.1667 /hr) Name nf-compute-400-16 vCPU 4 dedicated Memory 16384 MB Price $ 144.00 /month ($ 0.",
-          "location": "configured field pattern: price",
-          "surface": "visible source text"
-        }
-      },
-      "currency": "USD",
-      "billing_period": "month",
-      "condition": "Monthly price for the container plan; the page also prints an hourly price for the same plan.",
-      "kind": "regular_price",
-      "price": 96.0,
       "source_sha256": "d92ee56da888c8455e113f6f5cbd1d47c4983e008b01d2371abd7c2619acd9fe"
     },
     {
@@ -4925,19 +5215,35 @@
       "category": "Hosting",
       "source_url": "https://www.fasthosts.co.uk/web-hosting",
       "offer_url": "https://www.fasthosts.co.uk/web-hosting",
-      "fetched_at": "2026-09-13T00:38:55Z",
+      "fetched_at": "2026-10-24T11:08:52Z",
       "evidence": "Fasthosts comparison row: the plan name is followed by the introductory amount and then the rate charged afterwards.",
       "field_evidence": {
-        "price": "Starts at £1",
-        "renewal_price": "then £5.75"
+        "price": "Starts at £1 £ /month",
+        "renewal_price": "then £5.75 /month"
+      },
+      "claim_evidence": {
+        "price": {
+          "quote": "Starts at £1 £ /month",
+          "excerpt": "Start Starts at £1 £ /month then £5.75 /month Buy now Recommended Grow Starts at 99p £ /month then £8 /month Buy now",
+          "visible_excerpt": "Start Starts at £1 £ /month then £5.75 /month Buy now Recommended Grow Starts at 99p £ /month then £8 /month Buy now",
+          "location": "configured field pattern: price",
+          "surface": "visible source text"
+        },
+        "renewal_price": {
+          "quote": "then £5.75 /month",
+          "excerpt": "Start Starts at £1 £ /month then £5.75 /month Buy now Recommended Grow Starts at 99p £ /month then £8 /month Buy now",
+          "visible_excerpt": "Start Starts at £1 £ /month then £5.75 /month Buy now Recommended Grow Starts at 99p £ /month then £8 /month Buy now",
+          "location": "configured field pattern: renewal_price",
+          "surface": "visible source text"
+        }
       },
       "currency": "GBP",
       "billing_period": "month",
       "condition": "Introductory monthly rate for the printed period; the page states the rate charged afterwards.",
-      "kind": "promotion",
-      "price": 1,
+      "kind": "plan_price",
+      "price": 1.0,
       "renewal_price": 5.75,
-      "source_sha256": "2e9db298b7b712df910bf27823689b82269e8a618ec32c6b264fab76e0a4a4fb"
+      "source_sha256": "36345246b301472ae55b0f3d53d2b43bef306675cf3995f3c518acde030bad98"
     },
     {
       "slug": "fasthosts-scale",
@@ -4946,19 +5252,35 @@
       "category": "Hosting",
       "source_url": "https://www.fasthosts.co.uk/web-hosting",
       "offer_url": "https://www.fasthosts.co.uk/web-hosting",
-      "fetched_at": "2026-09-13T00:38:55Z",
+      "fetched_at": "2026-10-24T11:08:52Z",
       "evidence": "Fasthosts comparison row, read the same way as Start.",
       "field_evidence": {
-        "price": "Starts at £1",
-        "renewal_price": "then £13.75"
+        "price": "Starts at £1 £ /month",
+        "renewal_price": "then £13.75 /month"
+      },
+      "claim_evidence": {
+        "price": {
+          "quote": "Starts at £1 £ /month",
+          "excerpt": "Scale Starts at £1 £ /month then £13.75 /month Buy now",
+          "visible_excerpt": "Scale Starts at £1 £ /month then £13.75 /month Buy now",
+          "location": "configured field pattern: price",
+          "surface": "visible source text"
+        },
+        "renewal_price": {
+          "quote": "then £13.75 /month",
+          "excerpt": "Scale Starts at £1 £ /month then £13.75 /month Buy now",
+          "visible_excerpt": "Scale Starts at £1 £ /month then £13.75 /month Buy now",
+          "location": "configured field pattern: renewal_price",
+          "surface": "visible source text"
+        }
       },
       "currency": "GBP",
       "billing_period": "month",
       "condition": "Introductory monthly rate for the printed period; the page states the rate charged afterwards.",
-      "kind": "promotion",
-      "price": 1,
+      "kind": "plan_price",
+      "price": 1.0,
       "renewal_price": 13.75,
-      "source_sha256": "2e9db298b7b712df910bf27823689b82269e8a618ec32c6b264fab76e0a4a4fb"
+      "source_sha256": "36345246b301472ae55b0f3d53d2b43bef306675cf3995f3c518acde030bad98"
     },
     {
       "slug": "fasthosts-pro",
@@ -4967,19 +5289,35 @@
       "category": "Hosting",
       "source_url": "https://www.fasthosts.co.uk/web-hosting",
       "offer_url": "https://www.fasthosts.co.uk/web-hosting",
-      "fetched_at": "2026-09-13T00:38:55Z",
+      "fetched_at": "2026-10-24T11:08:52Z",
       "evidence": "Fasthosts comparison row, read the same way as Start.",
       "field_evidence": {
-        "price": "Starts at £1",
-        "renewal_price": "then £20.50"
+        "price": "Starts at £1 £ /month",
+        "renewal_price": "then £20.50 /month"
+      },
+      "claim_evidence": {
+        "price": {
+          "quote": "Starts at £1 £ /month",
+          "excerpt": "Pro Starts at £1 £ /month then £20.50 /month Buy now Technical specifications: Number of sites The number of separate sites that you can host. 1 Up to 3 Up to 10 Up to 100 Bandwidth Unlimited Unlimited Unlimited Unlim",
+          "visible_excerpt": "Pro Starts at £1 £ /month then £20.50 /month Buy now Technical specifications: Number of sites The number of separate sites that you can host. 1 Up to 3 Up to 10 Up to 100 Bandwidth Unlimited Unlimited Unlimited Unlim",
+          "location": "configured field pattern: price",
+          "surface": "visible source text"
+        },
+        "renewal_price": {
+          "quote": "then £20.50 /month",
+          "excerpt": "Pro Starts at £1 £ /month then £20.50 /month Buy now Technical specifications: Number of sites The number of separate sites that you can host. 1 Up to 3 Up to 10 Up to 100 Bandwidth Unlimited Unlimited Unlimited Unlimited Smart SSD stor",
+          "visible_excerpt": "Pro Starts at £1 £ /month then £20.50 /month Buy now Technical specifications: Number of sites The number of separate sites that you can host. 1 Up to 3 Up to 10 Up to 100 Bandwidth Unlimited Unlimited Unlimited Unlimited Smart SSD stor",
+          "location": "configured field pattern: renewal_price",
+          "surface": "visible source text"
+        }
       },
       "currency": "GBP",
       "billing_period": "month",
       "condition": "Introductory monthly rate for the printed period; the page states the rate charged afterwards.",
-      "kind": "promotion",
-      "price": 1,
+      "kind": "plan_price",
+      "price": 1.0,
       "renewal_price": 20.5,
-      "source_sha256": "2e9db298b7b712df910bf27823689b82269e8a618ec32c6b264fab76e0a4a4fb"
+      "source_sha256": "36345246b301472ae55b0f3d53d2b43bef306675cf3995f3c518acde030bad98"
     },
     {
       "slug": "name-com-com-registration",
@@ -5160,39 +5498,57 @@
       "slug": "railway-hobby",
       "provider": "railway",
       "title": "Hobby",
-      "category": "Hosting",
+      "category": "Application hosting",
       "source_url": "https://railway.com/pricing",
       "offer_url": "https://railway.com/pricing",
-      "fetched_at": "2026-09-13T00:38:56Z",
+      "fetched_at": "2026-10-24T11:08:52Z",
       "evidence": "Railway pricing card: the plan name is followed by the minimum monthly usage amount.",
       "field_evidence": {
-        "price": "Hobby $ 5 minimum usage"
+        "price": "Hobby $ 5 minimum usage For hobbyist developers building side projects Includes $5 of monthly usage credits"
+      },
+      "claim_evidence": {
+        "price": {
+          "quote": "Hobby $ 5 minimum usage For hobbyist developers building side projects Includes $5 of monthly usage credits",
+          "excerpt": "Hobby $ 5 minimum usage For hobbyist developers building side projects Includes $5 of monthly usage credits After credits are used, you'll only be charged for extra resource usage Up to 48 vCPU / 48 GB RAM per service Up to 5 replicas, at 8 vCPU / 8 GB RAM per replica Up to 5 GB storage Single deve",
+          "visible_excerpt": "Hobby $ 5 minimum usage For hobbyist developers building side projects Includes $5 of monthly usage credits After credits are used, you'll only be charged for extra resource usage Up to 48 vCPU / 48 GB RAM per service Up to 5 replicas, at 8 vCPU / 8 GB RAM per replica Up to 5 GB storage Single deve",
+          "location": "configured field pattern: price",
+          "surface": "visible source text"
+        }
       },
       "currency": "USD",
       "billing_period": "month",
       "condition": "Minimum monthly usage the plan requires; usage above it is billed as it is used.",
       "kind": "regular_price",
-      "price": 5,
-      "source_sha256": "de1c5c7ae4ddc994fbd682d8079d22ae94c13a4f07cb75113cd5cb929993dbaa"
+      "price": 5.0,
+      "source_sha256": "7794b751a3f13cdc40054e5b2a1da9b3533d283cd7324744e1d736443c458d40"
     },
     {
       "slug": "railway-pro",
       "provider": "railway",
       "title": "Pro",
-      "category": "Hosting",
+      "category": "Application hosting",
       "source_url": "https://railway.com/pricing",
       "offer_url": "https://railway.com/pricing",
-      "fetched_at": "2026-09-13T00:38:56Z",
+      "fetched_at": "2026-10-24T11:08:52Z",
       "evidence": "Railway pricing card, read the same way as Hobby.",
       "field_evidence": {
-        "price": "Pro $ 20 minimum usage"
+        "price": "Pro $ 20 minimum usage For professional developers and teams shipping production applications Includes $20 of monthly usage credits"
+      },
+      "claim_evidence": {
+        "price": {
+          "quote": "Pro $ 20 minimum usage For professional developers and teams shipping production applications Includes $20 of monthly usage credits",
+          "excerpt": "Pro $ 20 minimum usage For professional developers and teams shipping production applications Includes $20 of monthly usage credits After credits are used, you'll only be charged for extra resource usage Up to 1,000 vCPU / 1 TB RAM per service Up to 42 replicas, at 24 vCPU / 24 GB RAM per replica Up to 1 TB storage Unlimi",
+          "visible_excerpt": "Pro $ 20 minimum usage For professional developers and teams shipping production applications Includes $20 of monthly usage credits After credits are used, you'll only be charged for extra resource usage Up to 1,000 vCPU / 1 TB RAM per service Up to 42 replicas, at 24 vCPU / 24 GB RAM per replica Up to 1 TB storage Unlimi",
+          "location": "configured field pattern: price",
+          "surface": "visible source text"
+        }
       },
       "currency": "USD",
       "billing_period": "month",
       "condition": "Minimum monthly usage the plan requires; usage above it is billed as it is used.",
       "kind": "regular_price",
-      "price": 20,
-      "source_sha256": "de1c5c7ae4ddc994fbd682d8079d22ae94c13a4f07cb75113cd5cb929993dbaa"
+      "price": 20.0,
+      "source_sha256": "7794b751a3f13cdc40054e5b2a1da9b3533d283cd7324744e1d736443c458d40"
     },
     {
       "slug": "wordpress-com-personal",
@@ -5201,17 +5557,34 @@
       "category": "Hosting",
       "source_url": "https://wordpress.com/pricing/",
       "offer_url": "https://wordpress.com/pricing/",
-      "fetched_at": "2026-09-13T00:38:56Z",
-      "evidence": "WordPress.com pricing card: the plan name and description are followed by the monthly rate and then the longer-term rates.",
+      "fetched_at": "2026-10-24T11:08:53Z",
+      "evidence": "The price element is explicitly bound to this plan and data-on-value=monthly in the official HTML. Longer-term prices and unfilled renewal placeholders are excluded.",
       "field_evidence": {
-        "price": "$ 9"
+        "billing_period": "data-on-value=\"monthly\"",
+        "price": "US$ 9"
+      },
+      "claim_evidence": {
+        "billing_period": {
+          "quote": "data-on-value=\"monthly\"",
+          "excerpt": "v class=\"lp-plan-tile__price-html lp-text-brand\" data-cta-price=\"lp-cta-price-personal-monthly\" data-on-value=\"monthly\"><span><sup>US$</sup>9</span></div>",
+          "visible_excerpt": "v class=\"lp-plan-tile__price-html lp-text-brand\" data-cta-price=\"lp-cta-price-personal-monthly\" data-on-value=\"monthly\"> US$ 9",
+          "location": "billing-period attribute on the same price element",
+          "surface": "source response markup"
+        },
+        "price": {
+          "quote": "US$ 9",
+          "excerpt": "price-personal-plan\"><div class=\"lp-plan-tile__price-html lp-text-brand\" data-cta-price=\"lp-cta-price-personal-monthly\" data-on-value=\"monthly\"><span><sup>US$</sup>9</span></div><div class=\"lp-plan-tile__price-html lp-text-brand\" data-cta-price=\"lp-cta-price-personal-yearly\" data-on-value=\"yearly\"><span><sup>US$</sup>4</span></div><div class=\"lp-plan-tile__price-html",
+          "visible_excerpt": "price-personal-plan\"> US$ 9 US$ 4",
+          "location": "configured field pattern: price",
+          "surface": "source response markup"
+        }
       },
       "currency": "USD",
       "billing_period": "month",
       "condition": "Monthly-billing rate; the page prints the yearly, two-year and three-year rates after it.",
       "kind": "regular_price",
-      "price": 9,
-      "source_sha256": "f4b463197b1760607b687a426903015446698c2dc7bac606482a7694c5991640"
+      "price": 9.0,
+      "source_sha256": "fe494abec3bc660a2dcefa1cd21c8b1a8e7859d2e2b6cf2043d95baebfee6aea"
     },
     {
       "slug": "wordpress-com-premium",
@@ -5220,17 +5593,34 @@
       "category": "Hosting",
       "source_url": "https://wordpress.com/pricing/",
       "offer_url": "https://wordpress.com/pricing/",
-      "fetched_at": "2026-09-13T00:38:57Z",
-      "evidence": "WordPress.com pricing card, read the same way as Personal.",
+      "fetched_at": "2026-10-24T11:08:53Z",
+      "evidence": "The price element is explicitly bound to this plan and data-on-value=monthly in the official HTML. Longer-term prices and unfilled renewal placeholders are excluded.",
       "field_evidence": {
-        "price": "$ 18"
+        "billing_period": "data-on-value=\"monthly\"",
+        "price": "US$ 18"
+      },
+      "claim_evidence": {
+        "billing_period": {
+          "quote": "data-on-value=\"monthly\"",
+          "excerpt": "iv class=\"lp-plan-tile__price-html lp-text-brand\" data-cta-price=\"lp-cta-price-premium-monthly\" data-on-value=\"monthly\"><span><sup>US$</sup>18</span></div>",
+          "visible_excerpt": "iv class=\"lp-plan-tile__price-html lp-text-brand\" data-cta-price=\"lp-cta-price-premium-monthly\" data-on-value=\"monthly\"> US$ 18",
+          "location": "billing-period attribute on the same price element",
+          "surface": "source response markup"
+        },
+        "price": {
+          "quote": "US$ 18",
+          "excerpt": "price-premium-plan\"><div class=\"lp-plan-tile__price-html lp-text-brand\" data-cta-price=\"lp-cta-price-premium-monthly\" data-on-value=\"monthly\"><span><sup>US$</sup>18</span></div><div class=\"lp-plan-tile__price-html lp-text-brand\" data-cta-price=\"lp-cta-price-premium-yearly\" data-on-value=\"yearly\"><span><sup>US$</sup>8</span></div><div class=\"lp-plan-tile__price-html l",
+          "visible_excerpt": "price-premium-plan\"> US$ 18 US$ 8",
+          "location": "configured field pattern: price",
+          "surface": "source response markup"
+        }
       },
       "currency": "USD",
       "billing_period": "month",
       "condition": "Monthly-billing rate; the page prints the yearly, two-year and three-year rates after it.",
       "kind": "regular_price",
-      "price": 18,
-      "source_sha256": "f4b463197b1760607b687a426903015446698c2dc7bac606482a7694c5991640"
+      "price": 18.0,
+      "source_sha256": "fe494abec3bc660a2dcefa1cd21c8b1a8e7859d2e2b6cf2043d95baebfee6aea"
     },
     {
       "slug": "wordpress-com-business",
@@ -5239,93 +5629,202 @@
       "category": "Hosting",
       "source_url": "https://wordpress.com/pricing/",
       "offer_url": "https://wordpress.com/pricing/",
-      "fetched_at": "2026-09-13T00:38:57Z",
-      "evidence": "WordPress.com pricing card, read the same way as Personal.",
+      "fetched_at": "2026-10-24T11:08:53Z",
+      "evidence": "The price element is explicitly bound to this plan and data-on-value=monthly in the official HTML. Longer-term prices and unfilled renewal placeholders are excluded.",
       "field_evidence": {
-        "price": "$ 40"
+        "billing_period": "data-on-value=\"monthly\"",
+        "price": "US$ 40"
+      },
+      "claim_evidence": {
+        "billing_period": {
+          "quote": "data-on-value=\"monthly\"",
+          "excerpt": "v class=\"lp-plan-tile__price-html lp-text-brand\" data-cta-price=\"lp-cta-price-business-monthly\" data-on-value=\"monthly\"><span><sup>US$</sup>40</span></div>",
+          "visible_excerpt": "v class=\"lp-plan-tile__price-html lp-text-brand\" data-cta-price=\"lp-cta-price-business-monthly\" data-on-value=\"monthly\"> US$ 40",
+          "location": "billing-period attribute on the same price element",
+          "surface": "source response markup"
+        },
+        "price": {
+          "quote": "US$ 40",
+          "excerpt": "price-business-plan\"><div class=\"lp-plan-tile__price-html lp-text-brand\" data-cta-price=\"lp-cta-price-business-monthly\" data-on-value=\"monthly\"><span><sup>US$</sup>40</span></div><div class=\"lp-plan-tile__price-html lp-text-brand\" data-cta-price=\"lp-cta-price-business-yearly\" data-on-value=\"yearly\"><span><sup>US$</sup>25</span></div><div class=\"lp-plan-tile__price-html",
+          "visible_excerpt": "price-business-plan\"> US$ 40 US$ 25",
+          "location": "configured field pattern: price",
+          "surface": "source response markup"
+        }
       },
       "currency": "USD",
       "billing_period": "month",
       "condition": "Monthly-billing rate; the page prints the yearly, two-year and three-year rates after it.",
       "kind": "regular_price",
-      "price": 40,
-      "source_sha256": "f4b463197b1760607b687a426903015446698c2dc7bac606482a7694c5991640"
+      "price": 40.0,
+      "source_sha256": "fe494abec3bc660a2dcefa1cd21c8b1a8e7859d2e2b6cf2043d95baebfee6aea"
     },
     {
       "slug": "heroku-eco",
       "provider": "heroku",
       "title": "Eco",
-      "category": "Hosting",
+      "category": "Application hosting",
       "source_url": "https://www.heroku.com/pricing",
       "offer_url": "https://www.heroku.com/pricing",
-      "fetched_at": "2026-09-13T00:38:57Z",
-      "evidence": "Heroku dyno table row: the dyno type is followed by the monthly price and then its RAM and compute share.",
+      "fetched_at": "2026-10-24T11:08:53Z",
+      "evidence": "Official HTML table: bind the exact plan row to its printed monthly-price column. Retain the column heading as billing-unit evidence; do not borrow the hourly column or another plan.",
       "field_evidence": {
-        "price": "Eco $5 0.5 GB"
+        "billing_period": "Price / Month",
+        "price": "$5"
+      },
+      "claim_evidence": {
+        "billing_period": {
+          "quote": "Price / Month",
+          "excerpt": "<th>Price / Month</th>",
+          "visible_excerpt": "Price / Month",
+          "location": "selected price column header",
+          "surface": "visible source text"
+        },
+        "price": {
+          "quote": "$5",
+          "excerpt": "$5",
+          "visible_excerpt": "$5",
+          "location": "configured field pattern: price",
+          "surface": "visible source text"
+        }
+      },
+      "table_evidence": {
+        "column_quote": "Price / Month",
+        "column_attributes": {},
+        "row_quote": "Eco",
+        "surface": "official HTML table"
       },
       "currency": "USD",
       "billing_period": "month",
       "condition": "Monthly price of the dyno type as printed in the official table.",
       "kind": "regular_price",
-      "price": 5,
-      "source_sha256": "dabe5b85e69c637e82235d1b9a557e96e3e86e40776bbfffb4596305167e7763"
+      "price": 5.0,
+      "source_sha256": "5193308f38a2b81ebe264719b90dff553d459fada39a5609cb0bf5290247f1f7"
     },
     {
       "slug": "heroku-basic",
       "provider": "heroku",
       "title": "Basic",
-      "category": "Hosting",
+      "category": "Application hosting",
       "source_url": "https://www.heroku.com/pricing",
       "offer_url": "https://www.heroku.com/pricing",
-      "fetched_at": "2026-09-13T00:38:57Z",
-      "evidence": "Heroku dyno table row, read the same way as Eco.",
+      "fetched_at": "2026-10-24T11:08:54Z",
+      "evidence": "Official HTML table: bind the exact plan row to its printed monthly-price column. Retain the column heading as billing-unit evidence; do not borrow the hourly column or another plan.",
       "field_evidence": {
-        "price": "Basic $7 0.5 GB"
+        "billing_period": "Price / Month",
+        "price": "$7"
+      },
+      "claim_evidence": {
+        "billing_period": {
+          "quote": "Price / Month",
+          "excerpt": "<th>Price / Month</th>",
+          "visible_excerpt": "Price / Month",
+          "location": "selected price column header",
+          "surface": "visible source text"
+        },
+        "price": {
+          "quote": "$7",
+          "excerpt": "$7",
+          "visible_excerpt": "$7",
+          "location": "configured field pattern: price",
+          "surface": "visible source text"
+        }
+      },
+      "table_evidence": {
+        "column_quote": "Price / Month",
+        "column_attributes": {},
+        "row_quote": "Basic",
+        "surface": "official HTML table"
       },
       "currency": "USD",
       "billing_period": "month",
       "condition": "Monthly price of the dyno type as printed in the official table.",
       "kind": "regular_price",
-      "price": 7,
-      "source_sha256": "dabe5b85e69c637e82235d1b9a557e96e3e86e40776bbfffb4596305167e7763"
+      "price": 7.0,
+      "source_sha256": "5193308f38a2b81ebe264719b90dff553d459fada39a5609cb0bf5290247f1f7"
     },
     {
       "slug": "heroku-standard-1x",
       "provider": "heroku",
       "title": "Standard-1X",
-      "category": "Hosting",
+      "category": "Application hosting",
       "source_url": "https://www.heroku.com/pricing",
       "offer_url": "https://www.heroku.com/pricing",
-      "fetched_at": "2026-09-13T00:38:57Z",
-      "evidence": "Heroku dyno table row, read the same way as Eco.",
+      "fetched_at": "2026-10-24T11:08:54Z",
+      "evidence": "Official HTML table: bind the exact plan row to its printed monthly-price column. Retain the column heading as billing-unit evidence; do not borrow the hourly column or another plan.",
       "field_evidence": {
-        "price": "Standard-1X $25 0.5 GB"
+        "billing_period": "Price / Month",
+        "price": "$25"
+      },
+      "claim_evidence": {
+        "billing_period": {
+          "quote": "Price / Month",
+          "excerpt": "<th>Price / Month</th>",
+          "visible_excerpt": "Price / Month",
+          "location": "selected price column header",
+          "surface": "visible source text"
+        },
+        "price": {
+          "quote": "$25",
+          "excerpt": "$25",
+          "visible_excerpt": "$25",
+          "location": "configured field pattern: price",
+          "surface": "visible source text"
+        }
+      },
+      "table_evidence": {
+        "column_quote": "Price / Month",
+        "column_attributes": {},
+        "row_quote": "Standard-1X",
+        "surface": "official HTML table"
       },
       "currency": "USD",
       "billing_period": "month",
       "condition": "Monthly price of the dyno type as printed in the official table.",
       "kind": "regular_price",
-      "price": 25,
-      "source_sha256": "dabe5b85e69c637e82235d1b9a557e96e3e86e40776bbfffb4596305167e7763"
+      "price": 25.0,
+      "source_sha256": "5193308f38a2b81ebe264719b90dff553d459fada39a5609cb0bf5290247f1f7"
     },
     {
       "slug": "heroku-standard-2x",
       "provider": "heroku",
       "title": "Standard-2X",
-      "category": "Hosting",
+      "category": "Application hosting",
       "source_url": "https://www.heroku.com/pricing",
       "offer_url": "https://www.heroku.com/pricing",
-      "fetched_at": "2026-09-13T00:38:57Z",
-      "evidence": "Heroku dyno table row, read the same way as Eco.",
+      "fetched_at": "2026-10-24T11:08:54Z",
+      "evidence": "Official HTML table: bind the exact plan row to its printed monthly-price column. Retain the column heading as billing-unit evidence; do not borrow the hourly column or another plan.",
       "field_evidence": {
-        "price": "Standard-2X $50 1 GB"
+        "billing_period": "Price / Month",
+        "price": "$50"
+      },
+      "claim_evidence": {
+        "billing_period": {
+          "quote": "Price / Month",
+          "excerpt": "<th>Price / Month</th>",
+          "visible_excerpt": "Price / Month",
+          "location": "selected price column header",
+          "surface": "visible source text"
+        },
+        "price": {
+          "quote": "$50",
+          "excerpt": "$50",
+          "visible_excerpt": "$50",
+          "location": "configured field pattern: price",
+          "surface": "visible source text"
+        }
+      },
+      "table_evidence": {
+        "column_quote": "Price / Month",
+        "column_attributes": {},
+        "row_quote": "Standard-2X",
+        "surface": "official HTML table"
       },
       "currency": "USD",
       "billing_period": "month",
       "condition": "Monthly price of the dyno type as printed in the official table.",
       "kind": "regular_price",
-      "price": 50,
-      "source_sha256": "dabe5b85e69c637e82235d1b9a557e96e3e86e40776bbfffb4596305167e7763"
+      "price": 50.0,
+      "source_sha256": "5193308f38a2b81ebe264719b90dff553d459fada39a5609cb0bf5290247f1f7"
     },
     {
       "slug": "krystal-amethyst",
@@ -5615,22 +6114,62 @@
       "category": "Web hosting",
       "source_url": "https://www.hostinger.com/pricing",
       "offer_url": "https://www.hostinger.com/pricing",
-      "fetched_at": "2026-09-13T00:39:03Z",
+      "fetched_at": "2026-10-24T11:08:54Z",
       "evidence": "Hostinger pricing card identified by its product-slug data attribute.",
       "field_evidence": {
-        "price": "h-pricing-card__current-price\" style=\"color:var(--h-color-neutral-800);\" dir=\"ltr\" data-v-f0ca7862 data-v-18d752ac> $ 2.99",
-        "discount_percent": "75% off",
+        "price": "$ 2.49 /mo",
+        "discount_percent": "80% off",
         "commitment_months": "Get 48 months",
-        "renewal_price": "Renews at $10.99/mo"
+        "renewal_price": "Renews at $10.99/mo",
+        "first_term_total": "Get 48 months for $119.52"
+      },
+      "claim_evidence": {
+        "price": {
+          "quote": "$ 2.49 /mo",
+          "excerpt": "price__value\" data-v-c33c4118>12.19</span><!----><!----><!----></span></span></div><!----></div><span class=\"hw-price hw-price--horizontal h-pricing-card__current-price\" style=\"color:var(--h-color-neutral-800);\" dir=\"ltr\" data-v-128a68bc data-v-c33c4118><!----><!----><span class=\"hw-price__main\" data-v-c33c4118><!----><span class=\"h-t-title-3-bold hw-price__currency\" data-v-c33c4118>$</span><span class=\"h-t-title-3-bold hw-price__value\" data-v-c33c4118>2.49</span><!----><!----><span class=\"h-t-body-1 hw-price__suffix\" style=\"\" data-v-c33c4118>/mo</span></span></span><!----><!----><!----><!----><a aria-label=\"Choose plan\" role=\"link\" aria-disabled=\"true\" tabindex=\"-1\" class=\"h-hyperlink h-hyperlink--button h-hyperlink-button h-hyperlink-butto",
+          "visible_excerpt": "price__value\" data-v-c33c4118>12.19 $ 2.49 /mo",
+          "location": "configured field pattern: price",
+          "surface": "source response markup"
+        },
+        "discount_percent": {
+          "quote": "80% off",
+          "excerpt": "bold h-label__text\" style=\"color:currentColor;\" data-v-b2258b5a data-v-d891fcec><!--[--><!--[-->80% off<!--]--><!--]--></span><!--[--><!----><!--]--></div></div><div class=\"h-pricing-card__title h-t-heading-3\" data-v-128a68bc><!----><!--[-->Premium<!--]--><!----></div><div class=\"h-pricing-card",
+          "visible_excerpt": "bold h-label__text\" style=\"color:currentColor;\" data-v-b2258b5a data-v-d891fcec> 80% off Premium",
+          "location": "configured field pattern: discount_percent",
+          "surface": "source response markup"
+        },
+        "commitment_months": {
+          "quote": "Get 48 months",
+          "excerpt": "--]--></a><div class=\"h-mb-24 h-pricing-card__renewal-price h-mt-16 h-t-body-3\" data-v-128a68bc>Get 48 months for <b>$119.52</b> (regular price $585.12). Renews at $10.99/mo.</div><!----><!--[--><div class=\"h-pricing-card__separator h-mb-24\" data-v-128a68bc></div><!----><div class=\"hw-pricing-card-of",
+          "visible_excerpt": "--]--> Get 48 months for $119.52 (regular price $585.12). Renews at $10.99/mo.",
+          "location": "configured field pattern: commitment_months",
+          "surface": "source response markup"
+        },
+        "renewal_price": {
+          "quote": "Renews at $10.99/mo",
+          "excerpt": "e h-mt-16 h-t-body-3\" data-v-128a68bc>Get 48 months for <b>$119.52</b> (regular price $585.12). Renews at $10.99/mo.</div><!----><!--[--><div class=\"h-pricing-card__separator h-mb-24\" data-v-128a68bc></div><!----><div class=\"hw-pricing-card-offer-badge hw-pricing-card-offer-badge--gift h-mb-24\" style=\"\" da",
+          "visible_excerpt": "e h-mt-16 h-t-body-3\" data-v-128a68bc>Get 48 months for $119.52 (regular price $585.12). Renews at $10.99/mo.",
+          "location": "configured field pattern: renewal_price",
+          "surface": "source response markup"
+        },
+        "first_term_total": {
+          "quote": "Get 48 months for $119.52",
+          "excerpt": "--]--></a><div class=\"h-mb-24 h-pricing-card__renewal-price h-mt-16 h-t-body-3\" data-v-128a68bc>Get 48 months for <b>$119.52</b> (regular price $585.12). Renews at $10.99/mo.</div><!----><!--[--><div class=\"h-pricing-card__separator h-mb-24\" data-v-128a68bc></div><!----><div class=\"hw-pricing-card-offer-badge hw-pricin",
+          "visible_excerpt": "--]--> Get 48 months for $119.52 (regular price $585.12). Renews at $10.99/mo.",
+          "location": "configured field pattern: first_term_total",
+          "surface": "source response markup"
+        }
       },
       "currency": "USD",
       "billing_period": "month",
-      "price": 2.99,
-      "discount_percent": 75,
+      "condition": "Advertised monthly equivalent for the prepaid term and total printed on this same card. The crossed-out comparison price is not used as renewal; the explicit Renews at wording is recorded separately. Tax and checkout eligibility are not verified.",
+      "kind": "plan_price",
+      "price": 2.49,
+      "discount_percent": 80,
       "commitment_months": 48,
       "renewal_price": 10.99,
-      "kind": "promotion",
-      "source_sha256": "4d0d4fa8431349dd1c4be821253cf7dfc578a886e60896d9883f411c48041cee"
+      "first_term_total": 119.52,
+      "source_sha256": "41227806ac1ae0248610bf7a7679c5dcc1f7cad35126856d2ee71649b7f02fed"
     },
     {
       "slug": "hostinger-unlimited-web-hosting",
@@ -5639,22 +6178,62 @@
       "category": "Web hosting",
       "source_url": "https://www.hostinger.com/pricing",
       "offer_url": "https://www.hostinger.com/pricing",
-      "fetched_at": "2026-09-13T00:39:03Z",
+      "fetched_at": "2026-10-24T11:08:54Z",
       "evidence": "Hostinger pricing card identified by its product-slug data attribute.",
       "field_evidence": {
-        "price": "h-pricing-card__current-price\" style=\"color:var(--h-color-neutral-0);\" dir=\"ltr\" data-v-f0ca7862 data-v-18d752ac> $ 3.99",
-        "discount_percent": "79% off",
+        "price": "$ 3.49 /mo",
+        "discount_percent": "82% off",
         "commitment_months": "Get 48 months",
-        "renewal_price": "Renews at $16.99/mo"
+        "renewal_price": "Renews at $16.99/mo",
+        "first_term_total": "Get 48 months for $167.52"
+      },
+      "claim_evidence": {
+        "price": {
+          "quote": "$ 3.49 /mo",
+          "excerpt": "price__value\" data-v-c33c4118>18.99</span><!----><!----><!----></span></span></div><!----></div><span class=\"hw-price hw-price--horizontal h-pricing-card__current-price\" style=\"color:var(--h-color-neutral-0);\" dir=\"ltr\" data-v-128a68bc data-v-c33c4118><!----><!----><span class=\"hw-price__main\" data-v-c33c4118><!----><span class=\"h-t-title-3-bold hw-price__currency\" data-v-c33c4118>$</span><span class=\"h-t-title-3-bold hw-price__value\" data-v-c33c4118>3.49</span><!----><!----><span class=\"h-t-body-1 hw-price__suffix\" style=\"\" data-v-c33c4118>/mo</span></span></span><!----><!----><!----><!----><a aria-label=\"Choose plan\" role=\"link\" aria-disabled=\"true\" tabindex=\"-1\" class=\"h-hyperlink h-hyperlink--button h-hyperlink-button h-hyperlink-butto",
+          "visible_excerpt": "price__value\" data-v-c33c4118>18.99 $ 3.49 /mo",
+          "location": "configured field pattern: price",
+          "surface": "source response markup"
+        },
+        "discount_percent": {
+          "quote": "82% off",
+          "excerpt": "xt\" style=\"color:currentColor;\" data-v-b2258b5a data-v-d891fcec><!--[--><!--[-->Special offer • 82% off<!--]--><!--]--></span><!--[--><!----><!--]--></div></div><div class=\"h-pricing-card__title h-t-heading-3\" data-v-128a68bc><span class=\"h-icon\" aria-hidden=\"true\" data-icon-name=\"ic-sparkles-1",
+          "visible_excerpt": "xt\" style=\"color:currentColor;\" data-v-b2258b5a data-v-d891fcec> Special offer • 82% off",
+          "location": "configured field pattern: discount_percent",
+          "surface": "source response markup"
+        },
+        "commitment_months": {
+          "quote": "Get 48 months",
+          "excerpt": "al-price--h-color-neutral-400 h-pricing-card__renewal-price h-mt-16 h-t-body-3\" data-v-128a68bc>Get 48 months for <b>$167.52</b> (regular price $911.52). Renews at $16.99/mo.</div><!----><!--[--><div class=\"h-pricing-card__separator--h-color-neutral-700 h-pricing-card__separator h-mb-24\" data-v-128a6",
+          "visible_excerpt": "al-price--h-color-neutral-400 h-pricing-card__renewal-price h-mt-16 h-t-body-3\" data-v-128a68bc>Get 48 months for $167.52 (regular price $911.52). Renews at $16.99/mo.",
+          "location": "configured field pattern: commitment_months",
+          "surface": "source response markup"
+        },
+        "renewal_price": {
+          "quote": "Renews at $16.99/mo",
+          "excerpt": "e h-mt-16 h-t-body-3\" data-v-128a68bc>Get 48 months for <b>$167.52</b> (regular price $911.52). Renews at $16.99/mo.</div><!----><!--[--><div class=\"h-pricing-card__separator--h-color-neutral-700 h-pricing-card__separator h-mb-24\" data-v-128a68bc></div><!----><div class=\"hw-pricing-card-offer-badge hw-pric",
+          "visible_excerpt": "e h-mt-16 h-t-body-3\" data-v-128a68bc>Get 48 months for $167.52 (regular price $911.52). Renews at $16.99/mo.",
+          "location": "configured field pattern: renewal_price",
+          "surface": "source response markup"
+        },
+        "first_term_total": {
+          "quote": "Get 48 months for $167.52",
+          "excerpt": "al-price--h-color-neutral-400 h-pricing-card__renewal-price h-mt-16 h-t-body-3\" data-v-128a68bc>Get 48 months for <b>$167.52</b> (regular price $911.52). Renews at $16.99/mo.</div><!----><!--[--><div class=\"h-pricing-card__separator--h-color-neutral-700 h-pricing-card__separator h-mb-24\" data-v-128a68bc></div><!----><d",
+          "visible_excerpt": "al-price--h-color-neutral-400 h-pricing-card__renewal-price h-mt-16 h-t-body-3\" data-v-128a68bc>Get 48 months for $167.52 (regular price $911.52). Renews at $16.99/mo.",
+          "location": "configured field pattern: first_term_total",
+          "surface": "source response markup"
+        }
       },
       "currency": "USD",
       "billing_period": "month",
-      "price": 3.99,
-      "discount_percent": 79,
+      "condition": "Advertised monthly equivalent for the prepaid term and total printed on this same card. The crossed-out comparison price is not used as renewal; the explicit Renews at wording is recorded separately. Tax and checkout eligibility are not verified.",
+      "kind": "plan_price",
+      "price": 3.49,
+      "discount_percent": 82,
       "commitment_months": 48,
       "renewal_price": 16.99,
-      "kind": "promotion",
-      "source_sha256": "4d0d4fa8431349dd1c4be821253cf7dfc578a886e60896d9883f411c48041cee"
+      "first_term_total": 167.52,
+      "source_sha256": "41227806ac1ae0248610bf7a7679c5dcc1f7cad35126856d2ee71649b7f02fed"
     },
     {
       "slug": "siteground-startup-web-hosting",
@@ -5882,13 +6461,94 @@
       "category": "Managed WordPress hosting",
       "source_url": "https://kinsta.com/pricing/",
       "offer_url": "https://kinsta.com/pricing/",
-      "fetched_at": "2026-10-24T11:05:10Z",
+      "fetched_at": "2026-10-24T11:08:55Z",
       "evidence": "Official Kinsta pricing-page meta description; no monthly price is inferred.",
       "field_evidence": {},
       "claim_evidence": {},
       "price_text": "First month free on select plans",
       "condition": "Kinsta describes this as a first-month promotion, not a $0 monthly rate.",
       "kind": "promotion",
+      "source_sha256": "2df8287b716cc8d2834b70b32e7e02f4ed5d441e4bed769cba53e83e38b5a5e8"
+    },
+    {
+      "slug": "kinsta-business-wp-20-bandwidth-monthly-billing",
+      "provider": "kinsta",
+      "title": "Business WP 20 (bandwidth, monthly billing)",
+      "category": "Managed WordPress hosting",
+      "source_url": "https://kinsta.com/pricing/",
+      "offer_url": "https://kinsta.com/pricing/",
+      "fetched_at": "2026-10-24T11:08:55Z",
+      "evidence": "The Business plans table WP 20 column is bound to bandwidth and regular plan attributes. Read only its Price cell; the adjacent visits-based column and other tiers are excluded.",
+      "field_evidence": {
+        "price": "$340 USD month"
+      },
+      "claim_evidence": {
+        "price": {
+          "quote": "$340 USD month",
+          "excerpt": "$340 USD month $284 USD month $3,400 billed annually Save $680",
+          "visible_excerpt": "$340 USD month $284 USD month $3,400 billed annually Save $680",
+          "location": "configured field pattern: price",
+          "surface": "visible source text"
+        }
+      },
+      "table_evidence": {
+        "column_quote": "WP 20",
+        "column_attributes": {
+          "scope": "col",
+          "class": "plans-table__title-cell",
+          "data-boundary": "bandwidth",
+          "data-type": "regular",
+          "data-free-months": "false"
+        },
+        "row_quote": "Price",
+        "surface": "official HTML table"
+      },
+      "currency": "USD",
+      "billing_period": "month",
+      "condition": "Public month-billing price. Prices exclude tax and are in USD. The rounded annual monthly equivalent is not used as a total or renewal rate. Future renewal price is not stated.",
+      "kind": "plan_price",
+      "price": 340.0,
+      "source_sha256": "2df8287b716cc8d2834b70b32e7e02f4ed5d441e4bed769cba53e83e38b5a5e8"
+    },
+    {
+      "slug": "kinsta-business-wp-20-bandwidth-annual-billing",
+      "provider": "kinsta",
+      "title": "Business WP 20 (bandwidth, annual billing)",
+      "category": "Managed WordPress hosting",
+      "source_url": "https://kinsta.com/pricing/",
+      "offer_url": "https://kinsta.com/pricing/",
+      "fetched_at": "2026-10-24T11:08:55Z",
+      "evidence": "The Business plans table WP 20 column is bound to bandwidth and regular plan attributes. Read only its Price cell; the adjacent visits-based column and other tiers are excluded.",
+      "field_evidence": {
+        "price": "$3,400 billed annually"
+      },
+      "claim_evidence": {
+        "price": {
+          "quote": "$3,400 billed annually",
+          "excerpt": "$340 USD month $284 USD month $3,400 billed annually Save $680",
+          "visible_excerpt": "$340 USD month $284 USD month $3,400 billed annually Save $680",
+          "location": "configured field pattern: price",
+          "surface": "visible source text"
+        }
+      },
+      "table_evidence": {
+        "column_quote": "WP 20",
+        "column_attributes": {
+          "scope": "col",
+          "class": "plans-table__title-cell",
+          "data-boundary": "bandwidth",
+          "data-type": "regular",
+          "data-free-months": "false"
+        },
+        "row_quote": "Price",
+        "surface": "official HTML table"
+      },
+      "currency": "USD",
+      "billing_period": "year",
+      "commitment_months": 12,
+      "condition": "Public year-billing price. Prices exclude tax and are in USD. The rounded annual monthly equivalent is not used as a total or renewal rate. Future renewal price is not stated.",
+      "kind": "plan_price",
+      "price": 3400.0,
       "source_sha256": "2df8287b716cc8d2834b70b32e7e02f4ed5d441e4bed769cba53e83e38b5a5e8"
     },
     {
@@ -6132,23 +6792,53 @@
       "category": "Web hosting",
       "source_url": "https://www.inmotionhosting.com/shared-hosting",
       "offer_url": "https://www.inmotionhosting.com/shared-hosting",
-      "fetched_at": "2026-09-13T00:39:05Z",
-      "evidence": "The first Launch pricing block ends at its own checkout anchor. Its data-plan-name, data-term and currency=USD bind price, renewal and the promotion marker to the same plan and term.",
+      "fetched_at": "2026-10-24T11:08:56Z",
+      "evidence": "The first Launch pricing block ends at its own checkout anchor. Its data-plan-name, data-term and currency=USD bind price, renewal and savings to the same plan and term.",
       "field_evidence": {
-        "price": "imh-rostrum-starting-at-price-discounted'> $4.99",
-        "renewal_price": "Renews at $13.99",
+        "price": "$4.99 /mo",
+        "renewal_price": "Renews at $13.99 /mo",
         "commitment_months": "data-term=\"36\"",
         "discount_percent": "You Save 64%"
+      },
+      "claim_evidence": {
+        "price": {
+          "quote": "$4.99 /mo",
+          "excerpt": "' imh-switcher'><div class='imh-rostrum-save-ribbon'>You Save <span class='dnt'>64%</span></div><div class='imh-rostrum-starting-at-price-discounted'><span class='rostrum-price'>$4.99</span><span class='rostrum-per-price'><small>/mo<br></small></span></div><div class='imh-rostrum-starting-at-price-normal'>Renews at <span class='rostrum-price'>$13.99</span><span class='rostrum-per-price'>/mo </span></div><a href=\"https:/",
+          "visible_excerpt": "' imh-switcher'> You Save 64% $4.99 /mo Renews at $13.99 /mo",
+          "location": "configured field pattern: price",
+          "surface": "source response markup"
+        },
+        "renewal_price": {
+          "quote": "Renews at $13.99 /mo",
+          "excerpt": "per-price'><small>/mo<br></small></span></div><div class='imh-rostrum-starting-at-price-normal'>Renews at <span class='rostrum-price'>$13.99</span><span class='rostrum-per-price'>/mo </span></div><a href=\"https://central.inmotionhosting.com/amp/checkout/launch-1247-18539?campaign=standard_all_products&currency=USD\" rel=\"nofollow\" class=\"atc central-atc btn-primary\" ty",
+          "visible_excerpt": "per-price'> /mo Renews at $13.99 /mo",
+          "location": "configured field pattern: renewal_price",
+          "surface": "source response markup"
+        },
+        "commitment_months": {
+          "quote": "data-term=\"36\"",
+          "excerpt": "all_products&currency=USD\" rel=\"nofollow\" class=\"atc central-atc btn-primary\" type=\"button\" data-term=\"36\" data-product=\"business-hosting\" data-plan-name=\"Launch\" data-presentation-price=\"179.64\" data-standard-price=\"503.64\" data-click=\"primary-cta\" data-action=\"entered-cart\" data-property=",
+          "visible_excerpt": "all_products¤cy=USD\" rel=\"nofollow\" class=\"atc central-atc btn-primary\" type=\"button\" data-term=\"36\" data-product=\"business-hosting\" data-plan-name=\"Launch\" data-presentation-price=\"179.64\" data-standard-price=\"503.64\" data-click=\"primary-cta\" data-action=\"entered-cart\" data-property=",
+          "location": "configured field pattern: commitment_months",
+          "surface": "source response markup"
+        },
+        "discount_percent": {
+          "quote": "You Save 64%",
+          "excerpt": "e-container connected-switcher\"><div class=' imh-switcher'><div class='imh-rostrum-save-ribbon'>You Save <span class='dnt'>64%</span></div><div class='imh-rostrum-starting-at-price-discounted'><span class='rostrum-price'>$4.99</span><span class='rostrum-per-price'><small>/mo<br></small></span></div><div class='imh-ro",
+          "visible_excerpt": "e-container connected-switcher\"> You Save 64% $4.99 /mo",
+          "location": "configured field pattern: discount_percent",
+          "surface": "source response markup"
+        }
       },
       "currency": "USD",
       "billing_period": "month",
       "condition": "Advertised monthly equivalent for the specified prepaid term.",
-      "kind": "promotion",
+      "kind": "plan_price",
       "price": 4.99,
       "renewal_price": 13.99,
       "commitment_months": 36,
       "discount_percent": 64,
-      "source_sha256": "ea82e0b526d5ea5a8d51e71fc80ca2e77fb846ce50542aea7033dc2c7e323ac9"
+      "source_sha256": "8cf84fc22c5469b5b4d4972efe26babae3932ded8f4cdbac6c53b9d66bbc8bef"
     },
     {
       "slug": "chemicloud-starter-shared-hosting-three-year-term",
@@ -6232,7 +6922,7 @@
       "category": "Managed WordPress hosting",
       "source_url": "https://wpengine.com/plans/",
       "offer_url": "https://wpengine.com/plans/",
-      "fetched_at": "2026-10-24T11:05:14Z",
+      "fetched_at": "2026-10-24T11:08:56Z",
       "evidence": "Read from WP Engine's own server-rendered JSON-LD on the official plans page: the one-site product carries a USD Annual offer with billingDuration P1Y. The amount is published as an annual charge and is not divided into a monthly figure.",
       "field_evidence": {
         "price": "\"@type\":\"Offer\",\"name\":\"Annual\",\"priceCurrency\":\"USD\",\"price\":\"336.00\""
@@ -6250,9 +6940,9 @@
       "billing_period": "year",
       "commitment_months": 12,
       "condition": "Annual upfront charge for the one-site plan, inclusive of the promotional discount stated on the page. First-year pricing for new customers; renewal pricing is subject to change.",
-      "kind": "promotion",
+      "kind": "plan_price",
       "price": 336.0,
-      "source_sha256": "7c7d7dc51cb2a05b9daa7df62c1cee2d92753a7ad00159b7ffeceb8d74a632ec"
+      "source_sha256": "5c7b85a6f0f0ab4d677fa6bbf2e354471ae25b6e1e4c3a5876a1412cc5458ffe"
     },
     {
       "slug": "ionos-essential-web-hosting",
@@ -7133,17 +7823,42 @@
       "category": "VPS hosting",
       "source_url": "https://www.digitalocean.com/pricing/droplets",
       "offer_url": "https://www.digitalocean.com/pricing/droplets",
-      "fetched_at": "2026-09-13T00:39:19Z",
-      "evidence": "DigitalOcean Droplet pricing row: the row prints the hourly amount first and the monthly amount second. The plan is identified by its printed memory, vCPU, transfer and SSD figures.",
+      "fetched_at": "2026-10-24T11:08:57Z",
+      "evidence": "Official HTML table: bind the exact plan row to its printed monthly-price column. Retain the column heading as billing-unit evidence; do not borrow the hourly column or another plan.",
       "field_evidence": {
-        "price": "$0.00595 $ 4.00"
+        "billing_period": "$/mo",
+        "price": "$ 4.00"
+      },
+      "claim_evidence": {
+        "billing_period": {
+          "quote": "$/mo",
+          "excerpt": "<th class=\"SimpleTablestyles__StyledSimpleTableHeader-sc-1fkj6yy-5 lcXBsL\">$/mo<svg width=\"100%\" height=\"1\" viewBox=\"0 0 100 1\" preserveAspectRatio=\"none\" xmlns=\"http://www.w3.org/2000/svg\" class=\"SimpleTablestyles__StyledSimpleTableHeaderDivider-sc-1fkj6yy-4\"><line x1=\"0\" y1=\"0.5\" x2=\"100\" y2=\"0.5\" stroke=\"var(--border-subtle)\" stroke-width=\"1\" stroke-dasharray=\"4 8\" stroke-linecap=\"round\" vector-effect=\"non-scaling-stroke\"></line></svg></th>",
+          "visible_excerpt": "$/mo",
+          "location": "selected price column header",
+          "surface": "visible source text"
+        },
+        "price": {
+          "quote": "$ 4.00",
+          "excerpt": "$ 4.00",
+          "visible_excerpt": "$ 4.00",
+          "location": "configured field pattern: price",
+          "surface": "visible source text"
+        }
+      },
+      "table_evidence": {
+        "column_quote": "$/mo",
+        "column_attributes": {
+          "class": "SimpleTablestyles__StyledSimpleTableHeader-sc-1fkj6yy-5 lcXBsL"
+        },
+        "row_quote": "512 MiB",
+        "surface": "official HTML table"
       },
       "currency": "USD",
       "billing_period": "month",
       "condition": "Monthly price for the droplet size as printed in the official pricing table.",
       "kind": "regular_price",
-      "price": 4,
-      "source_sha256": "83426c6b5363ee4adc9e863c5da5a559850e55545fb9b68496ecd35812ff0765"
+      "price": 4.0,
+      "source_sha256": "6a9f5fa474e27fe44b92d73795f401928738ff01bd5d9a89da08ad1233a6d31b"
     },
     {
       "slug": "digitalocean-droplet-1-gib-1-vcpu-25-gib-ssd",
@@ -7152,17 +7867,42 @@
       "category": "VPS hosting",
       "source_url": "https://www.digitalocean.com/pricing/droplets",
       "offer_url": "https://www.digitalocean.com/pricing/droplets",
-      "fetched_at": "2026-09-13T00:39:19Z",
-      "evidence": "DigitalOcean Droplet pricing row: the row prints the hourly amount first and the monthly amount second. The plan is identified by its printed memory, vCPU, transfer and SSD figures.",
+      "fetched_at": "2026-10-24T11:08:57Z",
+      "evidence": "Official HTML table: bind the exact plan row to its printed monthly-price column. Retain the column heading as billing-unit evidence; do not borrow the hourly column or another plan.",
       "field_evidence": {
-        "price": "$0.00893 $ 6.00"
+        "billing_period": "$/mo",
+        "price": "$ 6.00"
+      },
+      "claim_evidence": {
+        "billing_period": {
+          "quote": "$/mo",
+          "excerpt": "<th class=\"SimpleTablestyles__StyledSimpleTableHeader-sc-1fkj6yy-5 lcXBsL\">$/mo<svg width=\"100%\" height=\"1\" viewBox=\"0 0 100 1\" preserveAspectRatio=\"none\" xmlns=\"http://www.w3.org/2000/svg\" class=\"SimpleTablestyles__StyledSimpleTableHeaderDivider-sc-1fkj6yy-4\"><line x1=\"0\" y1=\"0.5\" x2=\"100\" y2=\"0.5\" stroke=\"var(--border-subtle)\" stroke-width=\"1\" stroke-dasharray=\"4 8\" stroke-linecap=\"round\" vector-effect=\"non-scaling-stroke\"></line></svg></th>",
+          "visible_excerpt": "$/mo",
+          "location": "selected price column header",
+          "surface": "visible source text"
+        },
+        "price": {
+          "quote": "$ 6.00",
+          "excerpt": "$ 6.00",
+          "visible_excerpt": "$ 6.00",
+          "location": "configured field pattern: price",
+          "surface": "visible source text"
+        }
+      },
+      "table_evidence": {
+        "column_quote": "$/mo",
+        "column_attributes": {
+          "class": "SimpleTablestyles__StyledSimpleTableHeader-sc-1fkj6yy-5 lcXBsL"
+        },
+        "row_quote": "1 GiB",
+        "surface": "official HTML table"
       },
       "currency": "USD",
       "billing_period": "month",
       "condition": "Monthly price for the droplet size as printed in the official pricing table.",
       "kind": "regular_price",
-      "price": 6,
-      "source_sha256": "83426c6b5363ee4adc9e863c5da5a559850e55545fb9b68496ecd35812ff0765"
+      "price": 6.0,
+      "source_sha256": "6a9f5fa474e27fe44b92d73795f401928738ff01bd5d9a89da08ad1233a6d31b"
     },
     {
       "slug": "digitalocean-droplet-2-gib-1-vcpu-50-gib-ssd",
@@ -7171,17 +7911,42 @@
       "category": "VPS hosting",
       "source_url": "https://www.digitalocean.com/pricing/droplets",
       "offer_url": "https://www.digitalocean.com/pricing/droplets",
-      "fetched_at": "2026-09-13T00:39:19Z",
-      "evidence": "DigitalOcean Droplet pricing row: the row prints the hourly amount first and the monthly amount second. The plan is identified by its printed memory, vCPU, transfer and SSD figures.",
+      "fetched_at": "2026-10-24T11:08:57Z",
+      "evidence": "Official HTML table: bind the exact plan row to its printed monthly-price column. Retain the column heading as billing-unit evidence; do not borrow the hourly column or another plan.",
       "field_evidence": {
-        "price": "$0.01786 $ 12.00"
+        "billing_period": "$/mo",
+        "price": "$ 12.00"
+      },
+      "claim_evidence": {
+        "billing_period": {
+          "quote": "$/mo",
+          "excerpt": "<th class=\"SimpleTablestyles__StyledSimpleTableHeader-sc-1fkj6yy-5 lcXBsL\">$/mo<svg width=\"100%\" height=\"1\" viewBox=\"0 0 100 1\" preserveAspectRatio=\"none\" xmlns=\"http://www.w3.org/2000/svg\" class=\"SimpleTablestyles__StyledSimpleTableHeaderDivider-sc-1fkj6yy-4\"><line x1=\"0\" y1=\"0.5\" x2=\"100\" y2=\"0.5\" stroke=\"var(--border-subtle)\" stroke-width=\"1\" stroke-dasharray=\"4 8\" stroke-linecap=\"round\" vector-effect=\"non-scaling-stroke\"></line></svg></th>",
+          "visible_excerpt": "$/mo",
+          "location": "selected price column header",
+          "surface": "visible source text"
+        },
+        "price": {
+          "quote": "$ 12.00",
+          "excerpt": "$ 12.00",
+          "visible_excerpt": "$ 12.00",
+          "location": "configured field pattern: price",
+          "surface": "visible source text"
+        }
+      },
+      "table_evidence": {
+        "column_quote": "$/mo",
+        "column_attributes": {
+          "class": "SimpleTablestyles__StyledSimpleTableHeader-sc-1fkj6yy-5 lcXBsL"
+        },
+        "row_quote": "2 GiB",
+        "surface": "official HTML table"
       },
       "currency": "USD",
       "billing_period": "month",
       "condition": "Monthly price for the droplet size as printed in the official pricing table.",
       "kind": "regular_price",
-      "price": 12,
-      "source_sha256": "83426c6b5363ee4adc9e863c5da5a559850e55545fb9b68496ecd35812ff0765"
+      "price": 12.0,
+      "source_sha256": "6a9f5fa474e27fe44b92d73795f401928738ff01bd5d9a89da08ad1233a6d31b"
     },
     {
       "slug": "porkbun-com-registration",
@@ -7414,17 +8179,43 @@
       "category": "Application hosting",
       "source_url": "https://fly.io/pricing",
       "offer_url": "https://fly.io/pricing",
-      "fetched_at": "2026-09-13T00:39:22Z",
-      "evidence": "Fly.io preset table: each preset prints the hourly rate and then the monthly rate.",
+      "fetched_at": "2026-10-24T11:08:57Z",
+      "evidence": "Official HTML table: bind the exact plan row to its printed monthly-price column. Retain the column heading as billing-unit evidence; do not borrow the hourly column or another plan.",
       "field_evidence": {
-        "price": "$0.0027 $1.94"
+        "billing_period": "Per month",
+        "price": "$2.19"
+      },
+      "claim_evidence": {
+        "billing_period": {
+          "quote": "Per month",
+          "excerpt": "<th scope=\"col\" class=\"pb-3 text-right font-normal\">Per month</th>",
+          "visible_excerpt": "Per month",
+          "location": "selected price column header",
+          "surface": "visible source text"
+        },
+        "price": {
+          "quote": "$2.19",
+          "excerpt": "$2.19",
+          "visible_excerpt": "$2.19",
+          "location": "configured field pattern: price",
+          "surface": "visible source text"
+        }
+      },
+      "table_evidence": {
+        "column_quote": "Per month",
+        "column_attributes": {
+          "scope": "col",
+          "class": "pb-3 text-right font-normal"
+        },
+        "row_quote": "shared-cpu-1x · 256MB",
+        "surface": "official HTML table"
       },
       "currency": "USD",
       "billing_period": "month",
       "condition": "Monthly list price for the machine preset while running, as printed on the official pricing page. The page also carries per-region prices that only change after scripts run; this is the figure served in the default view.",
       "kind": "regular_price",
-      "price": 1.94,
-      "source_sha256": "d493cb3a240634e93bf5f2d81cb44b266a66310aadd68bb9fa9f103459bbf8e5"
+      "price": 2.19,
+      "source_sha256": "79af75616fa91dd5fd488d1bcd1ffcedebfcbe028bd521bdb80482d65a554f8f"
     },
     {
       "slug": "fly-io-machine-shared-cpu-2x-512-mb",
@@ -7433,17 +8224,43 @@
       "category": "Application hosting",
       "source_url": "https://fly.io/pricing",
       "offer_url": "https://fly.io/pricing",
-      "fetched_at": "2026-09-13T00:39:22Z",
-      "evidence": "Fly.io preset table, read the same way as shared-cpu-1x.",
+      "fetched_at": "2026-10-24T11:08:57Z",
+      "evidence": "Official HTML table: bind the exact plan row to its printed monthly-price column. Retain the column heading as billing-unit evidence; do not borrow the hourly column or another plan.",
       "field_evidence": {
-        "price": "$0.0054 $3.89"
+        "billing_period": "Per month",
+        "price": "$4.39"
+      },
+      "claim_evidence": {
+        "billing_period": {
+          "quote": "Per month",
+          "excerpt": "<th scope=\"col\" class=\"pb-3 text-right font-normal\">Per month</th>",
+          "visible_excerpt": "Per month",
+          "location": "selected price column header",
+          "surface": "visible source text"
+        },
+        "price": {
+          "quote": "$4.39",
+          "excerpt": "$4.39",
+          "visible_excerpt": "$4.39",
+          "location": "configured field pattern: price",
+          "surface": "visible source text"
+        }
+      },
+      "table_evidence": {
+        "column_quote": "Per month",
+        "column_attributes": {
+          "scope": "col",
+          "class": "pb-3 text-right font-normal"
+        },
+        "row_quote": "shared-cpu-2x · 512MB",
+        "surface": "official HTML table"
       },
       "currency": "USD",
       "billing_period": "month",
       "condition": "Monthly list price for the machine preset while running, as printed on the official pricing page. The page also carries per-region prices that only change after scripts run; this is the figure served in the default view.",
       "kind": "regular_price",
-      "price": 3.89,
-      "source_sha256": "d493cb3a240634e93bf5f2d81cb44b266a66310aadd68bb9fa9f103459bbf8e5"
+      "price": 4.39,
+      "source_sha256": "79af75616fa91dd5fd488d1bcd1ffcedebfcbe028bd521bdb80482d65a554f8f"
     },
     {
       "slug": "fly-io-machine-shared-cpu-4x-1-gb",
@@ -7452,17 +8269,43 @@
       "category": "Application hosting",
       "source_url": "https://fly.io/pricing",
       "offer_url": "https://fly.io/pricing",
-      "fetched_at": "2026-09-13T00:39:22Z",
-      "evidence": "Fly.io preset table, read the same way as shared-cpu-1x.",
+      "fetched_at": "2026-10-24T11:08:57Z",
+      "evidence": "Official HTML table: bind the exact plan row to its printed monthly-price column. Retain the column heading as billing-unit evidence; do not borrow the hourly column or another plan.",
       "field_evidence": {
-        "price": "$0.0108 $7.78"
+        "billing_period": "Per month",
+        "price": "$8.78"
+      },
+      "claim_evidence": {
+        "billing_period": {
+          "quote": "Per month",
+          "excerpt": "<th scope=\"col\" class=\"pb-3 text-right font-normal\">Per month</th>",
+          "visible_excerpt": "Per month",
+          "location": "selected price column header",
+          "surface": "visible source text"
+        },
+        "price": {
+          "quote": "$8.78",
+          "excerpt": "$8.78",
+          "visible_excerpt": "$8.78",
+          "location": "configured field pattern: price",
+          "surface": "visible source text"
+        }
+      },
+      "table_evidence": {
+        "column_quote": "Per month",
+        "column_attributes": {
+          "scope": "col",
+          "class": "pb-3 text-right font-normal"
+        },
+        "row_quote": "shared-cpu-4x · 1GB",
+        "surface": "official HTML table"
       },
       "currency": "USD",
       "billing_period": "month",
       "condition": "Monthly list price for the machine preset while running, as printed on the official pricing page. The page also carries per-region prices that only change after scripts run; this is the figure served in the default view.",
       "kind": "regular_price",
-      "price": 7.78,
-      "source_sha256": "d493cb3a240634e93bf5f2d81cb44b266a66310aadd68bb9fa9f103459bbf8e5"
+      "price": 8.78,
+      "source_sha256": "79af75616fa91dd5fd488d1bcd1ffcedebfcbe028bd521bdb80482d65a554f8f"
     },
     {
       "slug": "amazon-lightsail-lightsail-512-mb-2-vcpu-20-gb-ssd",
@@ -7555,19 +8398,35 @@
       "category": "Web hosting",
       "source_url": "https://www.20i.com/web-hosting",
       "offer_url": "https://www.20i.com/web-hosting",
-      "fetched_at": "2026-09-13T00:39:23Z",
+      "fetched_at": "2026-10-24T11:08:58Z",
       "evidence": "20i pricing card: the plan name is followed by the first-month amount and the subsequent monthly rate.",
       "field_evidence": {
-        "price": "£ 1",
+        "price": "First Month £ 1",
         "renewal_price": "Then only £10/mo"
+      },
+      "claim_evidence": {
+        "price": {
+          "quote": "First Month £ 1",
+          "excerpt": "Startup First Month £ 1 Then only £10/mo Buy now 24/7 premium support No contract – cancel any time Plan Specifications 1 Website 10 GB Storage 50 GB Bandwidth 10 x 10 GB Mailboxes 1 GB MySQL Storage",
+          "visible_excerpt": "Startup First Month £ 1 Then only £10/mo Buy now 24/7 premium support No contract – cancel any time Plan Specifications 1 Website 10 GB Storage 50 GB Bandwidth 10 x 10 GB Mailboxes 1 GB MySQL Storage",
+          "location": "configured field pattern: price",
+          "surface": "visible source text"
+        },
+        "renewal_price": {
+          "quote": "Then only £10/mo",
+          "excerpt": "Startup First Month £ 1 Then only £10/mo Buy now 24/7 premium support No contract – cancel any time Plan Specifications 1 Website 10 GB Storage 50 GB Bandwidth 10 x 10 GB Mailboxes 1 GB MySQL Storage",
+          "visible_excerpt": "Startup First Month £ 1 Then only £10/mo Buy now 24/7 premium support No contract – cancel any time Plan Specifications 1 Website 10 GB Storage 50 GB Bandwidth 10 x 10 GB Mailboxes 1 GB MySQL Storage",
+          "location": "configured field pattern: renewal_price",
+          "surface": "visible source text"
+        }
       },
       "currency": "GBP",
       "billing_period": "month",
       "condition": "First month at the advertised amount; the page states the rate charged afterwards.",
-      "kind": "promotion",
-      "price": 1,
-      "renewal_price": 10,
-      "source_sha256": "8d028ec19ac20b5c4fd2e2cf25adc278510599f193a19104e0abfa06b7dbc2d5"
+      "kind": "plan_price",
+      "price": 1.0,
+      "renewal_price": 10.0,
+      "source_sha256": "d900785c0288314feb95b3040e42a09537fa738ce82222961dcda4d583fe4a98"
     },
     {
       "slug": "20i-plan-1",
@@ -7576,19 +8435,35 @@
       "category": "Web hosting",
       "source_url": "https://www.20i.com/web-hosting",
       "offer_url": "https://www.20i.com/web-hosting",
-      "fetched_at": "2026-09-13T00:39:23Z",
+      "fetched_at": "2026-10-24T11:08:58Z",
       "evidence": "20i pricing card, read the same way as Startup.",
       "field_evidence": {
-        "price": "£ 1",
+        "price": "First Month £ 1",
         "renewal_price": "Then only £20/mo"
+      },
+      "claim_evidence": {
+        "price": {
+          "quote": "First Month £ 1",
+          "excerpt": "Plan 1 First Month £ 1 Then only £20/mo Buy now 24/7 premium support No contract – cancel any time Plan Specifications 1 Website 10 GB Storage 100 GB Bandwidth 20 x 10 GB Mailboxes 5 GB MySQL Storage",
+          "visible_excerpt": "Plan 1 First Month £ 1 Then only £20/mo Buy now 24/7 premium support No contract – cancel any time Plan Specifications 1 Website 10 GB Storage 100 GB Bandwidth 20 x 10 GB Mailboxes 5 GB MySQL Storage",
+          "location": "configured field pattern: price",
+          "surface": "visible source text"
+        },
+        "renewal_price": {
+          "quote": "Then only £20/mo",
+          "excerpt": "Plan 1 First Month £ 1 Then only £20/mo Buy now 24/7 premium support No contract – cancel any time Plan Specifications 1 Website 10 GB Storage 100 GB Bandwidth 20 x 10 GB Mailboxes 5 GB MySQL Storage",
+          "visible_excerpt": "Plan 1 First Month £ 1 Then only £20/mo Buy now 24/7 premium support No contract – cancel any time Plan Specifications 1 Website 10 GB Storage 100 GB Bandwidth 20 x 10 GB Mailboxes 5 GB MySQL Storage",
+          "location": "configured field pattern: renewal_price",
+          "surface": "visible source text"
+        }
       },
       "currency": "GBP",
       "billing_period": "month",
       "condition": "First month at the advertised amount; the page states the rate charged afterwards.",
-      "kind": "promotion",
-      "price": 1,
-      "renewal_price": 20,
-      "source_sha256": "8d028ec19ac20b5c4fd2e2cf25adc278510599f193a19104e0abfa06b7dbc2d5"
+      "kind": "plan_price",
+      "price": 1.0,
+      "renewal_price": 20.0,
+      "source_sha256": "d900785c0288314feb95b3040e42a09537fa738ce82222961dcda4d583fe4a98"
     },
     {
       "slug": "20i-plan-2",
@@ -7597,19 +8472,35 @@
       "category": "Web hosting",
       "source_url": "https://www.20i.com/web-hosting",
       "offer_url": "https://www.20i.com/web-hosting",
-      "fetched_at": "2026-09-13T00:39:24Z",
+      "fetched_at": "2026-10-24T11:08:58Z",
       "evidence": "20i pricing card, read the same way as Startup.",
       "field_evidence": {
-        "price": "£ 1",
+        "price": "First Month £ 1",
         "renewal_price": "Then only £40/mo"
+      },
+      "claim_evidence": {
+        "price": {
+          "quote": "First Month £ 1",
+          "excerpt": "Plan 2 First Month £ 1 Then only £40/mo Buy now 24/7 premium support No contract – cancel any time Plan Specifications 3 Websites 20 GB Storage 200 GB Bandwidth 50 x 10 GB Mailboxes 15 GB MySQL Storag",
+          "visible_excerpt": "Plan 2 First Month £ 1 Then only £40/mo Buy now 24/7 premium support No contract – cancel any time Plan Specifications 3 Websites 20 GB Storage 200 GB Bandwidth 50 x 10 GB Mailboxes 15 GB MySQL Storag",
+          "location": "configured field pattern: price",
+          "surface": "visible source text"
+        },
+        "renewal_price": {
+          "quote": "Then only £40/mo",
+          "excerpt": "Plan 2 First Month £ 1 Then only £40/mo Buy now 24/7 premium support No contract – cancel any time Plan Specifications 3 Websites 20 GB Storage 200 GB Bandwidth 50 x 10 GB Mailboxes 15 GB MySQL Storag",
+          "visible_excerpt": "Plan 2 First Month £ 1 Then only £40/mo Buy now 24/7 premium support No contract – cancel any time Plan Specifications 3 Websites 20 GB Storage 200 GB Bandwidth 50 x 10 GB Mailboxes 15 GB MySQL Storag",
+          "location": "configured field pattern: renewal_price",
+          "surface": "visible source text"
+        }
       },
       "currency": "GBP",
       "billing_period": "month",
       "condition": "First month at the advertised amount; the page states the rate charged afterwards.",
-      "kind": "promotion",
-      "price": 1,
-      "renewal_price": 40,
-      "source_sha256": "8d028ec19ac20b5c4fd2e2cf25adc278510599f193a19104e0abfa06b7dbc2d5"
+      "kind": "plan_price",
+      "price": 1.0,
+      "renewal_price": 40.0,
+      "source_sha256": "d900785c0288314feb95b3040e42a09537fa738ce82222961dcda4d583fe4a98"
     },
     {
       "slug": "20i-plan-3",
@@ -7618,19 +8509,35 @@
       "category": "Web hosting",
       "source_url": "https://www.20i.com/web-hosting",
       "offer_url": "https://www.20i.com/web-hosting",
-      "fetched_at": "2026-09-13T00:39:24Z",
+      "fetched_at": "2026-10-24T11:08:58Z",
       "evidence": "20i pricing card, read the same way as Startup.",
       "field_evidence": {
-        "price": "£ 1",
+        "price": "First Month £ 1",
         "renewal_price": "Then only £80/mo"
+      },
+      "claim_evidence": {
+        "price": {
+          "quote": "First Month £ 1",
+          "excerpt": "Plan 3 First Month £ 1 Then only £80/mo Buy now 24/7 premium support No contract – cancel any time Plan Specifications 10 Websites 40 GB Storage 300 GB Bandwidth 100 x 10 GB Mailboxes 50 GB MySQL Stor",
+          "visible_excerpt": "Plan 3 First Month £ 1 Then only £80/mo Buy now 24/7 premium support No contract – cancel any time Plan Specifications 10 Websites 40 GB Storage 300 GB Bandwidth 100 x 10 GB Mailboxes 50 GB MySQL Stor",
+          "location": "configured field pattern: price",
+          "surface": "visible source text"
+        },
+        "renewal_price": {
+          "quote": "Then only £80/mo",
+          "excerpt": "Plan 3 First Month £ 1 Then only £80/mo Buy now 24/7 premium support No contract – cancel any time Plan Specifications 10 Websites 40 GB Storage 300 GB Bandwidth 100 x 10 GB Mailboxes 50 GB MySQL Stor",
+          "visible_excerpt": "Plan 3 First Month £ 1 Then only £80/mo Buy now 24/7 premium support No contract – cancel any time Plan Specifications 10 Websites 40 GB Storage 300 GB Bandwidth 100 x 10 GB Mailboxes 50 GB MySQL Stor",
+          "location": "configured field pattern: renewal_price",
+          "surface": "visible source text"
+        }
       },
       "currency": "GBP",
       "billing_period": "month",
       "condition": "First month at the advertised amount; the page states the rate charged afterwards.",
-      "kind": "promotion",
-      "price": 1,
-      "renewal_price": 80,
-      "source_sha256": "8d028ec19ac20b5c4fd2e2cf25adc278510599f193a19104e0abfa06b7dbc2d5"
+      "kind": "plan_price",
+      "price": 1.0,
+      "renewal_price": 80.0,
+      "source_sha256": "d900785c0288314feb95b3040e42a09537fa738ce82222961dcda4d583fe4a98"
     },
     {
       "slug": "20i-plan-4",
@@ -7639,19 +8546,35 @@
       "category": "Web hosting",
       "source_url": "https://www.20i.com/web-hosting",
       "offer_url": "https://www.20i.com/web-hosting",
-      "fetched_at": "2026-09-13T00:39:24Z",
+      "fetched_at": "2026-10-24T11:08:59Z",
       "evidence": "20i pricing card, read the same way as Startup.",
       "field_evidence": {
-        "price": "£ 1",
+        "price": "First Month £ 1",
         "renewal_price": "Then only £150/mo"
+      },
+      "claim_evidence": {
+        "price": {
+          "quote": "First Month £ 1",
+          "excerpt": "Plan 4 First Month £ 1 Then only £150/mo Buy now 24/7 premium support No contract – cancel any time Plan Specifications 25 Websites 50 GB Storage 500 GB Bandwidth 250 x 10 GB Mailboxes 125 GB MySQL St",
+          "visible_excerpt": "Plan 4 First Month £ 1 Then only £150/mo Buy now 24/7 premium support No contract – cancel any time Plan Specifications 25 Websites 50 GB Storage 500 GB Bandwidth 250 x 10 GB Mailboxes 125 GB MySQL St",
+          "location": "configured field pattern: price",
+          "surface": "visible source text"
+        },
+        "renewal_price": {
+          "quote": "Then only £150/mo",
+          "excerpt": "Plan 4 First Month £ 1 Then only £150/mo Buy now 24/7 premium support No contract – cancel any time Plan Specifications 25 Websites 50 GB Storage 500 GB Bandwidth 250 x 10 GB Mailboxes 125 GB MySQL St",
+          "visible_excerpt": "Plan 4 First Month £ 1 Then only £150/mo Buy now 24/7 premium support No contract – cancel any time Plan Specifications 25 Websites 50 GB Storage 500 GB Bandwidth 250 x 10 GB Mailboxes 125 GB MySQL St",
+          "location": "configured field pattern: renewal_price",
+          "surface": "visible source text"
+        }
       },
       "currency": "GBP",
       "billing_period": "month",
       "condition": "First month at the advertised amount; the page states the rate charged afterwards.",
-      "kind": "promotion",
-      "price": 1,
-      "renewal_price": 150,
-      "source_sha256": "8d028ec19ac20b5c4fd2e2cf25adc278510599f193a19104e0abfa06b7dbc2d5"
+      "kind": "plan_price",
+      "price": 1.0,
+      "renewal_price": 150.0,
+      "source_sha256": "d900785c0288314feb95b3040e42a09537fa738ce82222961dcda4d583fe4a98"
     },
     {
       "slug": "20i-plan-5",
@@ -7660,19 +8583,35 @@
       "category": "Web hosting",
       "source_url": "https://www.20i.com/web-hosting",
       "offer_url": "https://www.20i.com/web-hosting",
-      "fetched_at": "2026-09-13T00:39:24Z",
+      "fetched_at": "2026-10-24T11:08:59Z",
       "evidence": "20i pricing card, read the same way as Startup.",
       "field_evidence": {
-        "price": "£ 1",
+        "price": "First Month £ 1",
         "renewal_price": "Then only £300/mo"
+      },
+      "claim_evidence": {
+        "price": {
+          "quote": "First Month £ 1",
+          "excerpt": "Plan 5 First Month £ 1 Then only £300/mo Buy now 24/7 premium support No contract – cancel any time Plan Specifications 50 Websites 100 GB Storage 1 TB Bandwidth 500 x 10 GB Mailboxes 250 GB MySQL Sto",
+          "visible_excerpt": "Plan 5 First Month £ 1 Then only £300/mo Buy now 24/7 premium support No contract – cancel any time Plan Specifications 50 Websites 100 GB Storage 1 TB Bandwidth 500 x 10 GB Mailboxes 250 GB MySQL Sto",
+          "location": "configured field pattern: price",
+          "surface": "visible source text"
+        },
+        "renewal_price": {
+          "quote": "Then only £300/mo",
+          "excerpt": "Plan 5 First Month £ 1 Then only £300/mo Buy now 24/7 premium support No contract – cancel any time Plan Specifications 50 Websites 100 GB Storage 1 TB Bandwidth 500 x 10 GB Mailboxes 250 GB MySQL Sto",
+          "visible_excerpt": "Plan 5 First Month £ 1 Then only £300/mo Buy now 24/7 premium support No contract – cancel any time Plan Specifications 50 Websites 100 GB Storage 1 TB Bandwidth 500 x 10 GB Mailboxes 250 GB MySQL Sto",
+          "location": "configured field pattern: renewal_price",
+          "surface": "visible source text"
+        }
       },
       "currency": "GBP",
       "billing_period": "month",
       "condition": "First month at the advertised amount; the page states the rate charged afterwards.",
-      "kind": "promotion",
-      "price": 1,
-      "renewal_price": 300,
-      "source_sha256": "8d028ec19ac20b5c4fd2e2cf25adc278510599f193a19104e0abfa06b7dbc2d5"
+      "kind": "plan_price",
+      "price": 1.0,
+      "renewal_price": 300.0,
+      "source_sha256": "d900785c0288314feb95b3040e42a09537fa738ce82222961dcda4d583fe4a98"
     }
   ],
   "source_status": {
@@ -7681,38 +8620,24 @@
       "request_url": "https://raidboxes.io/en/wordpress-hosting-pricing/",
       "http_status": 200,
       "visible_excerpt": "WordPress Hosting Prices & Plans – save 50% now Skip to content Get in contact WordPress Speed Test Live Chat Status page Careers Login Login Live-Chat DE Why Raidboxes Advantages Why Raidboxes Our philosophy Support by experts Responsibility & CSR Offers Free website migration F",
-      "checked_at": "2026-10-24T11:03:39Z",
-      "capture_status": "unmatched",
-      "reason": "Official source responded, but no configured extraction rule matched; existing records were retained.",
+      "checked_at": "2026-10-24T11:08:47Z",
+      "capture_status": "matched",
+      "reason": "Official source checked; matched configured extraction rules.",
       "published_count": 6,
-      "captured_count": 0,
-      "retained_count": 6,
-      "captured_slugs": [],
-      "retained_slugs": [
-        "raidboxes-mini",
-        "raidboxes-starter",
+      "captured_count": 6,
+      "retained_count": 0,
+      "captured_slugs": [
+        "raidboxes-business",
         "raidboxes-fully-managed",
+        "raidboxes-mini",
         "raidboxes-pro",
         "raidboxes-pro-xl",
-        "raidboxes-business"
+        "raidboxes-starter"
       ],
+      "retained_slugs": [],
       "rule_errors": [],
-      "unmatched_rules": [
-        "Mini",
-        "Starter",
-        "Fully Managed",
-        "Pro",
-        "Pro XL",
-        "Business"
-      ],
-      "rule_failures": {
-        "Mini": "Required wording was not found inside this plan card.",
-        "Starter": "Required wording was not found inside this plan card.",
-        "Fully Managed": "Required wording was not found inside this plan card.",
-        "Pro": "Required wording was not found inside this plan card.",
-        "Pro XL": "Required wording was not found inside this plan card.",
-        "Business": "Required wording was not found inside this plan card."
-      }
+      "unmatched_rules": [],
+      "rule_failures": {}
     },
     "webdock": {
       "status": "evidenced",
@@ -7976,23 +8901,21 @@
       "request_url": "https://appwrite.io/pricing",
       "http_status": 200,
       "visible_excerpt": "Pricing · Appwrite Products Solutions Pricing Docs Customers Blog Changelog 57.8K Skip to content Everything your app needs, one subscription _ Build, deploy, secure, and observe your app from one platform, all under one subscription. All platform services included Every plan inc",
-      "checked_at": "2026-10-24T11:03:57Z",
-      "capture_status": "unmatched",
-      "reason": "Official source responded, but no configured extraction rule matched; existing records were retained.",
-      "published_count": 1,
-      "captured_count": 0,
+      "checked_at": "2026-10-24T11:08:48Z",
+      "capture_status": "matched",
+      "reason": "Official source checked; matched configured extraction rules. Some earlier records remain because their configured rule did not match this run.",
+      "published_count": 2,
+      "captured_count": 1,
       "retained_count": 1,
-      "captured_slugs": [],
+      "captured_slugs": [
+        "appwrite-dedicated-database-starter-per-database"
+      ],
       "retained_slugs": [
         "appwrite-pro"
       ],
       "rule_errors": [],
-      "unmatched_rules": [
-        "Pro"
-      ],
-      "rule_failures": {
-        "Pro": "The configured plan anchor was not found."
-      }
+      "unmatched_rules": [],
+      "rule_failures": {}
     },
     "nhost": {
       "status": "evidenced",
@@ -8425,13 +9348,18 @@
       "request_url": "https://www.netcup.com/en/server/vps",
       "http_status": 200,
       "visible_excerpt": "VPS hosting with top performance & best conditions | netcup Skip to content Hosting that delivers : Get domains , web hosting , servers and more at unbeatable prices EN / VAT 19% Select your settings Close Please select your desired language and country. The country selection is ",
-      "checked_at": "2026-10-24T11:04:23Z",
-      "capture_status": "unmatched",
-      "reason": "Official source responded, but no configured extraction rule matched; existing records were retained.",
-      "published_count": 4,
-      "captured_count": 0,
+      "checked_at": "2026-10-24T11:08:50Z",
+      "capture_status": "matched",
+      "reason": "Official source checked; matched configured extraction rules. Some earlier records remain because their configured rule did not match this run.",
+      "published_count": 8,
+      "captured_count": 4,
       "retained_count": 4,
-      "captured_slugs": [],
+      "captured_slugs": [
+        "netcup-vps-1000-g12-5",
+        "netcup-vps-2000-g12-5",
+        "netcup-vps-4000-g12-5",
+        "netcup-vps-500-g12-5"
+      ],
       "retained_slugs": [
         "netcup-vps-500-g12",
         "netcup-vps-1000-g12",
@@ -8439,18 +9367,8 @@
         "netcup-vps-4000-g12"
       ],
       "rule_errors": [],
-      "unmatched_rules": [
-        "VPS 500 G12",
-        "VPS 1000 G12",
-        "VPS 2000 G12",
-        "VPS 4000 G12"
-      ],
-      "rule_failures": {
-        "VPS 500 G12": "Required fields were not found: price.",
-        "VPS 1000 G12": "Required fields were not found: price.",
-        "VPS 2000 G12": "Required fields were not found: price.",
-        "VPS 4000 G12": "Required fields were not found: price."
-      }
+      "unmatched_rules": [],
+      "rule_failures": {}
     },
     "deno-deploy": {
       "status": "evidenced",
@@ -8547,32 +9465,23 @@
       "request_url": "https://www.crocweb.com/",
       "http_status": 200,
       "visible_excerpt": "Fast, Secure Cloud Hosting for Websites and Apps | CrocWeb Skip to main content +1 (888)-804-CROC | Help Center | CrocWeb Status Cloud Hosting Cloud Hosting Cloud Web Hosting Fast, reliable hosting for websites, blogs and stores Cloud WordPress Hosting Managed WordPress with 1-cl",
-      "checked_at": "2026-10-24T11:04:26Z",
-      "capture_status": "unmatched",
-      "reason": "Official source responded, but no configured extraction rule matched; existing records were retained.",
+      "checked_at": "2026-10-24T11:08:50Z",
+      "capture_status": "matched",
+      "reason": "Official source checked; matched configured extraction rules. Some earlier records remain because their configured rule did not match this run.",
       "published_count": 4,
-      "captured_count": 0,
-      "retained_count": 4,
-      "captured_slugs": [],
-      "retained_slugs": [
-        "crocweb-cloud-web-hosting",
-        "crocweb-cloud-wordpress-hosting",
+      "captured_count": 3,
+      "retained_count": 1,
+      "captured_slugs": [
         "crocweb-cloud-reseller-hosting",
+        "crocweb-cloud-web-hosting",
+        "crocweb-cloud-wordpress-hosting"
+      ],
+      "retained_slugs": [
         "crocweb-cloud-virtual-servers"
       ],
       "rule_errors": [],
-      "unmatched_rules": [
-        "Cloud Web Hosting",
-        "Cloud WordPress Hosting",
-        "Cloud Reseller Hosting",
-        "Cloud Virtual Servers"
-      ],
-      "rule_failures": {
-        "Cloud Web Hosting": "The configured plan anchor was not found.",
-        "Cloud WordPress Hosting": "The configured plan anchor was not found.",
-        "Cloud Reseller Hosting": "The configured plan anchor was not found.",
-        "Cloud Virtual Servers": "The configured plan anchor was not found."
-      }
+      "unmatched_rules": [],
+      "rule_failures": {}
     },
     "eukhost": {
       "status": "evidenced",
@@ -8713,31 +9622,26 @@
       "request_url": "https://northflank.com/pricing",
       "http_status": 200,
       "visible_excerpt": "Pricing — Northflank Skip to content Primary navigation Show navigation Northflank Platform Resources Enterprise Pricing Docs Book a demo Log in Get started Pay for what you run Billed to the second, with no seat fees. Start free, then pay as you go on Northflank Cloud or in your",
-      "checked_at": "2026-10-24T11:04:31Z",
-      "capture_status": "unmatched",
-      "reason": "Official source responded, but no configured extraction rule matched; existing records were retained.",
+      "checked_at": "2026-10-24T11:08:51Z",
+      "capture_status": "matched",
+      "reason": "Official source checked; matched configured extraction rules. Some earlier records remain because their configured rule did not match this run.",
       "published_count": 4,
-      "captured_count": 0,
-      "retained_count": 4,
-      "captured_slugs": [],
-      "retained_slugs": [
-        "northflank-nf-compute-10",
-        "northflank-nf-compute-50",
+      "captured_count": 3,
+      "retained_count": 1,
+      "captured_slugs": [
         "northflank-nf-compute-100-2",
-        "northflank-nf-compute-400"
+        "northflank-nf-compute-400",
+        "northflank-nf-compute-50"
+      ],
+      "retained_slugs": [
+        "northflank-nf-compute-10"
       ],
       "rule_errors": [],
       "unmatched_rules": [
-        "nf-compute-10",
-        "nf-compute-50",
-        "nf-compute-100-2",
-        "nf-compute-400"
+        "nf-compute-10"
       ],
       "rule_failures": {
-        "nf-compute-10": "Required wording was not found inside this plan card.",
-        "nf-compute-50": "Required wording was not found inside this plan card.",
-        "nf-compute-100-2": "Required wording was not found inside this plan card.",
-        "nf-compute-400": "Required wording was not found inside this plan card."
+        "nf-compute-10": "An unambiguous price cell with the configured plan row and column header was not found."
       }
     },
     "bubble": {
@@ -9160,29 +10064,21 @@
       "request_url": "https://www.fasthosts.co.uk/web-hosting",
       "http_status": 200,
       "visible_excerpt": "Web Hosting | Web Hosting Services | Web Hosting UK | Fasthosts Skip to content Fasthosts home AI Receptionist AI Receptionist Never miss a business call, even after hours Domains Domain Names It all starts with a name. Find the perfect domain and make a home for your great idea ",
-      "checked_at": "2026-10-24T11:05:00Z",
-      "capture_status": "unmatched",
-      "reason": "Official source responded, but no configured extraction rule matched; existing records were retained.",
+      "checked_at": "2026-10-24T11:08:52Z",
+      "capture_status": "matched",
+      "reason": "Official source checked; matched configured extraction rules.",
       "published_count": 3,
-      "captured_count": 0,
-      "retained_count": 3,
-      "captured_slugs": [],
-      "retained_slugs": [
-        "fasthosts-start",
+      "captured_count": 3,
+      "retained_count": 0,
+      "captured_slugs": [
+        "fasthosts-pro",
         "fasthosts-scale",
-        "fasthosts-pro"
+        "fasthosts-start"
       ],
+      "retained_slugs": [],
       "rule_errors": [],
-      "unmatched_rules": [
-        "Start",
-        "Scale",
-        "Pro"
-      ],
-      "rule_failures": {
-        "Start": "The price quote does not establish the configured currency and billing unit.",
-        "Scale": "The price quote does not establish the configured currency and billing unit.",
-        "Pro": "The price quote does not establish the configured currency and billing unit."
-      }
+      "unmatched_rules": [],
+      "rule_failures": {}
     },
     "name-com": {
       "status": "evidenced",
@@ -9240,87 +10136,63 @@
       "request_url": "https://railway.com/pricing",
       "http_status": 200,
       "visible_excerpt": "Pricing | Railway Product Developers Enterprise Company Pricing Pay only for what your app uses, by the second Say goodbye to overprovisioning and optimizing box sizes. Railway only charges you for what your app uses . Free $ 0 per month Perfect for getting started and deploying ",
-      "checked_at": "2026-10-24T11:05:01Z",
-      "capture_status": "unmatched",
-      "reason": "Official source responded, but no configured extraction rule matched; existing records were retained.",
+      "checked_at": "2026-10-24T11:08:52Z",
+      "capture_status": "matched",
+      "reason": "Official source checked; matched configured extraction rules.",
       "published_count": 2,
-      "captured_count": 0,
-      "retained_count": 2,
-      "captured_slugs": [],
-      "retained_slugs": [
+      "captured_count": 2,
+      "retained_count": 0,
+      "captured_slugs": [
         "railway-hobby",
         "railway-pro"
       ],
+      "retained_slugs": [],
       "rule_errors": [],
-      "unmatched_rules": [
-        "Hobby",
-        "Pro"
-      ],
-      "rule_failures": {
-        "Hobby": "The price quote does not establish the configured currency and billing unit.",
-        "Pro": "The price quote does not establish the configured currency and billing unit."
-      }
+      "unmatched_rules": [],
+      "rule_failures": {}
     },
     "wordpress-com": {
       "status": "evidenced",
       "request_url": "https://wordpress.com/pricing/",
       "http_status": 200,
       "visible_excerpt": "WordPress.com Pricing | Find the Perfect Plan for Your Site Products Resources Support Pricing Log in Get started Menu Build Website Ecommerce AI website builder Publish Blog Newsletter Hosting Managed hosting Agency hosting Site migration Enterprise hosting WordPress VIP Domains",
-      "checked_at": "2026-10-24T11:05:01Z",
-      "capture_status": "unmatched",
-      "reason": "Official source responded, but no configured extraction rule matched; existing records were retained.",
+      "checked_at": "2026-10-24T11:08:53Z",
+      "capture_status": "matched",
+      "reason": "Official source checked; matched configured extraction rules.",
       "published_count": 3,
-      "captured_count": 0,
-      "retained_count": 3,
-      "captured_slugs": [],
-      "retained_slugs": [
+      "captured_count": 3,
+      "retained_count": 0,
+      "captured_slugs": [
+        "wordpress-com-business",
         "wordpress-com-personal",
-        "wordpress-com-premium",
-        "wordpress-com-business"
+        "wordpress-com-premium"
       ],
+      "retained_slugs": [],
       "rule_errors": [],
-      "unmatched_rules": [
-        "Personal",
-        "Premium",
-        "Business"
-      ],
-      "rule_failures": {
-        "Personal": "The price quote does not establish the configured currency and billing unit.",
-        "Premium": "The price quote does not establish the configured currency and billing unit.",
-        "Business": "The price quote does not establish the configured currency and billing unit."
-      }
+      "unmatched_rules": [],
+      "rule_failures": {}
     },
     "heroku": {
       "status": "evidenced",
       "request_url": "https://www.heroku.com/pricing/",
       "http_status": 200,
       "visible_excerpt": "Cloud Application Platform Pricing & Plans | Heroku Search overlay panel for performing site-wide searches Search For: Close Build Your Next Big Thing on Heroku. Sign Up Now! Search Open Search Popup Account menu Dashboard Databases Dataclips Elements Documentation Support Dashbo",
-      "checked_at": "2026-10-24T11:05:02Z",
-      "capture_status": "unmatched",
-      "reason": "Official source responded, but no configured extraction rule matched; existing records were retained.",
+      "checked_at": "2026-10-24T11:08:53Z",
+      "capture_status": "matched",
+      "reason": "Official source checked; matched configured extraction rules.",
       "published_count": 4,
-      "captured_count": 0,
-      "retained_count": 4,
-      "captured_slugs": [],
-      "retained_slugs": [
-        "heroku-eco",
+      "captured_count": 4,
+      "retained_count": 0,
+      "captured_slugs": [
         "heroku-basic",
+        "heroku-eco",
         "heroku-standard-1x",
         "heroku-standard-2x"
       ],
+      "retained_slugs": [],
       "rule_errors": [],
-      "unmatched_rules": [
-        "Eco",
-        "Basic",
-        "Standard-1X",
-        "Standard-2X"
-      ],
-      "rule_failures": {
-        "Eco": "The price quote does not establish the configured currency and billing unit.",
-        "Basic": "The price quote does not establish the configured currency and billing unit.",
-        "Standard-1X": "The price quote does not establish the configured currency and billing unit.",
-        "Standard-2X": "The price quote does not establish the configured currency and billing unit."
-      }
+      "unmatched_rules": [],
+      "rule_failures": {}
     },
     "krystal": {
       "status": "evidenced",
@@ -9423,26 +10295,20 @@
       "request_url": "https://www.hostinger.com/pricing",
       "http_status": 200,
       "visible_excerpt": "Hostinger pricing | Explore web hosting and all Hostinger plans Biggest deals of the year. 30-day money-back guarantee. Limited time deals. 24/7 support. Don't miss out Biggest deals of the year 30-day money-back guarantee Limited time deals 24/7 support Don't miss out Biggest de",
-      "checked_at": "2026-10-24T11:05:07Z",
-      "capture_status": "unmatched",
-      "reason": "Official source responded, but no configured extraction rule matched; existing records were retained.",
+      "checked_at": "2026-10-24T11:08:54Z",
+      "capture_status": "matched",
+      "reason": "Official source checked; matched configured extraction rules.",
       "published_count": 2,
-      "captured_count": 0,
-      "retained_count": 2,
-      "captured_slugs": [],
-      "retained_slugs": [
+      "captured_count": 2,
+      "retained_count": 0,
+      "captured_slugs": [
         "hostinger-premium-web-hosting",
         "hostinger-unlimited-web-hosting"
       ],
+      "retained_slugs": [],
       "rule_errors": [],
-      "unmatched_rules": [
-        "Premium Web Hosting",
-        "Unlimited Web Hosting"
-      ],
-      "rule_failures": {
-        "Premium Web Hosting": "The price quote does not establish the configured currency and billing unit.",
-        "Unlimited Web Hosting": "The price quote does not establish the configured currency and billing unit."
-      }
+      "unmatched_rules": [],
+      "rule_failures": {}
     },
     "siteground": {
       "status": "evidenced",
@@ -9499,13 +10365,15 @@
       "request_url": "https://kinsta.com/pricing/",
       "http_status": 200,
       "visible_excerpt": "WordPress hosting plans - Kinsta® Skip to content Kinsta® Navigation Platform Product Hosting for WordPress Security Performance MyKinsta dashboard Features Bot Protection Automatic Plugin Updates Cloudflare integration Edge caching APM Extensions Kinsta add-ons API Application h",
-      "checked_at": "2026-10-24T11:05:10Z",
+      "checked_at": "2026-10-24T11:08:55Z",
       "capture_status": "matched",
       "reason": "Official source checked; matched configured extraction rules.",
-      "published_count": 1,
-      "captured_count": 1,
+      "published_count": 3,
+      "captured_count": 3,
       "retained_count": 0,
       "captured_slugs": [
+        "kinsta-business-wp-20-bandwidth-annual-billing",
+        "kinsta-business-wp-20-bandwidth-monthly-billing",
         "kinsta-first-month-free-on-select-plans"
       ],
       "retained_slugs": [],
@@ -9515,10 +10383,10 @@
     },
     "cloudways": {
       "status": "evidenced",
-      "request_url": "https://www.cloudways.com/en/promo-code.php",
+      "request_url": "https://www.cloudways.com/en/pricing.php",
       "http_status": 200,
-      "visible_excerpt": "Cloudways Promo Code 2026 - Get the Best Hosting Deals Cloudways Velocity is here. Deploy Node.js apps on managed, predictable infrastructure. Start Hosting Now migration_campaign_2026 Open Nav Platform Solutions Agencies Resources Affiliate Pricing Contact Sales Login Start Free",
-      "checked_at": "2026-10-24T11:05:10Z",
+      "visible_excerpt": "Cloudways Pricing & Plans: Simple Managed Cloud Hosting Cloudways Velocity is here. Deploy Node.js apps on managed, predictable infrastructure. Start Hosting Now migration_campaign_2026 Open Nav Platform Solutions Agencies Resources Affiliate Pricing Contact Sales Login Start Fre",
+      "checked_at": "2026-10-24T11:08:56Z",
       "capture_status": "unmatched",
       "reason": "Official source responded, but no configured extraction rule matched; existing records were retained.",
       "published_count": 1,
@@ -9581,23 +10449,19 @@
       "request_url": "https://www.inmotionhosting.com/shared-hosting",
       "http_status": 200,
       "visible_excerpt": "Best Shared Web Hosting 2026 | InMotion Hosting Skip to content Open Menu InMotion Hosting Home InMotion Cloud: Half off your first month of Cloud plans with code SAVE50. Ends Oct 30, 2026. See Plans Resources Resources Server Management Website Services Compare InMotion Hosting ",
-      "checked_at": "2026-10-24T11:05:12Z",
-      "capture_status": "unmatched",
-      "reason": "Official source responded, but no configured extraction rule matched; existing records were retained.",
+      "checked_at": "2026-10-24T11:08:56Z",
+      "capture_status": "matched",
+      "reason": "Official source checked; matched configured extraction rules.",
       "published_count": 1,
-      "captured_count": 0,
-      "retained_count": 1,
-      "captured_slugs": [],
-      "retained_slugs": [
+      "captured_count": 1,
+      "retained_count": 0,
+      "captured_slugs": [
         "inmotion-hosting-launch-shared-hosting-36-month-term"
       ],
+      "retained_slugs": [],
       "rule_errors": [],
-      "unmatched_rules": [
-        "Launch shared hosting (36-month term)"
-      ],
-      "rule_failures": {
-        "Launch shared hosting (36-month term)": "The price quote does not establish the configured currency and billing unit."
-      }
+      "unmatched_rules": [],
+      "rule_failures": {}
     },
     "chemicloud": {
       "status": "evidenced",
@@ -9664,7 +10528,7 @@
       "request_url": "https://wpengine.com/plans/",
       "http_status": 200,
       "visible_excerpt": "WP Engine Plans & Pricing Skip to content WP Engine® Platform Platform Types Managed Hosting Platform Fast, secure, & easy site management. eCommerce Solution Optimized performance for stores. Newsroom Platform Editorial workflow and operations software. Headless Platform Build &",
-      "checked_at": "2026-10-24T11:05:14Z",
+      "checked_at": "2026-10-24T11:08:56Z",
       "capture_status": "matched",
       "reason": "Official source checked; matched configured extraction rules.",
       "published_count": 1,
@@ -9675,12 +10539,8 @@
       ],
       "retained_slugs": [],
       "rule_errors": [],
-      "unmatched_rules": [
-        "Essential managed hosting (annual billing)"
-      ],
-      "rule_failures": {
-        "Essential managed hosting (annual billing)": "The configured plan anchor was not found."
-      }
+      "unmatched_rules": [],
+      "rule_failures": {}
     },
     "ionos": {
       "status": "evidenced",
@@ -9979,29 +10839,21 @@
       "request_url": "https://www.digitalocean.com/pricing/droplets",
       "http_status": 200,
       "visible_excerpt": "Droplet Pricing | DigitalOcean Blog Docs Careers Get Support Contact Sales DigitalOcean Products Featured AI Products Compute Build, deploy, and scale cloud compute resources Containers and Images Safely store and manage containers and backups Managed Databases Fully managed reso",
-      "checked_at": "2026-10-24T11:05:29Z",
-      "capture_status": "unmatched",
-      "reason": "Official source responded, but no configured extraction rule matched; existing records were retained.",
+      "checked_at": "2026-10-24T11:08:56Z",
+      "capture_status": "matched",
+      "reason": "Official source checked; matched configured extraction rules.",
       "published_count": 3,
-      "captured_count": 0,
-      "retained_count": 3,
-      "captured_slugs": [],
-      "retained_slugs": [
-        "digitalocean-droplet-512-mib-1-vcpu-10-gib-ssd",
+      "captured_count": 3,
+      "retained_count": 0,
+      "captured_slugs": [
         "digitalocean-droplet-1-gib-1-vcpu-25-gib-ssd",
-        "digitalocean-droplet-2-gib-1-vcpu-50-gib-ssd"
+        "digitalocean-droplet-2-gib-1-vcpu-50-gib-ssd",
+        "digitalocean-droplet-512-mib-1-vcpu-10-gib-ssd"
       ],
+      "retained_slugs": [],
       "rule_errors": [],
-      "unmatched_rules": [
-        "Droplet 512 MiB / 1 vCPU / 10 GiB SSD",
-        "Droplet 1 GiB / 1 vCPU / 25 GiB SSD",
-        "Droplet 2 GiB / 1 vCPU / 50 GiB SSD"
-      ],
-      "rule_failures": {
-        "Droplet 512 MiB / 1 vCPU / 10 GiB SSD": "The price quote does not establish the configured currency and billing unit.",
-        "Droplet 1 GiB / 1 vCPU / 25 GiB SSD": "The price quote does not establish the configured currency and billing unit.",
-        "Droplet 2 GiB / 1 vCPU / 50 GiB SSD": "The price quote does not establish the configured currency and billing unit."
-      }
+      "unmatched_rules": [],
+      "rule_failures": {}
     },
     "porkbun": {
       "status": "evidenced",
@@ -10108,29 +10960,21 @@
       "request_url": "https://fly.io/pricing/",
       "http_status": 200,
       "visible_excerpt": "Pricing · Fly Open main menu Products Products Machines Sprites Managed Postgres Features Private Networking Autoscaling Zero Downtime Deploys Granular Routing Monitoring MCP Server Docs Platform Docs Sprites Docs Customers Pricing Articles Blog Sprites Infra Log Community Status",
-      "checked_at": "2026-10-24T11:05:31Z",
-      "capture_status": "unmatched",
-      "reason": "Official source responded, but no configured extraction rule matched; existing records were retained.",
+      "checked_at": "2026-10-24T11:08:57Z",
+      "capture_status": "matched",
+      "reason": "Official source checked; matched configured extraction rules.",
       "published_count": 3,
-      "captured_count": 0,
-      "retained_count": 3,
-      "captured_slugs": [],
-      "retained_slugs": [
+      "captured_count": 3,
+      "retained_count": 0,
+      "captured_slugs": [
         "fly-io-machine-shared-cpu-1x-256-mb",
         "fly-io-machine-shared-cpu-2x-512-mb",
         "fly-io-machine-shared-cpu-4x-1-gb"
       ],
+      "retained_slugs": [],
       "rule_errors": [],
-      "unmatched_rules": [
-        "Machine shared-cpu-1x 256 MB",
-        "Machine shared-cpu-2x 512 MB",
-        "Machine shared-cpu-4x 1 GB"
-      ],
-      "rule_failures": {
-        "Machine shared-cpu-1x 256 MB": "The price quote does not establish the configured currency and billing unit.",
-        "Machine shared-cpu-2x 512 MB": "The price quote does not establish the configured currency and billing unit.",
-        "Machine shared-cpu-4x 1 GB": "The price quote does not establish the configured currency and billing unit."
-      }
+      "unmatched_rules": [],
+      "rule_failures": {}
     },
     "amazon-lightsail": {
       "status": "evidenced",
@@ -10158,38 +11002,24 @@
       "request_url": "https://www.20i.com/web-hosting",
       "http_status": 200,
       "visible_excerpt": "UK Web Hosting: Lightning-fast & unlimited cloud hosting | 20i Reseller Hosting Reseller Hosting Reseller Hosting Profit with the best Reseller Hosting Platform Platform Hosting Platform Blazing-fast autoscaling cloud hosting StackCP Customisable control panel for your customers ",
-      "checked_at": "2026-10-24T11:05:34Z",
-      "capture_status": "unmatched",
-      "reason": "Official source responded, but no configured extraction rule matched; existing records were retained.",
+      "checked_at": "2026-10-24T11:08:58Z",
+      "capture_status": "matched",
+      "reason": "Official source checked; matched configured extraction rules.",
       "published_count": 6,
-      "captured_count": 0,
-      "retained_count": 6,
-      "captured_slugs": [],
-      "retained_slugs": [
-        "20i-startup",
+      "captured_count": 6,
+      "retained_count": 0,
+      "captured_slugs": [
         "20i-plan-1",
         "20i-plan-2",
         "20i-plan-3",
         "20i-plan-4",
-        "20i-plan-5"
+        "20i-plan-5",
+        "20i-startup"
       ],
+      "retained_slugs": [],
       "rule_errors": [],
-      "unmatched_rules": [
-        "Startup",
-        "Plan 1",
-        "Plan 2",
-        "Plan 3",
-        "Plan 4",
-        "Plan 5"
-      ],
-      "rule_failures": {
-        "Startup": "The price quote does not establish the configured currency and billing unit.",
-        "Plan 1": "The price quote does not establish the configured currency and billing unit.",
-        "Plan 2": "The price quote does not establish the configured currency and billing unit.",
-        "Plan 3": "The price quote does not establish the configured currency and billing unit.",
-        "Plan 4": "The price quote does not establish the configured currency and billing unit.",
-        "Plan 5": "The price quote does not establish the configured currency and billing unit."
-      }
+      "unmatched_rules": [],
+      "rule_failures": {}
     }
   },
   "source_403_locks": {
@@ -10219,138 +11049,39 @@
   "source_403_history": [],
   "refresh_scope": [
     "raidboxes",
-    "webdock",
-    "hostdime",
-    "veerotech",
-    "whc",
-    "123-reg",
-    "easyspace",
-    "portfoliobox",
-    "ucraft",
-    "voog",
-    "beehiiv",
-    "wpmu-dev",
     "appwrite",
-    "nhost",
-    "turso",
-    "eurodns",
-    "aiven",
-    "timescale",
-    "redis",
-    "xata",
-    "seravo",
-    "nixihost",
-    "ecwid",
-    "buttondown",
-    "cloudcone",
-    "ramnode",
-    "simply-com",
-    "strikingly",
-    "zeabur",
-    "replit",
-    "durable",
-    "b12",
-    "softr",
-    "bandzoogle",
     "netcup",
-    "deno-deploy",
-    "lightningbase",
-    "tmdhosting",
-    "hawkhost",
     "crocweb",
-    "eukhost",
-    "heart-internet",
-    "wpx",
-    "supabase",
-    "platform-sh",
-    "pantheon",
     "northflank",
-    "bubble",
-    "back4app",
-    "pagely",
-    "hosthatch",
-    "pixpa",
-    "infomaniak",
-    "one-com",
-    "shopify",
-    "bigcommerce",
-    "duda",
-    "framer",
-    "ghost",
-    "tilda",
-    "accuweb-hosting",
-    "kamatera",
-    "gridpane",
-    "koyeb",
-    "flywheel",
-    "10web",
-    "webflow",
-    "gandi",
     "fasthosts",
-    "name-com",
-    "pressable",
     "railway",
     "wordpress-com",
     "heroku",
-    "krystal",
-    "scaleway",
-    "site123",
-    "a2-hosting",
-    "hosting-com",
     "hostinger",
-    "siteground",
-    "dreamhost",
     "kinsta",
     "cloudways",
-    "scalahosting",
-    "greengeeks",
     "inmotion-hosting",
-    "chemicloud",
-    "verpex",
-    "knownhost",
     "wp-engine",
-    "ionos",
-    "namehero",
-    "stablehost",
-    "mddhosting",
-    "ultahost",
-    "netlify",
-    "vercel",
-    "ovhcloud",
-    "hetzner",
-    "hostwinds",
-    "kualo",
-    "squarespace",
-    "webnode",
-    "jimdo",
-    "wix",
-    "cloudflare-registrar",
     "digitalocean",
-    "porkbun",
-    "godaddy",
-    "namecheap",
-    "weebly",
-    "render",
     "fly-io",
-    "amazon-lightsail",
     "20i"
   ],
   "page_lastmod": {
     "/": {
-      "hash": "4926db3ca205f91f23cad369946ac905c99d9984e5e02cb34387855449ff6fcd",
-      "lastmod": "2026-10-24T11:05:35Z"
+      "hash": "abf466083500efc66938bb4e00df38d18dc21aa224e5737530200b8ffd2452c7",
+      "lastmod": "2026-10-24T11:09:00Z"
     },
     "/providers/": {
-      "hash": "122c817ff39ae8f68827a2979805eab00c0334105e373b15567d0ef0f81f180b",
-      "lastmod": "2026-10-24T11:05:35Z"
+      "hash": "6da2f160a18528713630014520cdaecd7cf7028cdf4b49721bb89040ca591321",
+      "lastmod": "2026-10-24T11:09:00Z"
     },
     "/compare/": {
       "hash": "ded6b829c4625d573961c212930682310eb1cc9dd84884f71bc14ebde189db1c",
       "lastmod": "2026-10-17T03:05:52Z"
     },
     "/methodology/": {
-      "hash": "f1425516cf79600aee5d149b21cc580a1e91b0e4d79ad1a9134fe1dcac5ac55a",
-      "lastmod": "2026-10-05T13:23:31Z"
+      "hash": "9d17d2c2cc0e5ca7c68987d64b9fc8e740a4e252d0c4257443e51f2c841f1967",
+      "lastmod": "2026-10-24T11:09:00Z"
     },
     "/about/": {
       "hash": "86ee035665e2f3c64ed7336be1c347265a1e1c906cd99b41ee3dd3ad5e8ccd2a",
@@ -10464,6 +11195,10 @@
       "hash": "7856724550eee3b84be8c9edf821cffc676c784f90a3584d38a69cd44959c979",
       "lastmod": "2026-10-18T03:17:42Z"
     },
+    "/providers/raidboxes/": {
+      "hash": "735833fa4dc3642bcb11d6a7b4ad248eff414849109ad88a497c3c84fd2f772e",
+      "lastmod": "2026-10-24T11:09:00Z"
+    },
     "/providers/webdock/": {
       "hash": "ca3aa85c85e5eebe9a619c53a37df79e18fa24bb11d9c4dede1b1b538ed5872d",
       "lastmod": "2026-10-05T13:23:31Z"
@@ -10499,6 +11234,10 @@
     "/providers/wpmu-dev/": {
       "hash": "a60a199e4a51bc1a3a2aa79cdaadadc3608951b4f55ca4885438c55b60b9a4f7",
       "lastmod": "2026-10-14T17:10:25Z"
+    },
+    "/providers/appwrite/": {
+      "hash": "c5ad1c295705c8616e223a6a70dc848fd1477f45f70034d410591633653df4c1",
+      "lastmod": "2026-10-24T11:09:00Z"
     },
     "/providers/nhost/": {
       "hash": "b7a7da0a2f84a2c21ab86708a5cc9b436600a534abbed6c57350be6e8a1b80d0",
@@ -10564,6 +11303,10 @@
       "hash": "d4ad2cf5d0de8ba27994c5b5ef0c8b831883b170837041235a89e31b355ba0da",
       "lastmod": "2026-10-05T13:23:31Z"
     },
+    "/providers/netcup/": {
+      "hash": "f8e5db5b66afa17d71d2dafcfe28f6b7818382e37e6c418be11be982378fbfe9",
+      "lastmod": "2026-10-24T11:09:00Z"
+    },
     "/providers/deno-deploy/": {
       "hash": "aec862be4db30b8b3dbce802bfee7beeea3636f9bc5bec5b67e12180e2b5a88c",
       "lastmod": "2026-10-05T13:23:31Z"
@@ -10575,6 +11318,10 @@
     "/providers/hawkhost/": {
       "hash": "9a421df0b224447973db1be99e801102d7dc9f5fc72751a40ae6d8e882974a70",
       "lastmod": "2026-10-14T11:27:43Z"
+    },
+    "/providers/crocweb/": {
+      "hash": "920562bb10f4944b70669d25c56af3852e027c1e1c52360d4f296ce68595613d",
+      "lastmod": "2026-10-24T11:09:00Z"
     },
     "/providers/eukhost/": {
       "hash": "2516c30aac78d4d22ae11b1295d513904bc97082a9c52159e10fcea0c1d43ac2",
@@ -10591,6 +11338,10 @@
     "/providers/pantheon/": {
       "hash": "7dc63826c745994b020857ad012d4095bddf560397cb0875ed8008daac96cbc4",
       "lastmod": "2026-10-05T13:23:31Z"
+    },
+    "/providers/northflank/": {
+      "hash": "ac990f9b477309f150600a377fc53831f08a36c2e3b7db8abd9a5c784208999d",
+      "lastmod": "2026-10-24T11:09:00Z"
     },
     "/providers/one-com/": {
       "hash": "37a8e656b44b2c5b6f73341f83dda0ac3e634101cfe44d7acdc4117d13305049",
@@ -10648,9 +11399,25 @@
       "hash": "64bef043a120eddedd295b7ea9db349397bde9452d939d48d8bd12ac2ac3035f",
       "lastmod": "2026-10-05T13:23:31Z"
     },
+    "/providers/fasthosts/": {
+      "hash": "7b51dc5ca1cd08f0493b203b6700c4fd64e857fbc96b7f0e45954919c00b1af8",
+      "lastmod": "2026-10-24T11:09:00Z"
+    },
     "/providers/pressable/": {
       "hash": "42bbb69023731a47275a2189efd0b69e4123b62eb1253a29a881c1a3344e8578",
       "lastmod": "2026-10-14T11:27:43Z"
+    },
+    "/providers/railway/": {
+      "hash": "42985e3406eccbd4596624b0e1f383a85575e06ced156114f31d1462fe12c36e",
+      "lastmod": "2026-10-24T11:09:00Z"
+    },
+    "/providers/wordpress-com/": {
+      "hash": "28be8647ac843f432ef33bf33ad6fa159207bcdb73256d0b4637338736b7b1d0",
+      "lastmod": "2026-10-24T11:09:00Z"
+    },
+    "/providers/heroku/": {
+      "hash": "ad74c249a82edfa2f729e6f418900e07a045a47bbc35bfd2c78842a4b860c04b",
+      "lastmod": "2026-10-24T11:09:00Z"
     },
     "/providers/krystal/": {
       "hash": "4b8020449bf054b2069ab9bd23523aeaaeb768f409508f8fcc2fa1b76dc24b1a",
@@ -10669,8 +11436,8 @@
       "lastmod": "2026-10-14T11:27:43Z"
     },
     "/providers/hostinger/": {
-      "hash": "47b923f7f6449565a107a18c0425eddd29a2efc586f5e2454bdb72a932a51986",
-      "lastmod": "2026-10-14T11:13:45Z"
+      "hash": "3dfd4cd710ca3ba047bbbc53c045d387de912cf48b58545eda69ab40a132956b",
+      "lastmod": "2026-10-24T11:09:00Z"
     },
     "/providers/siteground/": {
       "hash": "a5ba33b023ec487855a11e31a3e4cd148029827df910bab1c0e16f1faf5870ba",
@@ -10680,17 +11447,25 @@
       "hash": "3cb6eaf51bebbc9c9a7f650008116223467ef3daaa9b85b4a4e8d90862cafad2",
       "lastmod": "2026-10-14T11:27:43Z"
     },
+    "/providers/kinsta/": {
+      "hash": "5fc8021e23d7a389bfcc16c5091e3dd4a6db57841027716548b7e63549efe211",
+      "lastmod": "2026-10-24T11:09:00Z"
+    },
     "/providers/greengeeks/": {
       "hash": "aaed783f96df4d6a58c180682f4a6260c6e72cece8249fd5f4a59adf4206ce5f",
       "lastmod": "2026-10-14T11:13:45Z"
     },
     "/providers/inmotion-hosting/": {
-      "hash": "4294c3669f2a1c641b8df708d3177bf46097b8b3d4fff55f0588c5a3e17c837c",
-      "lastmod": "2026-10-24T10:58:29Z"
+      "hash": "b6b9740b90a80b70a2b6cec423820fe7e4b2097976daba60ec14e71390da5967",
+      "lastmod": "2026-10-24T11:09:00Z"
     },
     "/providers/knownhost/": {
       "hash": "aab97b28cf1e4d119c8712981455fc75977526d0f2d4c149aa3b8006b7810005",
       "lastmod": "2026-10-14T11:27:43Z"
+    },
+    "/providers/wp-engine/": {
+      "hash": "0eab5a9285b44b1529d2c9e5eedc5ff854beddbee480258fc55f5a0447cd060e",
+      "lastmod": "2026-10-24T11:09:00Z"
     },
     "/providers/ionos/": {
       "hash": "61f35e03de3d6bd40c0952138853d1746ff07393a5baee8aaf110ff5204e35fd",
@@ -10728,6 +11503,10 @@
       "hash": "f49bddcd90310d9acf73b50bb8ed2efc17d352dda3ce39359ab4dc63af3a3364",
       "lastmod": "2026-10-14T11:27:43Z"
     },
+    "/providers/digitalocean/": {
+      "hash": "d3c7d58f9b34831e241f08fdfe9f9da7edc97a01306ab55f81eabc3abf873c1c",
+      "lastmod": "2026-10-24T11:09:00Z"
+    },
     "/providers/namecheap/": {
       "hash": "65de8c6360b3f92d846407840f304e928ad47dc26637b3b3e9fa42196e6d01ce",
       "lastmod": "2026-10-14T11:27:43Z"
@@ -10740,13 +11519,17 @@
       "hash": "d167cb7a76b99b8d6e04e8d247b329676493661a24c6cac9026ce345718090e8",
       "lastmod": "2026-10-15T12:46:30Z"
     },
+    "/providers/fly-io/": {
+      "hash": "e48f55f2c7b81252a2bb3824d2d2a1e1424e59e525926874e5e6d640624e03ef",
+      "lastmod": "2026-10-24T11:09:00Z"
+    },
     "/providers/amazon-lightsail/": {
       "hash": "46b4a1711d53b1e407af58e610efdeebb207252286cc3101f18816f20060110d",
       "lastmod": "2026-10-05T13:23:31Z"
     },
     "/providers/20i/": {
-      "hash": "bda70373ab52ea60c8894a5de8db465024ec9a2cd458299ccd7f5a1f5f7ccda5",
-      "lastmod": "2026-10-14T11:13:45Z"
+      "hash": "07e2da7785c4eb43f31e8042fe5318b7ad4a8e39721fcf014485f36269360fd5",
+      "lastmod": "2026-10-24T11:09:00Z"
     }
   },
   "browser_term_observations": {
