@@ -10,6 +10,7 @@ import math
 import json
 import re
 from html.parser import HTMLParser
+from html import unescape
 from pathlib import Path
 from datetime import datetime, timezone
 from urllib.error import HTTPError, URLError
@@ -317,6 +318,11 @@ def offer_from_rule(provider, rule, raw, sibling_anchors=(), diagnostics=None):
     if any(not re.search(pattern, raw) for pattern in rule.get('raw_checks', [])):
         return missing('Required source-level wording was not found.')
     document = visible_text(raw) if rule.get('mode') == 'anchored_text' else raw
+    if rule.get('scope_anchor'):
+        scope_start = document.find(rule['scope_anchor'])
+        if scope_start < 0:
+            return missing('The configured product-family scope was not found.')
+        document = document[scope_start:scope_start + rule.get('scope_window_chars', 20000)]
     table_evidence = None
     unit_evidence = ''
     if rule.get('mode') == 'table_cell':
@@ -350,6 +356,37 @@ def offer_from_rule(provider, rule, raw, sibling_anchors=(), diagnostics=None):
                 segment = segment[:min(ends)]
     if any(not re.search(pattern, segment) for pattern in rule.get('checks', [])):
         return missing('Required wording was not found inside this plan card.')
+    array_price = None
+    array_evidence = None
+    unit_claim = None
+    if rule.get('mode') == 'parallel_arrays':
+        arrays, array_matches = {}, {}
+        for field, pattern in rule['array_patterns'].items():
+            match = re.search(pattern, segment)
+            if not match:
+                return missing('A required price or resource array was not found: ' + field + '.')
+            arrays[field] = json.loads(match.group('value'))
+            array_matches[field] = match
+        index = rule['array_index']
+        if (not isinstance(index, int) or isinstance(index, bool) or index < 0
+                or not all(isinstance(values, list) and len(values) == len(arrays['price']) and index < len(values) for values in arrays.values())
+                or not all(isinstance(value, (int, float)) and not isinstance(value, bool) for value in arrays['price'])):
+            return missing('Parallel plan arrays have incompatible lengths or invalid price values.')
+        if any(arrays[field][index] != value for field, value in rule.get('array_match', {}).items()):
+            return missing('The selected price array entry no longer matches the configured plan resources.')
+        unit_match = re.search(rule['billing_unit_pattern'], raw)
+        if not unit_match:
+            return missing('The source-wide price formatter no longer establishes currency and billing unit.')
+        unit_evidence = unit_match.group('value')
+        unit_claim = {'quote':unit_evidence, 'excerpt':compact(unit_match.group(0)),
+                      'visible_excerpt':unit_evidence, 'location':'official pricing-widget formatter', 'surface':'source response markup'}
+        values = array_matches['price'].group('value')
+        tokens = list(re.finditer(r'-?[0-9]+(?:\.[0-9]+)?(?:[eE][+-]?[0-9]+)?', values))
+        if len(tokens) != len(arrays['price']):
+            return missing('The numeric price array cannot be read unambiguously.')
+        array_price = (values, tokens[index])
+        array_evidence = {'index':index, 'resources':rule.get('array_match', {}),
+                          'source_arrays':{field:match.group('value') for field, match in array_matches.items()}}
     offer = {
         'slug': rule.get('slug') or slug(provider['id'] + '-' + rule['title']),
         'provider': provider['id'],
@@ -368,24 +405,36 @@ def offer_from_rule(provider, rule, raw, sibling_anchors=(), diagnostics=None):
             offer['field_evidence']['billing_period'] = unit_evidence
             offer['claim_evidence']['billing_period'] = {'quote':unit_evidence, 'excerpt':header['raw'],
                 'visible_excerpt':unit_evidence, 'location':'selected price column header', 'surface':'visible source text'}
+    if array_evidence:
+        offer['array_evidence'] = array_evidence
+        offer['field_evidence']['price_currency'] = unit_evidence
+        offer['field_evidence']['billing_period'] = unit_evidence
+        offer['claim_evidence']['price_currency'] = unit_claim
+        offer['claim_evidence']['billing_period'] = unit_claim
     for key in ('currency', 'billing_period', 'commitment_months', 'price_text', 'condition', 'kind'):
         if rule.get(key) is not None:
             offer[key] = rule[key]
-    for field, pattern in rule.get('field_patterns', {}).items():
-        match = re.search(pattern, segment)
+    patterns = dict(rule.get('field_patterns', {}))
+    if array_price:
+        patterns['price'] = None
+    for field, pattern in patterns.items():
+        field_segment, match = array_price if field == 'price' and array_price else (segment, re.search(pattern, segment))
         if not match:
             continue
-        value = match.groupdict().get('value') or match.group(1)
+        value = match.group(0) if field == 'price' and array_price else match.groupdict().get('value') or match.group(1)
         if field == 'price':
             metadata_unit = re.search(r'\bdata-(?:on-value|billing-period)=["\'](monthly|yearly|annual)["\']', match.group(0), re.I)
             price_unit = unit_evidence or (metadata_unit.group(1) if metadata_unit else '')
-            if not price_has_matching_terms(segment, match, offer.get('currency'), offer.get('billing_period'), price_unit):
+            if not price_has_matching_terms(field_segment, match, offer.get('currency'), offer.get('billing_period'), price_unit):
                 return missing('The price quote does not establish the configured currency and billing unit.')
+            unit_currencies = set(re.findall(r'\b[A-Z]{3}\b', price_unit)) & CURRENCY_CODES
+            if unit_currencies and unit_currencies != {offer.get('currency')}:
+                return missing('The source-wide price currency conflicts with the configured currency.')
             if metadata_unit and not unit_evidence:
                 offer['field_evidence']['billing_period'] = metadata_unit.group(0)
                 offer['claim_evidence']['billing_period'] = claim_evidence(match.group(0), metadata_unit,
                     'billing-period attribute on the same price element', 'source response markup')
-        source_claim = claim_evidence(segment, match,
+        source_claim = claim_evidence(field_segment, match,
             'configured field pattern: ' + field,
             'visible source text' if rule.get('mode') in ('anchored_text', 'table_cell') else 'source response markup')
         offer['field_evidence'][field] = source_claim['quote']
@@ -512,6 +561,9 @@ def run(config_path=None, provider_ids=None, capture_dir=None):
             resources = {}
             resource_probes = []
             for url in cfg.get('source_resources', {}).get(provider['id'], []):
+                references = re.findall(r'<script\b[^>]*\bsrc=["\']([^"\']+)', raw, re.I)
+                if url not in [urljoin(request_url, unescape(reference)) for reference in references]:
+                    raise ValueError('The configured supplementary price resource is no longer linked by the official source page')
                 resource_status, resource_raw, resource_url = fetch_source(url, cfg)
                 resources[url] = resource_raw
                 resource_probes.append({'request_url':resource_url, 'http_status':resource_status,
@@ -579,7 +631,11 @@ def run(config_path=None, provider_ids=None, capture_dir=None):
                 if rule.get('source_resource'):
                     rule_raw = resources[rule['source_resource']]
                     rule_provider = dict(provider, source_url=rule['source_resource'], affiliate_url=provider['affiliate_url'] or provider['source_url'])
-                offer = offer_from_rule(rule_provider, rule, rule_raw, sibling_anchors, diagnostics)
+                if any(re.search(pattern, raw) for pattern in rule.get('primary_reject_patterns', [])):
+                    diagnostics.append('The primary pricing page has campaign controls that can modify the published base prices; no payable price is inferred.')
+                    offer = None
+                else:
+                    offer = offer_from_rule(rule_provider, rule, rule_raw, sibling_anchors, diagnostics)
             except (ValueError, IndexError) as exc:
                 errors.append(str(exc))
                 offer = None

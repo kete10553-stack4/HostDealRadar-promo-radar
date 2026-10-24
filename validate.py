@@ -282,7 +282,7 @@ def check():
         for field in ('price','renewal_price','first_term_total','renewal_monthly_rate'):
             if offer.get(field) is not None:
                 evidence=(offer.get('field_evidence') or {}).get(field,'')
-                separate_currency=(offer.get('field_evidence') or {}).get('renewal_currency','') if field=='renewal_price' else ''
+                separate_currency=(offer.get('field_evidence') or {}).get('renewal_currency','') if field=='renewal_price' else (offer.get('field_evidence') or {}).get('price_currency','') if field=='price' else ''
                 assert (has_currency_marker(evidence) or has_currency_marker(separate_currency)), f'{offer["slug"]}:{field} has no currency marker in its official quote or separate official currency fragment'
         assert datetime.fromisoformat(offer['fetched_at'].replace('Z','+00:00')) <= datetime.now(timezone.utc), 'Capture time is in the future'
         status=statuses.get(offer['provider'], {})
@@ -372,6 +372,8 @@ def check():
             heading=base if re.search(r'\b(?:pricing|prices?|coupon)\b',base,re.I) else base+(' coupon code and pricing' if has_coupon else ' pricing')
             first_record=page.index('<section class="record-detail"')
             assert first_record < page.index('<h2>About this source check</h2>'), f'Provider process copy appears before the answer: {provider["id"]}'
+            if '<section class="manual-plan-evidence">' in page:
+                assert first_record < page.index('<section class="manual-plan-evidence">'), f'Dated manual examples obscure fresh prices: {provider["id"]}'
         else:
             heading=provider['name']+' pricing availability'
             assert 'Promotional end date not verified.' not in page, f'No-current provider page implies a current promotion: {provider["id"]}'

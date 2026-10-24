@@ -197,6 +197,8 @@ def currency_wording(offer, field='price'):
     official wording contains the code or a matching currency marker.
     """
     evidence=captured_field_evidence(offer, field)
+    if field == 'price' and not has_currency_marker_for_offer(offer, evidence):
+        evidence = captured_field_evidence(offer, 'price_currency')
     if field == 'renewal_price' and not has_currency_marker_for_offer(offer, evidence):
         evidence = captured_field_evidence(offer, 'renewal_currency')
     currency=offer.get('currency')
@@ -224,6 +226,8 @@ def has_currency_marker_for_offer(offer, evidence):
 def billing_wording(offer, field='price'):
     """Return the exact billing marker present in this field's quote."""
     evidence=captured_field_evidence(offer, field)
+    if field == 'price' and not re.search(r'/|\bper\b|\bmonthly\b|\bannually\b', evidence, re.I):
+        evidence = captured_field_evidence(offer, 'billing_period') or evidence
     patterns={
         'month': r'/(?:mo|month)\b|\bper\s+month\b|\bmonthly\b',
         'year': r'/(?:yr|year)\b|\bper\s+year\b|\bannually\b|\byearly\b',
@@ -287,10 +291,16 @@ def complete_three_terms(offer, rule=None):
     """Only exact official wording for one plan and initial term qualifies.
 
     The advertised monthly rate is not evidence of the amount paid upfront.
-    No total or monthly equivalent is computed from another field here.
+    No upfront total is inferred from the monthly rate. A sourced total must
+    agree with the published monthly equivalent for the recorded commitment.
     """
-    return bool(offer.get('upfront_total') is not None
-                and captured_field_evidence(offer, 'upfront_total')
+    total_field='first_term_total' if offer.get('first_term_total') is not None else 'upfront_total'
+    try:
+        agrees = (Decimal(str(offer[total_field])) / int(offer['commitment_months'])).quantize(Decimal('0.01')) == Decimal(str(offer['price'])).quantize(Decimal('0.01'))
+    except (KeyError, ValueError, TypeError, InvalidOperation, ZeroDivisionError):
+        agrees = False
+    return bool(agrees and offer.get(total_field) is not None
+                and captured_field_evidence(offer, total_field)
                 and offer.get('price') is not None
                 and captured_field_evidence(offer, 'price')
                 and billing_wording(offer, 'price')
@@ -618,6 +628,8 @@ def build(config_path=None, output=None):
         renewal_evidence=captured_field_evidence(o,'renewal_price') if renewal_supported(o,rule) else ''
         price_evidence=captured_field_evidence(o,'price')
         evidence_fields=[
+            ('First-term total',captured_field_evidence(o,'first_term_total')),
+            ('Price currency',captured_field_evidence(o,'price_currency')),
             ('Billing unit',captured_field_evidence(o,'billing_period')),
             ('Commitment',captured_field_evidence(o,'commitment_months') if o.get('commitment_months') else ''),
             ('Renewal price',renewal_evidence),
@@ -639,13 +651,21 @@ def build(config_path=None, output=None):
                   ('Listing type',{'regular_price':'Regular price; no discount claimed',
                                    'plan_price':'Advertised plan price; stated introductory conditions apply'}.get(o.get('kind'),'Promotion'))]
         terms_html=''.join(source_terms)+''.join(f'<div><dt>{e(key)}</dt><dd>{e(value)}</dd></div>' for key,value in metadata)
+        calculated=''
+        if (o.get('first_term_total') is not None and captured_field_evidence(o,'first_term_total')
+                and isinstance(o.get('commitment_months'),int) and o['commitment_months']>0
+                and captured_field_evidence(o,'commitment_months')):
+            equivalent=Decimal(str(o['first_term_total']))/o['commitment_months']
+            calculated=(f'<p class="calculation"><strong>Calculated monthly equivalent:</strong> '
+                        f'{e(money(o["first_term_total"],o["currency"]))} ÷ {o["commitment_months"]} months '
+                        f'= {e(money(equivalent,o["currency"]))}/month.</p>')
         return (f'<section class="record-detail" id="record-{e(o["slug"])}"><h2>{e(offer_name(p["name"],o["title"]))}</h2>'
                 f'<p class="lead"><strong>Official price wording:</strong> “{e(advertised)}”</p>'
                 f'<p class="record-state state-{e(state)}"><strong>{e(state.title())} record.</strong> Checked {e(date_text(o["fetched_at"]))}. '
                 f'<a href="{e(o["source_url"])}" rel="noopener noreferrer">Open official source ↗</a></p>'
                 f'<p class="small">Captured at <time datetime="{e(o["fetched_at"])}">{e(o["fetched_at"])}</time>.</p>'
                 + citation_link(f'/providers/{p["id"]}/#record-{o["slug"]}', offer_name(p['name'],o['title']))
-                + f'<dl class="terms">{terms_html}</dl></section>')
+                + f'<dl class="terms">{terms_html}</dl>'+calculated+'</section>')
     def source_observation_record(p, observation, status):
         terms=[('Record type','Official source observation; not a current offer'),
                ('Official price','Not publicly disclosed on the observed page'),
@@ -919,8 +939,9 @@ def build(config_path=None, output=None):
                          f'Links on this page go to official {p["name"]} pages. HostDealRadar has no active affiliate relationship with {p["name"]}.')
         page_disclosure+=' Confirm availability, tax, billing terms, and renewal terms with the provider. Service labels are HostDealRadar classifications, not provider claims.'
         qualified=[o for o in po if complete_three_terms(o, rules.get((o['provider'],o['title']), {}))]
+        manual_html=''
         if manual_plans:
-            current_html+=('<section class="manual-plan-evidence"><h2>Dated manual plan-price evidence</h2>'
+            manual_html=('<section class="manual-plan-evidence"><h2>Dated manual plan-price evidence</h2>'
                            '<p>These official-page observations retain their own check dates. They are not live checkout quotes or coupon-code records.</p>'
                            '<div class="cards">'+''.join(reviewed_card(record).replace('<article class="card">','<article class="card manual-plan-card">',1) for record in manual_plans)+'</div></section>')
         judgment=(f'{len(qualified)} of {len(po)} current records meet the three-term comparison standard: '
@@ -929,7 +950,7 @@ def build(config_path=None, output=None):
                   if po else ('No automated offer is marked current for this provider. Dated manual plan-price records appear below; '
                               'they document package terms and are not coupon-code records.' if manual_plans else
                               'No current source record is published for this provider; no three-term comparison can be made.'))
-        content=template('provider.html',provider=e(heading),judgment=e(judgment),note=e(note),source=e(p['source_url']),source_status=e(status_text),related_guide=related_guide,offers=current_html+details,page_disclosure=e(page_disclosure))
+        content=template('provider.html',provider=e(heading),judgment=e(judgment),note=e(note),source=e(p['source_url']),source_status=e(status_text),related_guide=related_guide,offers=current_html+details+manual_html,page_disclosure=e(page_disclosure))
         write(Path('providers')/p['id']/'index.html',page(
             f'{heading} | HostDealRadar',
             description,

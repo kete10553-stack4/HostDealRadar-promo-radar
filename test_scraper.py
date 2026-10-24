@@ -125,7 +125,8 @@ class SourceSafety(unittest.TestCase):
         with tempfile.TemporaryDirectory() as folder:
             data = Path(folder) / 'offers.json'
             data.write_text(json.dumps({'offers':[old]}),encoding='utf-8')
-            with patch.object(scraper,'DATA',data), patch.object(scraper,'load_config',return_value=cfg), patch.object(scraper,'fetch_source',side_effect=[(200,'Basic plan USD 9 / month',self.provider['source_url']),denial]):
+            primary = 'Basic plan USD 9 / month<script src="'+resource+'"></script>'
+            with patch.object(scraper,'DATA',data), patch.object(scraper,'load_config',return_value=cfg), patch.object(scraper,'fetch_source',side_effect=[(200,primary,self.provider['source_url']),denial]):
                 first = scraper.run()
             with patch.object(scraper,'DATA',data), patch.object(scraper,'load_config',return_value=cfg), patch.object(scraper,'fetch_source') as fetch:
                 second = scraper.run()
@@ -133,6 +134,31 @@ class SourceSafety(unittest.TestCase):
         self.assertEqual(first['source_403_locks']['sample']['request_url'],resource)
         self.assertEqual(second['offers'],[old])
         fetch.assert_not_called()
+
+    def test_parallel_prices_require_same_index_resources_and_explicit_unit(self):
+        raw = 'preset: { price: [14, 28], ram: ["1GB", "2GB"] }\nformatter("USD per month");'
+        rule = dict(self.rule, mode='parallel_arrays', anchor='preset:', window_chars=100,
+                    array_index=1, array_patterns={'price':r'price: (?P<value>\[[^\]]+\])',
+                                                   'ram':r'ram: (?P<value>\[[^\]]+\])'},
+                    array_match={'ram':'2GB'}, billing_unit_pattern=r'formatter\("(?P<value>USD per month)"\);')
+        rule.pop('field_patterns')
+        offer = scraper.offer_from_rule(self.provider,rule,raw)
+        self.assertEqual(offer['price'],28)
+        self.assertEqual(offer['field_evidence']['price'],'28')
+        self.assertEqual(offer['field_evidence']['price_currency'],'USD per month')
+        self.assertIsNone(scraper.offer_from_rule(self.provider,rule,raw.replace('"2GB"','"4GB"')))
+        self.assertIsNone(scraper.offer_from_rule(self.provider,rule,raw.replace('[14, 28]','[14]')))
+        self.assertIsNone(scraper.offer_from_rule(self.provider,rule,raw.replace('USD per month','EUR per month')))
+
+    def test_sourced_total_must_agree_with_published_monthly_equivalent(self):
+        offer = {'first_term_total':119.52, 'price':2.49, 'commitment_months':48,
+                 'currency':'USD','billing_period':'month','renewal_price':10.99,
+                 'source_url':self.provider['source_url'],'fetched_at':'2026-10-24T00:00:00Z',
+                 'field_evidence':{'first_term_total':'Get 48 months for $119.52',
+                     'price':'$2.49/mo','commitment_months':'Get 48 months',
+                     'renewal_price':'Renews at $10.99/mo'}}
+        self.assertTrue(build.complete_three_terms(offer))
+        self.assertFalse(build.complete_three_terms(dict(offer,first_term_total=143.52)))
 
     def test_no_record_when_price_is_missing(self):
         self.assertIsNone(scraper.offer_from_rule(self.provider,self.rule,'<p>Basic plan: Contact sales</p>'))

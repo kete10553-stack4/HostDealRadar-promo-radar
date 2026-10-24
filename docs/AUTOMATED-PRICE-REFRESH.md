@@ -43,6 +43,20 @@ The manual comparison requires its own official upfront total, commitment,
 Calculated monthly equivalent, and explicit renewal rate. Builds and refreshes
 never change those manual review dates.
 
+Provider pages show fresh source prices before dated manual examples. An official
+upfront total is displayed with its original quote; a monthly equivalent is
+explicitly labelled Calculated and uses that total and its recorded commitment.
+
+For a page that renders prices from a directly referenced public resource,
+`SOURCE_RESOURCES` configures the exact same-origin resource URL. The page must
+still link that resource on each run; both requests follow robots and the same
+provider lock. `parallel_arrays` binds one index in a price array to the same
+index in its resource arrays, with explicit currency and billing-unit evidence
+from the official formatter. It does not execute vendor JavaScript. Campaign
+controls that can modify the base rates prevent capture rather than inventing a
+discounted price. The price data and formatter keep their actual resource URL,
+source fragments and capture time.
+
 ## Targeted diagnostics
 
 Use the existing workflow's manual-run `providers` input with comma-separated
