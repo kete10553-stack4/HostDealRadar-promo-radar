@@ -38,6 +38,72 @@ def visible_text(raw):
     parser.feed(raw)
     return re.sub(r'\s+', ' ', ' '.join(parser.parts)).strip()
 
+class PriceTables(HTMLParser):
+    """Keep exact source cells so a price can be bound to its row and header."""
+    def __init__(self, raw):
+        super().__init__(convert_charrefs=True)
+        self.raw, self.tables, self.stack = raw, [], []
+        self.offsets = [0]
+        self.offsets.extend(match.end() for match in re.finditer('\n', raw))
+        self.feed(raw)
+
+    def source_offset(self):
+        line, column = self.getpos()
+        return self.offsets[line - 1] + column
+
+    def handle_starttag(self, tag, attrs):
+        if tag == 'table':
+            self.stack.append({'rows':[], 'row':None, 'cell':None})
+        elif self.stack:
+            table = self.stack[-1]
+            if tag == 'tr':
+                table['row'] = []
+            elif tag in ('td', 'th') and table['row'] is not None:
+                table['cell'] = {'tag':tag, 'attrs':dict(attrs), 'start':self.source_offset()}
+
+    def handle_endtag(self, tag):
+        if not self.stack:
+            return
+        table = self.stack[-1]
+        if tag in ('td', 'th') and table['cell'] is not None and table['cell']['tag'] == tag:
+            cell = table['cell']
+            end = self.raw.find('>', self.source_offset())
+            cell['raw'] = self.raw[cell.pop('start'):end + 1]
+            cell['text'] = visible_text(cell['raw'])
+            table['row'].append(cell)
+            table['cell'] = None
+        elif tag == 'tr' and table['row'] is not None:
+            table['rows'].append(table['row'])
+            table['row'] = None
+        elif tag == 'table':
+            self.tables.append(self.stack.pop()['rows'])
+
+def table_price_cell(raw, rule):
+    matches = []
+    for rows in PriceTables(raw).tables:
+        if rule.get('table_match') and not re.search(rule['table_match'], ' '.join(cell['text'] for row in rows for cell in row)):
+            continue
+        headers = [(index, cell, row) for row in rows for index, cell in enumerate(row)
+                   if cell['tag'] == 'th' and cell['attrs'].get('scope') != 'row'
+                   and re.fullmatch(rule['column_match'], cell['text'])
+                   and all(cell['attrs'].get(key) == value for key, value in rule.get('column_attributes', {}).items())]
+        if len(headers) != 1:
+            continue
+        index, header, header_row = headers[0]
+        if any(cell['attrs'].get('colspan', '1') != '1' for cell in header_row):
+            continue
+        for row in rows:
+            if not row or len(row) != len(header_row) or not re.search(rule['row_match'], row[0]['text']):
+                continue
+            if any(cell['attrs'].get('colspan', '1') != '1' or cell['attrs'].get('rowspan', '1') != '1' for cell in row):
+                continue
+            if any(not re.search(pattern, ' '.join(cell['text'] for cell in row)) for pattern in rule.get('row_checks', [])):
+                continue
+            if any(row[index]['attrs'].get(key) != value for key, value in rule.get('column_attributes', {}).items()):
+                continue
+            matches.append((row[index], header, row[0]))
+    return matches[0] if len(matches) == 1 else None
+
 def robots_decision(text, source_url, product='hostdealradar'):
     groups, agents, directives = [], [], []
     for raw in text.splitlines():
@@ -214,13 +280,13 @@ def normalize_date(value):
 
 CURRENCY_CODES = {'USD', 'CAD', 'AUD', 'NZD', 'EUR', 'GBP', 'JPY', 'CHF', 'SEK', 'NOK', 'DKK'}
 PERIOD_PATTERNS = {
-    'month': r'(?:/\s*(?:mo(?:nth)?|month)\b|\bper\s+month\b|\bmonthly\b|\bfirst[ -]month\b)',
+    'month': r'(?:/\s*(?:mo(?:nth)?|month)\b|\bper\s+month\b|\bmonthly\b|\bfirst[ -]month\b|\b(?:USD|CAD|AUD|EUR|GBP)\s+month\b)',
     'year': r'(?:/\s*(?:yr|year)\b|\bper\s+year\b|\bannual(?:ly)?\b)',
     'site': r'(?:/\s*site\b|\bper\s+site\b)',
     'server': r'(?:/\s*server\b|\bper\s+server\b)',
 }
 
-def price_has_matching_terms(segment, match, currency, billing_period):
+def price_has_matching_terms(segment, match, currency, billing_period, unit_evidence=''):
     """Require the price expression itself to support its displayed terms.
 
     A configured label is not evidence: the source must show the requested unit,
@@ -228,8 +294,14 @@ def price_has_matching_terms(segment, match, currency, billing_period):
     Currency symbols without an ISO label remain usable for existing US-source
     rules, but an explicit CAD/AUD/etc. can never be relabelled as USD.
     """
-    if billing_period in PERIOD_PATTERNS and not re.search(PERIOD_PATTERNS[billing_period], visible_text(match.group(0)), re.I):
-        return False
+    quote = visible_text(match.group(0))
+    if billing_period in PERIOD_PATTERNS and not re.search(PERIOD_PATTERNS[billing_period], quote, re.I):
+        # A table header can establish the unit only after the exact row and
+        # column were selected. A conflicting unit in the price is never fixed
+        # by borrowing a header or an unrelated phrase elsewhere on the page.
+        if (any(re.search(pattern, quote, re.I) for pattern in PERIOD_PATTERNS.values())
+                or not re.search(PERIOD_PATTERNS[billing_period], unit_evidence, re.I)):
+            return False
     left = max(0, match.start() - 16)
     right = min(len(segment), match.end() + 16)
     nearby_codes = set(re.findall(r'\b[A-Z]{3}\b', segment[left:right])) & CURRENCY_CODES
@@ -245,7 +317,18 @@ def offer_from_rule(provider, rule, raw, sibling_anchors=(), diagnostics=None):
     if any(not re.search(pattern, raw) for pattern in rule.get('raw_checks', [])):
         return missing('Required source-level wording was not found.')
     document = visible_text(raw) if rule.get('mode') == 'anchored_text' else raw
-    if rule.get('mode') == 'presence':
+    table_evidence = None
+    unit_evidence = ''
+    if rule.get('mode') == 'table_cell':
+        selected = table_price_cell(raw, rule)
+        if selected is None:
+            return missing('An unambiguous price cell with the configured plan row and column header was not found.')
+        cell, header, row_header = selected
+        segment = cell['text']
+        unit_evidence = header['text']
+        table_evidence = {'column_quote':header['text'], 'column_attributes':header['attrs'],
+                          'row_quote':row_header['text'], 'surface':'official HTML table'}
+    elif rule.get('mode') == 'presence':
         if not re.search(rule['pattern'], raw, re.I):
             return missing('Required source wording was not found.')
         segment = raw
@@ -279,6 +362,12 @@ def offer_from_rule(provider, rule, raw, sibling_anchors=(), diagnostics=None):
         'field_evidence': {},
         'claim_evidence': {},
     }
+    if table_evidence:
+        offer['table_evidence'] = table_evidence
+        if any(re.search(pattern, unit_evidence, re.I) for pattern in PERIOD_PATTERNS.values()):
+            offer['field_evidence']['billing_period'] = unit_evidence
+            offer['claim_evidence']['billing_period'] = {'quote':unit_evidence, 'excerpt':header['raw'],
+                'visible_excerpt':unit_evidence, 'location':'selected price column header', 'surface':'visible source text'}
     for key in ('currency', 'billing_period', 'commitment_months', 'price_text', 'condition', 'kind'):
         if rule.get(key) is not None:
             offer[key] = rule[key]
@@ -287,11 +376,18 @@ def offer_from_rule(provider, rule, raw, sibling_anchors=(), diagnostics=None):
         if not match:
             continue
         value = match.groupdict().get('value') or match.group(1)
-        if field == 'price' and not price_has_matching_terms(segment, match, offer.get('currency'), offer.get('billing_period')):
-            return missing('The price quote does not establish the configured currency and billing unit.')
+        if field == 'price':
+            metadata_unit = re.search(r'\bdata-(?:on-value|billing-period)=["\'](monthly|yearly|annual)["\']', match.group(0), re.I)
+            price_unit = unit_evidence or (metadata_unit.group(1) if metadata_unit else '')
+            if not price_has_matching_terms(segment, match, offer.get('currency'), offer.get('billing_period'), price_unit):
+                return missing('The price quote does not establish the configured currency and billing unit.')
+            if metadata_unit and not unit_evidence:
+                offer['field_evidence']['billing_period'] = metadata_unit.group(0)
+                offer['claim_evidence']['billing_period'] = claim_evidence(match.group(0), metadata_unit,
+                    'billing-period attribute on the same price element', 'source response markup')
         source_claim = claim_evidence(segment, match,
             'configured field pattern: ' + field,
-            'visible source text' if rule.get('mode') == 'anchored_text' else 'source response markup')
+            'visible source text' if rule.get('mode') in ('anchored_text', 'table_cell') else 'source response markup')
         offer['field_evidence'][field] = source_claim['quote']
         offer['claim_evidence'][field] = source_claim
         if field in NUMERIC_FIELDS:

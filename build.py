@@ -605,7 +605,7 @@ def build(config_path=None, output=None):
         rule=rules.get((o['provider'], o['title']), {})
         if o.get('commitment_months') and captured_field_evidence(o,'commitment_months'):
             terms.append(f"{o['commitment_months']}-month term")
-        label='Official price' if o.get('kind')=='regular_price' else 'Promotion'
+        label='Official price' if o.get('kind') in ('regular_price','plan_price') else 'Promotion'
         if historical: label={'retained':'Earlier record','stale':'Needs recheck','expired':'Expired','unverified':'Unverified'}.get(state,state.title())
         cls='card history' if historical else 'card'
         detail=f'/providers/{e(p["id"])}/#record-{e(o["slug"])}'
@@ -618,6 +618,7 @@ def build(config_path=None, output=None):
         renewal_evidence=captured_field_evidence(o,'renewal_price') if renewal_supported(o,rule) else ''
         price_evidence=captured_field_evidence(o,'price')
         evidence_fields=[
+            ('Billing unit',captured_field_evidence(o,'billing_period')),
             ('Commitment',captured_field_evidence(o,'commitment_months') if o.get('commitment_months') else ''),
             ('Renewal price',renewal_evidence),
             ('Renewal currency',captured_field_evidence(o,'renewal_currency')),
@@ -635,7 +636,8 @@ def build(config_path=None, output=None):
         for quote, labels in grouped.items():
             source_terms.append(f'<div><dt>{e(" / ".join(labels))}</dt><dd>“{e(quote)}”</dd></div>')
         metadata=[('Service label',o.get('category','Hosting')),
-                  ('Listing type','Regular price; no discount claimed' if o.get('kind')=='regular_price' else 'Promotion')]
+                  ('Listing type',{'regular_price':'Regular price; no discount claimed',
+                                   'plan_price':'Advertised plan price; stated introductory conditions apply'}.get(o.get('kind'),'Promotion'))]
         terms_html=''.join(source_terms)+''.join(f'<div><dt>{e(key)}</dt><dd>{e(value)}</dd></div>' for key,value in metadata)
         return (f'<section class="record-detail" id="record-{e(o["slug"])}"><h2>{e(offer_name(p["name"],o["title"]))}</h2>'
                 f'<p class="lead"><strong>Official price wording:</strong> “{e(advertised)}”</p>'

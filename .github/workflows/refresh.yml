@@ -26,6 +26,8 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.13'
+      - name: Check extraction and source safety
+        run: python -m unittest test_scraper -q
       - name: Refresh prices and report incomplete sources
         env:
           PROVIDERS: ${{ inputs.providers }}

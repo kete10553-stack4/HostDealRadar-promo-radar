@@ -381,7 +381,8 @@ def check():
         assert page.lower().count('no active affiliate relationship') == 1, f'Provider page does not carry exactly one page-level relationship disclosure: {provider["id"]}'
     cloudways=(ROOT/'site/providers/cloudways/index.html').read_text(encoding='utf-8')
     assert '#record-cloudways-summer404' not in cloudways and 'id="record-cloudways-summer404"' not in cloudways, 'Undated Cloudways promotion remains on the provider page'
-    assert 'No current offer is published for this source' in cloudways, 'Cloudways page does not disclose that it has no current source record'
+    if not any(o['provider']=='cloudways' for o in current):
+        assert 'No current offer is published for this source' in cloudways, 'Cloudways page does not disclose that it has no current source record'
     # Automated status-only content must carry no figures. Separately sourced
     # manual plan evidence is allowed and checked with the comparison records.
     for pid in sorted(state_only):

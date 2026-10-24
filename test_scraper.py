@@ -72,6 +72,49 @@ class SourceSafety(unittest.TestCase):
             'Basic plan USD 9; another item costs USD 1 / month', diagnostics=diagnostics))
         self.assertIn('billing unit', diagnostics[0])
 
+    def test_table_price_uses_the_requested_row_and_monthly_column(self):
+        raw = ('<table><tr><th>Plan</th><th>Per hour</th><th>Per month</th></tr>'
+               '<tr><td>Basic</td><td>$0.005</td><td>$4.00</td></tr>'
+               '<tr><td>Pro</td><td>$0.01</td><td>$9.00</td></tr></table>')
+        rule = dict(self.rule, mode='table_cell', row_match='^Basic$', column_match='Per month',
+                    field_patterns={'price':r'\$(?P<value>[0-9.]+)'})
+        offer = scraper.offer_from_rule(self.provider, rule, raw)
+        self.assertEqual(offer['price'], 4)
+        self.assertEqual(offer['field_evidence']['price'], '$4.00')
+        self.assertEqual(offer['field_evidence']['billing_period'], 'Per month')
+        self.assertEqual(offer['table_evidence']['row_quote'], 'Basic')
+        conflicting = dict(rule, field_patterns={'price':r'\$(?P<value>[0-9.]+)/year'})
+        self.assertIsNone(scraper.offer_from_rule(self.provider, conflicting, raw.replace('$4.00', '$4.00/year')))
+
+    def test_duplicate_table_titles_require_matching_plan_attributes(self):
+        raw = ('<table><tr><th>Business plans</th><th data-boundary="bandwidth">WP 20</th>'
+               '<th data-boundary="visits">WP 20</th></tr><tr><td>Price</td>'
+               '<td data-boundary="bandwidth">$340 USD month $3,400 billed annually</td>'
+               '<td data-boundary="visits">$400 USD month $4,000 billed annually</td></tr></table>')
+        rule = dict(self.rule, mode='table_cell', row_match='^Price$', column_match='WP 20',
+                    column_attributes={'data-boundary':'bandwidth'}, billing_period='year',
+                    field_patterns={'price':r'\$(?P<value>[0-9,]+) billed annually'})
+        offer = scraper.offer_from_rule(self.provider, rule, raw)
+        self.assertEqual(offer['price'], 3400)
+        self.assertIsNone(scraper.offer_from_rule(self.provider, dict(rule,column_attributes={}),raw))
+        self.assertIsNone(scraper.offer_from_rule(self.provider, rule, raw.replace('<td data-boundary="bandwidth">','<td data-boundary="visits">')))
+
+    def test_price_metadata_binds_billing_period_to_the_same_element(self):
+        rule = dict(self.rule, mode='anchored_html', anchor='Basic',
+                    field_patterns={'price':r'<div data-on-value="monthly">US\$(?P<value>[0-9.]+)</div>'})
+        offer = scraper.offer_from_rule(self.provider, rule, 'Basic<div data-on-value="monthly">US$9</div>')
+        self.assertEqual(offer['price'],9)
+        self.assertEqual(offer['field_evidence']['billing_period'],'data-on-value="monthly"')
+        self.assertIsNone(scraper.offer_from_rule(self.provider,rule,'Basic<div data-on-value="yearly">US$9</div>'))
+
+    def test_advertised_plan_price_does_not_claim_promotion_validity(self):
+        offer = {'provider':'sample','slug':'sample-basic','kind':'plan_price',
+                 'fetched_at':datetime.now(timezone.utc).isoformat(),'price':9,'discount_percent':50}
+        status = {'sample':{'status':'evidenced','capture_status':'matched','http_status':200,
+                            'visible_excerpt':'Basic $9 per month','captured_slugs':['sample-basic']}}
+        self.assertEqual(build.record_state(offer,status,{'fresh_hours':18})[0],'current')
+        self.assertEqual(build.record_state(dict(offer,kind='promotion'),status,{'fresh_hours':18})[0],'unverified')
+
     def test_no_record_when_price_is_missing(self):
         self.assertIsNone(scraper.offer_from_rule(self.provider,self.rule,'<p>Basic plan: Contact sales</p>'))
 
