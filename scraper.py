@@ -10,6 +10,7 @@ import math
 import json
 import re
 from html.parser import HTMLParser
+from pathlib import Path
 from datetime import datetime, timezone
 from urllib.error import HTTPError, URLError
 from urllib.parse import urlsplit, urljoin
@@ -213,8 +214,8 @@ def normalize_date(value):
 
 CURRENCY_CODES = {'USD', 'CAD', 'AUD', 'NZD', 'EUR', 'GBP', 'JPY', 'CHF', 'SEK', 'NOK', 'DKK'}
 PERIOD_PATTERNS = {
-    'month': r'(?:/\s*(?:mo(?:nth)?|month)\b|\bper\s+month\b|\bpaid\s+monthly\b)',
-    'year': r'(?:/\s*(?:yr|year)\b|\bper\s+year\b)',
+    'month': r'(?:/\s*(?:mo(?:nth)?|month)\b|\bper\s+month\b|\bmonthly\b|\bfirst[ -]month\b)',
+    'year': r'(?:/\s*(?:yr|year)\b|\bper\s+year\b|\bannual(?:ly)?\b)',
     'site': r'(?:/\s*site\b|\bper\s+site\b)',
     'server': r'(?:/\s*server\b|\bper\s+server\b)',
 }
@@ -227,31 +228,35 @@ def price_has_matching_terms(segment, match, currency, billing_period):
     Currency symbols without an ISO label remain usable for existing US-source
     rules, but an explicit CAD/AUD/etc. can never be relabelled as USD.
     """
-    if billing_period in PERIOD_PATTERNS and not re.search(PERIOD_PATTERNS[billing_period], match.group(0), re.I):
+    if billing_period in PERIOD_PATTERNS and not re.search(PERIOD_PATTERNS[billing_period], visible_text(match.group(0)), re.I):
         return False
     left = max(0, match.start() - 16)
     right = min(len(segment), match.end() + 16)
     nearby_codes = set(re.findall(r'\b[A-Z]{3}\b', segment[left:right])) & CURRENCY_CODES
     return not nearby_codes or nearby_codes == {currency}
 
-def offer_from_rule(provider, rule, raw, sibling_anchors=()):
+def offer_from_rule(provider, rule, raw, sibling_anchors=(), diagnostics=None):
+    def missing(reason):
+        if diagnostics is not None:
+            diagnostics.append(reason)
+        return None
     if rule.get('mode') == 'availability_only':
-        return None
+        return missing('No price extractor is configured.')
     if any(not re.search(pattern, raw) for pattern in rule.get('raw_checks', [])):
-        return None
+        return missing('Required source-level wording was not found.')
     document = visible_text(raw) if rule.get('mode') == 'anchored_text' else raw
     if rule.get('mode') == 'presence':
         if not re.search(rule['pattern'], raw, re.I):
-            return None
+            return missing('Required source wording was not found.')
         segment = raw
     else:
         start = document.find(rule['anchor'])
         if start < 0:
-            return None
+            return missing('The configured plan anchor was not found.')
         segment = document[start:start + int(rule.get('window_chars', 6000))]
         if rule.get('end_anchor'):
             end = segment.find(rule['end_anchor'], len(rule['anchor']))
-            if end < 0: return None
+            if end < 0: return missing('The configured end of this plan card was not found.')
             segment = segment[:end]
         else:
             # A price may not cross into another configured plan card.  This is
@@ -261,7 +266,7 @@ def offer_from_rule(provider, rule, raw, sibling_anchors=()):
             if ends:
                 segment = segment[:min(ends)]
     if any(not re.search(pattern, segment) for pattern in rule.get('checks', [])):
-        return None
+        return missing('Required wording was not found inside this plan card.')
     offer = {
         'slug': rule.get('slug') or slug(provider['id'] + '-' + rule['title']),
         'provider': provider['id'],
@@ -283,7 +288,7 @@ def offer_from_rule(provider, rule, raw, sibling_anchors=()):
             continue
         value = match.groupdict().get('value') or match.group(1)
         if field == 'price' and not price_has_matching_terms(segment, match, offer.get('currency'), offer.get('billing_period')):
-            return None
+            return missing('The price quote does not establish the configured currency and billing unit.')
         source_claim = claim_evidence(segment, match,
             'configured field pattern: ' + field,
             'visible source text' if rule.get('mode') == 'anchored_text' else 'source response markup')
@@ -298,7 +303,8 @@ def offer_from_rule(provider, rule, raw, sibling_anchors=()):
         else:
             offer[field] = value
     required = rule.get('required_fields', ['price'] if rule.get('mode') != 'presence' else [])
-    if any(offer.get(field) in (None, '') for field in required): return None
+    absent = [field for field in required if offer.get(field) in (None, '')]
+    if absent: return missing('Required fields were not found: ' + ', '.join(absent) + '.')
     if any(not math.isfinite(offer[field]) or offer[field] <= 0 for field in NUMERIC_FIELDS if field in offer): return None
     if 'price' in offer and not all(offer.get(key) for key in ('currency', 'billing_period')): return None
     if not any(offer.get(key) for key in ('price', 'price_text', 'discount_percent', 'coupon_code')): return None
@@ -367,8 +373,12 @@ def valid_403_clearance(provider, lock, evidence):
     # manual reauthorization gate; require an explicit matching Allow rule.
     return allowed and ': allow:' in reason.lower()
 
-def run(config_path=None):
+def run(config_path=None, provider_ids=None, capture_dir=None):
     cfg = load_config(config_path)
+    selected = set(provider_ids) if provider_ids is not None else {p['id'] for p in cfg['providers']}
+    unknown = selected - {p['id'] for p in cfg['providers']}
+    if unknown:
+        raise ValueError('Unknown provider identifiers: ' + ', '.join(sorted(unknown)))
     previous = json.loads(DATA.read_text(encoding='utf-8')) if DATA.exists() else {'offers': []}
     locks = dict(previous.get('source_403_locks') or {})
     clearances = dict(previous.get('source_403_clearances') or {})
@@ -381,6 +391,11 @@ def run(config_path=None):
     for provider in cfg['providers']:
         old = prior_by_provider[provider['id']]
         prior_status = (previous.get('source_status') or {}).get(provider['id'], {})
+        if provider['id'] not in selected:
+            output.extend(old)
+            if prior_status:
+                statuses[provider['id']] = prior_status
+            continue
         if prior_status.get('http_status') == 403 and provider['id'] not in locks:
             locks[provider['id']] = {key: prior_status.get(key) for key in
                                      ('status', 'request_url', 'http_status', 'checked_at', 'visible_excerpt')}
@@ -432,6 +447,10 @@ def run(config_path=None):
             clearance_history.append({'provider': provider['id'], 'clearance': clearance,
                                       'attempted_at': now(), 'result': 'source returned HTTP 200',
                                       'http_status': status, 'request_url': request_url})
+        if capture_dir is not None:
+            folder = Path(capture_dir)
+            folder.mkdir(parents=True, exist_ok=True)
+            (folder / (provider['id'] + '.html')).write_text(raw, encoding='utf-8')
         rules = [rule for rule in cfg['extractors'] if rule.get('provider') == provider['id']]
         source_probe = probe_fields('evidenced', request_url, status, excerpt(raw))
         auxiliary = configured_source_evidence(rules, raw)
@@ -444,11 +463,12 @@ def run(config_path=None):
             reason = f'Official source and robots.txt were checked successfully. No deterministic price rule can be written ({blocker}), so no offer was published. Evidence: {blocker_evidence}'
             statuses[provider['id']] = {**source_probe, 'capture_status': 'no_price_rule', 'reason': reason, 'blocker': blocker, 'blocker_evidence': blocker_evidence, 'published_count': len(old), 'captured_count': 0, 'retained_count': len(old), 'captured_slugs': [], 'retained_slugs': [offer['slug'] for offer in old]}
             continue
-        matched, errors, unmatched_rules = [], [], []
+        matched, errors, unmatched_rules, rule_failures = [], [], [], {}
         for rule in rules:
+            diagnostics = []
             try:
                 sibling_anchors = [candidate.get('anchor') for candidate in rules if candidate is not rule and candidate.get('mode') == rule.get('mode')]
-                offer = offer_from_rule(provider, rule, raw, sibling_anchors)
+                offer = offer_from_rule(provider, rule, raw, sibling_anchors, diagnostics)
             except (ValueError, IndexError) as exc:
                 errors.append(str(exc))
                 offer = None
@@ -456,6 +476,7 @@ def run(config_path=None):
                 matched.append(offer)
             else:
                 unmatched_rules.append(rule['title'])
+                rule_failures[rule['title']] = diagnostics[0] if diagnostics else 'Invalid extracted value; no record published.'
         matched_slugs = {offer['slug'] for offer in matched}
         superseded_slugs = {previous_slug for rule in rules if (rule.get('slug') or slug(provider['id'] + '-' + rule['title'])) in matched_slugs for previous_slug in rule.get('supersedes_slugs', [])}
         retained = [offer for offer in old if offer.get('slug') not in matched_slugs and offer.get('slug') not in superseded_slugs]
@@ -470,9 +491,11 @@ def run(config_path=None):
         else:
             statuses[provider['id']] = {**source_probe, 'capture_status': 'unmatched', 'reason': 'Official source responded, but no configured extraction rule matched; existing records were retained.', 'published_count': len(retained), 'captured_count': 0, 'retained_count': len(retained), 'captured_slugs': [], 'retained_slugs': [offer['slug'] for offer in retained], 'rule_errors': errors}
         statuses[provider['id']]['unmatched_rules'] = unmatched_rules
+        statuses[provider['id']]['rule_failures'] = rule_failures
     payload = {'generated_at': now(), 'offers': output, 'source_status': statuses,
                'source_403_locks': locks, 'source_403_clearances': clearances,
-               'source_403_history': clearance_history}
+               'source_403_history': clearance_history,
+               'refresh_scope': [p['id'] for p in cfg['providers'] if p['id'] in selected]}
     # Carry over any top-level key this checker does not own. build.py persists
     # the sitemap lastmod state into this same file, so dropping unknown keys
     # here would reset every lastmod on the next refresh run.
@@ -481,10 +504,53 @@ def run(config_path=None):
     DATA.write_text(json.dumps(payload, indent=2, ensure_ascii=False) + '\n', encoding='utf-8')
     return payload
 
+def refresh_report(payload, provider_ids=None):
+    """Report fresh numeric prices separately from text matches and old records."""
+    selected = set(provider_ids) if provider_ids is not None else set(payload['source_status'])
+    captured = {slug for pid, status in payload['source_status'].items() if pid in selected
+                for slug in status.get('captured_slugs', [])}
+    prices = {offer['slug'] for offer in payload['offers']
+              if offer['slug'] in captured and offer.get('price') is not None}
+    retained = sum(status.get('retained_count', 0) for pid, status in payload['source_status'].items() if pid in selected)
+    lines = ['# Official source refresh', '',
+             f'{len(selected)} sources checked: **{len(prices)} numeric price records refreshed**, '
+             f'{len(captured - prices)} text-only records captured, {retained} earlier records retained.', '',
+             'A completed job does not mean that every price was updated. Retained records keep their original capture dates. '
+             'Dated manual plan reviews are separate and are never redated by this job.', '',
+             '| Provider | New price records | Text-only captures | Earlier records retained | Result |',
+             '| --- | ---: | ---: | ---: | --- |']
+    warnings = []
+    for pid, status in payload['source_status'].items():
+        if pid not in selected:
+            continue
+        fresh = set(status.get('captured_slugs', []))
+        outcome = status.get('capture_status', 'not_attempted')
+        detail = status.get('reason', outcome)
+        if status.get('rule_failures'):
+            detail += ' ' + '; '.join(f'{title}: {reason}' for title, reason in status['rule_failures'].items())
+        if outcome == 'unmatched' or status.get('status') != 'evidenced' or status.get('rule_errors') or status.get('unmatched_rules'):
+            warnings.append((pid, detail))
+        safe_detail = detail.replace('|', '\\|').replace('\n', ' ')
+        lines.append(f'| {pid} | {len(fresh & prices)} | {len(fresh - prices)} | {status.get("retained_count", 0)} | {safe_detail} |')
+    return '\n'.join(lines) + '\n', warnings
+
+def annotation_text(value):
+    return str(value).replace('%', '%25').replace('\r', '%0D').replace('\n', '%0A')
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--config')
+    parser.add_argument('--providers', help='Comma-separated configured provider IDs; all others keep their data and dates.')
+    parser.add_argument('--summary', help='Write a Markdown refresh report, e.g. GITHUB_STEP_SUMMARY.')
+    parser.add_argument('--capture-dir', help='Save successful public HTML responses for explicit diagnostics.')
     args = parser.parse_args()
-    result = run(args.config)
+    selected = [value.strip() for value in args.providers.split(',') if value.strip()] if args.providers else None
+    result = run(args.config, selected, args.capture_dir)
     for provider, status in result['source_status'].items():
-        print(f"{provider}: captured={status.get('captured_count', 0)} retained={status.get('retained_count', 0)} status={status['status']}")
+        if selected is None or provider in selected:
+            print(f"{provider}: captured={status.get('captured_count', 0)} retained={status.get('retained_count', 0)} result={status.get('capture_status')} source={status['status']}")
+    report, warnings = refresh_report(result, selected)
+    if args.summary:
+        Path(args.summary).write_text(report, encoding='utf-8')
+    for provider, reason in warnings:
+        print(f'::warning title=Price refresh incomplete ({annotation_text(provider)})::{annotation_text(reason)}')

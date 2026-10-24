@@ -3,6 +3,19 @@ on:
   schedule:
     - cron: '17 */6 * * *'
   workflow_dispatch:
+    inputs:
+      providers:
+        description: 'Optional comma-separated configured provider IDs; blank refreshes all sources'
+        required: false
+        type: string
+      capture_responses:
+        description: 'Save successful public responses as a diagnostic artifact'
+        required: false
+        type: boolean
+        default: false
+concurrency:
+  group: official-source-refresh
+  cancel-in-progress: false
 permissions:
   contents: write
 jobs:
@@ -13,7 +26,22 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.13'
-      - run: python scraper.py
+      - name: Refresh prices and report incomplete sources
+        env:
+          PROVIDERS: ${{ inputs.providers }}
+          CAPTURE_RESPONSES: ${{ inputs.capture_responses }}
+        run: |
+          args=(--summary "$GITHUB_STEP_SUMMARY")
+          if [[ -n "$PROVIDERS" ]]; then args+=(--providers "$PROVIDERS"); fi
+          if [[ "$CAPTURE_RESPONSES" == "true" ]]; then args+=(--capture-dir work/source-responses); fi
+          python scraper.py "${args[@]}"
+      - uses: actions/upload-artifact@v4
+        if: ${{ inputs.capture_responses == true }}
+        with:
+          name: official-source-responses
+          path: work/source-responses
+          retention-days: 7
+          if-no-files-found: warn
       - run: python validate.py
       - name: Commit source changes
         run: |

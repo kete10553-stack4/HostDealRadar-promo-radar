@@ -16,6 +16,62 @@ class SourceSafety(unittest.TestCase):
         self.provider = dict(id='sample', name='Sample', source_url='https://example.com/pricing', affiliate_url='')
         self.rule = dict(provider='sample', mode='anchored_text', anchor='Basic plan', window_chars=100, title='Basic', currency='USD', billing_period='month', field_patterns={'price':r'USD (?P<value>[0-9.]+) / month'}, structure='Plan card')
 
+    def test_explicit_annual_and_monthly_wording_establishes_price_unit(self):
+        cases = [('year', 'Billed annually. Pay USD 120 today.', r'Billed annually\. Pay USD (?P<value>[0-9.]+) today\.'),
+                 ('month', 'Monthly starting at EUR 5', r'Monthly starting at EUR (?P<value>[0-9.]+)')]
+        for period, quote, pattern in cases:
+            with self.subTest(period=period):
+                rule = dict(self.rule, billing_period=period, currency='EUR' if period == 'month' else 'USD', field_patterns={'price':pattern})
+                offer = scraper.offer_from_rule(self.provider, rule, 'Basic plan ' + quote)
+                self.assertIsNotNone(offer)
+                self.assertEqual(offer['field_evidence']['price'], quote)
+        self.assertIsNone(scraper.offer_from_rule(self.provider, self.rule,
+            'Basic plan USD 9 / year. Another plan USD 7 / month', ['Another plan']))
+
+    def test_targeted_refresh_keeps_other_providers_and_original_dates(self):
+        other = dict(self.provider, id='other', name='Other')
+        cfg = {'providers':[self.provider, other], 'extractors':[self.rule], 'settings':{}}
+        old = {'provider':'other', 'slug':'other-basic', 'title':'Other Basic', 'price':5,
+               'fetched_at':'2026-01-01T00:00:00Z'}
+        prior_status = {'status':'unreadable', 'checked_at':'2026-01-02T00:00:00Z'}
+        manual = {'checked_on':'2026-01-01', 'records':[{'plan':'Dated manual example'}]}
+        with tempfile.TemporaryDirectory() as folder:
+            data = Path(folder) / 'offers.json'
+            data.write_text(json.dumps({'offers':[old], 'source_status':{'other':prior_status},
+                                        'browser_term_observations':manual}), encoding='utf-8')
+            with patch.object(scraper,'DATA',data), patch.object(scraper,'load_config',return_value=cfg), patch.object(scraper,'fetch_source',return_value=(200,'Basic plan USD 9 / month',self.provider['source_url'])) as fetch:
+                result = scraper.run(provider_ids=['sample'])
+        fetch.assert_called_once()
+        self.assertIn(old, result['offers'])
+        self.assertEqual(result['source_status']['other'], prior_status)
+        self.assertEqual(result['browser_term_observations'], manual)
+        self.assertEqual(result['refresh_scope'], ['sample'])
+
+    def test_unknown_target_stops_before_network_or_data_write(self):
+        cfg = {'providers':[self.provider], 'extractors':[self.rule], 'settings':{}}
+        with patch.object(scraper,'load_config',return_value=cfg), patch.object(scraper,'fetch_source') as fetch:
+            with self.assertRaisesRegex(ValueError, 'Unknown provider'):
+                scraper.run(provider_ids=['typo'])
+        fetch.assert_not_called()
+
+    def test_refresh_report_distinguishes_price_text_and_retained_records(self):
+        payload = {'offers':[{'slug':'price','price':9},{'slug':'text','price_text':'First month free'},{'slug':'old','price':4}],
+                   'source_status':{'sample':{'status':'evidenced','capture_status':'matched',
+                       'captured_slugs':['price','text'],'retained_count':1,'unmatched_rules':['Old'],
+                       'rule_failures':{'Old':'The configured plan anchor was not found.'}}}}
+        report, warnings = scraper.refresh_report(payload)
+        self.assertIn('**1 numeric price records refreshed**', report)
+        self.assertIn('1 text-only records captured, 1 earlier records retained', report)
+        self.assertEqual(len(warnings), 1)
+        self.assertIn('anchor was not found', warnings[0][1])
+
+    def test_unmatched_price_reports_missing_unit_without_weakening_guard(self):
+        rule = dict(self.rule, field_patterns={'price':r'USD (?P<value>[0-9.]+)'})
+        diagnostics = []
+        self.assertIsNone(scraper.offer_from_rule(self.provider, rule,
+            'Basic plan USD 9; another item costs USD 1 / month', diagnostics=diagnostics))
+        self.assertIn('billing unit', diagnostics[0])
+
     def test_no_record_when_price_is_missing(self):
         self.assertIsNone(scraper.offer_from_rule(self.provider,self.rule,'<p>Basic plan: Contact sales</p>'))
 
