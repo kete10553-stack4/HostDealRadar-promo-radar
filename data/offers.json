@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-24T04:40:41Z",
+  "generated_at": "2026-10-24T10:58:24Z",
   "offers": [
     {
       "slug": "raidboxes-mini",
@@ -5882,14 +5882,14 @@
       "category": "Managed WordPress hosting",
       "source_url": "https://kinsta.com/pricing/",
       "offer_url": "https://kinsta.com/pricing/",
-      "fetched_at": "2026-10-24T04:39:54Z",
+      "fetched_at": "2026-10-24T10:58:17Z",
       "evidence": "Official Kinsta pricing-page meta description; no monthly price is inferred.",
       "field_evidence": {},
       "claim_evidence": {},
       "price_text": "First month free on select plans",
       "condition": "Kinsta describes this as a first-month promotion, not a $0 monthly rate.",
       "kind": "promotion",
-      "source_sha256": "c0d4d833d63ce6c030cfde97b3de535a347890d254dff6d211090e6603d854bf"
+      "source_sha256": "2df8287b716cc8d2834b70b32e7e02f4ed5d441e4bed769cba53e83e38b5a5e8"
     },
     {
       "slug": "cloudways-summer404",
@@ -6232,18 +6232,27 @@
       "category": "Managed WordPress hosting",
       "source_url": "https://wpengine.com/plans/",
       "offer_url": "https://wpengine.com/plans/",
-      "fetched_at": "2026-09-13T00:39:08Z",
+      "fetched_at": "2026-10-24T10:58:20Z",
       "evidence": "Read from WP Engine's own server-rendered JSON-LD on the official plans page: the one-site product carries a USD Annual offer with billingDuration P1Y. The amount is published as an annual charge and is not divided into a monthly figure.",
       "field_evidence": {
         "price": "\"@type\":\"Offer\",\"name\":\"Annual\",\"priceCurrency\":\"USD\",\"price\":\"336.00\""
+      },
+      "claim_evidence": {
+        "price": {
+          "quote": "\"@type\":\"Offer\",\"name\":\"Annual\",\"priceCurrency\":\"USD\",\"price\":\"336.00\"",
+          "excerpt": "pe\":\"UnitPriceSpecification\",\"billingDuration\":\"P1M\"},\"url\":\"https:\\/\\/wpengine.com\\/plans\\/\"},{\"@type\":\"Offer\",\"name\":\"Annual\",\"priceCurrency\":\"USD\",\"price\":\"336.00\",\"priceSpecification\":{\"@type\":\"UnitPriceSpecification\",\"billingDuration\":\"P1Y\"},\"url\":\"https:\\/\\/wpengine.com\\/plans\\/\",\"description\":\"Billed annually. Price includes promotional discount.\"},",
+          "visible_excerpt": "pe\":\"UnitPriceSpecification\",\"billingDuration\":\"P1M\"},\"url\":\"https:\\/\\/wpengine.com\\/plans\\/\"},{\"@type\":\"Offer\",\"name\":\"Annual\",\"priceCurrency\":\"USD\",\"price\":\"336.00\",\"priceSpecification\":{\"@type\":\"UnitPriceSpecification\",\"billingDuration\":\"P1Y\"},\"url\":\"https:\\/\\/wpengine.com\\/plans\\/\",\"description\":\"Billed annually. Price includes promotional discount.\"},",
+          "location": "configured field pattern: price",
+          "surface": "source response markup"
+        }
       },
       "currency": "USD",
       "billing_period": "year",
       "commitment_months": 12,
       "condition": "Annual upfront charge for the one-site plan, inclusive of the promotional discount stated on the page. First-year pricing for new customers; renewal pricing is subject to change.",
       "kind": "promotion",
-      "price": 336,
-      "source_sha256": "ef0ca6095e9e6b041bb366f06be644de93fc41c535465db097ee1492a3ca585a"
+      "price": 336.0,
+      "source_sha256": "7c7d7dc51cb2a05b9daa7df62c1cee2d92753a7ad00159b7ffeceb8d74a632ec"
     },
     {
       "slug": "ionos-essential-web-hosting",
@@ -7672,7 +7681,7 @@
       "request_url": "https://raidboxes.io/en/wordpress-hosting-pricing/",
       "http_status": 200,
       "visible_excerpt": "WordPress Hosting Prices & Plans – save 50% now Skip to content Get in contact WordPress Speed Test Live Chat Status page Careers Login Login Live-Chat DE Why Raidboxes Advantages Why Raidboxes Our philosophy Support by experts Responsibility & CSR Offers Free website migration F",
-      "checked_at": "2026-10-24T04:38:54Z",
+      "checked_at": "2026-10-24T10:58:02Z",
       "capture_status": "unmatched",
       "reason": "Official source responded, but no configured extraction rule matched; existing records were retained.",
       "published_count": 6,
@@ -7695,7 +7704,15 @@
         "Pro",
         "Pro XL",
         "Business"
-      ]
+      ],
+      "rule_failures": {
+        "Mini": "Required wording was not found inside this plan card.",
+        "Starter": "Required wording was not found inside this plan card.",
+        "Fully Managed": "Required wording was not found inside this plan card.",
+        "Pro": "Required wording was not found inside this plan card.",
+        "Pro XL": "Required wording was not found inside this plan card.",
+        "Business": "Required wording was not found inside this plan card."
+      }
     },
     "webdock": {
       "status": "evidenced",
@@ -7895,7 +7912,7 @@
       "request_url": "https://www.beehiiv.com/pricing",
       "http_status": 200,
       "visible_excerpt": "Pricing - beehiiv — The newsletter platform built for growth Sign up Product Newsletters Own your subscriber list Podcasts Turn listeners into subscribers Digital Products Sell guides, courses, and more Community Bring your audience together Publish Editor Customization beehiiv A",
-      "checked_at": "2026-10-24T04:39:05Z",
+      "checked_at": "2026-10-24T10:58:03Z",
       "capture_status": "unmatched",
       "reason": "Official source responded, but no configured extraction rule matched; existing records were retained.",
       "published_count": 2,
@@ -7910,7 +7927,11 @@
       "unmatched_rules": [
         "Scale",
         "Max"
-      ]
+      ],
+      "rule_failures": {
+        "Scale": "The configured plan anchor was not found.",
+        "Max": "The configured plan anchor was not found."
+      }
     },
     "wpmu-dev": {
       "status": "evidenced",
@@ -7940,7 +7961,7 @@
       "request_url": "https://appwrite.io/pricing",
       "http_status": 200,
       "visible_excerpt": "Pricing · Appwrite Products Solutions Pricing Docs Customers Blog Changelog 57.8K Skip to content Everything your app needs, one subscription _ Build, deploy, secure, and observe your app from one platform, all under one subscription. All platform services included Every plan inc",
-      "checked_at": "2026-10-24T04:39:06Z",
+      "checked_at": "2026-10-24T10:58:04Z",
       "capture_status": "unmatched",
       "reason": "Official source responded, but no configured extraction rule matched; existing records were retained.",
       "published_count": 1,
@@ -7953,7 +7974,10 @@
       "rule_errors": [],
       "unmatched_rules": [
         "Pro"
-      ]
+      ],
+      "rule_failures": {
+        "Pro": "The configured plan anchor was not found."
+      }
     },
     "nhost": {
       "status": "evidenced",
@@ -8367,7 +8391,7 @@
       "request_url": "https://www.netcup.com/en/server/vps",
       "http_status": 200,
       "visible_excerpt": "VPS hosting with top performance & best conditions | netcup Skip to content Hosting that delivers : Get domains , web hosting , servers and more at unbeatable prices EN / VAT 19% Select your settings Close Please select your desired language and country. The country selection is ",
-      "checked_at": "2026-10-24T04:39:27Z",
+      "checked_at": "2026-10-24T10:58:06Z",
       "capture_status": "unmatched",
       "reason": "Official source responded, but no configured extraction rule matched; existing records were retained.",
       "published_count": 4,
@@ -8386,7 +8410,13 @@
         "VPS 1000 G12",
         "VPS 2000 G12",
         "VPS 4000 G12"
-      ]
+      ],
+      "rule_failures": {
+        "VPS 500 G12": "Required fields were not found: price.",
+        "VPS 1000 G12": "Required fields were not found: price.",
+        "VPS 2000 G12": "Required fields were not found: price.",
+        "VPS 4000 G12": "Required fields were not found: price."
+      }
     },
     "deno-deploy": {
       "status": "evidenced",
@@ -8477,7 +8507,7 @@
       "request_url": "https://www.crocweb.com/",
       "http_status": 200,
       "visible_excerpt": "Fast, Secure Cloud Hosting for Websites and Apps | CrocWeb Skip to main content +1 (888)-804-CROC | Help Center | CrocWeb Status Cloud Hosting Cloud Hosting Cloud Web Hosting Fast, reliable hosting for websites, blogs and stores Cloud WordPress Hosting Managed WordPress with 1-cl",
-      "checked_at": "2026-10-24T04:39:29Z",
+      "checked_at": "2026-10-24T10:58:07Z",
       "capture_status": "unmatched",
       "reason": "Official source responded, but no configured extraction rule matched; existing records were retained.",
       "published_count": 4,
@@ -8496,7 +8526,13 @@
         "Cloud WordPress Hosting",
         "Cloud Reseller Hosting",
         "Cloud Virtual Servers"
-      ]
+      ],
+      "rule_failures": {
+        "Cloud Web Hosting": "The configured plan anchor was not found.",
+        "Cloud WordPress Hosting": "The configured plan anchor was not found.",
+        "Cloud Reseller Hosting": "The configured plan anchor was not found.",
+        "Cloud Virtual Servers": "The configured plan anchor was not found."
+      }
     },
     "eukhost": {
       "status": "evidenced",
@@ -8546,7 +8582,7 @@
       "request_url": "https://wpx.net/cart/wordpress-hosting/",
       "http_status": 200,
       "visible_excerpt": "Place New Order | WPX.net 79% off your 1st month on monthly WordPress hosting plans. Worst case: you try the best. Use code: SAVE79 WPX.net Login Pricing WordPress Hosting Agency Hosting WooCommerce Hosting Buy Domains About Customer Reviews Why WPX What is WPX XDN? Knowledgebase",
-      "checked_at": "2026-10-24T04:39:31Z",
+      "checked_at": "2026-10-24T10:58:08Z",
       "capture_status": "unmatched",
       "reason": "Official source responded, but no configured extraction rule matched; existing records were retained.",
       "published_count": 3,
@@ -8563,7 +8599,12 @@
         "Starter",
         "Business",
         "Professional"
-      ]
+      ],
+      "rule_failures": {
+        "Starter": "The price quote does not establish the configured currency and billing unit.",
+        "Business": "The price quote does not establish the configured currency and billing unit.",
+        "Professional": "The price quote does not establish the configured currency and billing unit."
+      }
     },
     "supabase": {
       "status": "evidenced",
@@ -8626,7 +8667,7 @@
       "request_url": "https://northflank.com/pricing",
       "http_status": 200,
       "visible_excerpt": "Pricing — Northflank Skip to content Primary navigation Show navigation Northflank Platform Resources Enterprise Pricing Docs Book a demo Log in Get started Pay for what you run Billed to the second, with no seat fees. Start free, then pay as you go on Northflank Cloud or in your",
-      "checked_at": "2026-10-24T04:39:33Z",
+      "checked_at": "2026-10-24T10:58:09Z",
       "capture_status": "unmatched",
       "reason": "Official source responded, but no configured extraction rule matched; existing records were retained.",
       "published_count": 4,
@@ -8645,7 +8686,13 @@
         "nf-compute-50",
         "nf-compute-100-2",
         "nf-compute-400"
-      ]
+      ],
+      "rule_failures": {
+        "nf-compute-10": "Required wording was not found inside this plan card.",
+        "nf-compute-50": "Required wording was not found inside this plan card.",
+        "nf-compute-100-2": "Required wording was not found inside this plan card.",
+        "nf-compute-400": "Required wording was not found inside this plan card."
+      }
     },
     "bubble": {
       "status": "evidenced",
@@ -9025,7 +9072,7 @@
       "request_url": "https://www.gandi.net/en/domain",
       "http_status": 200,
       "visible_excerpt": "Buy a domain name: choose from over 750 domain endings - Gandi.net Skip to main content Log in Create a website Create a website Create a website Explore our solutions for easily creating your website Create a website Create a showcase website Promote your business online and imp",
-      "checked_at": "2026-10-24T04:39:46Z",
+      "checked_at": "2026-10-24T10:58:10Z",
       "capture_status": "unmatched",
       "reason": "Official source responded, but no configured extraction rule matched; existing records were retained.",
       "published_count": 2,
@@ -9040,14 +9087,18 @@
       "unmatched_rules": [
         ".com registration",
         ".fr registration"
-      ]
+      ],
+      "rule_failures": {
+        ".com registration": "The price quote does not establish the configured currency and billing unit.",
+        ".fr registration": "The price quote does not establish the configured currency and billing unit."
+      }
     },
     "fasthosts": {
       "status": "evidenced",
       "request_url": "https://www.fasthosts.co.uk/web-hosting",
       "http_status": 200,
       "visible_excerpt": "Web Hosting | Web Hosting Services | Web Hosting UK | Fasthosts Skip to content Fasthosts home AI Receptionist AI Receptionist Never miss a business call, even after hours Domains Domain Names It all starts with a name. Find the perfect domain and make a home for your great idea ",
-      "checked_at": "2026-10-24T04:39:47Z",
+      "checked_at": "2026-10-24T10:58:13Z",
       "capture_status": "unmatched",
       "reason": "Official source responded, but no configured extraction rule matched; existing records were retained.",
       "published_count": 3,
@@ -9064,14 +9115,19 @@
         "Start",
         "Scale",
         "Pro"
-      ]
+      ],
+      "rule_failures": {
+        "Start": "The price quote does not establish the configured currency and billing unit.",
+        "Scale": "The price quote does not establish the configured currency and billing unit.",
+        "Pro": "The price quote does not establish the configured currency and billing unit."
+      }
     },
     "name-com": {
       "status": "evidenced",
       "request_url": "https://www.name.com/domains",
       "http_status": 200,
       "visible_excerpt": "Domain Extensions List | All Top-Level Domains (TLDs) | Name.com Cart Toggle navigation Domains Products API Support ● Search domain names . TLD Browse Our Full List Of Top-Level Domains Hundreds of top-level domains (TLDs) are available today, making it easier than ever to creat",
-      "checked_at": "2026-10-24T04:39:48Z",
+      "checked_at": "2026-10-24T10:58:13Z",
       "capture_status": "unmatched",
       "reason": "Official source responded, but no configured extraction rule matched; existing records were retained.",
       "published_count": 3,
@@ -9088,7 +9144,12 @@
         ".com registration",
         ".net registration",
         ".org registration"
-      ]
+      ],
+      "rule_failures": {
+        ".com registration": "The configured plan anchor was not found.",
+        ".net registration": "The configured plan anchor was not found.",
+        ".org registration": "The configured plan anchor was not found."
+      }
     },
     "pressable": {
       "status": "evidenced",
@@ -9116,7 +9177,7 @@
       "request_url": "https://railway.com/pricing",
       "http_status": 200,
       "visible_excerpt": "Pricing | Railway Product Developers Enterprise Company Pricing Pay only for what your app uses, by the second Say goodbye to overprovisioning and optimizing box sizes. Railway only charges you for what your app uses . Free $ 0 per month Perfect for getting started and deploying ",
-      "checked_at": "2026-10-24T04:39:48Z",
+      "checked_at": "2026-10-24T10:58:13Z",
       "capture_status": "unmatched",
       "reason": "Official source responded, but no configured extraction rule matched; existing records were retained.",
       "published_count": 2,
@@ -9131,14 +9192,18 @@
       "unmatched_rules": [
         "Hobby",
         "Pro"
-      ]
+      ],
+      "rule_failures": {
+        "Hobby": "The price quote does not establish the configured currency and billing unit.",
+        "Pro": "The price quote does not establish the configured currency and billing unit."
+      }
     },
     "wordpress-com": {
       "status": "evidenced",
       "request_url": "https://wordpress.com/pricing/",
       "http_status": 200,
       "visible_excerpt": "WordPress.com Pricing | Find the Perfect Plan for Your Site Products Resources Support Pricing Log in Get started Menu Build Website Ecommerce AI website builder Publish Blog Newsletter Hosting Managed hosting Agency hosting Site migration Enterprise hosting WordPress VIP Domains",
-      "checked_at": "2026-10-24T04:39:49Z",
+      "checked_at": "2026-10-24T10:58:14Z",
       "capture_status": "unmatched",
       "reason": "Official source responded, but no configured extraction rule matched; existing records were retained.",
       "published_count": 3,
@@ -9155,14 +9220,19 @@
         "Personal",
         "Premium",
         "Business"
-      ]
+      ],
+      "rule_failures": {
+        "Personal": "The price quote does not establish the configured currency and billing unit.",
+        "Premium": "The price quote does not establish the configured currency and billing unit.",
+        "Business": "The price quote does not establish the configured currency and billing unit."
+      }
     },
     "heroku": {
       "status": "evidenced",
       "request_url": "https://www.heroku.com/pricing/",
       "http_status": 200,
       "visible_excerpt": "Cloud Application Platform Pricing & Plans | Heroku Search overlay panel for performing site-wide searches Search For: Close Build Your Next Big Thing on Heroku. Sign Up Now! Search Open Search Popup Account menu Dashboard Databases Dataclips Elements Documentation Support Dashbo",
-      "checked_at": "2026-10-24T04:39:49Z",
+      "checked_at": "2026-10-24T10:58:15Z",
       "capture_status": "unmatched",
       "reason": "Official source responded, but no configured extraction rule matched; existing records were retained.",
       "published_count": 4,
@@ -9181,7 +9251,13 @@
         "Basic",
         "Standard-1X",
         "Standard-2X"
-      ]
+      ],
+      "rule_failures": {
+        "Eco": "The price quote does not establish the configured currency and billing unit.",
+        "Basic": "The price quote does not establish the configured currency and billing unit.",
+        "Standard-1X": "The price quote does not establish the configured currency and billing unit.",
+        "Standard-2X": "The price quote does not establish the configured currency and billing unit."
+      }
     },
     "krystal": {
       "status": "evidenced",
@@ -9247,7 +9323,7 @@
       "request_url": "https://www.a2hosting.com/robots.txt",
       "http_status": 200,
       "visible_excerpt": "Web Hosting Built to Grow With You | hosting.com Partners United States (Global) Select your country Australia Bangladesh Canada Colombia Spain India Kenya Mexico Nigeria Rwanda United Kingdom United States (Global) 3 million websites hosted Contact us Support you can rely on Liv",
-      "checked_at": "2026-10-24T04:39:52Z",
+      "checked_at": "2026-10-24T10:58:15Z",
       "capture_status": "not_attempted",
       "reason": "robots.txt returned HTML instead of crawl directives; source page was not requested.",
       "published_count": 3,
@@ -9281,7 +9357,7 @@
       "request_url": "https://www.hostinger.com/pricing",
       "http_status": 200,
       "visible_excerpt": "Hostinger pricing | Explore web hosting and all Hostinger plans Biggest deals of the year. 30-day money-back guarantee. Limited time deals. 24/7 support. Don't miss out Biggest deals of the year 30-day money-back guarantee Limited time deals 24/7 support Don't miss out Biggest de",
-      "checked_at": "2026-10-24T04:39:53Z",
+      "checked_at": "2026-10-24T10:58:15Z",
       "capture_status": "unmatched",
       "reason": "Official source responded, but no configured extraction rule matched; existing records were retained.",
       "published_count": 2,
@@ -9296,14 +9372,18 @@
       "unmatched_rules": [
         "Premium Web Hosting",
         "Unlimited Web Hosting"
-      ]
+      ],
+      "rule_failures": {
+        "Premium Web Hosting": "The price quote does not establish the configured currency and billing unit.",
+        "Unlimited Web Hosting": "The price quote does not establish the configured currency and billing unit."
+      }
     },
     "siteground": {
       "status": "unreadable",
       "request_url": "https://www.siteground.com/robots.txt",
       "http_status": 202,
       "visible_excerpt": null,
-      "checked_at": "2026-10-24T04:39:53Z",
+      "checked_at": "2026-10-24T10:58:16Z",
       "capture_status": "not_attempted",
       "reason": "robots.txt returned HTTP 202; source page was not requested.",
       "published_count": 3,
@@ -9341,7 +9421,7 @@
       "request_url": "https://kinsta.com/pricing/",
       "http_status": 200,
       "visible_excerpt": "WordPress hosting plans - Kinsta® Skip to content Kinsta® Navigation Platform Product Hosting for WordPress Security Performance MyKinsta dashboard Features Bot Protection Automatic Plugin Updates Cloudflare integration Edge caching APM Extensions Kinsta add-ons API Application h",
-      "checked_at": "2026-10-24T04:39:54Z",
+      "checked_at": "2026-10-24T10:58:17Z",
       "capture_status": "matched",
       "reason": "Official source checked; matched configured extraction rules.",
       "published_count": 1,
@@ -9352,7 +9432,8 @@
       ],
       "retained_slugs": [],
       "rule_errors": [],
-      "unmatched_rules": []
+      "unmatched_rules": [],
+      "rule_failures": {}
     },
     "cloudways": {
       "status": "evidenced",
@@ -9413,20 +9494,27 @@
       "unmatched_rules": []
     },
     "inmotion-hosting": {
-      "status": "unreadable",
+      "status": "evidenced",
       "request_url": "https://www.inmotionhosting.com/shared-hosting",
-      "http_status": null,
-      "visible_excerpt": null,
-      "checked_at": "2026-10-24T04:40:21Z",
-      "capture_status": "not_attempted",
-      "reason": "Official source could not be checked: The read operation timed out.",
+      "http_status": 200,
+      "visible_excerpt": "Best Shared Web Hosting 2026 | InMotion Hosting Skip to content Open Menu InMotion Hosting Home InMotion Cloud: Half off your first month of Cloud plans with code SAVE50. Ends Oct 30, 2026. See Plans Resources Resources Server Management Website Services Compare InMotion Hosting ",
+      "checked_at": "2026-10-24T10:58:19Z",
+      "capture_status": "unmatched",
+      "reason": "Official source responded, but no configured extraction rule matched; existing records were retained.",
       "published_count": 1,
       "captured_count": 0,
       "retained_count": 1,
       "captured_slugs": [],
       "retained_slugs": [
         "inmotion-hosting-launch-shared-hosting-36-month-term"
-      ]
+      ],
+      "rule_errors": [],
+      "unmatched_rules": [
+        "Launch shared hosting (36-month term)"
+      ],
+      "rule_failures": {
+        "Launch shared hosting (36-month term)": "The price quote does not establish the configured currency and billing unit."
+      }
     },
     "chemicloud": {
       "status": "evidenced",
@@ -9488,21 +9576,23 @@
       "request_url": "https://wpengine.com/plans/",
       "http_status": 200,
       "visible_excerpt": "WP Engine Plans & Pricing Skip to content WP Engine® Platform Platform Types Managed Hosting Platform Fast, secure, & easy site management. eCommerce Solution Optimized performance for stores. Newsroom Platform Editorial workflow and operations software. Headless Platform Build &",
-      "checked_at": "2026-10-24T04:40:23Z",
-      "capture_status": "unmatched",
-      "reason": "Official source responded, but no configured extraction rule matched; existing records were retained.",
+      "checked_at": "2026-10-24T10:58:20Z",
+      "capture_status": "matched",
+      "reason": "Official source checked; matched configured extraction rules.",
       "published_count": 1,
-      "captured_count": 0,
-      "retained_count": 1,
-      "captured_slugs": [],
-      "retained_slugs": [
+      "captured_count": 1,
+      "retained_count": 0,
+      "captured_slugs": [
         "wp-engine-managed-hosting-platform-1-site-annual-billing"
       ],
+      "retained_slugs": [],
       "rule_errors": [],
       "unmatched_rules": [
-        "Essential managed hosting (annual billing)",
-        "Managed Hosting Platform (1 site, annual billing)"
-      ]
+        "Essential managed hosting (annual billing)"
+      ],
+      "rule_failures": {
+        "Essential managed hosting (annual billing)": "The configured plan anchor was not found."
+      }
     },
     "ionos": {
       "status": "evidenced",
@@ -9793,7 +9883,7 @@
       "request_url": "https://www.digitalocean.com/pricing/droplets",
       "http_status": 200,
       "visible_excerpt": "Droplet Pricing | DigitalOcean Blog Docs Careers Get Support Contact Sales DigitalOcean Products Featured AI Products Compute Build, deploy, and scale cloud compute resources Containers and Images Safely store and manage containers and backups Managed Databases Fully managed reso",
-      "checked_at": "2026-10-24T04:40:35Z",
+      "checked_at": "2026-10-24T10:58:20Z",
       "capture_status": "unmatched",
       "reason": "Official source responded, but no configured extraction rule matched; existing records were retained.",
       "published_count": 3,
@@ -9810,14 +9900,19 @@
         "Droplet 512 MiB / 1 vCPU / 10 GiB SSD",
         "Droplet 1 GiB / 1 vCPU / 25 GiB SSD",
         "Droplet 2 GiB / 1 vCPU / 50 GiB SSD"
-      ]
+      ],
+      "rule_failures": {
+        "Droplet 512 MiB / 1 vCPU / 10 GiB SSD": "The price quote does not establish the configured currency and billing unit.",
+        "Droplet 1 GiB / 1 vCPU / 25 GiB SSD": "The price quote does not establish the configured currency and billing unit.",
+        "Droplet 2 GiB / 1 vCPU / 50 GiB SSD": "The price quote does not establish the configured currency and billing unit."
+      }
     },
     "porkbun": {
       "status": "evidenced",
       "request_url": "https://porkbun.com/products/domains",
       "http_status": 200,
       "visible_excerpt": "porkbun.com | Domain Name Pricing × This website uses information gathering tools including cookies, and other similar technology. We use these tools to personalize content and ads, to analyze our website traffic, and to provide better website experience. We also share informatio",
-      "checked_at": "2026-10-24T04:40:37Z",
+      "checked_at": "2026-10-24T10:58:21Z",
       "capture_status": "unmatched",
       "reason": "Official source responded, but no configured extraction rule matched; existing records were retained.",
       "published_count": 3,
@@ -9834,7 +9929,12 @@
         ".COM registration",
         ".NET registration",
         ".ORG registration"
-      ]
+      ],
+      "rule_failures": {
+        ".COM registration": "The price quote does not establish the configured currency and billing unit.",
+        ".NET registration": "Required wording was not found inside this plan card.",
+        ".ORG registration": "The price quote does not establish the configured currency and billing unit."
+      }
     },
     "godaddy": {
       "status": "challenge",
@@ -9910,7 +10010,7 @@
       "request_url": "https://fly.io/pricing/",
       "http_status": 200,
       "visible_excerpt": "Pricing · Fly Open main menu Products Products Machines Sprites Managed Postgres Features Private Networking Autoscaling Zero Downtime Deploys Granular Routing Monitoring MCP Server Docs Platform Docs Sprites Docs Customers Pricing Articles Blog Sprites Infra Log Community Status",
-      "checked_at": "2026-10-24T04:40:39Z",
+      "checked_at": "2026-10-24T10:58:22Z",
       "capture_status": "unmatched",
       "reason": "Official source responded, but no configured extraction rule matched; existing records were retained.",
       "published_count": 3,
@@ -9927,7 +10027,12 @@
         "Machine shared-cpu-1x 256 MB",
         "Machine shared-cpu-2x 512 MB",
         "Machine shared-cpu-4x 1 GB"
-      ]
+      ],
+      "rule_failures": {
+        "Machine shared-cpu-1x 256 MB": "The price quote does not establish the configured currency and billing unit.",
+        "Machine shared-cpu-2x 512 MB": "The price quote does not establish the configured currency and billing unit.",
+        "Machine shared-cpu-4x 1 GB": "The price quote does not establish the configured currency and billing unit."
+      }
     },
     "amazon-lightsail": {
       "status": "evidenced",
@@ -9954,7 +10059,7 @@
       "request_url": "https://www.20i.com/web-hosting",
       "http_status": 200,
       "visible_excerpt": "UK Web Hosting: Lightning-fast & unlimited cloud hosting | 20i Reseller Hosting Reseller Hosting Reseller Hosting Profit with the best Reseller Hosting Platform Platform Hosting Platform Blazing-fast autoscaling cloud hosting StackCP Customisable control panel for your customers ",
-      "checked_at": "2026-10-24T04:40:41Z",
+      "checked_at": "2026-10-24T10:58:24Z",
       "capture_status": "unmatched",
       "reason": "Official source responded, but no configured extraction rule matched; existing records were retained.",
       "published_count": 6,
@@ -9977,7 +10082,15 @@
         "Plan 3",
         "Plan 4",
         "Plan 5"
-      ]
+      ],
+      "rule_failures": {
+        "Startup": "The price quote does not establish the configured currency and billing unit.",
+        "Plan 1": "The price quote does not establish the configured currency and billing unit.",
+        "Plan 2": "The price quote does not establish the configured currency and billing unit.",
+        "Plan 3": "The price quote does not establish the configured currency and billing unit.",
+        "Plan 4": "The price quote does not establish the configured currency and billing unit.",
+        "Plan 5": "The price quote does not establish the configured currency and billing unit."
+      }
     }
   },
   "source_403_locks": {
@@ -10005,14 +10118,39 @@
   },
   "source_403_clearances": {},
   "source_403_history": [],
+  "refresh_scope": [
+    "raidboxes",
+    "beehiiv",
+    "appwrite",
+    "netcup",
+    "crocweb",
+    "wpx",
+    "northflank",
+    "gandi",
+    "fasthosts",
+    "name-com",
+    "railway",
+    "wordpress-com",
+    "heroku",
+    "a2-hosting",
+    "hostinger",
+    "siteground",
+    "kinsta",
+    "inmotion-hosting",
+    "wp-engine",
+    "digitalocean",
+    "porkbun",
+    "fly-io",
+    "20i"
+  ],
   "page_lastmod": {
     "/": {
-      "hash": "9f8602d50065c273b67022243a58d0141d9c0f38929c228ea93e27700f99f874",
-      "lastmod": "2026-10-24T10:45:58Z"
+      "hash": "db841c764d3005d7bde9d36973912d81c2c2d0204d23a294a375f1613d59071e",
+      "lastmod": "2026-10-24T10:58:29Z"
     },
     "/providers/": {
-      "hash": "db948bfe09e6448b6a55aa115fb931ea08b86099f3019cfbfadbc978a878c919",
-      "lastmod": "2026-10-24T04:40:41Z"
+      "hash": "cdf8cf06eb12ec61a9265e52544ae11e48b9f91ff35580ad2eba9e8a5aba187a",
+      "lastmod": "2026-10-24T10:58:29Z"
     },
     "/compare/": {
       "hash": "ded6b829c4625d573961c212930682310eb1cc9dd84884f71bc14ebde189db1c",
@@ -10355,8 +10493,8 @@
       "lastmod": "2026-10-14T11:13:45Z"
     },
     "/providers/inmotion-hosting/": {
-      "hash": "375e6a655a35240389854bbb89719991a4d3d9ac9b8836a1c1bff8531587c8c9",
-      "lastmod": "2026-10-24T04:40:41Z"
+      "hash": "4294c3669f2a1c641b8df708d3177bf46097b8b3d4fff55f0588c5a3e17c837c",
+      "lastmod": "2026-10-24T10:58:29Z"
     },
     "/providers/knownhost/": {
       "hash": "aab97b28cf1e4d119c8712981455fc75977526d0f2d4c149aa3b8006b7810005",
