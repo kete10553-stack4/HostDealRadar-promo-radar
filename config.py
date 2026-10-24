@@ -54,7 +54,20 @@ def load_config(path=None):
     brand_guides = [json.loads(line) for line in sections.get('BRAND_GUIDES', [])]
     campaign_guides = [json.loads(line) for line in sections.get('CAMPAIGN_GUIDES', [])]
     research_guides = [json.loads(line) for line in sections.get('RESEARCH_GUIDES', [])]
+    source_resources = json.loads('\n'.join(sections.get('SOURCE_RESOURCES', ['{}'])))
+    for provider_id, urls in source_resources.items():
+        provider = next((p for p in providers if p['id'] == provider_id), None)
+        if provider is None or not isinstance(urls, list):
+            raise ValueError('Unknown provider or invalid source resource list')
+        for url in urls:
+            safe_url(url)
+            if urlsplit(url).netloc != urlsplit(provider['source_url']).netloc:
+                raise ValueError('Supplementary source resources must use the configured official origin')
+    for rule in rules:
+        if rule.get('source_resource') and rule['source_resource'] not in source_resources.get(rule['provider'], []):
+            raise ValueError('An extractor references an unconfigured source resource')
     return dict(site=site, settings=settings, providers=providers, extractors=rules,
+                source_resources=source_resources,
                 brand_guides=brand_guides,
                 campaign_guides=campaign_guides,
                 research_guides=research_guides,

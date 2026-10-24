@@ -509,6 +509,13 @@ def run(config_path=None, provider_ids=None, capture_dir=None):
             clearances.pop(provider['id'], None)
         try:
             status, raw, request_url = fetch_source(provider['source_url'], cfg)
+            resources = {}
+            resource_probes = []
+            for url in cfg.get('source_resources', {}).get(provider['id'], []):
+                resource_status, resource_raw, resource_url = fetch_source(url, cfg)
+                resources[url] = resource_raw
+                resource_probes.append({'request_url':resource_url, 'http_status':resource_status,
+                                        'checked_at':now(), 'sha256':hashlib.sha256(resource_raw.encode('utf-8')).hexdigest()})
         except SourceProbeError as exc:
             output.extend(old)
             if clearance_used:
@@ -547,8 +554,12 @@ def run(config_path=None, provider_ids=None, capture_dir=None):
             folder = Path(capture_dir)
             folder.mkdir(parents=True, exist_ok=True)
             (folder / (provider['id'] + '.html')).write_text(raw, encoding='utf-8')
+            for index, resource_raw in enumerate(resources.values(), 1):
+                (folder / (provider['id'] + f'--resource-{index}.txt')).write_text(resource_raw, encoding='utf-8')
         rules = [rule for rule in cfg['extractors'] if rule.get('provider') == provider['id']]
         source_probe = probe_fields('evidenced', request_url, status, excerpt(raw))
+        if resource_probes:
+            source_probe['source_resources'] = resource_probes
         auxiliary = configured_source_evidence(rules, raw)
         if auxiliary:
             source_probe['source_claim_evidence'] = auxiliary
@@ -564,7 +575,11 @@ def run(config_path=None, provider_ids=None, capture_dir=None):
             diagnostics = []
             try:
                 sibling_anchors = [candidate.get('anchor') for candidate in rules if candidate is not rule and candidate.get('mode') == rule.get('mode')]
-                offer = offer_from_rule(provider, rule, raw, sibling_anchors, diagnostics)
+                rule_provider, rule_raw = provider, raw
+                if rule.get('source_resource'):
+                    rule_raw = resources[rule['source_resource']]
+                    rule_provider = dict(provider, source_url=rule['source_resource'], affiliate_url=provider['affiliate_url'] or provider['source_url'])
+                offer = offer_from_rule(rule_provider, rule, rule_raw, sibling_anchors, diagnostics)
             except (ValueError, IndexError) as exc:
                 errors.append(str(exc))
                 offer = None

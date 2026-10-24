@@ -6,6 +6,9 @@
 ::MODULE{SETTINGS|title:运行与展示规则}
 {"locale":"en-US","currency":"USD","update_cron":"17 */6 * * *","fresh_hours":18,"timeout_seconds":25,"max_response_bytes":6000000,"user_agent":"HostDealRadar/1.0 (+https://github.com/kete10553-stack4/HostDealRadar-promo-radar)","repo_url":"https://github.com/kete10553-stack4/HostDealRadar-promo-radar","tagline":"Hosting offers, with the terms in view.","ga4_measurement_id":"G-Y5PKT4FR6C","ga4_report_timezone":"America/Los_Angeles","legacy_redirects":{"/deals/knownhost-basic-web-hosting-three-year-term/":"/compare/#plan-knownhost-basic"}}
 
+::MODULE{SOURCE_RESOURCES|title:官方价格页直接引用的同源公开价格资源；沿用robots与403锁}
+{"cloudways":["https://www.cloudways.com/wp-content/themes/cw_multilingual/template/assets/js/pages/widget_pricing25_v2_multilingual.js?ver=7.1.3","https://www.cloudways.com/wp-content/themes/cw_multilingual/template/assets/js/pages/cw_pricing_uplift.js?ver=7.1.3"]}
+
 ::MODULE{BRAND_GUIDES|title:已有指南的品牌与意图入口；不新增抓取来源或选题}
 {"provider":"ionos","guides":[{"path":"/guides/ionos-coupon-code/","title":"VPS cart, advance billing and cancellation"}]}
 {"provider":"godaddy","guides":[{"path":"/guides/godaddy-renewal-coupon/","title":"Domain renewal and transfer options"}]}

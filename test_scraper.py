@@ -115,6 +115,25 @@ class SourceSafety(unittest.TestCase):
         self.assertEqual(build.record_state(offer,status,{'fresh_hours':18})[0],'current')
         self.assertEqual(build.record_state(dict(offer,kind='promotion'),status,{'fresh_hours':18})[0],'unverified')
 
+    def test_supplementary_source_denial_retains_dates_and_locks_provider(self):
+        resource = 'https://example.com/pricing-data.js'
+        cfg = {'providers':[self.provider], 'extractors':[self.rule], 'settings':{},
+               'source_resources':{'sample':[resource]}}
+        old = {'provider':'sample','slug':'sample-basic','title':'Basic','price':5,
+               'fetched_at':'2026-01-01T00:00:00Z'}
+        denial = scraper.SourceProbeError('unreadable','Official source returned HTTP 403.',resource,403,'Access denied')
+        with tempfile.TemporaryDirectory() as folder:
+            data = Path(folder) / 'offers.json'
+            data.write_text(json.dumps({'offers':[old]}),encoding='utf-8')
+            with patch.object(scraper,'DATA',data), patch.object(scraper,'load_config',return_value=cfg), patch.object(scraper,'fetch_source',side_effect=[(200,'Basic plan USD 9 / month',self.provider['source_url']),denial]):
+                first = scraper.run()
+            with patch.object(scraper,'DATA',data), patch.object(scraper,'load_config',return_value=cfg), patch.object(scraper,'fetch_source') as fetch:
+                second = scraper.run()
+        self.assertEqual(first['offers'],[old])
+        self.assertEqual(first['source_403_locks']['sample']['request_url'],resource)
+        self.assertEqual(second['offers'],[old])
+        fetch.assert_not_called()
+
     def test_no_record_when_price_is_missing(self):
         self.assertIsNone(scraper.offer_from_rule(self.provider,self.rule,'<p>Basic plan: Contact sales</p>'))
 
