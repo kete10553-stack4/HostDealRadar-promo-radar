@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-24T15:45:20Z",
+  "generated_at": "2026-10-24T15:48:33Z",
   "offers": [
     {
       "slug": "raidboxes-mini",
@@ -6242,25 +6242,44 @@
       "category": "Web hosting",
       "source_url": "https://www.siteground.com/web-hosting.htm",
       "offer_url": "https://www.siteground.com/web-hosting.htm",
-      "fetched_at": "2026-09-30T06:21:47Z",
-      "evidence": "Server-rendered Offer entry in SiteGround's JSON-LD.",
+      "fetched_at": "2026-10-24T15:48:33Z",
+      "evidence": "Current visible plan card, bounded by the next configured plan. The monthly unit, prepaid term and renewal wording come from the same card. The same named plan in official JSON-LD explicitly identifies USD.",
       "field_evidence": {
-        "price": "\"price\": \"2.99\", \"priceCurrency\": \"USD\""
+        "price": "Save 83% $2.99 /mo.",
+        "renewal_price": "Renews at $17.99 /mo.",
+        "commitment_months": "Prepaid for 12 months."
+      },
+      "claim_evidence": {
+        "price": {
+          "quote": "Save 83% $2.99 /mo.",
+          "excerpt": "StartUp For personal projects & small sites $17.99 Save 83% $2.99 /mo. Select plan Renews at $17.99 /mo. Prepaid for 12 months. See Features Hide Features Features included Host 1 website with unlimited traffic 10 GB Premium Google storage Core Features Free dom",
+          "visible_excerpt": "StartUp For personal projects & small sites $17.99 Save 83% $2.99 /mo. Select plan Renews at $17.99 /mo. Prepaid for 12 months. See Features Hide Features Features included Host 1 website with unlimited traffic 10 GB Premium Google storage Core Features Free dom",
+          "location": "configured field pattern: price",
+          "surface": "visible source text"
+        },
+        "renewal_price": {
+          "quote": "Renews at $17.99 /mo.",
+          "excerpt": "StartUp For personal projects & small sites $17.99 Save 83% $2.99 /mo. Select plan Renews at $17.99 /mo. Prepaid for 12 months. See Features Hide Features Features included Host 1 website with unlimited traffic 10 GB Premium Google storage Core Features Free domain Free SSL, CDN, Backups Free em",
+          "visible_excerpt": "StartUp For personal projects & small sites $17.99 Save 83% $2.99 /mo. Select plan Renews at $17.99 /mo. Prepaid for 12 months. See Features Hide Features Features included Host 1 website with unlimited traffic 10 GB Premium Google storage Core Features Free domain Free SSL, CDN, Backups Free em",
+          "location": "configured field pattern: renewal_price",
+          "surface": "visible source text"
+        },
+        "commitment_months": {
+          "quote": "Prepaid for 12 months.",
+          "excerpt": "or personal projects & small sites $17.99 Save 83% $2.99 /mo. Select plan Renews at $17.99 /mo. Prepaid for 12 months. See Features Hide Features Features included Host 1 website with unlimited traffic 10 GB Premium Google storage Core Features Free domain Free SSL, CDN, Backups Free email Free AI tokens New",
+          "visible_excerpt": "or personal projects & small sites $17.99 Save 83% $2.99 /mo. Select plan Renews at $17.99 /mo. Prepaid for 12 months. See Features Hide Features Features included Host 1 website with unlimited traffic 10 GB Premium Google storage Core Features Free domain Free SSL, CDN, Backups Free email Free AI tokens New",
+          "location": "configured field pattern: commitment_months",
+          "surface": "visible source text"
+        }
       },
       "currency": "USD",
       "billing_period": "month",
+      "condition": "Advertised monthly equivalent prepaid for the term stated on this card; the explicit Renews at amount is captured separately. The crossed-out regular price is not used as renewal. No upfront total is inferred from the monthly rate.",
+      "kind": "plan_price",
       "price": 2.99,
-      "kind": "regular_price",
-      "source_sha256": "a3fcdffc4465bf50e8b03a4dffdb5cac15d5d551dfb9288bfd8d1306c189e6a6",
-      "claim_evidence": {
-        "price": {
-          "quote": "\"price\": \"2.99\", \"priceCurrency\": \"USD\"",
-          "excerpt": "\"name\": \"StartUp\", \"price\": \"2.99\", \"priceCurrency\": \"USD\"",
-          "visible_excerpt": "\"name\": \"StartUp\", \"price\": \"2.99\", \"priceCurrency\": \"USD\"",
-          "location": "official JSON-LD Offer entry: StartUp",
-          "surface": "source response markup"
-        }
-      }
+      "renewal_price": 17.99,
+      "commitment_months": 12,
+      "source_sha256": "282cff14ec3d2de7e5e9f327b52d9e6ad13c55c9914208ed83c0ae146a15c60d"
     },
     {
       "slug": "siteground-growbig-web-hosting",
@@ -6269,25 +6288,44 @@
       "category": "Web hosting",
       "source_url": "https://www.siteground.com/web-hosting.htm",
       "offer_url": "https://www.siteground.com/web-hosting.htm",
-      "fetched_at": "2026-09-30T06:21:47Z",
-      "evidence": "Server-rendered Offer entry in SiteGround's JSON-LD.",
+      "fetched_at": "2026-10-24T15:48:33Z",
+      "evidence": "Current visible plan card, bounded by the next configured plan. The monthly unit, prepaid term and renewal wording come from the same card. The same named plan in official JSON-LD explicitly identifies USD.",
       "field_evidence": {
-        "price": "\"price\": \"4.99\", \"priceCurrency\": \"USD\""
+        "price": "Save 83% $4.99 /mo.",
+        "renewal_price": "Renews at $29.99 /mo.",
+        "commitment_months": "Prepaid for 12 months."
+      },
+      "claim_evidence": {
+        "price": {
+          "quote": "Save 83% $4.99 /mo.",
+          "excerpt": "GrowBig Perfect for your growing business $29.99 Save 83% $4.99 /mo. Select plan Renews at $29.99 /mo. Prepaid for 12 months. See Features Hide Features Features included Unlimited websites, unlimited traffic 50 GB Premium Google storage Core Features Free dom",
+          "visible_excerpt": "GrowBig Perfect for your growing business $29.99 Save 83% $4.99 /mo. Select plan Renews at $29.99 /mo. Prepaid for 12 months. See Features Hide Features Features included Unlimited websites, unlimited traffic 50 GB Premium Google storage Core Features Free dom",
+          "location": "configured field pattern: price",
+          "surface": "visible source text"
+        },
+        "renewal_price": {
+          "quote": "Renews at $29.99 /mo.",
+          "excerpt": "GrowBig Perfect for your growing business $29.99 Save 83% $4.99 /mo. Select plan Renews at $29.99 /mo. Prepaid for 12 months. See Features Hide Features Features included Unlimited websites, unlimited traffic 50 GB Premium Google storage Core Features Free domain Free SSL, CDN, Backups Free em",
+          "visible_excerpt": "GrowBig Perfect for your growing business $29.99 Save 83% $4.99 /mo. Select plan Renews at $29.99 /mo. Prepaid for 12 months. See Features Hide Features Features included Unlimited websites, unlimited traffic 50 GB Premium Google storage Core Features Free domain Free SSL, CDN, Backups Free em",
+          "location": "configured field pattern: renewal_price",
+          "surface": "visible source text"
+        },
+        "commitment_months": {
+          "quote": "Prepaid for 12 months.",
+          "excerpt": "Perfect for your growing business $29.99 Save 83% $4.99 /mo. Select plan Renews at $29.99 /mo. Prepaid for 12 months. See Features Hide Features Features included Unlimited websites, unlimited traffic 50 GB Premium Google storage Core Features Free domain Free SSL, CDN, Backups Free email Free AI tokens New",
+          "visible_excerpt": "Perfect for your growing business $29.99 Save 83% $4.99 /mo. Select plan Renews at $29.99 /mo. Prepaid for 12 months. See Features Hide Features Features included Unlimited websites, unlimited traffic 50 GB Premium Google storage Core Features Free domain Free SSL, CDN, Backups Free email Free AI tokens New",
+          "location": "configured field pattern: commitment_months",
+          "surface": "visible source text"
+        }
       },
       "currency": "USD",
       "billing_period": "month",
+      "condition": "Advertised monthly equivalent prepaid for the term stated on this card; the explicit Renews at amount is captured separately. The crossed-out regular price is not used as renewal. No upfront total is inferred from the monthly rate.",
+      "kind": "plan_price",
       "price": 4.99,
-      "kind": "regular_price",
-      "source_sha256": "a3fcdffc4465bf50e8b03a4dffdb5cac15d5d551dfb9288bfd8d1306c189e6a6",
-      "claim_evidence": {
-        "price": {
-          "quote": "\"price\": \"4.99\", \"priceCurrency\": \"USD\"",
-          "excerpt": "\"name\": \"GrowBig\", \"price\": \"4.99\", \"priceCurrency\": \"USD\"",
-          "visible_excerpt": "\"name\": \"GrowBig\", \"price\": \"4.99\", \"priceCurrency\": \"USD\"",
-          "location": "official JSON-LD Offer entry: GrowBig",
-          "surface": "source response markup"
-        }
-      }
+      "renewal_price": 29.99,
+      "commitment_months": 12,
+      "source_sha256": "282cff14ec3d2de7e5e9f327b52d9e6ad13c55c9914208ed83c0ae146a15c60d"
     },
     {
       "slug": "siteground-gogeek-web-hosting",
@@ -6296,25 +6334,44 @@
       "category": "Web hosting",
       "source_url": "https://www.siteground.com/web-hosting.htm",
       "offer_url": "https://www.siteground.com/web-hosting.htm",
-      "fetched_at": "2026-09-30T06:21:47Z",
-      "evidence": "Server-rendered Offer entry in SiteGround's JSON-LD.",
+      "fetched_at": "2026-10-24T15:48:33Z",
+      "evidence": "Current visible plan card, bounded by the next configured plan. The monthly unit, prepaid term and renewal wording come from the same card. The same named plan in official JSON-LD explicitly identifies USD.",
       "field_evidence": {
-        "price": "\"price\": \"7.99\", \"priceCurrency\": \"USD\""
+        "price": "Save 82% $7.99 /mo.",
+        "renewal_price": "Renews at $44.99 /mo.",
+        "commitment_months": "Prepaid for 12 months."
+      },
+      "claim_evidence": {
+        "price": {
+          "quote": "Save 82% $7.99 /mo.",
+          "excerpt": "GoGeek More power & features for big sites $44.99 Save 82% $7.99 /mo. Select plan Renews at $44.99 /mo. Prepaid for 12 months. See Features Hide Features Features included Unlimited websites, unlimited traffic 100 GB Premium Google storage Core Features Free do",
+          "visible_excerpt": "GoGeek More power & features for big sites $44.99 Save 82% $7.99 /mo. Select plan Renews at $44.99 /mo. Prepaid for 12 months. See Features Hide Features Features included Unlimited websites, unlimited traffic 100 GB Premium Google storage Core Features Free do",
+          "location": "configured field pattern: price",
+          "surface": "visible source text"
+        },
+        "renewal_price": {
+          "quote": "Renews at $44.99 /mo.",
+          "excerpt": "GoGeek More power & features for big sites $44.99 Save 82% $7.99 /mo. Select plan Renews at $44.99 /mo. Prepaid for 12 months. See Features Hide Features Features included Unlimited websites, unlimited traffic 100 GB Premium Google storage Core Features Free domain Free SSL, CDN, Backups Free e",
+          "visible_excerpt": "GoGeek More power & features for big sites $44.99 Save 82% $7.99 /mo. Select plan Renews at $44.99 /mo. Prepaid for 12 months. See Features Hide Features Features included Unlimited websites, unlimited traffic 100 GB Premium Google storage Core Features Free domain Free SSL, CDN, Backups Free e",
+          "location": "configured field pattern: renewal_price",
+          "surface": "visible source text"
+        },
+        "commitment_months": {
+          "quote": "Prepaid for 12 months.",
+          "excerpt": "ore power & features for big sites $44.99 Save 82% $7.99 /mo. Select plan Renews at $44.99 /mo. Prepaid for 12 months. See Features Hide Features Features included Unlimited websites, unlimited traffic 100 GB Premium Google storage Core Features Free domain Free SSL, CDN, Backups Free email Free AI tokens New",
+          "visible_excerpt": "ore power & features for big sites $44.99 Save 82% $7.99 /mo. Select plan Renews at $44.99 /mo. Prepaid for 12 months. See Features Hide Features Features included Unlimited websites, unlimited traffic 100 GB Premium Google storage Core Features Free domain Free SSL, CDN, Backups Free email Free AI tokens New",
+          "location": "configured field pattern: commitment_months",
+          "surface": "visible source text"
+        }
       },
       "currency": "USD",
       "billing_period": "month",
+      "condition": "Advertised monthly equivalent prepaid for the term stated on this card; the explicit Renews at amount is captured separately. The crossed-out regular price is not used as renewal. No upfront total is inferred from the monthly rate.",
+      "kind": "plan_price",
       "price": 7.99,
-      "kind": "regular_price",
-      "source_sha256": "a3fcdffc4465bf50e8b03a4dffdb5cac15d5d551dfb9288bfd8d1306c189e6a6",
-      "claim_evidence": {
-        "price": {
-          "quote": "\"price\": \"7.99\", \"priceCurrency\": \"USD\"",
-          "excerpt": "\"name\": \"GoGeek\", \"price\": \"7.99\", \"priceCurrency\": \"USD\"",
-          "visible_excerpt": "\"name\": \"GoGeek\", \"price\": \"7.99\", \"priceCurrency\": \"USD\"",
-          "location": "official JSON-LD Offer entry: GoGeek",
-          "surface": "source response markup"
-        }
-      }
+      "renewal_price": 44.99,
+      "commitment_months": 12,
+      "source_sha256": "282cff14ec3d2de7e5e9f327b52d9e6ad13c55c9914208ed83c0ae146a15c60d"
     },
     {
       "slug": "dreamhost-web-hosting-launch",
@@ -10495,29 +10552,21 @@
       "request_url": "https://www.siteground.com/web-hosting.htm",
       "http_status": 200,
       "visible_excerpt": "Web Hosting Crafted For Top Website Performance & Speed - SiteGround Special offer: Save up to 83% Mobile nav button Home Web Hosting Web Hosting Grow your website with fast and secure web hosting Hosting for WordPress Start, migrate, and manage WordPress sites easily Cloud Hosti",
-      "checked_at": "2026-10-24T15:45:20Z",
-      "capture_status": "unmatched",
-      "reason": "Official source responded, but no configured extraction rule matched; existing records were retained.",
+      "checked_at": "2026-10-24T15:48:32Z",
+      "capture_status": "matched",
+      "reason": "Official source checked; matched configured extraction rules.",
       "published_count": 3,
-      "captured_count": 0,
-      "retained_count": 3,
-      "captured_slugs": [],
-      "retained_slugs": [
-        "siteground-startup-web-hosting",
+      "captured_count": 3,
+      "retained_count": 0,
+      "captured_slugs": [
+        "siteground-gogeek-web-hosting",
         "siteground-growbig-web-hosting",
-        "siteground-gogeek-web-hosting"
+        "siteground-startup-web-hosting"
       ],
+      "retained_slugs": [],
       "rule_errors": [],
-      "unmatched_rules": [
-        "StartUp",
-        "GrowBig",
-        "GoGeek"
-      ],
-      "rule_failures": {
-        "StartUp": "The price quote does not establish the configured currency and billing unit.",
-        "GrowBig": "The price quote does not establish the configured currency and billing unit.",
-        "GoGeek": "The price quote does not establish the configured currency and billing unit."
-      }
+      "unmatched_rules": [],
+      "rule_failures": {}
     },
     "dreamhost": {
       "status": "evidenced",
@@ -11240,12 +11289,12 @@
   ],
   "page_lastmod": {
     "/": {
-      "hash": "e534bceb3a3d18ac8c25e9937bd0749d9b1a40233a2effcfeb90c123f07ef267",
-      "lastmod": "2026-10-24T15:42:27Z"
+      "hash": "354edeb5913889307b0944fdf709c8de68190fb0ce6136f5908ddd79a37107fb",
+      "lastmod": "2026-10-24T15:48:34Z"
     },
     "/providers/": {
-      "hash": "b95c06ebcdfa66193a44f836b72a70bdd1ca77d256642c47af843564b7985059",
-      "lastmod": "2026-10-24T15:42:27Z"
+      "hash": "84c4444e6bfcb7d51977f93c84e89da94c48449f9d9416dd54dc2ea93ec0fba9",
+      "lastmod": "2026-10-24T15:48:34Z"
     },
     "/compare/": {
       "hash": "ded6b829c4625d573961c212930682310eb1cc9dd84884f71bc14ebde189db1c",
@@ -11612,8 +11661,8 @@
       "lastmod": "2026-10-24T11:19:22Z"
     },
     "/providers/siteground/": {
-      "hash": "a5ba33b023ec487855a11e31a3e4cd148029827df910bab1c0e16f1faf5870ba",
-      "lastmod": "2026-10-24T11:05:35Z"
+      "hash": "e8cff3a42ac15c0e6329021d2803a7bb69f68ae5a7dd48124e0021ed54fb3a27",
+      "lastmod": "2026-10-24T15:48:34Z"
     },
     "/providers/dreamhost/": {
       "hash": "3cb6eaf51bebbc9c9a7f650008116223467ef3daaa9b85b4a4e8d90862cafad2",
