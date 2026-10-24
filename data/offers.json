@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-24T15:42:26Z",
+  "generated_at": "2026-10-24T15:45:20Z",
   "offers": [
     {
       "slug": "raidboxes-mini",
@@ -10495,7 +10495,7 @@
       "request_url": "https://www.siteground.com/web-hosting.htm",
       "http_status": 200,
       "visible_excerpt": "Web Hosting Crafted For Top Website Performance & Speed - SiteGround Special offer: Save up to 83% Mobile nav button Home Web Hosting Web Hosting Grow your website with fast and secure web hosting Hosting for WordPress Start, migrate, and manage WordPress sites easily Cloud Hosti",
-      "checked_at": "2026-10-24T11:05:09Z",
+      "checked_at": "2026-10-24T15:45:20Z",
       "capture_status": "unmatched",
       "reason": "Official source responded, but no configured extraction rule matched; existing records were retained.",
       "published_count": 3,
@@ -11236,7 +11236,7 @@
   "source_403_clearances": {},
   "source_403_history": [],
   "refresh_scope": [
-    "cloudways"
+    "siteground"
   ],
   "page_lastmod": {
     "/": {
