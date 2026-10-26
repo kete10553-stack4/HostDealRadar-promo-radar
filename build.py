@@ -420,6 +420,44 @@ def record_state(offer, statuses, settings):
         return 'stale', 'Needs recheck. Last captured ' + offer['fetched_at'] + '.'
     return 'current', 'Captured ' + offer['fetched_at'] + '. Confirm current terms with the provider.'
 
+def current_price_records(offers, statuses, settings):
+    """Use the same freshness and per-record capture gate as provider pages."""
+    return [offer for offer in offers
+            if offer.get('price') is not None and captured_field_evidence(offer, 'price')
+            and record_state(offer, statuses, settings)[0] == CURRENT]
+
+
+def current_price_card(offer, provider, rule=None):
+    """Show sourced terms without filling missing totals or renewal rates."""
+    detail=f'/providers/{provider["id"]}/#record-{offer["slug"]}'
+    fields=[]
+    for field, label in (('price_currency', 'Currency wording'), ('billing_period', 'Billing wording'),
+                         ('first_term_total', 'First-term total'), ('commitment_months', 'Commitment'),
+                         ('renewal_price', 'Renewal price'), ('renewal_currency', 'Renewal currency wording')):
+        quote=captured_field_evidence(offer, field)
+        if field in ('renewal_price','renewal_currency') and not renewal_supported(offer, rule):
+            continue
+        if quote and quote != captured_field_evidence(offer, 'price'):
+            fields.append(f'<div><dt>{e(label)}</dt><dd>“{e(quote)}”</dd></div>')
+    calculation=''
+    if (offer.get('first_term_total') is not None and captured_field_evidence(offer, 'first_term_total')
+            and isinstance(offer.get('commitment_months'), int) and offer['commitment_months'] > 0
+            and captured_field_evidence(offer, 'commitment_months')):
+        monthly=Decimal(str(offer['first_term_total'])) / offer['commitment_months']
+        calculation=(f'<p class="calculation"><strong>Calculated monthly equivalent:</strong> '
+                     f'{e(money(offer["first_term_total"],offer["currency"]))} ÷ {offer["commitment_months"]} months '
+                     f'= {e(money(monthly,offer["currency"]))}/month.</p>')
+    return (f'<article class="card current-price-card" data-price-record="{e(offer["slug"])}">'
+            f'<div class="card-top"><span class="provider-name">{e(provider["name"])}</span>'
+            '<span class="tag">Current source price</span></div>'
+            f'<h3><a href="{e(detail)}">{e(offer["title"])}</a></h3>'
+            f'<p class="source-price"><strong>Official price wording:</strong><br>“{e(captured_field_evidence(offer,"price"))}”</p>'
+            +(f'<dl>{"".join(fields)}</dl>' if fields else '')+calculation
+            +f'<p class="capture">Captured at <time datetime="{e(offer["fetched_at"])}">{e(offer["fetched_at"])}</time>.</p>'
+            f'<p class="small"><a href="{e(offer["source_url"])}" rel="noopener noreferrer">Official source ↗</a></p>'
+            f'<a class="text-link" href="{e(detail)}">Read conditions and source evidence →</a></article>')
+
+
 def agent_record(offer, provider, state):
     """Return the bounded, public representation behind the read-only API."""
     return {
@@ -549,6 +587,7 @@ def build(config_path=None, output=None):
     offers=[o for o in payload.get('offers',[]) if o.get('provider') in byid]
     states={o['slug']:record_state(o,statuses,cfg['settings']) for o in offers}
     current=[o for o in offers if states[o['slug']][0]==CURRENT]
+    current_prices=current_price_records(offers,statuses,cfg['settings'])
     history=[o for o in offers if states[o['slug']][0] in HISTORY]
     providers=cfg['providers']
     guide_templates={'godaddy':'provider-guide.html','namecheap':'namecheap-provider-guide.html','cloudways':'cloudways-provider-guide.html','digitalocean':'digitalocean-provider-guide.html','hostinger':'hostinger-provider-guide.html','a2-hosting':'a2-provider-guide.html','wp-engine':'wp-engine-provider-guide.html'}
@@ -809,11 +848,33 @@ def build(config_path=None, output=None):
                   'The monthly equivalent is calculated from the first two figures. Each example shows its own official-page check date; '
                   'these dated examples are not a live checkout test, savings claim, or price ranking. '
                   'A linked cart may need the same plan selected before its total appears.')
-    home_reviewed=('<section class="wrap section"><div class="section-head"><div><div class="eyebrow">DOCUMENTED PLAN TERMS</div>'
-                   '<h2>Upfront total and renewal rate</h2></div><a class="text-link" href="/compare/">Compare the terms →</a></div>'
-                   f'<p class="muted">{e(review_intro)} Each source value links to its official page.</p><div class="cards">'
-                   +''.join(reviewed_card(record) for record in reviewed)+'</div></section>') if reviewed else ''
-    home=template('index.html',month=datetime.now().strftime('%B %Y'),provider_count=len(providers),reviewed_section=home_reviewed,partial_cards=partial_cards,providers=provider_tiles)
+    home_reviewed=('<section class="wrap section" id="dated-manual-plans"><h2>Dated manual plan examples</h2>'
+                   '<p class="muted">Earlier observations retain their original amounts and review dates. '
+                   'See the current source prices above for the latest successful captures.</p>'
+                   f'<details class="plan-evidence"><summary>Show {len(reviewed)} dated manual examples</summary>'
+                   f'<div class="evidence-body"><p>{e(review_intro)}</p><div class="cards">'
+                   +''.join(reviewed_card(record) for record in reviewed)+'</div></div></details></section>') if reviewed else ''
+    price_providers=list(dict.fromkeys(o['provider'] for o in current_prices))
+    # Start with brands already documented in the former homepage examples,
+    # then the remaining captured providers. This is a preview, not a ranking.
+    preview_providers=list(dict.fromkeys([record['provider'] for record in
+        (payload.get('browser_term_observations') or {}).get('records', [])
+        if record['provider'] in price_providers]+price_providers))
+    preview=[next(o for o in current_prices if o['provider']==pid) for pid in preview_providers[:9]]
+    price_intro=(f'{len(current_prices)} current price records from {len(price_providers)} providers. '
+                 'Each record shows its actual capture time and official wording. '
+                 'Billing terms and plan resources differ; missing totals or renewal rates are not inferred.')
+    home_prices=('<section class="wrap section current-prices" id="current-prices">'
+                 '<div class="section-head"><div><div class="eyebrow">LATEST SOURCE PRICES</div>'
+                 '<h2>Current provider prices</h2></div>'
+                 f'<a class="text-link" href="/compare/#current-prices">View all {len(current_prices)} current prices →</a></div>'
+                 f'<p class="muted">{e(price_intro)} Preview: one plan per provider. Browse by provider for every captured plan.</p>'
+                 '<details class="plan-evidence"><summary>Find current prices by provider</summary><nav class="record-index evidence-body" aria-label="Current prices by provider">'
+                 +''.join(f'<a href="/compare/#prices-{e(pid)}">{e(byid[pid]["name"])}</a>' for pid in price_providers)+'</nav></details>'
+                 +'<div class="cards">'+''.join(current_price_card(o,byid[o['provider']],rules.get((o['provider'],o['title']))) for o in preview)
+                 +'</div></section>') if current_prices else ('<section class="wrap section" id="current-prices"><h2>Current provider prices</h2>'
+                 '<p>No price record was reconfirmed within the freshness window. See each provider’s source-check status.</p></section>')
+    home=template('index.html',month=datetime.now().strftime('%B %Y'),provider_count=len(providers),current_prices=home_prices,reviewed_section=home_reviewed,partial_cards=partial_cards,providers=provider_tiles)
     # The homepage lists different services; its entries are navigation targets,
     # not merchant Offers for products that HostDealRadar sells.
     current_provider_ids={o['provider'] for o in current}
@@ -1260,23 +1321,34 @@ def build(config_path=None, output=None):
                 +'</td>'
                 f'<td>{reviewed_link(record,"renewal_monthly_rate",renewal+"/mo")}</td>'
                 f'<td>{e(record_review_date(record))} PT<span>Manual official-page review</span></td></tr>')
-    compare_reviewed=('<h2>Complete plan examples</h2><p>'+e(review_intro)+'</p><div class="table-wrap"><table>'
+    compare_reviewed=('<section id="dated-manual-plans"><h2>Dated manual plan examples</h2>'
+                      '<p>These earlier amounts keep their original manual review dates. Current source prices appear above.</p>'
+                      '<p>'+e(review_intro)+'</p><div class="table-wrap"><table>'
                       '<caption>Complete plan examples from a dated manual review, in review order</caption>'
                       '<thead><tr><th>Provider / plan</th><th>First-term total</th><th>Commitment</th>'
                       '<th>Monthly equivalent</th><th>Renewal monthly rate</th><th>Checked</th></tr></thead><tbody>'
-                      +''.join(reviewed_row(record) for record in reviewed)+'</tbody></table></div>') if reviewed else ''
+                      +''.join(reviewed_row(record) for record in reviewed)+'</tbody></table></div></section>') if reviewed else ''
     evidence_index='<nav class="record-index" aria-label="Plan evidence by brand">'+''.join(
         f'<a href="#evidence-{e(reviewed_anchor(next(record for record in reviewed if record["provider"]==pid)))}">{e(byid[pid]["name"])}</a>'
         for pid in dict.fromkeys(record['provider'] for record in reviewed))+'</nav>'
     evidence_section=('<section class="plan-evidence-list" id="source-evidence"><h2>Source evidence for each plan</h2>'
                       '<p>Open a record to read the captured official wording, source links, conditions and capture times. '
                       'Use its record link to cite these dated observations.</p>'+evidence_index+''.join(reviewed_evidence(record) for record in reviewed)+'</section>') if reviewed else ''
-    compare=template('compare.html',reviewed_section=compare_reviewed,partial_cards=partial_cards,evidence_section=evidence_section)
+    price_index='<nav class="record-index" aria-label="Current prices by provider">'+''.join(
+        f'<a href="#prices-{e(pid)}">{e(byid[pid]["name"])}</a>' for pid in price_providers)+'</nav>'
+    price_groups=''.join(f'<section class="current-price-group" id="prices-{e(pid)}"><h3>{e(byid[pid]["name"])}</h3>'
+        '<div class="cards">'+''.join(current_price_card(o,byid[pid],rules.get((pid,o['title'])))
+        for o in current_prices if o['provider']==pid)+'</div></section>' for pid in price_providers)
+    compare_prices=('<section class="current-prices" id="current-prices"><h2>Current provider prices</h2>'
+                    f'<p>{e(price_intro)}</p>'+price_index+price_groups+'</section>') if current_prices else (
+                    '<section id="current-prices"><h2>Current provider prices</h2>'
+                    '<p>No price record was reconfirmed within the freshness window.</p></section>')
+    compare=template('compare.html',current_prices=compare_prices,reviewed_section=compare_reviewed,partial_cards=partial_cards,evidence_section=evidence_section)
     write(Path('compare/index.html'),page('Compare plan terms | HostDealRadar','Compare documented upfront totals, terms, and renewal monthly rates from official hosting pages.',domain+'/compare/',compare,{'@context':'https://schema.org','@type':'WebPage','name':'Compare documented hosting plan terms'}))
     prose=lambda heading,body: f'<section class="wrap section prose"><div class="eyebrow">HOSTDEALRADAR</div><h1>{heading}</h1>{body}</section>'
     methodology='<p class="lead">Every listed term comes from an official public provider page. We do not estimate missing prices or invent promotions.</p><h2>What is included</h2><ul><li>We retrieve public pages only when robots.txt allows it.</li><li>We record the source URL and capture time with every record.</li><li>A term is listed as current only when the latest source check reconfirmed that exact record. A promotion also needs a verified end date; a successful fetch alone does not establish that it is still valid.</li></ul><h2>Coupon and promotion evidence</h2><ul><li>Each coupon guide separates what the official page showed at its last actual read from archived responses and dated user reports.</li><li>We mark each source-read date and time when the record preserves it. If only a date was saved, we say the time was not recorded; a snapshot timestamp is not a later archive-review time.</li><li>A code shown on a page, already applied, or present in a signup URL records page content. It does not prove eligibility or redemption for any account.</li></ul><h2 id="display-order">How pages are ordered</h2><p>Provider grids follow the configured source-list order. Offer cards and comparison rows follow the captured record order in the latest dataset. Homepage examples require current records with an established renewal rate above the initial rate. We group them by currency, billing unit, and service label. If any explicitly identify a first-month rate, only those records are eligible for the example group; otherwise all eligible records are considered. We choose the group with the most eligible records; ties use alphabetical currency, unit, and label order. Up to three records from that group come first, ordered by the larger numeric change within each record; equal changes use the record identifier. The remaining positions, up to nine cards in total, follow stored record order, excluding those examples. The example count is recalculated for each published snapshot. Initial terms and plan resources can differ, so the examples do not establish equivalent plans or an amount a buyer would save. These display orders are not recommendations, quality rankings, price rankings, or value rankings.</p>'+category_guide(offers)+'<h2>What happens when a source cannot be checked</h2><ul><li>If a source is blocked, challenged, or unclear, we publish no new offer for it.</li><li>Unverified or earlier records retain their actual capture time and are not shown as current offers.</li><li>Expired promotions are labelled expired and are never shown as a current offer.</li></ul><h2>What to verify before purchase</h2><p>Confirm checkout total, tax, eligibility, billing term, and renewal amount with the provider. A captured offer is not a checkout test or a performance review.</p>'
     old_order=('Offer cards and comparison rows follow the captured record order in the latest dataset. Homepage examples require current records with an established renewal rate above the initial rate. We group them by currency, billing unit, and service label. If any explicitly identify a first-month rate, only those records are eligible for the example group; otherwise all eligible records are considered. We choose the group with the most eligible records; ties use alphabetical currency, unit, and label order. Up to three records from that group come first, ordered by the larger numeric change within each record; equal changes use the record identifier. The remaining positions, up to nine cards in total, follow stored record order, excluding those examples. The example count is recalculated for each published snapshot.')
-    methodology=methodology.replace(old_order, 'Complete-plan comparison cards and rows show dated manual reviews in review order. Other dated source notes show only their separately supported fields. Provider grids follow the configured source-list order. None of these displays is a recommendation or a price ranking.')
+    methodology=methodology.replace(old_order, 'Current numeric source prices appear first on the homepage and Compare. The homepage previews one plan per provider, up to nine; brands with dated manual observations come first in their recorded review order, followed by other brands in captured provider order. Compare lists all current numeric records grouped by provider in captured order. Dated manual comparison cards and rows retain their review order and evidence dates below the current prices. Other dated source notes show only their separately supported fields. Provider grids follow the configured source-list order. None of these displays is a recommendation or a price ranking.')
     methodology += ('<h2 id="three-term-standard">Three-term comparison standard</h2>'
                     '<p>A plan enters the complete-plan comparison only after a dated manual review documents its first-term total, commitment in months, and renewal monthly rate from official pages for that same plan. If there are no qualifying plans, that comparison block is omitted. Separately, a dated source note may show an individual term only when its official wording and source URL were recorded; missing fields are omitted. The monthly equivalent in a complete row is labelled as our calculation: first-term total divided by commitment months. We do not calculate a total from an advertised monthly rate, infer a renewal invoice, or combine different plans, terms, or currencies. The manual examples are separate from automated source-record statuses on provider pages and are not a live checkout test or a price ranking.</p>')
     write(Path('methodology/index.html'),page('How we check | HostDealRadar','How HostDealRadar checks official source pages.',domain+'/methodology/',prose('How we check offers',methodology),{'@context':'https://schema.org','@type':'WebPage','name':'Methodology'}))

@@ -346,4 +346,43 @@ class SourceSafety(unittest.TestCase):
         self.assertNotEqual(build.record_state(offer,legacy,{'fresh_hours':18})[0],build.CURRENT)
         self.assertEqual(build.record_state(offer,evidenced,{'fresh_hours':18})[0],build.CURRENT)
 
+class CurrentPricePublication(unittest.TestCase):
+    def setUp(self):
+        self.offer=dict(provider='sample',title='Basic',slug='sample-basic',kind='plan_price',
+                        price=2.49,currency='USD',billing_period='month',
+                        source_url='https://example.com/pricing',
+                        fetched_at=datetime.now(timezone.utc).isoformat(),
+                        field_evidence={'price':'$2.49/mo'})
+        self.status={'sample':{'status':'evidenced','capture_status':'matched','http_status':200,
+                              'visible_excerpt':'$2.49/mo','captured_slugs':['sample-basic']}}
+
+    def test_only_fresh_reconfirmed_numeric_prices_enter_publication(self):
+        stale=dict(self.offer,slug='old',fetched_at='2020-01-01T00:00:00Z')
+        retained=dict(self.offer,slug='not-reconfirmed')
+        text_only=dict(self.offer,price=None)
+        promotion=dict(self.offer,kind='promotion')
+        before=json.dumps([self.offer,stale,retained,text_only,promotion],sort_keys=True)
+        records=build.current_price_records([self.offer,stale,retained,text_only,promotion],self.status,{'fresh_hours':18})
+        self.assertEqual(records,[self.offer])
+        self.assertEqual(before,json.dumps([self.offer,stale,retained,text_only,promotion],sort_keys=True))
+
+    def test_card_keeps_actual_quote_source_date_without_filling_missing_terms(self):
+        rendered=build.current_price_card(self.offer,{'id':'sample','name':'Sample'})
+        for text in ('$2.49/mo',self.offer['source_url'],self.offer['fetched_at'],'/providers/sample/#record-sample-basic'):
+            self.assertIn(text,rendered)
+        for text in ('First-term total','Renewal price','Calculated','Unknown'):
+            self.assertNotIn(text,rendered)
+
+    def test_card_calculates_only_from_recorded_total_and_months(self):
+        offer=dict(self.offer,first_term_total=119.52,commitment_months=48,
+                   field_evidence=dict(self.offer['field_evidence'],first_term_total='Get 48 months for $119.52',
+                                       commitment_months='Get 48 months'))
+        rendered=build.current_price_card(offer,{'id':'sample','name':'Sample'})
+        self.assertIn('Get 48 months for $119.52',rendered)
+        self.assertIn('Calculated monthly equivalent:',rendered)
+        self.assertIn('$119.52 ÷ 48 months = $2.49/month.',rendered)
+        offer['field_evidence'].pop('first_term_total')
+        self.assertNotIn('Calculated',build.current_price_card(offer,{'id':'sample','name':'Sample'}))
+
+
 if __name__=='__main__': unittest.main()

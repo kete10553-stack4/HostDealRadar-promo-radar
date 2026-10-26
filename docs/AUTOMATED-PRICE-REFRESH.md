@@ -47,6 +47,18 @@ Provider pages show fresh source prices before dated manual examples. An officia
 upfront total is displayed with its original quote; a monthly equivalent is
 explicitly labelled Calculated and uses that total and its recorded commitment.
 
+The homepage now previews one current numeric price per provider (up to nine)
+before the articles. Brands with earlier manual observations come first, in
+their recorded review order, followed by other captured brands in source-record
+order. Its provider index links to all
+current prices on Compare. Compare publishes every current numeric source record
+with its exact quotation, source URL and actual capture time, ahead of the dated
+manual table. Both pages print the numeric-price and provider counts from that
+same filtered dataset; failed, retained, expired or stale captures cannot enter
+the current-price section. Earlier manual examples retain their original evidence
+and dates; the homepage keeps them in a labelled disclosure. They are never
+silently replaced with automated captures or promoted to newly reviewed examples.
+
 For a page that renders prices from a directly referenced public resource,
 `SOURCE_RESOURCES` configures the exact same-origin resource URL. The page must
 still link that resource on each run; both requests follow robots and the same

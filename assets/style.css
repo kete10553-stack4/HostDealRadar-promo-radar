@@ -3,6 +3,9 @@
 @media(max-width:600px){h1{font-size:30px;line-height:1.2;letter-spacing:-.7px}h2{font-size:25px;line-height:1.3;letter-spacing:-.4px}h3{font-size:19px;line-height:1.4;letter-spacing:0}.section-head h2,.guide-grid h2{font-size:25px;line-height:1.3;letter-spacing:-.35px}.intro-grid h1{font-size:clamp(34px,9vw,38px);line-height:1.16;letter-spacing:-1px}body main .prose h1{font-size:29px;line-height:1.23;letter-spacing:-.45px;margin:0 0 18px}body main .prose h2{font-size:23px;line-height:1.32;letter-spacing:-.2px}body main .prose h3{font-size:19px;line-height:1.42;letter-spacing:0}body main .prose .answer-box{font-size:16px;line-height:1.55}body main .prose td::before{font-size:12px;line-height:1.45}}
 
 /* Brand navigation and individually citable source records. */
+.source-price{overflow-wrap:anywhere;font-size:21px;line-height:1.4}.source-price strong{font-size:13px;color:var(--muted)}
+.current-price-card dl div{display:block}.current-price-card dd{text-align:left;overflow-wrap:anywhere}.current-price-card dt{font-size:12px}
+.current-price-card .calculation{font-size:14px}.current-price-group{margin:34px 0;scroll-margin-top:20px}
 .brand-resource-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin:24px 0}
 .brand-resource-card{background:var(--white);border:1px solid var(--line);border-radius:12px;padding:22px;min-width:0}
 .brand-links{padding-left:20px;margin:12px 0}.brand-links li{margin:10px 0}.brand-links a{overflow-wrap:anywhere}

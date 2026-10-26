@@ -520,6 +520,27 @@ def check():
     allowed={cfg['site']['domain'].rstrip('/')+f'/compare/#plan-{record.get("plan_id", record["provider"])}' for record in reviewed}
     assert listed == allowed, 'Homepage structured data differs from the documented plan rows'
     compare=(ROOT/'site/compare/index.html').read_text(encoding='utf-8')
+    current_prices=build.current_price_records(payload['offers'],payload['source_status'],cfg['settings'])
+    price_ids=[offer['slug'] for offer in current_prices]
+    published_prices=re.findall(r'data-price-record="([^"]+)"',compare)
+    assert published_prices == price_ids, 'Compare does not publish every current numeric price exactly once in captured order'
+    preview_ids=re.findall(r'data-price-record="([^"]+)"',home)
+    providers=list(dict.fromkeys(offer['provider'] for offer in current_prices))
+    preview_providers=list(dict.fromkeys([record['provider'] for record in
+        payload.get('browser_term_observations',{}).get('records',[]) if record['provider'] in providers]+providers))
+    expected_preview=[next(offer['slug'] for offer in current_prices if offer['provider']==pid) for pid in preview_providers[:9]]
+    assert preview_ids == expected_preview, 'Homepage prices differ from the current one-plan-per-provider preview'
+    if current_prices:
+        count_text=f'{len(current_prices)} current price records from {len(providers)} providers.'
+        assert count_text in home and count_text in compare, 'Current-price printed counts disagree with the source records'
+        assert home.index('id="current-prices"') < home.index('LATEST ARTICLES'), 'Homepage prices are buried below the articles'
+        assert home.index('id="current-prices"') < home.index('id="dated-manual-plans"'), 'Homepage dated prices obscure current prices'
+        assert compare.index('id="current-prices"') < compare.index('id="dated-manual-plans"'), 'Compare dated prices obscure current prices'
+        for offer in current_prices:
+            card=re.search(r'data-price-record="'+re.escape(offer['slug'])+r'"(.*?)</article>',compare,re.S).group(1)
+            assert build.e(build.captured_field_evidence(offer,'price')) in card, f'Current price quotation changed: {offer["slug"]}'
+            assert build.e(offer['source_url']) in card and offer['fetched_at'] in card, f'Current price lacks its source and actual date: {offer["slug"]}'
+    assert '<details class="plan-evidence"><summary>Show '+str(len(reviewed))+' dated manual examples</summary>' in home, 'Homepage old manual amounts are not distinguished and folded'
     anchors=re.findall(r'<tr id="([^"]+)"',compare)
     assert len(anchors)==len(set(anchors)), 'Comparison plans share duplicate anchors'
     comparison_rows={}
